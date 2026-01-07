@@ -1,37 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GameTechSolutions</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #1e3a8a, #020617);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #c7d2fe;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #93c5fd;
+      margin-bottom: 20px;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #60a5fa;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #1e293b;
+      color: #94a3b8;
+    }
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <h1>GameTechSolutions</h1>
-    <p>Modificación, mantenimiento y soporte para consolas</p>
+    <p>Modificación, reparación y mantenimiento de consolas</p>
   </header>
 
-  <main>
-    <section>
-      <h2>Servicios</h2>
-      <ul>
-        <li>Xbox (Clásica, 360, One)</li>
-        <li>PlayStation (PS2, PS3, PS4, PS5)</li>
-        <li>Nintendo (Switch, Wii, GameCube)</li>
-      </ul>
-    </section>
+  <section>
+    <h2>Servicios</h2>
+    <div class="services">
+      <div class="card">
+        <h3>PlayStation</h3>
+        <p>PS2, PS3, PS4 y PS5<br>HEN, CFW, mantenimiento, discos duros y más.</p>
+      </div>
+      <div class="card">
+        <h3>Xbox</h3>
+        <p>Xbox clásico, 360 y One<br>RGH, discos duros, errores de sistema.</p>
+      </div>
+      <div class="card">
+        <h3>Nintendo</h3>
+        <p>Switch, Wii, GameCube, DS<br>Chips, softmod y soporte.</p>
+      </div>
+      <div class="card">
+        <h3>Extras</h3>
+        <p>Instalación de juegos, respaldos, asesoría y diagnóstico.</p>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>Próximamente</h2>
-      <p>
-        Selección de juegos, formularios inteligentes,
-        tutoriales y documentación.
-      </p>
-    </section>
-  </main>
+  <section>
+    <h2>Contenido y Soporte</h2>
+    <p>Próximamente encontrarás guías, preguntas frecuentes y tutoriales en video sobre el uso y mantenimiento de tu consola.</p>
+  </section>
+
+  <section>
+    <h2>Contacto</h2>
+    <p>Para cotizaciones y atención directa:</p>
+    <p><strong>WhatsApp:</strong> <a href="#">Próximamente</a></p>
+  </section>
 
   <footer>
     <p>© 2026 GameTechSolutions</p>
   </footer>
+
 </body>
 </html>
