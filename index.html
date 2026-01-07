@@ -3,105 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GameTechSolutions</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-    }
-    header {
-      padding: 60px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #1e3a8a, #020617);
-    }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #c7d2fe;
-    }
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      color: #93c5fd;
-      margin-bottom: 20px;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #020617;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 20px;
-    }
-    .card h3 {
-      margin-top: 0;
-      color: #60a5fa;
-    }
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid #1e293b;
-      color: #94a3b8;
-    }
-    a {
-      color: #60a5fa;
-      text-decoration: none;
-    }
-  </style>
+
+  <title>GameTechSolutions | Servicios de Consolas</title>
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-  <header>
-    <h1>GameTechSolutions</h1>
-    <p>Modificación, reparación y mantenimiento de consolas</p>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">GameTechSolutions</h1>
+      <p class="tagline">Modificación, mantenimiento y reparación de consolas</p>
+    </div>
   </header>
 
-  <section>
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="card">
-        <h3>PlayStation</h3>
-        <p>PS2, PS3, PS4 y PS5<br>HEN, CFW, mantenimiento, discos duros y más.</p>
+  <!-- ================= NAV ================= -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#consola">Consola</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- ===== CONSOLA INFO ===== -->
+    <section id="consola" class="section consola">
+      <div class="container">
+        <h2 class="section-title">[Nombre de la Consola]</h2>
+
+        <p class="consola-descripcion">
+          Descripción general de la consola y qué tipo de trabajos se realizan
+          (liberación, mantenimiento, reparación, etc.).
+        </p>
       </div>
-      <div class="card">
-        <h3>Xbox</h3>
-        <p>Xbox clásico, 360 y One<br>RGH, discos duros, errores de sistema.</p>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+    <section id="servicios" class="section servicios">
+      <div class="container">
+        <h2 class="section-title">Servicios disponibles</h2>
+
+        <div class="servicios-lista">
+          <article class="servicio">
+            <h3>Servicio 1</h3>
+            <p>Descripción del servicio.</p>
+          </article>
+
+          <article class="servicio">
+            <h3>Servicio 2</h3>
+            <p>Descripción del servicio.</p>
+          </article>
+
+          <article class="servicio">
+            <h3>Servicio 3</h3>
+            <p>Descripción del servicio.</p>
+          </article>
+        </div>
       </div>
-      <div class="card">
-        <h3>Nintendo</h3>
-        <p>Switch, Wii, GameCube, DS<br>Chips, softmod y soporte.</p>
+    </section>
+
+    <!-- ===== PROCESO ===== -->
+    <section id="proceso" class="section proceso">
+      <div class="container">
+        <h2 class="section-title">Proceso de trabajo</h2>
+
+        <ol class="proceso-lista">
+          <li>Revisión de la consola</li>
+          <li>Diagnóstico</li>
+          <li>Trabajo técnico</li>
+          <li>Pruebas</li>
+          <li>Entrega</li>
+        </ol>
       </div>
-      <div class="card">
-        <h3>Extras</h3>
-        <p>Instalación de juegos, respaldos, asesoría y diagnóstico.</p>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section id="contacto" class="section contacto">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+
+        <p>
+          Para cotizaciones y dudas, contáctanos por mensaje directo.
+        </p>
+
+        <p class="contacto-info">
+          📍 Atención local<br>
+          🕹️ Consolas retro y modernas
+        </p>
       </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © 2026 GameTechSolutions. Todos los derechos reservados.
+      </p>
     </div>
-  </section>
-
-  <section>
-    <h2>Contenido y Soporte</h2>
-    <p>Próximamente encontrarás guías, preguntas frecuentes y tutoriales en video sobre el uso y mantenimiento de tu consola.</p>
-  </section>
-
-  <section>
-    <h2>Contacto</h2>
-    <p>Para cotizaciones y atención directa:</p>
-    <p><strong>WhatsApp:</strong> <a href="#">Próximamente</a></p>
-  </section>
-
-  <footer>
-    <p>© 2026 GameTechSolutions</p>
   </footer>
 
 </body>
