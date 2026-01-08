@@ -388,3 +388,18 @@ section p {
 .map-container iframe {
   display: block;
 }
+
+/* ===== MEJORA VISUAL SUBMENÚ DESKTOP ===== */
+
+.submenu {
+  min-width: 220px;           /* más ancho */
+}
+
+.submenu li a {
+  line-height: 1.4;           /* más aire vertical */
+  white-space: normal;        /* permite salto de línea */
+}
+
+.submenu li a:hover {
+  padding-left: 18px;         /* micro feedback visual */
+}
