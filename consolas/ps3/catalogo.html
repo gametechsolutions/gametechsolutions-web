@@ -154,14 +154,64 @@
 
     <!-- CATÁLOGO (PLACEHOLDER) -->
     <section>
-      <h2>Listado de juegos</h2>
-
-      <div class="card">
-        <p>
-          Aquí irá el listado de juegos de PlayStation 3.
-          En el siguiente paso se definirá el formato:
-          lista, tabla, tarjetas, buscador o selección dinámica.
-        </p>
+      <h2>Selector de juegos</h2>
+      <p>
+        Selecciona los juegos que te gustaría instalar.
+        La cantidad final depende del tamaño del disco duro disponible.
+      </p>
+    
+      <div class="selector-layout">
+    
+        <!-- CATÁLOGO -->
+        <div class="selector-catalog">
+    
+          <h3>Catálogo</h3>
+    
+          <div class="selector-item">
+            <span>Grand Theft Auto V</span>
+            <span>18 GB</span>
+            <button class="btn-small">Agregar</button>
+          </div>
+    
+          <div class="selector-item">
+            <span>The Last of Us</span>
+            <span>22 GB</span>
+            <button class="btn-small">Agregar</button>
+          </div>
+    
+          <div class="selector-item">
+            <span>God of War III</span>
+            <span>35 GB</span>
+            <button class="btn-small">Agregar</button>
+          </div>
+    
+          <!-- Placeholder -->
+          <div class="selector-item muted">
+            <span>Más juegos próximamente…</span>
+          </div>
+    
+        </div>
+    
+        <!-- SELECCIÓN -->
+        <div class="selector-summary">
+    
+          <h3>Mi selección</h3>
+    
+          <ul class="selected-list">
+            <li>GTA V <span>18 GB</span></li>
+            <li>FIFA 19 <span>12 GB</span></li>
+          </ul>
+    
+          <div class="selector-total">
+            <strong>Total:</strong> 30 GB
+          </div>
+    
+          <p class="selector-note">
+            El espacio es aproximado y puede variar según el formato del juego.
+          </p>
+    
+        </div>
+    
       </div>
     </section>
 
