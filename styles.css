@@ -345,3 +345,15 @@ section p {
     background-color: #1a1a1a;
   }
 }
+
+.menu-parent {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px 10px;
+  display: inline-block;
+  color: #eaeaea;
+}
+
+.menu-parent:hover {
+  color: #1abc9c;
+}
