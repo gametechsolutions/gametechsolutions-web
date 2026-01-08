@@ -170,3 +170,33 @@ a:hover {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
+
+/* ===== CARDS DE CONSOLAS (LOGOS) ===== */
+
+.console-card {
+  background-color: #141414;
+  border: 1px solid #1f1f1f;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.console-card img {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.console-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  border-color: #1abc9c;
+}
+
+.console-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
