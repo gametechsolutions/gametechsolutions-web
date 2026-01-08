@@ -357,3 +357,21 @@ section p {
 .menu-parent:hover {
   color: #1abc9c;
 }
+
+/* ===== UNIFICAR ESTILO DE ITEMS DE NAVEGACIÓN ===== */
+
+.nav-menu a,
+.menu-parent {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+}
+
+/* Asegura que el caret ▾ no desplace el texto */
+.menu-parent {
+  gap: 4px;
+}
