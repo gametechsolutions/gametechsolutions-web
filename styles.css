@@ -403,3 +403,42 @@ section p {
 .submenu li a:hover {
   padding-left: 18px;         /* micro feedback visual */
 }
+
+/* ===== HOVER COVERS CATÁLOGO ===== */
+
+.cover-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.cover-wrapper img {
+  width: 100%;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+/* Overlay */
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #eaeaea;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* Hover effect */
+.cover-card:hover .cover-wrapper img {
+  transform: scale(1.05);
+}
+
+.cover-card:hover .cover-overlay {
+  opacity: 1;
+}
+
