@@ -529,3 +529,18 @@ section p {
     grid-template-columns: 1fr;
   }
 }
+
+.selection-actions {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.btn-small.danger {
+  background-color: #c0392b;
+}
+
+.btn-small.danger:hover {
+  background-color: #a93226;
+}
+
