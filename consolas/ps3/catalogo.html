@@ -148,51 +148,82 @@
       <div class="selector-layout">
 
         <!-- CATÁLOGO -->
-        <div class="selector-catalog">
-          <h3>Catálogo</h3>
+        <section>
+  <h2>Selector de juegos</h2>
+  <p>
+    Primero selecciona el tamaño del disco duro. Con base en esto,
+    podrás elegir tus juegos hasta llenar la capacidad disponible.
+  </p>
 
-          <div class="selector-item">
-            <span>Grand Theft Auto V</span>
-            <span>18 GB</span>
-            <button class="btn-small add-game" data-size="18">Agregar</button>
-          </div>
+  <!-- SELECTOR DE DISCO -->
+  <div class="disk-selector">
+    <h3>📀 Tamaño del disco duro</h3>
 
-          <div class="selector-item">
-            <span>The Last of Us</span>
-            <span>22 GB</span>
-            <button class="btn-small add-game" data-size="22">Agregar</button>
-          </div>
+    <div class="disk-options">
+      <label><input type="radio" name="disk" value="80"> 80 GB (~10 juegos)</label>
+      <label><input type="radio" name="disk" value="120"> 120 GB (~15 juegos)</label>
+      <label><input type="radio" name="disk" value="160"> 160 GB (~20 juegos)</label>
+      <label><input type="radio" name="disk" value="320"> 320 GB (~35 juegos)</label>
+      <label><input type="radio" name="disk" value="500"> 500 GB (~50 juegos)</label>
+      <label><input type="radio" name="disk" value="750"> 750 GB (~75 juegos)</label>
+      <label><input type="radio" name="disk" value="1000"> 1 TB (~100 juegos)</label>
+    </div>
 
-          <div class="selector-item">
-            <span>God of War III</span>
-            <span>35 GB</span>
-            <button class="btn-small add-game" data-size="35">Agregar</button>
-          </div>
+    <p class="disk-info" id="diskInfo">
+      Selecciona un tamaño de disco para comenzar.
+    </p>
+  </div>
 
-          <div class="selector-item muted">
-            <span>Más juegos próximamente…</span>
-          </div>
-        </div>
+  <!-- SELECTOR -->
+  <div class="selector-layout">
 
-        <!-- RESUMEN -->
-        <div class="selector-summary">
-          <h3>Mi selección</h3>
+    <!-- CATÁLOGO -->
+    <div class="selector-catalog">
+      <h3>Catálogo</h3>
 
-          <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
-          <p>💾 Espacio estimado: <strong id="totalSize">0</strong> GB</p>
-
-          <div class="selection-actions">
-            <button class="btn-small" id="removeLast">Quitar último</button>
-            <button class="btn-small danger" id="clearAll">Vaciar selección</button>
-          </div>
-
-          <p class="selector-note">
-            El espacio es aproximado y puede variar según el formato del juego.
-          </p>
-        </div>
-
+      <div class="selector-item">
+        <span>Grand Theft Auto V</span>
+        <span>18 GB</span>
+        <button class="btn-small add-game" data-size="18">Agregar</button>
       </div>
-    </section>
+
+      <div class="selector-item">
+        <span>The Last of Us</span>
+        <span>22 GB</span>
+        <button class="btn-small add-game" data-size="22">Agregar</button>
+      </div>
+
+      <div class="selector-item">
+        <span>God of War III</span>
+        <span>35 GB</span>
+        <button class="btn-small add-game" data-size="35">Agregar</button>
+      </div>
+
+      <div class="selector-item muted">
+        <span>Más juegos próximamente…</span>
+      </div>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="selector-summary">
+      <h3>Mi selección</h3>
+
+      <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
+      <p>💾 Espacio usado: <strong id="totalSize">0</strong> GB</p>
+      <p>📦 Capacidad disponible: <strong id="diskLimit">—</strong> GB</p>
+
+      <div class="selection-actions">
+        <button class="btn-small" id="removeLast">Quitar último</button>
+        <button class="btn-small danger" id="clearAll">Vaciar selección</button>
+      </div>
+
+      <p class="disk-warning" id="diskWarning">
+        ⚠️ Has superado la capacidad del disco. Elimina juegos para continuar.
+      </p>
+    </div>
+
+  </div>
+</section>
 
     <!-- CTA -->
     <section>
@@ -211,12 +242,39 @@
 <script>
   let selectedGames = [];
   let totalSize = 0;
+  let diskLimit = null;
+
+  const diskMap = {
+    80: 65,
+    120: 100,
+    160: 135,
+    320: 285,
+    500: 460,
+    750: 700,
+    1000: 920
+  };
 
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
+  const diskLimitEl = document.getElementById('diskLimit');
+  const diskInfoEl = document.getElementById('diskInfo');
+  const diskWarningEl = document.getElementById('diskWarning');
+  const addButtons = document.querySelectorAll('.add-game');
 
-  document.querySelectorAll('.add-game').forEach(button => {
+  document.querySelectorAll('input[name="disk"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      diskLimit = diskMap[radio.value];
+      diskLimitEl.textContent = diskLimit;
+      diskInfoEl.textContent =
+        `Capacidad usable aproximada: ${diskLimit} GB`;
+      checkLimit();
+    });
+  });
+
+  addButtons.forEach(button => {
     button.addEventListener('click', () => {
+      if (diskLimit === null) return;
+
       const size = parseInt(button.dataset.size, 10);
       selectedGames.push(size);
       totalSize += size;
@@ -225,9 +283,8 @@
   });
 
   document.getElementById('removeLast').addEventListener('click', () => {
-    if (selectedGames.length === 0) return;
-    const removed = selectedGames.pop();
-    totalSize -= removed;
+    if (!selectedGames.length) return;
+    totalSize -= selectedGames.pop();
     updateSummary();
   });
 
@@ -240,6 +297,17 @@
   function updateSummary() {
     gameCountEl.textContent = selectedGames.length;
     totalSizeEl.textContent = totalSize;
+    checkLimit();
+  }
+
+  function checkLimit() {
+    if (diskLimit !== null && totalSize > diskLimit) {
+      diskWarningEl.style.display = 'block';
+      addButtons.forEach(b => b.disabled = true);
+    } else {
+      diskWarningEl.style.display = 'none';
+      addButtons.forEach(b => b.disabled = false);
+    }
   }
 </script>
 
