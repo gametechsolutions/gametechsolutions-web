@@ -8,35 +8,62 @@
 </head>
 <body>
 
-<!-- HEADER FIJO -->
 <header>
   <div>
     <h1>Contacto</h1>
     <p>Solicita información o agenda un servicio</p>
 
-    <!-- Navegación -->
-    <nav style="margin-top:10px;">
-      <a href="/" style="margin:0 10px;">Inicio</a>
-      <a href="/consolas/ps3/" style="margin:0 10px;">PS3</a>
-      <a href="/contacto/" style="margin:0 10px;">Contacto</a>
+    <nav>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">☰</label>
+
+      <ul class="nav-menu">
+
+        <li><a href="/">Inicio</a></li>
+
+        <li tabindex="0">
+          <span class="menu-parent">Microsoft ▾</span>
+          <ul class="submenu">
+            <li><a href="/consolas/xbox/">Xbox Clásica</a></li>
+            <li><a href="/consolas/xbox360/">Xbox 360</a></li>
+          </ul>
+        </li>
+
+        <li tabindex="0">
+          <span class="menu-parent">Nintendo ▾</span>
+          <ul class="submenu">
+            <li><a href="/consolas/gamecube/">Nintendo GameCube</a></li>
+            <li><a href="/consolas/wii/">Nintendo Wii</a></li>
+          </ul>
+        </li>
+
+        <li tabindex="0">
+          <span class="menu-parent">Sony ▾</span>
+          <ul class="submenu">
+            <li><a href="/consolas/ps2/">PlayStation 2</a></li>
+            <li><a href="/consolas/ps3/">PlayStation 3</a></li>
+          </ul>
+        </li>
+
+        <li><a href="/contacto/">Contacto</a></li>
+
+      </ul>
     </nav>
   </div>
 </header>
 
-<!-- CONTENIDO CENTRAL -->
 <main>
   <div class="container">
 
-    <!-- INTRO -->
     <section>
       <h2>¿Cómo contactar?</h2>
       <p>
-        Para ofrecerte una solución adecuada, es importante que nos brindes
-        información clara sobre tu consola y el servicio que buscas.
+        Para brindarte una solución adecuada, es importante que nos proporciones
+        información clara sobre tu consola y el servicio que necesitas.
       </p>
     </section>
 
-    <!-- PASOS -->
     <section>
       <h2>Antes de escribir</h2>
 
@@ -68,7 +95,6 @@
       </div>
     </section>
 
-    <!-- CONTACTO DIRECTO -->
     <section>
       <h2>Contacto directo</h2>
 
@@ -80,25 +106,20 @@
             Medio principal de contacto para cotizaciones,
             seguimiento y entrega.
           </p>
-          <p>
-            <strong>Número:</strong> <br>
-            (Aquí va tu WhatsApp)
-          </p>
+          <p><strong>Número:</strong> (Aquí va tu WhatsApp)</p>
         </div>
 
         <div class="card">
           <h3>📍 Atención</h3>
           <p>
             Servicio bajo cita previa.<br>
-            No se realizan diagnósticos completos sin revisar
-            la consola físicamente.
+            No se realizan diagnósticos completos sin revisión física.
           </p>
         </div>
 
       </div>
     </section>
 
-    <!-- NOTAS IMPORTANTES -->
     <section>
       <h2>Notas importantes</h2>
       <ul>
@@ -111,7 +132,6 @@
   </div>
 </main>
 
-<!-- FOOTER FIJO -->
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
