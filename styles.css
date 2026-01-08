@@ -200,3 +200,71 @@ a:hover {
   filter: grayscale(0%);
   transform: scale(1.05);
 }
+
+/* ===== NAVEGACIÓN ===== */
+
+nav {
+  margin-top: 12px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.nav-menu > li {
+  position: relative;
+}
+
+.nav-menu a {
+  color: #eaeaea;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
+.nav-menu a:hover {
+  color: #1abc9c;
+}
+
+/* Submenú */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #141414;
+  border: 1px solid #222;
+  border-radius: 6px;
+  min-width: 160px;
+  display: none;
+  z-index: 2000;
+}
+
+.submenu li {
+  padding: 0;
+}
+
+.submenu a {
+  display: block;
+  padding: 10px 14px;
+  font-weight: normal;
+  color: #ccc;
+}
+
+.submenu a:hover {
+  background-color: #1abc9c;
+  color: #000;
+}
+
+/* Hover en desktop */
+.nav-menu li:hover > .submenu {
+  display: block;
+}
+
+/* Soporte básico móvil */
+.nav-menu li:focus-within > .submenu {
+  display: block;
+}
+
