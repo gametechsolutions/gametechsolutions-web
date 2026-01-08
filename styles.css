@@ -375,3 +375,16 @@ section p {
 .menu-parent {
   gap: 4px;
 }
+
+/* ===== MAPA EMBEBIDO ===== */
+
+.map-container {
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #1f1f1f;
+}
+
+.map-container iframe {
+  display: block;
+}
