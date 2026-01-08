@@ -442,3 +442,8 @@ section p {
   opacity: 1;
 }
 
+/* Centrar títulos debajo de covers */
+.cover-card h3 {
+  text-align: center;
+  margin-top: 10px;
+}
