@@ -194,23 +194,27 @@
     
         <!-- SELECCIÓN -->
         <div class="selector-summary">
-    
+
           <h3>Mi selección</h3>
-    
-          <ul class="selected-list">
-            <li>GTA V <span>18 GB</span></li>
-            <li>FIFA 19 <span>12 GB</span></li>
-          </ul>
-    
-          <div class="selector-total">
-            <strong>Total:</strong> 30 GB
+        
+          <p class="selection-count">
+            🎮 Juegos seleccionados: <strong id="gameCount">0</strong>
+          </p>
+        
+          <p class="selection-size">
+            💾 Espacio estimado: <strong id="totalSize">0</strong> GB
+          </p>
+        
+          <div class="selection-actions">
+            <button class="btn-small" id="removeLast">Quitar último</button>
+            <button class="btn-small danger" id="clearAll">Vaciar selección</button>
           </div>
-    
+        
           <p class="selector-note">
             El espacio es aproximado y puede variar según el formato del juego.
           </p>
-    
-        </div>
+      
+      </div>
     
       </div>
     </section>
@@ -227,6 +231,42 @@
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
+
+  <script>
+  let selectedGames = [];
+  let totalSize = 0;
+
+  const gameCountEl = document.getElementById('gameCount');
+  const totalSizeEl = document.getElementById('totalSize');
+
+  document.querySelectorAll('.add-game').forEach(button => {
+    button.addEventListener('click', () => {
+      const size = parseInt(button.dataset.size, 10);
+      selectedGames.push(size);
+      totalSize += size;
+      updateSummary();
+    });
+  });
+
+  document.getElementById('removeLast').addEventListener('click', () => {
+    if (selectedGames.length === 0) return;
+    const removed = selectedGames.pop();
+    totalSize -= removed;
+    updateSummary();
+  });
+
+  document.getElementById('clearAll').addEventListener('click', () => {
+    selectedGames = [];
+    totalSize = 0;
+    updateSummary();
+  });
+
+  function updateSummary() {
+    gameCountEl.textContent = selectedGames.length;
+    totalSizeEl.textContent = totalSize;
+  }
+</script>
+
 
 </body>
 </html>
