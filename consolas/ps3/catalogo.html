@@ -158,7 +158,7 @@
         </label>
     
         <label class="disk-option">
-          <input type="radio" name="diskSize">
+          <input type="radio" name="diskSize" value="120" data-limit="105">
           <div>
             <strong>120 GB</strong>
             <span>Recomendado: ~15 juegos</span>
@@ -172,9 +172,17 @@
             <span>Recomendado: ~20 juegos</span>
           </div>
         </label>
+
+        <label class="disk-option">
+          <input type="radio" name="diskSize" value="250" data-limit="226">
+          <div>
+            <strong>250 GB</strong>
+            <span>Recomendado: ~25 juegos</span>
+          </div>
+        </label>
     
         <label class="disk-option">
-          <input type="radio" name="diskSize">
+          <input type="radio" name="diskSize" value="320" data-limit="293">
           <div>
             <strong>320 GB</strong>
             <span>Recomendado: ~35 juegos</span>
@@ -182,7 +190,7 @@
         </label>
     
         <label class="disk-option">
-          <input type="radio" name="diskSize">
+          <input type="radio" name="diskSize" value="500" data-limit="460">
           <div>
             <strong>500 GB</strong>
             <span>Recomendado: ~50 juegos</span>
@@ -190,7 +198,7 @@
         </label>
     
         <label class="disk-option">
-          <input type="radio" name="diskSize">
+          <input type="radio" name="diskSize" value="750" data-limit="690">
           <div>
             <strong>750 GB</strong>
             <span>Recomendado: ~75 juegos</span>
@@ -198,7 +206,7 @@
         </label>
     
         <label class="disk-option">
-          <input type="radio" name="diskSize">
+          <input type="radio" name="diskSize" value="1000" data-limit="926">
           <div>
             <strong>1 TB</strong>
             <span>Recomendado: ~100 juegos</span>
@@ -283,35 +291,98 @@
 <script>
   let selectedGames = [];
   let totalSize = 0;
+  let diskLimit = null;
 
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
+  const addButtons = document.querySelectorAll('.add-game');
 
-  document.querySelectorAll('.add-game').forEach(button => {
+  /* ====== SELECCIÓN DE DISCO ====== */
+  document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      diskLimit = parseInt(radio.dataset.limit, 10);
+      resetSelection();
+      updateSummary();
+    });
+  });
+
+  /* ====== AGREGAR JUEGOS ====== */
+  addButtons.forEach(button => {
     button.addEventListener('click', () => {
       const size = parseInt(button.dataset.size, 10);
+
+      if (diskLimit === null) {
+        alert('Primero selecciona el tamaño del disco duro.');
+        return;
+      }
+
+      if (totalSize + size > diskLimit) {
+        showLimitWarning();
+        return;
+      }
+
       selectedGames.push(size);
       totalSize += size;
       updateSummary();
     });
   });
 
+  /* ====== QUITAR ÚLTIMO ====== */
   document.getElementById('removeLast').addEventListener('click', () => {
     if (selectedGames.length === 0) return;
+
     const removed = selectedGames.pop();
     totalSize -= removed;
     updateSummary();
   });
 
+  /* ====== VACIAR ====== */
   document.getElementById('clearAll').addEventListener('click', () => {
-    selectedGames = [];
-    totalSize = 0;
+    resetSelection();
     updateSummary();
   });
 
+  /* ====== FUNCIONES ====== */
   function updateSummary() {
     gameCountEl.textContent = selectedGames.length;
     totalSizeEl.textContent = totalSize;
+
+    if (diskLimit !== null && totalSize <= diskLimit) {
+      enableAddButtons();
+      hideLimitWarning();
+    }
+  }
+
+  function resetSelection() {
+    selectedGames = [];
+    totalSize = 0;
+    enableAddButtons();
+    hideLimitWarning();
+  }
+
+  function disableAddButtons() {
+    addButtons.forEach(btn => btn.disabled = true);
+  }
+
+  function enableAddButtons() {
+    addButtons.forEach(btn => btn.disabled = false);
+  }
+
+  function showLimitWarning() {
+    disableAddButtons();
+    if (!document.getElementById('limitWarning')) {
+      const warning = document.createElement('p');
+      warning.id = 'limitWarning';
+      warning.className = 'limit-warning';
+      warning.textContent =
+        '⚠️ Has superado la capacidad del disco. Elimina juegos para continuar.';
+      document.querySelector('.selector-summary').appendChild(warning);
+    }
+  }
+
+  function hideLimitWarning() {
+    const warning = document.getElementById('limitWarning');
+    if (warning) warning.remove();
   }
 </script>
 
