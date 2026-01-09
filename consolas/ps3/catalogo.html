@@ -231,39 +231,6 @@
         <div class="selector-catalog">
           <h3>Catálogo</h3>
 
-          <div class="selector-item">
-            <span>Grand Theft Auto V</span>
-            <span>18 GB</span>
-            <button class="btn-small add-game"
-                    data-id="gta-v"
-                    data-size="18">
-              Agregar
-            </button>
-          </div>
-
-          <div class="selector-item">
-            <span>The Last of Us</span>
-            <span>22 GB</span>
-            <button class="btn-small add-game"
-                    data-id="lou"
-                    data-size="22">
-              Agregar
-            </button>
-          </div>
-
-          <div class="selector-item">
-            <span>God of War III</span>
-            <span>35 GB</span>
-            <button class="btn-small add-game"
-                    data-id="gow3"
-                    data-size="35">
-              Agregar
-            </button>
-          </div>
-
-          <div class="selector-item muted">
-            <span>Más juegos próximamente…</span>
-          </div>
         </div>
 
         <!-- RESUMEN -->
@@ -304,53 +271,83 @@
   let selectedGames = [];
   let totalSize = 0;
   let diskLimit = null;
+  let gamesData = [];
 
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
-  const addButtons = document.querySelectorAll('.add-game');
+  const catalogEl = document.querySelector('.selector-catalog');
 
-  /* ===== SELECCIÓN DE DISCO ===== */
+  /* ===== CARGAR JUEGOS DESDE JSON ===== */
+  fetch('/assets/data/ps3-games.json')
+    .then(res => res.json())
+    .then(data => {
+      gamesData = data;
+      renderCatalog();
+    });
+
+  function renderCatalog() {
+    gamesData.forEach(game => {
+      const item = document.createElement('div');
+      item.className = 'selector-item';
+
+      item.innerHTML = `
+        <span>${game.name}</span>
+        <span>${game.size} GB</span>
+        <button class="btn-small add-game"
+                data-id="${game.id}"
+                data-size="${game.size}">
+          Agregar
+        </button>
+      `;
+
+      catalogEl.appendChild(item);
+    });
+
+    bindAddButtons();
+  }
+
+  function bindAddButtons() {
+    document.querySelectorAll('.add-game').forEach(button => {
+      button.addEventListener('click', () => {
+        const id = Number(button.dataset.id);
+        const size = Number(button.dataset.size);
+
+        if (diskLimit === null) {
+          alert('Primero selecciona el tamaño del disco duro.');
+          return;
+        }
+
+        if (selectedGames.some(g => g.id === id)) return;
+
+        if (totalSize + size > diskLimit) {
+          showLimitWarning();
+          return;
+        }
+
+        selectedGames.push({ id, size });
+        totalSize += size;
+
+        button.disabled = true;
+        button.textContent = 'Agregado';
+        button.classList.add('added');
+
+        updateSummary();
+      });
+    });
+  }
+
+  /* ===== DISCO DURO ===== */
   document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
     radio.addEventListener('change', () => {
-      diskLimit = parseInt(radio.dataset.limit, 10);
+      diskLimit = Number(radio.dataset.limit);
       resetSelection();
       updateSummary();
     });
   });
 
-  /* ===== AGREGAR JUEGOS ===== */
-  addButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const id = button.dataset.id;
-      const size = parseInt(button.dataset.size, 10);
-
-      if (diskLimit === null) {
-        alert('Primero selecciona el tamaño del disco duro.');
-        return;
-      }
-
-      if (selectedGames.some(game => game.id === id)) {
-        return; // ya está agregado
-      }
-
-      if (totalSize + size > diskLimit) {
-        showLimitWarning();
-        return;
-      }
-
-      selectedGames.push({ id, size });
-      totalSize += size;
-      button.disabled = true;
-      button.textContent = 'Agregado';
-      button.classList.add('added');
-
-      updateSummary();
-    });
-  });
-
-  /* ===== QUITAR ÚLTIMO ===== */
+  /* ===== CONTROLES ===== */
   document.getElementById('removeLast').addEventListener('click', () => {
-    if (selectedGames.length === 0) return;
+    if (!selectedGames.length) return;
 
     const removed = selectedGames.pop();
     totalSize -= removed.size;
@@ -365,58 +362,44 @@
     updateSummary();
   });
 
-  /* ===== VACIAR ===== */
   document.getElementById('clearAll').addEventListener('click', () => {
     resetSelection();
     updateSummary();
   });
 
-  /* ===== FUNCIONES ===== */
+  function resetSelection() {
+    selectedGames = [];
+    totalSize = 0;
+    document.querySelectorAll('.add-game').forEach(btn => {
+      btn.disabled = false;
+      btn.textContent = 'Agregar';
+      btn.classList.remove('added');
+    });
+    hideLimitWarning();
+  }
+
   function updateSummary() {
     gameCountEl.textContent = selectedGames.length;
     totalSizeEl.textContent = totalSize;
-
     if (diskLimit !== null && totalSize <= diskLimit) {
-      enableAddButtons();
       hideLimitWarning();
     }
   }
 
-  function resetSelection() {
-    selectedGames = [];
-    totalSize = 0;
-    enableAddButtons();
-    hideLimitWarning();
-    addButtons.forEach(btn => {
-      btn.textContent = 'Agregar';
-      btn.classList.remove('added');
-    });
-  }
-
-  function disableAddButtons() {
-    addButtons.forEach(btn => btn.disabled = true);
-  }
-
-  function enableAddButtons() {
-    addButtons.forEach(btn => btn.disabled = false);
-  }
-
   function showLimitWarning() {
-    disableAddButtons();
-
     if (!document.getElementById('limitWarning')) {
-      const warning = document.createElement('p');
-      warning.id = 'limitWarning';
-      warning.className = 'limit-warning';
-      warning.textContent =
+      const p = document.createElement('p');
+      p.id = 'limitWarning';
+      p.className = 'limit-warning';
+      p.textContent =
         '⚠️ Has superado la capacidad del disco. Elimina juegos para continuar.';
-      document.querySelector('.selector-summary').appendChild(warning);
+      document.querySelector('.selector-summary').appendChild(p);
     }
   }
 
   function hideLimitWarning() {
-    const warning = document.getElementById('limitWarning');
-    if (warning) warning.remove();
+    const w = document.getElementById('limitWarning');
+    if (w) w.remove();
   }
 </script>
 
