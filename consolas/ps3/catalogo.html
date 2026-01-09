@@ -440,6 +440,7 @@
         }
     
         clientNameInput.value = '';
+        clientModal.style.display = 'flex';
         clientModal.classList.add('active');
         clientNameInput.focus();
       });
@@ -485,6 +486,7 @@
       window.open(url, '_blank');
     
       clientModal.classList.remove('active');
+      clientModal.style.display = 'none';
     });
     
     /* =============================
