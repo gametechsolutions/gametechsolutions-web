@@ -315,6 +315,17 @@
   ============================== */
   const WHATSAPP_NUMBER = document.body.dataset.whatsapp;
 
+    /* LIMPIEZA */
+
+  function sanitizeText(text) {
+      return text
+        .normalize('NFKD')                 // normaliza unicode
+        .replace(/[\u0300-\u036f]/g, '')   // elimina acentos raros
+        .replace(/[^\x00-\x7F]/g, '')      // elimina no-ASCII
+        .replace(/\s+/g, ' ')              // espacios dobles
+        .trim();
+    }
+
   /* =============================
      CARGAR JUEGOS DESDE JSON
   ============================== */
@@ -484,10 +495,11 @@
       selectedGames.forEach(g => {
         const game = gamesData.find(x => Number(x.id) === g.id);
         if (game) {
-          messageLines.push(`- ${game.name}`);
+          const cleanName = sanitizeText(game.name);
+          messageLines.push(`- ${cleanName}`);
         }
       });
-      
+
       const message = messageLines.join('\n');
 
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
