@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body data-whatsapp="5215543613500">
 
 <!-- HEADER -->
 <header>
@@ -244,6 +244,12 @@
             <button class="btn-small" id="removeLast">Quitar último</button>
             <button class="btn-small danger" id="clearAll">Vaciar selección</button>
           </div>
+          
+          <div class="selection-actions">
+            <button class="btn" id="sendWhatsapp">
+              📲 Enviar selección por WhatsApp
+            </button>
+          </div>
 
           <p class="selector-note">
             El espacio es aproximado y puede variar según el formato del juego.
@@ -271,13 +277,22 @@
   let selectedGames = [];
   let totalSize = 0;
   let diskLimit = null;
+  let diskLabel = '';
   let gamesData = [];
 
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
   const catalogEl = document.querySelector('.selector-catalog');
+  const whatsappBtn = document.getElementById('sendWhatsapp');
 
-  /* ===== CARGAR JUEGOS DESDE JSON ===== */
+  /* =============================
+     CONFIGURACIÓN GLOBAL
+  ============================== */
+  const WHATSAPP_NUMBER = document.body.dataset.whatsapp;
+
+  /* =============================
+     CARGAR JUEGOS DESDE JSON
+  ============================== */
   fetch('/assets/data/ps3-games.json')
     .then(res => res.json())
     .then(data => {
@@ -292,7 +307,7 @@
 
       item.innerHTML = `
         <span>${game.name}</span>
-        <span>${game.size} GB</span>
+        <span>${game.size.toFixed(2)} GB</span>
         <button class="btn-small add-game"
                 data-id="${game.id}"
                 data-size="${game.size}">
@@ -336,16 +351,21 @@
     });
   }
 
-  /* ===== DISCO DURO ===== */
+  /* =============================
+     DISCO DURO
+  ============================== */
   document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
     radio.addEventListener('change', () => {
       diskLimit = Number(radio.dataset.limit);
+      diskLabel = radio.value;
       resetSelection();
       updateSummary();
     });
   });
 
-  /* ===== CONTROLES ===== */
+  /* =============================
+     CONTROLES
+  ============================== */
   document.getElementById('removeLast').addEventListener('click', () => {
     if (!selectedGames.length) return;
 
@@ -367,23 +387,58 @@
     updateSummary();
   });
 
+  /* =============================
+     WHATSAPP
+  ============================== */
+  whatsappBtn.addEventListener('click', () => {
+    if (!selectedGames.length || diskLimit === null) {
+      alert('Selecciona el disco duro y al menos un juego.');
+      return;
+    }
+
+    const gameNames = selectedGames
+      .map(g => {
+        const game = gamesData.find(x => x.id === g.id);
+        return `- ${game.name}`;
+      })
+      .join('\n');
+
+    const message = `
+🎮 GameTechSolutions - Selección de Juegos
+
+Consola: PlayStation 3
+Disco duro: ${diskLabel}
+Juegos seleccionados: ${selectedGames.length}
+Espacio estimado: ${totalSize.toFixed(2)} GB
+
+Lista de juegos:
+${gameNames}
+    `.trim();
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  });
+
+  /* =============================
+     UTILIDADES
+  ============================== */
   function resetSelection() {
     selectedGames = [];
     totalSize = 0;
+
     document.querySelectorAll('.add-game').forEach(btn => {
       btn.disabled = false;
       btn.textContent = 'Agregar';
       btn.classList.remove('added');
     });
+
     hideLimitWarning();
   }
 
   function updateSummary() {
     gameCountEl.textContent = selectedGames.length;
     totalSizeEl.textContent = totalSize.toFixed(2);
-    if (diskLimit !== null && totalSize <= diskLimit) {
-      hideLimitWarning();
-    }
+    hideLimitWarning();
   }
 
   function showLimitWarning() {
