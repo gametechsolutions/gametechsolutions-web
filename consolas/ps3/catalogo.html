@@ -293,6 +293,7 @@
 
 <!-- JS -->
 <script>
+  document.addEventListener('DOMContentLoaded', () => {
   let selectedGames = [];
   let totalSize = 0;
   let diskLimit = null;
@@ -432,6 +433,7 @@
   ============================== */
   if (whatsappBtn) {
       whatsappBtn.addEventListener('click', () => {
+        console.log('CLICK EN WHATSAPP');
         if (!selectedGames.length || diskLimit === null) {
           alert('Selecciona el disco duro y al menos un juego.');
           return;
@@ -529,6 +531,7 @@
     const w = document.getElementById('limitWarning');
     if (w) w.remove();
   }
+  });
 </script>
 
 </body>
