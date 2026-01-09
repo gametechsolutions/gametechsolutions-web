@@ -388,10 +388,32 @@
   });
 
   /* =============================
+     CONTADOR
+  ============================== */
+
+  function generateSelectionId(consoleCode) {
+    const year = new Date().getFullYear();
+    const storageKey = `selectionCounter_${consoleCode}_${year}`;
+  
+    let counter = Number(localStorage.getItem(storageKey)) || 0;
+    counter += 1;
+  
+    localStorage.setItem(storageKey, counter);
+  
+    return `${consoleCode}-${year}-${String(counter).padStart(3, '0')}`;
+  }
+
+  /* =============================
      WHATSAPP
   ============================== */
   if (whatsappBtn) {
     whatsappBtn.addEventListener('click', () => {
+      const clientName = prompt('Ingresa tu nombre para identificar la selección:');
+      if (!clientName || !clientName.trim()) {
+        alert('Es necesario ingresar un nombre para continuar.');
+        return;
+      }
+      const selectionId = generateSelectionId('PS3');
       if (!selectedGames.length || diskLimit === null) {
         alert('Selecciona el disco duro y al menos un juego.');
         return;
@@ -406,15 +428,18 @@
         .join('\n');
 
       const message = `
-  🎮 GameTechSolutions - Selección de Juegos
-  
-  Consola: PlayStation 3
-  Disco duro: ${diskLabel}
-  Juegos seleccionados: ${selectedGames.length}
-  Espacio estimado: ${totalSize.toFixed(2)} GB
-  
-  Lista de juegos:
-  ${gameNames}
+      🎮 GameTechSolutions - Selección de Juegos
+      
+      ID de selección: ${selectionId}
+      Cliente: ${clientName}
+      
+      Consola: PlayStation 3
+      Disco duro: ${diskLabel}
+      Juegos seleccionados: ${selectedGames.length}
+      Espacio estimado: ${totalSize.toFixed(2)} GB
+      
+      Lista de juegos:
+      ${gameNames}
       `.trim();
   
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
