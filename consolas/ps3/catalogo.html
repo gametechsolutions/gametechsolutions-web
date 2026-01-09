@@ -399,11 +399,12 @@
   
       const gameNames = selectedGames
         .map(g => {
-          const game = gamesData.find(x => x.id === g.id);
-          return `- ${game.name}`;
+          const game = gamesData.find(x => Number(x.id) === g.id);
+          return game ? `- ${game.name}` : '';
         })
+        .filter(Boolean)
         .join('\n');
-  
+
       const message = `
   🎮 GameTechSolutions - Selección de Juegos
   
