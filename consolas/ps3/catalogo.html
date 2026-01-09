@@ -272,6 +272,25 @@
   <p>GameTechSolutions © 2026</p>
 </footer>
 
+  <!-- MODAL NOMBRE CLIENTE -->
+  <div class="modal-overlay" id="clientModal">
+    <div class="modal">
+      <h3>Identificar selección</h3>
+      <p>Ingresa tu nombre para continuar</p>
+  
+      <input
+        type="text"
+        id="clientNameInput"
+        placeholder="Nombre del cliente"
+      />
+  
+      <div class="modal-actions">
+        <button class="btn-small" id="cancelModal">Cancelar</button>
+        <button class="btn" id="confirmModal">Continuar</button>
+      </div>
+    </div>
+  </div>
+
 <!-- JS -->
 <script>
   let selectedGames = [];
@@ -511,25 +530,6 @@
     if (w) w.remove();
   }
 </script>
-
-  <!-- MODAL NOMBRE CLIENTE -->
-  <div class="modal-overlay" id="clientModal">
-    <div class="modal">
-      <h3>Identificar selección</h3>
-      <p>Ingresa tu nombre para continuar</p>
-  
-      <input
-        type="text"
-        id="clientNameInput"
-        placeholder="Nombre del cliente"
-      />
-  
-      <div class="modal-actions">
-        <button class="btn-small" id="cancelModal">Cancelar</button>
-        <button class="btn" id="confirmModal">Continuar</button>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
