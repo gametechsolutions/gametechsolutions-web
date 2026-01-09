@@ -390,34 +390,36 @@
   /* =============================
      WHATSAPP
   ============================== */
-  whatsappBtn.addEventListener('click', () => {
-    if (!selectedGames.length || diskLimit === null) {
-      alert('Selecciona el disco duro y al menos un juego.');
-      return;
-    }
-
-    const gameNames = selectedGames
-      .map(g => {
-        const game = gamesData.find(x => x.id === g.id);
-        return `- ${game.name}`;
-      })
-      .join('\n');
-
-    const message = `
-🎮 GameTechSolutions - Selección de Juegos
-
-Consola: PlayStation 3
-Disco duro: ${diskLabel}
-Juegos seleccionados: ${selectedGames.length}
-Espacio estimado: ${totalSize.toFixed(2)} GB
-
-Lista de juegos:
-${gameNames}
-    `.trim();
-
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-  });
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener('click', () => {
+      if (!selectedGames.length || diskLimit === null) {
+        alert('Selecciona el disco duro y al menos un juego.');
+        return;
+      }
+  
+      const gameNames = selectedGames
+        .map(g => {
+          const game = gamesData.find(x => x.id === g.id);
+          return `- ${game.name}`;
+        })
+        .join('\n');
+  
+      const message = `
+  🎮 GameTechSolutions - Selección de Juegos
+  
+  Consola: PlayStation 3
+  Disco duro: ${diskLabel}
+  Juegos seleccionados: ${selectedGames.length}
+  Espacio estimado: ${totalSize.toFixed(2)} GB
+  
+  Lista de juegos:
+  ${gameNames}
+      `.trim();
+  
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    });
+  }
 
   /* =============================
      UTILIDADES
