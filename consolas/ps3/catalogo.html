@@ -307,7 +307,7 @@
 
       item.innerHTML = `
         <span>${game.name}</span>
-        <span>${game.size.toFixed(2)} GB</span>
+        <span>${Number(game.size).toFixed(2)} GB</span>
         <button class="btn-small add-game"
                 data-id="${game.id}"
                 data-size="${game.size}">
