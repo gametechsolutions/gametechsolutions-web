@@ -543,3 +543,49 @@ section p {
 .btn-small.danger:hover {
   background-color: #a93226;
 }
+
+/* ===== SELECTOR DE DISCO DURO ===== */
+
+.disk-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.disk-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #141414;
+  border: 1px solid #1f1f1f;
+  border-radius: 8px;
+  padding: 14px;
+  cursor: pointer;
+  transition: border 0.2s ease, background-color 0.2s ease;
+}
+
+.disk-option:hover {
+  background-color: #1a1a1a;
+}
+
+.disk-option input {
+  accent-color: #1abc9c;
+  transform: scale(1.1);
+}
+
+.disk-option strong {
+  display: block;
+  font-size: 16px;
+}
+
+.disk-option span {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.disk-note {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 10px;
+}
