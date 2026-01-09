@@ -466,22 +466,30 @@
         })
         .filter(Boolean)
         .join('\n');
-    
-      const message = `
-    🎮 GameTechSolutions - Selección de Juegos
-    
-    ID de selección: ${selectionId}
-    Cliente: ${clientName}
-    
-    Consola: PlayStation 3
-    Disco duro: ${diskLabel}
-    Juegos seleccionados: ${selectedGames.length}
-    Espacio estimado: ${totalSize.toFixed(2)} GB
-    
-    Lista de juegos:
-    ${gameNames}
-    `.trim();
-    
+
+      const messageLines = [
+        '🎮 GameTechSolutions - Selección de Juegos',
+        '',
+        `ID de selección: ${selectionId}`,
+        `Cliente: ${clientName}`,
+        '',
+        'Consola: PlayStation 3',
+        `Disco duro: ${diskLabel} GB`,
+        `Juegos seleccionados: ${selectedGames.length}`,
+        `Espacio estimado: ${totalSize.toFixed(2)} GB`,
+        '',
+        'Lista de juegos:'
+      ];
+      
+      selectedGames.forEach(g => {
+        const game = gamesData.find(x => Number(x.id) === g.id);
+        if (game) {
+          messageLines.push(`- ${game.name}`);
+        }
+      });
+      
+      const message = messageLines.join('\n');
+
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
     
