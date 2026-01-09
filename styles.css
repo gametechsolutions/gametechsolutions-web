@@ -589,3 +589,14 @@ section p {
   color: #aaa;
   margin-top: 10px;
 }
+
+.limit-warning {
+  margin-top: 10px;
+  color: #f39c12;
+  font-size: 13px;
+}
+
+.add-game:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
