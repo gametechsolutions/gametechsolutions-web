@@ -380,7 +380,7 @@
 
   function updateSummary() {
     gameCountEl.textContent = selectedGames.length;
-    totalSizeEl.textContent = totalSize;
+    totalSizeEl.textContent = totalSize.toFixed(2);
     if (diskLimit !== null && totalSize <= diskLimit) {
       hideLimitWarning();
     }
