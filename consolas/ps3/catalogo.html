@@ -234,19 +234,31 @@
           <div class="selector-item">
             <span>Grand Theft Auto V</span>
             <span>18 GB</span>
-            <button class="btn-small add-game" data-size="18">Agregar</button>
+            <button class="btn-small add-game"
+                    data-id="gta-v"
+                    data-size="18">
+              Agregar
+            </button>
           </div>
 
           <div class="selector-item">
             <span>The Last of Us</span>
             <span>22 GB</span>
-            <button class="btn-small add-game" data-size="22">Agregar</button>
+            <button class="btn-small add-game"
+                    data-id="lou"
+                    data-size="22">
+              Agregar
+            </button>
           </div>
 
           <div class="selector-item">
             <span>God of War III</span>
             <span>35 GB</span>
-            <button class="btn-small add-game" data-size="35">Agregar</button>
+            <button class="btn-small add-game"
+                    data-id="gow3"
+                    data-size="35">
+              Agregar
+            </button>
           </div>
 
           <div class="selector-item muted">
@@ -297,7 +309,7 @@
   const totalSizeEl = document.getElementById('totalSize');
   const addButtons = document.querySelectorAll('.add-game');
 
-  /* ====== SELECCIÓN DE DISCO ====== */
+  /* ===== SELECCIÓN DE DISCO ===== */
   document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
     radio.addEventListener('change', () => {
       diskLimit = parseInt(radio.dataset.limit, 10);
@@ -306,9 +318,10 @@
     });
   });
 
-  /* ====== AGREGAR JUEGOS ====== */
+  /* ===== AGREGAR JUEGOS ===== */
   addButtons.forEach(button => {
     button.addEventListener('click', () => {
+      const id = button.dataset.id;
       const size = parseInt(button.dataset.size, 10);
 
       if (diskLimit === null) {
@@ -316,33 +329,43 @@
         return;
       }
 
+      if (selectedGames.some(game => game.id === id)) {
+        return; // ya está agregado
+      }
+
       if (totalSize + size > diskLimit) {
         showLimitWarning();
         return;
       }
 
-      selectedGames.push(size);
+      selectedGames.push({ id, size });
       totalSize += size;
+      button.disabled = true;
+
       updateSummary();
     });
   });
 
-  /* ====== QUITAR ÚLTIMO ====== */
+  /* ===== QUITAR ÚLTIMO ===== */
   document.getElementById('removeLast').addEventListener('click', () => {
     if (selectedGames.length === 0) return;
 
     const removed = selectedGames.pop();
-    totalSize -= removed;
+    totalSize -= removed.size;
+
+    const btn = document.querySelector(`.add-game[data-id="${removed.id}"]`);
+    if (btn) btn.disabled = false;
+
     updateSummary();
   });
 
-  /* ====== VACIAR ====== */
+  /* ===== VACIAR ===== */
   document.getElementById('clearAll').addEventListener('click', () => {
     resetSelection();
     updateSummary();
   });
 
-  /* ====== FUNCIONES ====== */
+  /* ===== FUNCIONES ===== */
   function updateSummary() {
     gameCountEl.textContent = selectedGames.length;
     totalSizeEl.textContent = totalSize;
@@ -370,6 +393,7 @@
 
   function showLimitWarning() {
     disableAddButtons();
+
     if (!document.getElementById('limitWarning')) {
       const warning = document.createElement('p');
       warning.id = 'limitWarning';
