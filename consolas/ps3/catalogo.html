@@ -279,49 +279,50 @@
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
   const catalogEl = document.querySelector('.selector-catalog');
-  const AIRTABLE_BASE_ID = 'appXXXXXXXXXXXX'; // tu Base ID
-  const AIRTABLE_TABLE = 'PS3_Selections';
-  const AIRTABLE_TOKEN = 'patXXXXXXXXXXXX';  // token con write
+  const AIRTABLE_BASE_ID = 'appkHQDb34w1UVd7D'; // tu Base ID
+  const AIRTABLE_TABLE = 'Selections';
+  const AIRTABLE_TOKEN = 'patdDeAGJ97mmIMMN.11390e00bd32983e440aec50e660a099f9cb207536415ea82c7a7d491106f43f';  // token con write
 
     /* PAYLOAD */
 
-    function buildAirtablePayload({ selectionId, cliente, consola, discoGB, espacioUsadoGB, juegos }) {
-      return {
-        records: [
-          {
-            fields: {
-              SelectionID: selectionId,
-              Cliente: cliente,
-              Consola: consola,
-              DiscoGB: discoGB,
-              EspacioUsadoGB: Number(espacioUsadoGB.toFixed(2)),
-              JuegosTexto: juegos.map(j => j.name).join('\n'),
-              JuegosJSON: JSON.stringify(juegos),
-              Estado: 'Pendiente'
-            }
-          }
-        ]
+    document.getElementById('saveSelection').addEventListener('click', async () => {
+      if (!selectedGames.length || diskLimit === null) {
+        alert('Selecciona el disco duro y al menos un juego.');
+        return;
+      }
+    
+      const clientName = prompt('Nombre del cliente:');
+      if (!clientName) return;
+    
+      const selectionId = generateSelectionId('PS3');
+    
+      const payload = {
+        selectionId,
+        clientName,
+        console: 'PlayStation 3',
+        diskSize: `${diskLabel} GB`,
+        totalSize: totalSize.toFixed(2),
+        games: selectedGames.map(g => {
+          const game = gamesData.find(x => Number(x.id) === g.id);
+          return game?.name || '';
+        }).filter(Boolean)
       };
-    }
-
-    function buildAirtablePayload({ selectionId, cliente, consola, discoGB, espacioUsadoGB, juegos }) {
-      return {
-        records: [
-          {
-            fields: {
-              SelectionID: selectionId,
-              Cliente: cliente,
-              Consola: consola,
-              DiscoGB: discoGB,
-              EspacioUsadoGB: Number(espacioUsadoGB.toFixed(2)),
-              JuegosTexto: juegos.map(j => j.name).join('\n'),
-              JuegosJSON: JSON.stringify(juegos),
-              Estado: 'Pendiente'
-            }
-          }
-        ]
-      };
-    }
+    
+      const res = await fetch('/api/save-selection', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    
+      const result = await res.json();
+    
+      if (result.success) {
+        alert(`✅ Selección guardada\nID: ${selectionId}`);
+      } else {
+        console.error(result);
+        alert('❌ Error al guardar la selección');
+      }
+    });
   
     /* LIMPIEZA */
 
