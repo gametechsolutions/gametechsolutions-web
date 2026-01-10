@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
 </head>
-<body data-whatsapp="5215543613500">
+<body>
 
 <!-- HEADER -->
 <header>
@@ -244,12 +244,6 @@
             <button class="btn-small" id="removeLast">Quitar último</button>
             <button class="btn-small danger" id="clearAll">Vaciar selección</button>
           </div>
-          
-          <div class="selection-actions">
-            <button class="btn" id="sendWhatsapp">
-              📲 Enviar selección por WhatsApp
-            </button>
-          </div>
 
           <p class="selector-note">
             El espacio es aproximado y puede variar según el formato del juego.
@@ -272,25 +266,6 @@
   <p>GameTechSolutions © 2026</p>
 </footer>
 
-  <!-- MODAL NOMBRE CLIENTE -->
-  <div class="modal-overlay" id="clientModal">
-    <div class="modal">
-      <h3>Identificar selección</h3>
-      <p>Ingresa tu nombre para continuar</p>
-  
-      <input
-        type="text"
-        id="clientNameInput"
-        placeholder="Nombre del cliente"
-      />
-  
-      <div class="modal-actions">
-        <button class="btn-small" id="cancelModal">Cancelar</button>
-        <button class="btn" id="confirmModal">Continuar</button>
-      </div>
-    </div>
-  </div>
-
 <!-- JS -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -303,18 +278,7 @@
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
   const catalogEl = document.querySelector('.selector-catalog');
-  const whatsappBtn = document.getElementById('sendWhatsapp');
-  const clientModal = document.getElementById('clientModal');
-  const clientNameInput = document.getElementById('clientNameInput');
-  const confirmModalBtn = document.getElementById('confirmModal');
-  const cancelModalBtn = document.getElementById('cancelModal');
-
-
-  /* =============================
-     CONFIGURACIÓN GLOBAL
-  ============================== */
-  const WHATSAPP_NUMBER = document.body.dataset.whatsapp;
-
+  
     /* LIMPIEZA */
 
   function sanitizeText(text) {
@@ -446,83 +410,6 @@
   
     return `${consoleCode}-${year}-${String(counter).padStart(3, '0')}`;
   }
-
-  /* =============================
-     WHATSAPP
-  ============================== */
-  if (whatsappBtn) {
-      whatsappBtn.addEventListener('click', () => {
-        console.log('CLICK EN WHATSAPP');
-        if (!selectedGames.length || diskLimit === null) {
-          alert('Selecciona el disco duro y al menos un juego.');
-          return;
-        }
-    
-        clientNameInput.value = '';
-        clientModal.style.display = 'flex';
-        clientModal.classList.add('active');
-        clientNameInput.focus();
-      });
-    }
-    
-    /* =============================
-       CONFIRMAR MODAL → ENVIAR
-    ============================== */
-    confirmModalBtn.addEventListener('click', () => {
-      const clientName = clientNameInput.value.trim();
-    
-      if (!clientName) {
-        alert('Por favor ingresa un nombre.');
-        return;
-      }
-    
-      const selectionId = generateSelectionId('PS3');
-    
-      const gameNames = selectedGames
-        .map(g => {
-          const game = gamesData.find(x => Number(x.id) === g.id);
-          return game ? `- ${game.name}` : '';
-        })
-        .filter(Boolean)
-        .join('\n');
-
-      const messageLines = [
-        'GameTechSolutions - Selección de Juegos',
-        '',
-        `ID de selección: ${selectionId}`,
-        `Cliente: ${clientName}`,
-        '',
-        'Consola: PlayStation 3',
-        `Disco duro: ${diskLabel} GB`,
-        `Juegos seleccionados: ${selectedGames.length}`,
-        `Espacio estimado: ${totalSize.toFixed(2)} GB`,
-        '',
-        escapeWhatsApp('Lista de juegos:')
-      ];
-      
-      selectedGames.forEach(g => {
-        const game = gamesData.find(x => Number(x.id) === g.id);
-        if (game) {
-          const cleanName = sanitizeText(game.name);
-          messageLines.push(`- ${cleanName}`);
-        }
-      });
-
-      const message = messageLines.join('\n');
-
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    
-      clientModal.classList.remove('active');
-      clientModal.style.display = 'none';
-    });
-    
-    /* =============================
-       CANCELAR MODAL
-    ============================== */
-    cancelModalBtn.addEventListener('click', () => {
-      clientModal.classList.remove('active');
-    });
 
   /* =============================
      UTILIDADES
