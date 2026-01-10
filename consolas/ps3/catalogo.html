@@ -243,7 +243,7 @@
           <div class="selection-actions">
             <button class="btn-small" id="removeLast">Quitar último</button>
             <button class="btn-small danger" id="clearAll">Vaciar selección</button>
-            <button class="btn" id="saveSelection">Guardar selección</button>
+            <button class="btn-small" id="saveSelection">Guardar selección</button>
           </div>
 
           <p class="selector-note">
@@ -279,6 +279,49 @@
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
   const catalogEl = document.querySelector('.selector-catalog');
+  const AIRTABLE_BASE_ID = 'appXXXXXXXXXXXX'; // tu Base ID
+  const AIRTABLE_TABLE = 'PS3_Selections';
+  const AIRTABLE_TOKEN = 'patXXXXXXXXXXXX';  // token con write
+
+    /* PAYLOAD */
+
+    function buildAirtablePayload({ selectionId, cliente, consola, discoGB, espacioUsadoGB, juegos }) {
+      return {
+        records: [
+          {
+            fields: {
+              SelectionID: selectionId,
+              Cliente: cliente,
+              Consola: consola,
+              DiscoGB: discoGB,
+              EspacioUsadoGB: Number(espacioUsadoGB.toFixed(2)),
+              JuegosTexto: juegos.map(j => j.name).join('\n'),
+              JuegosJSON: JSON.stringify(juegos),
+              Estado: 'Pendiente'
+            }
+          }
+        ]
+      };
+    }
+
+    function buildAirtablePayload({ selectionId, cliente, consola, discoGB, espacioUsadoGB, juegos }) {
+      return {
+        records: [
+          {
+            fields: {
+              SelectionID: selectionId,
+              Cliente: cliente,
+              Consola: consola,
+              DiscoGB: discoGB,
+              EspacioUsadoGB: Number(espacioUsadoGB.toFixed(2)),
+              JuegosTexto: juegos.map(j => j.name).join('\n'),
+              JuegosJSON: JSON.stringify(juegos),
+              Estado: 'Pendiente'
+            }
+          }
+        ]
+      };
+    }
   
     /* LIMPIEZA */
 
