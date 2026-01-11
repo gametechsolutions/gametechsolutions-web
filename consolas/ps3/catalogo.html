@@ -11,7 +11,7 @@
 <!-- HEADER -->
 <header>
   <div>
-    <h1>Catálogo PS3</h1>
+    <h1>Catálogo <span id="consoleName"></span></h1>
     <p>Selección de juegos disponibles para PlayStation 3</p>
 
     <nav>
@@ -269,6 +269,8 @@
 
 <!-- JS -->
 <script>
+
+  
   document.addEventListener('DOMContentLoaded', () => {
   let selectedGames = [];
   let totalSize = 0;
@@ -283,6 +285,14 @@
   const AIRTABLE_TABLE = 'Selections';
   const AIRTABLE_TOKEN = 'patdDeAGJ97mmIMMN.11390e00bd32983e440aec50e660a099f9cb207536415ea82c7a7d491106f43f';  // token con write
 
+  const CONSOLE_CONFIG = {
+      code: 'PS2'.
+      name; 'PlayStation 3',
+      gamesJson: '/assets/data/ps3-games.json'
+  };
+
+  document.getElementById('consoleName').textContent = CONSOLE_CONFIG.name;
+
     /* PAYLOAD */
 
     document.getElementById('saveSelection').addEventListener('click', async () => {
@@ -294,12 +304,12 @@
       const clientName = prompt('Nombre del cliente:');
       if (!clientName) return;
     
-      const selectionId = generateSelectionId('PS3');
+      const selectionId = generateSelectionId(CONSOLE_CONFIG.code);
 
       const payload = {
         selectionId,
         clientName,
-        console: 'PlayStation 3',
+        console: CONSOLE_CONFIG.name,
       
         diskSize: Number(diskLabel),
         diskLimit: diskLimit,
@@ -360,7 +370,7 @@
   /* =============================
      CARGAR JUEGOS DESDE JSON
   ============================== */
-  fetch('/assets/data/ps3-games.json')
+  fetch(CONSOLE_CONFIG.gamesJson)
     .then(res => res.json())
     .then(data => {
       gamesData = data;
