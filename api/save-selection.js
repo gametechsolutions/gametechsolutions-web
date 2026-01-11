@@ -1,21 +1,19 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método no permitido' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
     const {
       selectionId,
-      Cliente,
-      Consola,
+      clientName,
+      console,
       diskSize,
+      diskLimit,
       totalSize,
-      games
+      selectedGames,
+      jsonGames
     } = req.body;
-
-    if (!selectionId || !clientName || !games?.length) {
-      return res.status(400).json({ error: 'Datos incompletos' });
-    }
 
     const airtableRes = await fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Selections`,
@@ -28,11 +26,15 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           fields: {
             SelectionID: selectionId,
-            ClientName: clientName,
-            Console: console,
-            DiskSize: diskSize,
-            TotalSizeGB: totalSize,
-            Games: games.join('\n')
+            clientName: clientName,
+            console: console,
+            diskSize: diskSize,
+            diskLimit: diskLimit,
+            totalSize: totalSize,
+            CantidadJuegos: selectedGames.length,
+            selectedGames: selectedGames.join('\n'),
+            jsonGames: JSON.stringify(jsonGames, null, 2),
+            status: 'Pendiente'
           }
         })
       }
@@ -44,9 +46,9 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: data });
     }
 
-    res.status(200).json({ success: true, recordId: data.id });
+    return res.status(200).json({ success: true });
 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 }
