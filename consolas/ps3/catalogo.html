@@ -295,17 +295,31 @@
       if (!clientName) return;
     
       const selectionId = generateSelectionId('PS3');
-    
+
       const payload = {
         selectionId,
         clientName,
         console: 'PlayStation 3',
-        diskSize: `${diskLabel} GB`,
-        totalSize: totalSize.toFixed(2),
-        games: selectedGames.map(g => {
+      
+        diskSize: Number(diskLabel),
+        diskLimit: diskLimit,
+        totalSize: Number(totalSize.toFixed(2)),
+      
+        // 👇 lista humana (para Airtable)
+        selectedGames: selectedGames.map(g => {
           const game = gamesData.find(x => Number(x.id) === g.id);
-          return game?.name || '';
-        }).filter(Boolean)
+          return game?.name;
+        }).filter(Boolean),
+      
+        // 👇 lista estructurada (para Python)
+        jsonGames: selectedGames.map(g => {
+          const game = gamesData.find(x => Number(x.id) === g.id);
+          return {
+            id: game.id,
+            name: game.name,
+            size: game.size
+          };
+        })
       };
     
       const res = await fetch('/api/save-selection', {
