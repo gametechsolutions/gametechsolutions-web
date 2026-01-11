@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   try {
     const {
       selectionId,
-      clientName,
-      console,
+      Cliente,
+      Consola,
       diskSize,
       totalSize,
       games
