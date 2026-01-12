@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/styles/theme-base.css">
 
   <!-- Tema de consola -->
-  <link rel="stylesheet" href="/styles/theme-sony.css"
+  <link rel="stylesheet" href="/styles/theme-sony.css">
 </head>
 <body>
 
@@ -233,12 +233,14 @@
   <p>GameTechSolutions © 2026</p>
 </footer>
 
-<script>
+  <script>
   window.CONSOLE_CONFIG = {
     code: 'PS3',
     name: 'PlayStation 3',
     short: 'PS3',
+    fullName: 'PlayStation 3',
     brand: 'sony',
+    gamesJson: '/assets/data/ps3-games.json',
     catalogPath: '/consolas/ps3/catalogo.html'
   };
 </script>
@@ -263,19 +265,12 @@
   const AIRTABLE_TABLE = 'Selections';
   const AIRTABLE_TOKEN = 'patdDeAGJ97mmIMMN.11390e00bd32983e440aec50e660a099f9cb207536415ea82c7a7d491106f43f';  // token con write
 
-  const CONSOLE_CONFIG = {
-    code: 'PS3',
-    name: 'PlayStation 3',
-    fullName: 'PlayStation 3',
-    gamesJson: '/assets/data/ps3-games.json'
-  };
-
   document.getElementById('consoleName').textContent = CONSOLE_CONFIG.name;    
   document.querySelectorAll('.consoleFull').forEach(el => {
-    el.textContent = CONSOLE_CONFIG.fullName;
+    el.textContent = fullName;
   });
 
-    document.title = `Catálogo de juegos ${CONSOLE_CONFIG.fullName} | GameTechSolutions`;
+    document.title = `Catálogo de juegos ${fullName} | GameTechSolutions`;
 
     /* PAYLOAD */
 
@@ -354,7 +349,7 @@
   /* =============================
      CARGAR JUEGOS DESDE JSON
   ============================== */
-  fetch(CONSOLE_CONFIG.gamesJson)
+  fetch(gamesJson)
     .then(res => res.json())
     .then(data => {
       gamesData = data;
