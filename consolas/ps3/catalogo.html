@@ -405,6 +405,16 @@
     
     if (saveBtn) {
       saveBtn.addEventListener('click', async () => {
+
+        if (totalSize > diskLimit) {
+          alert(
+            `❌ La selección excede el tamaño del disco.\n\n` +
+            `Espacio usado: ${totalSize.toFixed(2)} GB\n` +
+            `Límite del disco: ${diskLimit} GB\n\n` +
+            `Elimina juegos para continuar.`
+          );
+          return;
+        }
     
         if (!selectedGames.length || diskLimit === null) {
           alert('Selecciona el disco duro y al menos un juego.');
@@ -488,6 +498,11 @@
     }
   
     function updateSummary() {
+      const saveBtn = document.getElementById('saveSelection');
+      if (saveBtn) {
+        saveBtn.disabled = totalSize > diskLimit;
+      }
+
       gameCountEl.textContent = selectedGames.length;
       totalSizeEl.textContent = totalSize.toFixed(2);
       hideLimitWarning();
