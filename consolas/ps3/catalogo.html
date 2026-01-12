@@ -382,6 +382,22 @@
     });
 
     /* =============================
+       GENERAR ID DE SELECCIÓN
+    ============================= */
+    
+    function generateSelectionId(consoleCode) {
+      const year = new Date().getFullYear();
+      const storageKey = `selectionCounter_${consoleCode}_${year}`;
+    
+      let counter = Number(localStorage.getItem(storageKey)) || 0;
+      counter += 1;
+    
+      localStorage.setItem(storageKey, counter);
+    
+      return `${consoleCode}-${year}-${String(counter).padStart(3, '0')}`;
+    }
+
+    /* =============================
        GUARDAR SELECCIÓN (Airtable)
     ============================= */
     
