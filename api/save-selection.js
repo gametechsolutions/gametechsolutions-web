@@ -16,6 +16,16 @@ export default async function handler(req, res) {
       jsonGames
     } = req.body;
 
+    if (Number(totalSize) > Number(diskLimit)) {
+      return res.status(400).json({
+        error: 'Disk limit exceeded',
+        details: {
+          totalSize,
+          diskLimit
+        }
+      });
+    }
+
     const airtableRes = await fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Selections`,
       {
