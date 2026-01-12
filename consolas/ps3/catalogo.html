@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Catálogo de juegos <span id="consoleName"></span> | GameTechSolutions</title>
+  <title>Catálogo de juegos | GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
 </head>
@@ -13,7 +13,7 @@
   <div>
     <h1>Catálogo <span id="consoleName"></span></h1>
     <p>
-      Selección de juegos disponibles para <strong id="consoleName"></strong>
+      Selección de juegos disponibles para <strong class="consoleFull"></strong>
     </p>
 
     <nav>
@@ -60,7 +60,7 @@
     <section>
       <h2>¿Cómo funciona el catálogo?</h2>
       <p>
-        Desde aquí puedes consultar los juegos disponibles para PlayStation 3.
+        Desde aquí puedes consultar los juegos disponibles para <strong class="consoleFull"></strong>.
         La cantidad final de juegos instalados depende del tamaño del disco duro
         y del peso de cada título.
       </p>
@@ -294,14 +294,12 @@
     gamesJson: '/assets/data/ps3-games.json'
   };
 
-  document.getElementById('consoleName').textContent = CONSOLE_CONFIG.name;  
-  document.getElementById('consoleFull').textContent =
-    CONSOLE_CONFIG.fullName;
-  
+  document.getElementById('consoleName').textContent = CONSOLE_CONFIG.name;    
   document.querySelectorAll('.consoleFull').forEach(el => {
     el.textContent = CONSOLE_CONFIG.fullName;
   });
 
+    document.title = `Catálogo de juegos ${CONSOLE_CONFIG.fullName} | GameTechSolutions`;
 
     /* PAYLOAD */
 
