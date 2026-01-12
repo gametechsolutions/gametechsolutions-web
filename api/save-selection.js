@@ -11,6 +11,7 @@ export default async function handler(req, res) {
       diskSize,
       diskLimit,
       totalSize,
+      CantidadJuegos,
       selectedGames,
       jsonGames
     } = req.body;
@@ -31,9 +32,9 @@ export default async function handler(req, res) {
             diskSize: diskSize,
             diskLimit: diskLimit,
             totalSize: totalSize,
-            CantidadJuegos: selectedGames,
-            selectedGames,
-            jsonGames,
+            CantidadJuegos: CantidadJuegos,
+            selectedGames: selectedGames,
+            jsonGames: jsonGames,
             status: 'Pendiente'
           }
         })
