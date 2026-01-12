@@ -420,6 +420,11 @@
           alert('Selecciona el disco duro y al menos un juego.');
           return;
         }
+
+        if (totalSize > diskLimit) {
+          alert('Excede el tamaño del disco');
+          return;
+        }
     
         const clientName = prompt('Nombre del cliente:');
         if (!clientName) return;
@@ -463,6 +468,11 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
+
+          if (!res.ok) {
+            alert('❌ La selección excede el tamaño del disco');
+            return;
+          }
     
           const result = await res.json();
     
