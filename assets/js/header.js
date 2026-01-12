@@ -1,18 +1,27 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const headerContainer = document.getElementById('header-container');
-  if (!headerContainer) return;
+  const container = document.getElementById('header-container');
+  if (!container) return;
 
   const res = await fetch('/partials/header.html');
-  const html = await res.text();
+  container.innerHTML = await res.text();
 
-  headerContainer.innerHTML = html;
+  const title = document.getElementById('header-title');
+  const subtitle = document.getElementById('header-subtitle');
 
-  // Aplica nombre de consola desde config global
   if (window.CONSOLE_CONFIG) {
-    document.querySelectorAll('.console-name').forEach(el => {
-      el.textContent = CONSOLE_CONFIG.name;
-    });
+    // 🟢 MODO CONSOLA
+    title.textContent = `Catálogo ${CONSOLE_CONFIG.short}`;
+    subtitle.innerHTML = `
+      Servicios profesionales para <strong>${CONSOLE_CONFIG.name}</strong>
+    `;
 
-    document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
+    document.body.dataset.brand = CONSOLE_CONFIG.brand;
+  } else {
+    // 🔵 MODO GLOBAL
+    title.textContent = 'GameTechSolutions';
+    subtitle.textContent =
+      'Modificación y mantenimiento profesional de consolas';
+
+    document.body.removeAttribute('data-brand');
   }
 });
