@@ -380,6 +380,79 @@
       resetSelection();
       updateSummary();
     });
+
+    /* =============================
+       GUARDAR SELECCIÓN (Airtable)
+    ============================= */
+    
+    const saveBtn = document.getElementById('saveSelection');
+    
+    if (saveBtn) {
+      saveBtn.addEventListener('click', async () => {
+    
+        if (!selectedGames.length || diskLimit === null) {
+          alert('Selecciona el disco duro y al menos un juego.');
+          return;
+        }
+    
+        const clientName = prompt('Nombre del cliente:');
+        if (!clientName) return;
+    
+        const selectionId = generateSelectionId(CONSOLE_CONFIG.code);
+    
+        const payload = {
+          SelectionID: selectionId,
+          clientName: clientName,
+          console: CONSOLE_CONFIG.fullName,
+          diskSize: Number(diskLabel),
+          diskLimit: diskLimit,
+          totalSize: Number(totalSize.toFixed(2)),
+          CantidadJuegos: selectedGames.length,
+    
+          selectedGames: selectedGames
+            .map(g => {
+              const game = gamesData.find(x => Number(x.id) === g.id);
+              return game ? game.name : null;
+            })
+            .filter(Boolean)
+            .join('\n'),
+    
+          jsonGames: JSON.stringify(
+            selectedGames.map(g => {
+              const game = gamesData.find(x => Number(x.id) === g.id);
+              return {
+                id: game.id,
+                name: game.name,
+                size: game.size
+              };
+            })
+          ),
+    
+          status: 'Pendiente'
+        };
+    
+        try {
+          const res = await fetch('/api/save-selection', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+    
+          const result = await res.json();
+    
+          if (result.success) {
+            alert(`✅ Selección guardada\nID: ${selectionId}`);
+          } else {
+            console.error(result);
+            alert('❌ Error al guardar la selección');
+          }
+    
+        } catch (err) {
+          console.error(err);
+          alert('❌ Error de conexión con el servidor');
+        }
+      });
+    }
   
     /* =============================
        UTILIDADES
