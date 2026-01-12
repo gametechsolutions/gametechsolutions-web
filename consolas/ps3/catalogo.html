@@ -498,14 +498,18 @@
     }
   
     function updateSummary() {
-      const saveBtn = document.getElementById('saveSelection');
-      if (saveBtn) {
-        saveBtn.disabled = totalSize > diskLimit;
-      }
-
       gameCountEl.textContent = selectedGames.length;
       totalSizeEl.textContent = totalSize.toFixed(2);
       hideLimitWarning();
+    
+      // 🔒 NIVEL PRO: control del botón Guardar
+      if (saveBtn) {
+        if (diskLimit !== null && totalSize > diskLimit) {
+          saveBtn.disabled = true;
+        } else {
+          saveBtn.disabled = false;
+        }
+      }
     }
   
     function showLimitWarning() {
