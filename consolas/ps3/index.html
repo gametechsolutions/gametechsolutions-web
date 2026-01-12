@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>PlayStation 3 | GameTechSolutions</title>
+  <title id="pageTitle">GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
 </head>
@@ -11,8 +11,8 @@
 <!-- HEADER FIJO -->
 <header>
   <div>
-    <h1>PlayStation 3</h1>
-    <p>Servicios profesionales para PS3 con HEN o CFW</p>
+    <h1 class="console-name"></h1>
+    <p>Servicios profesionales para <strong class="console-name"></strong></p>
 
     <!-- NAVEGACIÓN -->
     <nav>
@@ -62,9 +62,8 @@
     <section>
       <h2>Servicios disponibles</h2>
       <p>
-        La PlayStation 3 permite diferentes métodos de modificación según
-        el modelo. Se utilizan soluciones estables y probadas,
-        priorizando el funcionamiento correcto de la consola.
+        La <strong class="console-name"></strong> permite diferentes métodos de modificación según
+        el modelo. Se utilizan soluciones estables y probadas.
       </p>
     </section>
 
@@ -159,7 +158,7 @@
         La cantidad final depende del tamaño del disco duro
         y del peso de cada título.
       </p>
-      <a class="btn" href="catalogo.html">Ver catálogo de juegos para PS3</a>
+      <a class="btn" id="catalogLink">Ver catálogo de juegos</a>
     </section>
 
   </div>
@@ -168,6 +167,33 @@
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+  
+    const CONSOLE_CONFIG = {
+      code: 'PS3',
+      name: 'PlayStation 3',
+      short: 'PS3',
+      catalogPath: '/consolas/ps3/catalogo.html'
+    };
+  
+    /* ===== TÍTULO DE PÁGINA ===== */
+    document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
+  
+    /* ===== TEXTOS DINÁMICOS ===== */
+    document.querySelectorAll('.console-name').forEach(el => {
+      el.textContent = CONSOLE_CONFIG.name;
+    });
+  
+    /* ===== LINK A CATÁLOGO ===== */
+    const catalogBtn = document.getElementById('catalogLink');
+    if (catalogBtn) {
+      catalogBtn.href = CONSOLE_CONFIG.catalogPath;
+    }
+  
+  });
+  </script>
 
 </body>
 </html>
