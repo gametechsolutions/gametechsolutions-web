@@ -1,3 +1,23 @@
+:root {
+  --bg-main: #0f0f0f;
+  --bg-panel: #141414;
+  --bg-panel-hover: #1a1a1a;
+
+  --text-main: #eaeaea;
+  --text-muted: #aaa;
+  --text-soft: #ccc;
+
+  --border-soft: #222;
+  --border-panel: #1f1f1f;
+
+  /* 🎯 Accent genérico (se sobreescribe por consola) */
+  --accent-color: #1abc9c;
+  --accent-hover: #17a589;
+
+  --danger-color: #c0392b;
+  --danger-hover: #a93226;
+}
+
 /* =========================
    RESET Y BASE
 ========================= */
@@ -73,7 +93,7 @@ nav {
 }
 
 .nav-menu a:hover {
-  color: #1abc9c;
+  color: var(--accent-color);
 }
 
 /* Submenú desktop */
@@ -155,7 +175,7 @@ section {
 section h2 {
   font-size: 22px;
   margin-bottom: 15px;
-  border-left: 4px solid #1abc9c;
+  border-left: 4px solid var(--accent-color);
   padding-left: 12px;
 }
 
@@ -196,7 +216,7 @@ section p {
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  border-color: #1abc9c;
+  border-color: var(--accent-color);
 }
 
 /* =========================
@@ -239,7 +259,7 @@ section p {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 18px;
-  background-color: #1abc9c;
+  background-color: var(--accent-color);
   color: #000;
   border-radius: 4px;
   font-size: 14px;
@@ -248,7 +268,7 @@ section p {
 }
 
 .btn:hover {
-  background-color: #17a589;
+  background-color: var(--accent-hover);
 }
 
 /* =========================
@@ -490,14 +510,14 @@ section p {
 .btn-small {
   padding: 6px 10px;
   font-size: 12px;
-  background-color: #1abc9c;
+  background-color: var(--accent-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .btn-small:hover {
-  background-color: #17a589;
+  background-color: var(--accent-hover);
 }
 
 .selected-list {
@@ -537,11 +557,11 @@ section p {
 }
 
 .btn-small.danger {
-  background-color: #c0392b;
+  background-color: var(--danger-color);
 }
 
 .btn-small.danger:hover {
-  background-color: #a93226;
+  background-color: var(--danger-hover);
 }
 
 /* ===== SELECTOR DE DISCO DURO ===== */
@@ -638,18 +658,6 @@ section p {
 .selector-catalog {
   scrollbar-width: thin;
   scrollbar-color: #2c3e50 transparent;
-}
-
-/* ===== FIX: eliminar bullets del submenú ===== */
-
-.submenu {
-  list-style: none;
-  padding: 6px 0;
-  margin: 0;
-}
-
-.submenu li {
-  list-style: none;
 }
 
 /* ===== FIX: eliminar bullets del submenú ===== */
