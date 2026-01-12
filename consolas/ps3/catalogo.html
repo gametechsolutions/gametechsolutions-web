@@ -13,49 +13,8 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div>
-    <h1>Catálogo <span id="consoleName"></span></h1>
-    <p>
-      Selección de juegos disponibles para <strong class="consoleFull"></strong>
-    </p>
-
-    <nav>
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
-      <label for="menu-toggle" class="menu-icon">☰</label>
-
-      <ul class="nav-menu">
-        <li><a href="/">Inicio</a></li>
-
-        <li tabindex="0">
-          <span class="menu-parent">Microsoft ▾</span>
-          <ul class="submenu">
-            <li><a href="/consolas/xbox360/">Xbox 360</a></li>
-          </ul>
-        </li>
-
-        <li tabindex="0">
-          <span class="menu-parent">Nintendo ▾</span>
-          <ul class="submenu">
-            <li><a href="/consolas/wii/">Nintendo Wii</a></li>
-            <li><a href="/consolas/gamecube/">Nintendo GameCube</a></li>
-          </ul>
-        </li>
-
-        <li tabindex="0">
-          <span class="menu-parent">Sony ▾</span>
-          <ul class="submenu">
-            <li><a href="/consolas/ps2/">PlayStation 2</a></li>
-            <li><a href="/consolas/ps3/">PlayStation 3</a></li>
-          </ul>
-        </li>
-
-        <li><a href="/contacto/">Contacto</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<!-- HEADER (inyectado dinámicamente) -->
+<div id="header-container"></div>
 
 <!-- CONTENIDO -->
 <main>
@@ -273,6 +232,18 @@
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
+
+<script>
+  window.CONSOLE_CONFIG = {
+    code: 'PS3',
+    name: 'PlayStation 3',
+    short: 'PS3',
+    brand: 'sony',
+    catalogPath: '/consolas/ps3/catalogo.html'
+  };
+</script>
+
+<script src="/js/header.js"></script>
 
 <!-- JS -->
 <script>
