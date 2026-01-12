@@ -8,50 +8,8 @@
 </head>
 <body>
 
-<header>
-  <div>
-    <h1>Contacto</h1>
-    <p>Solicita información o agenda un servicio</p>
-
-    <nav>
-
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
-      <label for="menu-toggle" class="menu-icon">☰</label>
-
-      <ul class="nav-menu">
-
-        <li><a href="/">Inicio</a></li>
-
-        <li tabindex="0">
-          <span class="menu-parent">Microsoft ▾</span>
-          <ul class="submenu">
-            <li><a href="/consolas/xbox/">Xbox Clásica</a></li>
-            <li><a href="/consolas/xbox360/">Xbox 360</a></li>
-          </ul>
-        </li>
-
-        <li tabindex="0">
-          <span class="menu-parent">Nintendo ▾</span>
-          <ul class="submenu">
-            <li><a href="/consolas/gamecube/">Nintendo GameCube</a></li>
-            <li><a href="/consolas/wii/">Nintendo Wii</a></li>
-          </ul>
-        </li>
-
-        <li tabindex="0">
-          <span class="menu-parent">Sony ▾</span>
-          <ul class="submenu">
-            <li><a href="/consolas/ps2/">PlayStation 2</a></li>
-            <li><a href="/consolas/ps3/">PlayStation 3</a></li>
-          </ul>
-        </li>
-
-        <li><a href="/contacto/">Contacto</a></li>
-
-      </ul>
-    </nav>
-  </div>
-</header>
+<!-- HEADER (inyectado dinámicamente) -->
+<div id="header-container"></div>
 
 <main>
   <div class="container">
@@ -154,6 +112,8 @@
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
+
+<script src="/js/header.js"></script>
 
 </body>
 </html>
