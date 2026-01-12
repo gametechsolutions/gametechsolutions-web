@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
   try {
     const {
-      selectionId,
+      selectionID,
       clientName,
       console,
       diskSize,
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           fields: {
-            selectionID: selectionId,
+            selectionID: selectionID,
             clientName: clientName,
             console: console,
             diskSize: diskSize,
