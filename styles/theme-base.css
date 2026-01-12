@@ -663,3 +663,11 @@ section p {
 .submenu li {
   list-style: none;
 }
+
+/* =========================
+   TEMAS POR CONSOLA
+========================= */
+
+.nav-menu a:hover {
+  color: var(--accent-color);
+}
