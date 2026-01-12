@@ -1253,3 +1253,28 @@ section p {
   scrollbar-width: thin;
   scrollbar-color: #2c3e50 transparent;
 }
+
+/* ===== FIX: eliminar bullets del submenú ===== */
+
+.submenu {
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+}
+
+.submenu li {
+  list-style: none;
+}
+
+/* ===== FIX: eliminar bullets del submenú ===== */
+
+.submenu {
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+}
+
+.submenu li {
+  list-style: none;
+}
+
