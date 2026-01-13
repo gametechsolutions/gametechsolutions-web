@@ -407,26 +407,29 @@
     if (saveBtn) {
       saveBtn.addEventListener('click', async () => {
 
+        // 1️⃣ Debe haber disco seleccionado
+        if (diskLimit === null || Number.isNaN(diskLimit)) {
+          alert('Selecciona primero el tamaño de la USB.');
+          return;
+        }
+        
+        // 2️⃣ Debe haber al menos un juego
+        if (!selectedGames.length) {
+          alert('Selecciona al menos un juego.');
+          return;
+        }
+        
+        // 3️⃣ Validación REAL de espacio
         if (totalSize > diskLimit) {
           alert(
-            `❌ La selección excede el tamaño del disco.\n\n` +
+            `❌ La selección excede el tamaño de la USB.\n\n` +
             `Espacio usado: ${totalSize.toFixed(2)} GB\n` +
-            `Límite del disco: ${diskLimit} GB\n\n` +
+            `Límite: ${diskLimit} GB\n\n` +
             `Elimina juegos para continuar.`
           );
           return;
         }
-    
-        if (!selectedGames.length || diskLimit === null) {
-          alert('Selecciona el disco duro y al menos un juego.');
-          return;
-        }
 
-        if (totalSize > diskLimit) {
-          alert('Excede el tamaño del disco');
-          return;
-        }
-    
         const clientName = prompt('Nombre del cliente:');
         if (!clientName) return;
     
@@ -471,10 +474,21 @@
           });
 
           if (!res.ok) {
-            alert('❌ La selección excede el tamaño del disco');
+            const errorData = await res.json();
+          
+            if (errorData?.error === 'Disk limit exceeded') {
+              alert(
+                `❌ La selección excede el tamaño permitido.\n\n` +
+                `Usado: ${totalSize.toFixed(2)} GB\n` +
+                `Límite: ${diskLimit} GB`
+              );
+            } else {
+              alert('❌ Error al guardar la selección');
+              console.error(errorData);
+            }
             return;
           }
-    
+
           const result = await res.json();
     
           if (result.success) {
@@ -513,12 +527,15 @@
       totalSizeEl.textContent = totalSize.toFixed(2);
       hideLimitWarning();
     
-      // 🔒 NIVEL PRO: control del botón Guardar
       if (saveBtn) {
         if (diskLimit !== null && totalSize > diskLimit) {
           saveBtn.disabled = true;
+          saveBtn.textContent = 'Excede el límite';
+          saveBtn.classList.add('danger');
         } else {
           saveBtn.disabled = false;
+          saveBtn.textContent = 'Guardar selección';
+          saveBtn.classList.remove('danger');
         }
       }
     }
@@ -541,7 +558,5 @@
   
   });
   </script>
-
-
 </body>
 </html>
