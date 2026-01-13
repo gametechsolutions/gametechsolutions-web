@@ -2,64 +2,164 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Nintendo Wii | GameTechSolutions</title>
+  <title id="pageTitle">GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles.css">
-</head>
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
+  <!-- Base global -->
+  <link rel="stylesheet" href="/styles/theme-base.css">
+
+  <!-- Tema de consola -->
+  <link rel="stylesheet" href="/styles/theme-nintendo.css"
+</head>
 <body>
 
-<header>
-  <h1>GameTechSolutions</h1>
-  <nav>
-    <a href="/">Inicio</a>
-    <a href="/faq">FAQ</a>
-    <a href="/contacto">Contacto</a>
-  </nav>
-</header>
+<!-- HEADER (inyectado dinámicamente) -->
+<div id="header-container"></div>
 
+<!-- CONTENIDO CENTRAL -->
 <main>
+  <div class="container">
 
-  <section class="hero">
-    <h2>Nintendo Wii</h2>
-    <p>Modificación, mantenimiento y carga de juegos para Wii</p>
-  </section>
+    <section>
+      <h2>Servicios disponibles</h2>
+      <p>
+        La <strong class="console-name"></strong> permite diferentes métodos de modificación según
+        el modelo. Se utilizan soluciones estables y probadas.
+      </p>
+    </section>
 
-  <section class="services">
-    <h3>Servicios disponibles</h3>
-    <ul>
-      <li>Instalación de HEN / CFW</li>
-      <li>Carga de juegos PS3 y PS1</li>
-      <li>Mantenimiento y cambio de pasta térmica</li>
-      <li>Solución de errores comunes</li>
-    </ul>
-  </section>
+    <section>
+      <h2>¿Qué ofrecemos para <strong class="console-name"></strong>?</h2>
 
-  <section class="process">
-    <h3>¿Cómo es el proceso?</h3>
-    <ol>
-      <li>Revisión de la consola</li>
-      <li>Confirmación de compatibilidad</li>
-      <li>Instalación o servicio solicitado</li>
-      <li>Pruebas y entrega</li>
-    </ol>
-  </section>
+      <div class="cards-grid">
 
-  <section class="faq-console">
-    <h3>Preguntas frecuentes</h3>
-    <p>Próximamente…</p>
-  </section>
+        <div class="card">
+          <h3>🔓 Instalación de Homebrew</h3>
+          <p>
+            Se instala el método adecuado según el modelo de tu Nintendo Wii,
+            permitiendo ejecutar juegos y aplicaciones.
+          </p>
+        </div>
 
-  <section class="cta">
-    <h3>¿Quieres este servicio?</h3>
-    <a class="button" href="/contacto">Contáctame</a>
-  </section>
+        <div class="card">
+          <h3>🎮 Instalación de juegos</h3>
+          <p>
+            Carga de juegos de Nintendo Wii y Nintendo GameCube 
+            según compatibilidad, respetando el espacio disponible.
+          </p>
+        </div>
 
+        <div class="card">
+          <h3>🧼 Limpieza y mantenimiento</h3>
+          <p>
+            Limpieza interna, cambio de pasta térmica y revisión general
+            para reducir temperatura y ruido.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>💾 Ampliación de almacenamiento</h3>
+          <p>
+            Reemplazo o ampliación del disco duro con configuración
+            correcta del sistema.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🛡️ Garantía en juegos</h3>
+          <p>
+            Garantía de 30 días en juegos instalados por fallas
+            atribuibles a la instalación.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Proceso de trabajo</h2>
+
+      <div class="cards-grid">
+
+        <div class="card">
+          <h3>1️⃣ Revisión</h3>
+          <p>Revisión física y funcional básica de la consola.</p>
+        </div>
+
+        <div class="card">
+          <h3>2️⃣ Servicio</h3>
+          <p>Instalación, limpieza o configuración solicitada.</p>
+        </div>
+
+        <div class="card">
+          <h3>3️⃣ Pruebas</h3>
+          <p>Pruebas internas de funcionamiento y estabilidad.</p>
+        </div>
+
+        <div class="card">
+          <h3>4️⃣ Entrega</h3>
+          <p>Envío de evidencia en video y entrega de la consola.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Selección de juegos</h2>
+      <p>
+        Los juegos se seleccionan desde un catálogo disponible.
+        La cantidad final depende del tamaño de la USB
+        y del peso de cada título.
+      </p>
+      <a class="btn" id="catalogLink">Ver catálogo de juegos</a>
+    </section>
+
+  </div>
 </main>
 
 <footer>
-  <p>© GameTechSolutions</p>
+  <p>GameTechSolutions © 2026</p>
 </footer>
+
+  <script>
+    window.CONSOLE_CONFIG = {
+      code: 'WII',
+      name: 'Nintendo Wii',
+      short: 'WII',
+      brand: 'nintendo',
+      catalogPath: '/consolas/wii/catalogo.html'
+    };
+  </script>
+  
+  <script src="/assets/js/header.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+  
+    const CONSOLE_CONFIG = {
+      code: 'WII',
+      name: 'Nintendo Wii',
+      short: 'WII',
+      catalogPath: '/consolas/wii/catalogo.html'
+    };
+  
+    /* ===== TÍTULO DE PÁGINA ===== */
+    document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
+  
+    /* ===== TEXTOS DINÁMICOS ===== */
+    document.querySelectorAll('.console-name').forEach(el => {
+      el.textContent = CONSOLE_CONFIG.name;
+    });
+  
+    /* ===== LINK A CATÁLOGO ===== */
+    const catalogBtn = document.getElementById('catalogLink');
+    if (catalogBtn) {
+      catalogBtn.href = CONSOLE_CONFIG.catalogPath;
+    }
+  
+  });
+  </script>
 
 </body>
 </html>
