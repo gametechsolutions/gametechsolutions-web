@@ -461,6 +461,7 @@
     
           if (result.success) {
             alert(`✅ Selección guardada\nID: ${selectionId}`);
+            resetAfterSuccess();
           } else {
             console.error(result);
             alert('❌ Error al guardar la selección');
@@ -487,6 +488,30 @@
         btn.classList.remove('added');
       });
   
+      hideLimitWarning();
+    }
+
+    function resetAfterSuccess() {
+      // 1. Limpiar selección interna
+      selectedGames = [];
+      totalSize = 0;
+      diskLimit = null;
+      diskLabel = '';
+    
+      // 2. Resetear radios de tamaño
+      document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
+        radio.checked = false;
+      });
+    
+      // 3. Resetear botones de juegos
+      document.querySelectorAll('.add-game').forEach(btn => {
+        btn.disabled = false;
+        btn.textContent = 'Agregar';
+        btn.classList.remove('added');
+      });
+    
+      // 4. Resetear contadores visuales
+      updateSummary();
       hideLimitWarning();
     }
   
