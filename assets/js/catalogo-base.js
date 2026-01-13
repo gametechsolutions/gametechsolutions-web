@@ -83,10 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
           if (selectedGames.some(g => g.id === id)) return;
   
           if (totalSize + size > diskLimit) {
+            showLimitWarning(
+              '⚠️ No hay espacio suficiente para agregar más juegos.'
+            );
             updateSummary();
             return;
           }
-  
+
           selectedGames.push({ id, size });
           totalSize += size;
   
@@ -331,6 +334,16 @@ document.addEventListener('DOMContentLoaded', () => {
           '⚠️ Ya no hay espacio suficiente para agregar más juegos.'
         );
       }
+
+      document.querySelectorAll('.add-game:not(.added)').forEach(btn => {
+        const size = Number(btn.dataset.size);
+      
+        if (diskLimit !== null && totalSize + size > diskLimit) {
+          btn.disabled = true;
+        } else {
+          btn.disabled = false;
+        }
+      });
     
       // 🔒 Guardar selección (nivel PRO)
       if (saveBtn) {
