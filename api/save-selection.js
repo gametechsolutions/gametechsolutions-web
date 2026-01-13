@@ -16,13 +16,23 @@ export default async function handler(req, res) {
       jsonGames
     } = req.body;
 
-    if (Number(totalSize) > Number(diskLimit)) {
+    // 🔒 Validaciones críticas
+    if (
+      typeof totalSize !== 'number' ||
+      typeof diskLimit !== 'number' ||
+      Number.isNaN(totalSize) ||
+      Number.isNaN(diskLimit)
+    ) {
+      return res.status(400).json({
+        error: 'Invalid disk size values',
+        details: { totalSize, diskLimit }
+      });
+    }
+
+    if (totalSize > diskLimit) {
       return res.status(400).json({
         error: 'Disk limit exceeded',
-        details: {
-          totalSize,
-          diskLimit
-        }
+        details: { totalSize, diskLimit }
       });
     }
 
@@ -36,15 +46,15 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           fields: {
-            selectionID: selectionID,
-            clientName: clientName,
-            console: console,
-            diskSize: diskSize,
-            diskLimit: diskLimit,
-            totalSize: totalSize,
-            CantidadJuegos: CantidadJuegos,
-            selectedGames: selectedGames,
-            jsonGames: jsonGames,
+            selectionID,
+            clientName,
+            console: console.trim(),
+            diskSize,
+            diskLimit,
+            totalSize,
+            CantidadJuegos,
+            selectedGames,
+            jsonGames,
             status: 'Pendiente'
           }
         })
