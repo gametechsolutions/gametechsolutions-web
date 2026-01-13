@@ -366,26 +366,29 @@
     if (saveBtn) {
       saveBtn.addEventListener('click', async () => {
 
+        // 1️⃣ Debe haber disco seleccionado
+        if (diskLimit === null || Number.isNaN(diskLimit)) {
+          alert('Selecciona primero el tamaño de la USB.');
+          return;
+        }
+        
+        // 2️⃣ Debe haber al menos un juego
+        if (!selectedGames.length) {
+          alert('Selecciona al menos un juego.');
+          return;
+        }
+        
+        // 3️⃣ Validación REAL de espacio
         if (totalSize > diskLimit) {
           alert(
-            `❌ La selección excede el tamaño del disco.\n\n` +
+            `❌ La selección excede el tamaño de la USB.\n\n` +
             `Espacio usado: ${totalSize.toFixed(2)} GB\n` +
-            `Límite del disco: ${diskLimit} GB\n\n` +
+            `Límite: ${diskLimit} GB\n\n` +
             `Elimina juegos para continuar.`
           );
           return;
         }
-    
-        if (!selectedGames.length || diskLimit === null) {
-          alert('Selecciona el disco duro y al menos un juego.');
-          return;
-        }
 
-        if (totalSize > diskLimit) {
-          alert('Excede el tamaño del disco');
-          return;
-        }
-    
         const clientName = prompt('Nombre del cliente:');
         if (!clientName) return;
     
