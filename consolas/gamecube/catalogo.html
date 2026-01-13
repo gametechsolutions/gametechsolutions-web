@@ -433,10 +433,21 @@
           });
 
           if (!res.ok) {
-            alert('❌ La selección excede el tamaño del disco');
+            const errorData = await res.json();
+          
+            if (errorData?.error === 'Disk limit exceeded') {
+              alert(
+                `❌ La selección excede el tamaño permitido.\n\n` +
+                `Usado: ${totalSize.toFixed(2)} GB\n` +
+                `Límite: ${diskLimit} GB`
+              );
+            } else {
+              alert('❌ Error al guardar la selección');
+              console.error(errorData);
+            }
             return;
           }
-    
+
           const result = await res.json();
     
           if (result.success) {
@@ -478,8 +489,12 @@
       if (saveBtn) {
         if (diskLimit !== null && totalSize > diskLimit) {
           saveBtn.disabled = true;
+          saveBtn.textContent = 'Excede el límite';
+          saveBtn.classList.add('danger');
         } else {
           saveBtn.disabled = false;
+          saveBtn.textContent = 'Guardar selección';
+          saveBtn.classList.remove('danger');
         }
       }
     }
