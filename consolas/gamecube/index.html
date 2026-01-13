@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title id="pageTitle">GameTechSolutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
+  <!-- Base global -->
+  <link rel="stylesheet" href="/styles/theme-base.css">
+
+  <!-- Tema de consola -->
+  <link rel="stylesheet" href="/styles/theme-nintendo.css"
+</head>
+<body>
+
+<!-- HEADER (inyectado dinámicamente) -->
+<div id="header-container"></div>
+
+<!-- CONTENIDO CENTRAL -->
+<main>
+  <div class="container">
+
+    <section>
+      <h2>Servicios disponibles</h2>
+      <p>
+        La <strong class="console-name"></strong> permite diferentes métodos de modificación según
+        el modelo. Se utilizan soluciones estables y probadas.
+      </p>
+    </section>
+
+    <section>
+      <h2>¿Qué ofrecemos para <strong class="console-name"></strong>?</h2>
+
+      <div class="cards-grid">
+
+        <div class="card">
+          <h3>🔓 Instalación de PicoBoot</h3>
+          <p>
+            Se instala el método adecuado según el modelo de tu GameCube,
+            permitiendo ejecutar juegos y aplicaciones.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🎮 Instalación de juegos</h3>
+          <p>
+            Carga de juegos de GameCube, 
+            respetando el espacio disponible.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🧼 Limpieza y mantenimiento</h3>
+          <p>
+            Limpieza interna, cambio de pasta térmica y revisión general
+            para reducir temperatura y ruido.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>💾 Ampliación de almacenamiento</h3>
+          <p>
+            Reemplazo o ampliación del disco duro con configuración
+            correcta del sistema.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🛡️ Garantía en juegos</h3>
+          <p>
+            Garantía de 30 días en juegos instalados por fallas
+            atribuibles a la instalación.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Proceso de trabajo</h2>
+
+      <div class="cards-grid">
+
+        <div class="card">
+          <h3>1️⃣ Revisión</h3>
+          <p>Revisión física y funcional básica de la consola.</p>
+        </div>
+
+        <div class="card">
+          <h3>2️⃣ Servicio</h3>
+          <p>Instalación, limpieza o configuración solicitada.</p>
+        </div>
+
+        <div class="card">
+          <h3>3️⃣ Pruebas</h3>
+          <p>Pruebas internas de funcionamiento y estabilidad.</p>
+        </div>
+
+        <div class="card">
+          <h3>4️⃣ Entrega</h3>
+          <p>Envío de evidencia en video y entrega de la consola.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Selección de juegos</h2>
+      <p>
+        Los juegos se seleccionan desde un catálogo disponible.
+        La cantidad final depende del tamaño del disco duro
+        y del peso de cada título.
+      </p>
+      <a class="btn" id="catalogLink">Ver catálogo de juegos</a>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <p>GameTechSolutions © 2026</p>
+</footer>
+
+  <script>
+    window.CONSOLE_CONFIG = {
+      code: 'GC',
+      name: 'GameCube',
+      short: 'GC',
+      brand: 'nintendo',
+      catalogPath: '/consolas/gamecube/catalogo.html'
+    };
+  </script>
+  
+  <script src="/assets/js/header.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+  
+    const CONSOLE_CONFIG = {
+      code: 'GC',
+      name: 'GameCube',
+      short: 'GC',
+      catalogPath: '/consolas/gamecube/catalogo.html'
+    };
+  
+    /* ===== TÍTULO DE PÁGINA ===== */
+    document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
+  
+    /* ===== TEXTOS DINÁMICOS ===== */
+    document.querySelectorAll('.console-name').forEach(el => {
+      el.textContent = CONSOLE_CONFIG.name;
+    });
+  
+    /* ===== LINK A CATÁLOGO ===== */
+    const catalogBtn = document.getElementById('catalogLink');
+    if (catalogBtn) {
+      catalogBtn.href = CONSOLE_CONFIG.catalogPath;
+    }
+  
+  });
+  </script>
+
+</body>
+</html>
