@@ -451,18 +451,26 @@
             })
             .filter(Boolean)
             .join('\n'),
-    
+
           jsonGames: JSON.stringify(
-            selectedGames.map(g => {
-              const game = gamesData.find(x => Number(x.id) === g.id);
-              return {
-                id: game.id,
-                name: game.name,
-                size: game.size
-              };
-            })
+            selectedGames
+              .map(g => {
+                const game = gamesData.find(x => Number(x.id) === Number(g.id));
+          
+                if (!game) {
+                  console.warn('Juego no encontrado en gamesData:', g);
+                  return null;
+                }
+          
+                return {
+                  id: game.id,
+                  name: game.name,
+                  size: game.size
+                };
+              })
+              .filter(Boolean)
           ),
-    
+
           status: 'Pendiente'
         };
     
