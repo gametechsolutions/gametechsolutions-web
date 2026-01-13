@@ -515,32 +515,45 @@
       updateSummary();
       hideLimitWarning();
     }
+
+    function canAddAnyMoreGames() {
+      return gamesData.some(game => {
+        if (selectedGames.some(g => g.id === game.id)) return false;
+        return totalSize + Number(game.size) <= diskLimit;
+      });
+    }
   
     function updateSummary() {
       gameCountEl.textContent = selectedGames.length;
       totalSizeEl.textContent = totalSize.toFixed(2);
       hideLimitWarning();
     
-      if (saveBtn) {
-        if (diskLimit !== null && totalSize > diskLimit) {
-          saveBtn.disabled = true;
-          saveBtn.textContent = 'Excede el límite';
-          saveBtn.classList.add('danger');
-        } else {
-          saveBtn.disabled = false;
-          saveBtn.textContent = 'Guardar selección';
-          saveBtn.classList.remove('danger');
-        }
+      const canAddMore = canAddAnyMoreGames();
+    
+      // 🔴 Excedido (seguridad extra)
+      if (totalSize > diskLimit) {
+        showLimitWarning();
+        saveBtn.disabled = true;
+        return;
       }
+    
+      // 🟡 Límite alcanzado (UX CLAVE)
+      if (!canAddMore) {
+        showLimitWarning(
+          '⚠️ Ya no hay espacio suficiente para agregar más juegos.'
+        );
+      }
+    
+      // Guardar sigue permitido si NO se excede
+      saveBtn.disabled = false;
     }
   
-    function showLimitWarning() {
+    function showLimitWarning(message = '⚠️ Has alcanzado el límite del disco.') {
       if (!document.getElementById('limitWarning')) {
         const p = document.createElement('p');
         p.id = 'limitWarning';
         p.className = 'limit-warning';
-        p.textContent =
-          '⚠️ Has superado la capacidad del disco. Elimina juegos para continuar.';
+        p.textContent = message;
         document.querySelector('.selector-summary').appendChild(p);
       }
     }
