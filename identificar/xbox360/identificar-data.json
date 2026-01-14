@@ -5,17 +5,17 @@
     "models": [
       {
         "name": "Xbox 360 Fat",
-        "image": "/assets/img/consolas/xbox360/models/fat.jpg",
+        "image": "/assets/img/consolas/xbox360/models/fat.png",
         "notes": "Modelo original. Grande, color blanco o negro, bandeja de disco sobresaliente."
       },
       {
         "name": "Xbox 360 Slim",
-        "image": "/assets/img/consolas/xbox360/models/slim.jpg",
+        "image": "/assets/img/consolas/xbox360/models/slim.png",
         "notes": "Más delgada, botones táctiles, acabados brillantes."
       },
       {
         "name": "Xbox 360 E",
-        "image": "/assets/img/consolas/xbox360/models/e.jpg",
+        "image": "/assets/img/consolas/xbox360/models/e.png",
         "notes": "Diseño similar a Xbox One. Puertos traseros reducidos.",
         "video": "https://www.youtube.com/embed/XXXXXXXX"
       }
