@@ -1,24 +1,25 @@
 {
   "xbox360": {
     "title": "Identifica tu Xbox 360",
-    "description": "Selecciona el modelo que más se parezca a tu consola. Si tienes dudas, usa las imágenes y el video de referencia.",
+    "description": "Selecciona el modelo que más se parezca a tu consola. Si tienes dudas, usa las imágenes de referencia.",
     "models": [
       {
         "name": "Xbox 360 Fat",
         "image": "/assets/img/consolas/xbox360/models/fat.png",
-        "notes": "Modelo original. Grande, color blanco o negro, bandeja de disco sobresaliente."
+        "notes": "Es el primer modelo de Xbox 360. Es más grande y pesado, con acabados blancos o negros. Usa fuente de poder grande y externa. Son las consolas más antiguas."
       },
       {
         "name": "Xbox 360 Slim",
         "image": "/assets/img/consolas/xbox360/models/slim.png",
-        "notes": "Más delgada, botones táctiles, acabados brillantes."
+        "notes": "Modelo más delgado y silencioso. Tiene acabado negro brillante o mate y botones táctiles. Incluye Wi-Fi integrado y mejor ventilación que el modelo Fat."
       },
       {
         "name": "Xbox 360 E",
         "image": "/assets/img/consolas/xbox360/models/e.png",
-        "notes": "Diseño similar a Xbox One. Puertos traseros reducidos.",
+        "notes": "Es el último modelo de Xbox 360. Su diseño es más cuadrado y similar al Xbox One. Es el más silencioso y eficiente de los tres.",
         "video": "https://www.youtube.com/embed/XXXXXXXX"
       }
     ]
+    "title":"¿Cómo saber si mi modelo E es compatible con RGH?"
   }
 }
