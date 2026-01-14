@@ -309,6 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Error al guardar selección:', err);
           alert('❌ Error inesperado al guardar la selección');
         }
+      });
+    }
 
   
     /* =============================
