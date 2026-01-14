@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Identificar Xbox 360 | GameTechSolutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="stylesheet" href="/styles/theme-base.css">
+  <link rel="stylesheet" href="/styles/theme-microsoft.css">
+</head>
+<body>
+
+<!-- HEADER dinámico -->
+<div id="header-container"></div>
+
+<main>
+  <div class="container">
+
+    <section>
+      <h2 id="pageTitle"></h2>
+      <p id="pageDescription"></p>
+    </section>
+
+    <section>
+      <div class="cards-grid" id="modelsContainer">
+        <!-- Cards inyectadas por JS -->
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <p>GameTechSolutions © 2026</p>
+</footer>
+
+<!-- CONFIG -->
+<script>
+  window.IDENTIFY_CONFIG = {
+    console: "xbox360",
+    brand: "microsoft"
+  };
+</script>
+
+<script src="/assets/js/header.js"></script>
+<script src="./identificar.js"></script>
+
+</body>
+</html>
