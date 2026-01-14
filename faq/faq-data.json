@@ -1,0 +1,51 @@
+{
+  "general": [
+    {
+      "question": "¿Los juegos incluyen garantía?",
+      "answer": "Sí, todos los juegos instalados cuentan con 30 días de garantía."
+    },
+    {
+      "question": "¿Puedo elegir mis juegos?",
+      "answer": "Sí, siempre eliges tus juegos desde el catálogo."
+    }
+  ],
+
+  "ps2": [
+    {
+      "question": "¿PS2 usa disco duro o USB?",
+      "answer": "Puede usar disco duro interno o USB dependiendo del método."
+    }
+  ],
+
+  "ps3": [
+    {
+      "question": "¿Qué es HEN?",
+      "answer": "HEN es un método de modificación temporal para modelos compatibles."
+    },
+    {
+      "question": "¿Qué es CFW?",
+      "answer": "CFW es un firmware personalizado permanente."
+    }
+  ],
+
+  "xbox360": [
+    {
+      "question": "¿RGH es permanente?",
+      "answer": "Sí, el RGH es un hack permanente."
+    }
+  ],
+
+  "gamecube": [
+    {
+      "question": "¿Qué formato usan los juegos?",
+      "answer": "Se utilizan formatos compatibles con Nintendont."
+    }
+  ],
+
+  "wii": [
+    {
+      "question": "¿Puedo usar USB o SD?",
+      "answer": "Ambos son compatibles dependiendo de la configuración."
+    }
+  ]
+}
