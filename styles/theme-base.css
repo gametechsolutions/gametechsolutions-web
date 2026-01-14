@@ -726,3 +726,32 @@ section p {
   padding: 16px;
   margin-bottom: 12px;
 }
+
+.identify-section {
+  margin-top: 40px;
+}
+
+.identify-step {
+  margin-bottom: 30px;
+}
+
+.identify-img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid #222;
+  margin-top: 10px;
+}
+
+.alert.warning {
+  background: rgba(243, 156, 18, 0.15);
+  border-left: 4px solid #f39c12;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.note {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 6px;
+}
