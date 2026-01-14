@@ -27,9 +27,9 @@ function validateContext(ctx) {
   if (!ctx.storage || typeof ctx.storage.usableGB !== 'number') {
     return 'No se detectó el almacenamiento.';
   }
-   if (!ctx.package) {
+   /*if (!ctx.package) {
      return 'No se ha seleccionado un paquete.';
-   }
+   }*/
 
   return null;
 }
@@ -37,36 +37,23 @@ function validateContext(ctx) {
 /* ========= RENDER RESUMEN ========= */
 
 function renderSummary(ctx) {
-  const setText = (id, text) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = text;
-  };
-
-  // 🎮 Consola con badge por marca
-  const consoleEl = document.getElementById('summary-console');
-  if (consoleEl) {
-    consoleEl.innerHTML = `
-      <span class="badge ${ctx.console.brand}">
-        ${ctx.console.name}
-      </span>
-    `;
-  }
-
-  // 🧩 Resto del resumen
-  setText(
-    'summary-model',
-    ctx.model?.description || 'No especificado'
-  );
+  setText('summary-console', ctx.console.name);
   setText('summary-storage', ctx.storage.label);
   setText(
     'summary-games',
     `${ctx.games.count} juegos (${ctx.games.totalSizeGB.toFixed(2)} GB)`
   );
   setText('summary-id', ctx.games.selectionID);
-   setText(
-     'summary-package',
-     `${ctx.package.name} - $${ctx.package.price} MXN`
-   );
+
+  // 🆕 Paquete (opcional)
+  const pkgEl = document.getElementById('summary-package');
+  if (pkgEl) {
+    if (ctx.package) {
+      pkgEl.textContent = `${ctx.package.name} — $${ctx.package.price}`;
+    } else {
+      pkgEl.textContent = 'No seleccionado';
+    }
+  }
 }
 
 /* ========= MENSAJE WHATSAPP ========= */
