@@ -1,61 +1,156 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* =========================================
+   CONTACTO.JS — GameTechSolutions
+   Rol: Orquestador de contacto
+========================================= */
 
-  // ====== DATOS PREVIOS (si existen) ======
-  const data = {
-    console: localStorage.getItem('consoleName'),
-    model: localStorage.getItem('consoleModel'),
-    package: localStorage.getItem('servicePackage'),
-    games: localStorage.getItem('selectedGamesHuman'),
-    selectionId: localStorage.getItem('selectionID')
-  };
+/* ========= CONTEXTO GLOBAL ========= */
 
-  const resumeSection = document.getElementById('resumeSection');
+function getContext() {
+  try {
+    return JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
+  } catch {
+    return {};
+  }
+}
 
-  if (data.console || data.selectionId) {
-    resumeSection.style.display = 'block';
+/* ========= VALIDACIÓN ========= */
 
-    document.getElementById('rConsole').textContent =
-      data.console || '—';
-
-    document.getElementById('rModel').textContent =
-      data.model || 'No especificado';
-
-    document.getElementById('rPackage').textContent =
-      data.package || 'No especificado';
-
-    document.getElementById('rGames').textContent =
-      data.games ? 'Selección guardada' : 'Sin selección';
+function validateContext(ctx) {
+  if (!ctx.console || !ctx.console.code) {
+    return 'No se detectó la consola seleccionada.';
   }
 
-  // ====== WHATSAPP ======
-  const sendBtn = document.getElementById('sendWhatsapp');
+  if (!ctx.games || !ctx.games.selectionID) {
+    return 'No se encontró una selección de juegos.';
+  }
 
-  sendBtn.addEventListener('click', () => {
+  if (!ctx.storage || typeof ctx.storage.usableGB !== 'number') {
+    return 'No se detectó el almacenamiento.';
+  }
 
-    const name = document.getElementById('clientName').value.trim();
-    const phone = document.getElementById('clientPhone').value.trim();
-    const extra = document.getElementById('clientMessage').value.trim();
+  return null;
+}
 
-    if (!name || !phone) {
-      alert('Por favor ingresa tu nombre y WhatsApp.');
+/* ========= RENDER RESUMEN ========= */
+
+function renderSummary(ctx) {
+  const setText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+
+  setText('summary-console', ctx.console.name);
+  setText(
+    'summary-model',
+    ctx.model?.description || 'No especificado'
+  );
+  setText('summary-storage', ctx.storage.label);
+  setText(
+    'summary-games',
+    `${ctx.games.count} juegos (${ctx.games.totalSizeGB.toFixed(2)} GB)`
+  );
+  setText('summary-id', ctx.games.selectionID);
+}
+
+/* ========= MENSAJE WHATSAPP ========= */
+
+function buildWhatsAppMessage(ctx, client) {
+  return `
+👋 Hola, quiero información para un servicio.
+
+👤 Cliente:
+${client.name}
+
+🎮 Consola:
+${ctx.console.name}
+
+🧩 Modelo:
+${ctx.model?.description || 'No especificado'}
+
+💾 Almacenamiento:
+${ctx.storage.label}
+
+🎯 Selección:
+${ctx.games.count} juegos
+${ctx.games.totalSizeGB.toFixed(2)} GB usados
+
+🆔 ID:
+${ctx.games.selectionID}
+
+📋 Juegos:
+${ctx.games.humanList || 'No listados'}
+
+Gracias 🙌
+`.trim();
+}
+
+/* ========= WHATSAPP ========= */
+
+function sendToWhatsApp(message) {
+  const phone = '521XXXXXXXXXX'; // <-- TU NÚMERO
+  const url =
+    'https://wa.me/' +
+    phone +
+    '?text=' +
+    encodeURIComponent(message);
+
+  window.open(url, '_blank');
+}
+
+/* ========= AIRTABLE ========= */
+
+async function saveToAirtable(ctx, client) {
+  const payload = {
+    ...ctx,
+    clientName: client.name,
+    source: 'contacto'
+  };
+
+  const res = await fetch('/api/save-selection', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (!res.ok) {
+    throw new Error('Error guardando en Airtable');
+  }
+}
+
+/* ========= INIT ========= */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const ctx = getContext();
+
+  const error = validateContext(ctx);
+  if (error) {
+    alert(`⚠️ ${error}`);
+    return;
+  }
+
+  renderSummary(ctx);
+
+  const sendBtn = document.getElementById('sendBtn');
+  if (!sendBtn) return;
+
+  sendBtn.addEventListener('click', async () => {
+    const nameInput = document.getElementById('clientName');
+    const clientName = nameInput?.value.trim();
+
+    if (!clientName) {
+      alert('Ingresa tu nombre.');
       return;
     }
 
-    let message = `📌 *Solicitud de servicio*\n\n`;
-    message += `👤 Cliente: ${name}\n`;
-    message += `📱 WhatsApp: ${phone}\n\n`;
+    const client = { name: clientName };
 
-    if (data.console) message += `🎮 Consola: ${data.console}\n`;
-    if (data.model) message += `🧩 Modelo: ${data.model}\n`;
-    if (data.package) message += `⚙️ Servicio: ${data.package}\n`;
-    if (data.selectionId) message += `🆔 Selección: ${data.selectionId}\n`;
+    const message = buildWhatsAppMessage(ctx, client);
+    sendToWhatsApp(message);
 
-    if (extra) {
-      message += `\n💬 Mensaje:\n${extra}`;
+    try {
+      await saveToAirtable(ctx, client);
+    } catch (err) {
+      console.warn('Airtable no respondió:', err);
     }
-
-    const url = `https://wa.me/52TU_NUMERO?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
   });
-
 });
