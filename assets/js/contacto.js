@@ -27,6 +27,9 @@ function validateContext(ctx) {
   if (!ctx.storage || typeof ctx.storage.usableGB !== 'number') {
     return 'No se detectó el almacenamiento.';
   }
+   if (!ctx.package) {
+     return 'No se ha seleccionado un paquete.';
+   }
 
   return null;
 }
@@ -60,6 +63,10 @@ function renderSummary(ctx) {
     `${ctx.games.count} juegos (${ctx.games.totalSizeGB.toFixed(2)} GB)`
   );
   setText('summary-id', ctx.games.selectionID);
+   setText(
+     'summary-package',
+     `${ctx.package.name} - $${ctx.package.price} MXN`
+   );
 }
 
 /* ========= MENSAJE WHATSAPP ========= */
@@ -89,6 +96,9 @@ ${ctx.games.selectionID}
 
 📋 Juegos:
 ${ctx.games.humanList || 'No listados'}
+
+📦 Paquete:
+${ctx.package.name} - $${ctx.package.price} MXN
 
 Gracias 🙌
 `.trim();
