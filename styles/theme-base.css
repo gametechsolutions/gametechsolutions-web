@@ -755,3 +755,64 @@ section p {
   color: #aaa;
   margin-top: 6px;
 }
+
+/* ===== RESUMEN CONTACTO ===== */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.summary-item {
+  background-color: #101010;
+  border: 1px solid #1f1f1f;
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.summary-item.full {
+  grid-column: 1 / -1;
+}
+
+.summary-item .label {
+  display: block;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+.summary-item .value {
+  font-size: 16px;
+  font-weight: bold;
+  color: #eaeaea;
+}
+
+.summary-item .value.mono {
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+/* Badge visual por marca */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge.sony {
+  background-color: #1e90ff;
+  color: #000;
+}
+
+.badge.microsoft {
+  background-color: #2ecc71;
+  color: #000;
+}
+
+.badge.nintendo {
+  background-color: #e74c3c;
+  color: #000;
+}
