@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let diskLimit = null;
     let diskLabel = '';
     let gamesData = [];
+    let packagesData = [];
   
     const gameCountEl = document.getElementById('gameCount');
     const totalSizeEl = document.getElementById('totalSize');
