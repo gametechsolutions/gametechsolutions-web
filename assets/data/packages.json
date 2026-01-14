@@ -1,1 +1,73 @@
+{
+  "PS2": [
+    {
+      "id": "basico",
+      "name": "Básico",
+      "price": 500,
+      "includes": [
+        "Instalación FMCB",
+        "Configuración básica",
+        "Hasta 10 juegos"
+      ]
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "price": 900,
+      "includes": [
+        "Instalación FMCB",
+        "Configuración avanzada",
+        "Hasta 30 juegos",
+        "Limpieza básica"
+      ]
+    }
+  ],
 
+  "PS3": [
+    {
+      "id": "basico",
+      "name": "Básico",
+      "price": 700,
+      "includes": [
+        "Instalación HEN o CFW",
+        "Configuración inicial",
+        "Hasta 10 juegos"
+      ]
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "price": 1200,
+      "includes": [
+        "CFW completo",
+        "Configuración avanzada",
+        "Hasta 30 juegos",
+        "Limpieza y pasta térmica"
+      ]
+    }
+  ],
+
+  "X360": [
+    {
+      "id": "basico",
+      "name": "RGH Básico",
+      "price": 1000,
+      "includes": [
+        "Instalación RGH",
+        "Configuración básica",
+        "Dash Aurora"
+      ]
+    },
+    {
+      "id": "premium",
+      "name": "RGH Premium",
+      "price": 1500,
+      "includes": [
+        "Instalación RGH",
+        "Dash Aurora + Freestyle",
+        "Hasta 30 juegos",
+        "Optimización"
+      ]
+    }
+  ]
+}
