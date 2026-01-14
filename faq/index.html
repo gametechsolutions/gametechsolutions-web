@@ -19,45 +19,71 @@
     <section>
       <h2>Preguntas frecuentes</h2>
       <p>
-        Aquí resolvemos las dudas más comunes sobre nuestros servicios,
-        instalación de juegos y modificaciones de consolas.
+        Selecciona la consola para ver preguntas específicas.
       </p>
     </section>
 
-    <section class="faq">
+    <!-- SELECTOR DE CONSOLA -->
+    <section class="faq-tabs">
+      <button class="faq-tab active" data-target="general">General</button>
+      <button class="faq-tab" data-target="ps2">PS2</button>
+      <button class="faq-tab" data-target="ps3">PS3</button>
+      <button class="faq-tab" data-target="xbox360">Xbox 360</button>
+      <button class="faq-tab" data-target="gamecube">GameCube</button>
+      <button class="faq-tab" data-target="wii">Wii</button>
+    </section>
 
+    <!-- FAQ GENERAL -->
+    <section class="faq-section active" id="general">
       <div class="faq-item">
         <h3>¿Los juegos incluyen garantía?</h3>
-        <p>
-          Sí. Todos los juegos instalados por nosotros cuentan con
-          garantía de 30 días por fallas atribuibles a la instalación.
-        </p>
+        <p>Todos los juegos instalados cuentan con 30 días de garantía.</p>
       </div>
 
       <div class="faq-item">
         <h3>¿Puedo elegir mis juegos?</h3>
-        <p>
-          Sí. Contamos con catálogos por consola donde puedes seleccionar
-          los juegos según el espacio disponible.
-        </p>
+        <p>Sí, siempre puedes elegirlos desde el catálogo.</p>
       </div>
+    </section>
 
+    <!-- FAQ PS2 -->
+    <section class="faq-section" id="ps2">
       <div class="faq-item">
-        <h3>¿Qué pasa si mi consola se apaga o se actualiza?</h3>
-        <p>
-          Dependiendo del modelo y método de modificación,
-          te explicamos claramente qué cuidados debes tener.
-        </p>
+        <h3>¿PS2 usa disco duro o USB?</h3>
+        <p>Depende del método. Puede usar HDD interno o USB.</p>
       </div>
+    </section>
 
+    <!-- FAQ PS3 -->
+    <section class="faq-section" id="ps3">
       <div class="faq-item">
-        <h3>¿Incluye limpieza y mantenimiento?</h3>
-        <p>
-          La limpieza y cambio de pasta térmica se cotiza como servicio
-          adicional, salvo que se indique lo contrario.
-        </p>
+        <h3>¿Qué es HEN y qué es CFW?</h3>
+        <p>Son métodos de modificación según el modelo del PS3.</p>
       </div>
+    </section>
 
+    <!-- FAQ XBOX 360 -->
+    <section class="faq-section" id="xbox360">
+      <div class="faq-item">
+        <h3>¿RGH es permanente?</h3>
+        <p>Sí, es un hack permanente.</p>
+      </div>
+    </section>
+
+    <!-- FAQ GAMECUBE -->
+    <section class="faq-section" id="gamecube">
+      <div class="faq-item">
+        <h3>¿Qué formato usan los juegos?</h3>
+        <p>Los juegos se instalan en formato compatible con Nintendont.</p>
+      </div>
+    </section>
+
+    <!-- FAQ WII -->
+    <section class="faq-section" id="wii">
+      <div class="faq-item">
+        <h3>¿Puedo usar USB o SD?</h3>
+        <p>Ambos son compatibles según configuración.</p>
+      </div>
     </section>
 
   </div>
@@ -68,5 +94,6 @@
 </footer>
 
 <script src="/assets/js/header.js"></script>
+<script src="/faq/faq.js"></script>
 </body>
 </html>
