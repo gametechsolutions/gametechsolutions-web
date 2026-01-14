@@ -31,17 +31,40 @@
     <!-- RESUMEN -->
     <section>
       <h2>Resumen de tu servicio</h2>
-
-      <div class="card">
-        <p><strong>🎮 Consola:</strong> <span id="summary-console">—</span></p>
-        <p><strong>🧩 Modelo:</strong> <span id="summary-model">—</span></p>
-        <p><strong>💾 Almacenamiento:</strong> <span id="summary-storage">—</span></p>
-        <p><strong>🎯 Juegos:</strong> <span id="summary-games">—</span></p>
-        <p><strong>🆔 ID de selección:</strong> <span id="summary-id">—</span></p>
+    
+      <div class="card" id="summaryCard">
+        <div class="summary-grid">
+    
+          <div class="summary-item">
+            <span class="label">🎮 Consola</span>
+            <span class="value" id="summary-console">—</span>
+          </div>
+    
+          <div class="summary-item">
+            <span class="label">🧩 Modelo</span>
+            <span class="value" id="summary-model">—</span>
+          </div>
+    
+          <div class="summary-item">
+            <span class="label">💾 Almacenamiento</span>
+            <span class="value" id="summary-storage">—</span>
+          </div>
+    
+          <div class="summary-item">
+            <span class="label">🎯 Juegos</span>
+            <span class="value" id="summary-games">—</span>
+          </div>
+    
+          <div class="summary-item full">
+            <span class="label">🆔 ID de selección</span>
+            <span class="value mono" id="summary-id">—</span>
+          </div>
+    
+        </div>
       </div>
-
+    
       <p class="selector-note">
-        Esta información nos permite preparar tu servicio correctamente.
+        Revisa que la información sea correcta antes de continuar.
       </p>
     </section>
 
