@@ -5,15 +5,14 @@
   <title>Contacto | GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
-  <!-- Estilos base -->
+  <!-- Base -->
   <link rel="stylesheet" href="/styles/theme-base.css">
 </head>
 <body>
 
-<!-- HEADER (inyectado dinámicamente) -->
+<!-- HEADER DINÁMICO -->
 <div id="header-container"></div>
 
 <!-- CONTENIDO -->
@@ -24,69 +23,67 @@
     <section>
       <h2>Contacto</h2>
       <p>
-        Agenda tu servicio o solicita información.
-        Si ya seleccionaste tu consola o juegos, aquí se mostrarán automáticamente.
+        Ya casi terminamos. Revisa tu selección y contáctanos para continuar
+        con el servicio.
       </p>
     </section>
 
-    <!-- RESUMEN AUTOMÁTICO -->
-    <section id="resumeSection" style="display:none;">
-      <h2>Resumen de tu solicitud</h2>
+    <!-- RESUMEN -->
+    <section>
+      <h2>Resumen de tu servicio</h2>
 
       <div class="card">
-        <p><strong>Consola:</strong> <span id="rConsole"></span></p>
-        <p><strong>Modelo:</strong> <span id="rModel"></span></p>
-        <p><strong>Servicio / Paquete:</strong> <span id="rPackage"></span></p>
-        <p><strong>Selección de juegos:</strong> <span id="rGames"></span></p>
+        <p><strong>🎮 Consola:</strong> <span id="summary-console">—</span></p>
+        <p><strong>🧩 Modelo:</strong> <span id="summary-model">—</span></p>
+        <p><strong>💾 Almacenamiento:</strong> <span id="summary-storage">—</span></p>
+        <p><strong>🎯 Juegos:</strong> <span id="summary-games">—</span></p>
+        <p><strong>🆔 ID de selección:</strong> <span id="summary-id">—</span></p>
       </div>
+
+      <p class="selector-note">
+        Esta información nos permite preparar tu servicio correctamente.
+      </p>
     </section>
 
     <!-- FORMULARIO -->
     <section>
-      <h2>Datos de contacto</h2>
+      <h2>Datos del cliente</h2>
 
       <div class="card">
-
-        <label>
-          Nombre
-          <input type="text" id="clientName" placeholder="Tu nombre" required>
-        </label>
-
-        <label>
-          WhatsApp
-          <input type="tel" id="clientPhone" placeholder="Ej. 55XXXXXXXX" required>
-        </label>
-
-        <label>
-          Mensaje adicional (opcional)
-          <textarea id="clientMessage" rows="4"
-            placeholder="¿Algo más que debamos saber?"></textarea>
-        </label>
-
-        <div class="selection-actions">
-          <button class="btn" id="sendWhatsapp">
-            📲 Enviar por WhatsApp
-          </button>
-        </div>
-
+        <label for="clientName"><strong>Tu nombre</strong></label>
+        <input
+          id="clientName"
+          type="text"
+          placeholder="Ej. Juan Pérez"
+          style="width:100%; padding:10px; margin-top:8px;"
+        >
       </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="text-align:center">
+      <button class="btn" id="sendBtn">
+        📲 Contactar por WhatsApp
+      </button>
+
+      <p class="selector-note">
+        Serás redirigido a WhatsApp con toda la información lista.
+      </p>
     </section>
 
     <!-- MAPA -->
     <section>
       <h2>Ubicación</h2>
-      <p>Atención con cita previa.</p>
 
       <div class="map-container">
-        <!-- AQUÍ PEGA TU IFRAME DE GOOGLE MAPS TAL CUAL LO TENÍAS -->
+        <!-- TU MAPA ACTUAL -->
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.7972359248342!2d-99.22092032410815!3d19.5503168369096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21dd7c106d715%3A0xf2b144c984956ce7!2sGame%20Tech%20Solutions!5e0!3m2!1ses-419!2smx!4v1767898318147!5m2!1ses-419!2smx"
           width="100%"
           height="300"
           style="border:0;"
           allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+          loading="lazy">
         </iframe>
       </div>
     </section>
@@ -94,14 +91,15 @@
   </div>
 </main>
 
+<!-- FOOTER -->
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
 
-<!-- HEADER JS -->
+<!-- HEADER -->
 <script src="/assets/js/header.js"></script>
 
-<!-- CONTACTO JS -->
+<!-- CONTACTO -->
 <script src="/assets/js/contacto.js"></script>
 
 </body>
