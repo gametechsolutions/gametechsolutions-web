@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <title>Contacto | GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+  <!-- Estilos base -->
   <link rel="stylesheet" href="/styles/theme-base.css">
 </head>
 <body>
@@ -12,80 +16,69 @@
 <!-- HEADER (inyectado dinámicamente) -->
 <div id="header-container"></div>
 
+<!-- CONTENIDO -->
 <main>
   <div class="container">
 
+    <!-- INTRO -->
     <section>
-      <h2>¿Cómo contactar?</h2>
+      <h2>Contacto</h2>
       <p>
-        Para brindarte una solución adecuada, es importante que nos proporciones
-        información clara sobre tu consola y el servicio que necesitas.
+        Agenda tu servicio o solicita información.
+        Si ya seleccionaste tu consola o juegos, aquí se mostrarán automáticamente.
       </p>
     </section>
 
+    <!-- RESUMEN AUTOMÁTICO -->
+    <section id="resumeSection" style="display:none;">
+      <h2>Resumen de tu solicitud</h2>
+
+      <div class="card">
+        <p><strong>Consola:</strong> <span id="rConsole"></span></p>
+        <p><strong>Modelo:</strong> <span id="rModel"></span></p>
+        <p><strong>Servicio / Paquete:</strong> <span id="rPackage"></span></p>
+        <p><strong>Selección de juegos:</strong> <span id="rGames"></span></p>
+      </div>
+    </section>
+
+    <!-- FORMULARIO -->
     <section>
-      <h2>Antes de escribir</h2>
+      <h2>Datos de contacto</h2>
 
-      <div class="cards-grid">
+      <div class="card">
 
-        <div class="card">
-          <h3>🎮 Modelo de la consola</h3>
-          <p>
-            Indica el modelo exacto (por ejemplo: PS3 Slim, Super Slim, FAT).
-          </p>
-        </div>
+        <label>
+          Nombre
+          <input type="text" id="clientName" placeholder="Tu nombre" required>
+        </label>
 
-        <div class="card">
-          <h3>📝 Servicio requerido</h3>
-          <p>
-            Instalación de HEN/CFW, juegos, mantenimiento,
-            ampliación de disco, etc.
-          </p>
-        </div>
+        <label>
+          WhatsApp
+          <input type="tel" id="clientPhone" placeholder="Ej. 55XXXXXXXX" required>
+        </label>
 
-        <div class="card">
-          <h3>⚠️ Historial</h3>
-          <p>
-            Menciona si la consola ya fue abierta, modificada
-            o reparada anteriormente.
-          </p>
+        <label>
+          Mensaje adicional (opcional)
+          <textarea id="clientMessage" rows="4"
+            placeholder="¿Algo más que debamos saber?"></textarea>
+        </label>
+
+        <div class="selection-actions">
+          <button class="btn" id="sendWhatsapp">
+            📲 Enviar por WhatsApp
+          </button>
         </div>
 
       </div>
     </section>
 
-    <section>
-      <h2>Contacto directo</h2>
-
-      <div class="cards-grid">
-
-        <div class="card">
-          <h3>📲 WhatsApp</h3>
-          <p>
-            Medio principal de contacto para cotizaciones,
-            seguimiento y entrega.
-          </p>
-          <p><strong>Número:</strong> (Aquí va tu WhatsApp)</p>
-        </div>
-
-        <div class="card">
-          <h3>📍 Atención</h3>
-          <p>
-            Servicio bajo cita previa.<br>
-            No se realizan diagnósticos completos sin revisión física.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
+    <!-- MAPA -->
     <section>
       <h2>Ubicación</h2>
-      <p>
-        Atención únicamente con cita previa.
-      </p>
-    
+      <p>Atención con cita previa.</p>
+
       <div class="map-container">
+        <!-- AQUÍ PEGA TU IFRAME DE GOOGLE MAPS TAL CUAL LO TENÍAS -->
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.7972359248342!2d-99.22092032410815!3d19.5503168369096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21dd7c106d715%3A0xf2b144c984956ce7!2sGame%20Tech%20Solutions!5e0!3m2!1ses-419!2smx!4v1767898318147!5m2!1ses-419!2smx"
           width="100%"
@@ -97,15 +90,6 @@
         </iframe>
       </div>
     </section>
-    
-    <section>
-      <h2>Notas importantes</h2>
-      <ul>
-        <li>No se realizan cotizaciones definitivas sin revisar la consola</li>
-        <li>No se ofrece soporte por configuraciones modificadas por terceros</li>
-        <li>Los tiempos de entrega dependen del servicio solicitado</li>
-      </ul>
-    </section>
 
   </div>
 </main>
@@ -114,7 +98,11 @@
   <p>GameTechSolutions © 2026</p>
 </footer>
 
+<!-- HEADER JS -->
 <script src="/assets/js/header.js"></script>
+
+<!-- CONTACTO JS -->
+<script src="/assets/js/contacto.js"></script>
 
 </body>
 </html>
