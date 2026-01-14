@@ -42,6 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error cargando catálogo:', err);
         catalogEl.innerHTML = '<p>Error cargando el catálogo de juegos.</p>';
       });
+
+    fetch('/assets/data/packages.json')
+      .then(res => res.json())
+      .then(data => {
+        packagesData = data[CONSOLE_CONFIG.code] || [];
+        renderPackages();
+      })
+      .catch(err => {
+        console.warn('No se pudieron cargar los paquetes:', err);
+      });
   
     function renderCatalog() {
       catalogEl.innerHTML += '';
