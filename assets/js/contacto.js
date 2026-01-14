@@ -39,7 +39,17 @@ function renderSummary(ctx) {
     if (el) el.textContent = text;
   };
 
-  setText('summary-console', ctx.console.name);
+  // 🎮 Consola con badge por marca
+  const consoleEl = document.getElementById('summary-console');
+  if (consoleEl) {
+    consoleEl.innerHTML = `
+      <span class="badge ${ctx.console.brand}">
+        ${ctx.console.name}
+      </span>
+    `;
+  }
+
+  // 🧩 Resto del resumen
   setText(
     'summary-model',
     ctx.model?.description || 'No especificado'
