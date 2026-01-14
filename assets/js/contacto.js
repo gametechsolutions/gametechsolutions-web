@@ -34,6 +34,13 @@ function validateContext(ctx) {
   return null;
 }
 
+/* ========= UTILIDAD ========= */
+
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
 /* ========= RENDER RESUMEN ========= */
 
 function renderSummary(ctx) {
