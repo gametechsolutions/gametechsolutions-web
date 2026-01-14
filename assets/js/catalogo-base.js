@@ -269,19 +269,45 @@ document.addEventListener('DOMContentLoaded', () => {
           const result = await res.json();
     
           if (result.success) {
-            alert(`✅ Selección guardada\nID: ${selectionId}`);
-            resetAfterSuccess();
-          } else {
-            console.error(result);
-            alert('❌ Error al guardar la selección');
-          }
-    
-        } catch (err) {
-          console.error(err);
-          alert('❌ Error de conexión con el servidor');
-        }
-      });
-    }
+
+  /* =============================
+     GUARDAR CONTEXTO GLOBAL
+    ============================== */
+  
+    const context = {
+      console: {
+        code: CONSOLE_CONFIG.code,
+        name: CONSOLE_CONFIG.fullName,
+        brand: CONSOLE_CONFIG.brand
+      },
+  
+      storage: {
+        label: `${diskLabel} GB`,
+        usableGB: diskLimit
+      },
+  
+      games: {
+        selectionID: selectionId,
+        count: selectedGames.length,
+        totalSizeGB: Number(totalSize.toFixed(2)),
+        humanList: selectedGames
+          .map(g => {
+            const game = gamesData.find(x => Number(x.id) === g.id);
+            return game ? game.name : null;
+          })
+          .filter(Boolean)
+          .join('\n')
+      }
+    };
+  
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(context));
+  
+    /* =============================
+       REDIRECCIÓN FINAL
+    ============================== */
+  
+    window.location.href = '/contacto/';
+  }
   
     /* =============================
        UTILIDADES
