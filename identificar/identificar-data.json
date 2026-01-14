@@ -1,1 +1,24 @@
-
+{
+  "xbox360": {
+    "title": "Identifica tu Xbox 360",
+    "description": "Selecciona el modelo que más se parezca a tu consola. Si tienes dudas, usa las imágenes y el video de referencia.",
+    "models": [
+      {
+        "name": "Xbox 360 Fat",
+        "image": "/assets/img/consolas/xbox360/models/fat.jpg",
+        "notes": "Modelo original. Grande, color blanco o negro, bandeja de disco sobresaliente."
+      },
+      {
+        "name": "Xbox 360 Slim",
+        "image": "/assets/img/consolas/xbox360/models/slim.jpg",
+        "notes": "Más delgada, botones táctiles, acabados brillantes."
+      },
+      {
+        "name": "Xbox 360 E",
+        "image": "/assets/img/consolas/xbox360/models/e.jpg",
+        "notes": "Diseño similar a Xbox One. Puertos traseros reducidos.",
+        "video": "https://www.youtube.com/embed/XXXXXXXX"
+      }
+    ]
+  }
+}
