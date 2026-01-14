@@ -380,5 +380,46 @@ document.addEventListener('DOMContentLoaded', () => {
       const w = document.getElementById('limitWarning');
       if (w) w.remove();
     }
+
+    function renderPackages() {
+      const container = document.getElementById('packages-container');
+      if (!container || !packagesData.length) return;
+    
+      container.innerHTML = '';
+    
+      packagesData.forEach(pkg => {
+        const card = document.createElement('div');
+        card.className = 'card';
+    
+        card.innerHTML = `
+          <h3>${pkg.name}</h3>
+          <p><strong>$${pkg.price} MXN</strong></p>
+          <ul>
+            ${pkg.includes.map(i => `<li>✔ ${i}</li>`).join('')}
+          </ul>
+          <button class="btn-small">Seleccionar paquete</button>
+        `;
+    
+        card.querySelector('button').addEventListener('click', () => {
+          selectPackage(pkg);
+        });
+    
+        container.appendChild(card);
+      });
+    }
+
+  function selectPackage(pkg) {
+    const ctx = JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
   
+    ctx.package = {
+      id: pkg.id,
+      name: pkg.name,
+      price: pkg.price
+    };
+  
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+  
+    alert(`📦 Paquete "${pkg.name}" seleccionado`);
+  }
+
   });
