@@ -274,35 +274,48 @@ document.addEventListener('DOMContentLoaded', () => {
              GUARDAR CONTEXTO GLOBAL
           ============================== */
         
-          const context = {
-            console: {
-              code: CONSOLE_CONFIG.code,
-              name: CONSOLE_CONFIG.fullName,
-              brand: CONSOLE_CONFIG.brand
-            },
-        
-            storage: {
-              label: `${diskLabel} GB`,
-              usableGB: diskLimit
-            },
-        
-            games: {
-              selectionID: selectionId,
-              count: selectedGames.length,
-              totalSizeGB: Number(totalSize.toFixed(2)),
-              humanList: selectedGames
-                .map(g => {
-                  const game = gamesData.find(x => Number(x.id) === g.id);
-                  return game ? game.name : null;
-                })
-                .filter(Boolean)
-                .join('\n')
-            }
-          };
-        
-          localStorage.setItem('GTS_CONTEXT', JSON.stringify(context));
-        
-          window.location.href = '/contacto/';
+          // 1️⃣ Leer contexto previo (si existe)
+const prevContext = JSON.parse(
+  localStorage.getItem('GTS_CONTEXT') || '{}'
+);
+
+// 2️⃣ Construir SOLO lo nuevo
+const updatedContext = {
+  ...prevContext, // 🔴 conserva package, model, etc
+
+  console: {
+    code: CONSOLE_CONFIG.code,
+    name: CONSOLE_CONFIG.fullName,
+    brand: CONSOLE_CONFIG.brand
+  },
+
+  storage: {
+    label: `${diskLabel} GB`,
+    usableGB: diskLimit
+  },
+
+  games: {
+    selectionID: selectionId,
+    count: selectedGames.length,
+    totalSizeGB: Number(totalSize.toFixed(2)),
+    humanList: selectedGames
+      .map(g => {
+        const game = gamesData.find(x => Number(x.id) === g.id);
+        return game ? game.name : null;
+      })
+      .filter(Boolean)
+      .join('\n')
+  }
+};
+
+// 3️⃣ Guardar contexto FINAL
+localStorage.setItem(
+  'GTS_CONTEXT',
+  JSON.stringify(updatedContext)
+);
+
+// 4️⃣ Redirigir a contacto
+window.location.href = '/contacto/';
         }
         
         } catch (err) {
