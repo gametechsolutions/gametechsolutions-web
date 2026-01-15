@@ -172,12 +172,30 @@ document.addEventListener('DOMContentLoaded', () => {
       .join('\n');
 
     // ✅ GUARDAR CONTEXTO GLOBAL (ÚNICO LUGAR)
-    saveContext({
+    window.GTSContext.save({
       console: {
         code: CONSOLE_CONFIG.code,
         name: CONSOLE_CONFIG.fullName,
         brand: CONSOLE_CONFIG.brand
       },
+    
+      storage: {
+        label: `${diskLabel} GB`,
+        usableGB: diskLimit
+      },
+    
+      games: {
+        selectionID: selectionId,
+        count: selectedGames.length,
+        totalSizeGB: Number(totalSize.toFixed(2)),
+        humanList
+      },
+    
+      meta: {
+        source: 'catalogo',
+        createdAt: new Date().toISOString()
+      }
+    });
 
       storage: {
         label: `${diskLabel} GB`,
