@@ -109,6 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctx =
     JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
 
+  // ✅ GUARDAR CONSOLA (clave que faltaba)
+  ctx.console = {
+    code: consoleConfig.code,
+    name: consoleConfig.name,
+    brand: consoleConfig.brand,
+    catalogPath: consoleConfig.catalogPath
+  };
+
+  // ✅ GUARDAR MODELO
   ctx.model = {
     id: model.id || model.name,
     description: model.name,
@@ -118,10 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
   localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
 
   // 🚀 CONTINUAR FLUJO
-  if (ctx.console?.catalogPath) {
-    window.location.href = ctx.console.catalogPath;
+  if (consoleConfig.catalogPath) {
+    window.location.href = consoleConfig.catalogPath;
   } else {
-    console.warn('No se encontró catalogPath para esta consola');
+    console.warn('catalogPath no definido para esta consola');
   }
 }
 
