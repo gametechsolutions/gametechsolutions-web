@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!sendBtn) return;
 
   sendBtn.addEventListener('click', async () => {
+   const ctx = getContext();
     const nameInput = document.getElementById('clientName');
     const clientName = nameInput?.value.trim();
 
