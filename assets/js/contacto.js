@@ -173,10 +173,32 @@ function sendToWhatsApp(message) {
 /* ========= AIRTABLE ========= */
 
 async function saveToAirtable(ctx, client) {
+
   const payload = {
-    ...ctx,
+    selectionID: ctx.games.selectionID,
     clientName: client.name,
-    source: 'contacto'
+
+    // Single select en Airtable → STRING exacto
+    console: ctx.console.name,
+
+    // Number sin decimales
+    diskSize: parseInt(ctx.storage.label, 10),
+
+    // Numbers reales
+    diskLimit: Number(ctx.storage.usableGB),
+    totalSize: Number(ctx.games.totalSizeGB),
+
+    CantidadJuegos: Number(ctx.games.count),
+
+    // Texto plano
+    selectedGames: ctx.games.humanList || '',
+
+    // JSON string (por si luego lo usas)
+    jsonGames: JSON.stringify({
+      games: ctx.games.humanList?.split('\n') || [],
+      package: ctx.package || null,
+      model: ctx.model || null
+    })
   };
 
   const res = await fetch('/api/save-selection', {
@@ -186,6 +208,8 @@ async function saveToAirtable(ctx, client) {
   });
 
   if (!res.ok) {
+    const err = await res.json();
+    console.error('Error Airtable:', err);
     throw new Error('Error guardando en Airtable');
   }
 }
