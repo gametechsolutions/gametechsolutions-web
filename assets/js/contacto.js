@@ -105,7 +105,7 @@ Gracias 🙌
 /* ========= WHATSAPP ========= */
 
 function sendToWhatsApp(message) {
-  const phone = '521XXXXXXXXXX'; // <-- TU NÚMERO
+  const phone = '5215543613500'; // <-- TU NÚMERO
   const url =
     'https://wa.me/' +
     phone +
