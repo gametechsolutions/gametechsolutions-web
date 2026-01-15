@@ -45,6 +45,10 @@ function setText(id, text) {
 
 function renderSummary(ctx) {
   setText('summary-console', ctx.console.name);
+   setText(
+     'summary-model',
+     ctx.model?.description || 'No especificado'
+   );
   setText('summary-storage', ctx.storage.label);
   setText(
     'summary-games',
