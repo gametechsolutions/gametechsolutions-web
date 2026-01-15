@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/styles/theme-base.css">
 
   <!-- Tema de consola -->
-  <link rel="stylesheet" href="/styles/theme-sony.css"
+  <link rel="stylesheet" href="/styles/theme-sony.css">
 </head>
 <body>
 
@@ -35,9 +35,9 @@
       <div class="cards-grid">
 
         <div class="card">
-          <h3>🔓 Instalación de Chip/SoftMod</h3>
+          <h3>🔓 Instalación de FMCB o Funtuna</h3>
           <p>
-            Se instala el método adecuado según el modelo de tu PlayStation 2,
+            Se instala el método adecuado según el modelo de tu Xbox 360,
             permitiendo ejecutar juegos y aplicaciones.
           </p>
         </div>
@@ -45,7 +45,7 @@
         <div class="card">
           <h3>🎮 Instalación de juegos</h3>
           <p>
-            Carga de juegos de PlayStation 2 según compatibilidad,
+            Carga de juegos de Xbox 360 y Xbox Clásico según compatibilidad,
             respetando el espacio disponible.
           </p>
         </div>
@@ -67,6 +67,14 @@
         </div>
 
         <div class="card">
+          <h3>⚙️ Firmware y configuración</h3>
+          <p>
+            Instalación o actualización de OFW, HFW o CFW según
+            el servicio solicitado.
+          </p>
+        </div>
+
+        <div class="card">
           <h3>🛡️ Garantía en juegos</h3>
           <p>
             Garantía de 30 días en juegos instalados por fallas
@@ -77,6 +85,15 @@
       </div>
     </section>
 
+    <section>
+      <h2>¿No sabes qué modelo es tu consola?</h2>
+      <p>
+        Muchos clientes no saben si su PlayStation 2 es Fat o Slim.
+        Aquí te ayudamos a identificarla fácilmente.
+      </p>
+      <a class="btn" href="/consolas/ps2/identificar">Identificar mi consola</a>
+    </section>
+    
     <section>
       <h2>Proceso de trabajo</h2>
 
@@ -124,11 +141,11 @@
 
   <script>
     window.CONSOLE_CONFIG = {
-      code: 'PS2',
-      name: 'PlayStation 2',
-      short: 'PS2',
-      brand: 'sony',
-      catalogPath: '/consolas/ps2/catalogo.html'
+      code: 'X360',
+      name: 'Xbox 360',
+      short: 'X360',
+      brand: 'microsoft',
+      catalogPath: '/consolas/xbox360/catalogo.html'
     };
   </script>
   
@@ -136,14 +153,7 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-  
-    const CONSOLE_CONFIG = {
-      code: 'PS2',
-      name: 'PlayStation 2',
-      short: 'PS2',
-      catalogPath: '/consolas/ps2/catalogo.html'
-    };
-  
+    
     /* ===== TÍTULO DE PÁGINA ===== */
     document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
   
