@@ -196,25 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         createdAt: new Date().toISOString()
       }
     });
-
-      storage: {
-        label: `${diskLabel} GB`,
-        usableGB: diskLimit
-      },
-
-      games: {
-        selectionID: selectionId,
-        count: selectedGames.length,
-        totalSizeGB: Number(totalSize.toFixed(2)),
-        humanList
-      },
-
-      meta: {
-        source: 'catalogo',
-        createdAt: new Date().toISOString()
-      }
-    });
-
     window.location.href = '/contacto/';
   });
 
