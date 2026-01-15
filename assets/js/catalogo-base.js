@@ -1,5 +1,3 @@
-import { saveContext } from '/assets/js/context.js';
-
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =============================
