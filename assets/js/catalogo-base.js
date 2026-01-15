@@ -171,31 +171,42 @@ document.addEventListener('DOMContentLoaded', () => {
       .filter(Boolean)
       .join('\n');
 
-    // ✅ GUARDAR CONTEXTO GLOBAL (ÚNICO LUGAR)
-    window.GTSContext.save({
-      console: {
-        code: CONSOLE_CONFIG.code,
-        name: CONSOLE_CONFIG.fullName,
-        brand: CONSOLE_CONFIG.brand
-      },
-    
-      storage: {
-        label: `${diskLabel} GB`,
-        usableGB: diskLimit
-      },
-    
-      games: {
-        selectionID: selectionId,
-        count: selectedGames.length,
-        totalSizeGB: Number(totalSize.toFixed(2)),
-        humanList
-      },
-    
-      meta: {
-        source: 'catalogo',
-        createdAt: new Date().toISOString()
-      }
-    });
+    // ✅ GUARDAR CONTEXTO GLOBAL (ROBUSTO)
+const contextPayload = {
+  console: {
+    code: CONSOLE_CONFIG.code,
+    name: CONSOLE_CONFIG.fullName,
+    brand: CONSOLE_CONFIG.brand
+  },
+
+  storage: {
+    label: `${diskLabel} GB`,
+    usableGB: diskLimit
+  },
+
+  games: {
+    selectionID: selectionId,
+    count: selectedGames.length,
+    totalSizeGB: Number(totalSize.toFixed(2)),
+    humanList
+  },
+
+  meta: {
+    source: 'catalogo',
+    createdAt: new Date().toISOString()
+  }
+};
+
+if (window.GTSContext && typeof window.GTSContext.save === 'function') {
+  // PS2 / Xbox 360 (con context.js)
+  window.GTSContext.save(contextPayload);
+} else {
+  // Xbox clásica y fallback seguro
+  localStorage.setItem(
+    'GTS_CONTEXT',
+    JSON.stringify(contextPayload)
+  );
+}
     window.location.href = '/contacto/';
   });
 
