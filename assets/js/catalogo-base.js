@@ -281,7 +281,9 @@ const prevContext = JSON.parse(
 
 // 2️⃣ Construir SOLO lo nuevo
 const updatedContext = {
-  ...prevContext, // 🔴 conserva package, model, etc
+  ...prevContext,
+
+  model: prevContext.model || null,
 
   console: {
     code: CONSOLE_CONFIG.code,
