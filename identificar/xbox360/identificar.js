@@ -1,5 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  function saveModelToContext(model) {
+    const ctx = JSON.parse(
+      localStorage.getItem('GTS_CONTEXT') || '{}'
+    );
+  
+    ctx.console = {
+      code: 'X360',
+      name: 'Xbox 360',
+      brand: 'microsoft'
+    };
+  
+    ctx.model = {
+      code: model.code,
+      description: model.name
+    };
+  
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+  }
+
   const container = document.getElementById('modelsContainer');
   const titleEl = document.getElementById('pageTitle');
   const descEl = document.getElementById('pageDescription');
@@ -25,31 +44,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   function renderModels(models) {
-    container.innerHTML = '';
-
-    models.forEach(model => {
-      const card = document.createElement('div');
-      card.className = 'card';
-
-      card.innerHTML = `
-        <h3>${model.name}</h3>
-        <img src="${model.image}" alt="${model.name}" style="width:100%; border-radius:6px; margin:10px 0;">
-        <p>${model.notes}</p>
-        ${model.video ? `
-          <div style="margin-top:10px">
-            <iframe
-              width="100%"
-              height="215"
-              src="${model.video}"
-              frameborder="0"
-              allowfullscreen>
-            </iframe>
-          </div>
-        ` : ''}
-      `;
-
-      container.appendChild(card);
-    });
-  }
-
+      container.innerHTML = '';
+    
+      models.forEach(model => {
+        const card = document.createElement('div');
+        card.className = 'card';
+    
+        card.innerHTML = `
+          <h3 style="text-align:center">${model.name}</h3>
+    
+          <img src="${model.image}"
+               alt="${model.name}"
+               style="width:100%; border-radius:6px; margin:10px 0;">
+    
+          <p>${model.notes}</p>
+    
+          ${model.video ? `
+            <div style="margin-top:10px">
+              <iframe
+                width="100%"
+                height="215"
+                src="${model.video}"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
+            </div>
+          ` : ''}
+    
+          <button class="btn-small" style="margin-top:12px; width:100%">
+            Seleccionar este modelo
+          </button>
+        `;
+    
+        const btn = card.querySelector('button');
+        btn.addEventListener('click', () => {
+          saveModelToContext({
+            code: model.code,
+            name: model.name
+          });
+    
+          alert(`✅ Modelo seleccionado:\n${model.name}`);
+        });
+    
+        container.appendChild(card);
+      });
+    }
 });
