@@ -70,4 +70,28 @@
       ]
     }
   ]
+
+  "XBOX": [
+    {
+      "id": "basico",
+      "name": "Básico",
+      "price": 1000,
+      "includes": [
+        "Instalación MODXO",
+        "Configuración básica",
+        "Dash Aurora"
+      ]
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "price": 1500,
+      "includes": [
+        "Instalación MODXO",
+        "Dash Aurora + Freestyle",
+        "Hasta 30 juegos",
+        "Optimización"
+      ]
+    }
+  ]
 }
