@@ -217,14 +217,30 @@ async function saveToAirtable(ctx, client) {
 /* ========= ESTADO FINAL ========= */
 
 function lockFinalizedState() {
+  // Botón WhatsApp
   const sendBtn = document.getElementById('sendBtn');
   if (sendBtn) {
     sendBtn.disabled = true;
     sendBtn.textContent = 'Selección enviada ✔';
   }
 
+  // Input nombre
   const nameInput = document.getElementById('clientName');
-  if (nameInput) nameInput.disabled = true;
+  if (nameInput) {
+    nameInput.disabled = true;
+  }
+
+  // Mensaje visual dentro del resumen
+  const summaryCard = document.getElementById('summaryCard');
+  if (summaryCard && !document.getElementById('finalizedNotice')) {
+    const notice = document.createElement('div');
+    notice.id = 'finalizedNotice';
+    notice.className = 'alert success';
+    notice.textContent =
+      '✅ Esta selección ya fue enviada. Puedes iniciar una nueva selección cuando lo desees.';
+    
+    summaryCard.prepend(notice);
+  }
 }
 
 /* ========= INIT ========= */
@@ -279,4 +295,24 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.warn('Airtable no respondió:', err);
     }
   });
+  /* ========= NUEVA SELECCIÓN ========= */
+
+const newSelectionBtn = document.getElementById('newSelectionBtn');
+
+if (newSelectionBtn) {
+  newSelectionBtn.addEventListener('click', () => {
+    const confirmReset = confirm(
+      '¿Deseas iniciar una nueva selección?\n\n' +
+      'Esto limpiará el resumen actual y podrás empezar de nuevo.'
+    );
+
+    if (!confirmReset) return;
+
+    // 🔥 Limpiar contexto completo
+    localStorage.removeItem('GTS_CONTEXT');
+
+    // Redirigir al inicio (o cambia a un catálogo si prefieres)
+    window.location.href = '/';
+  });
+}
 });
