@@ -13,6 +13,26 @@ function getContext() {
   }
 }
 
+function lockFinalizedState() {
+  // Deshabilitar botón WhatsApp
+  const sendBtn = document.getElementById('sendBtn');
+  if (sendBtn) {
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Selección enviada ✔';
+  }
+
+  // Mostrar mensaje visual
+  const notice = document.createElement('div');
+  notice.className = 'alert success';
+  notice.textContent =
+    '✅ Esta selección ya fue enviada. Puedes iniciar una nueva selección cuando lo desees.';
+
+  const summary = document.querySelector('.summary-box');
+  if (summary) {
+    summary.prepend(notice);
+  }
+}
+
 /* ========= VALIDACIÓN ========= */
 
 function validateContext(ctx) {
@@ -140,6 +160,10 @@ async function saveToAirtable(ctx, client) {
 document.addEventListener('DOMContentLoaded', () => {
   const ctx = getContext();
 
+   if(ctx.status === 'finalized'){
+      lockFinalizedState();
+   }
+
   const error = validateContext(ctx);
   if (error) {
     alert(`⚠️ ${error}`);
@@ -164,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const message = buildWhatsAppMessage(ctx, client);
     sendToWhatsApp(message);
+     ctx.status = 'finalized';
+      localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+
 
     try {
       await saveToAirtable(ctx, client);
