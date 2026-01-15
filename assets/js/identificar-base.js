@@ -5,13 +5,21 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ⛔ Seguridad: debe existir configuración
-  if (!window.IDENTIFY_CONFIG || !window.IDENTIFY_CONFIG.console) {
-    console.error('IDENTIFY_CONFIG no definido');
+  /* =============================
+     VALIDACIÓN DE CONFIG
+  ============================== */
+
+  if (
+    !window.IDENTIFY_CONFIG ||
+    !window.IDENTIFY_CONFIG.console ||
+    !window.IDENTIFY_CONFIG.console.code
+  ) {
+    console.error('IDENTIFY_CONFIG inválido o incompleto');
     return;
   }
 
-  const { console: consoleKey } = window.IDENTIFY_CONFIG;
+  const consoleConfig = window.IDENTIFY_CONFIG.console;
+  const consoleCode = consoleConfig.code.toLowerCase(); // xbox360, ps3, ps2, etc
 
   const container = document.getElementById('modelsContainer');
   const titleEl = document.getElementById('pageTitle');
@@ -26,9 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
      CARGA DE DATA
   ============================== */
 
-  fetch('/assets/data/identificar/' + consoleKey + '.json')
+  fetch(`/assets/data/identificar/${consoleCode}.json`)
     .then(res => {
-      if (!res.ok) throw new Error('No se pudo cargar JSON de identificación');
+      if (!res.ok) {
+        throw new Error('No se pudo cargar JSON de identificación');
+      }
       return res.json();
     })
     .then(config => {
@@ -44,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   /* =============================
-     RENDER MODELOS
+     RENDER DE MODELOS
   ============================== */
 
   function renderModels(models) {
@@ -78,28 +88,28 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         ` : ''}
 
-        <button class="btn-small" data-model='${JSON.stringify(model)}'>
+        <button class="btn-small">
           Seleccionar este modelo
         </button>
       `;
 
-      card
-        .querySelector('button')
-        .addEventListener('click', () => {
-          saveModelSelection(model);
-        });
+      card.querySelector('button').addEventListener('click', () => {
+        saveModelSelection(model);
+      });
 
       container.appendChild(card);
     });
   }
 
   /* =============================
-     GUARDAR MODELO SELECCIONADO
+     GUARDAR MODELO EN CONTEXTO
   ============================== */
 
   function saveModelSelection(model) {
     const ctx =
       JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
+
+    ctx.console = consoleConfig;
 
     ctx.model = {
       id: model.id || model.name,
