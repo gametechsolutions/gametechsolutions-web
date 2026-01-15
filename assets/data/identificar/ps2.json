@@ -1,1 +1,18 @@
-
+{
+  "title": "Identificar PlayStation 2",
+  "description": "Selecciona el modelo de tu PlayStation 2 para continuar.",
+  "models": [
+    {
+      "id": "fat",
+      "name": "PlayStation 2 FAT",
+      "notes": "Modelos antiguos, pueden requerir revisión por placa.",
+      "image": "/assets/img/consolas/xbox360/models/fat.png"
+    },
+    {
+      "id": "slim",
+      "name": "PlayStation 2 Slim",
+      "notes": "Compatible con RGH dependiendo de la placa.",
+      "image": "/assets/img/consolas/xbox360/models/slim.png"
+    },
+  ]
+}
