@@ -106,20 +106,23 @@ document.addEventListener('DOMContentLoaded', () => {
   ============================== */
 
   function saveModelSelection(model) {
-    const ctx =
-      JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
+  const ctx =
+    JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
 
-    ctx.console = consoleConfig;
+  ctx.model = {
+    id: model.id || model.name,
+    description: model.name,
+    notes: model.notes || ''
+  };
 
-    ctx.model = {
-      id: model.id || model.name,
-      description: model.name,
-      notes: model.notes || ''
-    };
+  localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
 
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-
-    alert(`✅ Modelo "${model.name}" seleccionado`);
+  // 🚀 CONTINUAR FLUJO
+  if (ctx.console?.catalogPath) {
+    window.location.href = ctx.console.catalogPath;
+  } else {
+    console.warn('No se encontró catalogPath para esta consola');
   }
+}
 
 });
