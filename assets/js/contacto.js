@@ -20,6 +20,10 @@ function lockFinalizedState() {
     sendBtn.disabled = true;
     sendBtn.textContent = 'Selección enviada ✔';
   }
+   const nameInput = document.getElementById('clientName');
+   if (nameInput) {
+     nameInput.disabled = true;
+   }
 
   // Mostrar mensaje visual
   const notice = document.createElement('div');
@@ -160,20 +164,24 @@ async function saveToAirtable(ctx, client) {
 document.addEventListener('DOMContentLoaded', () => {
   const ctx = getContext();
 
-   if(ctx.status === 'finalized'){
-      lockFinalizedState();
-   }
-
   const error = validateContext(ctx);
   if (error) {
     alert(`⚠️ ${error}`);
     return;
   }
 
-  renderSummary(ctx);
+   renderSummary(ctx);
+
+   if(ctx.status === 'finalized'){
+      lockFinalizedState();
+   }
 
   const sendBtn = document.getElementById('sendBtn');
   if (!sendBtn) return;
+
+   if (ctx.status === 'finalized') {
+     return; // no permitir enviar de nuevo
+   }
 
   sendBtn.addEventListener('click', async () => {
     const nameInput = document.getElementById('clientName');
