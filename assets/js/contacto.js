@@ -31,7 +31,7 @@ function lockFinalizedState() {
   notice.textContent =
     '✅ Esta selección ya fue enviada. Puedes iniciar una nueva selección cuando lo desees.';
 
-  const summary = document.querySelector('.summary-box');
+  const summary = document.getElementById('summaryCard');
   if (summary) {
     summary.prepend(notice);
   }
@@ -174,6 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
    if(ctx.status === 'finalized'){
       lockFinalizedState();
+   }
+
+   const newSelectionBtn = document.getElementById('newSelectionBtn');
+
+   if (newSelectionBtn) {
+     newSelectionBtn.addEventListener('click', () => {
+       // 1️⃣ Limpiar contexto global
+       localStorage.removeItem('GTS_CONTEXT');
+   
+       // 2️⃣ Redirigir al inicio o catálogo
+       // Puedes cambiar esta ruta si lo deseas
+       window.location.href = '/';
+     });
    }
 
   const sendBtn = document.getElementById('sendBtn');
