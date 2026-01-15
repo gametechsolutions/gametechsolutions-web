@@ -71,31 +71,31 @@ function renderSummary(ctx) {
 
 function buildWhatsAppMessage(ctx, client) {
   return `
-👋 Hola, quiero información para un servicio.
+Hola, quiero información para un servicio.
 
-👤 Cliente:
+Cliente:
 ${client.name}
 
-🎮 Consola:
+Consola:
 ${ctx.console.name}
 
-🧩 Modelo:
+Modelo:
 ${ctx.model?.description || 'No especificado'}
 
-💾 Almacenamiento:
+Almacenamiento:
 ${ctx.storage.label}
 
-🎯 Selección:
+Selección:
 ${ctx.games.count} juegos
 ${ctx.games.totalSizeGB.toFixed(2)} GB usados
 
-🆔 ID:
+ID:
 ${ctx.games.selectionID}
 
-📋 Juegos:
+Juegos:
 ${ctx.games.humanList || 'No listados'}
 
-📦 Paquete:
+Paquete:
 ${ctx.package.name} - $${ctx.package.price} MXN
 
 Gracias 🙌
