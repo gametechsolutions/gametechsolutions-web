@@ -1,470 +1,270 @@
+import { saveContext } from '/assets/js/context.js';
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =============================
-       VARIABLES BASE
-    ============================== */
-  
-    let selectedGames = [];
-    let totalSize = 0;
-    let diskLimit = null;
-    let diskLabel = '';
-    let gamesData = [];
-    let packagesData = [];
-  
-    const gameCountEl = document.getElementById('gameCount');
-    const totalSizeEl = document.getElementById('totalSize');
-    const catalogEl = document.querySelector('.selector-catalog');
-  
-    /* =============================
-       TEXTOS DINÁMICOS
-    ============================== */
-  
-    document.title = `Catálogo de juegos ${CONSOLE_CONFIG.fullName} | GameTechSolutions`;
-  
-    document.querySelectorAll('.consoleFull').forEach(el => {
-      el.textContent = CONSOLE_CONFIG.fullName;
-    });
-  
-    /* =============================
-       CARGAR JUEGOS DESDE JSON
-    ============================== */
-  
-    fetch(CONSOLE_CONFIG.gamesJson)
-      .then(res => {
-        if (!res.ok) throw new Error('No se pudo cargar el JSON');
-        return res.json();
-      })
-      .then(data => {
-        gamesData = data;
-        renderCatalog();
-      })
-      .catch(err => {
-        console.error('Error cargando catálogo:', err);
-        catalogEl.innerHTML = '<p>Error cargando el catálogo de juegos.</p>';
-      });
+     VARIABLES BASE
+  ============================== */
 
-    fetch('/assets/data/packages.json')
-      .then(res => res.json())
-      .then(data => {
-        packagesData = data[CONSOLE_CONFIG.code] || [];
-        renderPackages();
-      })
-      .catch(err => {
-        console.warn('No se pudieron cargar los paquetes:', err);
-      });
-  
-    function renderCatalog() {
-      catalogEl.innerHTML += '';
-  
-      gamesData.forEach(game => {
-        const item = document.createElement('div');
-        item.className = 'selector-item';
-  
-        item.innerHTML = `
-          <span>${game.name}</span>
-          <span>${Number(game.size).toFixed(2)} GB</span>
-          <button class="btn-small add-game"
-                  data-id="${game.id}"
-                  data-size="${game.size}">
-            Agregar
-          </button>
-        `;
-  
-        catalogEl.appendChild(item);
-      });
-  
-      bindAddButtons();
-    }
+  let selectedGames = [];
+  let totalSize = 0;
+  let diskLimit = null;
+  let diskLabel = '';
+  let gamesData = [];
+
+  const gameCountEl = document.getElementById('gameCount');
+  const totalSizeEl = document.getElementById('totalSize');
+  const catalogEl   = document.querySelector('.selector-catalog');
+  const saveBtn     = document.getElementById('saveSelection');
 
   /* =============================
-       AGREGAR JUEGOS
-    ============================== */
-  
-    function bindAddButtons() {
-      document.querySelectorAll('.add-game').forEach(button => {
-        button.addEventListener('click', () => {
-          const id = Number(button.dataset.id);
-          const size = Number(button.dataset.size);
-  
-          if (diskLimit === null) {
-            alert('Primero selecciona el tamaño del disco duro.');
-            return;
-          }
-  
-          if (selectedGames.some(g => g.id === id)) return;
-  
-          if (totalSize + size > diskLimit) {
-            showLimitWarning(
-              '⚠️ No hay espacio suficiente para agregar más juegos.'
-            );
-            updateSummary();
-            return;
-          }
+     TEXTOS DINÁMICOS
+  ============================== */
 
-          selectedGames.push({ id, size });
-          totalSize += size;
-  
-          button.disabled = true;
-          button.textContent = 'Agregado';
-          button.classList.add('added');
-  
+  document.title = `Catálogo de juegos ${CONSOLE_CONFIG.fullName} | GameTechSolutions`;
+
+  document.querySelectorAll('.consoleFull').forEach(el => {
+    el.textContent = CONSOLE_CONFIG.fullName;
+  });
+
+  /* =============================
+     CARGAR JUEGOS DESDE JSON
+  ============================== */
+
+  fetch(CONSOLE_CONFIG.gamesJson)
+    .then(res => {
+      if (!res.ok) throw new Error('No se pudo cargar el catálogo');
+      return res.json();
+    })
+    .then(data => {
+      gamesData = data;
+      renderCatalog();
+    })
+    .catch(err => {
+      console.error(err);
+      catalogEl.innerHTML = '<p>Error cargando el catálogo de juegos.</p>';
+    });
+
+  function renderCatalog() {
+    catalogEl.innerHTML = '';
+
+    gamesData.forEach(game => {
+      const item = document.createElement('div');
+      item.className = 'selector-item';
+
+      item.innerHTML = `
+        <span>${game.name}</span>
+        <span>${Number(game.size).toFixed(2)} GB</span>
+        <button class="btn-small add-game"
+                data-id="${game.id}"
+                data-size="${game.size}">
+          Agregar
+        </button>
+      `;
+
+      catalogEl.appendChild(item);
+    });
+
+    bindAddButtons();
+  }
+
+  /* =============================
+     AGREGAR JUEGOS
+  ============================== */
+
+  function bindAddButtons() {
+    document.querySelectorAll('.add-game').forEach(button => {
+      button.addEventListener('click', () => {
+        const id   = Number(button.dataset.id);
+        const size = Number(button.dataset.size);
+
+        if (diskLimit === null) {
+          alert('Primero selecciona el tamaño del almacenamiento.');
+          return;
+        }
+
+        if (selectedGames.some(g => g.id === id)) return;
+
+        if (totalSize + size > diskLimit) {
+          showLimitWarning('⚠️ No hay espacio suficiente para agregar más juegos.');
           updateSummary();
-        });
-      });
-    }
-  
-    /* =============================
-       DISCO DURO
-    ============================== */
-  
-    document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        diskLimit = Number(radio.dataset.limit);
-        diskLabel = radio.value;
-        resetSelection();
+          return;
+        }
+
+        selectedGames.push({ id, size });
+        totalSize += size;
+
+        button.disabled = true;
+        button.textContent = 'Agregado';
+        button.classList.add('added');
+
         updateSummary();
       });
     });
-  
-    /* =============================
-       CONTROLES
-    ============================== */
-  
-    document.getElementById('removeLast').addEventListener('click', () => {
-      if (!selectedGames.length) return;
-  
-      const removed = selectedGames.pop();
-      totalSize -= removed.size;
-  
-      const btn = document.querySelector(`.add-game[data-id="${removed.id}"]`);
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = 'Agregar';
-        btn.classList.remove('added');
-      }
-  
-      updateSummary();
-    });
-  
-    document.getElementById('clearAll').addEventListener('click', () => {
+  }
+
+  /* =============================
+     DISCO / USB
+  ============================== */
+
+  document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      diskLimit = Number(radio.dataset.limit);
+      diskLabel = radio.value;
+
       resetSelection();
       updateSummary();
     });
+  });
 
-    /* =============================
-       GENERAR ID DE SELECCIÓN
-    ============================= */
-    
-    function generateSelectionId(consoleCode) {
-      const year = new Date().getFullYear();
-      const storageKey = `selectionCounter_${consoleCode}_${year}`;
-    
-      let counter = Number(localStorage.getItem(storageKey)) || 0;
-      counter += 1;
-    
-      localStorage.setItem(storageKey, counter);
-    
-      return `${consoleCode}-${year}-${String(counter).padStart(3, '0')}`;
+  /* =============================
+     CONTROLES
+  ============================== */
+
+  document.getElementById('removeLast')?.addEventListener('click', () => {
+    if (!selectedGames.length) return;
+
+    const removed = selectedGames.pop();
+    totalSize -= removed.size;
+
+    const btn = document.querySelector(`.add-game[data-id="${removed.id}"]`);
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = 'Agregar';
+      btn.classList.remove('added');
     }
 
-    /* =============================
-       GUARDAR SELECCIÓN (Airtable)
-    ============================= */
-    
-    const saveBtn = document.getElementById('saveSelection');
-    
-    if (saveBtn) {
-      saveBtn.addEventListener('click', async () => {
+    updateSummary();
+  });
 
-        // 1️⃣ Debe haber disco seleccionado
-        if (diskLimit === null || Number.isNaN(diskLimit)) {
-          alert('Selecciona primero el tamaño de la USB.');
-          return;
-        }
-        
-        // 2️⃣ Debe haber al menos un juego
-        if (!selectedGames.length) {
-          alert('Selecciona al menos un juego.');
-          return;
-        }
-        
-        // 3️⃣ Validación REAL de espacio
-        if (totalSize > diskLimit) {
-          alert(
-            `❌ La selección excede el tamaño de la USB.\n\n` +
-            `Espacio usado: ${totalSize.toFixed(2)} GB\n` +
-            `Límite: ${diskLimit} GB\n\n` +
-            `Elimina juegos para continuar.`
-          );
-          return;
-        }
+  document.getElementById('clearAll')?.addEventListener('click', () => {
+    resetSelection();
+    updateSummary();
+  });
 
-        const clientName = prompt('Nombre del cliente:');
-        if (!clientName) return;
-    
-        const selectionId = generateSelectionId(CONSOLE_CONFIG.code);
-    
-        const payload = {
-          selectionID: selectionId,
-          clientName: clientName,
-          console: CONSOLE_CONFIG.fullName,
-          diskSize: Number(diskLabel),
-          diskLimit: diskLimit,
-          totalSize: Number(totalSize.toFixed(2)),
-          CantidadJuegos: selectedGames.length,
-    
-          selectedGames: selectedGames
-            .map(g => {
-              const game = gamesData.find(x => Number(x.id) === g.id);
-              return game ? game.name : null;
-            })
-            .filter(Boolean)
-            .join('\n'),
+  /* =============================
+     GUARDAR SELECCIÓN
+  ============================== */
 
-          jsonGames: JSON.stringify(
-            selectedGames
-              .map(g => {
-                const game = gamesData.find(x => Number(x.id) === Number(g.id));
-          
-                if (!game) {
-                  console.warn('Juego no encontrado en gamesData:', g);
-                  return null;
-                }
-          
-                return {
-                  id: game.id,
-                  name: game.name,
-                  size: game.size
-                };
-              })
-              .filter(Boolean)
-          ),
+  saveBtn?.addEventListener('click', () => {
 
-          status: 'Pendiente'
-        };
-    
-        try {
-          const res = await fetch('/api/save-selection', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
+    if (diskLimit === null) {
+      alert('Selecciona el tamaño del almacenamiento.');
+      return;
+    }
 
-          if (!res.ok) {
-            const errorData = await res.json();
-          
-            if (errorData?.error === 'Disk limit exceeded') {
-              alert(
-                `❌ La selección excede el tamaño permitido.\n\n` +
-                `Usado: ${totalSize.toFixed(2)} GB\n` +
-                `Límite: ${diskLimit} GB`
-              );
-            } else {
-              alert('❌ Error al guardar la selección');
-              console.error(errorData);
-            }
-            return;
-          }
+    if (!selectedGames.length) {
+      alert('Selecciona al menos un juego.');
+      return;
+    }
 
-          const result = await res.json();
+    if (totalSize > diskLimit) {
+      alert('La selección excede el tamaño disponible.');
+      return;
+    }
 
-          if (result.success) {
+    const selectionId = generateSelectionId(CONSOLE_CONFIG.code);
 
-          /* =============================
-             GUARDAR CONTEXTO GLOBAL
-          ============================== */
-        
-          // 1️⃣ Leer contexto previo (si existe)
-const prevContext = JSON.parse(
-  localStorage.getItem('GTS_CONTEXT') || '{}'
-);
-
-// 2️⃣ Construir SOLO lo nuevo
-const updatedContext = {
-  ...prevContext,
-
-  model: prevContext.model || null,
-
-  console: {
-    code: CONSOLE_CONFIG.code,
-    name: CONSOLE_CONFIG.fullName,
-    brand: CONSOLE_CONFIG.brand
-  },
-
-  storage: {
-    label: `${diskLabel} GB`,
-    usableGB: diskLimit
-  },
-
-  games: {
-    selectionID: selectionId,
-    count: selectedGames.length,
-    totalSizeGB: Number(totalSize.toFixed(2)),
-    humanList: selectedGames
+    const humanList = selectedGames
       .map(g => {
-        const game = gamesData.find(x => Number(x.id) === g.id);
+        const game = gamesData.find(x => Number(x.id) === Number(g.id));
         return game ? game.name : null;
       })
       .filter(Boolean)
-      .join('\n')
-  }
-};
+      .join('\n');
 
-// 3️⃣ Guardar contexto FINAL
-localStorage.setItem(
-  'GTS_CONTEXT',
-  JSON.stringify(updatedContext)
-);
+    // ✅ GUARDAR CONTEXTO GLOBAL (ÚNICO LUGAR)
+    saveContext({
+      console: {
+        code: CONSOLE_CONFIG.code,
+        name: CONSOLE_CONFIG.fullName,
+        brand: CONSOLE_CONFIG.brand
+      },
 
-// 4️⃣ Redirigir a contacto
-window.location.href = '/contacto/';
-        }
-        
-        } catch (err) {
-          console.error('Error al guardar selección:', err);
-          alert('❌ Error inesperado al guardar la selección');
-        }
-      });
-    }
+      storage: {
+        label: `${diskLabel} GB`,
+        usableGB: diskLimit
+      },
 
-  
-    /* =============================
-       UTILIDADES
-    ============================== */
-  
-    function resetSelection() {
-      selectedGames = [];
-      totalSize = 0;
-  
-      document.querySelectorAll('.add-game').forEach(btn => {
-        btn.disabled = false;
-        btn.textContent = 'Agregar';
-        btn.classList.remove('added');
-      });
-  
-      hideLimitWarning();
-    }
+      games: {
+        selectionID: selectionId,
+        count: selectedGames.length,
+        totalSizeGB: Number(totalSize.toFixed(2)),
+        humanList
+      },
 
-    function resetAfterSuccess() {
-      // 1. Limpiar selección interna
-      selectedGames = [];
-      totalSize = 0;
-      diskLimit = null;
-      diskLabel = '';
-    
-      // 2. Resetear radios de tamaño
-      document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
-        radio.checked = false;
-      });
-    
-      // 3. Resetear botones de juegos
-      document.querySelectorAll('.add-game').forEach(btn => {
-        btn.disabled = false;
-        btn.textContent = 'Agregar';
-        btn.classList.remove('added');
-      });
-    
-      // 4. Resetear contadores visuales
-      updateSummary();
-      hideLimitWarning();
-    }
-
-    function canAddAnyMoreGames() {
-      if (diskLimit === null) return true;
-    
-      return gamesData.some(game => {
-        const size = Number(game.size);
-        return totalSize + size <= diskLimit;
-      });
-    }
-  
-    function updateSummary() {
-      gameCountEl.textContent = selectedGames.length;
-      totalSizeEl.textContent = totalSize.toFixed(2);
-    
-      hideLimitWarning();
-    
-      // 🔴 NO cabe ningún juego más
-      if (diskLimit !== null && !canAddAnyMoreGames()) {
-        showLimitWarning(
-          '⚠️ Ya no hay espacio suficiente para agregar más juegos.'
-        );
+      meta: {
+        source: 'catalogo',
+        createdAt: new Date().toISOString()
       }
+    });
 
-      document.querySelectorAll('.add-game:not(.added)').forEach(btn => {
-        const size = Number(btn.dataset.size);
-      
-        if (diskLimit !== null && totalSize + size > diskLimit) {
-          btn.disabled = true;
-        } else {
-          btn.disabled = false;
-        }
-      });
-    
-      // 🔒 Guardar selección (nivel PRO)
-      if (saveBtn) {
-        if (diskLimit !== null && totalSize > diskLimit) {
-          saveBtn.disabled = true;
-        } else {
-          saveBtn.disabled = false;
-        }
-      }
-    }
-  
-    function showLimitWarning(message = '⚠️ Has alcanzado el límite del disco.') {
-      if (!document.getElementById('limitWarning')) {
-        const p = document.createElement('p');
-        p.id = 'limitWarning';
-        p.className = 'limit-warning';
-        p.textContent = message;
-        document.querySelector('.selector-summary').appendChild(p);
-      }
-    }
-  
-    function hideLimitWarning() {
-      const w = document.getElementById('limitWarning');
-      if (w) w.remove();
-    }
-
-    function renderPackages() {
-      const container = document.getElementById('packages-container');
-      if (!container || !packagesData.length) return;
-    
-      container.innerHTML = '';
-    
-      packagesData.forEach(pkg => {
-        const card = document.createElement('div');
-        card.className = 'card';
-    
-        card.innerHTML = `
-          <h3>${pkg.name}</h3>
-          <p><strong>$${pkg.price} MXN</strong></p>
-          <ul>
-            ${pkg.includes.map(i => `<li>✔ ${i}</li>`).join('')}
-          </ul>
-          <button class="btn-small">Seleccionar paquete</button>
-        `;
-    
-        card.querySelector('button').addEventListener('click', () => {
-          selectPackage(pkg);
-        });
-    
-        container.appendChild(card);
-      });
-    }
-
-  function selectPackage(pkg) {
-    const ctx = JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
-  
-    ctx.package = {
-      id: pkg.id,
-      name: pkg.name,
-      price: pkg.price
-    };
-  
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-  
-    alert(`📦 Paquete "${pkg.name}" seleccionado`);
-  }
-
+    window.location.href = '/contacto/';
   });
+
+  /* =============================
+     UTILIDADES
+  ============================== */
+
+  function generateSelectionId(consoleCode) {
+    const year = new Date().getFullYear();
+    const key  = `selectionCounter_${consoleCode}_${year}`;
+
+    let counter = Number(localStorage.getItem(key)) || 0;
+    counter += 1;
+
+    localStorage.setItem(key, counter);
+    return `${consoleCode}-${year}-${String(counter).padStart(3, '0')}`;
+  }
+
+  function resetSelection() {
+    selectedGames = [];
+    totalSize = 0;
+
+    document.querySelectorAll('.add-game').forEach(btn => {
+      btn.disabled = false;
+      btn.textContent = 'Agregar';
+      btn.classList.remove('added');
+    });
+
+    hideLimitWarning();
+  }
+
+  function updateSummary() {
+    gameCountEl.textContent = selectedGames.length;
+    totalSizeEl.textContent = totalSize.toFixed(2);
+
+    hideLimitWarning();
+
+    // 🔒 Deshabilitar botones que ya no caben
+    document.querySelectorAll('.add-game:not(.added)').forEach(btn => {
+      const size = Number(btn.dataset.size);
+      btn.disabled = diskLimit !== null && (totalSize + size > diskLimit);
+    });
+
+    if (diskLimit !== null && !canAddAnyMoreGames()) {
+      showLimitWarning('⚠️ Ya no hay espacio suficiente para agregar más juegos.');
+    }
+  }
+
+  function canAddAnyMoreGames() {
+    if (diskLimit === null) return true;
+    return gamesData.some(g => totalSize + Number(g.size) <= diskLimit);
+  }
+
+  function showLimitWarning(message) {
+    if (document.getElementById('limitWarning')) return;
+
+    const p = document.createElement('p');
+    p.id = 'limitWarning';
+    p.className = 'limit-warning';
+    p.textContent = message;
+
+    document.querySelector('.selector-summary')?.appendChild(p);
+  }
+
+  function hideLimitWarning() {
+    document.getElementById('limitWarning')?.remove();
+  }
+
+});
