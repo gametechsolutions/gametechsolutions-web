@@ -1942,4 +1942,126 @@ section p {
     transparent 60%
   );
 
-  p
+  pointer-events: none;
+}
+
+.identify-step:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent-color) 25%, rgba(255,255,255,0.10));
+  box-shadow:
+    0 26px 55px rgba(0,0,0,0.62),
+    0 0 22px color-mix(in srgb, var(--accent-color) 14%, transparent);
+}
+
+/* ===== Título del paso ===== */
+.identify-step h3 {
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: 0.2px;
+}
+
+/* Texto */
+.identify-step p {
+  color: var(--text-soft);
+  line-height: 1.65;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* ===== Nota dentro del paso (mini premium alert) ===== */
+.note {
+  margin-top: 10px;
+  padding: 12px 12px;
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+
+  font-size: 13px;
+  color: rgba(255,255,255,0.80);
+}
+
+/* ===== Imagen premium ===== */
+.identify-img {
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 12px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.55);
+
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.identify-img:hover {
+  transform: scale(1.01);
+  filter: brightness(1.05);
+
+  box-shadow:
+    0 22px 55px rgba(0,0,0,0.65),
+    0 0 22px color-mix(in srgb, var(--accent-color) 16%, transparent);
+}
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 768px) {
+  .identify-step {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .identify-img {
+    border-radius: 16px;
+  }
+}
+
+/* ============================================================
+   IDENTIFY STEPS — BADGE AUTOMÁTICO (CSS COUNTER)
+============================================================ */
+
+/* Inicializa el contador */
+.identify-section {
+  counter-reset: step;
+}
+
+/* Cada paso incrementa el contador */
+.identify-step {
+  counter-increment: step;
+  padding-top: 48px; /* espacio para el badge */
+}
+
+/* Badge */
+.identify-step::before {
+  content: "Paso " counter(step);
+  padding: 0 12px;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+
+  width: auto;
+  height: 34px;
+  border-radius: 12px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color) 14%, rgba(255,255,255,0.03));
+  border: 1px solid color-mix(in srgb, var(--accent-color) 40%, transparent);
+
+  box-shadow:
+    0 14px 30px rgba(0,0,0,0.45),
+    0 0 16px color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
