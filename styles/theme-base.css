@@ -1880,3 +1880,66 @@ section p {
     min-width: 110px;
   }
 }
+
+/* ============================================================
+   IDENTIFY PAGE — PREMIUM / LUXURY
+============================================================ */
+
+/* ===== Alert Warning (Glass) ===== */
+.alert.warning {
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin: 16px 0 22px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(243,156,18,0.14),
+    rgba(243,156,18,0.06)
+  );
+
+  border: 1px solid rgba(243,156,18,0.25);
+  border-left: 5px solid rgba(243,156,18,0.95);
+
+  color: rgba(255,255,255,0.92);
+  font-size: 14px;
+  line-height: 1.6;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.50),
+    0 0 24px rgba(243,156,18,0.10);
+}
+
+/* ===== Cada paso como card premium ===== */
+.identify-step {
+  position: relative;
+  overflow: hidden;
+
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 20px 45px rgba(0,0,0,0.55);
+
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Glow sutil */
+.identify-step::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    900px circle at 20% 10%,
+    color-mix(in srgb, var(--accent-color) 10%, transparent),
+    transparent 60%
+  );
+
+  p
