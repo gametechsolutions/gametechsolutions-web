@@ -128,14 +128,41 @@ async function loadPackages(ctx) {
 
 function selectPackage(pkg) {
   const ctx = getContext();
+  const consoleData = window.__PACKAGES_DATA?.[ctx.console.code];
 
-  // 🟢 CASO 1: Paquete NORMAL (precio fijo)
-  if (pkg.type !== 'byStorage') {
-    if (typeof pkg.price !== 'number') {
-      alert('Este paquete no tiene un precio definido.');
-      return;
-    }
+  if (!consoleData) {
+    alert('No se pudo cargar la información del paquete.');
+    return;
+  }
 
+  const diskSize = parseInt(ctx.storage.label, 10);
+
+  // 🟡 CASO A: Paquete por almacenamiento (EXPANSIÓN o PS2)
+  if (consoleData.pricing && consoleData.pricing[diskSize]?.[pkg.id]) {
+    const tier = consoleData.pricing[diskSize][pkg.id];
+
+    ctx.package = {
+      id: pkg.id,
+      name: pkg.name,
+      price: tier.price,
+      gamesIncluded: tier.games,
+      calculatedBy: 'storage'
+    };
+
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+    renderSummary(ctx);
+
+    alert(
+      `📦 Paquete "${pkg.name}" seleccionado\n` +
+      `💾 ${diskSize} GB\n` +
+      `🎮 ${tier.games} juegos\n` +
+      `💰 $${tier.price} MXN`
+    );
+    return;
+  }
+
+  // 🟢 CASO B: Paquete normal (precio fijo)
+  if (typeof pkg.price === 'number') {
     ctx.package = {
       id: pkg.id,
       name: pkg.name,
@@ -150,41 +177,13 @@ function selectPackage(pkg) {
     return;
   }
 
-  // 🟡 CASO 2: Paquete por almacenamiento (EXPANSIÓN)
-  const data = window.__PACKAGES_DATA?.[ctx.console.code];
-
-  if (!data || !data.pricing) {
-    alert('No se pudo calcular el precio del paquete.');
+  // 🔴 CASO C: No disponible para ese almacenamiento
+  if (consoleData.pricing) {
+    alert('Este paquete no está disponible para ese tamaño de almacenamiento.');
     return;
   }
 
-  const diskSize = parseInt(ctx.storage.label, 10);
-  const tier = data.pricing[diskSize]?.[pkg.id];
-
-  if (!tier) {
-    alert(
-      'Este paquete no está disponible para ese tamaño de almacenamiento.'
-    );
-    return;
-  }
-
-  ctx.package = {
-    id: pkg.id,
-    name: pkg.name,
-    price: tier.price,
-    gamesIncluded: tier.games,
-    calculatedBy: 'storage'
-  };
-
-  localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-  renderSummary(ctx);
-
-  alert(
-    `📦 Paquete "${pkg.name}" seleccionado\n` +
-    `💾 ${diskSize} GB\n` +
-    `🎮 ${tier.games} juegos\n` +
-    `💰 $${tier.price} MXN`
-  );
+  alert('Este paquete no tiene un precio definido.');
 }
 
 /* ========= WHATSAPP ========= */
