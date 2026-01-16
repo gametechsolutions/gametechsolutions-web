@@ -24,8 +24,8 @@
   --text-soft: #ccc;
 
   /* Borders */
-  --border-soft: #222;
-  --border-panel: #1f1f1f;
+  --border-soft: rgba(255,255,255,0.08);
+  --border-panel: rgba(255,255,255,0.08);
 
   /* Accent (por defecto). Se reemplaza según marca/console */
   --accent-color: #1abc9c;
@@ -261,8 +261,22 @@ section h2 {
   font-size: 22px;
   margin-bottom: 15px;
 
-  border-left: 4px solid var(--accent-color);
-  padding-left: 12px;
+  border-left: 0;
+  padding-left: 0;
+  position: relative;
+  padding-bottom: 10px;
+  }
+  
+  section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--accent-color);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--accent-color) 25%, transparent);
 }
 
 section p {
@@ -283,12 +297,38 @@ section p {
 }
 
 .card {
-  background-color: var(--bg-panel);
-  border: 1px solid var(--border-panel);
-  border-radius: 6px;
+  position: relative;
+
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.07);
+
+  border-radius: 18px;
   padding: 20px;
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow:
+    0 18px 30px rgba(0,0,0,0.35);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    filter 0.18s ease;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+
+  background: radial-gradient(
+    500px 200px at 20% 0%,
+    rgba(255,255,255,0.08),
+    transparent 45%
+  );
+  opacity: 0.75;
 }
 
 .card h3 {
@@ -302,25 +342,23 @@ section p {
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  border-color: var(--accent-color);
-}
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent-color) 38%, rgba(255,255,255,0.08));
 
+  box-shadow:
+    0 26px 55px rgba(0,0,0,0.55),
+    0 0 26px color-mix(in srgb, var(--accent-color) 18%, transparent);
+}
 
 /* ============================================================
   8) CARDS - CONSOLAS (LOGOS)
 ============================================================ */
 
 .console-card {
-  background-color: var(--bg-panel);
-  border: 1px solid var(--border-panel);
-  border-radius: 8px;
-
-  padding: 20px;
-  text-align: center;
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.07);
 }
 
 .console-card img {
@@ -335,7 +373,7 @@ section p {
 .console-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-  border-color: #1abc9c;
+  border-color: var(--accent-color);
 }
 
 .console-card:hover img {
@@ -360,6 +398,29 @@ section p {
   font-size: 14px;
   text-decoration: none;
   font-weight: bold;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -60%;
+  width: 40%;
+  height: 180%;
+  transform: rotate(20deg);
+  background: rgba(255,255,255,0.25);
+  opacity: 0;
+  transition: left 0.5s ease, opacity 0.2s ease;
+}
+
+.btn:hover::after {
+  left: 120%;
+  opacity: 1;
 }
 
 .btn:hover {
