@@ -1322,6 +1322,9 @@ section p {
   letter-spacing: 0.2px;
   margin-bottom: 14px;
 
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+
   display: flex;
   align-items: center;
   gap: 8px;
