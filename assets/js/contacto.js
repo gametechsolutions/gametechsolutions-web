@@ -72,8 +72,18 @@ async function loadPackages(ctx) {
   try {
     const res = await fetch('/assets/data/packages.json');
     const data = await res.json();
+     window.__PACKAGES_DATA = data;
 
-    const packages = data[ctx.console.code] || [];
+    const consoleData = data[ctx.console.code];
+
+      if (!consoleData || !consoleData.packages) {
+        container.innerHTML =
+          '<p class="selector-note">No hay paquetes disponibles.</p>';
+        return;
+      }
+      
+      const packages = consoleData.packages;
+     
     if (!packages.length) {
       container.innerHTML =
         '<p class="selector-note">No hay paquetes disponibles.</p>';
@@ -125,38 +135,40 @@ async function loadPackages(ctx) {
 
 function selectPackage(pkg) {
   const ctx = getContext();
+  const data = ctx.console?.code
+    ? window.__PACKAGES_DATA?.[ctx.console.code]
+    : null;
 
-  // 🟡 Caso especial: paquete por almacenamiento
-  if (pkg.type === 'byStorage') {
-    const diskSize = parseInt(ctx.storage?.label, 10);
-    const tier = pkg.prices?.[diskSize];
-
-    if (!tier) {
-      alert('Este paquete no está disponible para ese tamaño de disco.');
-      return;
-    }
-
-    ctx.package = {
-      id: pkg.id,
-      name: pkg.name,
-      price: tier.price,
-      gamesIncluded: tier.games,
-      calculatedBy: 'storage'
-    };
-
-  } else {
-    // 🟢 Paquete normal (como ya funciona)
-    ctx.package = {
-      id: pkg.id,
-      name: pkg.name,
-      price: pkg.price
-    };
+  if (!data || !data.pricing) {
+    alert('No se pudo calcular el precio del paquete.');
+    return;
   }
+
+  const diskSize = parseInt(ctx.storage.label, 10);
+  const tier = data.pricing[diskSize]?.[pkg.id];
+
+  if (!tier) {
+    alert('Este paquete no está disponible para ese tamaño de almacenamiento.');
+    return;
+  }
+
+  ctx.package = {
+    id: pkg.id,
+    name: `${ctx.console.name} ${pkg.name}`,
+    price: tier.price,
+    gamesIncluded: tier.games,
+    calculatedBy: 'storage'
+  };
 
   localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
   renderSummary(ctx);
 
-  alert(`📦 Paquete "${ctx.package.name}" seleccionado`);
+  alert(
+    `📦 Paquete "${pkg.name}" seleccionado\n` +
+    `💾 ${diskSize} GB\n` +
+    `🎮 ${tier.games} juegos\n` +
+    `💰 $${tier.price} MXN`
+  );
 }
 
 /* ========= WHATSAPP ========= */
