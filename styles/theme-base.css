@@ -863,4 +863,12 @@ section p {
   box-shadow: 0 0 12px color-mix(in srgb, var(--accent-color) 30%, transparent);
 }
 
+.card li {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
 
+.card li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
