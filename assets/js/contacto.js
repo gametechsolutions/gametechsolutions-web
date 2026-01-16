@@ -128,9 +128,30 @@ async function loadPackages(ctx) {
 
 function selectPackage(pkg) {
   const ctx = getContext();
-  const data = ctx.console?.code
-    ? window.__PACKAGES_DATA?.[ctx.console.code]
-    : null;
+
+  // 🟢 CASO 1: Paquete NORMAL (precio fijo)
+  if (pkg.type !== 'byStorage') {
+    if (typeof pkg.price !== 'number') {
+      alert('Este paquete no tiene un precio definido.');
+      return;
+    }
+
+    ctx.package = {
+      id: pkg.id,
+      name: pkg.name,
+      price: pkg.price,
+      calculatedBy: 'fixed'
+    };
+
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+    renderSummary(ctx);
+
+    alert(`📦 Paquete "${pkg.name}" seleccionado\n💰 $${pkg.price} MXN`);
+    return;
+  }
+
+  // 🟡 CASO 2: Paquete por almacenamiento (EXPANSIÓN)
+  const data = window.__PACKAGES_DATA?.[ctx.console.code];
 
   if (!data || !data.pricing) {
     alert('No se pudo calcular el precio del paquete.');
@@ -141,13 +162,15 @@ function selectPackage(pkg) {
   const tier = data.pricing[diskSize]?.[pkg.id];
 
   if (!tier) {
-    alert('Este paquete no está disponible para ese tamaño de almacenamiento.');
+    alert(
+      'Este paquete no está disponible para ese tamaño de almacenamiento.'
+    );
     return;
   }
 
   ctx.package = {
     id: pkg.id,
-    name: `${ctx.console.name} ${pkg.name}`,
+    name: pkg.name,
     price: tier.price,
     gamesIncluded: tier.games,
     calculatedBy: 'storage'
