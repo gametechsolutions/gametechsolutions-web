@@ -96,27 +96,20 @@ async function loadPackages(ctx) {
       const card = document.createElement('div');
       card.className = 'card';
 
+      const priceLabel =
+        pkg.price
+          ? `$${pkg.price} MXN`
+          : 'Precio según almacenamiento';
+      
       card.innerHTML = `
         <h3>${pkg.name}</h3>
-        <p>
-           <strong>
-             ${
-               pkg.type === 'byStorage'
-                 ? 'Precio según almacenamiento'
-                 : `$${pkg.price} MXN`
-             }
-           </strong>
-         </p>
+        <p><strong>${priceLabel}</strong></p>
         <ul>
-           ${
-             Array.isArray(pkg.includes)
-               ? pkg.includes.map(i => `<li>✔ ${i}</li>`).join('')
-               : Array.isArray(pkg.includesBase)
-                 ? pkg.includesBase.map(i => `<li>✔ ${i}</li>`).join('')
-                 : '<li>✔ Expansión de juegos según almacenamiento</li>'
-           }
-         </ul>
-        <button class="btn btn-outline package-btn">Seleccionar paquete</button>
+          ${(pkg.includes || []).map(i => `<li>✔ ${i}</li>`).join('')}
+        </ul>
+        <button class="btn btn-outline package-btn">
+          Seleccionar paquete
+        </button>
       `;
 
       card.querySelector('button').addEventListener('click', () => {
