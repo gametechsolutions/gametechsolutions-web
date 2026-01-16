@@ -130,30 +130,14 @@ function buildWhatsAppMessage(ctx, client) {
   return `
 Hola, quiero información para un servicio.
 
-👤 Cliente:
-${client.name}
-
-🎮 Consola:
-${ctx.console.name}
-
-🧩 Modelo:
-${ctx.model?.description || 'No especificado'}
-
-💾 Almacenamiento:
-${ctx.storage.label}
-
-🎯 Juegos:
-${ctx.games.count} juegos
-${ctx.games.totalSizeGB.toFixed(2)} GB
-
-🆔 ID:
-${ctx.games.selectionID}
-
-📦 Paquete:
-${ctx.package?.name || 'No seleccionado'} - $${ctx.package?.price || '—'} MXN
-
-📋 Juegos:
-${ctx.games.humanList || 'No listados'}
+Cliente: ${client.name}
+Consola: ${ctx.console.name}
+Modelo: ${ctx.model?.description || 'No especificado'}
+Almacenamiento: ${ctx.storage.label}
+Juegos: ${ctx.games.count} juegos 
+Disco: ${ctx.games.totalSizeGB.toFixed(2)} GB
+ID: ${ctx.games.selectionID}
+Paquete: ${ctx.package?.name || 'No seleccionado'} - $${ctx.package?.price || '—'} MXN
 
 Gracias 🙌
 `.trim();
