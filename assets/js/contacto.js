@@ -92,7 +92,7 @@ async function loadPackages(ctx) {
         <ul>
           ${pkg.includes.map(i => `<li>✔ ${i}</li>`).join('')}
         </ul>
-        <button class="btn-small">Seleccionar paquete</button>
+        <button class="btn btn-outline package-btn">Seleccionar paquete</button>
       `;
 
       card.querySelector('button').addEventListener('click', () => {
