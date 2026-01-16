@@ -139,7 +139,7 @@ Disco: ${ctx.games.totalSizeGB.toFixed(2)} GB
 ID: ${ctx.games.selectionID}
 Paquete: ${ctx.package?.name || 'No seleccionado'} - $${ctx.package?.price || '—'} MXN
 
-Gracias 🙌
+Gracias
 `.trim();
 }
 
