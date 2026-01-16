@@ -50,23 +50,34 @@
   "X360": [
     {
       "id": "basico",
-      "name": "RGH Básico",
-      "price": 1000,
+      "name": "Básico",
+      "price": 400,
       "includes": [
-        "Instalación RGH",
-        "Configuración básica",
-        "Dash Aurora"
+        "Instalación de RGH",
+        "Cambio de Pasta Térmica",
+        "Limpieza Básica"
+      ]
+    },
+    {
+      "id": "estandar",
+      "name": "Estándar",
+      "price": 450,
+      "includes": [
+        "Instalación de RGH",
+        "Cambio de Pasta Térmica",
+        "Limpieza Básica",
+        "Hasta 10 Juegos"
       ]
     },
     {
       "id": "premium",
-      "name": "RGH Premium",
-      "price": 1500,
+      "name": "Premium",
+      "price": 750,
       "includes": [
-        "Instalación RGH",
-        "Dash Aurora + Freestyle",
-        "Hasta 30 juegos",
-        "Optimización"
+        "Instalación de RGH",
+        "Cambio de Pasta Térmica",
+        "Limpieza Completa",
+        "Hasta 10 Juegos"
       ]
     }
   ],
