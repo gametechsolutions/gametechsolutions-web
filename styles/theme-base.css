@@ -775,14 +775,6 @@ section p {
   margin-bottom: 30px;
 }
 
-.identify-img {
-  max-width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--border-soft);
-  margin-top: 10px;
-}
-
-
 /* ============================================================
  17) ALERTAS / NOTAS
 ============================================================ */
@@ -1301,6 +1293,26 @@ section p {
     display: inline-block;
     margin-left: 6px;
     transition: transform 0.18s ease;
+  }
+
+  /* ===== Mobile: tabs centrados y más cómodos ===== */
+  .faq-tabs {
+    justify-content: center;
+  }
+
+  .faq-tab {
+    flex: 1 1 auto;
+    min-width: 110px;
+  }
+
+  .identify-img {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .identify-step {
+    padding: 16px;
+    border-radius: 20px;
   }
 
 }
@@ -1869,18 +1881,6 @@ section p {
   line-height: 1.6;
 }
 
-/* ===== Mobile: tabs centrados y más cómodos ===== */
-@media (max-width: 768px) {
-  .faq-tabs {
-    justify-content: center;
-  }
-
-  .faq-tab {
-    flex: 1 1 auto;
-    min-width: 110px;
-  }
-}
-
 /* ============================================================
    IDENTIFY PAGE — PREMIUM / LUXURY
 ============================================================ */
@@ -1958,6 +1958,7 @@ section p {
   font-size: 16px;
   font-weight: 900;
   margin-bottom: 10px;
+  margin-top: 12px;
   letter-spacing: 0.2px;
 }
 
@@ -1985,20 +1986,25 @@ section p {
   color: rgba(255,255,255,0.80);
 }
 
-/* ===== Imagen premium ===== */
+/* =========================
+   IDENTIFY IMG — PREMIUM
+========================= */
+
 .identify-img {
   width: 100%;
-  max-width: 100%;
-
-  margin-top: 12px;
+  max-width: 720px;          /* ✅ hace la imagen más pequeña */
+  display: block;
+  margin: 14px auto 0;       /* ✅ centrada */
 
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.10);
 
-  box-shadow:
-    0 18px 45px rgba(0,0,0,0.55);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.55);
 
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
 }
 
 .identify-img:hover {
@@ -2008,18 +2014,6 @@ section p {
   box-shadow:
     0 22px 55px rgba(0,0,0,0.65),
     0 0 22px color-mix(in srgb, var(--accent-color) 16%, transparent);
-}
-
-/* ===== Mobile tweaks ===== */
-@media (max-width: 768px) {
-  .identify-step {
-    padding: 16px;
-    border-radius: 20px;
-  }
-
-  .identify-img {
-    border-radius: 16px;
-  }
 }
 
 /* ============================================================
@@ -2064,4 +2058,3 @@ section p {
     0 14px 30px rgba(0,0,0,0.45),
     0 0 16px color-mix(in srgb, var(--accent-color) 20%, transparent);
 }
-
