@@ -112,16 +112,37 @@ async function loadPackages(ctx) {
 function selectPackage(pkg) {
   const ctx = getContext();
 
-  ctx.package = {
-    id: pkg.id,
-    name: pkg.name,
-    price: pkg.price
-  };
+  // 🟡 Caso especial: paquete por almacenamiento
+  if (pkg.type === 'byStorage') {
+    const diskSize = parseInt(ctx.storage?.label, 10);
+    const tier = pkg.prices?.[diskSize];
+
+    if (!tier) {
+      alert('Este paquete no está disponible para ese tamaño de disco.');
+      return;
+    }
+
+    ctx.package = {
+      id: pkg.id,
+      name: pkg.name,
+      price: tier.price,
+      gamesIncluded: tier.games,
+      calculatedBy: 'storage'
+    };
+
+  } else {
+    // 🟢 Paquete normal (como ya funciona)
+    ctx.package = {
+      id: pkg.id,
+      name: pkg.name,
+      price: pkg.price
+    };
+  }
 
   localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
   renderSummary(ctx);
 
-  alert(`📦 Paquete "${pkg.name}" seleccionado`);
+  alert(`📦 Paquete "${ctx.package.name}" seleccionado`);
 }
 
 /* ========= WHATSAPP ========= */
