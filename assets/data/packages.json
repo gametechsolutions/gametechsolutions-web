@@ -72,55 +72,65 @@
     }
   ],
 
-  "X360": [
-    {
-      "id": "basico",
-      "name": "Básico",
-      "price": 400,
-      "includes": [
-        "Instalación de RGH",
-        "Cambio de Pasta Térmica",
-        "Limpieza Básica"
-      ]
-    },
-    {
-      "id": "estandar",
-      "name": "Estándar",
-      "price": 450,
-      "includes": [
-        "Instalación de RGH",
-        "Cambio de Pasta Térmica",
-        "Limpieza Básica",
-        "Hasta 10 Juegos"
-      ]
-    },
-    {
-      "id": "premium",
-      "name": "Premium",
-      "price": 750,
-      "includes": [
-        "Instalación de RGH",
-        "Cambio de Pasta Térmica",
-        "Limpieza Completa",
-        "Hasta 10 Juegos"
-      ]
-    },
-    {
-      "id": "expansion",
-      "name": "Expansión",
-      "type": "byStorage",
-      "prices": {
-        "120": { "price": 300, "games": 10 },
-        "250": { "price": 350, "games": 25 },
-        "320": { "price": 400, "games": 30 },
-        "500": { "price": 700, "games": 50 },
-        "1000": { "price": 900, "games": 100 }
+  "X360": {
+    "storageType": "HDD",
+    "packages": [
+      {
+        "id": "basico",
+        "name": "Básico",
+        "includes": [
+          "Instalación de RGH",
+          "Cambio de Pasta Térmica",
+          "Limpieza Básica"
+        ]
       },
-      "includesBase": [
-        "Instalación de juegos adicionales"
-      ]
+      {
+        "id": "estandar",
+        "name": "Estándar",
+        "includes": [
+          "Instalación de RGH",
+          "Cambio de Pasta Térmica",
+          "Limpieza Básica",
+          "Hasta 10 Juegos"
+        ]
+      },
+      {
+        "id": "premium",
+        "name": "Premium",
+        "includes": [
+          "Instalación de RGH",
+          "Cambio de Pasta Térmica",
+          "Limpieza Completa",
+          "Hasta 10 Juegos"
+        ]
+      },
+      {
+        "id": "expansion",
+        "name": "Expansión",
+        "type": "byStorage",
+        "includesBase": [
+          "Instalación de juegos adicionales"
+        ]
+      }
+    ],
+    "pricing": {
+      "120": {
+        "expansion": { "price": 300, "games": 10 }
+      },
+      "250": {
+        "expansion": { "price": 350, "games": 25 }
+      },
+      "320": {
+        "expansion": { "price": 400, "games": 30 }
+      },
+      "500": {
+        "expansion": { "price": 700, "games": 50 }
+      },
+      "1000": {
+        "expansion": { "price": 900, "games": 100 }
+      }
     }
-  ],
+  },
 
   "XBOX": [
     {
