@@ -1306,6 +1306,44 @@ section p {
 }
 
 /* =========================
+   MENU-PARENT (BUTTON RESET)
+========================= */
+
+.menu-parent {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font: inherit;
+
+  cursor: pointer;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.menu-parent:hover {
+  background: rgba(255,255,255,0.04);
+  color: var(--accent-color);
+}
+
+.menu-parent:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.menu-parent .caret {
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
+/* =========================
    IDENTIFICAR - MODELOS (FIX)
 ========================= */
 
