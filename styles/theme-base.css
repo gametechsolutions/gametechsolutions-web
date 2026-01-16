@@ -1543,3 +1543,12 @@ section p {
   cursor: not-allowed;
   box-shadow: none;
 }
+
+.selector-catalog h3 {
+  position: sticky;
+  top: 0;
+  background: rgba(15,15,15,0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2;
+}
