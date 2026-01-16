@@ -292,6 +292,7 @@ section p {
 
 .cards-grid {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
@@ -355,6 +356,9 @@ section p {
 ============================================================ */
 
 .console-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 18px;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
