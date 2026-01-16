@@ -178,7 +178,8 @@ nav {
 /* Submenú (desktop) */
 .submenu {
   position: absolute;
-  top: calc(100% + 10px); /* separación con el menú */
+  top: 100%;
+  margin-top: 6px; /* espacio visual sin "hueco real" */
   left: 50%;
   transform: translateX(-50%);
 
@@ -245,6 +246,19 @@ nav {
   display: block;
 }
 
+.nav-menu > li {
+  position: relative;
+}
+
+/* puente invisible para que no se cierre */
+.nav-menu > li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px; /* área invisible */
+}
 
 /* ============================================================
   5) NAVEGACIÓN - UNIFICACIÓN ITEMS
