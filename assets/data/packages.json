@@ -3,19 +3,19 @@
     "storageType": "USB",
     "packages": [
       {
-        "id": "estandar",
-        "name": "Estándar",
-        "includes": [
-          "Instalación FMCB",
-          "Configuración básica"
-        ]
-      },
-      {
         "id": "basico",
         "name": "Básico",
         "includes": [
           "Instalación FMCB",
           "Configuración estándar"
+        ]
+      },
+      {
+        "id": "estandar",
+        "name": "Estándar",
+        "includes": [
+          "Instalación FMCB",
+          "Configuración básica"
         ]
       },
       {
@@ -30,18 +30,18 @@
     ],
     "pricing": {
       "64": {
-        "estandar": { "price": 500, "games": 20 },
-        "basico":   { "price": 650, "games": 20 },
+        "basico":   { "price": 500, "games": 20 },
+        "estandar": { "price": 650, "games": 20 },
         "premium":  { "price": 800, "games": 20 }
       },
       "128": {
-        "estandar": { "price": 600, "games": 40 },
-        "basico":   { "price": 750, "games": 40 },
+        "basico":   { "price": 600, "games": 40 },
+        "estandar": { "price": 750, "games": 40 },
         "premium":  { "price": 900, "games": 40 }
       },
       "256": {
-        "estandar": { "price": 1000, "games": 80 },
-        "basico":   { "price": 1150, "games": 80 },
+        "basico":   { "price": 1000, "games": 80 },
+        "estandar": { "price": 1150, "games": 80 },
         "premium":  { "price": 1300, "games": 80 }
       }
     }
