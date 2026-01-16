@@ -235,17 +235,6 @@ nav {
   transform: translateY(-1px);
 }
 
-.submenu li a:hover {
-  background-color: #1abc9c; /* hover heredado anterior */
-  color: #000;
-  padding-left: 18px;
-}
-
-/* Solo en desktop: desplegar submenu al hover */
-.nav-menu li:hover > .submenu {
-  display: block;
-}
-
 .nav-menu > li {
   position: relative;
 }
@@ -271,10 +260,6 @@ nav {
   padding: 6px 10px;
   display: inline-block;
   color: var(--text-main);
-}
-
-.menu-parent:hover {
-  color: #1abc9c;
 }
 
 .nav-menu a,
@@ -569,13 +554,13 @@ section p {
 }
 
 /* Panels */
-.selector-catalog,
+/*.selector-catalog,
 .selector-summary {
   background-color: var(--bg-panel);
   border: 1px solid var(--border-panel);
   border-radius: 8px;
   padding: 20px;
-}
+}*/
 
 .selector-catalog h3,
 .selector-summary h3 {
@@ -690,15 +675,7 @@ section p {
 /* ============================================================
  13) SELECTOR DE DISCO DURO
 ============================================================ */
-
-.disk-selector {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.disk-option {
+/* .disk-option {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -711,7 +688,7 @@ section p {
   cursor: pointer;
 
   transition: border 0.2s ease, background-color 0.2s ease;
-}
+} */
 
 .disk-option:hover {
   background-color: var(--bg-panel-hover);
