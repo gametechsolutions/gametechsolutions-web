@@ -1173,3 +1173,37 @@ section p {
   margin-top: auto;
   width: 100%;
 }
+
+/* =========================
+   CONTACTO - PAQUETES (FIX BOTON)
+========================= */
+
+#packagesContainer .card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Para que la lista no se pegue al botón */
+#packagesContainer .card ul {
+  margin-bottom: 8px;
+}
+
+/* Botón con aire y alineación correcta */
+#packagesContainer .card button {
+  margin-top: auto;     /* empuja el botón al fondo */
+  width: 100%;
+}
+
+#packagesContainer .package-btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+#packagesContainer .card p strong {
+  display: inline-block;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  opacity: 0.95;
+}
+
