@@ -1237,6 +1237,55 @@ section p {
     padding: 10px 12px;
     border-radius: 12px;
   }
+  /* Importante: el item padre debe “contener” al submenu */
+  .nav-menu > li {
+    position: relative;
+  }
+
+  /* Submenu se vuelve parte del flujo (no popup) */
+  .nav-menu .submenu {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    opacity: 1 !important;
+
+    display: none;
+    width: 100%;
+
+    margin: 8px 0 0;
+    padding: 8px;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Items del submenu: full width, centrados */
+  .nav-menu .submenu li a {
+    width: 100%;
+    justify-content: center;
+    border-radius: 14px;
+  }
+
+  /* En móvil no uses hover */
+  .nav-menu li:hover > .submenu {
+    display: none !important;
+  }
+
+  /* Abrir submenu en móvil cuando el item tiene focus */
+  .nav-menu li:focus-within > .submenu {
+    display: block;
+  }
+  .nav-menu .submenu {
+    margin-left: 0 !important;
+  }
 }
 
 /* =========================
