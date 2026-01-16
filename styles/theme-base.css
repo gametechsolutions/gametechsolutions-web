@@ -1294,3 +1294,87 @@ section p {
   font-size: 13px;
   color: var(--text-muted);
 }
+
+/* =========================
+   SELECTOR SUMMARY (LUXURY)
+========================= */
+
+.selector-summary {
+  position: sticky;
+  top: 20px; /* se mantiene visible mientras haces scroll */
+  
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 45px rgba(0,0,0,0.55),
+    0 0 26px rgba(0,0,0,0.20);
+
+  padding: 22px;
+}
+
+/* Título */
+.selector-summary h3 {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  margin-bottom: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Cada línea del resumen */
+.selector-summary p {
+  margin: 10px 0;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Números tipo "dashboard" */
+.selector-summary p strong {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: 0.3px;
+  padding-left: 6px;
+}
+
+/* Acciones: botones */
+.selection-actions {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Botones de resumen: full width + premium */
+.selector-summary .btn-small,
+.selector-summary .btn {
+  width: 100%;
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+/* Danger más pro */
+.selector-summary .btn-small.danger {
+  border: 1px solid rgba(255, 70, 70, 0.25);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* Nota en caja premium */
+.selector-summary .selector-note {
+  margin-top: 16px;
+  padding: 12px 12px;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  font-size: 12px;
+  color: var(--text-muted);
+}
