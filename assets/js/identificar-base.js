@@ -66,29 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.innerHTML = `
         <h3>${model.name}</h3>
-
+      
         ${model.image ? `
-          <img
-            src="${model.image}"
-            alt="${model.name}"
-            style="width:100%; border-radius:6px; margin:10px 0;">
+          <div class="model-image">
+            <img src="${model.image}" alt="${model.name}">
+          </div>
         ` : ''}
-
-        <p>${model.notes || ''}</p>
-
+      
+        <p class="model-notes">${model.notes || ''}</p>
+      
         ${model.video ? `
-          <div style="margin-top:10px">
+          <div class="model-video">
             <iframe
-              width="100%"
-              height="215"
               src="${model.video}"
               frameborder="0"
               allowfullscreen>
             </iframe>
           </div>
         ` : ''}
-
-        <button class="btn-small">
+      
+        <button class="btn btn-outline model-btn">
           Seleccionar este modelo
         </button>
       `;
