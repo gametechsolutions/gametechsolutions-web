@@ -1,26 +1,46 @@
+/* ============================================================
+  THEME BASE - GameTechSolutions
+  - Archivo base para todo el sitio
+  - Usa variables CSS (accent) que se sobreescriben por consola:
+      theme-microsoft.css / theme-sony.css / theme-nintendo.css
+============================================================ */
+
+
+/* ============================================================
+  1) VARIABLES GLOBALES (THEME TOKENS)
+  - Colores generales del sitio
+  - Accent se sobreescribe en themes por consola
+============================================================ */
+
 :root {
+  /* Backgrounds */
   --bg-main: #0f0f0f;
   --bg-panel: #141414;
   --bg-panel-hover: #1a1a1a;
 
+  /* Text */
   --text-main: #eaeaea;
   --text-muted: #aaa;
   --text-soft: #ccc;
 
+  /* Borders */
   --border-soft: #222;
   --border-panel: #1f1f1f;
 
-  /* 🎯 Accent genérico (se sobreescribe por consola) */
+  /* Accent (por defecto). Se reemplaza según marca/console */
   --accent-color: #1abc9c;
   --accent-hover: #17a589;
 
+  /* Estados / Danger */
   --danger-color: #c0392b;
   --danger-hover: #a93226;
 }
 
-/* =========================
-   RESET Y BASE
-========================= */
+
+/* ============================================================
+  2) RESET Y BASE
+  - Setups generales del documento
+============================================================ */
 
 * {
   margin: 0;
@@ -28,27 +48,38 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #0f0f0f;
-  color: #eaeaea;
-  overflow: hidden; /* Scroll solo en main */
+  background-color: var(--bg-main);
+  color: var(--text-main);
+
+  /* Solo el main hace scroll para mantener header/footer fijos */
+  overflow: hidden;
 }
 
-/* =========================
-   HEADER FIJO
-========================= */
+
+/* ============================================================
+  3) LAYOUT GENERAL
+  - Header fijo arriba
+  - Footer fijo abajo
+  - Main con scroll interno
+============================================================ */
 
 header {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
   height: 120px;
-  background: linear-gradient(180deg, #141414, #0f0f0f);
-  border-bottom: 1px solid #222;
+
+  background: linear-gradient(180deg, var(--bg-panel), var(--bg-main));
+  border-bottom: 1px solid var(--border-soft);
+
   z-index: 1000;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,12 +93,51 @@ header h1 {
 
 header p {
   font-size: 14px;
-  color: #aaa;
+  color: var(--text-muted);
 }
 
-/* =========================
-   NAVEGACIÓN DESKTOP
-========================= */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 50px;
+
+  background-color: #121212;
+  border-top: 1px solid var(--border-soft);
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  color: #888;
+}
+
+main {
+  position: absolute;
+  top: 120px;     /* altura header */
+  bottom: 50px;   /* altura footer */
+
+  width: 100%;
+  overflow-y: auto;
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* ============================================================
+  4) NAVEGACIÓN (DESKTOP)
+  - Menú horizontal con submenú desplegable
+============================================================ */
 
 nav {
   margin-top: 10px;
@@ -81,11 +151,11 @@ nav {
 }
 
 .nav-menu > li {
-  position: relative;
+  position: relative; /* necesario para submenu absolute */
 }
 
 .nav-menu a {
-  color: #eaeaea;
+  color: var(--text-main);
   text-decoration: none;
   font-weight: bold;
   padding: 6px 10px;
@@ -96,16 +166,19 @@ nav {
   color: var(--accent-color);
 }
 
-/* Submenú desktop */
+/* Submenú (desktop) */
 .submenu {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #141414;
-  border: 1px solid #222;
+
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-soft);
   border-radius: 6px;
+
   min-width: 160px;
   display: none;
+
   z-index: 2000;
 }
 
@@ -113,279 +186,49 @@ nav {
   display: block;
   padding: 10px 14px;
   font-weight: normal;
-  color: #ccc;
+  color: var(--text-soft);
+
+  line-height: 1.4;
+  white-space: normal;
 }
 
 .submenu li a:hover {
-  background-color: #1abc9c;
+  background-color: #1abc9c; /* hover heredado anterior */
   color: #000;
+  padding-left: 18px;
 }
 
+/* Solo en desktop: desplegar submenu al hover */
 .nav-menu li:hover > .submenu {
   display: block;
 }
 
-/* =========================
-   FOOTER FIJO
-========================= */
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #121212;
-  border-top: 1px solid #222;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: #888;
-}
-
-/* =========================
-   CONTENIDO CENTRAL
-========================= */
-
-main {
-  position: absolute;
-  top: 120px;
-  bottom: 50px;
-  width: 100%;
-  overflow-y: auto;
-  padding: 40px 0;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* =========================
-   SECCIONES
-========================= */
-
-section {
-  margin-bottom: 50px;
-}
-
-section h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
-  border-left: 4px solid var(--accent-color);
-  padding-left: 12px;
-}
-
-section p {
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-/* =========================
-   CARDS GENERALES
-========================= */
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background-color: #141414;
-  border: 1px solid #1f1f1f;
-  border-radius: 6px;
-  padding: 20px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.card h3 {
-  margin-bottom: 8px;
-  font-size: 18px;
-}
-
-.card p {
-  font-size: 14px;
-  color: #bdbdbd;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-  border-color: var(--accent-color);
-}
-
-/* =========================
-   CARDS DE CONSOLAS (LOGOS)
-========================= */
-
-.console-card {
-  background-color: #141414;
-  border: 1px solid #1f1f1f;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.console-card img {
-  max-width: 160px;
-  width: 100%;
-  height: auto;
-  filter: grayscale(100%);
-  transition: filter 0.2s ease, transform 0.2s ease;
-}
-
-.console-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-  border-color: #1abc9c;
-}
-
-.console-card:hover img {
-  filter: grayscale(0%);
-  transform: scale(1.05);
-}
-
-/* =========================
-   BOTONES
-========================= */
-
-.btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 18px;
-  background-color: var(--accent-color);
-  color: #000;
-  border-radius: 4px;
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn:hover {
-  background-color: var(--accent-hover);
-}
-
-/* =========================
-   MENÚ MÓVIL
-========================= */
-
-.menu-toggle {
-  display: none;
-}
-
-.menu-icon {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: #eaeaea;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-
-  header {
-    height: auto;
-    padding: 20px 0;
-  }
-
-  main {
-    top: 140px;
-  }
-
-  .menu-icon {
-    display: block;
-    margin-top: 10px;
-  }
-
-  .nav-menu {
-    flex-direction: column;
-    background-color: #141414;
-    border: 1px solid #222;
-    border-radius: 8px;
-    padding: 10px;
-    margin-top: 10px;
-    display: none;
-  }
-
-  .nav-menu li {
-    width: 100%;
-  }
-
-  .nav-menu a {
-    display: block;
-    padding: 10px;
-  }
-
-  .submenu {
-    position: static;
-    display: none;
-    border: none;
-    background-color: #1a1a1a;
-    margin-left: 10px;
-  }
-
-  .nav-menu li:hover > .submenu {
-    display: none;
-  }
-
-  .nav-menu li:focus-within > .submenu {
-    display: block;
-  }
-
-  .menu-toggle:checked + .menu-icon + .nav-menu {
-    display: flex;
-  }
-}
-
-@media (max-width: 768px) {
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .menu-icon {
-    display: block;
-    font-size: 30px;
-    padding: 8px 14px;
-    border: 1px solid #333;
-    border-radius: 6px;
-    margin-top: 10px;
-    background-color: #141414;
-  }
-
-  .menu-icon:hover {
-    background-color: #1a1a1a;
-  }
-}
+/* ============================================================
+  5) NAVEGACIÓN - UNIFICACIÓN ITEMS
+  - Igualar altura/centrado entre enlaces y "menu-parent"
+============================================================ */
 
 .menu-parent {
   cursor: pointer;
   font-weight: bold;
   padding: 6px 10px;
   display: inline-block;
-  color: #eaeaea;
+  color: var(--text-main);
 }
 
 .menu-parent:hover {
   color: #1abc9c;
 }
 
-/* ===== UNIFICAR ESTILO DE ITEMS DE NAVEGACIÓN ===== */
-
 .nav-menu a,
 .menu-parent {
   font-size: 14px;
   font-weight: bold;
   line-height: 1;
+
   padding: 6px 10px;
+
   display: inline-flex;
   align-items: center;
   height: 28px;
@@ -396,558 +239,48 @@ section p {
   gap: 4px;
 }
 
-/* ===== MAPA EMBEBIDO ===== */
 
-.map-container {
-  margin-top: 15px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #1f1f1f;
+/* ============================================================
+  6) SECCIONES Y TIPOGRAFÍA
+============================================================ */
+
+section {
+  margin-bottom: 50px;
 }
 
-.map-container iframe {
-  display: block;
-}
-
-/* ===== MEJORA VISUAL SUBMENÚ DESKTOP ===== */
-
-.submenu {
-  min-width: 220px;           /* más ancho */
-}
-
-.submenu li a {
-  line-height: 1.4;           /* más aire vertical */
-  white-space: normal;        /* permite salto de línea */
-}
-
-.submenu li a:hover {
-  padding-left: 18px;         /* micro feedback visual */
-}
-
-/* ===== HOVER COVERS CATÁLOGO ===== */
-
-.cover-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-.cover-wrapper img {
-  width: 100%;
-  display: block;
-  transition: transform 0.25s ease;
-}
-
-/* Overlay */
-.cover-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: #eaeaea;
-  font-size: 14px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-/* Hover effect */
-.cover-card:hover .cover-wrapper img {
-  transform: scale(1.05);
-}
-
-.cover-card:hover .cover-overlay {
-  opacity: 1;
-}
-
-/* Centrar títulos debajo de covers */
-.cover-card h3 {
-  text-align: center;
-  margin-top: 10px;
-}
-
-/* ===== SELECTOR DE JUEGOS (LAYOUT) ===== */
-
-.selector-layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 30px;
-}
-
-.selector-catalog,
-.selector-summary {
-  background-color: #141414;
-  border: 1px solid #1f1f1f;
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.selector-catalog h3,
-.selector-summary h3 {
+section h2 {
+  font-size: 22px;
   margin-bottom: 15px;
-  font-size: 18px;
+
+  border-left: 4px solid var(--accent-color);
+  padding-left: 12px;
 }
 
-.selector-item {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 10px;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #222;
-}
-
-.selector-item:last-child {
-  border-bottom: none;
-}
-
-.selector-item.muted {
-  color: #777;
-}
-
-.btn-small {
-  padding: 6px 10px;
-  font-size: 12px;
-  background-color: var(--accent-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-small:hover {
-  background-color: var(--accent-hover);
-}
-
-.selected-list {
-  list-style: none;
-  margin-bottom: 15px;
-}
-
-.selected-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px solid #222;
-}
-
-.selector-total {
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-.selector-note {
-  font-size: 12px;
-  color: #aaa;
-  margin-top: 10px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .selector-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-.selection-actions {
-  display: flex;
-  gap: 10px;
-  margin: 15px 0;
-}
-
-.btn-small.danger {
-  background-color: var(--danger-color);
-}
-
-.btn-small.danger:hover {
-  background-color: var(--danger-hover);
-}
-
-/* ===== SELECTOR DE DISCO DURO ===== */
-
-.disk-selector {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.disk-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background-color: #141414;
-  border: 1px solid #1f1f1f;
-  border-radius: 8px;
-  padding: 14px;
-  cursor: pointer;
-  transition: border 0.2s ease, background-color 0.2s ease;
-}
-
-.disk-option:hover {
-  background-color: #1a1a1a;
-}
-
-.disk-option input {
-  accent-color: #1abc9c;
-  transform: scale(1.1);
-}
-
-.disk-option strong {
-  display: block;
-  font-size: 16px;
-}
-
-.disk-option span {
-  font-size: 13px;
-  color: #aaa;
-}
-
-.disk-note {
-  font-size: 13px;
-  color: #aaa;
-  margin-top: 10px;
-}
-
-.limit-warning {
-  margin-top: 10px;
-  color: #f39c12;
-  font-size: 13px;
-}
-
-.add-game:disabled {
-  background-color: #555;
-  cursor: not-allowed;
-}
-
-/* Botón agregado */
-.add-game.added {
-  background-color: #2c3e50;
-  color: #aaa;
-  cursor: not-allowed;
-}
-
-.add-game:disabled {
-  opacity: 0.7;
-}
-
-/* ===== SCROLL INTERNO PARA CATÁLOGO ===== */
-
-.selector-catalog {
-  max-height: 50vh;       /* altura visible (~5-6 juegos) */
-  overflow-y: auto;
-  padding-right: 6px;      /* espacio para scrollbar */
-}
-
-/* Scroll discreto (WebKit) */
-.selector-catalog::-webkit-scrollbar {
-  width: 6px;
-}
-
-.selector-catalog::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.selector-catalog::-webkit-scrollbar-thumb {
-  background-color: #2c3e50;
-  border-radius: 4px;
-}
-
-/* Firefox */
-.selector-catalog {
-  scrollbar-width: thin;
-  scrollbar-color: #2c3e50 transparent;
-}
-
-/* ===== FIX: eliminar bullets del submenú ===== */
-
-.submenu {
-  list-style: none;
-  padding: 6px 0;
-  margin: 0;
-}
-
-.submenu li {
-  list-style: none;
-}
-
-/* =========================
-   TEMAS POR CONSOLA
-========================= */
-
-.nav-menu a:hover {
-  color: var(--accent-color);
-}
-
-#saveSelection:disabled {
-  background-color: #555;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-/* =========================
-   FAQ
-========================= */
-
-.faq-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.faq-tab {
-  padding: 8px 14px;
-  border: 1px solid #333;
-  background: #141414;
-  color: #ccc;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.faq-tab.active {
-  background: var(--accent-color);
-  color: #000;
-}
-
-.faq-section {
-  display: none;
-}
-
-.faq-section.active {
-  display: block;
-}
-
-.faq-item {
-  background-color: #141414;
-  border: 1px solid #1f1f1f;
-  border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 12px;
-}
-
-.identify-section {
-  margin-top: 40px;
-}
-
-.identify-step {
-  margin-bottom: 30px;
-}
-
-.identify-img {
-  max-width: 100%;
-  border-radius: 8px;
-  border: 1px solid #222;
-  margin-top: 10px;
-}
-
-.alert.warning {
-  background: rgba(243, 156, 18, 0.15);
-  border-left: 4px solid #f39c12;
-  padding: 12px;
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-
-.note {
-  font-size: 13px;
-  color: #aaa;
-  margin-top: 6px;
-}
-
-/* ===== RESUMEN CONTACTO ===== */
-
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-
-.summary-item {
-  background-color: #101010;
-  border: 1px solid #1f1f1f;
-  border-radius: 6px;
-  padding: 14px;
-}
-
-.summary-item.full {
-  grid-column: 1 / -1;
-}
-
-.summary-item .label {
-  display: block;
-  font-size: 12px;
-  color: #aaa;
-  margin-bottom: 6px;
-}
-
-.summary-item .value {
-  font-size: 16px;
-  font-weight: bold;
-  color: #eaeaea;
-}
-
-.summary-item .value.mono {
-  font-family: monospace;
-  letter-spacing: 0.5px;
-}
-
-/* Badge visual por marca */
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.badge.sony {
-  background-color: #1e90ff;
-  color: #000;
-}
-
-.badge.microsoft {
-  background-color: #2ecc71;
-  color: #000;
-}
-
-.badge.nintendo {
-  background-color: #e74c3c;
-  color: #000;
-}
-
-/* =========================
-   LISTAS PREMIUM DENTRO DE CARDS
-========================= */
-
-.card ul {
-  list-style: none;              /* sin bullets default */
-  padding: 0;
-  margin: 12px 0 0;
-  display: grid;
-  gap: 10px;                     /* separación elegante */
-}
-
-.card li {
-  position: relative;
-  padding-left: 30px;            /* espacio para el bullet custom */
-  font-size: 14px;
+section p {
   color: var(--text-soft);
-  line-height: 1.55;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-/* Bullet premium con check usando accent */
-.card li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 20px;
-  height: 20px;
-  border-radius: 7px;
 
+/* ============================================================
+  7) CARDS - GENERALES
+============================================================ */
+
+.cards-grid {
   display: grid;
-  place-items: center;
-
-  font-weight: 900;
-  font-size: 12px;
-
-  background: color-mix(in srgb, var(--accent-color) 18%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent-color) 35%, transparent);
-  color: var(--accent-color);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
-/* Hover sutil para que se sienta "premium" */
-.card:hover li::before {
-  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-color) 30%, transparent);
+.card {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-panel);
+  border-radius: 6px;
+  padding: 20px;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.card li {
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.card li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-/* =========================
-   BOTONES PREMIUM (THEME SAFE)
-========================= */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  margin-top: 10px;
-  padding: 11px 18px;
-
-  color: #000;
-  text-decoration: none;
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-
-  border-radius: 12px;
-  border: 1px solid color-mix(in srgb, var(--accent-color) 55%, transparent);
-
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--accent-color) 88%, white 12%),
-    var(--accent-color)
-  );
-
-  box-shadow:
-    0 10px 18px rgba(0,0,0,0.35),
-    0 0 0 rgba(0,0,0,0);
-
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    filter 0.18s ease,
-    border-color 0.18s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.06);
-  border-color: color-mix(in srgb, var(--accent-color) 80%, transparent);
-
-  box-shadow:
-    0 14px 26px rgba(0,0,0,0.50),
-    0 0 22px color-mix(in srgb, var(--accent-color) 35%, transparent);
-}
-
-.btn:active {
-  transform: translateY(0px) scale(0.98);
-  box-shadow:
-    0 8px 16px rgba(0,0,0,0.35),
-    0 0 12px color-mix(in srgb, var(--accent-color) 25%, transparent);
-}
-
-.btn:focus-visible {
-  outline: none;
-  box-shadow:
-    0 14px 26px rgba(0,0,0,0.50),
-    0 0 0 4px color-mix(in srgb, var(--accent-color) 35%, transparent);
-}
-
-/* Secundario premium (outline) */
-.btn-outline {
-  background: transparent;
-  color: var(--accent-color);
-
-  border: 1px solid color-mix(in srgb, var(--accent-color) 55%, transparent);
-  box-shadow: 0 10px 18px rgba(0,0,0,0.25);
-}
-
-.btn-outline:hover {
-  background: color-mix(in srgb, var(--accent-color) 12%, transparent);
-  box-shadow:
-    0 12px 22px rgba(0,0,0,0.35),
-    0 0 18px color-mix(in srgb, var(--accent-color) 28%, transparent);
-}
+.card h3 {
+  margin-botto
