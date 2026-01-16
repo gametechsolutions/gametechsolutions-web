@@ -254,13 +254,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nameInput = document.getElementById('clientName');
     const clientName = nameInput?.value.trim();
 
-    if (!clientName) {
-      alert('Ingresa tu nombre.');
+     if (!ctx.package) {
+      alert('Selecciona un paquete antes de continuar.');
       return;
     }
 
-    if (!ctx.package) {
-      alert('Selecciona un paquete antes de continuar.');
+    if (!clientName) {
+      alert('Ingresa tu nombre.');
       return;
     }
 
