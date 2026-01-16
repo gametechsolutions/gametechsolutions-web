@@ -88,10 +88,24 @@ async function loadPackages(ctx) {
 
       card.innerHTML = `
         <h3>${pkg.name}</h3>
-        <p><strong>$${pkg.price} MXN</strong></p>
+        <p>
+           <strong>
+             ${
+               pkg.type === 'byStorage'
+                 ? 'Precio según almacenamiento'
+                 : `$${pkg.price} MXN`
+             }
+           </strong>
+         </p>
         <ul>
-          ${pkg.includes.map(i => `<li>✔ ${i}</li>`).join('')}
-        </ul>
+           ${
+             Array.isArray(pkg.includes)
+               ? pkg.includes.map(i => `<li>✔ ${i}</li>`).join('')
+               : Array.isArray(pkg.includesBase)
+                 ? pkg.includesBase.map(i => `<li>✔ ${i}</li>`).join('')
+                 : '<li>✔ Expansión de juegos según almacenamiento</li>'
+           }
+         </ul>
         <button class="btn btn-outline package-btn">Seleccionar paquete</button>
       `;
 
