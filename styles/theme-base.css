@@ -1720,3 +1720,163 @@ section p {
   -webkit-backdrop-filter: blur(8px);
   z-index: 2;
 }
+
+/* ============================================================
+   FAQ — PREMIUM / LUXURY / DELUXE
+============================================================ */
+
+/* ===== Contenedor de tabs ===== */
+.faq-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  padding: 10px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* ===== Tabs estilo pill premium ===== */
+.faq-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(20,20,20,0.80);
+
+  color: var(--text-soft);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    transform 0.16s ease,
+    background 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    color 0.16s ease;
+}
+
+.faq-tab:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.16);
+  color: var(--text-main);
+}
+
+/* ===== Tab ACTIVO (deluxe glow) ===== */
+.faq-tab.active {
+  color: #000;
+  border-color: color-mix(in srgb, var(--accent-color) 55%, transparent);
+
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent-color) 90%, white 10%),
+    var(--accent-color)
+  );
+
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.45),
+    0 0 20px color-mix(in srgb, var(--accent-color) 35%, transparent);
+}
+
+/* ===== Secciones: transición suave ===== */
+.faq-section {
+  display: none;
+  margin-top: 18px;
+  animation: faqFade 0.18s ease;
+}
+
+.faq-section.active {
+  display: block;
+}
+
+@keyframes faqFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Items FAQ: cards luxury ===== */
+.faq-item {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+
+  padding: 18px;
+  margin-bottom: 14px;
+
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  position: relative;
+  overflow: hidden;
+
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Brillo sutil premium */
+.faq-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    800px circle at 20% 10%,
+    color-mix(in srgb, var(--accent-color) 10%, transparent),
+    transparent 60%
+  );
+
+  pointer-events: none;
+}
+
+/* Hover pro */
+.faq-item:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent-color) 25%, rgba(255,255,255,0.10));
+  box-shadow:
+    0 22px 50px rgba(0,0,0,0.55),
+    0 0 22px color-mix(in srgb, var(--accent-color) 12%, transparent);
+}
+
+/* Título FAQ */
+.faq-item h3 {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+
+/* Texto FAQ */
+.faq-item p {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+/* ===== Mobile: tabs centrados y más cómodos ===== */
+@media (max-width: 768px) {
+  .faq-tabs {
+    justify-content: center;
+  }
+
+  .faq-tab {
+    flex: 1 1 auto;
+    min-width: 110px;
+  }
+}
