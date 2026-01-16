@@ -817,12 +817,50 @@ section p {
   color: #000;
 }
 
+/* =========================
+   LISTAS PREMIUM DENTRO DE CARDS
+========================= */
+
 .card ul {
-  margin: 10px 0 0;
-  padding-left: 18px;
+  list-style: none;              /* sin bullets default */
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 10px;                     /* separación elegante */
 }
 
 .card li {
-  margin-bottom: 6px;
+  position: relative;
+  padding-left: 30px;            /* espacio para el bullet custom */
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.55;
 }
+
+/* Bullet premium con check usando accent */
+.card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 12px;
+
+  background: color-mix(in srgb, var(--accent-color) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-color) 35%, transparent);
+  color: var(--accent-color);
+}
+
+/* Hover sutil para que se sienta "premium" */
+.card:hover li::before {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
 
