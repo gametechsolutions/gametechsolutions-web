@@ -178,27 +178,60 @@ nav {
 /* Submenú (desktop) */
 .submenu {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: calc(100% + 10px); /* separación con el menú */
+  left: 50%;
+  transform: translateX(-50%);
 
-  background-color: var(--bg-panel);
-  border: 1px solid var(--border-soft);
-  border-radius: 6px;
+  min-width: 240px;
+  padding: 8px;
 
-  min-width: 160px;
   display: none;
-
   z-index: 2000;
+
+  background: rgba(20,20,20,0.92);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 20px 45px rgba(0,0,0,0.55),
+    0 0 20px rgba(0,0,0,0.20);
+
+  opacity: 0;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.nav-menu li:hover > .submenu {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .submenu li a {
-  display: block;
-  padding: 10px 14px;
-  font-weight: normal;
-  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  line-height: 1.4;
-  white-space: normal;
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--text-main);
+
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease, color 0.18s ease;
+}
+
+.submenu li a:hover {
+  background: color-mix(in srgb, var(--accent-color) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-color) 35%, transparent);
+  color: var(--text-main);
+
+  transform: translateY(-1px);
 }
 
 .submenu li a:hover {
@@ -248,6 +281,17 @@ nav {
   gap: 4px;
 }
 
+.nav-menu a,
+.menu-parent {
+  border-radius: 999px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.nav-menu a:hover,
+.menu-parent:hover {
+  background: rgba(255,255,255,0.04);
+  color: var(--accent-color);
+}
 
 /* ============================================================
   6) SECCIONES Y TIPOGRAFÍA
@@ -705,14 +749,6 @@ section p {
   - Repetido en tu archivo original. Se mantiene.
 ============================================================ */
 
-.submenu {
-  list-style: none;
-  padding: 6px 0;
-  margin: 0;
-
-  /* ya tenía min-width definido arriba, se conserva el override */
-  min-width: 220px;
-}
 
 .submenu li {
   list-style: none;
