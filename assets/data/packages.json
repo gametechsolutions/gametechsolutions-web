@@ -79,6 +79,21 @@
         "Limpieza Completa",
         "Hasta 10 Juegos"
       ]
+    },
+    {
+      "id": "expansion",
+      "name": "Expansión",
+      "type": "byStorage",
+      "prices": {
+        "120": { "price": 300, "games": 10 },
+        "250": { "price": 350, "games": 25 },
+        "320": { "price": 400, "games": 30 },
+        "500": { "price": 700, "games": 50 },
+        "1000": { "price": 900, "games": 100 }
+      },
+      "includesBase": [
+        "Instalación de juegos adicionales"
+      ]
     }
   ],
 
