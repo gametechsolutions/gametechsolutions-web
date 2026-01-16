@@ -1431,3 +1431,115 @@ section p {
   font-size: 12px;
   color: var(--text-muted);
 }
+
+/* =========================
+   SELECTOR CATALOGO (LUXURY)
+========================= */
+
+.selector-catalog {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 45px rgba(0,0,0,0.55),
+    0 0 26px rgba(0,0,0,0.20);
+
+  padding: 22px;
+
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Scroll más elegante */
+.selector-catalog::-webkit-scrollbar {
+  width: 8px;
+}
+.selector-catalog::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.10);
+  border-radius: 999px;
+}
+.selector-catalog::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.16);
+}
+
+/* Título catálogo */
+.selector-catalog h3 {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ===== Items (cada juego) ===== */
+.selector-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 12px;
+  border-radius: 16px;
+
+  border: 1px solid transparent;
+  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+
+/* Hover premium */
+.selector-item:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+  transform: translateY(-1px);
+}
+
+/* Nombre del juego: más pro */
+.selector-item span:first-child {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* Tamaño: badge */
+.selector-item span:nth-child(2) {
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--text-main);
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Botón Agregar premium dentro del catálogo */
+.selector-item .btn-small {
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* Estado agregado (ya lo tienes en JS con .added) */
+.selector-item .btn-small.added {
+  background: rgba(255,255,255,0.06) !important;
+  color: rgba(255,255,255,0.55) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow: none !important;
+}
+
+/* Disabled (cuando no cabe por espacio) */
+.selector-item .btn-small:disabled:not(.added) {
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: not-allowed;
+  box-shadow: none;
+}
