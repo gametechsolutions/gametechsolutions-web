@@ -126,216 +126,77 @@ async function loadPackages(ctx) {
   }
 }
 
-{
-  "PS2": {
-    "storageType": "USB",
-    "flow": "storage-based",
-    "basePackages": [
-      {
-        "id": "basico",
-        "name": "Básico",
-        "includes": [
-          "Instalación FMCB",
-          "Configuración estándar"
-        ]
-      },
-      {
-        "id": "estandar",
-        "name": "Estándar",
-        "includes": [
-          "Instalación FMCB",
-          "Configuración básica"
-        ]
-      },
-      {
-        "id": "premium",
-        "name": "Premium",
-        "includes": [
-          "Instalación FMCB",
-          "Configuración avanzada",
-          "Limpieza básica"
-        ]
-      }
-    ],
-    "pricingByStorage": {
-      "64": {
-        "basico":   { "price": 500, "games": 20 },
-        "estandar": { "price": 650, "games": 20 },
-        "premium":  { "price": 800, "games": 20 }
-      },
-      "128": {
-        "basico":   { "price": 600, "games": 40 },
-        "estandar": { "price": 750, "games": 40 },
-        "premium":  { "price": 900, "games": 40 }
-      },
-      "256": {
-        "basico":   { "price": 1000, "games": 80 },
-        "estandar": { "price": 1150, "games": 80 },
-        "premium":  { "price": 1300, "games": 80 }
-      }
-    }
-  },
+function selectPackage(pkg) {
+  const ctx = getContext();
+  const consoleData = window.__PACKAGES_DATA?.[ctx.console.code];
 
-  "X360": {
-    "storageType": "HDD",
-    "flow": "base-plus-addons",
-    "basePackages": [
-      {
-        "id": "basico",
-        "name": "Básico",
-        "price": 400,
-        "gamesIncluded": 0,
-        "includes": [
-          "Instalación de RGH",
-          "Cambio de pasta térmica",
-          "Limpieza básica"
-        ]
-      },
-      {
-        "id": "estandar",
-        "name": "Estándar",
-        "price": 450,
-        "gamesIncluded": 10,
-        "includes": [
-          "Instalación de RGH",
-          "Cambio de pasta térmica",
-          "Limpieza básica",
-          "Hasta 10 juegos"
-        ]
-      },
-      {
-        "id": "premium",
-        "name": "Premium",
-        "price": 750,
-        "gamesIncluded": 10,
-        "includes": [
-          "Instalación de RGH",
-          "Cambio de pasta térmica",
-          "Limpieza completa",
-          "Hasta 10 juegos"
-        ]
-      }
-    ],
-    "addons": [
-      {
-        "id": "expansion",
-        "name": "Expansión de juegos",
-        "type": "byStorage",
-        "pricingByStorage": {
-          "120":  { "price": 300, "games": 10 },
-          "250":  { "price": 350, "games": 25 },
-          "320":  { "price": 400, "games": 30 },
-          "500":  { "price": 700, "games": 50 },
-          "1000": { "price": 900, "games": 100 }
-        },
-        "includes": [
-          "Instalación de juegos adicionales"
-        ]
-      }
-    ]
-  },
-
-  "PS3": {
-    "storageType": "HDD",
-    "flow": "base-plus-addons",
-    "basePackages": [
-      {
-        "id": "basico",
-        "name": "Básico",
-        "price": 200,
-        "gamesIncluded": 0,
-        "includes": [
-          "Instalación HEN o CFW",
-          "Configuración inicial"
-        ]
-      },
-      {
-        "id": "estandar",
-        "name": "Estándar",
-        "price": 250,
-        "gamesIncluded": 10,
-        "includes": [
-          "CFW / HEN",
-          "Configuración avanzada",
-          "Hasta 10 juegos"
-        ]
-      },
-      {
-        "id": "premium",
-        "name": "Premium",
-        "price": 550,
-        "gamesIncluded": 10,
-        "includes": [
-          "CFW completo",
-          "Configuración avanzada",
-          "Limpieza y pasta térmica",
-          "Hasta 10 juegos"
-        ]
-      }
-    ],
-    "addons": [
-      {
-        "id": "expansion",
-        "name": "Expansión de juegos",
-        "type": "byStorage",
-        "pricingByStorage": {
-          "500":  { "price": 800, "games": 30 },
-          "1000": { "price": 1000, "games": 60 }
-        }
-      }
-    ]
-  },
-
-  "XBOX": {
-    "storageType": "HDD",
-    "flow": "base-plus-addons",
-    "basePackages": [
-      {
-        "id": "basico",
-        "name": "Básico",
-        "price": 200,
-        "gamesIncluded": 0,
-        "includes": [
-          "Instalación softmod / modchip",
-          "Configuración básica"
-        ]
-      },
-      {
-        "id": "estandar",
-        "name": "Estándar",
-        "price": 250,
-        "gamesIncluded": 10,
-        "includes": [
-          "Softmod / modchip",
-          "Dash configurado",
-          "Hasta 10 juegos"
-        ]
-      },
-      {
-        "id": "premium",
-        "name": "Premium",
-        "price": 550,
-        "gamesIncluded": 10,
-        "includes": [
-          "Softmod / modchip",
-          "Optimización",
-          "Hasta 10 juegos"
-        ]
-      }
-    ],
-    "addons": [
-      {
-        "id": "expansion",
-        "name": "Expansión de juegos",
-        "type": "byStorage",
-        "pricingByStorage": {
-          "500":  { "price": 1100, "games": 100 },
-          "1000": { "price": 1300, "games": 200 }
-        }
-      }
-    ]
+  if (!consoleData) {
+    alert('No se pudo cargar la información del paquete.');
+    return;
   }
+
+  const diskSize = parseInt(ctx.storage.label, 10);
+
+  // 🟡 CASO 1: PAQUETE EXPANSIÓN (depende del disco)
+  if (pkg.id === 'expansion') {
+    if (!consoleData.pricing) {
+      alert('Este paquete no está disponible.');
+      return;
+    }
+
+    const tier = consoleData.pricing[diskSize]?.[pkg.id];
+
+    if (!tier) {
+      alert(
+        'Este paquete no está disponible para ese tamaño de almacenamiento.'
+      );
+      return;
+    }
+
+    ctx.package = {
+      id: pkg.id,
+      name: pkg.name,
+      price: tier.price,
+      gamesIncluded: tier.games,
+      calculatedBy: 'storage'
+    };
+
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+    renderSummary(ctx);
+
+    alert(
+      `📦 Paquete "${pkg.name}" seleccionado\n` +
+      `💾 ${diskSize} GB\n` +
+      `🎮 ${tier.games} juegos\n` +
+      `💰 $${tier.price} MXN`
+    );
+    return;
+  }
+
+  // 🟢 CASO 2: PAQUETE NORMAL (BÁSICO / ESTÁNDAR / PREMIUM)
+  // 👉 NO depende del disco
+  // 👉 SIEMPRE es seleccionable
+  if (typeof pkg.price !== 'number') {
+    alert(
+      'Este paquete es válido, pero su precio no está definido.\n' +
+      'Revisa packages.json.'
+    );
+    return;
+  }
+
+  ctx.package = {
+    id: pkg.id,
+    name: pkg.name,
+    price: pkg.price,
+    calculatedBy: 'fixed'
+  };
+
+  localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+  renderSummary(ctx);
+
+  alert(`📦 Paquete "${pkg.name}" seleccionado\n💰 $${pkg.price} MXN`);
 }
+
 
 /* ========= WHATSAPP ========= */
 
