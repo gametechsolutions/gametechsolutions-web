@@ -139,7 +139,7 @@ function selectPackage(pkg) {
   const pricingMode = consoleData.pricingMode || 'byStorage';
 
   /* =================================================
-     MODO 1: CONSOLAS 100% POR ALMACENAMIENTO
+     CONSOLAS 100% POR ALMACENAMIENTO
      (PS2, Wii, Vita, GameCube)
   ================================================= */
 
@@ -172,13 +172,13 @@ function selectPackage(pkg) {
   }
 
   /* =================================================
-     MODO 2: CONSOLAS MIXTAS
-     (Xbox 360, PS3, Xbox)
+     CONSOLAS MIXTAS
+     (Xbox 360, PS3, Xbox clásica)
   ================================================= */
 
   if (pricingMode === 'mixed') {
 
-    // 🔹 EXPANSIÓN (depende del disco)
+    // 🔹 EXPANSIÓN → depende del disco
     if (pkg.id === 'expansion') {
       const tier = consoleData.pricing?.[diskSize]?.[pkg.id];
 
@@ -207,7 +207,7 @@ function selectPackage(pkg) {
       return;
     }
 
-    // 🔹 PAQUETES BASE (precio fijo)
+    // 🔹 BÁSICO / ESTÁNDAR / PREMIUM → precio fijo
     if (typeof pkg.price === 'number') {
       ctx.package = {
         id: pkg.id,
