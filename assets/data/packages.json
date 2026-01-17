@@ -1,178 +1,45 @@
-{
-  "PS2": {
-    "storageType": "USB",
-    "packages": [
-      {
-        "id": "basico",
-        "name": "Básico",
-        "requiresCatalog": true,
-        "includedGamesByStorage": true,
-        "includes": [
-          "Instalación FMCB",
-          "Configuración estándar"
-        ]
-      },
-      {
-        "id": "estandar",
-        "name": "Estándar",
-        "requiresCatalog": true,
-        "includedGamesByStorage": true,
-        "includes": [
-          "Instalación FMCB",
-          "Configuración básica"
-        ]
-      },
-      {
-        "id": "premium",
-        "name": "Premium",
-        "requiresCatalog": true,
-        "includedGamesByStorage": true,
-        "includes": [
-          "Instalación FMCB",
-          "Configuración avanzada",
-          "Limpieza básica"
-        ]
-      }
-    ],
-    "pricing": {
-      "64": {
-        "basico": { "price": 500, "games": 20 },
-        "estandar": { "price": 650, "games": 20 },
-        "premium": { "price": 800, "games": 20 }
-      },
-      "128": {
-        "basico": { "price": 600, "games": 40 },
-        "estandar": { "price": 750, "games": 40 },
-        "premium": { "price": 900, "games": 40 }
-      },
-      "256": {
-        "basico": { "price": 1000, "games": 80 },
-        "estandar": { "price": 1150, "games": 80 },
-        "premium": { "price": 1300, "games": 80 }
-      }
-    }
-  },
-
-  "PS3": {
-    "packages": [
-      {
-        "id": "basico",
-        "name": "Básico",
-        "requiresCatalog": false,
-        "includedGames": 0,
-        "includes": [
-          "Instalación HEN o CFW",
-          "Configuración básica"
-        ]
-      },
-      {
-        "id": "estandar",
-        "name": "Estándar",
-        "requiresCatalog": true,
-        "includedGames": 10,
-        "allowExtraGames": true,
-        "includes": [
-          "Instalación HEN o CFW",
-          "10 juegos incluidos"
-        ]
-      },
-      {
-        "id": "premium",
-        "name": "Premium",
-        "requiresCatalog": true,
-        "includedGames": 10,
-        "allowExtraGames": true,
-        "includes": [
-          "CFW completo",
-          "10 juegos incluidos",
-          "Limpieza y pasta térmica"
-        ]
-      }
-    ],
-    "expansion": {
-      "requiresCatalog": true,
-      "byStorage": true,
-      "prices": {
-        "500": { "price": 800, "games": 30 },
-        "1000": { "price": 1000, "games": 60 }
-      }
-    }
-  },
-
-  "X360": {
-    "packages": [
-      {
-        "id": "basico",
-        "name": "Básico",
-        "requiresCatalog": false,
-        "includedGames": 0,
-        "includes": [
-          "Instalación de RGH",
-          "Cambio de pasta térmica",
-          "Limpieza básica"
-        ]
-      },
-      {
-        "id": "estandar",
-        "name": "Estándar",
-        "requiresCatalog": true,
-        "includedGames": 10,
-        "allowExtraGames": true,
-        "includes": [
-          "Instalación de RGH",
-          "Cambio de pasta térmica",
-          "Limpieza básica",
-          "10 juegos incluidos"
-        ]
-      },
-      {
-        "id": "premium",
-        "name": "Premium",
-        "requiresCatalog": true,
-        "includedGames": 10,
-        "allowExtraGames": true,
-        "includes": [
-          "Instalación de RGH",
-          "Limpieza completa",
-          "Cambio de pasta térmica",
-          "10 juegos incluidos"
-        ]
-      }
-    ],
-    "expansion": {
-      "requiresCatalog": true,
-      "byStorage": true,
-      "prices": {
-        "120": { "price": 300, "games": 10 },
-        "250": { "price": 350, "games": 25 },
-        "320": { "price": 400, "games": 30 },
-        "500": { "price": 700, "games": 50 },
-        "1000": { "price": 900, "games": 100 }
-      }
-    }
-  },
-
-  "XBOX": [
+"PS3": {
+  "packages": [
     {
       "id": "basico",
       "name": "Básico",
-      "price": 1000,
+      "requiresCatalog": false,
+      "includedGames": 0,
       "includes": [
-        "Instalación MODXO",
-        "Configuración básica",
-        "Dash Aurora"
+        "Instalación HEN o CFW",
+        "Configuración básica"
+      ]
+    },
+    {
+      "id": "estandar",
+      "name": "Estándar",
+      "requiresCatalog": true,
+      "includedGames": 10,
+      "allowExtraGames": true,
+      "includes": [
+        "Instalación HEN o CFW",
+        "10 juegos incluidos"
       ]
     },
     {
       "id": "premium",
       "name": "Premium",
-      "price": 1500,
+      "requiresCatalog": true,
+      "includedGames": 10,
+      "allowExtraGames": true,
       "includes": [
-        "Instalación MODXO",
-        "Dash Aurora + Freestyle",
-        "Hasta 30 juegos",
-        "Optimización"
+        "CFW completo",
+        "10 juegos incluidos",
+        "Limpieza y pasta térmica"
       ]
     }
-  ]
+  ],
+  "expansion": {
+    "requiresCatalog": true,
+    "byStorage": true,
+    "prices": {
+      "500": { "price": 800, "games": 30 },
+      "1000": { "price": 1000, "games": 60 }
+    }
+  }
 }
