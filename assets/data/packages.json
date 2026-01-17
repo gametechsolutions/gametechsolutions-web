@@ -104,6 +104,7 @@
       {
         "id": "basico",
         "name": "Básico",
+        "price": 400,
         "requiresCatalog": false,
         "includedGames": 0,
         "includes": [
@@ -115,6 +116,7 @@
       {
         "id": "estandar",
         "name": "Estándar",
+        "price": 450,
         "requiresCatalog": true,
         "includedGames": 10,
         "allowExtraGames": true,
@@ -128,6 +130,7 @@
       {
         "id": "premium",
         "name": "Premium",
+        "price": 750,
         "requiresCatalog": true,
         "includedGames": 10,
         "allowExtraGames": true,
