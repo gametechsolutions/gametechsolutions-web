@@ -119,6 +119,29 @@ async function loadPackages(ctx) {
       container.appendChild(card);
     });
 
+     // ➕ Mostrar expansión si existe
+   if (consoleData.expansion) {
+     const expCard = document.createElement('div');
+     expCard.className = 'card';
+   
+     expCard.innerHTML = `
+       <h3>Expansión</h3>
+       <p><strong>Precio según almacenamiento</strong></p>
+       <ul>
+         ${(consoleData.expansion.includesBase || []).map(i => `<li>✔ ${i}</li>`).join('')}
+       </ul>
+       <button class="btn btn-outline package-btn">
+         Seleccionar paquete
+       </button>
+     `;
+   
+     expCard.querySelector('button').addEventListener('click', () => {
+       selectPackage({ id: 'expansion', name: 'Expansión' });
+     });
+   
+     container.appendChild(expCard);
+   }
+
   } catch (err) {
     console.error('Error cargando paquetes:', err);
     container.innerHTML =
@@ -136,14 +159,12 @@ function selectPackage(pkg) {
   }
 
   const diskSize = parseInt(ctx.storage.label, 10);
-  const pricingMode = consoleData.pricingMode || 'byStorage';
 
   /* =================================================
-     CONSOLAS 100% POR ALMACENAMIENTO
-     (PS2, Wii, Vita, GameCube)
+     CASO 1: CONSOLAS POR ALMACENAMIENTO (PS2, Wii, etc.)
   ================================================= */
 
-  if (pricingMode === 'byStorage') {
+  if (consoleData.pricing && !consoleData.expansion) {
     const tier = consoleData.pricing?.[diskSize]?.[pkg.id];
 
     if (!tier) {
@@ -163,72 +184,65 @@ function selectPackage(pkg) {
     renderSummary(ctx);
 
     alert(
-      `📦 Paquete "${pkg.name}" seleccionado\n` +
-      `💾 ${diskSize} GB\n` +
-      `🎮 ${tier.games} juegos\n` +
-      `💰 $${tier.price} MXN`
+      `📦 ${pkg.name}\n💾 ${diskSize} GB\n🎮 ${tier.games} juegos\n💰 $${tier.price} MXN`
     );
     return;
   }
 
   /* =================================================
-     CONSOLAS MIXTAS
-     (Xbox 360, PS3, Xbox clásica)
+     CASO 2: EXPANSIÓN (Xbox 360 / PS3)
   ================================================= */
 
-  if (pricingMode === 'mixed') {
+  if (pkg.id === 'expansion') {
+    const tier = consoleData.expansion?.prices?.[diskSize];
 
-    // 🔹 EXPANSIÓN → depende del disco
-    if (pkg.id === 'expansion') {
-      const tier = consoleData.pricing?.[diskSize]?.[pkg.id];
-
-      if (!tier) {
-        alert('Este paquete no está disponible para ese almacenamiento.');
-        return;
-      }
-
-      ctx.package = {
-        id: pkg.id,
-        name: pkg.name,
-        price: tier.price,
-        gamesIncluded: tier.games,
-        calculatedBy: 'storage'
-      };
-
-      localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-      renderSummary(ctx);
-
-      alert(
-        `📦 Paquete "${pkg.name}" seleccionado\n` +
-        `💾 ${diskSize} GB\n` +
-        `🎮 ${tier.games} juegos\n` +
-        `💰 $${tier.price} MXN`
-      );
+    if (!tier) {
+      alert('Este paquete no está disponible para ese almacenamiento.');
       return;
     }
 
-    // 🔹 BÁSICO / ESTÁNDAR / PREMIUM → precio fijo
-    if (typeof pkg.price === 'number') {
-      ctx.package = {
-        id: pkg.id,
-        name: pkg.name,
-        price: pkg.price,
-        calculatedBy: 'fixed'
-      };
+    ctx.package = {
+      id: 'expansion',
+      name: 'Expansión',
+      price: tier.price,
+      gamesIncluded: tier.games,
+      calculatedBy: 'storage'
+    };
 
-      localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-      renderSummary(ctx);
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+    renderSummary(ctx);
 
-      alert(`📦 Paquete "${pkg.name}" seleccionado\n💰 $${pkg.price} MXN`);
-      return;
-    }
-
-    alert('Este paquete no está disponible.');
+    alert(
+      `📦 Expansión\n💾 ${diskSize} GB\n🎮 ${tier.games} juegos\n💰 $${tier.price} MXN`
+    );
     return;
   }
 
-  alert('Configuración inválida del paquete.');
+  /* =================================================
+     CASO 3: PAQUETES FIJOS (BÁSICO / ESTÁNDAR / PREMIUM)
+  ================================================= */
+
+  if (typeof pkg.includedGames === 'number') {
+    ctx.package = {
+      id: pkg.id,
+      name: pkg.name,
+      price: pkg.price ?? 0,
+      gamesIncluded: pkg.includedGames,
+      calculatedBy: 'fixed'
+    };
+
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+    renderSummary(ctx);
+
+    alert(
+      `📦 ${pkg.name}\n🎮 Juegos incluidos: ${pkg.includedGames}\n💰 Precio base`
+    );
+    return;
+  }
+
+  alert('Configuración de paquete inválida.');
 }
+
 
 /* ========= WHATSAPP ========= */
 
