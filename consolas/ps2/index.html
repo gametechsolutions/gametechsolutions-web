@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/styles/theme-base.css">
 
   <!-- Tema de consola -->
-  <link rel="stylesheet" href="/styles/theme-sony.css">
+  <link rel="stylesheet" href="/styles/theme-microsoft.css">
 </head>
 <body>
 
@@ -22,64 +22,38 @@
   <div class="container">
 
     <section>
-      <h2>Servicios disponibles</h2>
-      <p>
-        La <strong class="console-name"></strong> permite diferentes métodos de modificación según
-        el modelo. Se utilizan soluciones estables y probadas.
-      </p>
-    </section>
-
-    <section>
-      <h2>¿Qué ofrecemos para <strong class="console-name"></strong>?</h2>
+      <h2>Servicios para <strong class="console-name"></strong></h2>
 
       <div class="cards-grid">
 
         <div class="card">
-          <h3>🔓 Instalación de FMCB o Funtuna</h3>
-          <p>
-            Se instala el método adecuado según el modelo de tu Xbox 360,
-            permitiendo ejecutar juegos y aplicaciones.
-          </p>
+          <h3>🔓 FMCB o Funtuna</h3>
+          <ul>
+            <li>Memory Card con FMCB o Funtuna</li>
+            <li>Configuración y pruebas completas</li>
+          </ul>
         </div>
 
         <div class="card">
           <h3>🎮 Instalación de juegos</h3>
-          <p>
-            Carga de juegos de PlayStation 2 según compatibilidad,
-            respetando el espacio disponible.
-          </p>
+          <ul>
+            <li>Carga de juegos en disco duro</li>
+            <li>Juegos organizados y verificados</li>
+          </ul>
         </div>
 
         <div class="card">
           <h3>🧼 Limpieza y mantenimiento</h3>
-          <p>
-            Limpieza interna, cambio de pasta térmica y revisión general
-            para reducir temperatura y ruido.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>💾 Ampliación de almacenamiento</h3>
-          <p>
-            Reemplazo o ampliación del disco duro con configuración
-            correcta del sistema.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>⚙️ Firmware y configuración</h3>
-          <p>
-            Instalación o actualización de OFW, HFW o CFW según
-            el servicio solicitado.
-          </p>
+          <ul>
+            <li>Limpieza interna</li>
+          </ul>
         </div>
 
         <div class="card">
           <h3>🛡️ Garantía en juegos</h3>
-          <p>
-            Garantía de 30 días en juegos instalados por fallas
-            atribuibles a la instalación.
-          </p>
+          <ul>
+            <li>Garantía de 30 días en juegos instalados</li>
+          </ul>
         </div>
 
       </div>
@@ -88,49 +62,18 @@
     <section>
       <h2>¿No sabes qué modelo es tu consola?</h2>
       <p>
-        Muchos clientes no saben si su PlayStation 2 es Fat o Slim.
         Aquí te ayudamos a identificarla fácilmente.
       </p>
       <a class="btn" href="/consolas/ps2/identificar">Identificar mi consola</a>
     </section>
     
-    <section>
-      <h2>Proceso de trabajo</h2>
-
-      <div class="cards-grid">
-
-        <div class="card">
-          <h3>1️⃣ Revisión</h3>
-          <p>Revisión física y funcional básica de la consola.</p>
-        </div>
-
-        <div class="card">
-          <h3>2️⃣ Servicio</h3>
-          <p>Instalación, limpieza o configuración solicitada.</p>
-        </div>
-
-        <div class="card">
-          <h3>3️⃣ Pruebas</h3>
-          <p>Pruebas internas de funcionamiento y estabilidad.</p>
-        </div>
-
-        <div class="card">
-          <h3>4️⃣ Entrega</h3>
-          <p>Envío de evidencia en video y entrega de la consola.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <h2>Selección de juegos</h2>
+    <!-- <section>
+      <h2>Catálogo de juegos</h2>
       <p>
-        Los juegos se seleccionan desde un catálogo disponible.
-        La cantidad final depende del tamaño del disco duro
-        y del peso de cada título.
+        Consulta el catálogo y arma tu lista
       </p>
       <a class="btn" id="catalogLink">Ver catálogo de juegos</a>
-    </section>
+    </section> -->
 
   </div>
 </main>
@@ -153,7 +96,7 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    
+  
     /* ===== TÍTULO DE PÁGINA ===== */
     document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
   
