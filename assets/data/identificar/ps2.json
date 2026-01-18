@@ -6,13 +6,13 @@
       "id": "fat",
       "name": "PlayStation 2 FAT",
       "notes": "Modelos antiguos, pueden requerir revisión por placa.",
-      "image": "/assets/img/consolas/xbox360/models/fat.png"
+      "image": "/assets/img/consolas/ps2/models/fat.png"
     },
     {
       "id": "slim",
       "name": "PlayStation 2 Slim",
       "notes": "Compatible con RGH dependiendo de la placa.",
-      "image": "/assets/img/consolas/xbox360/models/slim.png"
+      "image": "/assets/img/consolas/ps2/models/slim.png"
     }
   ]
 }
