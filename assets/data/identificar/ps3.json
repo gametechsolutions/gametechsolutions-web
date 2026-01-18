@@ -1,1 +1,24 @@
-
+{
+  "title": "Identificar PlayStation 3",
+  "description": "Selecciona el modelo de tu PlayStation 3 para continuar.",
+  "models": [
+    {
+      "id": "fat",
+      "name": "PlayStation 3 FAT",
+      "notes": "Todos los modelos compatibles con CFW o HEN",
+      "image": "/assets/img/consolas/ps3/models/fat.png"
+    },
+    {
+      "id": "slim",
+      "name": "PlayStation 3 Slim",
+      "notes": "Algunos modelos compatibles con CFW. Todos los modelos compatibles con HEN",
+      "image": "/assets/img/consolas/ps3/models/slim.png"
+    },
+    {
+      "id": "super slim",
+      "name": "PlayStation 3 Super Slim",
+      "notes": "Todos los modelos compatibles solo con HEN",
+      "image": "/assets/img/consolas/ps3/models/super-slim.png"
+    }
+  ]
+}
