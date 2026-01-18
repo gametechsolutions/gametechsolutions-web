@@ -175,6 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevContext =
       JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
 
+    // 🧩 Inyectar modelo por defecto si la consola no tiene identificación
+    if (!prevContext.model) {
+      prevContext.model = {
+        id: 'default',
+        description: `${CONSOLE_CONFIG.fullName} (modelo único)`,
+        notes: 'Modelo único, no requiere identificación previa'
+      };
+    }
+
     // ✅ GUARDAR CONTEXTO GLOBAL (ROBUSTO)
     const contextPayload = {
       ...prevContext, // 👈 CLAVE: conserva model, package, etc.
