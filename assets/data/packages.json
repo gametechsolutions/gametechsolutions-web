@@ -58,6 +58,7 @@
       {
         "id": "basico",
         "name": "Básico",
+        "price": 200,
         "requiresCatalog": false,
         "includedGames": 0,
         "includes": [
@@ -68,6 +69,7 @@
       {
         "id": "estandar",
         "name": "Estándar",
+        "price": 250,
         "requiresCatalog": true,
         "includedGames": 10,
         "allowExtraGames": true,
@@ -79,6 +81,7 @@
       {
         "id": "premium",
         "name": "Premium",
+        "price": 550,
         "requiresCatalog": true,
         "includedGames": 10,
         "allowExtraGames": true,
@@ -93,8 +96,8 @@
       "requiresCatalog": true,
       "byStorage": true,
       "prices": {
-        "500": { "price": 800, "games": 30 },
-        "1000": { "price": 1000, "games": 60 }
+        "500": { "price": 800, "games": 40 },
+        "1000": { "price": 1000, "games": 80 }
       }
     }
   },
