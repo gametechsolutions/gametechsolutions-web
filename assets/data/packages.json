@@ -1,4 +1,59 @@
 {
+  "GameCube": {
+    "storageType": "SD",
+    "packages": [
+      {
+        "id": "basico",
+        "name": "Básico",
+        "requiresCatalog": true,
+        "includedGamesByStorage": true,
+        "includes": [
+          "Instalación PicoBoot",
+          "Configuración básica"
+        ]
+      },
+      {
+        "id": "estandar",
+        "name": "Estándar",
+        "requiresCatalog": true,
+        "includedGamesByStorage": true,
+        "includes": [
+          "Instalación PicoBoot",
+          "Configuración estándar",
+          "Limpieza básica"
+        ]
+      },
+      {
+        "id": "premium",
+        "name": "Premium",
+        "requiresCatalog": true,
+        "includedGamesByStorage": true,
+        "includes": [
+          "Instalación PicoBoot",
+          "Configuración premium",
+          "Limpieza completa"
+        ]
+      }
+    ],
+    "pricing": {
+      "32": {
+        "basico": { "price": 600, "games": 20 },
+        "estandar": { "price": 750, "games": 20 },
+        "premium": { "price": 900, "games": 20 }
+      },
+      "64": {
+        "basico": { "price": 700, "games": 40 },
+        "estandar": { "price": 850, "games": 40 },
+        "premium": { "price": 1000, "games": 40 }
+      },
+      "128": {
+        "basico": { "price": 800, "games": 80 },
+        "estandar": { "price": 950, "games": 80 },
+        "premium": { "price": 1100, "games": 80 }
+      }
+    }
+  },
+  
   "PS2": {
     "storageType": "USB",
     "packages": [
