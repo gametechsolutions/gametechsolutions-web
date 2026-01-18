@@ -5,13 +5,13 @@
     {
       "id": "fat",
       "name": "PlayStation 2 FAT",
-      "notes": "Modelos antiguos, pueden requerir revisión por placa.",
+      "notes": "Compatible con Memory Card con FMCB",
       "image": "/assets/img/consolas/ps2/models/fat.png"
     },
     {
       "id": "slim",
       "name": "PlayStation 2 Slim",
-      "notes": "Compatible con RGH dependiendo de la placa.",
+      "notes": "Compatible con Memory Card con Funtuna",
       "image": "/assets/img/consolas/ps2/models/slim.png"
     }
   ]
