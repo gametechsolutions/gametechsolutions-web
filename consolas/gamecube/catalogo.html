@@ -41,15 +41,21 @@
       <div class="cards-grid">
         <div class="card">
           <h3>💾 Espacio disponible</h3>
-          <p>No todos los juegos caben en todos los discos.</p>
+          <ul>
+            <li>No todos los juegos caben en todos los discos</li>
+          </ul>
         </div>
         <div class="card">
           <h3>⚠️ Compatibilidad</h3>
-          <p>Algunos títulos pueden requerir configuraciones especiales.</p>
+          <ul>
+            <li>Algunos títulos pueden requerir configuraciones especiales.</li>
+          </ul>
         </div>
         <div class="card">
           <h3>🛡️ Garantía</h3>
-          <p>Los juegos instalados cuentan con garantía de 30 días.</p>
+          <ul>
+            <li>Los juegos instalados cuentan con garantía de 30 días.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -111,6 +117,7 @@
       <h2>Selecciona el tamaño de la USB</h2>
       <p>
         Elige el tamaño de la USB que deseas instalar.
+        La capacidad usable es aproximada y considera el espacio del sistema.
       </p>
     
       <div class="disk-selector">
@@ -167,9 +174,9 @@
           <p>💾 Espacio estimado: <strong id="totalSize">0</strong> GB</p>
 
           <div class="selection-actions">
+            <button class="btn-small" id="saveSelection">Guardar selección</button>
             <button class="btn-small" id="removeLast">Quitar último</button>
             <button class="btn-small danger" id="clearAll">Vaciar selección</button>
-            <button class="btn-small" id="saveSelection">Guardar selección</button>
           </div>
 
           <p class="selector-note">
@@ -179,12 +186,6 @@
 
       </div>
     </section>
-
-    <!-- CTA -->
-    <section>
-      <a class="btn" href="/contacto/">Contactar para instalación</a>
-    </section>
-
   </div>
 </main>
 
@@ -205,6 +206,7 @@
   };
 </script>
 
+<script src="/assets/js/context.js"></script>
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/catalogo-base.js"></script>
 
