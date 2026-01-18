@@ -194,42 +194,53 @@ function selectPackage(pkg) {
   ================================================= */
 
   if (pkg.id === 'expansion') {
-    const tier = consoleData.expansion?.prices?.[diskSize];
-
-    if (!tier) {
-      alert('Este paquete no está disponible para ese almacenamiento.');
-      return;
-    }
-
-    const basePackage = ctx.package;
-
-   const totalPrice =
-     (basePackage?.basePrice || 0) + tier.price;
+     const basePackage = ctx.package;
    
-   ctx.package = {
-     id: basePackage ? `${basePackage.id}+expansion` : 'expansion',
-     name: basePackage
-       ? `${basePackage.name} + Expansión`
-       : 'Expansión',
-     basePrice: basePackage?.basePrice || 0,
-     expansionPrice: tier.price,
-     price: totalPrice,
-     gamesIncluded:
-       (basePackage?.gamesIncluded || 0) + tier.games,
-     calculatedBy: 'mixed'
-   };
+     if (!basePackage) {
+       alert('Primero selecciona un paquete base.');
+       return;
+     }
    
-   localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-   renderSummary(ctx);
-
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-    renderSummary(ctx);
-
-    alert(
-      `📦 Expansión\n💾 ${diskSize} GB\n🎮 ${tier.games} juegos\n💰 $${tier.price} MXN`
-    );
-    return;
-  }
+     // ❌ No permitir expansión con básico
+     if (basePackage.includedGames === 0) {
+       alert(
+         'El paquete Básico no incluye juegos.\n' +
+         'Selecciona Estándar o Premium para poder agregar Expansión.'
+       );
+       return;
+     }
+   
+     const tier = consoleData.expansion?.prices?.[diskSize];
+   
+     if (!tier) {
+       alert('La expansión no está disponible para ese tamaño de disco.');
+       return;
+     }
+   
+     const totalPrice =
+       (basePackage.basePrice || basePackage.price || 0) + tier.price;
+   
+     ctx.package = {
+       id: `${basePackage.id}+expansion`,
+       name: `${basePackage.name} + Expansión`,
+       basePrice: basePackage.basePrice || basePackage.price || 0,
+       expansionPrice: tier.price,
+       price: totalPrice,
+       gamesIncluded:
+         (basePackage.gamesIncluded || 0) + tier.games,
+       calculatedBy: 'mixed'
+     };
+   
+     localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+     renderSummary(ctx);
+   
+     alert(
+       `📦 ${ctx.package.name}\n` +
+       `🎮 Juegos totales: ${ctx.package.gamesIncluded}\n` +
+       `💰 Total: $${ctx.package.price} MXN`
+     );
+     return;
+   }
 
   /* =================================================
      CASO 3: PAQUETES FIJOS (BÁSICO / ESTÁNDAR / PREMIUM)
