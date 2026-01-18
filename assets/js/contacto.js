@@ -201,13 +201,26 @@ function selectPackage(pkg) {
       return;
     }
 
-    ctx.package = {
-      id: 'expansion',
-      name: 'Expansión',
-      price: tier.price,
-      gamesIncluded: tier.games,
-      calculatedBy: 'storage'
-    };
+    const basePackage = ctx.package;
+
+   const totalPrice =
+     (basePackage?.basePrice || 0) + tier.price;
+   
+   ctx.package = {
+     id: basePackage ? `${basePackage.id}+expansion` : 'expansion',
+     name: basePackage
+       ? `${basePackage.name} + Expansión`
+       : 'Expansión',
+     basePrice: basePackage?.basePrice || 0,
+     expansionPrice: tier.price,
+     price: totalPrice,
+     gamesIncluded:
+       (basePackage?.gamesIncluded || 0) + tier.games,
+     calculatedBy: 'mixed'
+   };
+   
+   localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+   renderSummary(ctx);
 
     localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
     renderSummary(ctx);
@@ -222,23 +235,26 @@ function selectPackage(pkg) {
      CASO 3: PAQUETES FIJOS (BÁSICO / ESTÁNDAR / PREMIUM)
   ================================================= */
 
-  if (typeof pkg.includedGames === 'number') {
-    ctx.package = {
-      id: pkg.id,
-      name: pkg.name,
-      price: pkg.price ?? 0,
-      gamesIncluded: pkg.includedGames,
-      calculatedBy: 'fixed'
-    };
+if (typeof pkg.price === 'number') {
+  ctx.package = {
+    id: pkg.id,
+    name: pkg.name,
+    basePrice: pkg.price,
+    price: pkg.price,
+    gamesIncluded: pkg.includedGames ?? 0,
+    calculatedBy: 'fixed'
+  };
 
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-    renderSummary(ctx);
+  localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+  renderSummary(ctx);
 
-    alert(
-      `📦 ${pkg.name}\n🎮 Juegos incluidos: ${pkg.includedGames}\n💰 Precio base`
-    );
-    return;
-  }
+  alert(
+    `📦 ${pkg.name}\n` +
+    `🎮 Juegos incluidos: ${pkg.includedGames ?? 0}\n` +
+    `💰 $${pkg.price} MXN`
+  );
+  return;
+}
 
   alert('Configuración de paquete inválida.');
 }
