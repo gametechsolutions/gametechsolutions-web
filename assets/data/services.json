@@ -99,5 +99,42 @@
         "storageMode": "provided"
       }
     ]
-  }
+  },
+  "PS2": {
+  "label": "PlayStation 2",
+  "brand": "sony",
+
+  "storageOptions": {
+    "client": {
+      "label": "USB",
+      "sizes": {
+        "64": 57,
+        "128": 115,
+        "256": 232
+      }
+    }
+  },
+
+  "services": [
+    {
+      "id": "fmcb_install",
+      "name": "Instalación FreeMCBoot",
+      "price": 300,
+      "allowsGames": false,
+      "requiresStorage": false
+    },
+    {
+      "id": "games_only",
+      "name": "Carga de juegos",
+      "priceByStorage": {
+        "64": 200,
+        "128": 300,
+        "256": 700
+      },
+      "allowsGames": true,
+      "requiresStorage": true,
+      "storageMode": "provided"
+    }
+  ]
+}
 }
