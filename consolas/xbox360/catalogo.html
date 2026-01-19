@@ -8,16 +8,33 @@
 
   <!-- Base global -->
   <link rel="stylesheet" href="/styles/theme-base.css">
-
-  <!-- Tema de consola -->
+  <!-- Tema consola -->
   <link rel="stylesheet" href="/styles/theme-microsoft.css">
 </head>
 <body>
 
-<!-- HEADER (inyectado dinámicamente) -->
+<!-- HEADER -->
 <div id="header-container"></div>
 
-<!-- CONTENIDO -->
+<!-- 🔒 VALIDACIÓN TEMPRANA DE CONTEXTO -->
+<script>
+(function () {
+  const ctx = window.GTSContext?.load?.();
+
+  const allowsGames =
+    ctx?.services?.some(s =>
+      ['games_only', 'storage_with_games'].includes(s)
+    );
+
+  if (!ctx || !ctx.services?.length || !allowsGames || !ctx.storage) {
+    alert(
+      'El catálogo solo está disponible cuando seleccionas un servicio con juegos y almacenamiento.'
+    );
+    window.location.href = '/consolas/xbox360/';
+  }
+})();
+</script>
+
 <main>
   <div class="container">
 
@@ -25,7 +42,8 @@
     <section>
       <h2>¿Cómo funciona el catálogo?</h2>
       <p>
-        Desde aquí puedes consultar los juegos disponibles para <strong class="consoleFull"></strong>.
+        Desde aquí puedes consultar los juegos disponibles para
+        <strong class="consoleFull"></strong>.
         La cantidad final de juegos instalados depende del tamaño del disco duro
         y del peso de cada título.
       </p>
@@ -33,6 +51,11 @@
         Este catálogo sirve como referencia para que elijas tus juegos
         al momento de contratar el servicio.
       </p>
+    </section>
+
+    <!-- CONTEXTO DEL SERVICIO -->
+    <section class="alert info">
+      <p id="catalogContext"></p>
     </section>
 
     <!-- NOTAS -->
@@ -107,60 +130,14 @@
       </div>
     </section>
 
+    <!-- ALMACENAMIENTO (SOLO VISUAL) -->
     <section>
-      <h2>Selecciona el tamaño del disco duro</h2>
-      <p>
-        Elige el tamaño del disco duro de tu consola o el que deseas instalar.
-        La capacidad usable es aproximada y considera el espacio del sistema.
+      <h2>Almacenamiento seleccionado</h2>
+      <p class="selector-note">
+        El tamaño del disco duro se definió en el paso anterior según tu servicio.
       </p>
-    
-      <div class="disk-selector">
-        
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="120" data-limit="105">
-          <div>
-            <strong>120 GB</strong>
-            <span>Recomendado: ~10 juegos</span>
-          </div>
-        </label>
 
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="250" data-limit="226">
-          <div>
-            <strong>250 GB</strong>
-            <span>Recomendado: ~25 juegos</span>
-          </div>
-        </label>
-    
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="320" data-limit="293">
-          <div>
-            <strong>320 GB</strong>
-            <span>Recomendado: ~30 juegos</span>
-          </div>
-        </label>
-    
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="500" data-limit="460">
-          <div>
-            <strong>500 GB</strong>
-            <span>Recomendado: ~50 juegos</span>
-          </div>
-        </label>
-        
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="1000" data-limit="926">
-          <div>
-            <strong>1 TB</strong>
-            <span>Recomendado: ~100 juegos</span>
-          </div>
-        </label>
-    
-      </div>
-    
-      <p class="disk-note">
-        💡 La cantidad de juegos es solo una referencia. El límite real se determina por el espacio en GB.
-      </p>
+      <div class="disk-selector" id="storageDisplay"></div>
     </section>
 
     <!-- SELECTOR -->
@@ -173,7 +150,6 @@
         <!-- CATÁLOGO -->
         <div class="selector-catalog">
           <h3>Catálogo</h3>
-
         </div>
 
         <!-- RESUMEN -->
@@ -197,21 +173,15 @@
       </div>
     </section>
 
-    
-    <!-- CTA -->
-    <!-- <section>
-      <a class="btn" href="/contacto/">Contactar para instalación</a>
-    </section> -->
-
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <p>GameTechSolutions © 2026</p>
+  <p>GameTechSolutions ©️ 2026</p>
 </footer>
 
-  <script>
+<!-- CONFIG -->
+<script>
   window.CONSOLE_CONFIG = {
     code: 'X360',
     name: 'Xbox 360',
@@ -226,6 +196,51 @@
 <script src="/assets/js/context.js"></script>
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/catalogo-base.js"></script>
+
+<!-- CONTEXTO + BLOQUEOS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const ctx = window.GTSContext.load();
+
+  // Mostrar contexto del servicio
+  const ctxEl = document.getElementById('catalogContext');
+  if (ctxEl) {
+    const mode = ctx.services.includes('games_only')
+      ? 'usando tu disco duro'
+      : 'con disco duro incluido';
+
+    ctxEl.textContent =
+      `Estás seleccionando juegos ${mode} (${ctx.storage.label}).`;
+  }
+
+  // Mostrar almacenamiento (solo lectura)
+  const storageDisplay = document.getElementById('storageDisplay');
+  if (storageDisplay && ctx.storage) {
+    storageDisplay.innerHTML = `
+      <div class="disk-option selected">
+        <strong>${ctx.storage.label}</strong>
+        <span>Espacio usable: ${ctx.storage.usableGB} GB</span>
+      </div>
+    `;
+  }
+
+  // Bloquear radios si existen por compatibilidad
+  document.querySelectorAll('input[name="diskSize"]').forEach(r => {
+    r.disabled = true;
+  });
+
+  // Validación extra antes de guardar selección
+  const saveBtn = document.getElementById('saveSelection');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      const ctxNow = window.GTSContext.load();
+      if (!ctxNow.storage) {
+        alert('No se detectó almacenamiento válido.');
+      }
+    });
+  }
+});
+</script>
 
 </body>
 </html>
