@@ -168,7 +168,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         model: { id: model.id, description: model.name }
       });
 
-      updateRGHNotice();
       updateStorageUI();
     };
 
@@ -239,24 +238,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
 
       updateStorageUI();
-      updateRGHNotice();
     };
 
     servicesContainer.appendChild(card);
   });
-
-  /* =============================
-     RGH + MODELO E
-  ============================== */
-
-  function updateRGHNotice() {
-    const ctx = ctxAPI.load();
-    document.getElementById('rghNotice').style.display =
-      ctx.model?.id === 'e' &&
-      ctx.services?.includes('rgh_install')
-        ? 'block'
-        : 'none';
-  }
 
   /* =============================
      STORAGE
