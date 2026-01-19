@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title><strong class="console-name"></strong> | GameTechSolutions</title>
+  <title id="pageTitle">GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
@@ -17,7 +17,7 @@
   <div class="container">
 
     <section>
-      <h2>Servicio para <strong class="console-name"></strong></h2>
+      <h2>Servicio para <class="console-name"></h2>
       <p>Selecciona el modelo de tu consola y los servicios que necesitas.</p>
     </section>
 
@@ -76,6 +76,14 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
+
+  /* ===== TÍTULO DE PÁGINA ===== */
+    document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
+  
+    /* ===== TEXTOS DINÁMICOS ===== */
+    document.querySelectorAll('.console-name').forEach(el => {
+      el.textContent = CONSOLE_CONFIG.name;
+    });
 
   const ctxAPI = window.GTSContext;
 
