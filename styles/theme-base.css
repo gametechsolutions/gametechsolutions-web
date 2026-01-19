@@ -2448,3 +2448,67 @@ section p {
 .pricing-note {
   margin-top: 14px;
 }
+
+/* ===== Pricing list: líneas tipo factura ===== */
+.pricing-lines {
+  display: grid;
+  gap: 10px;
+}
+
+.pricing-line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 14px;
+
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.pricing-line:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.045);
+  border-color: rgba(255,255,255,0.10);
+}
+
+.pricing-line .name {
+  font-weight: 850;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.pricing-line .price {
+  font-weight: 1000;
+  letter-spacing: 0.2px;
+  color: rgba(255,255,255,0.92);
+}
+
+.pricing-line .price::before {
+  content: "$";
+  opacity: 0.9;
+  margin-right: 1px;
+}
+
+.pricing-line .price::after {
+  content: " MXN";
+  opacity: 0.75;
+  font-weight: 900;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+/* estado sin cargos */
+.pricing-line.muted {
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.10);
+}
+
+.pricing-line.muted .name,
+.pricing-line.muted .price {
+  color: rgba(255,255,255,0.65);
+}
