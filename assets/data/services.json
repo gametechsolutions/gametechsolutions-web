@@ -3,8 +3,36 @@
     "label": "Xbox 360",
     "brand": "microsoft",
 
-    "services": {
-      "rgh_install": {
+    "storageOptions": {
+      "client": {
+        "label": "Disco duro del cliente",
+        "sizes": {
+          "120": { "usableGB": 105 },
+          "250": { "usableGB": 226 },
+          "320": { "usableGB": 293 },
+          "500": { "usableGB": 460 },
+          "1000": { "usableGB": 926 }
+        }
+      },
+      "provided": {
+        "label": "Disco duro proporcionado por GameTechSolutions",
+        "sizes": {
+          "500": {
+            "usableGB": 460,
+            "price": 600,
+            "gamesIncluded": 50
+          },
+          "1000": {
+            "usableGB": 926,
+            "price": 900,
+            "gamesIncluded": 100
+          }
+        }
+      }
+    },
+
+    "services": [
+      {
         "id": "rgh_install",
         "name": "Instalación RGH",
         "description": "Instalación de RGH con cambio de pasta térmica.",
@@ -12,10 +40,11 @@
         "price": 400,
         "requires": [],
         "provides": ["rgh"],
-        "allowsGames": false
+        "allowsGames": false,
+        "requiresStorage": false
       },
 
-      "full_cleaning": {
+      {
         "id": "full_cleaning",
         "name": "Limpieza completa",
         "description": "Limpieza interna completa con cambio de pasta térmica.",
@@ -23,10 +52,11 @@
         "price": 300,
         "requires": [],
         "provides": [],
-        "allowsGames": false
+        "allowsGames": false,
+        "requiresStorage": false
       },
 
-      "diagnostic": {
+      {
         "id": "diagnostic",
         "name": "Revisión y diagnóstico",
         "description": "Revisión general para detectar fallas o errores.",
@@ -34,13 +64,14 @@
         "price": 150,
         "requires": [],
         "provides": [],
-        "allowsGames": false
+        "allowsGames": false,
+        "requiresStorage": false
       },
 
-      "games_only": {
+      {
         "id": "games_only",
         "name": "Carga de juegos",
-        "description": "Carga de juegos en disco duro del cliente.",
+        "description": "Carga de juegos en disco duro existente del cliente.",
         "category": "games",
         "priceByStorage": {
           "120": 200,
@@ -49,30 +80,24 @@
           "500": 350,
           "1000": 450
         },
-        "requires": ["rgh", "storage"],
+        "requires": ["rgh"],
         "provides": ["games"],
-        "allowsGames": true
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
       },
 
-      "storage_with_games": {
+      {
         "id": "storage_with_games",
         "name": "Disco duro con juegos",
         "description": "Incluye disco duro nuevo con juegos precargados.",
         "category": "storage",
-        "options": {
-          "500": {
-            "price": 600,
-            "gamesIncluded": 50
-          },
-          "1000": {
-            "price": 900,
-            "gamesIncluded": 100
-          }
-        },
         "requires": ["rgh"],
         "provides": ["storage", "games"],
-        "allowsGames": true
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
       }
-    }
+    ]
   }
 }
