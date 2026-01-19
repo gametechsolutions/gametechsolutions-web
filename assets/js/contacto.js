@@ -1,450 +1,226 @@
 /* =========================================
    CONTACTO.JS — GameTechSolutions
-   Orquestador final de contacto
+   Pricing automático por servicios
 ========================================= */
 
-/* ========= CONTEXTO ========= */
+const CONTEXT_KEY = 'GTS_CONTEXT';
 
-function getContext() {
+/* =============================
+   CONTEXTO
+============================= */
+
+function loadContext() {
   try {
-    return JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
+    return JSON.parse(localStorage.getItem(CONTEXT_KEY)) || {};
   } catch {
     return {};
   }
 }
 
-/* ========= VALIDACIÓN ========= */
+function saveContext(ctx) {
+  localStorage.setItem(CONTEXT_KEY, JSON.stringify(ctx));
+}
+
+/* =============================
+   VALIDACIÓN
+============================= */
 
 function validateContext(ctx) {
-  if (!ctx.console?.code) {
-    return 'No se detectó la consola.';
-  }
+  if (!ctx.console?.code) return 'No se detectó la consola.';
+  if (!ctx.model) return 'No se detectó el modelo de la consola.';
+  if (!ctx.services?.length) return 'No se seleccionaron servicios.';
 
-  if (!ctx.games?.selectionID) {
-    return 'No se encontró una selección válida.';
-  }
+  const needsGames = ctx.services.some(id =>
+    ['games_only', 'storage_with_games'].includes(id)
+  );
 
-  if (!ctx.storage?.label) {
-    return 'No se detectó el almacenamiento.';
+  if (needsGames) {
+    if (!ctx.storage) return 'No se detectó el almacenamiento.';
+    if (!ctx.games?.selectionID)
+      return 'No se detectó la selección de juegos.';
   }
 
   return null;
 }
 
-/* ========= UTIL ========= */
+/* =============================
+   UTIL
+============================= */
 
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
 }
 
-/* ========= RESUMEN ========= */
+/* =============================
+   RESUMEN
+============================= */
 
-function renderSummary(ctx) {
+function renderSummary(ctx, servicesCatalog) {
   setText('summary-console', ctx.console.name);
+  setText('summary-model', ctx.model.description);
+
+  // Servicios
+  const serviceNames = ctx.services
+    .map(id => servicesCatalog[id]?.name)
+    .filter(Boolean)
+    .join(', ');
+
+  setText('summary-services', serviceNames || '—');
+
+  // Storage
   setText(
-    'summary-model',
-    ctx.model?.description || 'No especificado'
+    'summary-storage',
+    ctx.storage ? ctx.storage.label : 'No aplica'
   );
-  setText('summary-storage', ctx.storage.label);
+
+  // Juegos
   setText(
     'summary-games',
-    `${ctx.games.count} juegos (${ctx.games.totalSizeGB.toFixed(2)} GB)`
+    ctx.games
+      ? `${ctx.games.count} juegos (${ctx.games.totalSizeGB.toFixed(2)} GB)`
+      : 'No aplica'
   );
-  setText('summary-id', ctx.games.selectionID);
 
-  const pkgEl = document.getElementById('summary-package');
-  if (pkgEl) {
-    if (ctx.package) {
-      pkgEl.textContent = `${ctx.package.name} — $${ctx.package.price}`;
-    } else {
-      pkgEl.textContent = 'No seleccionado';
-    }
-  }
+  setText('summary-id', ctx.games?.selectionID || '—');
 }
 
-/* ========= PAQUETES ========= */
+/* =============================
+   PRICING AUTOMÁTICO
+============================= */
 
-async function loadPackages(ctx) {
-  const container = document.getElementById('packagesContainer');
-  if (!container) return;
+function calculatePricing(ctx, servicesData) {
+  const servicesCatalog = {};
+  servicesData.services.forEach(s => (servicesCatalog[s.id] = s));
 
-  try {
-    const res = await fetch('/assets/data/packages.json');
-    const data = await res.json();
-     window.__PACKAGES_DATA = data;
+  let total = 0;
+  const breakdown = [];
 
-    const consoleData = data[ctx.console.code];
+  ctx.services.forEach(serviceId => {
+    const service = servicesCatalog[serviceId];
+    if (!service) return;
 
-      if (!consoleData || !consoleData.packages) {
-        container.innerHTML =
-          '<p class="selector-note">No hay paquetes disponibles.</p>';
-        return;
+    // Servicios con precio fijo
+    if (typeof service.price === 'number') {
+      total += service.price;
+      breakdown.push(`• ${service.name}: $${service.price}`);
+    }
+
+    // Carga de juegos (cliente)
+    if (service.id === 'games_only') {
+      const disk = ctx.storage.label.replace(' GB', '');
+      const price = service.priceByStorage?.[disk];
+      if (price) {
+        total += price;
+        breakdown.push(
+          `• Carga de juegos (${disk} GB): $${price}`
+        );
       }
-      
-      const packages = consoleData.packages;
-     
-    if (!packages.length) {
-      container.innerHTML =
-        '<p class="selector-note">No hay paquetes disponibles.</p>';
-      return;
     }
 
-    container.innerHTML = '';
-
-    packages.forEach(pkg => {
-      const card = document.createElement('div');
-      card.className = 'card';
-
-      const priceLabel =
-        pkg.price
-          ? `$${pkg.price} MXN`
-          : 'Precio según almacenamiento';
-      
-      card.innerHTML = `
-        <h3>${pkg.name}</h3>
-        <p><strong>${priceLabel}</strong></p>
-        <ul>
-          ${(pkg.includes || []).map(i => `<li>✔ ${i}</li>`).join('')}
-        </ul>
-        <button class="btn btn-outline package-btn">
-          Seleccionar paquete
-        </button>
-      `;
-
-      card.querySelector('button').addEventListener('click', () => {
-        selectPackage(pkg);
-      });
-
-      container.appendChild(card);
-    });
-
-     // ➕ Mostrar expansión si existe
-   if (consoleData.expansion) {
-     const expCard = document.createElement('div');
-     expCard.className = 'card';
-   
-     expCard.innerHTML = `
-       <h3>Expansión</h3>
-       <p><strong>Precio según almacenamiento</strong></p>
-       <ul>
-         ${(consoleData.expansion.includesBase || []).map(i => `<li>✔ ${i}</li>`).join('')}
-       </ul>
-       <button class="btn btn-outline package-btn">
-         Seleccionar paquete
-       </button>
-     `;
-   
-     expCard.querySelector('button').addEventListener('click', () => {
-       selectPackage({ id: 'expansion', name: 'Expansión' });
-     });
-   
-     container.appendChild(expCard);
-   }
-
-  } catch (err) {
-    console.error('Error cargando paquetes:', err);
-    container.innerHTML =
-      '<p class="selector-note">Error cargando paquetes.</p>';
-  }
-}
-
-function selectPackage(pkg) {
-  const ctx = getContext();
-  const consoleData = window.__PACKAGES_DATA?.[ctx.console.code];
-
-  if (!consoleData) {
-    alert('No se pudo cargar la información del paquete.');
-    return;
-  }
-
-  const diskSize = parseInt(ctx.storage.label, 10);
-
-  /* =================================================
-     CASO 1: CONSOLAS POR ALMACENAMIENTO (PS2, Wii, etc.)
-  ================================================= */
-
-  if (consoleData.pricing && !consoleData.expansion) {
-    const tier = consoleData.pricing?.[diskSize]?.[pkg.id];
-
-    if (!tier) {
-      alert('Este paquete no está disponible para ese almacenamiento.');
-      return;
+    // Disco duro con juegos
+    if (service.id === 'storage_with_games') {
+      const disk = ctx.storage.label.replace(' GB', '');
+      const opt =
+        servicesData.storageOptions.provided.sizes[disk];
+      if (opt?.price) {
+        total += opt.price;
+        breakdown.push(
+          `• Disco duro ${disk} GB con juegos: $${opt.price}`
+        );
+      }
     }
+  });
 
-    ctx.package = {
-      id: pkg.id,
-      name: pkg.name,
-      price: tier.price,
-      gamesIncluded: tier.games,
-      calculatedBy: 'storage'
-    };
-
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-    renderSummary(ctx);
-
-    alert(
-      `📦 ${pkg.name}\n💾 ${diskSize} GB\n🎮 ${tier.games} juegos\n💰 $${tier.price} MXN`
-    );
-    return;
-  }
-
-  /* =================================================
-     CASO 2: EXPANSIÓN (Xbox 360 / PS3)
-  ================================================= */
-
-  if (pkg.id === 'expansion') {
-     const basePackage = ctx.package;
-   
-     if (!basePackage) {
-       alert('Primero selecciona un paquete base.');
-       return;
-     }
-   
-     // ❌ No permitir expansión con básico
-     if (basePackage.includedGames === 0) {
-       alert(
-         'El paquete Básico no incluye juegos.\n' +
-         'Selecciona Estándar o Premium para poder agregar Expansión.'
-       );
-       return;
-     }
-   
-     const tier = consoleData.expansion?.prices?.[diskSize];
-   
-     if (!tier) {
-       alert('La expansión no está disponible para ese tamaño de disco.');
-       return;
-     }
-   
-     const totalPrice =
-       (basePackage.basePrice || basePackage.price || 0) + tier.price;
-   
-     ctx.package = {
-       id: `${basePackage.id}+expansion`,
-       name: `${basePackage.name} + Expansión`,
-       basePrice: basePackage.basePrice || basePackage.price || 0,
-       expansionPrice: tier.price,
-       price: totalPrice,
-       gamesIncluded:
-         (basePackage.gamesIncluded || 0) + tier.games,
-       calculatedBy: 'mixed'
-     };
-   
-     localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-     renderSummary(ctx);
-   
-     alert(
-       `📦 ${ctx.package.name}\n` +
-       `🎮 Juegos totales: ${ctx.package.gamesIncluded}\n` +
-       `💰 Total: $${ctx.package.price} MXN`
-     );
-     return;
-   }
-
-  /* =================================================
-     CASO 3: PAQUETES FIJOS (BÁSICO / ESTÁNDAR / PREMIUM)
-  ================================================= */
-
-if (typeof pkg.price === 'number') {
-  ctx.package = {
-    id: pkg.id,
-    name: pkg.name,
-    basePrice: pkg.price,
-    price: pkg.price,
-    gamesIncluded: pkg.includedGames ?? 0,
-    calculatedBy: 'fixed'
-  };
-
-  localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-  renderSummary(ctx);
-
-  alert(
-    `📦 ${pkg.name}\n` +
-    `🎮 Juegos incluidos: ${pkg.includedGames ?? 0}\n` +
-    `💰 $${pkg.price} MXN`
-  );
-  return;
+  return { total, breakdown };
 }
 
-  alert('Configuración de paquete inválida.');
-}
+/* =============================
+   WHATSAPP
+============================= */
 
-
-/* ========= WHATSAPP ========= */
-
-function buildWhatsAppMessage(ctx, client) {
+function buildWhatsAppMessage(ctx, pricing, clientName) {
   return `
 Hola, quiero información para un servicio.
 
-Cliente: ${client.name}
+Cliente: ${clientName}
 Consola: ${ctx.console.name}
-Modelo: ${ctx.model?.description || 'No especificado'}
-Almacenamiento: ${ctx.storage.label}
-Juegos: ${ctx.games.count} juegos 
-Disco: ${ctx.games.totalSizeGB.toFixed(2)} GB
-ID: ${ctx.games.selectionID}
-Paquete: ${ctx.package?.name || 'No seleccionado'} - $${ctx.package?.price || '—'} MXN
+Modelo: ${ctx.model.description}
+Servicios: ${ctx.services.join(', ')}
+Almacenamiento: ${ctx.storage?.label || 'No aplica'}
+Juegos: ${ctx.games?.count || 0}
 
-Gracias
+💰 Total estimado: $${pricing.total} MXN
+
+Gracias.
 `.trim();
 }
 
 function sendToWhatsApp(message) {
-  const phone = '5215543613500'; // TU NÚMERO
-  const url =
-    'https://wa.me/' +
-    phone +
-    '?text=' +
-    encodeURIComponent(message);
-
-  window.open(url, '_blank');
+  const phone = '5215543613500';
+  window.open(
+    'https://wa.me/' + phone + '?text=' + encodeURIComponent(message),
+    '_blank'
+  );
 }
 
-/* ========= AIRTABLE ========= */
-
-async function saveToAirtable(ctx, client) {
-
-  const payload = {
-    selectionID: ctx.games.selectionID,
-    clientName: client.name,
-
-    // Single select en Airtable → STRING exacto
-    console: ctx.console.name,
-
-    // Number sin decimales
-    diskSize: parseInt(ctx.storage.label, 10),
-
-    // Numbers reales
-    diskLimit: Number(ctx.storage.usableGB),
-    totalSize: Number(ctx.games.totalSizeGB),
-
-    CantidadJuegos: Number(ctx.games.count),
-
-    // Texto plano
-    selectedGames: ctx.games.humanList || '',
-
-    // JSON string (por si luego lo usas)
-    jsonGames: JSON.stringify({
-      games: ctx.games.humanList?.split('\n') || [],
-      package: ctx.package || null,
-      model: ctx.model || null
-    })
-  };
-
-  const res = await fetch('/api/save-selection', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
-
-  if (!res.ok) {
-    const err = await res.json();
-    console.error('Error Airtable:', err);
-    throw new Error('Error guardando en Airtable');
-  }
-}
-
-/* ========= ESTADO FINAL ========= */
-
-function lockFinalizedState() {
-  // Botón WhatsApp
-  const sendBtn = document.getElementById('sendBtn');
-  if (sendBtn) {
-    sendBtn.disabled = true;
-    sendBtn.textContent = 'Selección enviada ✔';
-  }
-
-  // Input nombre
-  const nameInput = document.getElementById('clientName');
-  if (nameInput) {
-    nameInput.disabled = true;
-  }
-
-  // Mensaje visual dentro del resumen
-  const summaryCard = document.getElementById('summaryCard');
-  if (summaryCard && !document.getElementById('finalizedNotice')) {
-    const notice = document.createElement('div');
-    notice.id = 'finalizedNotice';
-    notice.className = 'alert success';
-    notice.textContent =
-      '✅ Esta selección ya fue enviada. Puedes iniciar una nueva selección cuando lo desees.';
-    
-    summaryCard.prepend(notice);
-  }
-}
-
-/* ========= INIT ========= */
+/* =============================
+   INIT
+============================= */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const ctx = getContext();
+  const ctx = loadContext();
 
   const error = validateContext(ctx);
   if (error) {
     alert(`⚠️ ${error}`);
+    window.location.href = '/';
     return;
   }
 
-  renderSummary(ctx);
-  await loadPackages(ctx);
+  const servicesData = await fetch('/assets/data/services.json').then(r =>
+    r.json()
+  );
 
-  if (ctx.status === 'finalized') {
-    lockFinalizedState();
-    return;
-  }
+  const consoleServices = servicesData[ctx.console.code];
 
-  const sendBtn = document.getElementById('sendBtn');
-  if (!sendBtn) return;
+  const servicesCatalog = {};
+  consoleServices.services.forEach(s => (servicesCatalog[s.id] = s));
 
-  sendBtn.addEventListener('click', async () => {
-   const ctx = getContext();
-    const nameInput = document.getElementById('clientName');
-    const clientName = nameInput?.value.trim();
+  renderSummary(ctx, servicesCatalog);
 
-     if (!ctx.package) {
-      alert('Selecciona un paquete antes de continuar.');
-      return;
-    }
+  const pricing = calculatePricing(ctx, consoleServices);
 
-    if (!clientName) {
+  setText(
+    'pricingBreakdown',
+    pricing.breakdown.join('\n') || '—'
+  );
+  setText('pricingTotal', `$${pricing.total} MXN`);
+
+  ctx.pricing = pricing;
+  saveContext(ctx);
+
+  document.getElementById('sendBtn').onclick = () => {
+    const name = document
+      .getElementById('clientName')
+      .value.trim();
+
+    if (!name) {
       alert('Ingresa tu nombre.');
       return;
     }
 
-    const client = { name: clientName };
-    const message = buildWhatsAppMessage(ctx, client);
-
-    sendToWhatsApp(message);
+    const msg = buildWhatsAppMessage(ctx, pricing, name);
+    sendToWhatsApp(msg);
 
     ctx.status = 'finalized';
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+    saveContext(ctx);
+  };
 
-    lockFinalizedState();
-
-    try {
-      await saveToAirtable(ctx, client);
-    } catch (err) {
-      console.warn('Airtable no respondió:', err);
+  document.getElementById('newSelectionBtn').onclick = () => {
+    if (confirm('¿Deseas iniciar una nueva selección?')) {
+      localStorage.removeItem(CONTEXT_KEY);
+      window.location.href = '/';
     }
-  });
-  /* ========= NUEVA SELECCIÓN ========= */
-
-const newSelectionBtn = document.getElementById('newSelectionBtn');
-
-if (newSelectionBtn) {
-  newSelectionBtn.addEventListener('click', () => {
-    const confirmReset = confirm(
-      '¿Deseas iniciar una nueva selección?\n\n' +
-      'Esto limpiará el resumen actual y podrás empezar de nuevo.'
-    );
-
-    if (!confirmReset) return;
-
-    // 🔥 Limpiar contexto completo
-    localStorage.removeItem('GTS_CONTEXT');
-
-    // Redirigir al inicio (o cambia a un catálogo si prefieres)
-    window.location.href = '/';
-  });
-}
+  };
 });
