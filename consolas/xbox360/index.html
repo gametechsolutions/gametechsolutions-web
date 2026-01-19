@@ -116,31 +116,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     return true;
   }
 
-  function showRGHWarningIfNeeded() {
-    const ctx = ctxAPI.load();
-  
-    const needsGames = ctx.services?.some(id =>
-      ['games_only', 'storage_with_games'].includes(id)
-    );
-  
-    const hasRGH = ctx.services?.includes('rgh_install');
-  
-    if (needsGames && !hasRGH) {
-      alert(
-        'ℹ️ Para cargar juegos se requiere RGH.\n' +
-        'La compatibilidad se confirma tras revisión física.'
-      );
-    }
-  }
-
   /* =============================
-     MODELOS
+     MODELOS (UX FIX)
   ============================== */
 
   const modelsData = await fetch('/assets/data/identificar/xbox360.json')
     .then(r => r.json());
 
   const modelsContainer = document.getElementById('modelsContainer');
+  let selectedModelCard = null;
+  const ctx = ctxAPI.load();
 
   modelsData.models.forEach(model => {
     const card = document.createElement('div');
@@ -153,7 +138,28 @@ document.addEventListener('DOMContentLoaded', async () => {
       <button class="btn btn-outline">Seleccionar</button>
     `;
 
-    card.querySelector('button').onclick = () => {
+    const btn = card.querySelector('button');
+
+    // 🔁 Restaurar selección si ya existe en contexto
+    if (ctx.model?.id === model.id) {
+      card.classList.add('selected');
+      btn.textContent = 'Seleccionado';
+      selectedModelCard = card;
+    }
+
+    btn.onclick = () => {
+      // Quitar selección previa
+      if (selectedModelCard) {
+        selectedModelCard.classList.remove('selected');
+        const oldBtn = selectedModelCard.querySelector('button');
+        if (oldBtn) oldBtn.textContent = 'Seleccionar';
+      }
+
+      // Marcar nueva
+      card.classList.add('selected');
+      btn.textContent = 'Seleccionado';
+      selectedModelCard = card;
+
       ctxAPI.save({
         console: window.CONSOLE_CONFIG,
         model: { id: model.id, description: model.name }
@@ -167,7 +173,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   /* =============================
-     SERVICIOS
+     SERVICIOS (sin cambios)
   ============================== */
 
   const servicesData = await fetch('/assets/data/services.json')
@@ -205,7 +211,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         selectedServices.delete(service.id);
         btn.textContent = 'Agregar';
       } else {
-
         if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {
           EXCLUSIVE_STORAGE_SERVICES.forEach(id => {
             if (selectedServices.has(id)) {
@@ -305,8 +310,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   document.getElementById('continueBtn').onclick = () => {
     if (!validateBeforeContinue()) return;
-
-    showRGHWarningIfNeeded();
 
     const ctx = ctxAPI.load();
     window.location.href = needsCatalog(ctx)
