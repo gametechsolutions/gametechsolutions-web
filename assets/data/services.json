@@ -168,8 +168,8 @@
         "name": "USB con juegos",
         "description": "Incluye USB con juegos elegidos por el cliente.",
         "category": "storage",
-        "requires": ["rgh"],
-        "provides": ["storage", "games"],
+        "requires": ["fmcb"],
+        "provides": ["storage"],
         "allowsGames": true,
         "requiresStorage": true,
         "storageMode": "provided"
