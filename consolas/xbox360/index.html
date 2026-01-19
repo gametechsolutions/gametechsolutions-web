@@ -1,104 +1,257 @@
-/* =========================================
-   CONTEXT.JS ¡ª GameTechSolutions
-   Estado global del flujo del cliente
-========================================= */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Xbox 360 | GameTechSolutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-(function () {
-  const STORAGE_KEY = 'GTS_CONTEXT';
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
-  function now() {
-    return new Date().toISOString();
-  }
+  <!-- Base global -->
+  <link rel="stylesheet" href="/styles/theme-base.css">
+  <link rel="stylesheet" href="/styles/theme-microsoft.css">
+</head>
+<body>
 
-  const DEFAULT_CONTEXT = {
-    version: 1,
-    status: 'draft',
+<!-- HEADER -->
+<div id="header-container"></div>
 
-    console: null,      // { code, name, brand }
-    model: null,        // { id, description, notes }
+<main>
+  <div class="container">
 
-    services: [],       // servicios seleccionados (futuro)
-    storage: null,      // { label, usableGB }
-    games: null,        // { selectionID, count, totalSizeGB, humanList }
+    <!-- =========================
+         INTRO
+    ========================== -->
+    <section>
+      <h2>Servicios para Xbox 360</h2>
+      <p>
+        Selecciona el modelo de tu consola y los servicios que deseas contratar.
+      </p>
+    </section>
 
-    pricing: null,      // resumen de precios finales
-    meta: {
-      createdAt: now(),
-      updatedAt: now(),
-      source: null
+    <!-- =========================
+         IDENTIFICAR MODELO
+    ========================== -->
+    <section>
+      <h2>Identifica tu modelo</h2>
+      <p>Selecciona el modelo exacto de tu Xbox 360.</p>
+
+      <div class="cards-grid" id="modelsContainer">
+        <!-- Modelos cargados por JS -->
+      </div>
+    </section>
+
+    <!-- =========================
+         SERVICIOS
+    ========================== -->
+    <section>
+      <h2>Selecciona los servicios</h2>
+      <p>
+        Puedes elegir uno o varios servicios segÃºn lo que necesites.
+      </p>
+
+      <div class="cards-grid" id="servicesContainer">
+        <!-- Servicios cargados por JS -->
+      </div>
+
+      <div style="margin-top:20px; text-align:center;">
+        <button class="btn" id="nextStepBtn" disabled>
+          Siguiente paso
+        </button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>GameTechSolutions Â© 2026</p>
+</footer>
+
+<!-- =========================
+     CONFIG CONSOLA
+========================== -->
+<script>
+  window.IDENTIFY_CONFIG = {
+    console: {
+      code: 'X360',
+      name: 'Xbox 360',
+      brand: 'microsoft'
     }
   };
+</script>
 
-  function load() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return structuredClone(DEFAULT_CONTEXT);
+<!-- =========================
+     SCRIPTS BASE
+========================== -->
+<script src="/assets/js/header.js"></script>
 
-      const parsed = JSON.parse(raw);
-      return {
-        ...structuredClone(DEFAULT_CONTEXT),
-        ...parsed,
-        meta: {
-          ...DEFAULT_CONTEXT.meta,
-          ...parsed.meta
-        }
-      };
-    } catch (e) {
-      console.error('Error cargando GTS_CONTEXT:', e);
-      return structuredClone(DEFAULT_CONTEXT);
-    }
-  }
+<!-- =========================
+     IDENTIFICAR MODELO
+========================== -->
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
 
-  function save(partial) {
-    const current = load();
+  const modelsContainer = document.getElementById('modelsContainer');
+  const servicesContainer = document.getElementById('servicesContainer');
+  const nextBtn = document.getElementById('nextStepBtn');
 
-    const merged = {
-      ...current,
-      ...partial,
-      meta: {
-        ...current.meta,
-        ...partial.meta,
-        updatedAt: now()
-      }
-    };
+  let ctx =
+    JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
-    return merged;
-  }
+  /* =============================
+     BASE CONTEXTO
+  ============================== */
 
-  function set(path, value) {
-    const ctx = load();
-    ctx[path] = value;
-    ctx.meta.updatedAt = now();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ctx));
-    return ctx;
-  }
-
-  function clear() {
-    localStorage.removeItem(STORAGE_KEY);
-  }
-
-  function require(fields = []) {
-    const ctx = load();
-    const missing = fields.filter(f => !ctx[f]);
-    return {
-      ok: missing.length === 0,
-      missing
-    };
-  }
-
-  function debug() {
-    console.table(load());
-    return load();
-  }
-
-  // ?? API GLOBAL ¨²NICA
-  window.GTSContext = {
-    load,
-    save,
-    set,
-    clear,
-    require,
-    debug
+  ctx.console = {
+    code: 'X360',
+    name: 'Xbox 360',
+    brand: 'microsoft'
   };
-})();
+
+  ctx.services = ctx.services || [];
+
+  localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+
+  /* =============================
+     CARGAR MODELOS
+  ============================== */
+
+  fetch('/assets/data/identificar/xbox360.json')
+    .then(res => res.json())
+    .then(data => {
+      renderModels(data.models);
+    });
+
+  function renderModels(models) {
+    modelsContainer.innerHTML = '';
+
+    models.forEach(model => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <h3>${model.name}</h3>
+        ${model.image ? `<img src="${model.image}" alt="${model.name}">` : ''}
+        <p>${model.notes || ''}</p>
+        <button class="btn btn-outline">
+          Seleccionar modelo
+        </button>
+      `;
+
+      card.querySelector('button').addEventListener('click', () => {
+        selectModel(model, card);
+      });
+
+      modelsContainer.appendChild(card);
+    });
+  }
+
+  function selectModel(model, card) {
+    ctx.model = {
+      id: model.id,
+      description: model.name,
+      notes: model.notes || ''
+    };
+
+    document
+      .querySelectorAll('#modelsContainer .card')
+      .forEach(c => c.classList.remove('active'));
+
+    card.classList.add('active');
+
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+  }
+
+  /* =============================
+     CARGAR SERVICIOS
+  ============================== */
+
+  const res = await fetch('/assets/data/services.json');
+  const servicesData = await res.json();
+
+  const xboxServices = servicesData.X360?.services;
+
+  if (!xboxServices) {
+    servicesContainer.innerHTML =
+      '<p>No hay servicios disponibles.</p>';
+    return;
+  }
+
+  Object.values(xboxServices).forEach(service => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const priceText =
+      service.price
+        ? `$${service.price} MXN`
+        : service.priceByStorage
+          ? 'Precio segÃºn almacenamiento'
+          : 'Precio variable';
+
+    card.innerHTML = `
+      <h3>${service.name}</h3>
+      <p>${service.description}</p>
+      <p><strong>${priceText}</strong></p>
+      <button class="btn btn-outline">
+        Agregar servicio
+      </button>
+    `;
+
+    const btn = card.querySelector('button');
+
+    btn.addEventListener('click', () => {
+      toggleService(service, btn);
+    });
+
+    servicesContainer.appendChild(card);
+  });
+
+  function toggleService(service, btn) {
+    const exists =
+      ctx.services.some(s => s.id === service.id);
+
+    if (exists) {
+      ctx.services = ctx.services.filter(
+        s => s.id !== service.id
+      );
+      btn.textContent = 'Agregar servicio';
+      btn.classList.remove('active');
+    } else {
+      ctx.services.push({
+        id: service.id,
+        name: service.name,
+        category: service.category
+      });
+      btn.textContent = 'Quitar servicio';
+      btn.classList.add('active');
+    }
+
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+    validateNextStep();
+  }
+
+  function validateNextStep() {
+    nextBtn.disabled = !ctx.model || ctx.services.length === 0;
+  }
+
+  /* =============================
+     SIGUIENTE PASO
+  ============================== */
+
+  nextBtn.addEventListener('click', () => {
+    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+
+    alert(
+      'Modelo y servicios guardados.\n' +
+      'El siguiente paso se definirÃ¡ despuÃ©s.'
+    );
+  });
+
+});
+</script>
+
+</body>
+</html>
