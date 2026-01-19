@@ -113,16 +113,12 @@ header h1 {
   font-family: var(--font-head);
   font-weight: 900;
   letter-spacing: -0.8px;
-  font-size: 28px;
-  margin-bottom: 4px;
 }
 
 header p {
   font-family: var(--font-ui);
   font-weight: 600;
   letter-spacing: 0.2px;
-  font-size: 14px;
-  color: var(--text-muted);
 }
 
 footer {
@@ -1070,13 +1066,15 @@ section p {
   }
 
   header h1 {
-    font-size: 22px;
+    font-size: 20px;
+    letter-spacing: -0.6px;
     line-height: 1.2;
   }
 
   header p {
     font-size: 12px;
     padding: 0 16px;
+    line-height: 1.35;
   }
 
   main {
