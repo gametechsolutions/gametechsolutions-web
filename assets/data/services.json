@@ -1,0 +1,78 @@
+{
+  "X360": {
+    "label": "Xbox 360",
+    "brand": "microsoft",
+
+    "services": {
+      "rgh_install": {
+        "id": "rgh_install",
+        "name": "Instalación RGH",
+        "description": "Instalación de RGH con cambio de pasta térmica.",
+        "category": "mod",
+        "price": 400,
+        "requires": [],
+        "provides": ["rgh"],
+        "allowsGames": false
+      },
+
+      "full_cleaning": {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa con cambio de pasta térmica.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false
+      },
+
+      "diagnostic": {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o errores.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false
+      },
+
+      "games_only": {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en disco duro del cliente.",
+        "category": "games",
+        "priceByStorage": {
+          "120": 200,
+          "250": 250,
+          "320": 300,
+          "500": 350,
+          "1000": 450
+        },
+        "requires": ["rgh", "storage"],
+        "provides": ["games"],
+        "allowsGames": true
+      },
+
+      "storage_with_games": {
+        "id": "storage_with_games",
+        "name": "Disco duro con juegos",
+        "description": "Incluye disco duro nuevo con juegos precargados.",
+        "category": "storage",
+        "options": {
+          "500": {
+            "price": 600,
+            "gamesIncluded": 50
+          },
+          "1000": {
+            "price": 900,
+            "gamesIncluded": 100
+          }
+        },
+        "requires": ["rgh"],
+        "provides": ["storage", "games"],
+        "allowsGames": true
+      }
+    }
+  }
+}

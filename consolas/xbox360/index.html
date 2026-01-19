@@ -1,128 +1,104 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title id="pageTitle">GameTechSolutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+/* =========================================
+   CONTEXT.JS �� GameTechSolutions
+   Estado global del flujo del cliente
+========================================= */
 
-  <!-- Base global -->
-  <link rel="stylesheet" href="/styles/theme-base.css">
+(function () {
+  const STORAGE_KEY = 'GTS_CONTEXT';
 
-  <!-- Tema de consola -->
-  <link rel="stylesheet" href="/styles/theme-microsoft.css">
-</head>
-<body>
+  function now() {
+    return new Date().toISOString();
+  }
 
-<!-- HEADER (inyectado dinámicamente) -->
-<div id="header-container"></div>
+  const DEFAULT_CONTEXT = {
+    version: 1,
+    status: 'draft',
 
-<!-- CONTENIDO CENTRAL -->
-<main>
-  <div class="container">
+    console: null,      // { code, name, brand }
+    model: null,        // { id, description, notes }
 
-    <section>
-      <h2>Servicios para <strong class="console-name"></strong></h2>
+    services: [],       // servicios seleccionados (futuro)
+    storage: null,      // { label, usableGB }
+    games: null,        // { selectionID, count, totalSizeGB, humanList }
 
-      <div class="cards-grid">
-
-        <div class="card">
-          <h3>🔓 Instalación de RGH</h3>
-          <ul>
-            <li>Instalación de RGH / RGH3 (según modelo)</li>
-            <li>Configuración y pruebas completas</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>🎮 Instalación de juegos</h3>
-          <ul>
-            <li>Carga de juegos en disco duro</li>
-            <li>Juegos organizados y verificados</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>💾 Ampliación de almacenamiento</h3>
-          <ul>
-            <li>Reemplazo o ampliación del disco duro</li>
-            <li>Recomendación de capacidad ideal</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>🧼 Limpieza y mantenimiento</h3>
-          <ul>
-            <li>Limpieza interna</li>
-            <li>Cambio de pasta térmica </li>
-            <li>Revisión de temperaturas</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>🛡️ Garantía en juegos</h3>
-          <ul>
-            <li>Garantía de 30 días en juegos instalados</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <h2>¿No sabes qué modelo es tu consola?</h2>
-      <p>
-        Aquí te ayudamos a identificarla fácilmente.
-      </p>
-      <a class="btn" href="/consolas/xbox360/identificar">Identificar mi consola</a>
-    </section>
-    
-    <!-- <section>
-      <h2>Catálogo de juegos</h2>
-      <p>
-        Consulta el catálogo y arma tu lista
-      </p>
-      <a class="btn" id="catalogLink">Ver catálogo de juegos</a>
-    </section> -->
-
-  </div>
-</main>
-
-<footer>
-  <p>GameTechSolutions © 2026</p>
-</footer>
-
-  <script>
-    window.CONSOLE_CONFIG = {
-      code: 'X360',
-      name: 'Xbox 360',
-      short: 'X360',
-      brand: 'microsoft',
-      catalogPath: '/consolas/xbox360/catalogo.html'
-    };
-  </script>
-  
-  <script src="/assets/js/header.js"></script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-  
-    /* ===== TÍTULO DE PÁGINA ===== */
-    document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
-  
-    /* ===== TEXTOS DINÁMICOS ===== */
-    document.querySelectorAll('.console-name').forEach(el => {
-      el.textContent = CONSOLE_CONFIG.name;
-    });
-  
-    /* ===== LINK A CATÁLOGO ===== */
-    const catalogBtn = document.getElementById('catalogLink');
-    if (catalogBtn) {
-      catalogBtn.href = CONSOLE_CONFIG.catalogPath;
+    pricing: null,      // resumen de precios finales
+    meta: {
+      createdAt: now(),
+      updatedAt: now(),
+      source: null
     }
-  
-  });
-  </script>
+  };
 
-</body>
-</html>
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return structuredClone(DEFAULT_CONTEXT);
+
+      const parsed = JSON.parse(raw);
+      return {
+        ...structuredClone(DEFAULT_CONTEXT),
+        ...parsed,
+        meta: {
+          ...DEFAULT_CONTEXT.meta,
+          ...parsed.meta
+        }
+      };
+    } catch (e) {
+      console.error('Error cargando GTS_CONTEXT:', e);
+      return structuredClone(DEFAULT_CONTEXT);
+    }
+  }
+
+  function save(partial) {
+    const current = load();
+
+    const merged = {
+      ...current,
+      ...partial,
+      meta: {
+        ...current.meta,
+        ...partial.meta,
+        updatedAt: now()
+      }
+    };
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    return merged;
+  }
+
+  function set(path, value) {
+    const ctx = load();
+    ctx[path] = value;
+    ctx.meta.updatedAt = now();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(ctx));
+    return ctx;
+  }
+
+  function clear() {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+
+  function require(fields = []) {
+    const ctx = load();
+    const missing = fields.filter(f => !ctx[f]);
+    return {
+      ok: missing.length === 0,
+      missing
+    };
+  }
+
+  function debug() {
+    console.table(load());
+    return load();
+  }
+
+  // ?? API GLOBAL ��NICA
+  window.GTSContext = {
+    load,
+    save,
+    set,
+    clear,
+    require,
+    debug
+  };
+})();
