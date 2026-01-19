@@ -108,30 +108,29 @@ document.addEventListener('DOMContentLoaded', async () => {
       return false;
     }
 
-    // Validar dependencias (requires)
-    function showRGHWarningIfNeeded() {
-      const ctx = ctxAPI.load();
-    
-      const needsGames = ctx.services?.some(id =>
-        ['games_only', 'storage_with_games'].includes(id)
-      );
-    
-      const hasRGH = ctx.services?.includes('rgh_install');
-    
-      if (needsGames && !hasRGH) {
-        alert(
-          'ℹ️ Para cargar juegos se requiere RGH.\n' +
-          'La compatibilidad se confirma tras revisión física.'
-        );
-      }
-    }
-
     if (needsCatalog(ctx) && !ctx.storage) {
       alert('Debes seleccionar el tamaño del almacenamiento.');
       return false;
     }
 
     return true;
+  }
+
+  function showRGHWarningIfNeeded() {
+    const ctx = ctxAPI.load();
+  
+    const needsGames = ctx.services?.some(id =>
+      ['games_only', 'storage_with_games'].includes(id)
+    );
+  
+    const hasRGH = ctx.services?.includes('rgh_install');
+  
+    if (needsGames && !hasRGH) {
+      alert(
+        'ℹ️ Para cargar juegos se requiere RGH.\n' +
+        'La compatibilidad se confirma tras revisión física.'
+      );
+    }
   }
 
   /* =============================
