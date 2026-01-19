@@ -161,7 +161,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const servicesRes = await fetch('/assets/data/services.json');
   const servicesData = await servicesRes.json();
-  const services = servicesData.X360.services;
+  const servicesMap = servicesData.X360.services;
+  const services = Objetc.values(servicesMap);
 
   const servicesContainer = document.getElementById('servicesContainer');
   const selectedServices = new Set();
