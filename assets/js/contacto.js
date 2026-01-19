@@ -73,7 +73,7 @@ function calculatePricing(ctx, consoleData) {
     }
 
     if (id === 'games_only') {
-      const disk = ctx.storage.label.replace(' GB', '');
+      const disk = String(parseInt(ctx.storage.label, 10));
       const price = svc.priceByStorage?.[disk];
       if (price) {
         total += price;
@@ -82,7 +82,7 @@ function calculatePricing(ctx, consoleData) {
     }
 
     if (id === 'storage_with_games') {
-      const disk = ctx.storage.label.replace(' GB', '');
+      const disk = String(parseInt(ctx.storage.label, 10));
       const opt = consoleData.storageOptions.provided.sizes[disk];
       if (opt?.price) {
         total += opt.price;
