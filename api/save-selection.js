@@ -8,53 +8,45 @@ export default async function handler(req, res) {
       selectionID,
       clientName,
       console,
+      model,
+      services,
+      servicesRaw,
       diskSize,
       diskLimit,
       totalSize,
       CantidadJuegos,
+      totalPrice,
+      priceBreakdown,
       selectedGames,
-      jsonGames
+      jsonGames,
+      pricingJSON
     } = req.body;
-
-    // 🔒 Validaciones críticas
-    if (
-      typeof totalSize !== 'number' ||
-      typeof diskLimit !== 'number' ||
-      Number.isNaN(totalSize) ||
-      Number.isNaN(diskLimit)
-    ) {
-      return res.status(400).json({
-        error: 'Invalid disk size values',
-        details: { totalSize, diskLimit }
-      });
-    }
-
-    if (totalSize > diskLimit) {
-      return res.status(400).json({
-        error: 'Disk limit exceeded',
-        details: { totalSize, diskLimit }
-      });
-    }
 
     const airtableRes = await fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Selections`,
       {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.AIRTABLE_TOKEN}`,
+          Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           fields: {
             selectionID,
             clientName,
-            console: console.trim(),
+            console,
+            model,
+            services,
+            servicesRaw,
             diskSize,
             diskLimit,
             totalSize,
             CantidadJuegos,
+            totalPrice,
+            priceBreakdown,
             selectedGames,
             jsonGames,
+            pricingJSON,
             status: 'Pendiente'
           }
         })
