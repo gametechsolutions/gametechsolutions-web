@@ -90,7 +90,7 @@
       {
         "id": "storage_with_games",
         "name": "Disco duro con juegos",
-        "description": "Incluye disco duro nuevo con juegos precargados.",
+        "description": "Incluye disco duro con juegos elegidos por el cliente.",
         "category": "storage",
         "requires": ["rgh"],
         "provides": ["storage", "games"],
@@ -105,36 +105,75 @@
   "brand": "sony",
 
   "storageOptions": {
-    "client": {
-      "label": "USB",
-      "sizes": {
-        "64": 57,
-        "128": 115,
-        "256": 232
+    "provided": {
+        "label": "USB proporcionado por GameTechSolutions",
+        "sizes": {
+          "64": {
+            "usableGB": 57,
+            "price": 200,
+            "gamesIncluded": 20
+          },
+          "128": {
+            "usableGB": 115,
+            "price": 300,
+            "gamesIncluded": 40
+          },
+          "256": {
+            "usableGB": 230,
+            "price": 700,
+            "gamesIncluded": 80
+          }
+        }
       }
-    }
-  },
+    },
 
   "services": [
     {
-      "id": "fmcb_install",
-      "name": "Instalación FreeMCBoot",
-      "price": 300,
-      "allowsGames": false,
-      "requiresStorage": false
-    },
-    {
-      "id": "games_only",
-      "name": "Carga de juegos",
-      "priceByStorage": {
-        "64": 200,
-        "128": 300,
-        "256": 700
+        "id": "fmcb_install",
+        "name": "Instalación FreeMCBoot",
+        "description": "Instalación de FMCB o Funtuna según modelo.",
+        "category": "softmod",
+        "price": 300,
+        "requires": [],
+        "provides": ["fmcb"],
+        "allowsGames": false,
+        "requiresStorage": false
       },
-      "allowsGames": true,
-      "requiresStorage": true,
-      "storageMode": "provided"
-    }
+    {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+
+    {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o errores.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+
+      {
+        "id": "storage_with_games",
+        "name": "USB con juegos",
+        "description": "Incluye USB con juegos elegidos por el cliente.",
+        "category": "storage",
+        "requires": ["rgh"],
+        "provides": ["storage", "games"],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
   ]
 }
 }
