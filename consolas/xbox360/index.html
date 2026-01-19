@@ -129,6 +129,11 @@ document.addEventListener('DOMContentLoaded', async () => {
      SERVICIOS
   ============================== */
 
+  const EXCLUSIVE_STORAGE_SERVICES = [
+    'games_only',
+    'storage_with_games'
+  ];
+
   const servicesData = await fetch('/assets/data/services.json').then(r => r.json());
   const services = Object.values(servicesData.X360.services);
 
@@ -142,7 +147,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     card.innerHTML = `
       <h3>${service.name}</h3>
       <p>${service.description}</p>
-      <button class="btn btn-outline">Agregar</button>
+      <button class="btn btn-outline" data-service-id="${service.id}">
+        Agregar
+      </button>
     `;
 
     const btn = card.querySelector('button');
@@ -152,6 +159,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         selectedServices.delete(service.id);
         btn.textContent = 'Agregar';
       } else {
+      
+        // 🔒 Exclusión lógica: storage + juegos
+        if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {
+          EXCLUSIVE_STORAGE_SERVICES.forEach(exId => {
+            if (selectedServices.has(exId)) {
+              selectedServices.delete(exId);
+      
+              // resetear texto del botón visual
+              const otherBtn = document.querySelector(
+                `[data-service-id="${exId}"]`
+              );
+              if (otherBtn) otherBtn.textContent = 'Agregar';
+            }
+          });
+        }
+      
         selectedServices.add(service.id);
         btn.textContent = 'Quitar';
       }
