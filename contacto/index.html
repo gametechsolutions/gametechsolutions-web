@@ -5,18 +5,14 @@
   <title>Contacto | GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-
-  <!-- Base global -->
   <link rel="stylesheet" href="/styles/theme-base.css">
 </head>
 <body>
 
-<!-- HEADER DINÁMICO -->
+<!-- HEADER -->
 <div id="header-container"></div>
 
-<!-- CONTENIDO -->
 <main>
   <div class="container">
 
@@ -24,7 +20,7 @@
     <section>
       <h2>Contacto</h2>
       <p>
-        Revisa tu selección y completa el contacto para continuar
+        Revisa tu selección y confirma tu información para continuar
         con el servicio.
       </p>
     </section>
@@ -50,22 +46,22 @@
 
           <div class="summary-item">
             <span class="label">💾 Almacenamiento</span>
-            <span class="value" id="summary-storage">—</span>
+            <span class="value" id="summary-storage">No aplica</span>
           </div>
 
           <div class="summary-item">
             <span class="label">🎯 Juegos</span>
-            <span class="value" id="summary-games">—</span>
+            <span class="value" id="summary-games">No aplica</span>
+          </div>
+
+          <div class="summary-item full">
+            <span class="label">🛠️ Servicios</span>
+            <span class="value" id="summary-services">—</span>
           </div>
 
           <div class="summary-item full">
             <span class="label">🆔 ID de selección</span>
             <span class="value mono" id="summary-id">—</span>
-          </div>
-
-          <div class="summary-item full">
-            <span class="label">📦 Paquete</span>
-            <span class="value" id="summary-package">No seleccionado</span>
           </div>
 
         </div>
@@ -77,16 +73,23 @@
     </section>
 
     <!-- =========================
-         PAQUETES
+         PRECIO (AUTOMÁTICO)
     ========================== -->
     <section>
-      <h2>Selecciona tu paquete</h2>
-      <p>
-        Elige el paquete que mejor se adapte a tus necesidades.
-      </p>
+      <h2>Precio estimado</h2>
 
-      <div class="cards-grid" id="packagesContainer">
-        <!-- Paquetes inyectados por contacto.js -->
+      <div class="card">
+        <p id="pricingBreakdown">
+          Calculando precio…
+        </p>
+
+        <h3 style="margin-top:15px">
+          Total: <span id="pricingTotal">—</span>
+        </h3>
+
+        <p class="selector-note">
+          El precio final puede variar ligeramente tras revisión física.
+        </p>
       </div>
     </section>
 
@@ -119,48 +122,79 @@
       <p class="selector-note">
         Serás redirigido a WhatsApp con toda tu información lista.
       </p>
-      
-      <div style="margin-top:20px;">
-  <button class="btn danger" id="newSelectionBtn">
-    🔄 Iniciar nueva selección
-  </button>
 
-  <p class="selector-note">
-    Esto limpiará la selección actual y te permitirá empezar de nuevo.
-  </p>
-</div>
+      <div style="margin-top:20px;">
+        <button class="btn danger" id="newSelectionBtn">
+          🔄 Iniciar nueva selección
+        </button>
+
+        <p class="selector-note">
+          Esto limpiará la selección actual y te permitirá empezar de nuevo.
+        </p>
+      </div>
     </section>
 
     <!-- =========================
          MAPA
     ========================== -->
-    <section>
-      <h2>Ubicación</h2>
+    <section class="location-section">
+	  <h2 class="section-title"><span class="title-icon">📍
+		</span> Ubicación
+	  </h2>
 
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.7972359248342!2d-99.22092032410815!3d19.5503168369096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21dd7c106d715%3A0xf2b144c984956ce7!2sGame%20Tech%20Solutions!5e0!3m2!1ses-419!2smx!4v1767898318147!5m2!1ses-419!2smx"
-          width="100%"
-          height="300"
-          style="border:0;"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
-      </div>
-    </section>
+
+	  <div class="map-shell">
+
+		<!-- Glow decorativo -->
+		<div class="map-glow"></div>
+
+		<!-- Mapa -->
+		<div class="map-container">
+		  <iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.7972359248342!2d-99.22092032410815!3d19.5503168369096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21dd7c106d715%3A0xf2b144c984956ce7!2sGame%20Tech%20Solutions!5e0!3m2!1ses-419!2smx!4v1767898318147!5m2!1ses-419!2smx"
+			width="100%"
+			height="340"
+			style="border:0;"
+			allowfullscreen
+			loading="lazy">
+		  </iframe>
+		</div>
+
+		<!-- Info + CTA -->
+		<div class="map-footer">
+		  <div class="map-meta">
+			<span class="map-badge">
+			  <span class="map-dot"></span>
+			  GameTechSolutions • Estado de México
+			</span>
+
+			<span class="map-address">
+			  📍 Cerca de Plaza / Punto de referencia (edítalo)
+			</span>
+		  </div>
+
+		  <a
+			class="btn map-btn"
+			target="_blank"
+			rel="noopener noreferrer"
+			href="https://www.google.com/maps?q=Game+Tech+Solutions&hl=es-419&gl=mx">
+			Abrir en Google Maps →
+		  </a>
+		</div>
+
+	  </div>
+	</section>
+
 
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
 
-<!-- HEADER -->
 <script src="/assets/js/header.js"></script>
-
-<!-- CONTACTO -->
+<script src="/assets/js/context.js"></script>
 <script src="/assets/js/contacto.js"></script>
 
 </body>
