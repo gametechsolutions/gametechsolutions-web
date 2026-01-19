@@ -18,21 +18,20 @@
 
 <!-- 🔒 VALIDACIÓN TEMPRANA DE CONTEXTO -->
 <script>
-(function () {
-  const ctx = window.GTSContext?.load?.();
+document.addEventListener('DOMContentLoaded', () => {
+  const ctx = window.GTSContext.load();
 
-  const allowsGames =
-    ctx?.services?.some(s =>
-      ['games_only', 'storage_with_games'].includes(s)
-    );
+  const hasGameService = ctx.services?.some(id =>
+    id === 'games_only' || id === 'storage_with_games'
+  );
 
-  if (!ctx || !ctx.services?.length || !allowsGames || !ctx.storage) {
+  if (!hasGameService || !ctx.storage) {
     alert(
       'El catálogo solo está disponible cuando seleccionas un servicio con juegos y almacenamiento.'
     );
     window.location.href = '/consolas/xbox360/';
   }
-})();
+});
 </script>
 
 <main>
