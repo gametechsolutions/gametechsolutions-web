@@ -192,44 +192,46 @@ document.addEventListener('DOMContentLoaded', async () => {
     const ctx = ctxAPI.load();
     storageOptions.innerHTML = '';
     storageSection.style.display = 'none';
-
-    const active = services.filter(s => ctx.services?.includes(s.id));
-    const storageSvc = active.find(s => s.requires?.includes('storage'));
-
-    if (!storageSvc) return;
-
+  
+    if (!ctx.services?.length) return;
+  
+    // servicios seleccionados que permiten juegos
+    const activeGameServices = services.filter(
+      s => ctx.services.includes(s.id) && s.allowsGames
+    );
+  
+    if (!activeGameServices.length) return;
+  
     storageSection.style.display = 'block';
-
-    const isClientDisk = storageSvc.id === 'games_only';
-
-    storageHelp.textContent = isClientDisk
+  
+    // ¿el cliente ya tiene disco o tú lo proporcionas?
+    const hasClientDisk = activeGameServices.some(s => s.id === 'games_only');
+    const hasProvidedDisk = activeGameServices.some(s => s.id === 'storage_with_games');
+  
+    storageHelp.textContent = hasClientDisk
       ? 'Selecciona el tamaño del disco duro que ya tiene tu consola.'
       : 'Selecciona el disco duro que deseas instalar con juegos.';
-
-    const sizes = isClientDisk
-      ? {
-          120: 110, 250: 230, 320: 293, 500: 465, 1000: 930
-        }
-      : {
-          500: 465, 1000: 930
-        };
-
+  
+    const sizes = hasClientDisk
+      ? { 120:110, 250:230, 320:293, 500:465, 1000:930 }
+      : { 500:465, 1000:930 };
+  
     Object.entries(sizes).forEach(([size, usable]) => {
       const label = document.createElement('label');
       label.className = 'disk-option';
-
+  
       label.innerHTML = `
         <input type="radio" name="diskSize" value="${size}">
         <strong>${size} GB</strong>
       `;
-
+  
       label.querySelector('input').onchange = () => {
         ctxAPI.save({
           storage: { label: `${size} GB`, usableGB: usable }
         });
         checkReady();
       };
-
+  
       storageOptions.appendChild(label);
     });
   }
