@@ -30,10 +30,7 @@
     ========================== -->
     <section>
       <h2>1️⃣ Identifica tu modelo</h2>
-
-      <div class="cards-grid" id="modelsContainer">
-        <!-- Inyectado por JS -->
-      </div>
+      <div class="cards-grid" id="modelsContainer"></div>
     </section>
 
     <!-- =========================
@@ -41,29 +38,27 @@
     ========================== -->
     <section>
       <h2>2️⃣ Selecciona los servicios</h2>
+      <div class="cards-grid" id="servicesContainer"></div>
+    </section>
 
-      <div class="cards-grid" id="servicesContainer">
-        <!-- Inyectado desde services.json -->
+    <!-- =========================
+         AVISO RGH + MODELO E
+    ========================== -->
+    <section id="rghNotice" style="display:none">
+      <div class="alert warning">
+        ⚠️ <strong>Compatibilidad con RGH (Modelo E)</strong><br><br>
+        No todas las Xbox 360 modelo <strong>E</strong> son compatibles con RGH.
+        <br><br>
+        👉 La compatibilidad final se confirma únicamente mediante
+        <strong>revisión física de la consola</strong>.
       </div>
     </section>
-    
-    <!-- AVISO COMPATIBILIDAD RGH -->
-<section id="rghNotice" style="display:none">
-  <div class="alert warning">
-    ⚠️ <strong>Compatibilidad con RGH (Modelo E)</strong><br><br>
-    No todas las Xbox 360 modelo <strong>E</strong> son compatibles con RGH.
-    <br><br>
-    👉 La compatibilidad final se confirma únicamente mediante
-    <strong>revisión física de la consola</strong>.
-  </div>
-</section>
 
     <!-- =========================
          3. ALMACENAMIENTO
     ========================== -->
     <section id="storageSection" style="display:none">
       <h2>3️⃣ Almacenamiento</h2>
-
       <p>Selecciona el disco duro que aplica a tu servicio.</p>
 
       <div class="disk-selector">
@@ -107,7 +102,7 @@
 </main>
 
 <footer>
-  <p>GameTechSolutions © 2026</p>
+  <p>GameTechSolutions ©️ 2026</p>
 </footer>
 
 <!-- CONFIG -->
@@ -127,8 +122,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
 
-  const ctx = window.GTSContext?.load() || {};
-
   /* =============================
      MODELOS
   ============================== */
@@ -147,15 +140,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       card.innerHTML = `
         <h3>${model.name}</h3>
-
-        ${model.image ? `
-          <div class="model-image">
-            <img src="${model.image}" alt="${model.name}">
-          </div>
-        ` : ''}
-
         <p>${model.notes || ''}</p>
-
+        ${model.image ? `<img src="${model.image}" class="identify-img" alt="${model.name}">` : ''}
         <button class="btn btn-outline">Seleccionar</button>
       `;
 
@@ -167,6 +153,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             description: model.name
           }
         });
+
+        toggleRGHNotice();
         checkReady();
       });
 
@@ -180,8 +168,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const servicesRes = await fetch('/assets/data/services.json');
   const servicesData = await servicesRes.json();
-  const servicesMap = servicesData.X360.services;
-  const services = Object.values(servicesMap);
+
+  // ⚠️ services.json usa objeto, no array
+  const services = Object.values(servicesData.X360.services);
 
   const servicesContainer = document.getElementById('servicesContainer');
   const selectedServices = new Set();
@@ -211,7 +200,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         services: Array.from(selectedServices)
       });
 
-      toggleStorage(services);
+      toggleStorage();
+      toggleRGHNotice();
       checkReady();
     });
 
@@ -219,13 +209,29 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   /* =============================
+     AVISO RGH + MODELO E
+  ============================== */
+
+  function toggleRGHNotice() {
+    const ctx = window.GTSContext.load();
+    const notice = document.getElementById('rghNotice');
+
+    const isModelE = ctx.model?.id === 'e';
+    const hasRGH = ctx.services?.includes('rgh_install');
+
+    notice.style.display = (isModelE && hasRGH) ? 'block' : 'none';
+  }
+
+  /* =============================
      ALMACENAMIENTO
   ============================== */
 
-  function toggleStorage(allServices) {
-    const needsStorage = Array.from(selectedServices).some(id => {
-      const svc = allServices.find(s => s.id === id);
-      return svc?.requiresStorage;
+  function toggleStorage() {
+    const ctx = window.GTSContext.load();
+
+    const needsStorage = ctx.services?.some(id => {
+      const svc = services.find(s => s.id === id);
+      return svc?.requires?.includes('storage');
     });
 
     document.getElementById('storageSection').style.display =
@@ -248,6 +254,13 @@ document.addEventListener('DOMContentLoaded', async () => {
      CONTINUAR
   ============================== */
 
+  function needsCatalog(ctx) {
+    return ctx.services?.some(id => {
+      const svc = services.find(s => s.id === id);
+      return svc?.allowsGames;
+    });
+  }
+
   function checkReady() {
     const ctx = window.GTSContext.load();
 
@@ -257,13 +270,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       (!needsCatalog(ctx) || ctx.storage);
 
     document.getElementById('continueBtn').disabled = !ready;
-  }
-
-  function needsCatalog(ctx) {
-    return ctx.services?.some(id => {
-      const svc = services.find(s => s.id === id);
-      return svc?.requiresCatalog;
-    });
   }
 
   document.getElementById('continueBtn').addEventListener('click', () => {
