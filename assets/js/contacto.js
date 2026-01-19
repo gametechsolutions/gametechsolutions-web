@@ -101,6 +101,47 @@ function calculatePricing(ctx, consoleData) {
   };
 }
 
+function renderPricingBreakdown(lines) {
+  const el = document.getElementById('pricingBreakdown');
+  if (!el) return;
+
+  if (!lines?.length) {
+    el.innerHTML = `
+      <div class="pricing-lines">
+        <div class="pricing-line muted">
+          <span class="name">Sin cargos adicionales</span>
+          <span class="price"></span>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Convertimos: "• Instalación RGH: $400" -> name + price
+  const parsed = lines.map(line => {
+    const cleaned = String(line).replace(/^•\s*/, '').trim(); // quita el bullet
+    const match = cleaned.match(/^(.*?):\s*\$?([\d,]+(?:\.\d+)?)$/);
+
+    if (match) {
+      return { name: match[1].trim(), price: match[2] };
+    }
+
+    // fallback si no encuentra formato:
+    return { name: cleaned, price: '' };
+  });
+
+  el.innerHTML = `
+    <div class="pricing-lines">
+      ${parsed.map(item => `
+        <div class="pricing-line">
+          <span class="name">• ${item.name}</span>
+          <span class="price">${item.price}</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
 /* =============================
    RESUMEN
 ============================= */
@@ -132,12 +173,7 @@ function renderSummary(ctx, servicesCatalog, pricing) {
   );
 
   setText('pricingTotal', `$${pricing.total} MXN`);
-  setText(
-    'pricingBreakdown',
-    pricing.breakdown.length
-      ? pricing.breakdown.join('\n')
-      : 'Sin cargos adicionales'
-  );
+  renderPricingBreakdown(pricing.breakdown);
 }
 
 /* =============================
