@@ -136,7 +136,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       card.innerHTML = `
         <h3>${model.name}</h3>
+
+        ${model.image ? `
+          <div class="model-image">
+            <img src="${model.image}" alt="${model.name}">
+          </div>
+        ` : ''}
+
         <p>${model.notes || ''}</p>
+
         <button class="btn btn-outline">Seleccionar</button>
       `;
 
