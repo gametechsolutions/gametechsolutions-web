@@ -116,7 +116,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
 
-  const ctx = window.GTSContext?.get() || {};
+  const ctx = window.GTSContext?.load() || {};
 
   /* =============================
      MODELOS
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ============================== */
 
   function checkReady() {
-    const ctx = window.GTSContext.get();
+    const ctx = window.GTSContext.load();
 
     const ready =
       ctx.model &&
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   document.getElementById('continueBtn').addEventListener('click', () => {
-    const ctx = window.GTSContext.get();
+    const ctx = window.GTSContext.load();
 
     if (needsCatalog(ctx)) {
       window.location.href = '/consolas/xbox360/catalogo.html';
