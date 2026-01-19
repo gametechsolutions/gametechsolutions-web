@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (window.CONSOLE_CONFIG) {
     // 🟢 MODO CONSOLA
-    title.textContent = `Catálogo ${CONSOLE_CONFIG.name}`;
+    title.textContent = `${CONSOLE_CONFIG.name}`;
     subtitle.innerHTML = `
       Servicios profesionales para <strong>${CONSOLE_CONFIG.name}</strong>
     `;
