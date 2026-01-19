@@ -10,6 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
   let diskLabel = '';
   let gamesData = [];
 
+  /* =============================
+   CARGAR STORAGE DESDE CONTEXTO
+  ============================== */
+  
+  const ctx = window.GTSContext?.load?.();
+  
+  if (ctx?.storage) {
+    diskLimit = Number(ctx.storage.usableGB);
+    diskLabel = ctx.storage.label;
+  } else {
+    alert('No se detectó almacenamiento válido para el catálogo.');
+    window.location.href = '/consolas/xbox360/';
+  }
+
   const gameCountEl = document.getElementById('gameCount');
   const totalSizeEl = document.getElementById('totalSize');
   const catalogEl   = document.querySelector('.selector-catalog');
@@ -100,20 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
-  /* =============================
-     DISCO / USB
-  ============================== */
-
-  document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      diskLimit = Number(radio.dataset.limit);
-      diskLabel = radio.value;
-
-      resetSelection();
-      updateSummary();
-    });
-  });
 
   /* =============================
      CONTROLES
