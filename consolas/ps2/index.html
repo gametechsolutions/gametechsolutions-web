@@ -1,118 +1,327 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8" />
   <title id="pageTitle">GameTechSolutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Base global -->
-  <link rel="stylesheet" href="/styles/theme-base.css">
-
-  <!-- Tema de consola -->
-  <link rel="stylesheet" href="/styles/theme-sony.css">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+  <link rel="stylesheet" href="/styles/theme-base.css" />
+  <link rel="stylesheet" href="/styles/theme-sony.css" />
 </head>
 <body>
 
-<!-- HEADER (inyectado dinámicamente) -->
 <div id="header-container"></div>
 
-<!-- CONTENIDO CENTRAL -->
 <main>
   <div class="container">
 
     <section>
       <h2>Servicios para <strong class="console-name"></strong></h2>
-
-      <div class="cards-grid">
-
-        <div class="card">
-          <h3>🔓 FMCB o Funtuna</h3>
-          <ul>
-            <li>Memory Card con FMCB o Funtuna</li>
-            <li>Configuración y pruebas completas</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>🎮 Instalación de juegos</h3>
-          <ul>
-            <li>Carga de juegos en disco duro</li>
-            <li>Juegos organizados y verificados</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>🧼 Limpieza y mantenimiento</h3>
-          <ul>
-            <li>Limpieza interna</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>🛡️ Garantía en juegos</h3>
-          <ul>
-            <li>Garantía de 30 días en juegos instalados</li>
-          </ul>
-        </div>
-
-      </div>
+      <p>Selecciona el modelo de tu consola y los servicios que necesitas.</p>
     </section>
 
-    <section>
-      <h2>¿No sabes qué modelo es tu consola?</h2>
-      <p>
-        Aquí te ayudamos a identificarla fácilmente.
-      </p>
-      <a class="btn" href="/consolas/ps2/identificar">Identificar mi consola</a>
+    <!-- MODELO -->
+    <section class="identify-step">
+      <h2>Identifica tu modelo</h2>
+      <div class="cards-grid" id="modelsContainer"></div>
     </section>
-    
-    <!-- <section>
-      <h2>Catálogo de juegos</h2>
-      <p>
-        Consulta el catálogo y arma tu lista
-      </p>
-      <a class="btn" id="catalogLink">Ver catálogo de juegos</a>
-    </section> -->
+
+    <!-- SERVICIOS -->
+    <section class="identify-step">
+      <h2>Selecciona los servicios</h2>
+      <div class="cards-grid" id="servicesContainer"></div>
+    </section>
+
+    <!-- STORAGE -->
+    <section id="storageSection" style="display:none">
+      <h2>Almacenamiento</h2>
+      <p id="storageHelp" class="selector-note"></p>
+      <div class="disk-selector" id="storageOptions"></div>
+    </section>
+
+    <!-- CONTINUAR -->
+    <section style="text-align:center; margin-top:30px">
+      <button class="btn" id="continueBtn">
+        Siguiente paso →
+      </button>
+    </section>
 
   </div>
 </main>
 
 <footer>
-  <p>GameTechSolutions © 2026</p>
+  <p>GameTechSolutions ©️ 2026</p>
 </footer>
 
-  <script>
-    window.CONSOLE_CONFIG = {
-      code: 'PS2',
-      name: 'PlayStation 2',
-      short: 'PS2',
-      brand: 'sony',
-      catalogPath: '/consolas/ps2/catalogo.html'
-    };
-  </script>
-  
-  <script src="/assets/js/header.js"></script>
+<script>
+  window.CONSOLE_CONFIG = {
+    code: 'PS2',
+    name: 'PlayStation 2',
+    brand: 'sony'
+  };
+</script>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-  
-    /* ===== TÍTULO DE PÁGINA ===== */
+<script src="/assets/js/context.js"></script>
+<script src="/assets/js/header.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+
+  /* ===== TÍTULO DE PÁGINA ===== */
     document.title = `${CONSOLE_CONFIG.name} | GameTechSolutions`;
   
     /* ===== TEXTOS DINÁMICOS ===== */
     document.querySelectorAll('.console-name').forEach(el => {
       el.textContent = CONSOLE_CONFIG.name;
     });
-  
-    /* ===== LINK A CATÁLOGO ===== */
-    const catalogBtn = document.getElementById('catalogLink');
-    if (catalogBtn) {
-      catalogBtn.href = CONSOLE_CONFIG.catalogPath;
+
+  const ctxAPI = window.GTSContext;
+
+  /* =============================
+     HELPERS
+  ============================== */
+
+  function getStorageMode(services = []) {
+    if (services.includes('games_only')) return 'client';
+    if (services.includes('storage_with_games')) return 'provided';
+    return null;
+  }
+
+  function needsCatalog(ctx) {
+    return ctx.services?.some(id =>
+      services.find(s => s.id === id)?.allowsGames
+    );
+  }
+
+  function validateBeforeContinue() {
+    const ctx = ctxAPI.load();
+
+    if (!ctx.model) {
+      alert('Debes seleccionar el modelo de tu consola.');
+      return false;
     }
-  
+
+    if (!ctx.services?.length) {
+      alert('Debes seleccionar al menos un servicio.');
+      return false;
+    }
+
+    if (needsCatalog(ctx) && !ctx.storage) {
+      alert('Debes seleccionar el tamaño del almacenamiento.');
+      return false;
+    }
+
+    return true;
+  }
+
+  /* =============================
+     MODELOS (UX FIX)
+  ============================== */
+
+  const modelsData = await fetch('/assets/data/identificar/ps2.json')
+    .then(r => r.json());
+
+  const modelsContainer = document.getElementById('modelsContainer');
+  let selectedModelCard = null;
+  const ctx = ctxAPI.load();
+
+  modelsData.models.forEach(model => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    card.innerHTML = `
+      <h3>${model.name}</h3>
+      <p>${model.notes || ''}</p>
+      ${model.image ? `<img src="${model.image}" class="identify-img">` : ''}
+      <button class="btn btn-outline">Seleccionar</button>
+    `;
+
+    const btn = card.querySelector('button');
+
+    // 🔁 Restaurar selección si ya existe en contexto
+    if (ctx.model?.id === model.id) {
+      card.classList.add('selected');
+      btn.textContent = 'Seleccionado';
+      selectedModelCard = card;
+    }
+
+    btn.onclick = () => {
+      // Quitar selección previa
+      if (selectedModelCard) {
+        selectedModelCard.classList.remove('selected');
+        const oldBtn = selectedModelCard.querySelector('button');
+        if (oldBtn) oldBtn.textContent = 'Seleccionar';
+      }
+
+      // Marcar nueva
+      card.classList.add('selected');
+      btn.textContent = 'Seleccionado';
+      selectedModelCard = card;
+
+      ctxAPI.save({
+        console: window.CONSOLE_CONFIG,
+        model: { id: model.id, description: model.name }
+      });
+
+      updateRGHNotice();
+      updateStorageUI();
+    };
+
+    modelsContainer.appendChild(card);
   });
-  </script>
+
+  /* =============================
+     SERVICIOS (sin cambios)
+  ============================== */
+
+  const servicesData = await fetch('/assets/data/services.json')
+    .then(r => r.json());
+
+  const services = servicesData.PS2.services;
+  const servicesContainer = document.getElementById('servicesContainer');
+  const selectedServices = new Set();
+
+  const EXCLUSIVE_STORAGE_SERVICES = ['games_only', 'storage_with_games'];
+
+  services.forEach(service => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    card.innerHTML = `
+      <h3>${service.name}</h3>
+      <p>${service.description}</p>
+      <button class="btn btn-outline" data-id="${service.id}">
+        Agregar
+      </button>
+    `;
+
+    const btn = card.querySelector('button');
+
+    btn.onclick = () => {
+      const prevCtx = ctxAPI.load();
+
+      if (!prevCtx.model) {
+        alert('Primero selecciona el modelo de tu consola.');
+        return;
+      }
+
+      if (selectedServices.has(service.id)) {
+        selectedServices.delete(service.id);
+        btn.textContent = 'Agregar';
+      } else {
+        if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {
+          EXCLUSIVE_STORAGE_SERVICES.forEach(id => {
+            if (selectedServices.has(id)) {
+              selectedServices.delete(id);
+              const otherBtn =
+                document.querySelector(`[data-id="${id}"]`);
+              if (otherBtn) otherBtn.textContent = 'Agregar';
+            }
+          });
+        }
+
+        selectedServices.add(service.id);
+        btn.textContent = 'Quitar';
+      }
+
+      const nextServices = Array.from(selectedServices);
+      const prevMode = getStorageMode(prevCtx.services);
+      const nextMode = getStorageMode(nextServices);
+
+      ctxAPI.save({
+        services: nextServices,
+        storage: prevMode !== nextMode ? null : prevCtx.storage
+      });
+
+      updateStorageUI();
+      updateRGHNotice();
+    };
+
+    servicesContainer.appendChild(card);
+  });
+
+  /* =============================
+     RGH + MODELO E
+  ============================== */
+
+  function updateRGHNotice() {
+    const ctx = ctxAPI.load();
+    document.getElementById('rghNotice').style.display =
+      ctx.model?.id === 'e' &&
+      ctx.services?.includes('rgh_install')
+        ? 'block'
+        : 'none';
+  }
+
+  /* =============================
+     STORAGE
+  ============================== */
+
+  const storageSection = document.getElementById('storageSection');
+  const storageOptions = document.getElementById('storageOptions');
+  const storageHelp = document.getElementById('storageHelp');
+
+  function updateStorageUI() {
+    const ctx = ctxAPI.load();
+
+    storageOptions.innerHTML = '';
+    storageSection.style.display = 'none';
+
+    if (!needsCatalog(ctx)) return;
+
+    storageSection.style.display = 'block';
+
+    const mode = getStorageMode(ctx.services);
+
+    storageHelp.textContent =
+      mode === 'client'
+        ? 'Selecciona el disco duro que ya tiene tu consola.'
+        : 'Selecciona el disco duro que deseas instalar.';
+
+    const sizes =
+      mode === 'client'
+        ? {120:105,250:226,320:293,500:460,1000:926}
+        : {500:460,1000:926};
+
+    Object.entries(sizes).forEach(([size, usable]) => {
+      const label = document.createElement('label');
+      label.className = 'disk-option';
+
+      label.innerHTML = `
+        <input type="radio" name="diskSize">
+        <strong>${size} GB</strong>
+      `;
+
+      label.querySelector('input').onchange = () => {
+        ctxAPI.save({
+          storage: { label: `${size} GB`, usableGB: usable }
+        });
+      };
+
+      storageOptions.appendChild(label);
+    });
+  }
+
+  /* =============================
+     CONTINUAR
+  ============================== */
+
+  document.getElementById('continueBtn').onclick = () => {
+    if (!validateBeforeContinue()) return;
+
+    const ctx = ctxAPI.load();
+    window.location.href = needsCatalog(ctx)
+      ? '/consolas/ps2/catalogo.html'
+      : '/contacto/';
+  };
+
+});
+</script>
 
 </body>
 </html>
