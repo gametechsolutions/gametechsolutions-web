@@ -270,6 +270,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (diskLimit !== null && !canAddAnyMoreGames()) {
       showLimitWarning('⚠️ Ya no hay espacio suficiente para agregar más juegos.');
     }
+	
+	const recEl = document.getElementById('recommendedGames');
+	if (recEl) {
+	  const rec = getRecommendedGames();
+	  if (rec) {
+		recEl.textContent =
+		  `💡 Recomendado para tu disco (${diskLabel}): hasta ${rec} juegos.`;
+	  } else {
+		recEl.textContent = '';
+	  }
+	}
   }
 
   function canAddAnyMoreGames() {
@@ -291,5 +302,32 @@ document.addEventListener('DOMContentLoaded', () => {
   function hideLimitWarning() {
     document.getElementById('limitWarning')?.remove();
   }
+  
+  function getRecommendedGames() {
+	  const ctx = window.GTSContext.load();
+	  if (!ctx?.storage || !ctx?.services) return null;
+
+	  const services = ctx.services;
+
+	  // Caso: disco con juegos (número fijo)
+	  if (services.includes('storage_with_games')) {
+		const size = ctx.storage.label.replace(' GB', '');
+		const map = {
+		  '500': 50,
+		  '1000': 100
+		};
+		return map[size] || null;
+	  }
+
+	  // Caso: carga de juegos (estimado por promedio)
+	  if (services.includes('games_only') && gamesData.length) {
+		const avgSize =
+		  gamesData.reduce((acc, g) => acc + Number(g.size), 0) / gamesData.length;
+
+		return Math.floor(diskLimit / avgSize);
+	  }
+
+	  return null;
+	}
 
 });
