@@ -1,6 +1,6 @@
 /* =========================================
    CONTACTO.JS — GameTechSolutions
-   Pricing automático por servicios
+   Pricing automático por servicios (FIXED)
 ========================================= */
 
 const CONTEXT_KEY = 'GTS_CONTEXT';
@@ -67,12 +67,14 @@ function calculatePricing(ctx, consoleData) {
     const svc = servicesMap[id];
     if (!svc) return;
 
+    // Precio fijo
     if (typeof svc.price === 'number') {
       total += svc.price;
       breakdown.push(`• ${svc.name}: $${svc.price}`);
     }
 
-    if (id === 'games_only') {
+    // Carga de juegos (cliente)
+    if (id === 'games_only' && ctx.storage) {
       const disk = String(parseInt(ctx.storage.label, 10));
       const price = svc.priceByStorage?.[disk];
       if (price) {
@@ -81,7 +83,8 @@ function calculatePricing(ctx, consoleData) {
       }
     }
 
-    if (id === 'storage_with_games') {
+    // Disco con juegos
+    if (id === 'storage_with_games' && ctx.storage) {
       const disk = String(parseInt(ctx.storage.label, 10));
       const opt = consoleData.storageOptions.provided.sizes[disk];
       if (opt?.price) {
@@ -105,12 +108,16 @@ function calculatePricing(ctx, consoleData) {
 function renderSummary(ctx, servicesCatalog, pricing) {
   setText('summary-console', ctx.console.name);
   setText('summary-model', ctx.model.description);
-  setText('summary-storage', ctx.storage?.label || 'No aplica');
+
+  setText(
+    'summary-storage',
+    ctx.storage?.label || 'No aplica'
+  );
 
   setText(
     'summary-games',
-    ctx.games
-      ? `${ctx.games.count} juegos (${ctx.games.totalSizeGB.toFixed(2)} GB)`
+    ctx.games?.count
+      ? `${ctx.games.count} juegos (${ctx.games.totalSizeGB?.toFixed(2) || 0} GB)`
       : 'No aplica'
   );
 
@@ -118,11 +125,35 @@ function renderSummary(ctx, servicesCatalog, pricing) {
 
   setText(
     'summary-services',
-    ctx.services.map(id => servicesCatalog[id]?.name).join(', ')
+    ctx.services
+      .map(id => servicesCatalog[id]?.name)
+      .filter(Boolean)
+      .join(', ')
   );
 
   setText('pricingTotal', `$${pricing.total} MXN`);
-  setText('pricingBreakdown', pricing.breakdown.join('\n'));
+  setText(
+    'pricingBreakdown',
+    pricing.breakdown.length
+      ? pricing.breakdown.join('\n')
+      : 'Sin cargos adicionales'
+  );
+}
+
+/* =============================
+   ID SERVICIO SIN JUEGOS
+============================= */
+
+function generateServiceOnlyId(consoleCode) {
+  const year = new Date().getFullYear();
+  const key = `selectionCounter_${consoleCode}_SVC_${year}`;
+
+  let counter = Number(localStorage.getItem(key)) || 0;
+  counter += 1;
+
+  localStorage.setItem(key, counter);
+
+  return `${consoleCode}-SVC-${year}-${String(counter).padStart(3, '0')}`;
 }
 
 /* =============================
@@ -184,32 +215,24 @@ async function saveToAirtable(ctx) {
   });
 }
 
-function generateServiceOnlyId(consoleCode) {
-  const year = new Date().getFullYear();
-  const key = `selectionCounter_${consoleCode}_SVC_${year}`;
-
-  let counter = Number(localStorage.getItem(key)) || 0;
-  counter += 1;
-
-  localStorage.setItem(key, counter);
-
-  return `${consoleCode}-SVC-${year}-${String(counter).padStart(3, '0')}`;
-}
-
 /* =============================
    INIT
 ============================= */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const ctx = loadContext();
 
-   // 🆔 Asegurar ID incluso sin juegos
-   if (!ctx.games?.selectionID) {
-     ctx.games = ctx.games || {};
-     ctx.games.selectionID = generateServiceOnlyId(ctx.console.code);
-     saveContext(ctx);
-   }
+  // 👉 1. Cargar contexto
+  let ctx = loadContext();
 
+  // 👉 2. Asegurar ID incluso sin juegos
+  if (!ctx.games?.selectionID) {
+    ctx.games = ctx.games || {};
+    ctx.games.selectionID = generateServiceOnlyId(ctx.console.code);
+    saveContext(ctx);
+    ctx = loadContext(); // 🔑 CLAVE
+  }
+
+  // 👉 3. Validar con contexto ACTUAL
   const error = validateContext(ctx);
   if (error) {
     alert(`⚠️ ${error}`);
@@ -217,20 +240,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  const servicesData = await fetch('/assets/data/services.json').then(r =>
-    r.json()
-  );
-
+  // 👉 4. Cargar servicios
+  const servicesData = await fetch('/assets/data/services.json').then(r => r.json());
   const consoleData = servicesData[ctx.console.code];
+
   const servicesCatalog = {};
   consoleData.services.forEach(s => (servicesCatalog[s.id] = s));
 
+  // 👉 5. Pricing
   const pricing = calculatePricing(ctx, consoleData);
   ctx.pricing = pricing;
-
-  renderSummary(ctx, servicesCatalog, pricing);
   saveContext(ctx);
 
+  // 👉 6. Render
+  renderSummary(ctx, servicesCatalog, pricing);
+
+  // 👉 7. WhatsApp
   document.getElementById('sendBtn').onclick = async () => {
     const name = document.getElementById('clientName').value.trim();
     if (!name) {
@@ -241,8 +266,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     ctx.clientName = name;
     saveContext(ctx);
 
-    const msg = buildWhatsAppMessage(ctx, pricing, { name });
-    sendToWhatsApp(msg);
+    sendToWhatsApp(buildWhatsAppMessage(ctx, pricing, { name }));
 
     try {
       await saveToAirtable(ctx);
