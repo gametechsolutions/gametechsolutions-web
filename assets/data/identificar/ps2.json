@@ -4,9 +4,9 @@
   "models": [
     {
       "id": "fat",
+      "image": "/assets/img/consolas/ps2/models/fat.png",
       "name": "PlayStation 2 FAT",
-      "notes": "Compatible con Memory Card con FMCB",
-      "image": "/assets/img/consolas/ps2/models/fat.png"
+      "notes": "Compatible con Memory Card con FMCB"
     },
     {
       "id": "slim",
