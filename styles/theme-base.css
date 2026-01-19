@@ -34,8 +34,8 @@
   --danger-color: #c0392b;
   --danger-hover: #a93226;
 
-  --font-ui: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --font-head: "Sora", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  /* Fonts */
+  --font-main: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 
@@ -53,7 +53,7 @@
 html,
 body {
   height: 100%;
-  font-family: var(--font-ui);
+  font-family: var(--font-main);
   font-weight: 500;
   letter-spacing: 0.1px;
   background:
@@ -68,7 +68,8 @@ body {
 
 /* Headings premium */
 h1, h2, h3 {
-  font-family: var(--font-head);
+  font-family: var(--font-main);
+  font-weight: 700;
   letter-spacing: -0.4px; /* look premium */
 }
 
