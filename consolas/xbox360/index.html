@@ -1,3 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xbox 360 | GameTechSolutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+  <link rel="stylesheet" href="/styles/theme-base.css" />
+  <link rel="stylesheet" href="/styles/theme-microsoft.css" />
+</head>
+<body>
+
+<div id="header-container"></div>
+
+<main>
+  <div class="container">
+
+    <section>
+      <h2>Servicio para Xbox 360</h2>
+      <p>Selecciona el modelo de tu consola y los servicios que necesitas.</p>
+    </section>
+
+    <!-- MODELO -->
+    <section>
+      <h2>1️⃣ Identifica tu modelo</h2>
+      <div class="cards-grid" id="modelsContainer"></div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section>
+      <h2>2️⃣ Selecciona los servicios</h2>
+      <div class="cards-grid" id="servicesContainer"></div>
+    </section>
+
+    <!-- AVISO RGH -->
+    <section id="rghNotice" style="display:none">
+      <div class="alert warning">
+        ⚠️ <strong>Xbox 360 Modelo E</strong><br><br>
+        No todos los modelos E son compatibles con RGH.
+        La compatibilidad se confirma mediante revisión física.
+      </div>
+    </section>
+
+    <!-- STORAGE -->
+    <section id="storageSection" style="display:none">
+      <h2>3️⃣ Almacenamiento</h2>
+      <p id="storageHelp" class="selector-note"></p>
+      <div class="disk-selector" id="storageOptions"></div>
+    </section>
+
+    <section style="text-align:center; margin-top:30px">
+      <button class="btn" id="continueBtn" disabled>
+        Siguiente paso →
+      </button>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <p>GameTechSolutions ©️ 2026</p>
+</footer>
+
+<script>
+  window.CONSOLE_CONFIG = {
+    code: 'X360',
+    name: 'Xbox 360',
+    brand: 'microsoft'
+  };
+</script>
+
+<script src="/assets/js/context.js"></script>
+<script src="/assets/js/header.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -221,3 +296,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 });
 </script>
+
+</body>
+</html>
