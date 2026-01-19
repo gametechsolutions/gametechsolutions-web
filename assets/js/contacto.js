@@ -197,7 +197,9 @@ Hola, quiero información para un servicio.
 Cliente: ${client.name}
 Consola: ${ctx.console.name}
 Modelo: ${ctx.model.description}
-Servicios: ${ctx.services.join(', ')}
+Servicios: ${ctx.services
+  .map(id => servicesCatalog[id] || id)
+  .join(', ')}
 Almacenamiento: ${ctx.storage?.label || 'No aplica'}
 Juegos: ${ctx.games?.count || 0}
 
@@ -225,8 +227,15 @@ async function saveToAirtable(ctx) {
     clientName: ctx.clientName || '',
     console: ctx.console.name,
     model: ctx.model.description,
-    services: ctx.services.join(', '),
-    servicesRaw: JSON.stringify(ctx.services),
+    services: ctx.services
+     .map(id => servicesCatalog[id] || id)
+     .join(', '),
+     servicesRaw: JSON.stringify(
+        ctx.services.map(id => ({
+          id,
+          name: servicesCatalog[id] || id
+        }))
+      ),
     diskSize: parseInt(ctx.storage?.label || 0, 10),
     diskLimit: ctx.storage?.usableGB || 0,
     CantidadJuegos: ctx.games?.count || 0,
@@ -235,7 +244,7 @@ async function saveToAirtable(ctx) {
     priceBreakdown: ctx.pricing.breakdown.join('\n'),
     pricingJSON: JSON.stringify(ctx.pricing),
     selectedGames: ctx.games?.humanList || '',
-    jsonGames: JSON.stringify(ctx.games || {})
+    jsonGames: JSON.stringify(ctx.games?.list || [])
   };
 
   await fetch('/api/save-selection', {
@@ -270,6 +279,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const servicesData = await fetch('/assets/data/services.json').then(r => r.json());
   const consoleData = servicesData[ctx.console.code];
+
+   const servicesCatalog = {};
+   consoleData.services.forEach(s => {
+     servicesCatalog[s.id] = s.name;
+   });
 
   const servicesCatalog = {};
   consoleData.services.forEach(s => (servicesCatalog[s.id] = s));
