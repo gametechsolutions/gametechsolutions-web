@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Xbox 360 | GameTechSolutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-
-  <!-- Base global -->
-  <link rel="stylesheet" href="/styles/theme-base.css">
-  <link rel="stylesheet" href="/styles/theme-microsoft.css">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+  <link rel="stylesheet" href="/styles/theme-base.css" />
+  <link rel="stylesheet" href="/styles/theme-microsoft.css" />
 </head>
 <body>
 
@@ -20,113 +17,118 @@
 <main>
   <div class="container">
 
-    <!-- =========================
-         INTRO
-    ========================== -->
+    <!-- INTRO -->
     <section>
-      <h2>Servicios para Xbox 360</h2>
+      <h2>Servicio para Xbox 360</h2>
       <p>
-        Selecciona el modelo de tu consola y los servicios que deseas contratar.
+        Selecciona el modelo de tu consola y los servicios que necesitas.
       </p>
     </section>
 
     <!-- =========================
-         IDENTIFICAR MODELO
+         1. IDENTIFICAR MODELO
     ========================== -->
     <section>
-      <h2>Identifica tu modelo</h2>
-      <p>Selecciona el modelo exacto de tu Xbox 360.</p>
+      <h2>1️⃣ Identifica tu modelo</h2>
 
       <div class="cards-grid" id="modelsContainer">
-        <!-- Modelos cargados por JS -->
+        <!-- Inyectado por JS -->
       </div>
     </section>
 
     <!-- =========================
-         SERVICIOS
+         2. SERVICIOS
     ========================== -->
     <section>
-      <h2>Selecciona los servicios</h2>
-      <p>
-        Puedes elegir uno o varios servicios según lo que necesites.
-      </p>
+      <h2>2️⃣ Selecciona los servicios</h2>
 
       <div class="cards-grid" id="servicesContainer">
-        <!-- Servicios cargados por JS -->
+        <!-- Inyectado desde services.json -->
       </div>
+    </section>
 
-      <div style="margin-top:20px; text-align:center;">
-        <button class="btn" id="nextStepBtn" disabled>
-          Siguiente paso
-        </button>
+    <!-- =========================
+         3. ALMACENAMIENTO
+    ========================== -->
+    <section id="storageSection" style="display:none">
+      <h2>3️⃣ Almacenamiento</h2>
+
+      <p>Selecciona el disco duro que aplica a tu servicio.</p>
+
+      <div class="disk-selector">
+        <label class="disk-option">
+          <input type="radio" name="diskSize" value="120" data-limit="110">
+          <strong>120 GB</strong>
+        </label>
+
+        <label class="disk-option">
+          <input type="radio" name="diskSize" value="250" data-limit="230">
+          <strong>250 GB</strong>
+        </label>
+
+        <label class="disk-option">
+          <input type="radio" name="diskSize" value="320" data-limit="293">
+          <strong>320 GB</strong>
+        </label>
+
+        <label class="disk-option">
+          <input type="radio" name="diskSize" value="500" data-limit="465">
+          <strong>500 GB</strong>
+        </label>
+
+        <label class="disk-option">
+          <input type="radio" name="diskSize" value="1000" data-limit="930">
+          <strong>1 TB</strong>
+        </label>
       </div>
+    </section>
+
+    <!-- =========================
+         CTA
+    ========================== -->
+    <section style="text-align:center; margin-top:30px">
+      <button class="btn" id="continueBtn" disabled>
+        Siguiente paso →
+      </button>
     </section>
 
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer>
   <p>GameTechSolutions © 2026</p>
 </footer>
 
-<!-- =========================
-     CONFIG CONSOLA
-========================== -->
+<!-- CONFIG -->
 <script>
-  window.IDENTIFY_CONFIG = {
-    console: {
-      code: 'X360',
-      name: 'Xbox 360',
-      brand: 'microsoft'
-    }
-  };
-</script>
-
-<!-- =========================
-     SCRIPTS BASE
-========================== -->
-<script src="/assets/js/header.js"></script>
-
-<!-- =========================
-     IDENTIFICAR MODELO
-========================== -->
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-
-  const modelsContainer = document.getElementById('modelsContainer');
-  const servicesContainer = document.getElementById('servicesContainer');
-  const nextBtn = document.getElementById('nextStepBtn');
-
-  let ctx =
-    JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
-
-  /* =============================
-     BASE CONTEXTO
-  ============================== */
-
-  ctx.console = {
+  window.CONSOLE_CONFIG = {
     code: 'X360',
     name: 'Xbox 360',
     brand: 'microsoft'
   };
+</script>
 
-  ctx.services = ctx.services || [];
+<!-- JS BASE -->
+<script src="/assets/js/context.js"></script>
+<script src="/assets/js/header.js"></script>
 
-  localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+<!-- LÓGICA DE PÁGINA -->
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+
+  const ctx = window.GTSContext?.get() || {};
 
   /* =============================
-     CARGAR MODELOS
+     MODELOS
   ============================== */
 
   fetch('/assets/data/identificar/xbox360.json')
-    .then(res => res.json())
-    .then(data => {
-      renderModels(data.models);
-    });
+    .then(r => r.json())
+    .then(data => renderModels(data.models));
 
   function renderModels(models) {
-    modelsContainer.innerHTML = '';
+    const container = document.getElementById('modelsContainer');
+    container.innerHTML = '';
 
     models.forEach(model => {
       const card = document.createElement('div');
@@ -134,120 +136,124 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       card.innerHTML = `
         <h3>${model.name}</h3>
-        ${model.image ? `<img src="${model.image}" alt="${model.name}">` : ''}
         <p>${model.notes || ''}</p>
-        <button class="btn btn-outline">
-          Seleccionar modelo
-        </button>
+        <button class="btn btn-outline">Seleccionar</button>
       `;
 
       card.querySelector('button').addEventListener('click', () => {
-        selectModel(model, card);
+        window.GTSContext.save({
+          console: window.CONSOLE_CONFIG,
+          model: {
+            id: model.id,
+            description: model.name
+          }
+        });
+        checkReady();
       });
 
-      modelsContainer.appendChild(card);
+      container.appendChild(card);
     });
   }
 
-  function selectModel(model, card) {
-    ctx.model = {
-      id: model.id,
-      description: model.name,
-      notes: model.notes || ''
-    };
-
-    document
-      .querySelectorAll('#modelsContainer .card')
-      .forEach(c => c.classList.remove('active'));
-
-    card.classList.add('active');
-
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-  }
-
   /* =============================
-     CARGAR SERVICIOS
+     SERVICIOS
   ============================== */
 
-  const res = await fetch('/assets/data/services.json');
-  const servicesData = await res.json();
+  const servicesRes = await fetch('/assets/data/services.json');
+  const servicesData = await servicesRes.json();
+  const services = servicesData.X360.services;
 
-  const xboxServices = servicesData.X360?.services;
+  const servicesContainer = document.getElementById('servicesContainer');
+  const selectedServices = new Set();
 
-  if (!xboxServices) {
-    servicesContainer.innerHTML =
-      '<p>No hay servicios disponibles.</p>';
-    return;
-  }
-
-  Object.values(xboxServices).forEach(service => {
+  services.forEach(service => {
     const card = document.createElement('div');
     card.className = 'card';
-
-    const priceText =
-      service.price
-        ? `$${service.price} MXN`
-        : service.priceByStorage
-          ? 'Precio según almacenamiento'
-          : 'Precio variable';
 
     card.innerHTML = `
       <h3>${service.name}</h3>
       <p>${service.description}</p>
-      <p><strong>${priceText}</strong></p>
-      <button class="btn btn-outline">
-        Agregar servicio
-      </button>
+      <button class="btn btn-outline">Agregar</button>
     `;
 
     const btn = card.querySelector('button');
 
     btn.addEventListener('click', () => {
-      toggleService(service, btn);
+      if (selectedServices.has(service.id)) {
+        selectedServices.delete(service.id);
+        btn.textContent = 'Agregar';
+      } else {
+        selectedServices.add(service.id);
+        btn.textContent = 'Quitar';
+      }
+
+      window.GTSContext.save({
+        services: Array.from(selectedServices)
+      });
+
+      toggleStorage(services);
+      checkReady();
     });
 
     servicesContainer.appendChild(card);
   });
 
-  function toggleService(service, btn) {
-    const exists =
-      ctx.services.some(s => s.id === service.id);
-
-    if (exists) {
-      ctx.services = ctx.services.filter(
-        s => s.id !== service.id
-      );
-      btn.textContent = 'Agregar servicio';
-      btn.classList.remove('active');
-    } else {
-      ctx.services.push({
-        id: service.id,
-        name: service.name,
-        category: service.category
-      });
-      btn.textContent = 'Quitar servicio';
-      btn.classList.add('active');
-    }
-
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
-    validateNextStep();
-  }
-
-  function validateNextStep() {
-    nextBtn.disabled = !ctx.model || ctx.services.length === 0;
-  }
-
   /* =============================
-     SIGUIENTE PASO
+     ALMACENAMIENTO
   ============================== */
 
-  nextBtn.addEventListener('click', () => {
-    localStorage.setItem('GTS_CONTEXT', JSON.stringify(ctx));
+  function toggleStorage(allServices) {
+    const needsStorage = Array.from(selectedServices).some(id => {
+      const svc = allServices.find(s => s.id === id);
+      return svc?.requiresStorage;
+    });
 
-    alert(
-      'Modelo y servicios guardados.\n' +
-      'El siguiente paso se definirá después.'
-    );
+    document.getElementById('storageSection').style.display =
+      needsStorage ? 'block' : 'none';
+  }
+
+  document.querySelectorAll('input[name="diskSize"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      window.GTSContext.save({
+        storage: {
+          label: `${radio.value} GB`,
+          usableGB: Number(radio.dataset.limit)
+        }
+      });
+      checkReady();
+    });
+  });
+
+  /* =============================
+     CONTINUAR
+  ============================== */
+
+  function checkReady() {
+    const ctx = window.GTSContext.get();
+
+    const ready =
+      ctx.model &&
+      ctx.services?.length &&
+      (!needsCatalog(ctx) || ctx.storage);
+
+    document.getElementById('continueBtn').disabled = !ready;
+  }
+
+  function needsCatalog(ctx) {
+    return ctx.services?.some(id => {
+      const svc = services.find(s => s.id === id);
+      return svc?.requiresCatalog;
+    });
+  }
+
+  document.getElementById('continueBtn').addEventListener('click', () => {
+    const ctx = window.GTSContext.get();
+
+    if (needsCatalog(ctx)) {
+      window.location.href = '/consolas/xbox360/catalogo.html';
+    } else {
+      window.location.href = '/contacto/';
+    }
   });
 
 });
