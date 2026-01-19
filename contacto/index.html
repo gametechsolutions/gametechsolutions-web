@@ -75,23 +75,36 @@
     <!-- =========================
          PRECIO (AUTOMÁTICO)
     ========================== -->
-    <section>
-      <h2>Precio estimado</h2>
-
-      <div class="card">
-        <p id="pricingBreakdown">
-          Calculando precio…
-        </p>
-
-        <h3 style="margin-top:15px">
-          Total: <span id="pricingTotal">—</span>
-        </h3>
-
-        <p class="selector-note">
-          El precio final puede variar ligeramente tras revisión física.
-        </p>
-      </div>
-    </section>
+    <section class="pricing-section">
+	  <h2 class="section-title">
+	    <span class="title-icon">💰</span>
+	    Precio estimado
+	  </h2>
+	
+	  <div class="card pricing-card">
+	
+	    <div class="pricing-header">
+	      <span class="pricing-badge">Estimación automática</span>
+	      <span class="pricing-hint">Se calcula según consola + paquete + extras</span>
+	    </div>
+	
+	    <div class="pricing-breakdown" id="pricingBreakdown">
+	      <div class="pricing-loading">
+	        <span class="pricing-spinner"></span>
+	        Calculando precio…
+	      </div>
+	    </div>
+	
+	    <div class="pricing-total-box">
+	      <span class="pricing-total-label">Total estimado</span>
+	      <span class="pricing-total-value" id="pricingTotal">—</span>
+	    </div>
+	
+	    <p class="selector-note pricing-note">
+	      El precio final puede variar ligeramente tras revisión física.
+	    </p>
+	  </div>
+	</section>
 
     <!-- =========================
          DATOS CLIENTE
@@ -137,12 +150,11 @@
     <!-- =========================
          MAPA
     ========================== -->
-    <section class="location-section">
-	  <h2 class="section-title"><span class="title-icon">📍
-		</span> Ubicación
-	  </h2>
-
-
+	  <h2 class="section-title">
+	  <span class="title-icon">📍</span>
+	  Ubicación
+	</h2>
+ 
 	  <div class="map-shell">
 
 		<!-- Glow decorativo -->
