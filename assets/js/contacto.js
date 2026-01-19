@@ -1,312 +1,311 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Xbox 360 | GameTechSolutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+/* =========================================
+   CONTACTO.JS — GameTechSolutions
+   Pricing automático por servicios (FINAL)
+========================================= */
 
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
-  <link rel="stylesheet" href="/styles/theme-base.css" />
-  <link rel="stylesheet" href="/styles/theme-microsoft.css" />
-</head>
-<body>
+const CONTEXT_KEY = 'GTS_CONTEXT';
 
-<div id="header-container"></div>
+/* =============================
+   CONTEXTO
+============================= */
 
-<main>
-  <div class="container">
+function loadContext() {
+  try {
+    return JSON.parse(localStorage.getItem(CONTEXT_KEY)) || {};
+  } catch {
+    return {};
+  }
+}
 
-    <section>
-      <h2>Servicio para Xbox 360</h2>
-      <p>Selecciona el modelo de tu consola y los servicios que necesitas.</p>
-    </section>
+function saveContext(ctx) {
+  localStorage.setItem(CONTEXT_KEY, JSON.stringify(ctx));
+}
 
-    <!-- MODELO -->
-    <section class="identify-step">
-      <h2>Identifica tu modelo</h2>
-      <div class="cards-grid" id="modelsContainer"></div>
-    </section>
+/* =============================
+   VALIDACIÓN
+============================= */
 
-    <!-- SERVICIOS -->
-    <section class="identify-step">
-      <h2>Selecciona los servicios</h2>
-      <div class="cards-grid" id="servicesContainer"></div>
-    </section>
+function validateContext(ctx) {
+  if (!ctx.console?.code) return 'No se detectó la consola.';
+  if (!ctx.model) return 'No se detectó el modelo.';
+  if (!ctx.services?.length) return 'No se seleccionaron servicios.';
 
-    <!-- AVISO RGH -->
-    <section id="rghNotice" style="display:none">
-      <div class="alert warning">
-        ⚠️ <strong>Xbox 360 Modelo E</strong><br><br>
-        No todos los modelos E son compatibles con RGH.
-        La compatibilidad se confirma mediante revisión física.
-      </div>
-    </section>
+  const needsGames = ctx.services.some(id =>
+    ['games_only', 'storage_with_games'].includes(id)
+  );
 
-    <!-- STORAGE -->
-    <section id="storageSection" style="display:none">
-      <h2>Almacenamiento</h2>
-      <p id="storageHelp" class="selector-note"></p>
-      <div class="disk-selector" id="storageOptions"></div>
-    </section>
+  if (needsGames) {
+    if (!ctx.storage) return 'No se detectó el almacenamiento.';
+    if (!ctx.games || !ctx.games.selectionID)
+      return 'No se detectó la selección de juegos.';
+  }
 
-    <section style="text-align:center; margin-top:30px">
-      <button class="btn" id="continueBtn" disabled>
-        Siguiente paso →
-      </button>
-    </section>
+  return null;
+}
 
-  </div>
-</main>
+/* =============================
+   UTIL
+============================= */
 
-<footer>
-  <p>GameTechSolutions ©️ 2026</p>
-</footer>
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
 
-<script>
-  window.CONSOLE_CONFIG = {
-    code: 'X360',
-    name: 'Xbox 360',
-    brand: 'microsoft'
+/* =============================
+   PRICING
+============================= */
+
+function calculatePricing(ctx, consoleData) {
+  const servicesMap = {};
+  consoleData.services.forEach(s => (servicesMap[s.id] = s));
+
+  let total = 0;
+  const breakdown = [];
+
+  ctx.services.forEach(id => {
+    const svc = servicesMap[id];
+    if (!svc) return;
+
+    // Precio fijo
+    if (typeof svc.price === 'number') {
+      total += svc.price;
+      breakdown.push(`• ${svc.name}: $${svc.price}`);
+    }
+
+    // Carga de juegos (cliente)
+    if (id === 'games_only' && ctx.storage) {
+      const disk = String(parseInt(ctx.storage.label, 10));
+      const price = svc.priceByStorage?.[disk];
+      if (price) {
+        total += price;
+        breakdown.push(`• Carga de juegos (${disk} GB): $${price}`);
+      }
+    }
+
+    // Disco con juegos
+    if (id === 'storage_with_games' && ctx.storage) {
+      const disk = String(parseInt(ctx.storage.label, 10));
+      const opt = consoleData.storageOptions.provided.sizes[disk];
+      if (opt?.price) {
+        total += opt.price;
+        breakdown.push(`• Disco ${disk} GB con juegos: $${opt.price}`);
+      }
+    }
+  });
+
+  return {
+    total: Number(total) || 0,
+    breakdown,
+    calculatedAt: new Date().toISOString()
   };
-</script>
+}
 
-<script src="/assets/js/context.js"></script>
-<script src="/assets/js/header.js"></script>
+function renderPricingBreakdown(lines) {
+  const el = document.getElementById('pricingBreakdown');
+  if (!el) return;
 
-<script>
+  if (!lines?.length) {
+    el.innerHTML = `
+      <div class="pricing-lines">
+        <div class="pricing-line muted">
+          <span class="name">Sin cargos adicionales</span>
+          <span class="price"></span>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const parsed = lines.map(line => {
+    const cleaned = String(line).replace(/^•\s*/, '').trim();
+    const match = cleaned.match(/^(.*?):\s*\$?([\d,]+(?:\.\d+)?)$/);
+    return match
+      ? { name: match[1].trim(), price: match[2] }
+      : { name: cleaned, price: '' };
+  });
+
+  el.innerHTML = `
+    <div class="pricing-lines">
+      ${parsed.map(item => `
+        <div class="pricing-line">
+          <span class="name">• ${item.name}</span>
+          <span class="price">${item.price}</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+/* =============================
+   RESUMEN
+============================= */
+
+function renderSummary(ctx, servicesCatalog, pricing) {
+  setText('summary-console', ctx.console.name);
+  setText('summary-model', ctx.model.description);
+
+  setText(
+    'summary-storage',
+    ctx.storage?.label || 'No aplica'
+  );
+
+  setText(
+    'summary-games',
+    ctx.games?.count
+      ? `${ctx.games.count} juegos (${ctx.games.totalSizeGB?.toFixed(2) || 0} GB)`
+      : 'No aplica'
+  );
+
+  setText('summary-id', ctx.games?.selectionID || '—');
+
+  setText(
+    'summary-services',
+    ctx.services
+      .map(id => servicesCatalog[id]?.name)
+      .filter(Boolean)
+      .join(', ')
+  );
+
+  setText('pricingTotal', `$${pricing.total} MXN`);
+  renderPricingBreakdown(pricing.breakdown);
+}
+
+/* =============================
+   ID SERVICIO SIN JUEGOS
+============================= */
+
+function generateServiceOnlyId(consoleCode) {
+  const year = new Date().getFullYear();
+  const key = `selectionCounter_${consoleCode}_SVC_${year}`;
+
+  let counter = Number(localStorage.getItem(key)) || 0;
+  counter += 1;
+
+  localStorage.setItem(key, counter);
+  return `${consoleCode}-SVC-${year}-${String(counter).padStart(3, '0')}`;
+}
+
+/* =============================
+   WHATSAPP
+============================= */
+
+function buildWhatsAppMessage(ctx, pricing, client) {
+  return `
+Hola, quiero información para un servicio.
+
+Cliente: ${client.name}
+Consola: ${ctx.console.name}
+Modelo: ${ctx.model.description}
+Servicios: ${ctx.services.join(', ')}
+Almacenamiento: ${ctx.storage?.label || 'No aplica'}
+Juegos: ${ctx.games?.count || 0}
+
+💰 Total estimado: $${pricing.total} MXN
+
+Gracias.
+`.trim();
+}
+
+function sendToWhatsApp(message) {
+  const phone = '5215543613500';
+  window.open(
+    'https://wa.me/' + phone + '?text=' + encodeURIComponent(message),
+    '_blank'
+  );
+}
+
+/* =============================
+   AIRTABLE
+============================= */
+
+async function saveToAirtable(ctx) {
+  const payload = {
+    selectionID: ctx.games?.selectionID || '',
+    clientName: ctx.clientName || '',
+    console: ctx.console.name,
+    model: ctx.model.description,
+    services: ctx.services.join(', '),
+    servicesRaw: JSON.stringify(ctx.services),
+    diskSize: parseInt(ctx.storage?.label || 0, 10),
+    diskLimit: ctx.storage?.usableGB || 0,
+    CantidadJuegos: ctx.games?.count || 0,
+    totalSize: ctx.games?.totalSizeGB || 0,
+    totalPrice: ctx.pricing.total,
+    priceBreakdown: ctx.pricing.breakdown.join('\n'),
+    pricingJSON: JSON.stringify(ctx.pricing),
+    selectedGames: ctx.games?.humanList || '',
+    jsonGames: JSON.stringify(ctx.games || {})
+  };
+
+  await fetch('/api/save-selection', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+}
+
+/* =============================
+   INIT
+============================= */
+
 document.addEventListener('DOMContentLoaded', async () => {
 
-  const ctxAPI = window.GTSContext;
+  let ctx = loadContext();
 
-  /* =============================
-     HELPERS
-  ============================== */
-
-  function getStorageMode(services = []) {
-    if (services.includes('games_only')) return 'client';
-    if (services.includes('storage_with_games')) return 'provided';
-    return null;
+  // 🆔 Asegurar ID incluso sin juegos
+  if (!ctx.games?.selectionID) {
+    ctx.games = ctx.games || {};
+    ctx.games.selectionID = generateServiceOnlyId(ctx.console.code);
+    saveContext(ctx);
+    ctx = loadContext();
   }
 
-  function needsCatalog(ctx) {
-    return ctx.services?.some(id =>
-      services.find(s => s.id === id)?.allowsGames
-    );
+  const error = validateContext(ctx);
+  if (error) {
+    alert(`⚠️ ${error}`);
+    window.location.href = '/';
+    return;
   }
-
-  function validateBeforeContinue() {
-    const ctx = ctxAPI.load();
-
-    if (!ctx.model) {
-      alert('Debes seleccionar el modelo de tu consola.');
-      return false;
-    }
-
-    if (!ctx.services?.length) {
-      alert('Debes seleccionar al menos un servicio.');
-      return false;
-    }
-
-    // 🔒 Validar dependencias (requires)
-    for (const id of ctx.services) {
-      const svc = services.find(s => s.id === id);
-      if (!svc) continue;
-
-      if (svc.requires?.includes('rgh') &&
-          !ctx.services.includes('rgh_install')) {
-        alert(`El servicio "${svc.name}" requiere instalación RGH.`);
-        return false;
-      }
-    }
-
-    if (needsCatalog(ctx) && !ctx.storage) {
-      alert('Debes seleccionar el tamaño del almacenamiento.');
-      return false;
-    }
-
-    return true;
-  }
-
-  /* =============================
-     MODELOS
-  ============================== */
-
-  const modelsData = await fetch('/assets/data/identificar/xbox360.json').then(r => r.json());
-  const modelsContainer = document.getElementById('modelsContainer');
-
-  modelsData.models.forEach(model => {
-    const card = document.createElement('div');
-    card.className = 'card';
-
-    card.innerHTML = `
-      <h3>${model.name}</h3>
-      <p>${model.notes || ''}</p>
-      ${model.image ? `<img src="${model.image}" class="identify-img">` : ''}
-      <button class="btn btn-outline">Seleccionar</button>
-    `;
-
-    card.querySelector('button').onclick = () => {
-      ctxAPI.save({
-        console: window.CONSOLE_CONFIG,
-        model: { id: model.id, description: model.name }
-      });
-      updateRGHNotice();
-      checkReady();
-    };
-
-    modelsContainer.appendChild(card);
-  });
-
-  /* =============================
-     SERVICIOS
-  ============================== */
 
   const servicesData = await fetch('/assets/data/services.json').then(r => r.json());
-  const services = servicesData.X360.services;
-  const servicesContainer = document.getElementById('servicesContainer');
-  const selectedServices = new Set();
+  const consoleData = servicesData[ctx.console.code];
 
-  const EXCLUSIVE_STORAGE_SERVICES = ['games_only', 'storage_with_games'];
+  const servicesCatalog = {};
+  consoleData.services.forEach(s => (servicesCatalog[s.id] = s));
 
-  services.forEach(service => {
-    const card = document.createElement('div');
-    card.className = 'card';
+  const pricing = calculatePricing(ctx, consoleData);
+  ctx.pricing = pricing;
+  saveContext(ctx);
 
-    card.innerHTML = `
-      <h3>${service.name}</h3>
-      <p>${service.description}</p>
-      <button class="btn btn-outline" data-id="${service.id}">Agregar</button>
-    `;
+  renderSummary(ctx, servicesCatalog, pricing);
 
-    const btn = card.querySelector('button');
+  document.getElementById('sendBtn').onclick = async () => {
+    const name = document.getElementById('clientName').value.trim();
+    if (!name) {
+      alert('Ingresa tu nombre.');
+      return;
+    }
 
-    btn.onclick = () => {
-      const prevCtx = ctxAPI.load();
+    ctx.clientName = name;
+    saveContext(ctx);
 
-      if (!prevCtx.model) {
-        alert('Primero selecciona el modelo de tu consola.');
-        return;
-      }
+    sendToWhatsApp(buildWhatsAppMessage(ctx, pricing, { name }));
 
-      if (selectedServices.has(service.id)) {
-        selectedServices.delete(service.id);
-        btn.textContent = 'Agregar';
-      } else {
+    try {
+      await saveToAirtable(ctx);
+    } catch (e) {
+      console.warn('Airtable error:', e);
+    }
 
-        if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {
-          EXCLUSIVE_STORAGE_SERVICES.forEach(id => {
-            if (selectedServices.has(id)) {
-              selectedServices.delete(id);
-              const otherBtn = document.querySelector(`[data-id="${id}"]`);
-              if (otherBtn) otherBtn.textContent = 'Agregar';
-            }
-          });
-        }
-
-        selectedServices.add(service.id);
-        btn.textContent = 'Quitar';
-      }
-
-      const nextServices = Array.from(selectedServices);
-      const prevMode = getStorageMode(prevCtx.services);
-      const nextMode = getStorageMode(nextServices);
-
-      ctxAPI.save({
-        services: nextServices,
-        storage: prevMode !== nextMode ? null : prevCtx.storage
-      });
-
-      updateStorageUI();
-      updateRGHNotice();
-      checkReady();
-    };
-
-    servicesContainer.appendChild(card);
-  });
-
-  /* =============================
-     RGH + MODELO E
-  ============================== */
-
-  function updateRGHNotice() {
-    const ctx = ctxAPI.load();
-    document.getElementById('rghNotice').style.display =
-      ctx.model?.id === 'e' && ctx.services?.includes('rgh_install')
-        ? 'block'
-        : 'none';
-  }
-
-  /* =============================
-     STORAGE
-  ============================== */
-
-  const storageSection = document.getElementById('storageSection');
-  const storageOptions = document.getElementById('storageOptions');
-  const storageHelp = document.getElementById('storageHelp');
-
-  function updateStorageUI() {
-    const ctx = ctxAPI.load();
-    storageOptions.innerHTML = '';
-    storageSection.style.display = 'none';
-
-    if (!needsCatalog(ctx)) return;
-
-    storageSection.style.display = 'block';
-
-    const mode = getStorageMode(ctx.services);
-
-    storageHelp.textContent =
-      mode === 'client'
-        ? 'Selecciona el disco duro que ya tiene tu consola.'
-        : 'Selecciona el disco duro que deseas instalar.';
-
-    const sizes =
-      mode === 'client'
-        ? {120:105,250:226,320:293,500:460,1000:926}
-        : {500:460,1000:926};
-
-    Object.entries(sizes).forEach(([size, usable]) => {
-      const label = document.createElement('label');
-      label.className = 'disk-option';
-
-      label.innerHTML = `
-        <input type="radio" name="diskSize">
-        <strong>${size} GB</strong>
-      `;
-
-      label.querySelector('input').onchange = () => {
-        ctxAPI.save({ storage: { label: `${size} GB`, usableGB: usable } });
-        checkReady();
-      };
-
-      storageOptions.appendChild(label);
-    });
-  }
-
-  /* =============================
-     CONTINUAR
-  ============================== */
-
-  function checkReady() {
-    const ctx = ctxAPI.load();
-    document.getElementById('continueBtn').disabled = !(
-      ctx.model &&
-      ctx.services?.length &&
-      (!needsCatalog(ctx) || ctx.storage)
-    );
-  }
-
-  document.getElementById('continueBtn').onclick = () => {
-    if (!validateBeforeContinue()) return;
-
-    const ctx = ctxAPI.load();
-    window.location.href = needsCatalog(ctx)
-      ? '/consolas/xbox360/catalogo.html'
-      : '/contacto/';
+    ctx.status = 'finalized';
+    saveContext(ctx);
   };
 
+  document.getElementById('newSelectionBtn').onclick = () => {
+    if (confirm('¿Iniciar nueva selección?')) {
+      localStorage.removeItem(CONTEXT_KEY);
+      window.location.href = '/';
+    }
+  };
 });
-</script>
-
-</body>
-</html>
