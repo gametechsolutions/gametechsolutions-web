@@ -268,10 +268,34 @@ document.addEventListener('DOMContentLoaded', async () => {
         ? 'Selecciona el disco duro que ya tiene tu consola.'
         : 'Selecciona el disco duro que deseas instalar.';
 
-    const sizes =
-      mode === 'client'
-        ? {120:105,250:226,320:293,500:460,1000:926}
-        : {500:460,1000:926};
+    const consoleServices = servicesData[CONSOLE_CONFIG.code];
+      if (!consoleServices?.storageOptions) return;
+      
+      const storageConfig = consoleServices.storageOptions[mode];
+      if (!storageConfig?.sizes) return;
+      
+      Object.entries(storageConfig.sizes).forEach(([size, data]) => {
+        const usable = data.usableGB ?? data;
+      
+        const label = document.createElement('label');
+        label.className = 'disk-option';
+      
+        label.innerHTML = `
+          <input type="radio" name="diskSize">
+          <strong>${size} GB</strong>
+        `;
+      
+        label.querySelector('input').onchange = () => {
+          ctxAPI.save({
+            storage: {
+              label: ${size} GB,
+              usableGB: usable
+            }
+          });
+        };
+      
+        storageOptions.appendChild(label);
+      });
 
     Object.entries(sizes).forEach(([size, usable]) => {
       const label = document.createElement('label');
