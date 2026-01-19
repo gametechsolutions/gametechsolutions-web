@@ -202,11 +202,16 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     
       games: {
-        selectionID: selectionId,
-        count: selectedGames.length,
-        totalSizeGB: Number(totalSize.toFixed(2)),
-        humanList
-      },
+		  selectionID: selectionId,
+		  count: selectedGames.length,
+		  totalSizeGB: Number(totalSize.toFixed(2)),
+		  list: selectedGames.map(g => ({
+		    id: g.id,
+		    name: gamesData.find(x => x.id == g.id)?.name || 'Desconocido',
+		    sizeGB: g.size
+		  })),
+		  humanList
+		},
     
       meta: {
         ...prevContext.meta,
