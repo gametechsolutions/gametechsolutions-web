@@ -49,8 +49,9 @@
       <div class="disk-selector" id="storageOptions"></div>
     </section>
 
+    <!-- CONTINUAR -->
     <section style="text-align:center; margin-top:30px">
-      <button class="btn" id="continueBtn" disabled>
+      <button class="btn" id="continueBtn">
         Siguiente paso →
       </button>
     </section>
@@ -107,13 +108,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       return false;
     }
 
-    // 🔒 Validar dependencias (requires)
+    // Validar dependencias (requires)
     for (const id of ctx.services) {
       const svc = services.find(s => s.id === id);
       if (!svc) continue;
 
-      if (svc.requires?.includes('rgh') &&
-          !ctx.services.includes('rgh_install')) {
+      if (
+        svc.requires?.includes('rgh') &&
+        !ctx.services.includes('rgh_install')
+      ) {
         alert(`El servicio "${svc.name}" requiere instalación RGH.`);
         return false;
       }
@@ -131,7 +134,9 @@ document.addEventListener('DOMContentLoaded', async () => {
      MODELOS
   ============================== */
 
-  const modelsData = await fetch('/assets/data/identificar/xbox360.json').then(r => r.json());
+  const modelsData = await fetch('/assets/data/identificar/xbox360.json')
+    .then(r => r.json());
+
   const modelsContainer = document.getElementById('modelsContainer');
 
   modelsData.models.forEach(model => {
@@ -150,8 +155,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         console: window.CONSOLE_CONFIG,
         model: { id: model.id, description: model.name }
       });
+
       updateRGHNotice();
-      checkReady();
+      updateStorageUI();
     };
 
     modelsContainer.appendChild(card);
@@ -161,7 +167,9 @@ document.addEventListener('DOMContentLoaded', async () => {
      SERVICIOS
   ============================== */
 
-  const servicesData = await fetch('/assets/data/services.json').then(r => r.json());
+  const servicesData = await fetch('/assets/data/services.json')
+    .then(r => r.json());
+
   const services = servicesData.X360.services;
   const servicesContainer = document.getElementById('servicesContainer');
   const selectedServices = new Set();
@@ -175,7 +183,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     card.innerHTML = `
       <h3>${service.name}</h3>
       <p>${service.description}</p>
-      <button class="btn btn-outline" data-id="${service.id}">Agregar</button>
+      <button class="btn btn-outline" data-id="${service.id}">
+        Agregar
+      </button>
     `;
 
     const btn = card.querySelector('button');
@@ -197,7 +207,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           EXCLUSIVE_STORAGE_SERVICES.forEach(id => {
             if (selectedServices.has(id)) {
               selectedServices.delete(id);
-              const otherBtn = document.querySelector(`[data-id="${id}"]`);
+              const otherBtn =
+                document.querySelector(`[data-id="${id}"]`);
               if (otherBtn) otherBtn.textContent = 'Agregar';
             }
           });
@@ -218,7 +229,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       updateStorageUI();
       updateRGHNotice();
-      checkReady();
     };
 
     servicesContainer.appendChild(card);
@@ -231,7 +241,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   function updateRGHNotice() {
     const ctx = ctxAPI.load();
     document.getElementById('rghNotice').style.display =
-      ctx.model?.id === 'e' && ctx.services?.includes('rgh_install')
+      ctx.model?.id === 'e' &&
+      ctx.services?.includes('rgh_install')
         ? 'block'
         : 'none';
   }
@@ -246,6 +257,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function updateStorageUI() {
     const ctx = ctxAPI.load();
+
     storageOptions.innerHTML = '';
     storageSection.style.display = 'none';
 
@@ -275,8 +287,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
 
       label.querySelector('input').onchange = () => {
-        ctxAPI.save({ storage: { label: `${size} GB`, usableGB: usable } });
-        checkReady();
+        ctxAPI.save({
+          storage: { label: `${size} GB`, usableGB: usable }
+        });
       };
 
       storageOptions.appendChild(label);
@@ -286,15 +299,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   /* =============================
      CONTINUAR
   ============================== */
-
-  function checkReady() {
-    const ctx = ctxAPI.load();
-    document.getElementById('continueBtn').disabled = !(
-      ctx.model &&
-      ctx.services?.length &&
-      (!needsCatalog(ctx) || ctx.storage)
-    );
-  }
 
   document.getElementById('continueBtn').onclick = () => {
     if (!validateBeforeContinue()) return;
