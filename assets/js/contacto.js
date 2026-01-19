@@ -184,12 +184,31 @@ async function saveToAirtable(ctx) {
   });
 }
 
+function generateServiceOnlyId(consoleCode) {
+  const year = new Date().getFullYear();
+  const key = `selectionCounter_${consoleCode}_SVC_${year}`;
+
+  let counter = Number(localStorage.getItem(key)) || 0;
+  counter += 1;
+
+  localStorage.setItem(key, counter);
+
+  return `${consoleCode}-SVC-${year}-${String(counter).padStart(3, '0')}`;
+}
+
 /* =============================
    INIT
 ============================= */
 
 document.addEventListener('DOMContentLoaded', async () => {
   const ctx = loadContext();
+
+   // 🆔 Asegurar ID incluso sin juegos
+   if (!ctx.games?.selectionID) {
+     ctx.games = ctx.games || {};
+     ctx.games.selectionID = generateServiceOnlyId(ctx.console.code);
+     saveContext(ctx);
+   }
 
   const error = validateContext(ctx);
   if (error) {
