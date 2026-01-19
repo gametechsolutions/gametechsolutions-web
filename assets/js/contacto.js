@@ -5,6 +5,8 @@
 
 const CONTEXT_KEY = 'GTS_CONTEXT';
 
+let servicesCatalog = {};
+
 /* =============================
    CONTEXTO
 ============================= */
@@ -198,7 +200,7 @@ Cliente: ${client.name}
 Consola: ${ctx.console.name}
 Modelo: ${ctx.model.description}
 Servicios: ${ctx.services
-  .map(id => servicesCatalog[id] || id)
+  .map(id => servicesCatalog[id]?.name || id)
   .join(', ')}
 Almacenamiento: ${ctx.storage?.label || 'No aplica'}
 Juegos: ${ctx.games?.count || 0}
@@ -228,12 +230,13 @@ async function saveToAirtable(ctx) {
     console: ctx.console.name,
     model: ctx.model.description,
     services: ctx.services
-     .map(id => servicesCatalog[id] || id)
-     .join(', '),
-     servicesRaw: JSON.stringify(
+        .map(id => servicesCatalog[id]?.name || id)
+        .join(', '),
+      
+      servicesRaw: JSON.stringify(
         ctx.services.map(id => ({
           id,
-          name: servicesCatalog[id] || id
+          name: servicesCatalog[id]?.name || id
         }))
       ),
     diskSize: parseInt(ctx.storage?.label || 0, 10),
@@ -280,13 +283,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   const servicesData = await fetch('/assets/data/services.json').then(r => r.json());
   const consoleData = servicesData[ctx.console.code];
 
-   const servicesCatalog = {};
+   servicesCatalog = {};
    consoleData.services.forEach(s => {
-     servicesCatalog[s.id] = s.name;
+     servicesCatalog[s.id] = s; // objeto completo
    });
-
-  const servicesCatalog = {};
-  consoleData.services.forEach(s => (servicesCatalog[s.id] = s));
 
   const pricing = calculatePricing(ctx, consoleData);
   ctx.pricing = pricing;
