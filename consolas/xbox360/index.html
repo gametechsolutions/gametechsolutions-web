@@ -44,7 +44,7 @@
 
     <!-- STORAGE -->
     <section id="storageSection" style="display:none">
-      <h2>3️⃣ Almacenamiento</h2>
+      <h2>Almacenamiento</h2>
       <p id="storageHelp" class="selector-note"></p>
       <div class="disk-selector" id="storageOptions"></div>
     </section>
@@ -107,6 +107,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       return false;
     }
 
+    // 🔒 Validar dependencias (requires)
+    for (const id of ctx.services) {
+      const svc = services.find(s => s.id === id);
+      if (!svc) continue;
+
+      if (svc.requires?.includes('rgh') &&
+          !ctx.services.includes('rgh_install')) {
+        alert(`El servicio "${svc.name}" requiere instalación RGH.`);
+        return false;
+      }
+    }
+
     if (needsCatalog(ctx) && !ctx.storage) {
       alert('Debes seleccionar el tamaño del almacenamiento.');
       return false;
@@ -150,7 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ============================== */
 
   const servicesData = await fetch('/assets/data/services.json').then(r => r.json());
-  const services = Object.values(servicesData.X360.services);
+  const services = servicesData.X360.services;
   const servicesContainer = document.getElementById('servicesContainer');
   const selectedServices = new Set();
 
@@ -196,13 +208,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
       const nextServices = Array.from(selectedServices);
-
-      const prevStorageMode = getStorageMode(prevCtx.services);
-      const nextStorageMode = getStorageMode(nextServices);
+      const prevMode = getStorageMode(prevCtx.services);
+      const nextMode = getStorageMode(nextServices);
 
       ctxAPI.save({
         services: nextServices,
-        storage: prevStorageMode !== nextStorageMode ? null : prevCtx.storage
+        storage: prevMode !== nextMode ? null : prevCtx.storage
       });
 
       updateStorageUI();
@@ -251,8 +262,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const sizes =
       mode === 'client'
-        ? {120:110,250:230,320:293,500:465,1000:930}
-        : {500:465,1000:930};
+        ? {120:105,250:226,320:293,500:460,1000:926}
+        : {500:460,1000:926};
 
     Object.entries(sizes).forEach(([size, usable]) => {
       const label = document.createElement('label');
