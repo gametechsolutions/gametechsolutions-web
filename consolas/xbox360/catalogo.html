@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     alert(
       'El catálogo solo está disponible cuando seleccionas un servicio con juegos y almacenamiento.'
     );
-    window.location.href = '/consolas/xbox360/';
+    window.location.href = CONSOLE_CONFIG.catalogPath.replace('/catalogo.html', '/');
   }
 });
 </script>
