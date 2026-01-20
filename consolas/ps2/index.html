@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       label.querySelector('input').onchange = () => {
         ctxAPI.save({
           storage: {
-            label: ${size} GB,
+            label: `${size} GB`,
             usableGB: usable
           }
         });
