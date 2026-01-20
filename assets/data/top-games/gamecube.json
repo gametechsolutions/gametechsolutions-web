@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Metroid Prime",
+    "image": "/assets/img/consolas/gamecube/top/metroid-prime.jpg"
+  },
+  {
+    "name": "Resident Evil 4",
+    "image": "/assets/img/consolas/gamecube/top/resident-evil-4.jpg"
+  },
+  {
+    "name": "The Legend of Zelda: Twilight Princess",
+    "image": "/assets/img/consolas/gamecube/top/zelda-twilight.jpg"
+  },
+  {
+    "name": "The Legend of Zelda: The Winter Waker",
+    "image": "/assets/img/consolas/gamecube/top/zelda-winter.jpg"
+  },
+  {
+    "name": "The Legend of Zelda: Collector's Edition",
+    "image": "/assets/img/consolas/gamecube/top/zelda-collectors.jpg"
+  }
+]
