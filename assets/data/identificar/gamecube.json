@@ -1,0 +1,12 @@
+{
+  "title": "Identificar GameCube",
+  "description": "Selecciona el modelo de tu GameCube para continuar.",
+  "models": [
+    {
+      "id": "gc",
+      "image": "/assets/img/consolas/gamecube/models/gamecube.png",
+      "name": "GameCube",
+      "notes": "Compatible con PicoBoot"
+    }
+  ]
+}
