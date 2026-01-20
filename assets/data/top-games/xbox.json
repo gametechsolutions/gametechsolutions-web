@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Halo: Combat Evolved",
+    "image": "/assets/img/consolas/xbox/top/halo.jpg"
+  },
+  {
+    "name": "Grand Theft Auto Vice City",
+    "image": "/assets/img/consolas/xbox/top/gta-vice-city.jpg"
+  },
+  {
+    "name": "Halo 2",
+    "image": "/assets/img/consolas/xbox/top/halo2.jpg"
+  },
+  {
+    "name": "Ninja Gaiden Black",
+    "image": "/assets/img/consolas/xbox/top/ninja-gaiden-black.jpg"
+  },
+  {
+    "name": "TC: Splinter Cell - Chaos Theory",
+    "image": "/assets/img/consolas/xbox/top/sc-ct.jpg"
+  }
+]
