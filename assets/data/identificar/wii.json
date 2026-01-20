@@ -12,7 +12,7 @@
       "id": "retrocompatible",
       "name": "Wii Original",
       "notes": "Retrocompatible con GameCube. Es el modelo más completo para liberación.",
-      "image": "/assets/img/consolas/wii/models/wii-compatible.png"
+      "image": "/assets/img/consolas/wii/models/wii-gamecube.png"
     },
     {
       "id": "mini",
