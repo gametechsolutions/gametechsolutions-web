@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
+     /* =============================
+     TEMA DINÁMICO POR CONSOLA
+     ============================== */
+   
+     const themeLink = document.getElementById('themeStylesheet');
+     if (themeLink && window.CONSOLE_CONFIG?.brand) {
+       themeLink.href = `/styles/theme-${window.CONSOLE_CONFIG.brand}.css`;
+     }
+
   const ctxAPI = window.GTSContext;
 
   /* =============================
@@ -30,12 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (services.includes('games_only')) return 'client';
     if (services.includes('storage_with_games')) return 'provided';
     return null;
-  }
-
-  function needsCatalog(ctx) {
-    return ctx.services?.some(id =>
-      services.find(s => s.id === id)?.allowsGames
-    );
   }
 
   function validateBeforeContinue() {
@@ -130,6 +133,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const services = consoleServices.services;
+
+   function needsCatalog(ctx) {
+       return ctx.services?.some(id =>
+         services.find(s => s.id === id)?.allowsGames
+       );
+     }
+   
   const servicesContainer = document.getElementById('servicesContainer');
   const selectedServices = new Set(ctx.services || []);
 
@@ -240,6 +250,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
 
       input.onchange = () => {
+        // 🧹 Quitar selección visual previa
+        document
+          .querySelectorAll('.disk-option.selected')
+          .forEach(el => el.classList.remove('selected'));
+      
+        // ✅ Marcar visualmente el actual
+        label.classList.add('selected');
+      
         ctxAPI.save({
           storage: {
             label: `${size} GB`,
