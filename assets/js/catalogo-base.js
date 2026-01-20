@@ -15,6 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
   ============================== */
   
   const ctx = window.GTSContext?.load?.();
+
+	/* =============================
+   CARGAR SERVICES.JSON (GLOBAL)
+	============================= */
+	
+	let servicesData = {};
+	
+	fetch('/assets/data/services.json')
+	  .then(res => {
+	    if (!res.ok) throw new Error('No se pudo cargar services.json');
+	    return res.json();
+	  })
+	  .then(data => {
+	    servicesData = data;
+	    // 🌍 Exponer globalmente
+	    window.SERVICES_DATA = data;
+	  })
+	  .catch(err => {
+	    console.error('Error cargando services.json:', err);
+	  });
   
   if (ctx?.storage) {
     diskLimit = Number(ctx.storage.usableGB);
@@ -313,28 +333,34 @@ document.addEventListener('DOMContentLoaded', () => {
   function getRecommendedGames() {
 	  const ctx = window.GTSContext.load();
 	  if (!ctx?.storage || !ctx?.services) return null;
-
+	
+	  if (!window.SERVICES_DATA) return null;
+	
+	  const consoleCode = ctx.console?.code;
 	  const services = ctx.services;
-
-	  // Caso: disco con juegos (número fijo)
+	
+	  // 🔹 Caso: almacenamiento con juegos incluidos
 	  if (services.includes('storage_with_games')) {
-		const size = ctx.storage.label.replace(' GB', '');
-		const map = {
-		  '500': 50,
-		  '1000': 100
-		};
-		return map[size] || null;
+	    const size = ctx.storage.label.replace(' GB', '');
+	
+	    const storage =
+	      window.SERVICES_DATA?.[consoleCode]
+	        ?.storageOptions
+	        ?.provided
+	        ?.sizes
+	        ?.[size];
+	
+	    return storage?.gamesIncluded || null;
 	  }
-
-	  // Caso: carga de juegos (estimado por promedio)
+	
+	  // 🔹 Caso: juegos calculados por espacio (Xbox 360)
 	  if (services.includes('games_only') && gamesData.length) {
-		const avgSize =
-		  gamesData.reduce((acc, g) => acc + Number(g.size), 0) / gamesData.length;
-
-		return Math.floor(diskLimit / avgSize);
+	    const avgSize =
+	      gamesData.reduce((acc, g) => acc + Number(g.size), 0) / gamesData.length;
+	
+	    return Math.floor(diskLimit / avgSize);
 	  }
-
+	
 	  return null;
 	}
-
 });
