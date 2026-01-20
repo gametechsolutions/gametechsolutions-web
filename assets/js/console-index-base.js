@@ -133,6 +133,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const services = consoleServices.services;
+  
+  /* =============================
+   VALIDACIÓN DE DEPENDENCIAS
+	============================= */
+
+	function hasRequiredCapabilities(service, selectedServices, allServices) {
+	  if (!service.requires?.length) return true;
+
+	  const provided = new Set();
+
+	  selectedServices.forEach(id => {
+		const svc = allServices.find(s => s.id === id);
+		svc?.provides?.forEach(p => provided.add(p));
+	  });
+
+	  // Basta con que UNA dependencia esté satisfecha
+	  return service.requires.some(req => provided.has(req));
+	}
 
    function needsCatalog(ctx) {
        return ctx.services?.some(id =>
@@ -171,6 +189,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         selectedServices.delete(service.id);
         btn.textContent = 'Agregar';
       } else {
+		  
+		  // 🔒 Validar dependencias del servicio (PS3, etc.)
+		const ok = hasRequiredCapabilities(
+		  service,
+		  Array.from(selectedServices),
+		  services
+		);
+
+		if (!ok) {
+		  alert(
+			`⚠️ El servicio "${service.name}" requiere instalar previamente HEN o CFW.`
+		  );
+		  return;
+		}
+		  
         if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {
           EXCLUSIVE_STORAGE_SERVICES.forEach(id => {
             if (selectedServices.has(id)) {
