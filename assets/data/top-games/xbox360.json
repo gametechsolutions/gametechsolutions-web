@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Grand Theft Auto IV",
+    "image": "/assets/img/consolas/xbox360/top/gta-iv.jpg"
+  },
+  {
+    "name": "Grand Theft Auto V",
+    "image": "/assets/img/consolas/xbox360/top/gtav.jpg"
+  },
+  {
+    "name": "Bioshock",
+    "image": "/assets/img/consolas/xbox360/top/bioshock.jpg"
+  },
+  {
+    "name": "The Orange Box",
+    "image": "/assets/img/consolas/xbox360/top/orange-box.jpg"
+  },
+  {
+    "name": "Mass Effect 2",
+    "image": "/assets/img/consolas/xbox360/top/mass-effect-2.jpg"
+  }
+]
