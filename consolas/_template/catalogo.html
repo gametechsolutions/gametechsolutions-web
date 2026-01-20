@@ -98,14 +98,6 @@
 </footer>
 
 <script>
-  // ⛔ ESTE OBJETO DEBE EXISTIR ANTES DE catalogo-base.js
-  if (!window.CONSOLE_CONFIG) {
-    alert('CONSOLE_CONFIG no definido. Acceso inválido al catálogo.');
-    window.location.href = '/';
-  }
-</script>
-
-<script>
   // 🔑 Recuperar config de la consola
   const storedConfig = sessionStorage.getItem('GTS_CONSOLE_CONFIG');
 
@@ -114,6 +106,14 @@
     window.location.href = '/';
   } else {
     window.CONSOLE_CONFIG = JSON.parse(storedConfig);
+  }
+</script>
+
+<script>
+  // ⛔ ESTE OBJETO DEBE EXISTIR ANTES DE catalogo-base.js
+  if (!window.CONSOLE_CONFIG) {
+    alert('CONSOLE_CONFIG no definido. Acceso inválido al catálogo.');
+    window.location.href = '/';
   }
 </script>
 
