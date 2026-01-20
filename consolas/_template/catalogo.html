@@ -13,6 +13,18 @@
 
 <div id="header-container"></div>
 
+<script>
+  // 🔑 Recuperar config de la consola
+  const storedConfig = sessionStorage.getItem('GTS_CONSOLE_CONFIG');
+
+  if (!storedConfig) {
+    alert('No se detectó la configuración de la consola.');
+    window.location.href = '/';
+  } else {
+    window.CONSOLE_CONFIG = JSON.parse(storedConfig);
+  }
+</script>
+
 <main>
   <div class="container">
 
@@ -96,18 +108,6 @@
 <footer>
   <p>GameTechSolutions ©️ 2026</p>
 </footer>
-
-<script>
-  // 🔑 Recuperar config de la consola
-  const storedConfig = sessionStorage.getItem('GTS_CONSOLE_CONFIG');
-
-  if (!storedConfig) {
-    alert('No se detectó la configuración de la consola.');
-    window.location.href = '/';
-  } else {
-    window.CONSOLE_CONFIG = JSON.parse(storedConfig);
-  }
-</script>
 
 <script>
   // ⛔ ESTE OBJETO DEBE EXISTIR ANTES DE catalogo-base.js
