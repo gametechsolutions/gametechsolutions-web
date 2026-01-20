@@ -201,7 +201,6 @@ document.addEventListener('DOMContentLoaded', async() => {
                     });
 
                     if (conflict) {
-                        alert(
                             alert(
                                 '⚠️ El servicio "' + service.name + '" no puede combinarse con otro método de modificación.');
                             return;
