@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Grand Theft Auto IV",
+    "image": "/assets/img/consolas/ps3/top/gta-iv.jpg"
+  },
+  {
+    "name": "Grand Theft Auto V",
+    "image": "/assets/img/consolas/ps3/top/gta-v.jpg"
+  },
+  {
+    "name": "Uncharted 2",
+    "image": "/assets/img/consolas/ps3/top/uncharted2.jpg"
+  },
+  {
+    "name": "Batman Arkham City",
+    "image": "/assets/img/consolas/ps3/top/batman-city.jpg"
+  },
+  {
+    "name": "Little Big Planet",
+    "image": "/assets/img/consolas/ps3/top/littlebigplanet.jpg"
+  }
+]
