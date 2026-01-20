@@ -22,6 +22,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =============================
+   TOP GAMES (DINÁMICOS)
+  ============================= */
+  
+  function renderTopGames() {
+    if (!CONSOLE_CONFIG.topGamesJson) return;
+  
+    const section = document.getElementById('topGamesSection');
+    const grid = document.getElementById('topGamesGrid');
+    if (!section || !grid) return;
+  
+    fetch(CONSOLE_CONFIG.topGamesJson)
+      .then(r => r.json())
+      .then(games => {
+        if (!games.length) return;
+  
+        section.style.display = 'block';
+        grid.innerHTML = '';
+  
+        games.forEach(game => {
+          const card = document.createElement('div');
+          card.className = 'card cover-card';
+  
+          card.innerHTML = `
+            <div class="cover-wrapper">
+              <img src="${game.image}" alt="${game.name}">
+              <div class="cover-overlay">Disponible</div>
+            </div>
+            <h3>${game.name}</h3>
+          `;
+  
+          grid.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.warn('Top games no cargados:', err);
+      });
+  }
+  
+  renderTopGames();
+
+  /* =============================
      VALIDACIÓN DE CONTEXTO
   ============================== */
 
