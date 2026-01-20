@@ -8,16 +8,32 @@
 
   <!-- Base global -->
   <link rel="stylesheet" href="/styles/theme-base.css">
-
-  <!-- Tema de consola -->
+  <!-- Tema consola -->
   <link rel="stylesheet" href="/styles/theme-nintendo.css">
 </head>
 <body>
 
-<!-- HEADER (inyectado dinámicamente) -->
+<!-- HEADER -->
 <div id="header-container"></div>
 
-<!-- CONTENIDO -->
+<!-- 🔒 VALIDACIÓN TEMPRANA DE CONTEXTO -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const ctx = window.GTSContext.load();
+
+  const hasGameService = ctx.services?.some(id =>
+    id === 'games_only' || id === 'storage_with_games'
+  );
+
+  if (!hasGameService || !ctx.storage) {
+    alert(
+      'El catálogo solo está disponible cuando seleccionas un servicio con juegos y almacenamiento.'
+    );
+    window.location.href = CONSOLE_CONFIG.catalogPath.replace('/catalogo.html', '/');
+  }
+});
+</script>
+
 <main>
   <div class="container">
 
@@ -25,7 +41,8 @@
     <section>
       <h2>¿Cómo funciona el catálogo?</h2>
       <p>
-        Desde aquí puedes consultar los juegos disponibles para <strong class="consoleFull"></strong>.
+        Desde aquí puedes consultar los juegos disponibles para
+        <strong class="consoleFull"></strong>.
         La cantidad final de juegos instalados depende del tamaño del disco duro
         y del peso de cada título.
       </p>
@@ -35,27 +52,26 @@
       </p>
     </section>
 
+    <!-- CONTEXTO DEL SERVICIO -->
+    <section class="alert info">
+      <p id="catalogContext"></p>
+    </section>
+
     <!-- NOTAS -->
     <section>
       <h2>Notas importantes</h2>
       <div class="cards-grid">
         <div class="card">
           <h3>💾 Espacio disponible</h3>
-          <ul>
-            <li>No todos los juegos caben en todos los discos</li>
-          </ul>
+          <p>No todos los juegos caben en todos los discos.</p>
         </div>
         <div class="card">
           <h3>⚠️ Compatibilidad</h3>
-          <ul>
-            <li>Algunos títulos pueden requerir configuraciones especiales.</li>
-          </ul>
+          <p>Algunos títulos pueden requerir configuraciones especiales.</p>
         </div>
         <div class="card">
           <h3>🛡️ Garantía</h3>
-          <ul>
-            <li>Los juegos instalados cuentan con garantía de 30 días.</li>
-          </ul>
+          <p>Los juegos instalados cuentan con garantía de 30 días.</p>
         </div>
       </div>
     </section>
@@ -113,44 +129,14 @@
       </div>
     </section>
 
+    <!-- ALMACENAMIENTO (SOLO VISUAL) -->
     <section>
-      <h2>Selecciona el tamaño de la USB</h2>
-      <p>
-        Elige el tamaño de la USB que deseas instalar.
-        La capacidad usable es aproximada y considera el espacio del sistema.
+      <h2>Almacenamiento seleccionado</h2>
+      <p class="selector-note">
+        El tamaño del disco duro se definió en el paso anterior según tu servicio.
       </p>
-    
-      <div class="disk-selector">
-        
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="32" data-limit="29">
-          <div>
-            <strong>32 GB</strong>
-            <span>Recomendado: 20 juegos</span>
-          </div>
-        </label>
 
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="64" data-limit="58">
-          <div>
-            <strong>64 GB</strong>
-            <span>Recomendado: 40 juegos</span>
-          </div>
-        </label>
-    
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="128" data-limit="115">
-          <div>
-            <strong>128 GB</strong>
-            <span>Recomendado: 80 juegos</span>
-          </div>
-        </label>
-        
-      </div>
-    
-      <p class="disk-note">
-        💡 La cantidad de juegos es solo una referencia. El límite real se determina por el espacio en GB.
-      </p>
+      <div class="disk-selector" id="storageDisplay"></div>
     </section>
 
     <!-- SELECTOR -->
@@ -163,7 +149,6 @@
         <!-- CATÁLOGO -->
         <div class="selector-catalog">
           <h3>Catálogo</h3>
-
         </div>
 
         <!-- RESUMEN -->
@@ -172,6 +157,7 @@
 
           <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
           <p>💾 Espacio estimado: <strong id="totalSize">0</strong> GB</p>
+          <p class="selector-note" id="recommendedGames"></p>
 
           <div class="selection-actions">
             <button class="btn-small" id="saveSelection">Guardar selección</button>
@@ -186,15 +172,16 @@
 
       </div>
     </section>
+
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <p>GameTechSolutions © 2026</p>
+  <p>GameTechSolutions ©️ 2026</p>
 </footer>
 
-  <script>
+<!-- CONFIG -->
+<script>
   window.CONSOLE_CONFIG = {
     code: 'GC',
     name: 'GameCube',
@@ -209,6 +196,51 @@
 <script src="/assets/js/context.js"></script>
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/catalogo-base.js"></script>
+
+<!-- CONTEXTO + BLOQUEOS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const ctx = window.GTSContext.load();
+
+  // Mostrar contexto del servicio
+  const ctxEl = document.getElementById('catalogContext');
+  if (ctxEl) {
+    const mode = ctx.services.includes('games_only')
+      ? 'usando tu disco duro'
+      : 'con disco duro incluido';
+
+    ctxEl.textContent =
+      `Estás seleccionando juegos ${mode} (${ctx.storage.label}).`;
+  }
+
+  // Mostrar almacenamiento (solo lectura)
+  const storageDisplay = document.getElementById('storageDisplay');
+  if (storageDisplay && ctx.storage) {
+    storageDisplay.innerHTML = `
+      <div class="disk-option selected">
+        <strong>${ctx.storage.label}</strong>
+        <span>Espacio usable: ${ctx.storage.usableGB} GB</span>
+      </div>
+    `;
+  }
+
+  // Bloquear radios si existen por compatibilidad
+  document.querySelectorAll('input[name="diskSize"]').forEach(r => {
+    r.disabled = true;
+  });
+
+  // Validación extra antes de guardar selección
+  const saveBtn = document.getElementById('saveSelection');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      const ctxNow = window.GTSContext.load();
+      if (!ctxNow.storage) {
+        alert('No se detectó almacenamiento válido.');
+      }
+    });
+  }
+});
+</script>
 
 </body>
 </html>
