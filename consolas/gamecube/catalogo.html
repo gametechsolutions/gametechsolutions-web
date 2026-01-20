@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirigiendo…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<script>
+  window.CONSOLE_CONFIG = {
+    code: 'GC',
+    name: 'GameCube',
+    short: 'GC',
+    fullName: 'Nintendo GameCube',
+    brand: 'nintendo',
+
+    gamesJson: '/assets/data/gamecube-games.json',
+    topGamesJson: '/assets/data/top-games/gamecube.json',
+
+    catalogPath: '/consolas/gamecube/catalogo.html'
+  };
+
+  // 👉 Enviar al template real
+  window.location.replace('/consolas/_template/catalogo.html');
+</script>
+
+</body>
+</html>
