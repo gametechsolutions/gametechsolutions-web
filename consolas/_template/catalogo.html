@@ -105,6 +105,18 @@
   }
 </script>
 
+<script>
+  // 🔑 Recuperar config de la consola
+  const storedConfig = sessionStorage.getItem('GTS_CONSOLE_CONFIG');
+
+  if (!storedConfig) {
+    alert('No se detectó la configuración de la consola.');
+    window.location.href = '/';
+  } else {
+    window.CONSOLE_CONFIG = JSON.parse(storedConfig);
+  }
+</script>
+
 <script src="/assets/js/context.js"></script>
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/catalogo-base.js"></script>
