@@ -2,212 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Catálogo de juegos | GameTechSolutions</title>
+  <title>Redirigiendo…</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-
-  <!-- Base global -->
-  <link rel="stylesheet" href="/styles/theme-base.css">
-
-  <!-- Tema de consola -->
-  <link rel="stylesheet" href="/styles/theme-nintendo.css">
 </head>
 <body>
 
-<!-- HEADER (inyectado dinámicamente) -->
-<div id="header-container"></div>
-
-<!-- CONTENIDO -->
-<main>
-  <div class="container">
-
-    <!-- INTRO -->
-    <section>
-      <h2>¿Cómo funciona el catálogo?</h2>
-      <p>
-        Desde aquí puedes consultar los juegos disponibles para <strong class="consoleFull"></strong>.
-        La cantidad final de juegos instalados depende del tamaño de la USB
-        y del peso de cada título.
-      </p>
-      <p>
-        Este catálogo sirve como referencia para que elijas tus juegos
-        al momento de contratar el servicio.
-      </p>
-    </section>
-
-    <!-- NOTAS -->
-    <section>
-      <h2>Notas importantes</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <h3>💾 Espacio disponible</h3>
-          <p>No todos los juegos caben en todos los discos.</p>
-        </div>
-        <div class="card">
-          <h3>⚠️ Compatibilidad</h3>
-          <p>Algunos títulos pueden requerir configuraciones especiales.</p>
-        </div>
-        <div class="card">
-          <h3>🛡️ Garantía</h3>
-          <p>Los juegos instalados cuentan con garantía de 30 días.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOP JUEGOS -->
-    <section>
-      <h2>Juegos más populares</h2>
-      <p>
-        Contamos con un amplio catálogo que incluye muchos de los títulos
-        más populares de <strong class="consoleFull"></strong>.
-      </p>
-
-      <div class="cards-grid">
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/wii/top/supermariogalaxy.jpg" alt="Mario Galaxy">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>Super Mario Galaxy</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/wii/top/supermariogalaxy2.jpg" alt="Mario Galaxy 2">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>Super Mario Galaxy 2</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/wii/top/zeldatwilight.jpg" alt="Zelda Twilight">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>The Legend of Zelda: Twilight Princess</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/wii/top/supersmashbrosbrawl.jpg" alt="Super Smash">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>Super Smash Bros Brawl</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/wii/top/zeldaskyward.jpg" alt="Zelda Skyward">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>The Legend of Zelda: Skyward Sword</h3>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <h2>Selecciona el tamaño de la USB</h2>
-      <p>
-        Elige el tamaño de la USB que deseas instalar.
-        La capacidad usable es aproximada y considera el espacio del sistema.
-      </p>
-    
-      <div class="disk-selector">
-    
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="64" data-limit="57">
-          <div>
-            <strong>64 GB</strong>
-            <span>Recomendado: ~20 juegos</span>
-          </div>
-        </label>
-    
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="128" data-limit="115">
-          <div>
-            <strong>128 GB</strong>
-            <span>Recomendado: ~40 juegos</span>
-          </div>
-        </label>
-    
-        <label class="disk-option">
-          <input type="radio" name="diskSize" value="256" data-limit="230">
-          <div>
-            <strong>256 GB</strong>
-            <span>Recomendado: ~80 juegos</span>
-          </div>
-        </label>
-    
-      </div>
-    
-      <p class="disk-note">
-        💡 La cantidad de juegos es solo una referencia. El límite real se determina por el espacio en GB.
-      </p>
-    </section>
-
-    <!-- SELECTOR -->
-    <section>
-      <h2>Selector de juegos</h2>
-      <p>Selecciona los juegos que te gustaría instalar.</p>
-
-      <div class="selector-layout">
-
-        <!-- CATÁLOGO -->
-        <div class="selector-catalog">
-          <h3>Catálogo</h3>
-
-        </div>
-
-        <!-- RESUMEN -->
-        <div class="selector-summary">
-          <h3>Mi selección</h3>
-
-          <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
-          <p>💾 Espacio estimado: <strong id="totalSize">0</strong> GB</p>
-
-          <div class="selection-actions">
-            <button class="btn-small" id="removeLast">Quitar último</button>
-            <button class="btn-small danger" id="clearAll">Vaciar selección</button>
-            <button class="btn-small" id="saveSelection">Guardar selección</button>
-          </div>
-
-          <p class="selector-note">
-            El espacio es aproximado y puede variar según el formato del juego.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section>
-      <a class="btn" href="/contacto/">Contactar para instalación</a>
-    </section>
-
-  </div>
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <p>GameTechSolutions © 2026</p>
-</footer>
-
-  <script>
-  window.CONSOLE_CONFIG = {
+<script>
+  const config = {
     code: 'WII',
     name: 'Nintendo Wii',
     short: 'WII',
     fullName: 'Nintendo Wii',
     brand: 'nintendo',
-    gamesJson: '/assets/data/wii-games.json',
+    gamesJson: '/assets/data/games/wii.json',
+    topGamesJson: '/assets/data/top-games/wii.json',
     catalogPath: '/consolas/wii/catalogo.html'
   };
-</script>
 
-<script src="/assets/js/header.js"></script>
-<script src="/assets/js/catalogo-base.js"></script>
+  // 🔐 Persistir config para el template
+  sessionStorage.setItem(
+    'GTS_CONSOLE_CONFIG',
+    JSON.stringify(config)
+  );
+
+  window.location.replace('/consolas/_template/catalogo.html');
+</script>
 
 </body>
 </html>

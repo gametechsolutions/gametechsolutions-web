@@ -1,1 +1,24 @@
-
+{
+  "title": "Identificar Wii",
+  "description": "Selecciona el modelo de tu Wii para continuar.",
+  "models": [
+    {
+      "id": "wii",
+      "name": "Wii Family Edition",
+      "notes": "No tiene puertos de GameCube, pero puede correr juegos por USB/SD.",
+      "image": "/assets/img/consolas/wii/models/wii.png"
+    },
+    {
+      "id": "retrocompatible",
+      "name": "Wii Original",
+      "notes": "Retrocompatible con GameCube. Es el modelo más completo para liberación.",
+      "image": "/assets/img/consolas/wii/models/wii-compatible.png"
+    },
+    {
+      "id": "mini",
+      "name": "Wii Mini",
+      "notes": "Modelo limitado. Soporte reducido para liberación y sin GameCube.",
+      "image": "/assets/img/consolas/wii/models/wii-mini.png"
+    }
+  ]
+}

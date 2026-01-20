@@ -1,0 +1,12 @@
+{
+  "title": "Identificar Xbox Clásica",
+  "description": "Selecciona el modelo de tu Xbox para continuar.",
+  "models": [
+    {
+      "id": "unique",
+      "name": "Xbox",
+      "notes": "Todos los modelos son compatibles con SoftMod y Chip",
+      "image": "/assets/img/consolas/xbox/models/xbox.png"
+    }
+  ]
+}
