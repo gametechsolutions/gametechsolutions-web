@@ -19,7 +19,7 @@
         "sizes": {
           "500": {
             "usableGB": 460,
-            "price": 600,
+            "price": 700,
             "gamesIncluded": 50
           },
           "1000": {
@@ -269,79 +269,194 @@
 	},
   
   "PS2": {
-  "label": "PlayStation 2",
-  "brand": "sony",
+	  "label": "PlayStation 2",
+	  "brand": "sony",
 
-  "storageOptions": {
-    "provided": {
-        "label": "USB proporcionado por GameTechSolutions",
-        "sizes": {
-          "64": {
-            "usableGB": 57,
-            "price": 200,
-            "gamesIncluded": 20
-          },
-          "128": {
-            "usableGB": 115,
-            "price": 300,
-            "gamesIncluded": 40
-          },
-          "256": {
-            "usableGB": 230,
-            "price": 700,
-            "gamesIncluded": 80
-          }
-        }
-      }
-    },
+	  "storageOptions": {
+		"provided": {
+			"label": "USB proporcionado por GameTechSolutions",
+			"sizes": {
+			  "64": {
+				"usableGB": 57,
+				"price": 200,
+				"gamesIncluded": 20
+			  },
+			  "128": {
+				"usableGB": 115,
+				"price": 300,
+				"gamesIncluded": 40
+			  },
+			  "256": {
+				"usableGB": 230,
+				"price": 700,
+				"gamesIncluded": 80
+			  }
+			}
+		  }
+		},
 
-  "services": [
-    {
-        "id": "fmcb_install",
-        "name": "Instalación FreeMCBoot",
-        "description": "Instalación de FMCB o Funtuna según modelo.",
-        "category": "softmod",
-        "price": 300,
-        "requires": [],
-        "provides": ["fmcb"],
-        "allowsGames": false,
-        "requiresStorage": false
-      },
-    {
-        "id": "full_cleaning",
-        "name": "Limpieza completa",
-        "description": "Limpieza interna completa.",
-        "category": "maintenance",
-        "price": 300,
-        "requires": [],
-        "provides": [],
-        "allowsGames": false,
-        "requiresStorage": false
-      },
+	  "services": [
+		{
+			"id": "fmcb_install",
+			"name": "Instalación FreeMCBoot",
+			"description": "Instalación de FMCB o Funtuna según modelo.",
+			"category": "softmod",
+			"price": 300,
+			"requires": [],
+			"provides": ["fmcb"],
+			"allowsGames": false,
+			"requiresStorage": false
+		  },
+		{
+			"id": "full_cleaning",
+			"name": "Limpieza completa",
+			"description": "Limpieza interna completa.",
+			"category": "maintenance",
+			"price": 300,
+			"requires": [],
+			"provides": [],
+			"allowsGames": false,
+			"requiresStorage": false
+		  },
 
-    {
-        "id": "diagnostic",
-        "name": "Revisión y diagnóstico",
-        "description": "Revisión general para detectar fallas o errores.",
-        "category": "support",
-        "price": 150,
-        "requires": [],
-        "provides": [],
-        "allowsGames": false,
-        "requiresStorage": false
-      },
+		{
+			"id": "diagnostic",
+			"name": "Revisión y diagnóstico",
+			"description": "Revisión general para detectar fallas o errores.",
+			"category": "support",
+			"price": 150,
+			"requires": [],
+			"provides": [],
+			"allowsGames": false,
+			"requiresStorage": false
+		  },
 
-      {
-        "id": "storage_with_games",
-        "name": "USB con juegos",
-        "description": "Incluye USB con juegos elegidos por el cliente.",
-        "category": "storage",
-        "requires": ["fmcb"],
-        "provides": ["storage"],
-        "allowsGames": true,
-        "requiresStorage": true,
-        "storageMode": "provided"
-      }
-  ]
-}
+		  {
+			"id": "storage_with_games",
+			"name": "USB con juegos",
+			"description": "Incluye USB con juegos elegidos por el cliente.",
+			"category": "storage",
+			"requires": ["fmcb"],
+			"provides": ["storage"],
+			"allowsGames": true,
+			"requiresStorage": true,
+			"storageMode": "provided"
+		  }
+	  ]
+	},
+	
+	"PS3": {
+	  "label": "PlayStation 3",
+	  "brand": "sony",
+
+	  "storageOptions": {
+		"client": {
+		  "label": "Disco duro interno del cliente",
+		  "sizes": {
+			"120": { "usableGB": 105 },
+			"250": { "usableGB": 226 },
+			"320": { "usableGB": 293 },
+			"500": { "usableGB": 460 },
+			"1000": { "usableGB": 926 }
+		  }
+		},
+		"provided": {
+		  "label": "Disco duro proporcionado por GameTechSolutions",
+		  "sizes": {
+			"500": {
+			  "usableGB": 460,
+			  "price": 600,
+			  "gamesIncluded": 30
+			},
+			"1000": {
+			  "usableGB": 926,
+			  "price": 800,
+			  "gamesIncluded": 60
+			}
+		  }
+		}
+	  },
+
+	  "services": [
+		{
+		  "id": "hen_install",
+		  "name": "Instalación HEN",
+		  "description": "Instalación y configuración de HEN.",
+		  "category": "softmod",
+		  "price": 300,
+		  "requires": [],
+		  "provides": ["hen"],
+		  "allowsGames": false,
+		  "requiresStorage": false
+		},
+
+		{
+		  "id": "cfw_install",
+		  "name": "Instalación CFW",
+		  "description": "Instalación de Custom Firmware (modelos compatibles).",
+		  "category": "softmod",
+		  "price": 300,
+		  "requires": [],
+		  "provides": ["cfw"],
+		  "allowsGames": false,
+		  "requiresStorage": false
+		},
+
+		{
+		  "id": "full_cleaning",
+		  "name": "Limpieza completa",
+		  "description": "Limpieza interna con cambio de pasta térmica.",
+		  "category": "maintenance",
+		  "price": 300,
+		  "requires": [],
+		  "provides": [],
+		  "allowsGames": false,
+		  "requiresStorage": false
+		},
+
+		{
+		  "id": "diagnostic",
+		  "name": "Revisión y diagnóstico",
+		  "description": "Revisión general para detectar fallas.",
+		  "category": "support",
+		  "price": 200,
+		  "requires": [],
+		  "provides": [],
+		  "allowsGames": false,
+		  "requiresStorage": false
+		},
+
+		{
+		  "id": "games_only",
+		  "name": "Carga de juegos",
+		  "description": "Carga de juegos en el disco duro existente del cliente.",
+		  "category": "games",
+		  "priceByStorage": {
+			"120": 150,
+			"250": 200,
+			"320": 250,
+			"500": 300,
+			"1000": 500
+		  },
+		  "requires": ["hen", "cfw"],
+		  "provides": ["games"],
+		  "allowsGames": true,
+		  "requiresStorage": true,
+		  "storageMode": "client"
+		},
+
+		{
+		  "id": "storage_with_games",
+		  "name": "Disco duro con juegos",
+		  "description": "Incluye disco duro interno con juegos elegidos por el cliente.",
+		  "category": "storage",
+		  "requires": ["hen", "cfw"],
+		  "provides": ["storage", "games"],
+		  "allowsGames": true,
+		  "requiresStorage": true,
+		  "storageMode": "provided"
+		}
+	  ]
+	}
+
 }
