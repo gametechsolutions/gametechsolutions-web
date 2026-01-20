@@ -8,20 +8,23 @@
 <body>
 
 <script>
-  window.CONSOLE_CONFIG = {
+  const config = {
     code: 'GC',
     name: 'GameCube',
     short: 'GC',
-    fullName: 'Nintendo GameCube',
+    fullName: 'GameCube',
     brand: 'nintendo',
-
     gamesJson: '/assets/data/gamecube-games.json',
     topGamesJson: '/assets/data/top-games/gamecube.json',
-
     catalogPath: '/consolas/gamecube/catalogo.html'
   };
 
-  // 👉 Enviar al template real
+  // 🔐 Persistir config para el template
+  sessionStorage.setItem(
+    'GTS_CONSOLE_CONFIG',
+    JSON.stringify(config)
+  );
+
   window.location.replace('/consolas/_template/catalogo.html');
 </script>
 
