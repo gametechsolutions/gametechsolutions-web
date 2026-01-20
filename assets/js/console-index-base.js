@@ -202,145 +202,146 @@ document.addEventListener('DOMContentLoaded', async() => {
 
                     if (conflict) {
                         alert(
-                            ⚠️ El servicio "${service.name}" no puede combinarse con otro método de modificación.);
+                            alert(
+                                '⚠️ El servicio "' + service.name + '" no puede combinarse con otro método de modificación.');
+                            return;
+                        }
+                    }
+
+                    // 🔒 Validar dependencias del servicio (PS3)
+                    const ok = hasRequiredCapabilities(
+                            service,
+                            Array.from(selectedServices),
+                            services);
+
+                    if (!ok) {
+                        const missing = service.requires;
+
+                        const requiredServiceNames = services
+                            .filter(s => s.provides?.some(p => missing.includes(p)))
+                            .map(s => s.name);
+
+                        alert(
+`⚠️ El servicio "${service.name}" requiere instalar previamente:\n• ${requiredServiceNames.join('\n• ')}`);
                         return;
                     }
+
+                    if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {
+                        EXCLUSIVE_STORAGE_SERVICES.forEach(id => {
+                            if (selectedServices.has(id)) {
+                                selectedServices.delete(id);
+                                const otherBtn =
+                                    document.querySelector(`[data-id="${id}"]`);
+                                if (otherBtn)
+                                    otherBtn.textContent = 'Agregar';
+                            }
+                        });
+                    }
+
+                    selectedServices.add(service.id);
+                    btn.textContent = 'Quitar';
                 }
 
-                // 🔒 Validar dependencias del servicio (PS3)
-                const ok = hasRequiredCapabilities(
-                        service,
-                        Array.from(selectedServices),
-                        services);
+                const nextServices = Array.from(selectedServices);
+                const prevMode = getStorageMode(prevCtx.services || []);
+                const nextMode = getStorageMode(nextServices);
 
-                if (!ok) {
-                    const missing = service.requires;
+                ctxAPI.save({
+                    services: nextServices,
+                    storage: prevMode !== nextMode ? null : prevCtx.storage
+                });
 
-                    const requiredServiceNames = services
-                        .filter(s => s.provides?.some(p => missing.includes(p)))
-                        .map(s => s.name);
+                updateStorageUI();
+            };
 
-                    alert(
-`⚠️ El servicio "${service.name}" requiere instalar previamente:\n• ${requiredServiceNames.join('\n• ')}`);
-                    return;
-                }
+            servicesContainer.appendChild(card);
+        });
 
-                if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {
-                    EXCLUSIVE_STORAGE_SERVICES.forEach(id => {
-                        if (selectedServices.has(id)) {
-                            selectedServices.delete(id);
-                            const otherBtn =
-                                document.querySelector(`[data-id="${id}"]`);
-                            if (otherBtn)
-                                otherBtn.textContent = 'Agregar';
-                        }
-                    });
-                }
+        /* =============================
+        STORAGE
+        ============================== */
 
-                selectedServices.add(service.id);
-                btn.textContent = 'Quitar';
-            }
+        const storageSection = document.getElementById('storageSection');
+        const storageOptions = document.getElementById('storageOptions');
+        const storageHelp = document.getElementById('storageHelp');
 
-            const nextServices = Array.from(selectedServices);
-            const prevMode = getStorageMode(prevCtx.services || []);
-            const nextMode = getStorageMode(nextServices);
+        function updateStorageUI() {
+            const ctx = ctxAPI.load();
 
-            ctxAPI.save({
-                services: nextServices,
-                storage: prevMode !== nextMode ? null : prevCtx.storage
-            });
+            storageOptions.innerHTML = '';
+            storageSection.style.display = 'none';
 
-            updateStorageUI();
-        };
+            if (!needsCatalog(ctx))
+                return;
 
-        servicesContainer.appendChild(card);
-    });
+            const mode = getStorageMode(ctx.services);
+            const storageConfig = consoleServices.storageOptions?.[mode];
+            if (!storageConfig?.sizes)
+                return;
 
-    /* =============================
-    STORAGE
-    ============================== */
+            storageSection.style.display = 'block';
 
-    const storageSection = document.getElementById('storageSection');
-    const storageOptions = document.getElementById('storageOptions');
-    const storageHelp = document.getElementById('storageHelp');
+            storageHelp.textContent =
+                storageConfig.label ||
+                (mode === 'client'
+                     ? 'Selecciona el almacenamiento del cliente.'
+                     : 'Selecciona el almacenamiento a instalar.');
 
-    function updateStorageUI() {
-        const ctx = ctxAPI.load();
+            Object.entries(storageConfig.sizes).forEach(([size, data]) => {
+                const usable = typeof data === 'object'
+                     ? data.usableGB
+                     : data;
 
-        storageOptions.innerHTML = '';
-        storageSection.style.display = 'none';
+                const label = document.createElement('label');
+                label.className = 'disk-option';
 
-        if (!needsCatalog(ctx))
-            return;
-
-        const mode = getStorageMode(ctx.services);
-        const storageConfig = consoleServices.storageOptions?.[mode];
-        if (!storageConfig?.sizes)
-            return;
-
-        storageSection.style.display = 'block';
-
-        storageHelp.textContent =
-            storageConfig.label ||
-            (mode === 'client'
-                 ? 'Selecciona el almacenamiento del cliente.'
-                 : 'Selecciona el almacenamiento a instalar.');
-
-        Object.entries(storageConfig.sizes).forEach(([size, data]) => {
-            const usable = typeof data === 'object'
-                 ? data.usableGB
-                 : data;
-
-            const label = document.createElement('label');
-            label.className = 'disk-option';
-
-            label.innerHTML = `
+                label.innerHTML = `
         <input type="radio" name="diskSize">
         <strong>${size} GB</strong>
       `;
 
-            const input = label.querySelector('input');
+                const input = label.querySelector('input');
 
-            if (ctx.storage?.label === `${size} GB`) {
-                input.checked = true;
-                label.classList.add('selected');
-            }
+                if (ctx.storage?.label === `${size} GB`) {
+                    input.checked = true;
+                    label.classList.add('selected');
+                }
 
-            input.onchange = () => {
-                // 🧹 Quitar selección visual previa
-                document
-                .querySelectorAll('.disk-option.selected')
-                .forEach(el => el.classList.remove('selected'));
+                input.onchange = () => {
+                    // 🧹 Quitar selección visual previa
+                    document
+                    .querySelectorAll('.disk-option.selected')
+                    .forEach(el => el.classList.remove('selected'));
 
-                // ✅ Marcar visualmente el actual
-                label.classList.add('selected');
+                    // ✅ Marcar visualmente el actual
+                    label.classList.add('selected');
 
-                ctxAPI.save({
-                    storage: {
-                        label: `${size} GB`,
-                        usableGB: usable
-                    }
-                });
-            };
+                    ctxAPI.save({
+                        storage: {
+                            label: `${size} GB`,
+                            usableGB: usable
+                        }
+                    });
+                };
 
-            storageOptions.appendChild(label);
-        });
-    }
+                storageOptions.appendChild(label);
+            });
+        }
 
-    updateStorageUI();
+        updateStorageUI();
 
-    /* =============================
-    CONTINUAR
-    ============================== */
+        /* =============================
+        CONTINUAR
+        ============================== */
 
-    document.getElementById('continueBtn').onclick = () => {
-        if (!validateBeforeContinue())
-            return;
+        document.getElementById('continueBtn').onclick = () => {
+            if (!validateBeforeContinue())
+                return;
 
-        const ctx = ctxAPI.load();
-        window.location.href = needsCatalog(ctx)
-             ? CONSOLE_CONFIG.catalogPath
-             : '/contacto/';
-    };
+            const ctx = ctxAPI.load();
+            window.location.href = needsCatalog(ctx)
+                 ? CONSOLE_CONFIG.catalogPath
+                 : '/contacto/';
+        };
 
-});
+    });
