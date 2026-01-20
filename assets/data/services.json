@@ -165,6 +165,109 @@
     ]
   },
   
+  "WII": {
+	  "label": "Nintendo Wii",
+	  "brand": "nintendo",
+
+	  "storageOptions": {
+		"client": {
+		  "label": "USB / SD del cliente",
+		  "sizes": {
+			"64": { "usableGB": 57 },
+			"128": { "usableGB": 115 },
+			"256": { "usableGB": 230 }
+		  }
+		},
+		"provided": {
+		  "label": "USB proporcionado por GameTechSolutions",
+		  "sizes": {
+			"64": {
+			  "usableGB": 57,
+			  "price": 200,
+			  "gamesIncluded": 20
+			},
+			"128": {
+			  "usableGB": 115,
+			  "price": 300,
+			  "gamesIncluded": 40
+			},
+			"256": {
+			  "usableGB": 230,
+			  "price": 700,
+			  "gamesIncluded": 80
+			}
+		  }
+		}
+	  },
+
+	  "services": [
+		{
+		  "id": "softmod_install",
+		  "name": "Instalación Homebrew (Softmod)",
+		  "description": "Instalación de Homebrew Channel y configuración inicial.",
+		  "category": "softmod",
+		  "price": 300,
+		  "requires": [],
+		  "provides": ["homebrew"],
+		  "allowsGames": false,
+		  "requiresStorage": false
+		},
+
+		{
+		  "id": "full_cleaning",
+		  "name": "Limpieza completa",
+		  "description": "Limpieza interna completa de la consola.",
+		  "category": "maintenance",
+		  "price": 300,
+		  "requires": [],
+		  "provides": [],
+		  "allowsGames": false,
+		  "requiresStorage": false
+		},
+
+		{
+		  "id": "diagnostic",
+		  "name": "Revisión y diagnóstico",
+		  "description": "Revisión general para detectar fallas o problemas.",
+		  "category": "support",
+		  "price": 150,
+		  "requires": [],
+		  "provides": [],
+		  "allowsGames": false,
+		  "requiresStorage": false
+		},
+
+		{
+		  "id": "games_only",
+		  "name": "Carga de juegos",
+		  "description": "Carga de juegos en USB o SD del cliente.",
+		  "category": "games",
+		  "priceByStorage": {
+			"64": 100,
+			"128": 150,
+			"256": 350
+		  },
+		  "requires": ["homebrew"],
+		  "provides": ["games"],
+		  "allowsGames": true,
+		  "requiresStorage": true,
+		  "storageMode": "client"
+		},
+
+		{
+		  "id": "storage_with_games",
+		  "name": "USB con juegos",
+		  "description": "Incluye USB con juegos elegidos por el cliente.",
+		  "category": "storage",
+		  "requires": ["homebrew"],
+		  "provides": ["storage", "games"],
+		  "allowsGames": true,
+		  "requiresStorage": true,
+		  "storageMode": "provided"
+		}
+	  ]
+	},
+  
   "PS2": {
   "label": "PlayStation 2",
   "brand": "sony",
