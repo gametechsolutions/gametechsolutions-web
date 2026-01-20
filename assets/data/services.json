@@ -100,6 +100,71 @@
       }
     ]
   },
+
+  "GC": {
+    "label": "Nintendo GameCube",
+    "brand": "nintendo",
+  
+    "storageOptions": {
+      "provided": {
+        "label": "SD / microSD proporcionada por GameTechSolutions",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "price": 300,
+            "gamesIncluded": 20
+          },
+          "64": {
+            "usableGB": 58,
+            "price": 450,
+            "gamesIncluded": 40
+          },
+          "128": {
+            "usableGB": 115,
+            "price": 750,
+            "gamesIncluded": 80
+          }
+        }
+      }
+    },
+  
+    "services": [
+      {
+        "id": "picoboot_install",
+        "name": "Instalación PicoBoot",
+        "description": "Instalación de PicoBoot con microSD.",
+        "category": "mod",
+        "price": 600,
+        "requires": [],
+        "provides": ["mod"],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "storage_with_games",
+        "name": "SD con juegos",
+        "description": "Incluye microSD con juegos para GameCube.",
+        "category": "storage",
+        "requires": ["picoboot"],
+        "provides": ["storage", "games"],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  
   "PS2": {
   "label": "PlayStation 2",
   "brand": "sony",
