@@ -30,6 +30,9 @@
 				"provides": [
 					"softmod"
 				],
+				"exclusiveGroup": [
+					"xbox_mod"
+				],
 				"allowsGames": false,
 				"requiresStorage": false
 			},
@@ -42,6 +45,9 @@
 				"requires": [],
 				"provides": [
 					"chip"
+				],
+				"exclusiveGroup": [
+					"xbox_mod"
 				],
 				"allowsGames": false,
 				"requiresStorage": false
