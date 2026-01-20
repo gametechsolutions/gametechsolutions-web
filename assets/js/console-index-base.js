@@ -198,8 +198,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 		);
 
 		if (!ok) {
+		  const missing = service.requires;
+
+		  const requiredServiceNames = services
+			.filter(s => s.provides?.some(p => missing.includes(p)))
+			.map(s => s.name);
+
 		  alert(
-			`⚠️ El servicio "${service.name}" requiere instalar previamente HEN o CFW.`
+			`⚠️ El servicio "${service.name}" requiere instalar previamente:\n• ${requiredServiceNames.join('\n• ')}`
 		  );
 		  return;
 		}
