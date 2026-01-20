@@ -379,25 +379,13 @@
 
 	  "services": [
 		{
-		  "id": "hen_install",
-		  "name": "Instalación HEN",
-		  "description": "Instalación y configuración de HEN.",
+		  "id": "hen_cfw_install",
+		  "name": "Instalación HEN o CFW",
+		  "description": "Instalación y configuración de HEN o CFW según modelo.",
 		  "category": "softmod",
 		  "price": 300,
 		  "requires": [],
-		  "provides": ["hen"],
-		  "allowsGames": false,
-		  "requiresStorage": false
-		},
-
-		{
-		  "id": "cfw_install",
-		  "name": "Instalación CFW",
-		  "description": "Instalación de Custom Firmware (modelos compatibles).",
-		  "category": "softmod",
-		  "price": 300,
-		  "requires": [],
-		  "provides": ["cfw"],
+		  "provides": ["hen_cfw"],
 		  "allowsGames": false,
 		  "requiresStorage": false
 		},
