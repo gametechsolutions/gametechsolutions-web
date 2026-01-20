@@ -97,6 +97,14 @@
   <p>GameTechSolutions ©️ 2026</p>
 </footer>
 
+<script>
+  // ⛔ ESTE OBJETO DEBE EXISTIR ANTES DE catalogo-base.js
+  if (!window.CONSOLE_CONFIG) {
+    alert('CONSOLE_CONFIG no definido. Acceso inválido al catálogo.');
+    window.location.href = '/';
+  }
+</script>
+
 <script src="/assets/js/context.js"></script>
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/catalogo-base.js"></script>
