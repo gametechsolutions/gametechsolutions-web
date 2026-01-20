@@ -1,0 +1,12 @@
+{
+  "title": "Identificar PlayStation Portable",
+  "description": "Selecciona el modelo de tu PlayStation Portable para continuar.",
+  "models": [
+    {
+      "id": "psp",
+      "image": "/assets/img/consolas/psp/models/psp.png",
+      "name": "PlayStation Portable",
+      "notes": "Ideal para liberación e instalación de juegos: portátil potente con catálogo enorme."
+    }
+  ]
+}

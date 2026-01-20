@@ -1,0 +1,12 @@
+{
+  "title": "Identificar PlayStation 5",
+  "description": "Selecciona el modelo de tu PlayStation 5 para continuar.",
+  "models": [
+    {
+      "id": "ps5",
+      "image": "/assets/img/consolas/ps5/models/fat.png",
+      "name": "PlayStation 5",
+      "notes": "La PS5 original, máximo rendimiento y experiencia next-gen en 4K."
+    }
+  ]
+}

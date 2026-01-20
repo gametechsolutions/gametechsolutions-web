@@ -1,0 +1,24 @@
+{
+	"title": "Identificar Xbox One",
+	"description": "Selecciona el modelo de tu Xbox One para continuar.",
+	"models": [
+		{
+			"id": "fat",
+			"name": "Xbox One",
+			"notes": "La clásica de la generación, perfecta para jugar barato y con buen rendimiento.",
+			"image": "/assets/img/consolas/xboxOne/models/xbox-one.png"
+		},
+		{
+			"id": "s",
+			"name": "Xbox One S",
+			"notes": "Versión más compacta y moderna, con soporte para 4K en streaming.",
+			"image": "/assets/img/consolas/xboxOne/models/xbox-one-s.png"
+		},
+		{
+			"id": "x",
+			"name": "Xbox One X",
+			"notes": "La más potente de la familia One, ideal para jugar en 4K real.",
+			"image": "/assets/img/consolas/xboxOne/models/xbox-one-x.png"
+		}
+	]
+}

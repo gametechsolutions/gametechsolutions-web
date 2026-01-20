@@ -1,0 +1,12 @@
+{
+  "title": "Identificar PlayStation Vita",
+  "description": "Selecciona el modelo de tu PlayStation Vita para continuar.",
+  "models": [
+    {
+      "id": "psvita",
+      "image": "/assets/img/consolas/psvita/models/psvita.png",
+      "name": "PlayStation Vita",
+      "notes": "Excelente para modificación: potencia portátil, emulación y juegos en una sola consola."
+    }
+  ]
+}
