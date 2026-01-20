@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Tony Hawk's Pro Skater 3",
+    "image": "/assets/img/consolas/ps2/top/tony-3.jpg"
+  },
+  {
+    "name": "Grand Theft Auto III",
+    "image": "/assets/img/consolas/ps2/top/gta-3.jpg"
+  },
+  {
+    "name": "Resident Evil 4",
+    "image": "/assets/img/consolas/ps2/top/resident-4.jpg"
+  },
+  {
+    "name": "Metal Gear Solid 2",
+    "image": "/assets/img/consolas/ps2/top/metal-gear-2.jpg"
+  },
+  {
+    "name": "Grand Theft Auto: San Andreas",
+    "image": "/assets/img/consolas/ps2/top/gta-san-andreas.jpg"
+  }
+]
