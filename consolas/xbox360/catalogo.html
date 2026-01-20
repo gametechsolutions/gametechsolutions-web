@@ -2,244 +2,30 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Catálogo de juegos | GameTechSolutions</title>
+  <title>Redirigiendo…</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-
-  <!-- Base global -->
-  <link rel="stylesheet" href="/styles/theme-base.css">
-  <!-- Tema consola -->
-  <link rel="stylesheet" href="/styles/theme-microsoft.css">
 </head>
 <body>
 
-<!-- HEADER -->
-<div id="header-container"></div>
-
-<!-- 🔒 VALIDACIÓN TEMPRANA DE CONTEXTO -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const ctx = window.GTSContext.load();
-
-  const hasGameService = ctx.services?.some(id =>
-    id === 'games_only' || id === 'storage_with_games'
-  );
-
-  if (!hasGameService || !ctx.storage) {
-    alert(
-      'El catálogo solo está disponible cuando seleccionas un servicio con juegos y almacenamiento.'
-    );
-    window.location.href = CONSOLE_CONFIG.catalogPath.replace('/catalogo.html', '/');
-  }
-});
-</script>
-
-<main>
-  <div class="container">
-
-    <!-- INTRO -->
-    <section>
-      <h2>¿Cómo funciona el catálogo?</h2>
-      <p>
-        Desde aquí puedes consultar los juegos disponibles para
-        <strong class="consoleFull"></strong>.
-        La cantidad final de juegos instalados depende del tamaño del disco duro
-        y del peso de cada título.
-      </p>
-      <p>
-        Este catálogo sirve como referencia para que elijas tus juegos
-        al momento de contratar el servicio.
-      </p>
-    </section>
-
-    <!-- CONTEXTO DEL SERVICIO -->
-    <section class="alert info">
-      <p id="catalogContext"></p>
-    </section>
-
-    <!-- NOTAS -->
-    <section>
-      <h2>Notas importantes</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <h3>💾 Espacio disponible</h3>
-          <p>No todos los juegos caben en todos los discos.</p>
-        </div>
-        <div class="card">
-          <h3>⚠️ Compatibilidad</h3>
-          <p>Algunos títulos pueden requerir configuraciones especiales.</p>
-        </div>
-        <div class="card">
-          <h3>🛡️ Garantía</h3>
-          <p>Los juegos instalados cuentan con garantía de 30 días.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOP JUEGOS -->
-    <section>
-      <h2>Juegos más populares</h2>
-      <p>
-        Contamos con un amplio catálogo que incluye muchos de los títulos
-        más populares de <strong class="consoleFull"></strong>.
-      </p>
-
-      <div class="cards-grid">
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/xbox360/top/gta-iv.jpg" alt="GTA IV">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>Grand Theft Auto IV</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/xbox360/top/gtav.jpg" alt="GTA V">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>Grand Theft Auto V</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/xbox360/top/bioshock.jpg" alt="Bioshock">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>Bioshock</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/xbox360/top/orange-box.jpg" alt="The Orange Box">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>The Orange Box</h3>
-        </div>
-
-        <div class="card cover-card">
-          <div class="cover-wrapper">
-            <img src="/assets/img/consolas/xbox360/top/mass-effect-2.jpg" alt="Mass Effect 2">
-            <div class="cover-overlay">Disponible</div>
-          </div>
-          <h3>Mass Effect 2</h3>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ALMACENAMIENTO (SOLO VISUAL) -->
-    <section>
-      <h2>Almacenamiento seleccionado</h2>
-      <p class="selector-note">
-        El tamaño del disco duro se definió en el paso anterior según tu servicio.
-      </p>
-
-      <div class="disk-selector" id="storageDisplay"></div>
-    </section>
-
-    <!-- SELECTOR -->
-    <section>
-      <h2>Selector de juegos</h2>
-      <p>Selecciona los juegos que te gustaría instalar.</p>
-
-      <div class="selector-layout">
-
-        <!-- CATÁLOGO -->
-        <div class="selector-catalog">
-          <h3>Catálogo</h3>
-        </div>
-
-        <!-- RESUMEN -->
-        <div class="selector-summary">
-          <h3>Mi selección</h3>
-
-          <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
-          <p>💾 Espacio estimado: <strong id="totalSize">0</strong> GB</p>
-          <p class="selector-note" id="recommendedGames"></p>
-
-          <div class="selection-actions">
-            <button class="btn-small" id="saveSelection">Guardar selección</button>
-            <button class="btn-small" id="removeLast">Quitar último</button>
-            <button class="btn-small danger" id="clearAll">Vaciar selección</button>
-          </div>
-
-          <p class="selector-note">
-            El espacio es aproximado y puede variar según el formato del juego.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-  </div>
-</main>
-
-<footer>
-  <p>GameTechSolutions ©️ 2026</p>
-</footer>
-
-<!-- CONFIG -->
-<script>
-  window.CONSOLE_CONFIG = {
+  const config = {
     code: 'X360',
     name: 'Xbox 360',
     short: 'X360',
     fullName: 'Xbox 360',
     brand: 'microsoft',
-    gamesJson: '/assets/data/xbox360-games.json',
+    gamesJson: '/assets/data/xbxo360-games.json',
+    topGamesJson: '/assets/data/top-games/xbox360.json',
     catalogPath: '/consolas/xbox360/catalogo.html'
   };
-</script>
 
-<script src="/assets/js/context.js"></script>
-<script src="/assets/js/header.js"></script>
-<script src="/assets/js/catalogo-base.js"></script>
+  // 🔐 Persistir config para el template
+  sessionStorage.setItem(
+    'GTS_CONSOLE_CONFIG',
+    JSON.stringify(config)
+  );
 
-<!-- CONTEXTO + BLOQUEOS -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const ctx = window.GTSContext.load();
-
-  // Mostrar contexto del servicio
-  const ctxEl = document.getElementById('catalogContext');
-  if (ctxEl) {
-    const mode = ctx.services.includes('games_only')
-      ? 'usando tu disco duro'
-      : 'con disco duro incluido';
-
-    ctxEl.textContent =
-      `Estás seleccionando juegos ${mode} (${ctx.storage.label}).`;
-  }
-
-  // Mostrar almacenamiento (solo lectura)
-  const storageDisplay = document.getElementById('storageDisplay');
-  if (storageDisplay && ctx.storage) {
-    storageDisplay.innerHTML = `
-      <div class="disk-option selected">
-        <strong>${ctx.storage.label}</strong>
-        <span>Espacio usable: ${ctx.storage.usableGB} GB</span>
-      </div>
-    `;
-  }
-
-  // Bloquear radios si existen por compatibilidad
-  document.querySelectorAll('input[name="diskSize"]').forEach(r => {
-    r.disabled = true;
-  });
-
-  // Validación extra antes de guardar selección
-  const saveBtn = document.getElementById('saveSelection');
-  if (saveBtn) {
-    saveBtn.addEventListener('click', () => {
-      const ctxNow = window.GTSContext.load();
-      if (!ctxNow.storage) {
-        alert('No se detectó almacenamiento válido.');
-      }
-    });
-  }
-});
+  window.location.replace('/consolas/_template/catalogo.html');
 </script>
 
 </body>
