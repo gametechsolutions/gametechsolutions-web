@@ -629,6 +629,106 @@ section .card,
 }
 
 /* ============================================================
+HERO (Inicio: ¿Quiénes somos?)
+============================================================ */
+
+.hero {
+  padding: var(--s-8) 0;
+}
+
+.hero-shell {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(
+      700px 320px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 18%, transparent),
+      transparent 65%
+    ),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  overflow: hidden;
+}
+
+/* badge superior */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  color: color-mix(in srgb, var(--text) 88%, white);
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+
+/* lead */
+.hero-lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: color-mix(in srgb, var(--muted) 92%, white);
+  margin-top: 6px;
+}
+
+/* layout grid */
+.hero-grid {
+  margin-top: var(--s-6);
+  display: grid;
+  gap: var(--s-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: start;
+  }
+}
+
+.hero-text {
+  margin: 0;
+  font-size: 1.02rem;
+  color: color-mix(in srgb, var(--muted) 94%, white);
+}
+
+/* bullets premium */
+.hero-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+  padding: 16px 16px;
+}
+
+.hero-points li {
+  position: relative;
+  padding-left: 22px;
+  margin: 10px 0;
+  color: color-mix(in srgb, var(--text) 92%, white);
+  font-weight: 650;
+}
+
+.hero-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 80%, white);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.04);
+  transform: translateY(-50%);
+}
+
+/* ============================================================
 7) GRIDS / TARJETAS DE CONSOLA / SERVICIOS
 ============================================================ */
 
