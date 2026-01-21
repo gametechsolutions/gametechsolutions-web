@@ -83,9 +83,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   ${
     model.warning
-      ? `<div class="model-warning" style="display:none;">
-           ${model.warning}
-         </div>`
+      ? (() => {
+          const warningText = String(model.warning).replace(/^⚠️\s*/, "");
+          return `
+            <div class="model-warning" style="display:none;">
+              <span class="mw-icon">⚠️</span>
+              <div class="mw-text">
+                <strong>Importante:</strong> ${warningText}
+              </div>
+            </div>
+          `;
+        })()
       : ""
   }
 

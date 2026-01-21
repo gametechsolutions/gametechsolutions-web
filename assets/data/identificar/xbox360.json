@@ -18,7 +18,7 @@
       "id": "e",
       "name": "Xbox 360 E",
       "notes": "No todos los modelos E son compatibles con RGH.",
-      "warning": "⚠️ No todos los modelos E son compatibles con rGH. La compatibilidad depende de la placa.",
+      "warning": "La compatibilidad depende de la placa.",
       "image": "/assets/img/consolas/xbox360/models/e.png"
     }
   ]
