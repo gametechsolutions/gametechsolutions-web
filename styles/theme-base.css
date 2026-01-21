@@ -861,3 +861,20 @@ footer{
 main{
   padding-bottom: 90px !important;
 }
+
+/* ============================================================
+   FIX — Logos grandes en cards de consolas (Home)
+============================================================ */
+
+.console-card{
+  min-height: 150px; /* un poquito más alta para que respire */
+}
+
+.console-card img{
+  max-width: 280px !important;  /* antes 190 */
+  max-height: 96px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 26px rgba(0,0,0,.55));
+}
