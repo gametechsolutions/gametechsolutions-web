@@ -178,13 +178,14 @@ header > div {
   width: min(100% - 2rem, var(--container));
   margin-inline: auto;
 
-  /* Mobile: 3 columnas (☰ | título centrado | placeholder) */
-  display: grid;
-  grid-template-columns: 44px 1fr 44px;
+  /* Mobile: layout simple, nav controla el grid */
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 
+/* Título */
 #header-title {
   margin: 0;
   font-size: 1.05rem;
@@ -192,20 +193,31 @@ header > div {
   letter-spacing: 0.6px;
   white-space: nowrap;
 
-  /* Mobile centrado */
+  /* Mobile centrado (se posiciona con grid dentro de nav) */
   text-align: center;
-  justify-self: center;
 }
 
-/* Subtítulo fuera*/
+/* Subtítulo fuera (Apple/Tesla style) */
 #header-subtitle {
   display: none;
 }
 
-/* Nav inline */
+/* =========================
+   NAV (Mobile first)
+========================= */
+
 nav {
   margin: 0;
-  justify-self: start;
+
+  /* Mobile: layout estándar
+     [☰] [título centrado] [placeholder]
+  */
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
 }
 
 /* Toggle */
@@ -231,6 +243,10 @@ nav {
     transform var(--ease),
     background var(--ease),
     border var(--ease);
+
+  /* Mobile: ☰ a la izquierda */
+  grid-column: 1;
+  justify-self: start;
 }
 
 .menu-icon:hover {
@@ -239,12 +255,22 @@ nav {
   border-color: color-mix(in srgb, var(--accent-color) 30%, var(--border));
 }
 
+/* Mobile: título centrado dentro del grid del nav */
+nav #header-title {
+  grid-column: 2;
+  justify-self: center;
+}
+
+/* Menú */
 .nav-menu {
   list-style: none;
   padding: 0;
   margin: var(--s-4) 0 0;
   display: none; /* mobile hidden */
   gap: 10px;
+
+  /* Mobile: dropdown ocupa el ancho completo */
+  grid-column: 1 / -1;
 }
 
 .nav-menu li {
@@ -303,7 +329,10 @@ nav {
   display: grid;
 }
 
-/* Desktop nav */
+/* =========================
+   DESKTOP
+========================= */
+
 @media (min-width: 900px) {
   header > div {
     display: flex;
@@ -311,31 +340,34 @@ nav {
     gap: 16px;
   }
 
-  #header-title {
-    text-align: left;
-    justify-self: auto;
-  }
-
+  /* Desktop: nav como barra centrada */
   nav {
-    margin: 0;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
   }
 
+  /* Desktop: título a la izquierda */
+  nav #header-title {
+    grid-column: auto;
+    justify-self: auto;
+    text-align: left;
+  }
+
   .menu-icon {
     display: none;
-    justify-self: start;
   }
+
   .nav-menu {
     display: flex !important;
     margin: 0;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
-    grid-column: 1 / -1;
   }
+
   .nav-menu a,
   .menu-parent {
     width: auto;
@@ -359,6 +391,7 @@ nav {
     display: none;
     box-shadow: var(--shadow);
   }
+
   .nav-menu li:hover > .submenu,
   .nav-menu li:focus-within > .submenu {
     display: block;
