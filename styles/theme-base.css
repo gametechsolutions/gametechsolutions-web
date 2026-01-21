@@ -315,10 +315,12 @@ nav #header-title {
 .submenu {
   list-style: none;
   margin: 8px 0 0;
-  padding: 8px;
+  padding: 10px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(10, 14, 26, 0.92);
+  backdrop-filter: blur(12px);
+  
   display: none;
 }
 
