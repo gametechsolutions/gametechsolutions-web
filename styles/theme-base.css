@@ -139,7 +139,17 @@ main {
 }
 
 section {
-  padding: var(--s-6) 0;
+  padding: var(--s-7) 0;
+  position: relative;
+}
+
+/* separador suave entre secciones */
+section + section {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+section:nth-of-type(even) {
+  background: rgba(255, 255, 255, 0.015);
 }
 
 h1,
@@ -152,6 +162,28 @@ h3 {
 p {
   margin: 0 0 var(--s-3);
   color: var(--muted);
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  margin-bottom: var(--s-5);
+  position: relative;
+  display: inline-block;
+}
+
+/* detalle minimalista: barra acento */
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 48px;
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 80%, white);
+  opacity: 0.9;
 }
 
 #pageTitle {
