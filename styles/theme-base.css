@@ -972,3 +972,21 @@ body::before{
   opacity: .07;
   mix-blend-mode: overlay;
 }
+
+/* ============================================================
+   FIX — quitar línea horizontal (seam)
+============================================================ */
+
+/* Asegura que NO haya overlays que corten en 50% */
+body::before,
+body::after,
+main::before,
+main::after{
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Evita seam por background fixed en algunos setups */
+body{
+  background-attachment: scroll !important;
+}
