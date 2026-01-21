@@ -88,14 +88,7 @@ function calculatePricing(ctx, consoleData) {
             if (typeof price === 'number') {
                 total += price;
                 breakdown.push(
-                    • $ {
-                    svc.name
-                }
-                    ($ {
-                        ctx.model.description
-                    }): $$ {
-                    price
-                });
+`• ${svc.name} (${ctx.model.description}): $${price}`);
             }
         }
 
