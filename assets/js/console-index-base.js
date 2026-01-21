@@ -73,6 +73,30 @@ document.addEventListener("DOMContentLoaded", async () => {
   let selectedModelCard = null;
   const ctx = ctxAPI.load();
 
+  function showModelWarning(model) {
+    const box = document.getElementById("modelWarningGlobal");
+    if (!box) return;
+
+    if (model?.warning) {
+      const warningText = String(model.warning).replace(/^⚠️\s*/, "");
+
+      box.innerHTML = `
+      <div class="gw-inner">
+        <span class="gw-icon">⚠️</span>
+        <div class="gw-text">
+          <strong>Importante:</strong> ${warningText}
+          <div class="gw-sub">Si tu consola no es compatible, se revisa antes de continuar.</div>
+        </div>
+      </div>
+    `;
+
+      box.style.display = "block";
+    } else {
+      box.style.display = "none";
+      box.innerHTML = "";
+    }
+  }
+
   modelsData.models.forEach((model) => {
     const card = document.createElement("div");
     card.className = "card";
@@ -80,23 +104,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     card.innerHTML = `
   <h3>${model.name}</h3>
   <p>${model.notes || ""}</p>
-
-  ${
-    model.warning
-      ? (() => {
-          const warningText = String(model.warning).replace(/^⚠️\s*/, "");
-          return `
-            <div class="model-warning" style="display:none;">
-              <span class="mw-icon">⚠️</span>
-              <div class="mw-text">
-                <strong>Importante:</strong> ${warningText}
-              </div>
-            </div>
-          `;
-        })()
-      : ""
-  }
-
   ${model.image ? `<img src="${model.image}" class="identify-img">` : ""}
   <button class="btn btn-outline">Seleccionar</button>
 `;
@@ -108,6 +115,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.classList.add("selected");
       btn.textContent = "Seleccionado";
       selectedModelCard = card;
+
+      showModelWarning(model);
     }
 
     btn.onclick = () => {
@@ -130,17 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         },
       });
 
-      // 🔒 Ocultar advertencias en otros modelos
-      document.querySelectorAll(".model-warning").forEach((w) => {
-        w.style.display = "none";
-      });
-
-      // ⚠️ Mostrar advertencia del modelo seleccionado (si existe)
-      const warningEl = card.querySelector(".model-warning");
-      if (warningEl) {
-        warningEl.style.display = "block";
-      }
-
+      showModelWarning(model);
       updateStorageUI();
     };
 

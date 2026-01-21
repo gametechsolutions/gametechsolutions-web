@@ -1491,58 +1491,79 @@ section .card {
 }
 
 /* ============================================================
-   MODELS — WARNING (PREMIUM GLASS)
+   GLOBAL WARNING — BETWEEN STEPS (PREMIUM)
 ============================================================ */
+.global-warning {
+  margin-top: 18px;
+  padding: 14px 16px;
 
-.model-warning {
-  margin: 10px 0 14px;
-  padding: 12px 14px;
-
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-
-  border-radius: 16px;
+  border-radius: 22px;
 
   background: linear-gradient(
     180deg,
-    rgba(243, 156, 18, 0.14),
+    rgba(243, 156, 18, 0.16),
     rgba(243, 156, 18, 0.06)
   );
 
-  border: 1px solid rgba(243, 156, 18, 0.25);
-  border-left: 5px solid rgba(243, 156, 18, 0.95);
+  border: 1px solid rgba(243, 156, 18, 0.28);
+  border-left: 6px solid rgba(243, 156, 18, 0.95);
 
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.45),
-    0 0 22px rgba(243, 156, 18, 0.1);
+    0 18px 45px rgba(0, 0, 0, 0.5),
+    0 0 26px rgba(243, 156, 18, 0.12);
 
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 13px;
-  line-height: 1.55;
+  animation: gwFade 0.18s ease;
 }
 
-.model-warning .mw-icon {
-  flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
+@keyframes gwFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.global-warning .gw-inner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.global-warning .gw-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
 
   display: grid;
   place-items: center;
 
-  background: rgba(243, 156, 18, 0.14);
-  border: 1px solid rgba(243, 156, 18, 0.25);
+  font-size: 18px;
 
-  box-shadow: 0 0 18px rgba(243, 156, 18, 0.12);
+  background: rgba(243, 156, 18, 0.16);
+  border: 1px solid rgba(243, 156, 18, 0.3);
+
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.16);
 }
 
-.model-warning .mw-text strong {
-  display: inline-block;
+.global-warning .gw-text {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.global-warning .gw-text strong {
   font-weight: 1000;
   letter-spacing: 0.2px;
   margin-right: 6px;
-  color: rgba(255, 255, 255, 0.96);
+}
+
+.global-warning .gw-sub {
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 /* =========================
