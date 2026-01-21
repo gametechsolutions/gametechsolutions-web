@@ -2883,108 +2883,17 @@ section .card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
 }
 
-.footer-left{
-  display: grid;
-  gap: 6px;
-}
-
-.footer-logo{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-mark{
-  width: 38px;
-  height: 38px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-
-  font-weight: 1000;
-  letter-spacing: 0.4px;
-  color: #000;
-
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--accent-color) 88%, white 12%),
-    var(--accent-color)
-  );
-
-  box-shadow:
-    0 16px 30px rgba(0,0,0,0.40),
-    0 0 20px color-mix(in srgb, var(--accent-color) 25%, transparent);
-}
-
-.footer-title{
-  display: grid;
-  line-height: 1.1;
-}
-
-.footer-title strong{
+.footer-brand{
   font-size: 13px;
-  font-weight: 1000;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255,255,255,0.85);
 }
 
-.footer-title span{
+.footer-tag{
   font-size: 12px;
   color: rgba(255,255,255,0.55);
-}
-
-.footer-copy{
-  font-size: 12px;
-  color: rgba(255,255,255,0.50);
-}
-
-.footer-right{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.footer-link{
-  font-size: 13px;
-  font-weight: 900;
-  text-decoration: none;
-  color: rgba(255,255,255,0.72);
-  transition: color 0.15s ease;
-}
-
-.footer-link:hover{
-  color: var(--accent-color);
-}
-
-.footer-cta{
-  padding: 10px 14px;
-  border-radius: 14px;
-
-  font-size: 13px;
-  font-weight: 1000;
-  text-decoration: none;
-
-  color: #000;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--accent-color) 88%, white 12%),
-    var(--accent-color)
-  );
-
-  border: 1px solid color-mix(in srgb, var(--accent-color) 55%, transparent);
-
-  box-shadow:
-    0 14px 28px rgba(0,0,0,0.45),
-    0 0 22px color-mix(in srgb, var(--accent-color) 18%, transparent);
-
-  transition: transform 0.16s ease, filter 0.16s ease;
-}
-
-.footer-cta:hover{
-  transform: translateY(-1px);
-  filter: brightness(1.06);
 }
 
 /* Móvil */
@@ -2993,17 +2902,5 @@ section .card {
     flex-direction: column;
     text-align: center;
     padding: 16px 14px;
-  }
-
-  .footer-right{
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .footer-cta{
-    width: 100%;
-    justify-content: center;
-    display: inline-flex;
   }
 }
