@@ -135,7 +135,7 @@ body {
 }
 
 main {
-  padding: var(--s-6) 0 var(--s-8);
+  padding: calc(var(--s-6) + 74px) 0 var(--s-8);
 }
 
 section {
@@ -163,9 +163,11 @@ p {
 ============================================================ */
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  right: 0;
+  z-index: 999;
 
   /* Header tipo "barra delgada" */
   padding: 10px 0;
