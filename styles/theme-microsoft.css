@@ -1,4 +1,4 @@
 :root {
-  --accent-color: #6ab04c;     /* verde Xbox */
-  --accent-hover: #4cd137;
+  --accent-color: #6ab04c;
+  --accent-2: color-mix(in srgb, #6ab04c 55%, white);
 }

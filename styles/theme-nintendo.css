@@ -1,4 +1,4 @@
 :root {
-  --accent-color: #e74c3c;     /* rojo Nintendo */
-  --accent-hover: #c0392b;
+  --accent-color: #e74c3c;
+  --accent-2: color-mix(in srgb, #e74c3c 55%, white);
 }

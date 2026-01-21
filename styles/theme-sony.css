@@ -1,4 +1,4 @@
 :root {
-  --accent-color: #1e90ff;   /* azul */
-  --accent-hover: #1873cc;
+  --accent-color: #1e90ff;
+  --accent-2: color-mix(in srgb, #1e90ff 55%, white);
 }
