@@ -166,34 +166,45 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  padding: var(--s-4) 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-  background: rgba(7, 10, 18, 0.72);
-  backdrop-filter: blur(12px);
+
+  /* Header tipo "barra delgada" */
+  padding: 10px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  background: rgba(7, 10, 18, 0.78);
+  backdrop-filter: blur(14px);
 }
 
 header > div {
   width: min(100% - 2rem, var(--container));
   margin-inline: auto;
+
+  /* 1 fila: logo izquierda, menú centro */
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
+/* Logo a la izquierda */
 #header-title {
   margin: 0;
-  font-size: clamp(1.25rem, 2.6vw, 2rem);
-  letter-spacing: 0.4px;
-  font-weight: 800;
-  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
+/* Subtítulo fuera (Apple/Tesla style) */
 #header-subtitle {
-  margin: 6px 0 0;
-  color: color-mix(in srgb, var(--muted) 88%, white);
-  font-size: 0.98rem;
+  display: none;
 }
 
-/* Nav base */
+/* Nav inline */
 nav {
-  margin-top: var(--s-4);
+  margin: 0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 /* Toggle */
@@ -294,12 +305,13 @@ nav {
 /* Desktop nav */
 @media (min-width: 900px) {
   nav {
-    margin-top: var(--s-5);
+    margin: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 16px;
   }
+
   .menu-icon {
     display: none;
   }
@@ -313,8 +325,15 @@ nav {
   .nav-menu a,
   .menu-parent {
     width: auto;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border-radius: 999px;
+    font-size: 0.95rem;
+    opacity: 0.92;
+  }
+
+  .nav-menu a:hover,
+  .menu-parent:hover {
+    opacity: 1;
   }
 
   /* Submenus en hover/focus */
