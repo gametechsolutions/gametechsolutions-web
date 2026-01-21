@@ -1,75 +1,75 @@
- <!DOCTYPE html>
- <html lang = "es">
-     <head>
-     <link rel = "preconnect" href = "https://fonts.googleapis.com">
-     <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
-     <link href = "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel = "stylesheet">
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
 
-     <meta charset = "UTF-8" />
-     <title id = "pageTitle"> GameTechSolutions </ title>
-     <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title id="pageTitle">GameTechSolutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-     <link rel = "icon" type = "image/png" href = "/assets/img/favicon.png" />
-     <link rel = "stylesheet" href = "/styles/theme-base.css" />
-     <link rel = "stylesheet" id = "themeStylesheet">
-     </ head>
-     <body>
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+    <link rel="stylesheet" href="/styles/theme-base.css" />
+    <link rel="stylesheet" id="themeStylesheet" />
+  </head>
 
-     <div id = "header-container">  </ div>
+  <body>
+    <div id="header-container"></div>
 
-     <main>
-     <div class = "container">
+    <main>
+      <div class="container">
+        <section>
+          <h2>
+            Servicios para <strong class="console-name"></strong>
+          </h2>
+          <p>Selecciona el modelo de tu consola y los servicios que necesitas.</p>
+        </section>
 
-     <section>
-     <h2> Servicios para <strong class = "console-name">  </ strong>  </ h2>
-     <p> Selecciona el modelo de tu consola y los servicios que necesitas. </ p>
-     </ section>
+        <!-- MODELO -->
+        <section class="identify-step">
+          <h2>Identifica tu modelo</h2>
+          <div class="cards-grid" id="modelsContainer"></div>
+        </section>
 
-     <!--MODELO-->
-     <section class = "identify-step">
-     <h2> Identifica tu modelo </ h2>
-     <div class = "cards-grid" id = "modelsContainer">  </ div>
-     </ section>
+        <!-- SERVICIOS -->
+        <section class="identify-step">
+          <h2>Selecciona los servicios</h2>
+          <div class="cards-grid" id="servicesContainer"></div>
+        </section>
 
-     <!--SERVICIOS-->
-     <section class = "identify-step">
-     <h2> Selecciona los servicios </ h2>
-     <div class = "cards-grid" id = "servicesContainer">  </ div>
-     </ section>
+        <!-- STORAGE -->
+        <section id="storageSection" style="display: none">
+          <h2>Almacenamiento</h2>
+          <p id="storageHelp" class="selector-note"></p>
+          <div class="disk-selector" id="storageOptions"></div>
+        </section>
 
-     <!--STORAGE-->
-     <section id = "storageSection" style = "display:none">
-     <h2> Almacenamiento </ h2>
-     <p id = "storageHelp" class = "selector-note">  </ p>
-     <div class = "disk-selector" id = "storageOptions">  </ div>
-     </ section>
+        <!-- CONTINUAR -->
+        <section style="text-align: center; margin-top: 30px">
+          <button class="btn" id="continueBtn">Siguiente paso →</button>
+        </section>
+      </div>
+    </main>
 
-     <!--CONTINUAR-->
-     <section style = "text-align:center; margin-top:30px">
-     <button class = "btn" id = "continueBtn">
-    Siguiente paso →
-     </ button>
-     </ section>
+    <footer>
+      <p>GameTechSolutions ©️ 2026</p>
+    </footer>
 
-     </ div>
-     </ main>
+    <script>
+      window.CONSOLE_CONFIG = {
+        code: "PS5",
+        name: "PlayStation 5",
+        brand: "sony",
+        modelsJson: "/assets/data/identificar/ps4.json"
+      };
+    </script>
 
-     <footer>
-     <p> GameTechSolutions ©️ 2026 </ p>
-     </ footer>
-
-     <script>
-    window.CONSOLE_CONFIG = {
-    code: 'PS5',
-    name: 'PlayStation 5',
-    brand: 'sony',
-    modelsJson: '/assets/data/identificar/ps5.json'
-};
- </ script>
-
- <script src = "/assets/js/context.js">  </ script>
-     <script src = "/assets/js/header.js">  </ script>
-     <script src = "/assets/js/console-index-base.js">  </ script>
-
-     </ body>
-    </ html>
+    <script src="/assets/js/context.js"></script>
+    <script src="/assets/js/header.js"></script>
+    <script src="/assets/js/console-index-base.js"></script>
+  </body>
+</html>

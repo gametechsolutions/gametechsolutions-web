@@ -1,1 +1,602 @@
-
+[
+  {
+    "id": "1",
+    "name": "13 Sentinels Aegis Rim",
+    "size": "4.34"
+  },
+  {
+    "id": "2",
+    "name": "A Short Hike",
+    "size": "0.41"
+  },
+  {
+    "id": "3",
+    "name": "Absolum",
+    "size": "2.44"
+  },
+  {
+    "id": "4",
+    "name": "Animal Crossing New Horizons",
+    "size": "10.19"
+  },
+  {
+    "id": "5",
+    "name": "ANIMAL WELL",
+    "size": "0.07"
+  },
+  {
+    "id": "6",
+    "name": "ASTRAL CHAIN",
+    "size": "9.82"
+  },
+  {
+    "id": "7",
+    "name": "Atari 50 The Anniversary Celebration",
+    "size": "13.75"
+  },
+  {
+    "id": "8",
+    "name": "Axiom Verge",
+    "size": "0.3"
+  },
+  {
+    "id": "9",
+    "name": "Balatro",
+    "size": "0.16"
+  },
+  {
+    "id": "10",
+    "name": "BALL x PIT",
+    "size": "0.77"
+  },
+  {
+    "id": "11",
+    "name": "Bastion",
+    "size": "0.97"
+  },
+  {
+    "id": "12",
+    "name": "Bayonetta",
+    "size": "8.78"
+  },
+  {
+    "id": "13",
+    "name": "Bayonetta 2",
+    "size": "12.53"
+  },
+  {
+    "id": "14",
+    "name": "Castlevania Dominus Collection",
+    "size": "1.19"
+  },
+  {
+    "id": "15",
+    "name": "Celeste",
+    "size": "1.53"
+  },
+  {
+    "id": "16",
+    "name": "Chained Echoes",
+    "size": "1.23"
+  },
+  {
+    "id": "17",
+    "name": "Chicory A Colorful Tale",
+    "size": "1.92"
+  },
+  {
+    "id": "18",
+    "name": "Cuphead",
+    "size": "5.16"
+  },
+  {
+    "id": "19",
+    "name": "DAVE THE DIVER",
+    "size": "4.7"
+  },
+  {
+    "id": "20",
+    "name": "Dead Cells",
+    "size": "4.35"
+  },
+  {
+    "id": "21",
+    "name": "Deaths Door",
+    "size": "2.71"
+  },
+  {
+    "id": "22",
+    "name": "Demon Slayer Kimetsu no Yaiba The Hinokami Chronicles 2",
+    "size": "19.85"
+  },
+  {
+    "id": "23",
+    "name": "Diablo III Eternal Collection",
+    "size": "21.95"
+  },
+  {
+    "id": "24",
+    "name": "Divinity Original Sin 2 Definitive Edition",
+    "size": "12.85"
+  },
+  {
+    "id": "25",
+    "name": "Donkey Kong Country Returns HD",
+    "size": "8.32"
+  },
+  {
+    "id": "26",
+    "name": "Downwell",
+    "size": "0.08"
+  },
+  {
+    "id": "27",
+    "name": "Dragon Ball FighterZ",
+    "size": "17.27"
+  },
+  {
+    "id": "28",
+    "name": "DRAGON QUEST XI S Echoes of an Elusive Age Definitive Edition",
+    "size": "13.96"
+  },
+  {
+    "id": "29",
+    "name": "DUSK",
+    "size": "2.82"
+  },
+  {
+    "id": "30",
+    "name": "EA SPORTS FC 26",
+    "size": "35.42"
+  },
+  {
+    "id": "31",
+    "name": "Enter the Gungeon",
+    "size": "0.42"
+  },
+  {
+    "id": "32",
+    "name": "FEZ",
+    "size": "1.26"
+  },
+  {
+    "id": "33",
+    "name": "Fire Emblem Three Houses",
+    "size": "12.6"
+  },
+  {
+    "id": "34",
+    "name": "Grindstone",
+    "size": "2.8"
+  },
+  {
+    "id": "35",
+    "name": "Hades",
+    "size": "5.76"
+  },
+  {
+    "id": "36",
+    "name": "Hollow Knight",
+    "size": "5.29"
+  },
+  {
+    "id": "37",
+    "name": "Hyper Light Drifter Special Edition",
+    "size": "0.82"
+  },
+  {
+    "id": "38",
+    "name": "Ikaruga",
+    "size": "0.38"
+  },
+  {
+    "id": "39",
+    "name": "Inscryption",
+    "size": "4.1"
+  },
+  {
+    "id": "40",
+    "name": "INSIDE",
+    "size": "1.45"
+  },
+  {
+    "id": "41",
+    "name": "Into the Breach",
+    "size": "0.66"
+  },
+  {
+    "id": "42",
+    "name": "It Takes Two",
+    "size": "12.13"
+  },
+  {
+    "id": "43",
+    "name": "Jack Jeanne",
+    "size": "6.1"
+  },
+  {
+    "id": "44",
+    "name": "Katamari Damacy REROLL",
+    "size": "3.19"
+  },
+  {
+    "id": "45",
+    "name": "Kentucky Route Zero",
+    "size": "1.59"
+  },
+  {
+    "id": "46",
+    "name": "Lorelei and the Laser Eyes",
+    "size": "1.44"
+  },
+  {
+    "id": "47",
+    "name": "Luigi Mansion 2 HD",
+    "size": "3.35"
+  },
+  {
+    "id": "48",
+    "name": "Luigi Mansion 3",
+    "size": "7.71"
+  },
+  {
+    "id": "49",
+    "name": "Mario + Rabbids Kingdom Battle",
+    "size": "4.91"
+  },
+  {
+    "id": "50",
+    "name": "Mario Kart 8 Deluxe",
+    "size": "11.24"
+  },
+  {
+    "id": "51",
+    "name": "Mario Strikers Battle League",
+    "size": "2.79"
+  },
+  {
+    "id": "52",
+    "name": "MARVEL vs CAPCOM Fighting Collection Arcade Classics",
+    "size": "3.42"
+  },
+  {
+    "id": "53",
+    "name": "Metroid Dread",
+    "size": "4.27"
+  },
+  {
+    "id": "54",
+    "name": "Metroid Prime Remastered",
+    "size": "6.77"
+  },
+  {
+    "id": "55",
+    "name": "MONSTER HUNTER RISE",
+    "size": "19.79"
+  },
+  {
+    "id": "56",
+    "name": "Neon White",
+    "size": "4.84"
+  },
+  {
+    "id": "57",
+    "name": "Neva",
+    "size": "8.14"
+  },
+  {
+    "id": "58",
+    "name": "NieR Automata The End of YoRHa Edition",
+    "size": "11.23"
+  },
+  {
+    "id": "59",
+    "name": "NINJA GAIDEN Ragebound",
+    "size": "3.14"
+  },
+  {
+    "id": "60",
+    "name": "Nintendo 64 Nintendo Switch Online",
+    "size": "6.16"
+  },
+  {
+    "id": "61",
+    "name": "Nintendo 64 Nintendo Switch Online MATURE 17 Plus",
+    "size": "1.15"
+  },
+  {
+    "id": "62",
+    "name": "Nintendo Entertainment System Nintendo Switch Online",
+    "size": "0.19"
+  },
+  {
+    "id": "63",
+    "name": "OKAMI HD",
+    "size": "9.21"
+  },
+  {
+    "id": "64",
+    "name": "OlliOlli World",
+    "size": "3.62"
+  },
+  {
+    "id": "65",
+    "name": "Ori and the Blind Forest Definitive Edition",
+    "size": "3.51"
+  },
+  {
+    "id": "66",
+    "name": "Ori and the Will of the Wisps",
+    "size": "4.33"
+  },
+  {
+    "id": "67",
+    "name": "Overcooked 2",
+    "size": "5.74"
+  },
+  {
+    "id": "68",
+    "name": "Overcooked All You Can Eat",
+    "size": "13.26"
+  },
+  {
+    "id": "69",
+    "name": "Owlboy",
+    "size": "0.3"
+  },
+  {
+    "id": "70",
+    "name": "Paper Mario The Thousand Year Door",
+    "size": "5.11"
+  },
+  {
+    "id": "71",
+    "name": "Pentiment",
+    "size": "4.3"
+  },
+  {
+    "id": "72",
+    "name": "Persona 4 Golden",
+    "size": "9.11"
+  },
+  {
+    "id": "73",
+    "name": "Persona 5 Royal",
+    "size": "14.22"
+  },
+  {
+    "id": "74",
+    "name": "Pikmin 4",
+    "size": "11.37"
+  },
+  {
+    "id": "75",
+    "name": "Pipistrello and the Cursed Yoyo",
+    "size": "0.51"
+  },
+  {
+    "id": "76",
+    "name": "Pokemon Legends Arceus",
+    "size": "6.12"
+  },
+  {
+    "id": "77",
+    "name": "Portal Companion Collection",
+    "size": "2.66"
+  },
+  {
+    "id": "78",
+    "name": "Prince of Persia The Lost Crown",
+    "size": "11.04"
+  },
+  {
+    "id": "79",
+    "name": "QUAKE",
+    "size": "1.54"
+  },
+  {
+    "id": "80",
+    "name": "Sea of Stars",
+    "size": "10.21"
+  },
+  {
+    "id": "81",
+    "name": "SEGA Genesis Nintendo Switch Online",
+    "size": "0.47"
+  },
+  {
+    "id": "82",
+    "name": "Sonic Mania",
+    "size": "0.37"
+  },
+  {
+    "id": "83",
+    "name": "STAR OCEAN THE SECOND STORY R",
+    "size": "11.92"
+  },
+  {
+    "id": "84",
+    "name": "Stardew Valley",
+    "size": "5.04"
+  },
+  {
+    "id": "85",
+    "name": "SteamWorld Dig 2",
+    "size": "0.36"
+  },
+  {
+    "id": "86",
+    "name": "SteamWorld Heist Ultimate Edition",
+    "size": "0.24"
+  },
+  {
+    "id": "87",
+    "name": "Super Mario 3D All Stars",
+    "size": "5.25"
+  },
+  {
+    "id": "88",
+    "name": "Super Mario 3D World Bowsers Fury",
+    "size": "3.04"
+  },
+  {
+    "id": "89",
+    "name": "Super Mario Bros Wonder",
+    "size": "3.61"
+  },
+  {
+    "id": "90",
+    "name": "Super Mario Galaxy 2",
+    "size": "2.84"
+  },
+  {
+    "id": "91",
+    "name": "Super Mario Maker 2",
+    "size": "3.05"
+  },
+  {
+    "id": "92",
+    "name": "Super Mario Odyssey",
+    "size": "6.34"
+  },
+  {
+    "id": "93",
+    "name": "Super Mario Party",
+    "size": "3.01"
+  },
+  {
+    "id": "94",
+    "name": "Super Mario Party Jamboree",
+    "size": "5.6"
+  },
+  {
+    "id": "95",
+    "name": "Super Mario RPG",
+    "size": "6.52"
+  },
+  {
+    "id": "96",
+    "name": "Super Mega Baseball 4",
+    "size": "11.09"
+  },
+  {
+    "id": "97",
+    "name": "Super Nintendo Entertainment System Nintendo Switch",
+    "size": "0.22"
+  },
+  {
+    "id": "98",
+    "name": "Super Smash Bros Ultimate",
+    "size": "17.31"
+  },
+  {
+    "id": "99",
+    "name": "Teenage Mutant Ninja Turtles Shredders Revenge",
+    "size": "2.1"
+  },
+  {
+    "id": "100",
+    "name": "Tetris Effect Connected",
+    "size": "4.91"
+  },
+  {
+    "id": "101",
+    "name": "The Cosmic Wheel Sisterhood",
+    "size": "1.42"
+  },
+  {
+    "id": "102",
+    "name": "The House in Fata Morgana Dreams of the Revenants Edition",
+    "size": "3.21"
+  },
+  {
+    "id": "103",
+    "name": "The Legend of Zelda Breath of the Wild",
+    "size": "15.7"
+  },
+  {
+    "id": "104",
+    "name": "The Legend of Zelda Links Awakening",
+    "size": "5.89"
+  },
+  {
+    "id": "105",
+    "name": "The Legend of Zelda Tears of the Kingdom",
+    "size": "16.46"
+  },
+  {
+    "id": "106",
+    "name": "The Making of Karateka",
+    "size": "2.9"
+  },
+  {
+    "id": "107",
+    "name": "The Stanley Parable Ultra Deluxe",
+    "size": "3.14"
+  },
+  {
+    "id": "108",
+    "name": "Theatrhythm Final Bar Line",
+    "size": "8.01"
+  },
+  {
+    "id": "109",
+    "name": "There Is No Game Wrong Dimension",
+    "size": "0.59"
+  },
+  {
+    "id": "110",
+    "name": "TSUKIHIME A piece of blue glass moon",
+    "size": "23.37"
+  },
+  {
+    "id": "111",
+    "name": "Tunic",
+    "size": "2.93"
+  },
+  {
+    "id": "112",
+    "name": "Two Point Campus",
+    "size": "4.52"
+  },
+  {
+    "id": "113",
+    "name": "Unavowed",
+    "size": "1.34"
+  },
+  {
+    "id": "114",
+    "name": "Undertale",
+    "size": "0.24"
+  },
+  {
+    "id": "115",
+    "name": "Unicorn Overlord",
+    "size": "3.36"
+  },
+  {
+    "id": "116",
+    "name": "Vampire Survivors",
+    "size": "0.91"
+  },
+  {
+    "id": "117",
+    "name": "What Remains of Edith Finch",
+    "size": "2.28"
+  },
+  {
+    "id": "118",
+    "name": "Xenoblade Chronicles 3",
+    "size": "18.75"
+  },
+  {
+    "id": "119",
+    "name": "Xenoblade Chronicles Definitive Edition",
+    "size": "13.72"
+  },
+  {
+    "id": "120",
+    "name": "Xenoblade Chronicles X Definitive Edition",
+    "size": "13.86"
+  }
+]
