@@ -600,3 +600,140 @@ Mobile-first • Deluxe/Fancy • Theme-ready
     * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
   }
 }
+
+/* ============================================================
+   PATCH VISUAL — Deluxe cleanup (NO rompe estructura)
+   Pegar al FINAL del theme-base.css
+============================================================ */
+
+/* --- Tokens extra para look deluxe --- */
+:root{
+  --radius-xl: 22px;
+  --radius-lg: 18px;
+
+  --shadow-md: 0 18px 50px rgba(0,0,0,.55);
+  --shadow-sm: 0 10px 26px rgba(0,0,0,.40);
+
+  --glass: rgba(18,18,18,.72);
+  --glass-2: rgba(18,18,18,.52);
+  --stroke: rgba(255,255,255,.10);
+  --stroke-2: rgba(255,255,255,.06);
+}
+
+/* --- Mejora el canvas general (menos vacío, más “app”) --- */
+main{
+  padding: 26px 0;
+}
+
+/* Contenedor más pro: mejor ancho en desktop */
+.container{
+  max-width: 1080px;
+  padding: 0 22px;
+}
+
+/* --- Secciones: menos huecos raros --- */
+section{
+  margin-bottom: 36px;
+}
+
+section h2{
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+section p{
+  color: rgba(255,255,255,.78);
+}
+
+/* --- Cards deluxe: mejor contraste y menos “brinco” --- */
+.card{
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid var(--stroke-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover{
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Tipografía más limpia dentro de cards */
+.card h3{
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
+.card p{
+  color: rgba(255,255,255,.72);
+}
+
+/* --- Servicios del home: que no se vean gigantes / vacíos --- */
+.cards-grid{
+  gap: 16px;
+}
+
+/* --- Consolas: que se vea como grid premium, no como logo perdido --- */
+.console-card{
+  min-height: 150px;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(900px 260px at 15% 0%, rgba(255,255,255,.07), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border: 1px solid var(--stroke-2);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Limita tamaño de logos para que no se “traguen” la página */
+.console-card img{
+  max-width: 210px;
+  opacity: .92;
+  filter: grayscale(100%) brightness(.85);
+}
+
+/* --- Header: menos pesado y más moderno --- */
+header{
+  height: 96px;
+}
+
+main{
+  top: 96px;
+}
+
+/* --- Nav: mejor separación y tacto premium --- */
+.nav-menu{
+  gap: 16px;
+}
+
+.nav-menu a, .menu-parent{
+  height: 34px;
+  padding: 8px 12px;
+  font-weight: 800;
+}
+
+/* --- Submenu: más compacto y más "fancy" --- */
+.submenu{
+  border-radius: 18px;
+  padding: 10px;
+  background: rgba(16,16,16,.92);
+  border: 1px solid var(--stroke-2);
+}
+
+.submenu li a{
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+/* --- Mobile: spacing y grid decente --- */
+@media (max-width: 900px){
+  .container{ padding: 0 16px; }
+  section h2{ font-size: 22px; }
+  .cards-grid{ grid-template-columns: 1fr; }
+}
+
+/* Mobile top spacing: evita que se vea todo apretado */
+@media (max-width: 520px){
+  main{ padding: 18px 0; }
+  section{ margin-bottom: 28px; }
+}
