@@ -1,0 +1,22 @@
+[
+	{
+		"name": "God of War: Chains of Olympus",
+		"image": "/assets/img/consolas/psp/top/god-of-war.jpg"
+	},
+	{
+		"name": "Grand Theft Auto: Chinatown Wars",
+		"image": "/assets/img/consolas/psp/top/gta-china.jpg"
+	},
+	{
+		"name": "Shin Megami Tensei: Persona 3 Portable",
+		"image": "/assets/img/consolas/psp/top/p3p.jpg"
+	},
+	{
+		"name": "Lumines",
+		"image": "/assets/img/consolas/psp/top/lumines.jpg"
+	},
+	{
+		"name": "Metal Gear Solid: Peace Walker",
+		"image": "/assets/img/consolas/psp/top/metal-gear.jpg"
+	}
+]

@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Persona 4 Golden",
+		"image": "/assets/img/consolas/psvita/top/persona4.jpg"
+	},
+	{
+		"name": "Velocity 2X",
+		"image": "/assets/img/consolas/psvita/top/velocity.jpg"
+	},
+	{
+		"name": "Rayman Origins",
+		"image": "/assets/img/consolas/psvita/top/rayman-origins.jpg"
+	},
+	{
+		"name": "LittleBigPlanet PS Vita",
+		"image": "/assets/img/consolas/psvita/top/little-big-planet.jpg"
+	},
+	{
+		"name": "Rayman Legends",
+		"image": "/assets/img/consolas/psvita/top/rayman-legends.jpg"
+	}
+]
