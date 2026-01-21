@@ -990,3 +990,51 @@ main::after{
 body{
   background-attachment: scroll !important;
 }
+
+/* ============================================================
+   FIX DEFINITIVO — eliminar seam y ordenar fondo + noise
+============================================================ */
+
+/* 1) El body ya no pinta fondo directamente */
+body{
+  background: none !important;
+}
+
+/* 2) Fondo fijo estable (SIN seams) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background:
+    radial-gradient(1200px 680px at 18% 18%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 62%),
+    radial-gradient(900px 520px at 82% 26%,
+      rgba(255,255,255,.06),
+      transparent 60%),
+    linear-gradient(180deg, #06080d 0%, #04060a 55%, #03050a 100%) !important;
+}
+
+/* 3) Noise arriba del fondo (sin overlay raro que cause división) */
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  opacity: .06;
+
+  /* overlay puede causar seam, usamos soft-light que es más estable */
+  mix-blend-mode: soft-light;
+}
+
+/* 4) Nada de background-attachment, lo maneja el pseudo fixed */
+body{
+  background-attachment: scroll !important;
+}
