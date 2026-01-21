@@ -1,108 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>GameTechSolutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-  <link rel="stylesheet" href="/styles/theme-base.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>GameTechSolutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+    <link rel="stylesheet" href="/styles/theme-base.css" />
+  </head>
+  <body>
+    <!-- HEADER (inyectado dinámicamente) -->
+    <div id="header-container"></div>
 
-<!-- HEADER (inyectado dinámicamente) -->
-<div id="header-container"></div>
+    <!-- CONTENIDO CENTRAL -->
+    <main>
+      <div class="container">
+        <!-- SERVICIOS -->
+        <section class="services-main">
+          <h2>Servicios principales</h2>
 
-<!-- CONTENIDO CENTRAL -->
-<main>
-  <div class="container">
+          <div class="cards-grid">
+            <div class="card service-card">
+              <div class="svc-top">
+                <span class="svc-icon">🔓</span>
+                <span class="svc-badge">MOD</span>
+              </div>
 
-    <!-- SERVICIOS -->
-    <section>
-      <h2>Servicios principales</h2>
+              <h3>Liberación de consolas</h3>
 
-      <div class="cards-grid">
+              <p>
+                Modificación profesional con instalación limpia y verificación
+                final.
+              </p>
 
-        <div class="card">
-          <h3>🔓 Liberación de consolas</h3>
+              <ul class="svc-points">
+                <li>RGH • HEN • FMCB • PicoBoot</li>
+                <li>Configuración lista para usar</li>
+              </ul>
+            </div>
+
+            <div class="card service-card">
+              <div class="svc-top">
+                <span class="svc-icon">🎮</span>
+                <span class="svc-badge">GAMES</span>
+              </div>
+
+              <h3>Instalación de juegos</h3>
+
+              <p>
+                Catálogo organizado y probado para que solo conectes y juegues.
+              </p>
+
+              <ul class="svc-points">
+                <li>USB / HDD / microSD</li>
+                <li>Orden + carátulas (cuando aplique)</li>
+              </ul>
+            </div>
+
+            <div class="card service-card">
+              <div class="svc-top">
+                <span class="svc-icon">🧼</span>
+                <span class="svc-badge">CARE</span>
+              </div>
+
+              <h3>Limpieza y mantenimiento</h3>
+
+              <p>
+                Servicio térmico premium para mejorar temperaturas y
+                rendimiento.
+              </p>
+
+              <ul class="svc-points">
+                <li>Pasta térmica + limpieza interna</li>
+                <li>Ideal para evitar sobrecalentamientos</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONSOLAS DISPONIBLES -->
+        <section>
+          <h2>Consolas más solicitadas</h2>
+
+          <div class="cards-grid">
+            <a href="/consolas/gamecube/" class="console-card">
+              <img
+                src="/assets/img/consolas/gamecube/logo/gamecube.png"
+                alt="Nintendo GameCube"
+              />
+            </a>
+
+            <a href="/consolas/wii/" class="console-card">
+              <img
+                src="/assets/img/consolas/wii/logo/wii.png"
+                alt="Nintendo Wii"
+              />
+            </a>
+
+            <a href="/consolas/ps2/" class="console-card">
+              <img
+                src="/assets/img/consolas/ps2/logo/ps2.png"
+                alt="PlayStation 2"
+              />
+            </a>
+
+            <a href="/consolas/ps3/" class="console-card">
+              <img
+                src="/assets/img/consolas/ps3/logo/ps3.png"
+                alt="PlayStation 3"
+              />
+            </a>
+
+            <a href="/consolas/xbox/" class="console-card">
+              <img
+                src="/assets/img/consolas/xbox/logo/xbox.png"
+                alt="Xbox Clásica"
+              />
+            </a>
+
+            <a href="/consolas/xbox360/" class="console-card">
+              <img
+                src="/assets/img/consolas/xbox360/logo/xbox360.png"
+                alt="Xbox 360"
+              />
+            </a>
+          </div>
+        </section>
+
+        <!-- HERO -->
+        <section>
+          <h2>¿Quiénes somos?</h2>
           <p>
-            Libera tu consola de forma segura y profesional.
-            Manejamos RGH, HEN, FMCB, PicoBoot y más.
+            En GameTechSolutions nos especializamos en modificación, instalación
+            de juegos y mantenimiento de consolas.
           </p>
-        </div>
-
-        <div class="card">
-          <h3>🎮 Instalación de juegos</h3>
           <p>
-            Juegos instalados, organizados y probados
-            en tu memoria USB o Disco Duro.
+            Trabajamos con instalación limpia, pruebas completas y atención
+            directa para que tu consola quede lista para jugar y con el mejor
+            rendimiento.
           </p>
-        </div>
-
-        <div class="card">
-          <h3>🧼 Limpieza y Mantenimiento</h3>
-          <p>
-            Limpieza interna + cambio de pasta térmica
-            para evitar sobrecalentamientos
-          </p>
-        </div>
-
+        </section>
       </div>
-    </section>
+    </main>
 
-    <!-- CONSOLAS DISPONIBLES -->
-    <section>
-      <h2>Consolas más solicitadas</h2>
+    <!-- FOOTER FIJO -->
+    <footer>
+      <p>GameTechSolutions © 2026</p>
+    </footer>
 
-      <div class="cards-grid">
-
-        <a href="/consolas/gamecube/" class="console-card">
-          <img src="/assets/img/consolas/gamecube/logo/gamecube.png" alt="Nintendo GameCube">
-        </a>
-
-        <a href="/consolas/wii/" class="console-card">
-          <img src="/assets/img/consolas/wii/logo/wii.png" alt="Nintendo Wii">
-        </a>
-
-        <a href="/consolas/ps2/" class="console-card">
-          <img src="/assets/img/consolas/ps2/logo/ps2.png" alt="PlayStation 2">
-        </a>
-
-        <a href="/consolas/ps3/" class="console-card">
-          <img src="/assets/img/consolas/ps3/logo/ps3.png" alt="PlayStation 3">
-        </a>
-
-        <a href="/consolas/xbox/" class="console-card">
-          <img src="/assets/img/consolas/xbox/logo/xbox.png" alt="Xbox Clásica">
-        </a>
-
-        <a href="/consolas/xbox360/" class="console-card">
-          <img src="/assets/img/consolas/xbox360/logo/xbox360.png" alt="Xbox 360">
-        </a>
-
-      </div>
-    </section>
-
-    <!-- HERO -->
-    <section>
-      <h2>¿Quiénes somos?</h2>
-      <p>
-        En GameTechSolutions nos especializamos en modificación, 
-        instalación de juegos y mantenimiento de consolas.
-      </p>
-      <p>
-        Trabajamos con instalación limpia, pruebas completas y atención directa 
-        para que tu consola quede lista para jugar y con el mejor rendimiento.
-      </p>
-    </section>
-  </div>
-</main>
-
-<!-- FOOTER FIJO -->
-<footer>
-  <p>GameTechSolutions © 2026</p>
-</footer>
-
-  <script src="/assets/js/header.js"></script>
-
-</body>
+    <script src="/assets/js/header.js"></script>
+  </body>
 </html>
