@@ -354,12 +354,15 @@ section p {
 .cards-grid {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
   gap: 20px;
+  align-items: start;
 }
 
 .card {
   position: relative;
+  width: 100%;
+  max-width: 260px;
 
   background:
     linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
@@ -411,6 +414,13 @@ section p {
     0 26px 55px rgba(0,0,0,0.55),
     0 0 26px color-mix(in srgb, var(--accent-color) 18%, transparent);
 }
+
+/* Card: limita el ancho para que se vea premium */
+.card {
+  width: 100%;
+  max-width: 260px;
+}
+
 
 /* ============================================================
   8) CARDS - CONSOLAS (LOGOS)
@@ -1393,14 +1403,23 @@ section p {
 
 /* Card layout premium (solo para identificar) */
 #modelsContainer .card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 10px;
   text-align: center;
+}
+
+/* texto abajo del título */
+#modelsContainer .card p {
+  order: 3;
+  margin: 0;
+  line-height: 1.5;
+  color: var(--text-soft);
 }
 
 /* Contenedor para centrar y limitar imagen */
 #modelsContainer .model-image {
+  order: 1;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.06);
   
