@@ -143,13 +143,32 @@ section {
   position: relative;
 }
 
-/* separador suave entre secciones */
+/* separador suave entre secciones (con aire, no pegado) */
 section + section {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: calc(var(--s-7) + 14px);
+}
+
+section + section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  /* línea suave estilo Apple */
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+
+  opacity: 0.8;
 }
 
 section:nth-of-type(even) {
-  background: rgba(255, 255, 255, 0.015);
+  background: transparent;
 }
 
 h1,
