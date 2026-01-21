@@ -1,0 +1,22 @@
+[
+	{
+		"name": "The Legend of Zelda: Breath of the Wild",
+		"image": "/assets/img/consolas/switch/top/zelda-breath.jpg"
+	},
+	{
+		"name": "Super Mario Odyssey",
+		"image": "/assets/img/consolas/switch/top/mario-odyssey.jpg"
+	},
+	{
+		"name": "The House in Fata Morgana",
+		"image": "/assets/img/consolas/switch/top/house-morgana.jpg"
+	},
+	{
+		"name": "The Legend of Zelda: Tears of the Kingdom",
+		"image": "/assets/img/consolas/switch/top/zelda-tears.jpg"
+	},
+	{
+		"name": "Metroid Prime Remastered",
+		"image": "/assets/img/consolas/switch/top/metroid-prime.jpg"
+	}
+]
