@@ -762,8 +762,28 @@ section p {
   margin-top: 40px;
 }
 
+/* ===== Cada paso como card premium ===== */
 .identify-step {
+  position: relative;
+  overflow: hidden;
+
+  padding: 18px;
+  padding-top: 48px; /* espacio para el badge */
   margin-bottom: 60px;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 20px 45px rgba(0,0,0,0.55);
+
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+
+  counter-increment: step;
 }
 
 /* ============================================================
@@ -1951,27 +1971,6 @@ section .card {
     0 0 24px rgba(243,156,18,0.10);
 }
 
-/* ===== Cada paso como card premium ===== */
-.identify-step {
-  position: relative;
-  overflow: hidden;
-
-  padding: 18px;
-  margin-bottom: 18px;
-  border-radius: 22px;
-
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.06),
-    rgba(255,255,255,0.02)
-  );
-  border: 1px solid rgba(255,255,255,0.08);
-
-  box-shadow: 0 20px 45px rgba(0,0,0,0.55);
-
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-}
-
 /* Glow sutil */
 .identify-step::after {
   content: "";
@@ -2065,12 +2064,6 @@ section .card {
 /* Inicializa el contador */
 .identify-section {
   counter-reset: step;
-}
-
-/* Cada paso incrementa el contador */
-.identify-step {
-  counter-increment: step;
-  padding-top: 48px; /* espacio para el badge */
 }
 
 /* Badge */
