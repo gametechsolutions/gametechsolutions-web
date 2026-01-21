@@ -393,13 +393,15 @@ nav #header-title {
     position: absolute;
     top: 100%;
     left: 0;
-    margin-top: 10px;
+    margin-top: 0;
 
     min-width: 240px;
     display: none;
 
     box-shadow: var(--shadow);
     pointer-events: auto;
+
+    padding-top: 10px;
   }
 
   /* Hover/focus estable (no se cae cuando mueves mouse) */
