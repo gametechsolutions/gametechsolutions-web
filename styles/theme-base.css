@@ -681,7 +681,7 @@ HERO (Inicio: ¿Quiénes somos?)
   font-size: clamp(1.05rem, 1.6vw, 1.22rem);
   color: color-mix(in srgb, var(--text) 88%, var(--muted));
   margin: 0;
-  max-width: 72ch;
+  max-width: none;
 }
 
 /* layout grid */
@@ -699,10 +699,16 @@ HERO (Inicio: ¿Quiénes somos?)
   }
 }
 
+@media (max-width: 720px) {
+  .hero-points {
+    width: 100%;
+  }
+}
+
 .hero-text {
   margin: 0;
   margin-top: var(--s-5);
-  max-width: 78ch;
+  max-width: none;
   font-size: 1rem;
   line-height: 1.75;
   color: color-mix(in srgb, var(--muted) 95%, white);
@@ -711,15 +717,18 @@ HERO (Inicio: ¿Quiénes somos?)
 /* bullets premium */
 .hero-points {
   margin: 0;
-  padding: 0;
+  padding: 16px 16px;
   list-style: none;
 
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(0, 0, 0, 0.18);
-  padding: 16px 16px;
 
   margin-top: 6px;
+
+  /* clave: que no se estire full width */
+  width: fit-content;
+  max-width: 100%;
 }
 
 .hero-points li {
