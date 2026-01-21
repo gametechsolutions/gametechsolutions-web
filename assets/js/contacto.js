@@ -80,6 +80,25 @@ function calculatePricing(ctx, consoleData) {
             breakdown.push(`• ${svc.name}: $${svc.price}`);
         }
 
+        // Precio por modelo (Nintendo Switch, etc.)
+        if (svc.priceByModel && ctx.model?.id) {
+            const modelId = ctx.model.id;
+            const price = svc.priceByModel[modelId];
+
+            if (typeof price === 'number') {
+                total += price;
+                breakdown.push(
+                    • $ {
+                    svc.name
+                }
+                    ($ {
+                        ctx.model.description
+                    }): $$ {
+                    price
+                });
+            }
+        }
+
         // Carga de juegos (cliente)
         if (id === 'games_only' && ctx.storage) {
             const disk = String(parseInt(ctx.storage.label, 10));
