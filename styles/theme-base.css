@@ -1403,7 +1403,8 @@ section p {
 
 /* Card layout premium (solo para identificar) */
 #modelsContainer .card {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-template-rows: auto auto auto 1fr auto;
   gap: 10px;
   text-align: center;
@@ -1411,14 +1412,16 @@ section p {
 
 /* texto abajo del título */
 #modelsContainer .card p {
+  margin-top: 2px;
   order: 3;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--text-soft);
 }
 
 /* Contenedor para centrar y limitar imagen */
 #modelsContainer .model-image {
+  margin-top: 6px;
   order: 1;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.06);
@@ -1445,8 +1448,9 @@ section p {
 }
 
 /* Botón siempre al fondo */
-#modelsContainer .model-btn {
-  margin-top: auto;
+#modelsContainer .model-btn,
+#modelsContainer .card button {
+  margin-top: auto;   /* empuja hacia abajo */
   width: 100%;
 }
 
