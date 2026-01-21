@@ -695,16 +695,16 @@ HERO (Inicio: ¿Quiénes somos?)
 
 @media (min-width: 900px) {
   .hero-grid {
-    grid-template-columns: 1.5fr 0.85fr;
-    align-items: start;
+    grid-template-columns: 1fr;
   }
 }
 
 .hero-text {
   margin: 0;
-  max-width: 72ch;
+  margin-top: var(--s-5);
+  max-width: 78ch;
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: color-mix(in srgb, var(--muted) 95%, white);
 }
 
