@@ -496,23 +496,15 @@ nav #header-title {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 14px;
+  text-align: center;
 }
 
 .footer-brand {
   margin: 0;
   font-size: 0.95rem;
   color: color-mix(in srgb, var(--text) 92%, white);
-  white-space: nowrap;
-}
-
-.footer-tag {
-  margin: 0;
-  font-size: 0.92rem;
-  color: var(--muted);
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
