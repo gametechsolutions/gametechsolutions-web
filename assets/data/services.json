@@ -871,9 +871,7 @@
 					"64": 250,
 					"128": 200
 				},
-				"requires": [
-					"cfw"
-				],
+				"requires": [],
 				"provides": [
 					"games"
 				],
@@ -886,9 +884,7 @@
 				"name": "Memory Stick con juegos",
 				"description": "Incluye Memory Stick o microSD con juegos seleccionados.",
 				"category": "storage",
-				"requires": [
-					"cfw"
-				],
+				"requires": [],
 				"provides": [
 					"storage",
 					"games"
@@ -988,9 +984,7 @@
 					"128": 400,
 					"256": 700
 				},
-				"requires": [
-					"henkaku"
-				],
+				"requires": [],
 				"provides": [
 					"games"
 				],
@@ -1003,9 +997,7 @@
 				"name": "microSD con juegos",
 				"description": "Incluye microSD configurada con SD2Vita y juegos seleccionados.",
 				"category": "storage",
-				"requires": [
-					"henkaku"
-				],
+				"requires": [],
 				"provides": [
 					"storage",
 					"games"
