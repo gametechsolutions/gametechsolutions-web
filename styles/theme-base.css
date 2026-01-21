@@ -934,3 +934,41 @@ main{
   filter: grayscale(0%) brightness(.98);
   transform: translateZ(0);
 }
+
+/* ============================================================
+   PATCH — Fondo moderno (menos 2010, más premium)
+============================================================ */
+
+body{
+  /* Fondo limpio, profundo y moderno */
+  background:
+    radial-gradient(1200px 680px at 18% 18%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 62%),
+    radial-gradient(900px 520px at 82% 26%,
+      rgba(255,255,255,.06),
+      transparent 60%),
+    radial-gradient(1200px 700px at 50% 110%,
+      rgba(0,0,0,.65),
+      rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, #06080d 0%, #04060a 55%, #03050a 100%) !important;
+
+  background-attachment: fixed;
+}
+
+/* mata cualquier “imagen de fondo” vieja si existe */
+body::before,
+body::after{
+  content: none !important;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  opacity: .07;
+  mix-blend-mode: overlay;
+}
