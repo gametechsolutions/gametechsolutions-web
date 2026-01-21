@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,16 +23,23 @@
     <main>
       <div class="container">
         <section>
-          <h2>
-            Servicios para <strong class="console-name"></strong>
-          </h2>
-          <p>Selecciona el modelo de tu consola y los servicios que necesitas.</p>
+          <h2>Servicios para <strong class="console-name"></strong></h2>
+          <p>
+            Selecciona el modelo de tu consola y los servicios que necesitas.
+          </p>
         </section>
 
         <!-- MODELO -->
         <section class="identify-step">
           <h2>Identifica tu modelo</h2>
           <div class="cards-grid" id="modelsContainer"></div>
+
+          <!-- ⚠️ WARNING GLOBAL POR MODELO (TEMPLATE) -->
+          <div
+            id="modelWarningGlobal"
+            class="global-warning"
+            style="display: none"
+          ></div>
         </section>
 
         <!-- SERVICIOS -->
@@ -64,7 +71,7 @@
         code: "PS5",
         name: "PlayStation 5",
         brand: "sony",
-        modelsJson: "/assets/data/identificar/ps5.json"
+        modelsJson: "/assets/data/identificar/ps5.json",
       };
     </script>
 

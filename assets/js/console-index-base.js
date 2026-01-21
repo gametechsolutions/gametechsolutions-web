@@ -85,7 +85,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         <span class="gw-icon">⚠️</span>
         <div class="gw-text">
           <strong>Importante:</strong> ${warningText}
-          <div class="gw-sub">Si tu consola no es compatible, se revisa antes de continuar.</div>
+          <div class="gw-sub">
+            Si tu consola no es compatible, se revisa antes de continuar.
+          </div>
         </div>
       </div>
     `;
