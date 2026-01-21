@@ -790,6 +790,32 @@ HERO (Inicio: ¿Quiénes somos?)
 }
 
 /* ============================================================
+CONSOLE HERO (Cabecera de páginas de consolas)
+============================================================ */
+
+.console-hero{
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background:
+    radial-gradient(700px 320px at 15% 0%, color-mix(in srgb, var(--accent-color) 16%, transparent), transparent 65%),
+    rgba(255,255,255,0.03);
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 3.5vw, 34px);
+}
+
+.console-hero h2{
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.console-hero p{
+  margin: 0;
+  max-width: 80ch;
+  color: color-mix(in srgb, var(--muted) 92%, white);
+}
+
+
+/* ============================================================
 7) GRIDS / TARJETAS DE CONSOLA / SERVICIOS
 ============================================================ */
 

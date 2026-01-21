@@ -21,14 +21,14 @@
 
     <main>
       <div class="container">
-        <section>
+        <section class="console-hero">
           <h2>Servicios para <strong class="console-name"></strong></h2>
           <p>
             Selecciona el modelo de tu consola y los servicios que necesitas.
           </p>
         </section>
 
-        <section class="identify-step">
+        <section class="identify-step" data-step="1">
           <h2>Identifica tu modelo</h2>
           <div class="cards-grid" id="modelsContainer"></div>
 
@@ -41,27 +41,30 @@
         </section>
 
         <!-- SERVICIOS -->
-        <section class="identify-step">
+        <section class="identify-step" data-step="2">
           <h2>Selecciona los servicios</h2>
           <div class="cards-grid" id="servicesContainer"></div>
         </section>
 
         <!-- STORAGE -->
-        <section id="storageSection" style="display: none">
+        <section id="storageSection" data-step="3" style="display: none">
           <h2>Almacenamiento</h2>
           <p id="storageHelp" class="selector-note"></p>
           <div class="disk-selector" id="storageOptions"></div>
         </section>
 
         <!-- CONTINUAR -->
-        <section style="text-align: center; margin-top: 30px">
+        <section class="action-bar">
           <button class="btn" id="continueBtn">Siguiente paso →</button>
         </section>
       </div>
     </main>
 
-    <footer>
-      <p>GameTechSolutions ©️ 2026</p>
+    <!-- FOOTER FIJO -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand"><strong>GameTechSolutions</strong> © 2026</p>
+      </div>
     </footer>
 
     <script>
