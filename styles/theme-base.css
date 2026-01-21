@@ -362,6 +362,9 @@ section p {
 .card {
   position: relative;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   max-width: 260px;
 
   background:
@@ -404,6 +407,7 @@ section p {
 .card p {
   font-size: 14px;
   color: #bdbdbd;
+  margin-top: 10px;
 }
 
 .card:hover {
@@ -415,12 +419,11 @@ section p {
     0 0 26px color-mix(in srgb, var(--accent-color) 18%, transparent);
 }
 
-/* Card: limita el ancho para que se vea premium */
-.card {
-  width: 100%;
-  max-width: 260px;
+/* Botón SIEMPRE abajo */
+.card .btn,
+.card button {
+  margin-top: auto;    /* 🔥 empuja al fondo */
 }
-
 
 /* ============================================================
   8) CARDS - CONSOLAS (LOGOS)
@@ -1401,6 +1404,7 @@ section p {
   grid-template-rows: auto auto 1fr auto; 
   gap: 10px;
   text-align: center;
+  align-items: stretch; /* 🔥 estira todas las cards igual */
 }
 
 /* Imagen */
