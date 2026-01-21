@@ -385,15 +385,24 @@ nav #header-title {
   }
 
   /* Submenus en hover/focus */
-  .submenu {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    min-width: 240px;
-    display: none;
-    box-shadow: var(--shadow);
+  .nav-menu li {
+    position: relative;
   }
 
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 10px;
+
+    min-width: 240px;
+    display: none;
+
+    box-shadow: var(--shadow);
+    pointer-events: auto;
+  }
+
+  /* Hover/focus estable (no se cae cuando mueves mouse) */
   .nav-menu li:hover > .submenu,
   .nav-menu li:focus-within > .submenu {
     display: block;
