@@ -1,24 +1,25 @@
 {
-	"title": "Identificar Xbox 360",
-	"description": "Selecciona el modelo de tu Xbox 360 para continuar.",
-	"models": [
-		{
-			"id": "fat",
-			"name": "Xbox 360",
-			"notes": "Modelos antiguos, pueden requerir revisión por placa.",
-			"image": "/assets/img/consolas/xbox360/models/fat.png"
-		},
-		{
-			"id": "slim",
-			"name": "Xbox 360 Slim",
-			"notes": "Compatible con RGH dependiendo de la placa.",
-			"image": "/assets/img/consolas/xbox360/models/slim.png"
-		},
-		{
-			"id": "e",
-			"name": "Xbox 360 E",
-			"notes": "No todos los modelos E son compatibles con RGH.",
-			"image": "/assets/img/consolas/xbox360/models/e.png"
-		}
-	]
+  "title": "Identificar Xbox 360",
+  "description": "Selecciona el modelo de tu Xbox 360 para continuar.",
+  "models": [
+    {
+      "id": "fat",
+      "name": "Xbox 360",
+      "notes": "Modelos antiguos, pueden requerir revisión por placa.",
+      "image": "/assets/img/consolas/xbox360/models/fat.png"
+    },
+    {
+      "id": "slim",
+      "name": "Xbox 360 Slim",
+      "notes": "Compatible con RGH dependiendo de la placa.",
+      "image": "/assets/img/consolas/xbox360/models/slim.png"
+    },
+    {
+      "id": "e",
+      "name": "Xbox 360 E",
+      "notes": "No todos los modelos E son compatibles con RGH.",
+      "warning": "⚠️ No todos los modelos E son compatibles con rGH. La compatibilidad depende de la placa.",
+      "image": "/assets/img/consolas/xbox360/models/e.png"
+    }
+  ]
 }
