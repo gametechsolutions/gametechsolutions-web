@@ -317,11 +317,20 @@ nav #header-title {
   margin: 8px 0 0;
   padding: 10px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(10, 14, 26, 0.92);
   backdrop-filter: blur(12px);
-  
+
   display: none;
+}
+
+.submenu a {
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-menu li.active > .submenu {
