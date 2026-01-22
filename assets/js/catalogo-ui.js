@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const storageDisplay = document.getElementById("storageDisplay");
   if (storageDisplay && ctx.storage) {
     storageDisplay.innerHTML = `
-    <div class="disk-option selected">
+    <div class="disk-option selected" style="flex-direction: column; align-items: flex-start; gap: 6px;">
       <span>Espacio total: <strong>${ctx.storage.label}</strong></span>
       <span>Espacio usable: <strong>${ctx.storage.usableGB} GB</strong></span>
     </div>
