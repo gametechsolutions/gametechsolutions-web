@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.innerHTML = `
             <div class="cover-wrapper">
               <img src="${game.image}" alt="${game.name}">
-              <div class="cover-overlay">Disponible</div>
+              
             </div>
             <h3>${game.name}</h3>
           `;
