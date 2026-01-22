@@ -82,15 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     CONTEXTO VISUAL
     ============================== */
 
-  const ctxEl = document.getElementById("catalogContext");
-  if (ctxEl) {
-    const mode = ctx.services.includes("games_only")
-      ? "usando tu almacenamiento"
-      : "con almacenamiento incluido";
-
-    ctxEl.textContent = `Estás seleccionando juegos ${mode} (${ctx.storage.label}).`;
-  }
-
   const storageDisplay = document.getElementById("storageDisplay");
   if (storageDisplay && ctx.storage) {
     storageDisplay.innerHTML = `
