@@ -634,21 +634,54 @@ section .card,
 }
 
 .btn-small {
-  padding: 9px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 10px 12px;
   border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: color-mix(in srgb, var(--text) 92%, white);
+
+  font-weight: 850;
   font-size: 0.95rem;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border var(--ease),
+    filter var(--ease);
+}
+
+.btn-small:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 20%,
+    rgba(255, 255, 255, 0.12)
+  );
+}
+
+.btn-small:active {
+  transform: translateY(0);
 }
 
 .btn-small.danger {
-  border-color: color-mix(
-    in srgb,
-    var(--danger) 65%,
-    rgba(255, 255, 255, 0.14)
-  );
-  background: color-mix(in srgb, var(--danger) 18%, rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 95, 95, 0.35);
+  background: rgba(255, 95, 95, 0.1);
+  color: color-mix(in srgb, var(--text) 92%, white);
 }
+
 .btn-small.danger:hover {
-  background: color-mix(in srgb, var(--danger) 25%, rgba(255, 255, 255, 0.08));
+  background: rgba(255, 95, 95, 0.14);
+  border-color: rgba(255, 95, 95, 0.45);
 }
 
 /* Badges */
@@ -1307,12 +1340,6 @@ STORAGE SELECTOR (Almacenamiento)
 11) CATÁLOGO (catalogo.html)
 ============================================================ */
 
-@media (max-width: 980px) {
-  .selector-catalog {
-    max-height: 60vh;
-  }
-}
-
 /* Layout general tipo app */
 .selector-app {
   display: grid;
@@ -1324,6 +1351,12 @@ STORAGE SELECTOR (Almacenamiento)
 @media (min-width: 980px) {
   .selector-app {
     grid-template-columns: 1.45fr 0.75fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .selector-catalog {
+    max-height: 60vh;
   }
 }
 
@@ -1390,11 +1423,11 @@ STORAGE SELECTOR (Almacenamiento)
 .selector-item {
   display: grid;
   grid-template-columns: 1fr auto auto;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 
-  padding: 12px 12px;
-  border-radius: 16px;
+  padding: 10px 12px;
+  border-radius: 14px;
 
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.03);
@@ -1417,7 +1450,8 @@ STORAGE SELECTOR (Almacenamiento)
 
 /* Nombre del juego */
 .selector-item span:first-child {
-  font-weight: 800;
+  font-weight: 850;
+  font-size: 0.98rem;
   color: color-mix(in srgb, var(--text) 96%, white);
 }
 
@@ -1427,6 +1461,7 @@ STORAGE SELECTOR (Almacenamiento)
   font-weight: 800;
   opacity: 0.95;
   color: color-mix(in srgb, var(--muted) 90%, white);
+  font-size: 0.95rem;
 }
 
 /* Mobile: reducir a dos filas */
@@ -1501,17 +1536,28 @@ STORAGE SELECTOR (Almacenamiento)
 
 /* add-game mantiene tu estilo (solo lo ajustamos a mejor tamaño) */
 .add-game {
+  padding: 9px 12px;
   border-radius: 999px;
-  padding: 10px 12px;
-  cursor: pointer;
-  transition:
-    transform var(--ease),
-    background var(--ease),
-    border var(--ease);
+
+  border: 1px solid
+    color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
+  background: rgba(255, 255, 255, 0.04);
+  color: color-mix(in srgb, var(--text) 94%, white);
+
+  font-weight: 900;
 }
 
 .add-game:hover {
-  transform: translateY(-1px);
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 12%,
+    rgba(255, 255, 255, 0.05)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 55%,
+    rgba(255, 255, 255, 0.14)
+  );
 }
 
 /* ============================================================
