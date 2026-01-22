@@ -1469,7 +1469,6 @@ STORAGE SELECTOR (Almacenamiento)
   .selector-item {
     grid-template-columns: 1fr auto;
     grid-template-rows: 1fr auto;
-
   }
 
   .selector-item span:nth-child(2) {
@@ -1660,31 +1659,21 @@ TOP GAMES (Carrusel estilo Netflix) — limpio
 }
 
 /* wrapper fijo con ratio */
-#topGamesGrid .cover-card .cover-wrapper{
-  width: calc(100% + 10px);
-  margin-left: -5px;
-
-  height: 420px;
-  aspect-ratio: auto;
+#topGamesGrid .cover-card .cover-wrapper {
+  width: 100%;
+  height: 420px; /* o el que elegiste */
   border-radius: 20px;
   overflow: hidden;
-
-  border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 22px 50px rgba(0,0,0,0.45);
-  background: rgba(255,255,255,0.02);
 }
-
 
 #topGamesGrid .cover-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover; /* ✅ clave */
+  object-position: center; /* ✅ evita cortes raros */
   display: block;
-
-  transform: translateZ(0);
-  transition:
-    transform var(--ease),
-    filter var(--ease);
 }
 
 #topGamesGrid .cover-card:hover img {
@@ -1708,11 +1697,10 @@ TOP GAMES (Carrusel estilo Netflix) — limpio
 }
 
 /* Evita reflow raro por carga de imágenes */
-#topGamesGrid .cover-card{
+#topGamesGrid .cover-card {
   content-visibility: auto;
   contain-intrinsic-size: 280px 520px; /* ancho alto aproximado */
 }
-
 
 /* ============================================================
 12) CONTACTO
