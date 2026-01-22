@@ -1493,10 +1493,12 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   grid-template-rows: auto auto 1fr; /* toolbar, letras, lista */
   gap: 10px;
 
-  /* ✅ límite de altura para no hacer página infinita */
   max-height: 70vh;
-  overflow: hidden;
-  padding-right: 6px;
+
+  /* ❌ NO ocultar, porque mata sticky y recorta chips */
+  overflow: visible;
+
+  padding-right: 0;
 }
 
 @media (max-width: 980px) {
@@ -1533,7 +1535,9 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 10px;
+
+  margin: 0; /* ✅ sin margin */
+  padding: 10px 0 6px; /* ✅ separaciones limpias */
 }
 
 .catalog-letters button {
@@ -1550,28 +1554,25 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 /* ✅ Mobile: chips compactos + scroll horizontal */
 @media (max-width: 520px) {
   .catalog-letters {
-    flex-wrap: nowrap; /* ya no se hace grid gigante */
+    flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 
     gap: 8px;
 
-    /* ✅ compacta */
-    padding: 10px 6px;
-    margin: 10px 0 12px;
+    padding: 10px 6px 8px;
+    margin: 0;
 
-    /* ✅ STICKY para que no se meta debajo de los juegos */
+    /* ✅ sticky correcto */
     position: sticky;
-    top: 0;
-    z-index: 50;
+    top: 54px; /* ✅ deja espacio para la toolbar de búsqueda */
+    z-index: 60;
 
-    /* ✅ fondo para que no se vea “encimado” */
     background: rgba(8, 12, 20, 0.92);
     backdrop-filter: blur(10px);
     border-radius: 14px;
 
-    /* degradado para sugerir scroll */
     mask-image: linear-gradient(
       to right,
       transparent 0,
@@ -1588,26 +1589,13 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
     height: 34px;
 
     padding: 0 12px;
-    border-radius: 999px; /* chips */
+    border-radius: 999px;
     font-size: 0.9rem;
   }
 
-  /* “Todo” y “#” un poquito más ancho */
   .catalog-letters button:first-child,
   .catalog-letters button:nth-child(2) {
     min-width: 64px;
-  }
-
-  /* ✅ la lista de juegos no debe quedar debajo del sticky */
-  .catalog-list {
-    padding-top: 8px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .selector-catalog {
-    overflow: visible;
-    position: relative;
   }
 }
 
@@ -1627,9 +1615,10 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 /* ✅ La lista es la que scrollea */
 .catalog-list {
   overflow-y: auto;
-  max-height: 62vh;
+  max-height: none; /* ✅ ya no uses 62vh aquí */
   padding-right: 6px;
   margin-top: 2px;
+  min-height: 0; /* ✅ IMPORTANTÍSIMO en grid para scroll */
 }
 
 /* Si usas #catalog dentro de .catalog-list, que no cree doble scroll */
