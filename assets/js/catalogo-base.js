@@ -10,6 +10,41 @@ document.addEventListener("DOMContentLoaded", () => {
   let gamesData = [];
 
   /* =============================
+    FILTROS (SEARCH + LETRAS)
+    ============================== */
+
+  let searchTerm = "";
+  let activeLetter = "ALL"; // ALL | # | A-Z
+
+  function getFilteredGames() {
+    const term = searchTerm.trim().toLowerCase();
+
+    return gamesData.filter((g) => {
+      const name = String(g.name || "").trim();
+      if (!name) return false;
+
+      // filtro por letra
+      if (activeLetter !== "ALL") {
+        const first = name[0].toUpperCase();
+        const isNum = /^[0-9]/.test(first);
+
+        if (activeLetter === "#") {
+          if (!isNum) return false;
+        } else {
+          if (first !== activeLetter) return false;
+        }
+      }
+
+      // búsqueda
+      if (term) {
+        return name.toLowerCase().includes(term);
+      }
+
+      return true;
+    });
+  }
+
+  /* =============================
     CARGAR STORAGE DESDE CONTEXTO
     ============================== */
 
@@ -69,8 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then((data) => {
       gamesData = data;
+
+      renderLetterFilter();
+      bindSearchControls();
+
       renderCatalog();
     })
+
     .catch((err) => {
       console.error(err);
       catalogEl.innerHTML = "<p>Error cargando el catálogo de juegos.</p>";
@@ -80,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===== Virtual Scroll settings =====
     const ROW_HEIGHT = 86; // ajusta si cambias padding/alto en CSS
     const OVERSCAN = 10; // items extra arriba/abajo para scroll suave
+    const filteredGames = getFilteredGames();
 
     catalogEl.innerHTML = "";
 
@@ -92,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // “phantom” para simular altura total del catálogo
     const phantom = document.createElement("div");
     phantom.className = "catalog-phantom";
-    phantom.style.height = `${gamesData.length * ROW_HEIGHT}px`;
+    phantom.style.height = `${filteredGames.length * ROW_HEIGHT}px`;
 
     // capa donde realmente pintamos filas
     const viewport = document.createElement("div");
@@ -134,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Math.ceil((scrollTop + viewHeight) / ROW_HEIGHT) + OVERSCAN;
 
       startIndex = Math.max(0, startIndex);
-      endIndex = Math.min(gamesData.length - 1, endIndex);
+      endIndex = Math.min(filteredGames.length - 1, endIndex);
 
       viewport.innerHTML = "";
 
@@ -144,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const fragment = document.createDocumentFragment();
 
       for (let i = startIndex; i <= endIndex; i++) {
-        fragment.appendChild(createRow(gamesData[i]));
+        fragment.appendChild(createRow(filteredGames[i]));
       }
 
       viewport.appendChild(fragment);
@@ -162,8 +203,64 @@ document.addEventListener("DOMContentLoaded", () => {
     updateVisibleRows();
 
     // scroll listener
-    catalogEl.addEventListener("scroll", () => {
+    catalogEl.onscroll = () => {
       window.requestAnimationFrame(updateVisibleRows);
+    };
+  }
+
+  /* =============================
+    UI FILTROS (SEARCH + LETRAS)
+    ============================== */
+
+  function bindSearchControls() {
+    const input = document.getElementById("catalogSearch");
+    const clearBtn = document.getElementById("clearSearch");
+
+    if (input) {
+      input.addEventListener("input", () => {
+        searchTerm = input.value || "";
+        renderCatalog();
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        if (input) input.value = "";
+        searchTerm = "";
+        renderCatalog();
+        input?.focus();
+      });
+    }
+  }
+
+  function renderLetterFilter() {
+    const el = document.getElementById("catalogLetters");
+    if (!el) return;
+
+    const letters = ["ALL", "#"];
+    for (let i = 65; i <= 90; i++) letters.push(String.fromCharCode(i));
+
+    el.innerHTML = "";
+
+    letters.forEach((L) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = L === "ALL" ? "Todo" : L;
+
+      if (activeLetter === L) btn.classList.add("active");
+
+      btn.addEventListener("click", () => {
+        activeLetter = L;
+
+        el.querySelectorAll("button").forEach((b) =>
+          b.classList.remove("active"),
+        );
+        btn.classList.add("active");
+
+        renderCatalog();
+      });
+
+      el.appendChild(btn);
     });
   }
 
