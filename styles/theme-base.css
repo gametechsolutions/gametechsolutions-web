@@ -1950,3 +1950,58 @@ Acciones de selección
     transition: none !important;
   }
 }
+
+/* ============================================================
+FIX OVERRIDE — selector-catalog NO debe ser flex (rompe mobile)
+Poner al FINAL de theme-base.css
+============================================================ */
+
+.selector-layout {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.selector-catalog {
+  display: grid !important;
+  grid-template-rows: auto auto 1fr !important;
+  gap: 10px !important;
+
+  max-height: 70vh !important;
+  overflow: hidden !important;
+  padding-right: 0 !important;
+}
+
+/* La lista es el único scroll */
+.selector-catalog .catalog-list {
+  overflow-y: auto !important;
+  min-height: 0 !important;
+}
+
+/* Chips letras en móvil: scroll horizontal y NO se enciman */
+@media (max-width: 520px) {
+  .selector-catalog {
+    max-height: 60vh !important;
+  }
+
+  .catalog-letters {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+
+    position: relative !important; /* NO sticky */
+    top: auto !important;
+
+    margin: 0 !important;
+    padding: 6px 2px 8px !important;
+    z-index: 1 !important;
+
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 16px,
+      black calc(100% - 16px),
+      transparent 100%
+    );
+  }
+}
