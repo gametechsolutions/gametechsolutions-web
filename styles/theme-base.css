@@ -903,11 +903,11 @@ STORAGE SELECTOR (Almacenamiento)
 ============================================================ */
 
 .disk-selector {
-  display: grid;
-  gap: 12px;
-  margin-top: var(--s-4);
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: stretch;
 }
 
 @media (min-width: 720px) {
@@ -917,21 +917,19 @@ STORAGE SELECTOR (Almacenamiento)
 }
 
 .disk-option {
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-
+  flex: 0 0 auto; /* no se estira raro */
+  min-width: 180px; /* ✅ más ancho */
+  padding: 14px 16px;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: var(--shadow-soft);
-
-  padding: 14px 14px;
 
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-soft);
 
   transition:
     transform var(--ease),
@@ -1002,6 +1000,18 @@ STORAGE SELECTOR (Almacenamiento)
   color: #08101e;
 
   box-shadow: 0 12px 22px rgba(0, 0, 0, 0.3);
+}
+
+#storageDisplay.disk-selector {
+  justify-content: flex-start; /* que quede a la izquierda */
+  padding: 0;
+}
+
+#storageOptions.disk-selector {
+  max-width: 760px;
+  margin-inline: auto;
+  justify-content: center;
+  padding: 18px;
 }
 
 /* ============================================================
