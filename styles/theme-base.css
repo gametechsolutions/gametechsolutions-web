@@ -1015,22 +1015,24 @@ STORAGE SELECTOR (Almacenamiento)
 /* La opción seleccionada en modo resumen (chip) */
 #storageDisplay .disk-option {
   min-width: unset;
-  padding: 12px 14px;
-  border-radius: 999px;
+  padding: 14px 16px;
+
+  /* ✅ menos redondeado SOLO AQUÍ */
+  border-radius: 18px;
 
   display: inline-flex;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 6px;
   justify-content: flex-start;
 
   width: auto;
   max-width: 100%;
   background: rgba(0, 0, 0, 0.18);
 
-  /* ✅ evita que se coma letras */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* ✅ ya no hace cosas raras con texto */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
 }
 
 /* Ajusta el texto dentro del chip */
