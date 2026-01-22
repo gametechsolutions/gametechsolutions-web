@@ -135,7 +135,7 @@ body {
 }
 
 main {
-  padding: calc(var(--s-6) + 74px) 0 calc(var(--s-8) + 62px);
+  padding: calc(var(--s-6) + 74px) 0 calc(var(--s-8) + 62px + 74px);
 }
 
 section {
@@ -793,27 +793,77 @@ HERO (Inicio: ¿Quiénes somos?)
 CONSOLE HERO (Cabecera de páginas de consolas)
 ============================================================ */
 
-.console-hero{
+.console-hero {
   border-radius: 28px;
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    radial-gradient(700px 320px at 15% 0%, color-mix(in srgb, var(--accent-color) 16%, transparent), transparent 65%),
-    rgba(255,255,255,0.03);
+    radial-gradient(
+      700px 320px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 65%
+    ),
+    rgba(255, 255, 255, 0.03);
   box-shadow: var(--shadow);
   padding: clamp(18px, 3.5vw, 34px);
 }
 
-.console-hero h2{
+.console-hero h2 {
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-.console-hero p{
+.console-hero p {
   margin: 0;
   max-width: 80ch;
   color: color-mix(in srgb, var(--muted) 92%, white);
 }
 
+/* ============================================================
+ACTION BAR (CTA fijo arriba del footer)
+============================================================ */
+
+.action-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  /* queda arriba del footer fijo */
+  bottom: 62px;
+
+  z-index: 997;
+
+  padding: 12px 0;
+  background: rgba(7, 10, 18, 0.78);
+  backdrop-filter: blur(14px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.action-inner {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* CTA más pro */
+.action-bar .btn {
+  min-width: min(520px, 100%);
+  font-weight: 800;
+
+  border: none;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-color) 85%, white),
+    rgba(108, 99, 255, 0.95)
+  );
+  color: #08101e;
+}
+
+.action-bar .btn:hover {
+  filter: brightness(1.05);
+}
 
 /* ============================================================
 7) GRIDS / TARJETAS DE CONSOLA / SERVICIOS
