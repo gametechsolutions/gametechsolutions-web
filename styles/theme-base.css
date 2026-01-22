@@ -1008,12 +1008,56 @@ ACTION BAR (CTA fijo arriba del footer)
 
 /* Global warning banner */
 .global-warning {
-  margin-top: var(--s-4);
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: color-mix(in srgb, var(--warning) 12%, rgba(255, 255, 255, 0.05));
-  color: color-mix(in srgb, var(--text) 92%, white);
+  margin-top: var(--s-5);
+  padding: 16px 18px;
+  border-radius: 18px;
+
+  border: 1px solid
+    color-mix(in srgb, var(--warning) 35%, rgba(255, 255, 255, 0.12));
+  background: rgba(10, 14, 26, 0.88);
+  backdrop-filter: blur(12px);
+
+  color: color-mix(in srgb, var(--text) 95%, white);
+  box-shadow: var(--shadow-soft);
+
+  /* layout tipo callout */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  row-gap: 4px;
+  align-items: start;
+
+  /* aparece bonito */
+  animation: warningFadeIn 220ms var(--ease);
+
+  line-height: 1.6;
+}
+
+/* icono automático */
+.global-warning::before {
+  content: "⚠️";
+  font-size: 1.15rem;
+  line-height: 1;
+  margin-top: 2px;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
+}
+
+/* si el warning trae links */
+.global-warning a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--warning) 55%, transparent);
+  text-underline-offset: 3px;
+}
+
+@keyframes warningFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ============================================================
