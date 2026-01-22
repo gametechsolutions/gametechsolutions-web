@@ -1622,11 +1622,16 @@ TOP GAMES (grid clásico)
   font-weight: 900;
   line-height: 1.25;
 
+  text-align: center;
+  justify-self: center;
+  width: 100%;
+
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 
 /* ============================================================
 12) CONTACTO
