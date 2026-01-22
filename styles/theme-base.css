@@ -1572,7 +1572,7 @@ TOP GAMES (Carrusel estilo Netflix) — limpio
   display: grid;
   grid-auto-flow: column;
 
-  grid-auto-columns: 240px;
+  grid-auto-columns: 300px;
   gap: var(--s-5);
 
   overflow-x: auto;
@@ -1585,7 +1585,7 @@ TOP GAMES (Carrusel estilo Netflix) — limpio
 
 @media (min-width: 1100px) {
   #topGamesGrid {
-    grid-auto-columns: 280px;
+    grid-auto-columns: 340px;
   }
 }
 
@@ -1658,16 +1658,19 @@ TOP GAMES (Carrusel estilo Netflix) — limpio
 }
 
 /* wrapper fijo con ratio */
-#topGamesGrid .cover-card .cover-wrapper {
-  width: 100%;
+#topGamesGrid .cover-card .cover-wrapper{
+  width: calc(100% + 10px);
+  margin-left: -5px;
+
   aspect-ratio: 3 / 4;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 22px 50px rgba(0,0,0,0.45);
+  background: rgba(255,255,255,0.02);
 }
+
 
 #topGamesGrid .cover-card img {
   width: 100%;
