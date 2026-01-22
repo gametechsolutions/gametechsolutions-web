@@ -1666,17 +1666,19 @@ TOP GAMES (Carrusel estilo Netflix) — limpio
   overflow: hidden;
 }
 
-#topGamesGrid .cover-card img {
+#topGamesGrid .cover-bg {
   width: 100%;
   height: 100%;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover; /* ✅ clave */
-  object-position: center; /* ✅ evita cortes raros */
-  display: block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition:
+    transform var(--ease),
+    filter var(--ease);
 }
 
-#topGamesGrid .cover-card:hover img {
+#topGamesGrid .cover-card:hover .cover-bg {
   transform: scale(1.06);
   filter: saturate(1.08) contrast(1.02);
 }

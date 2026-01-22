@@ -43,12 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
           card.className = "card cover-card";
 
           card.innerHTML = `
-            <div class="cover-wrapper">
-              <img src="${game.image}" alt="${game.name}">
-              
-            </div>
-            <h3>${game.name}</h3>
-          `;
+  <div class="cover-wrapper cover-bg" style="background-image: url('${game.image}');"></div>
+  <h3>${game.name}</h3>
+`;
 
           grid.appendChild(card);
         });
