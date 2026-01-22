@@ -1002,9 +1002,49 @@ STORAGE SELECTOR (Almacenamiento)
   box-shadow: 0 12px 22px rgba(0, 0, 0, 0.3);
 }
 
+/* ===============================
+   STORAGE DISPLAY (Resumen)
+   =============================== */
+
 #storageDisplay.disk-selector {
-  justify-content: flex-start; /* que quede a la izquierda */
+  width: 100%;
   padding: 0;
+  justify-content: flex-start;
+}
+
+/* La opción seleccionada en modo resumen (chip) */
+#storageDisplay .disk-option {
+  min-width: unset;
+  padding: 12px 14px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+
+  width: auto;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.18);
+
+  /* ✅ evita que se coma letras */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ajusta el texto dentro del chip */
+#storageDisplay .disk-option strong {
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+/* ✅ para que el texto “Espacio usable…” no se corte */
+#storageDisplay .disk-option span,
+#storageDisplay .disk-option small,
+#storageDisplay .disk-option div {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #storageOptions.disk-selector {
