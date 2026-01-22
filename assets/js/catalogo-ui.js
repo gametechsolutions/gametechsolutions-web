@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           card.innerHTML = `
             <img src="${game.image}" alt="${game.name}">
-            <p>Disponible</p>
             <h3>${game.name}</h3>
             `;
 
