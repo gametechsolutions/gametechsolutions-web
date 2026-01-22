@@ -1517,6 +1517,66 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   padding-right: 6px;
 }
 
+.catalog-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0 10px;
+}
+
+#catalogSearch {
+  flex: 1;
+  min-width: 140px;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+}
+
+#catalogSearch::placeholder {
+  color: rgba(234, 240, 255, 0.55);
+}
+
+.catalog-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.catalog-letters button {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.catalog-letters button.active {
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 55%,
+    rgba(255, 255, 255, 0.14)
+  );
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 14%,
+    rgba(255, 255, 255, 0.03)
+  );
+}
+
+/* ✅ la lista es la que tiene scroll (no el panel) */
+.catalog-list {
+  overflow-y: auto;
+  max-height: 62vh;
+  padding-right: 6px;
+}
+
 /* scrollbar bonito */
 .selector-catalog::-webkit-scrollbar {
   width: 10px;

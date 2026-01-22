@@ -76,27 +76,22 @@
 
           <div class="selector-layout selector-app">
             <div class="selector-catalog selector-panel">
-              <div class="catalog-head">
-                <h3>Catálogo</h3>
+              <h3>Catálogo</h3>
 
-                <!-- BUSCADOR -->
-                <div class="catalog-search">
-                  <input
-                    type="search"
-                    id="catalogSearch"
-                    placeholder="Buscar juego..."
-                    autocomplete="off"
-                  />
-                  <button class="btn-small" id="clearSearch" type="button">
-                    Limpiar
-                  </button>
-                </div>
-
-                <!-- FILTRO POR LETRA -->
-                <div class="catalog-letters" id="catalogLetters"></div>
+              <!-- 🔎 Search bar -->
+              <div class="catalog-toolbar">
+                <input
+                  id="catalogSearch"
+                  type="text"
+                  placeholder="Buscar juego..."
+                />
+                <button class="btn-small" id="clearSearch">Limpiar</button>
               </div>
 
-              <!-- ✅ AQUÍ se renderizan los juegos -->
+              <!-- 🔤 Navegador A-Z (aquí debe salir) -->
+              <div id="catalogLetters" class="catalog-letters"></div>
+
+              <!-- ✅ LISTA SCROLLEABLE (aquí va virtual scroll) -->
               <div class="catalog-list"></div>
             </div>
 
