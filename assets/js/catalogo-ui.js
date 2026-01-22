@@ -94,10 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const storageDisplay = document.getElementById("storageDisplay");
   if (storageDisplay && ctx.storage) {
     storageDisplay.innerHTML = `
-      <div class="disk-option selected">
-        <strong>${ctx.storage.label}</strong>
-        <span>Espacio usable: ${ctx.storage.usableGB} GB</span>
-      </div>
-    `;
+    <div class="disk-option selected">
+      <span>Espacio total: <strong>${ctx.storage.label}</strong></span>
+      <span>Espacio usable: <strong>${ctx.storage.usableGB} GB</strong></span>
+    </div>
+  `;
   }
 });
