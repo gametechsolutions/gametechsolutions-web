@@ -910,12 +910,6 @@ STORAGE SELECTOR (Almacenamiento)
   align-items: stretch;
 }
 
-@media (min-width: 720px) {
-  .disk-selector {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-}
-
 .disk-option {
   flex: 0 0 auto; /* no se estira raro */
   min-width: 180px; /* ✅ más ancho */
