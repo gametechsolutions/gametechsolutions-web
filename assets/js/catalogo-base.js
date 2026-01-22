@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const gameCountEl = document.getElementById("gameCount");
   const totalSizeEl = document.getElementById("totalSize");
-  const catalogEl = document.querySelector(".selector-catalog");
+  const catalogEl = document.querySelector(".selector-catalog .catalog-list");
   const saveBtn = document.getElementById("saveSelection");
 
   /* =============================

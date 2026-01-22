@@ -1504,6 +1504,13 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   padding-right: 6px;
 }
 
+.catalog-list {
+  margin-top: 10px;
+  max-height: 62vh; /* ✅ evita página infinita */
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
 .selector-catalog #catalog {
   overflow-y: auto;
   max-height: 62vh;
