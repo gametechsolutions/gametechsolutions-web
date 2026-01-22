@@ -1570,8 +1570,20 @@ TOP GAMES (grid clásico)
 
 #topGamesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr; /* móvil */
   gap: var(--s-6);
+}
+
+@media (min-width: 700px) {
+  #topGamesGrid {
+    grid-template-columns: repeat(2, 1fr); /* tablet */
+  }
+}
+
+@media (min-width: 1100px) {
+  #topGamesGrid {
+    grid-template-columns: repeat(3, 1fr); /* ✅ desktop: 3 por fila */
+  }
 }
 
 #topGamesGrid .card {
@@ -1585,6 +1597,10 @@ TOP GAMES (grid clásico)
     transform var(--ease),
     border var(--ease),
     background var(--ease);
+
+  display: grid;
+  grid-template-rows: auto auto; /* imagen + texto */
+  align-content: start;
 }
 
 #topGamesGrid .card:hover {
@@ -1631,7 +1647,6 @@ TOP GAMES (grid clásico)
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 
 /* ============================================================
 12) CONTACTO
