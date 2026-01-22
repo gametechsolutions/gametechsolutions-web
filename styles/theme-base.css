@@ -1916,6 +1916,52 @@ TOP GAMES (grid clásico)
 }
 
 /* ============================================================
+FIX DEFINITIVO — Mobile letras no se enciman ni se recortan
+============================================================ */
+
+@media (max-width: 520px) {
+  /* 1) El panel vuelve a controlar layout SIN overflow raro */
+  .selector-catalog {
+    overflow: hidden; /* ✅ no visible */
+  }
+
+  /* 2) La barra (toolbar + letras) queda fija dentro del panel */
+  .catalog-toolbar,
+  .catalog-letters {
+    position: relative; /* reset */
+  }
+
+  /* ✅ Quitamos sticky a las letras (esto era lo que rompía) */
+  .catalog-letters {
+    position: relative !important;
+    top: auto !important;
+    z-index: 1;
+
+    background: transparent; /* ya no necesita fondo sticky */
+    backdrop-filter: none;
+    border-radius: 0;
+
+    margin: 8px 0 10px;
+    padding: 6px 2px 10px;
+  }
+
+  /* 3) La lista es la única que scrollea */
+  .catalog-list {
+    overflow-y: auto;
+    max-height: 52vh; /* ajustable */
+    padding-top: 0; /* ya no se ocupa compensación */
+  }
+
+  /* (opcional) Chips un poquito más compactos */
+  .catalog-letters button {
+    height: 32px;
+    min-width: 36px;
+    padding: 0 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================
 12) CONTACTO
 ============================================================ */
 
