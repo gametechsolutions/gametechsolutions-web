@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderCatalog() {
     // ===== Virtual Scroll settings =====
-    const ROW_HEIGHT = 86; // ajusta si cambias padding/alto en CSS
+    const ROW_HEIGHT = 72; // ajusta si cambias padding/alto en CSS
     const OVERSCAN = 10; // items extra arriba/abajo para scroll suave
     const filteredGames = getFilteredGames();
 
