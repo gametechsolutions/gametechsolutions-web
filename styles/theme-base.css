@@ -1610,6 +1610,15 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
     var(--accent-color) 14%,
     rgba(255, 255, 255, 0.03)
   );
+
+  .catalog-letters {
+    display: none !important;
+  }
+
+  /* compacta un poco el espacio */
+  .selector-catalog {
+    grid-template-rows: auto 1fr !important; /* toolbar + lista */
+  }
 }
 
 /* ✅ La lista es la que scrollea */
