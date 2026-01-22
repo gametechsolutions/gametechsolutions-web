@@ -1495,12 +1495,18 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 
 /* Catalog: lista con rows tipo tabla */
 .selector-catalog {
-  display: grid;
+  display: flex;
   gap: 10px;
 
   /* ✅ límite de altura para no hacer la página infinita */
-  max-height: calc(100vh - 260px);
-  overflow: auto;
+  max-height: 70vh;
+  overflow: hidden;
+  padding-right: 6px;
+}
+
+.selector-catalog #catalog {
+  overflow-y: auto;
+  max-height: 62vh;
   padding-right: 6px;
 }
 
