@@ -1556,7 +1556,20 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
     -webkit-overflow-scrolling: touch;
 
     gap: 8px;
-    padding-bottom: 8px;
+
+    /* ✅ compacta */
+    padding: 10px 6px;
+    margin: 10px 0 12px;
+
+    /* ✅ STICKY para que no se meta debajo de los juegos */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    /* ✅ fondo para que no se vea “encimado” */
+    background: rgba(8, 12, 20, 0.92);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
 
     /* degradado para sugerir scroll */
     mask-image: linear-gradient(
@@ -1583,6 +1596,18 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   .catalog-letters button:first-child,
   .catalog-letters button:nth-child(2) {
     min-width: 64px;
+  }
+
+  /* ✅ la lista de juegos no debe quedar debajo del sticky */
+  .catalog-list {
+    padding-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .selector-catalog {
+    overflow: visible;
+    position: relative;
   }
 }
 
@@ -1745,7 +1770,6 @@ Mobile: selector más compacto (2 filas)
     font-size: 0.78rem;
     border-radius: 999px;
     min-height: unset;
-    
 
     border-width: 1px;
   }
