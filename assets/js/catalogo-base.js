@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rec = getRecommendedGames();
             if (rec) {
                 recEl.textContent =
-`💡 Recomendado para tu disco (${diskLabel}): hasta ${rec} juegos.`;
+`💡 Recomendación para tu disco de (${diskLabel}): aproximadamente ${rec} juegos.`;
             } else {
                 recEl.textContent = '';
             }
