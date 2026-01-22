@@ -76,7 +76,25 @@
 
           <div class="selector-layout selector-app">
             <div class="selector-catalog selector-panel">
-              <h3>Catálogo</h3>
+              <div class="catalog-head">
+                <h3>Catálogo</h3>
+
+                <!-- BUSCADOR -->
+                <div class="catalog-search">
+                  <input
+                    type="search"
+                    id="catalogSearch"
+                    placeholder="Buscar juego..."
+                    autocomplete="off"
+                  />
+                  <button class="btn-small" id="clearSearch" type="button">
+                    Limpiar
+                  </button>
+                </div>
+
+                <!-- FILTRO POR LETRA -->
+                <div class="catalog-letters" id="catalogLetters"></div>
+              </div>
             </div>
 
             <div class="selector-summary selector-panel">
