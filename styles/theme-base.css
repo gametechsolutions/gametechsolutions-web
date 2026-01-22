@@ -866,6 +866,112 @@ ACTION BAR (CTA fijo arriba del footer)
 }
 
 /* ============================================================
+STORAGE SELECTOR (Almacenamiento)
+============================================================ */
+
+.disk-selector {
+  display: grid;
+  gap: 12px;
+  margin-top: var(--s-4);
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 720px) {
+  .disk-selector {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.disk-option {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow-soft);
+
+  padding: 14px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  transition:
+    transform var(--ease),
+    border var(--ease),
+    background var(--ease);
+}
+
+.disk-option:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 22%,
+    rgba(255, 255, 255, 0.14)
+  );
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.disk-option strong {
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: color-mix(in srgb, var(--text) 94%, white);
+}
+
+/* esconder radio nativo */
+.disk-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* estado seleccionado */
+.disk-option.selected {
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 50%,
+    rgba(255, 255, 255, 0.14)
+  );
+  background:
+    radial-gradient(
+      300px 120px at 40% 0%,
+      color-mix(in srgb, var(--accent-color) 18%, transparent),
+      transparent 55%
+    ),
+    rgba(255, 255, 255, 0.05);
+
+  transform: translateY(-1px);
+}
+
+/* check visual */
+.disk-option.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 0.95rem;
+
+  background: color-mix(in srgb, var(--accent-color) 70%, white);
+  color: #08101e;
+
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
 7) GRIDS / TARJETAS DE CONSOLA / SERVICIOS
 ============================================================ */
 
@@ -1123,7 +1229,7 @@ ACTION BAR (CTA fijo arriba del footer)
 }
 
 .selector-note {
-  margin-top: var(--s-3);
+  margin-top: 8px;
   color: var(--muted);
   font-size: 0.95rem;
 }
