@@ -1402,6 +1402,28 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   gap: 10px;
 }
 
+/* ===============================
+   Storage help chip: anti-inyección
+   =============================== */
+#storageHelp.selector-note {
+  display: inline-flex !important;
+  width: max-content !important; /* más fuerte que fit-content */
+  max-width: 100%;
+  align-items: center;
+
+  /* siempre abajo del h2 */
+  margin-top: var(--s-4);
+}
+
+/* ⚠️ MUY IMPORTANTE:
+   si el JS mete spans/divs dentro, que no hagan width:100% */
+#storageHelp.selector-note * {
+  width: auto !important;
+  max-width: 100%;
+  display: inline !important;
+  white-space: normal;
+}
+
 /* ============================================================
 10) RESUMEN / PRICING (summaryCard)
 ============================================================ */
