@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'card';
 
             card.innerHTML = `
-        <h3>${model.name}</h3>
+        <h3>${model.code}</h3>
       
         ${model.image ? `
           <div class="model-image">
-            <img src="${model.image}" alt="${model.name}">
+            <img src="${model.image}" alt="${model.code}">
           </div>
         ` : ''}
       
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx =
             JSON.parse(localStorage.getItem('GTS_CONTEXT')) || {};
 
-        // ✅ GUARDAR CONSOLA (clave que faltaba)
+        // ✅ GUARDAR CONSOLA
         ctx.console = {
             code: consoleConfig.code,
             name: consoleConfig.name,
@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ✅ GUARDAR MODELO
         ctx.model = {
-            id: model.id || model.name,
-            description: model.name,
+            id: model.id || model.code,
+            description: model.code,
             notes: model.notes || ''
         };
 

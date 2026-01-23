@@ -5,16 +5,19 @@
     {
       "id": "fat",
       "name": "Xbox 360",
+      "code": "Xbox 360",
       "image": "/assets/img/consolas/xbox360/models/fat.png"
     },
     {
       "id": "slim",
-      "name": "Slim",
+      "name": "Xbox 360 Slim",
+      "code": "Slim",
       "image": "/assets/img/consolas/xbox360/models/slim.png"
     },
     {
       "id": "e",
-      "name": "E",
+      "name": "Xbox 360 E",
+      "code": "E",
       "warning": "La compatibilidad depende de la placa.",
       "image": "/assets/img/consolas/xbox360/models/e.png"
     }
