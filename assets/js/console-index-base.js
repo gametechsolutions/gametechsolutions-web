@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     card.className = "card";
 
     card.innerHTML = `
-  <h3>${model.code}</h3>
+  <h3>${model.name}</h3>
   <p>${model.notes || ""}</p>
   ${model.image ? `<img src="${model.image}" class="identify-img">` : ""}
   <button class="btn btn-outline">Seleccionar</button>

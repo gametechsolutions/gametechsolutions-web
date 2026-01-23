@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'card';
 
             card.innerHTML = `
-        <h3>${model.name}</h3>
+        <h3>${model.code}</h3>
       
         ${model.image ? `
           <div class="model-image">
-            <img src="${model.image}" alt="${model.name}">
+            <img src="${model.image}" alt="${model.code}">
           </div>
         ` : ''}
       
