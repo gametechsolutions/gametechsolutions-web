@@ -1263,6 +1263,7 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 
 #modelsContainer .card {
   padding: var(--s-5);
+  justify-content: center;
 }
 
 #modelsContainer .model-image {

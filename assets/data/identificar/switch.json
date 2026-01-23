@@ -5,19 +5,16 @@
 		{
 			"id": "lite",
 			"name": "Nintendo Switch Lite",
-			"notes": "Instalación de chip profesional para liberar la consola y cargar juegos desde microSD.",
 			"image": "/assets/img/consolas/switch/models/lite.png"
 		},
 		{
 			"id": "core",
 			"name": "Nintendo Switch Core",
-			"notes": "Instalación de chip con soldadura fina para habilitar carga de juegos y homebrew desde microSD.",
 			"image": "/assets/img/consolas/switch/models/core.png"
 		},
 		{
 			"id": "oled",
 			"name": "Nintendo Switch OLED",
-			"notes": "Instalación de chip avanzada en modelo OLED, desbloqueo completo con microSD y máxima precisión.",
 			"image": "/assets/img/consolas/switch/models/oled.png"
 		}
 	]

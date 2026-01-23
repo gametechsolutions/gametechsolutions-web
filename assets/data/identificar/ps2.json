@@ -6,15 +6,13 @@
       "id": "fat",
       "image": "/assets/img/consolas/ps2/models/fat.png",
       "name": "PlayStation 2",
-      "code": "PlayStation 2",
-      "notes": "Compatible con Memory Card con FMCB"
+      "code": "PlayStation 2"
     },
     {
       "id": "slim",
       "name": "PlayStation 2 Slim",
       "code": "Slimline",
-      "notes": "Compatible con Memory Card con Funtuna",
-      "image": "/assets/img/consolas/ps2/models/slim.png"
+      "notes": "Compatible con Memory Card con Funtuna"
     }
   ]
 }

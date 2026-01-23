@@ -13,15 +13,13 @@
       "id": "slim",
       "name": "PlayStation 3 Slim",
       "code": "Slim",
-      "notes": "Algunos modelos compatibles con CFW. Todos los modelos compatibles con HEN",
-      "image": "/assets/img/consolas/ps3/models/slim.png"
+      "notes": "Algunos modelos compatibles con CFW. Todos los modelos compatibles con HEN"
     },
     {
       "id": "super slim",
       "name": "PlayStation 3 Super Slim",
       "code": "Super Slim",
-      "notes": "Todos los modelos compatibles solo con HEN",
-      "image": "/assets/img/consolas/ps3/models/super-slim.png"
+      "notes": "Todos los modelos compatibles solo con HEN"
     }
   ]
 }

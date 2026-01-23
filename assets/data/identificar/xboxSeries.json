@@ -5,13 +5,11 @@
 		{
 			"id": "s",
 			"name": "Xbox Series S",
-			"notes": "Compacta y rápida, ideal para jugar next-gen en 1440p con SSD.",
 			"image": "/assets/img/consolas/xboxSeries/models/series-s.png"
 		},
 		{
 			"id": "x",
 			"name": "Xbox Series X",
-			"notes": "La Xbox más potente, pensada para 4K, máximo rendimiento y carga ultra rápida.",
 			"image": "/assets/img/consolas/xboxSeries/models/series-x.png"
 		}
 	]

@@ -6,15 +6,13 @@
       "id": "psp",
       "image": "/assets/img/consolas/psp/models/psp.png",
       "name": "PlayStation Portable 1000",
-      "code": "1000",
-      "notes": "Ideal para liberación e instalación de juegos: portátil potente con catálogo enorme."
+      "code": "1000"
     },
     {
       "id": "psp",
       "image": "/assets/img/consolas/psp/models/psp-3000.png",
       "name": "PlayStation Portable 2000/3000",
-      "code": "3000",
-      "notes": "Ideal para liberación e instalación de juegos: portátil potente con catálogo enorme."
+      "code": "3000"
     }
   ]
 }
