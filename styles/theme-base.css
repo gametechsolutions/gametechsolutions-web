@@ -1261,6 +1261,21 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 8) IDENTIFICAR MODELOS (modelsContainer)
 ============================================================ */
 
+/* ✅ Models: centrar cards cuando hay pocas */
+#modelsContainer {
+  display: grid;
+  gap: var(--s-6);
+
+  /* cards con tamaño fijo → no se estiran a lo ancho */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
+
+  /* ✅ si hay 1 o 2, se centra el bloque */
+  justify-content: center;
+
+  /* opcional */
+  width: 100%;
+}
+
 #modelsContainer .card {
   padding: var(--s-5);
 }
@@ -1274,11 +1289,10 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 
 #modelsContainer .card h3 {
   font-size: 1.15rem;
-  justify-content: center;
 }
+
 #modelsContainer .card p {
   font-size: 0.98rem;
-  justify-content: center;
 }
 
 /* Button inside model cards (compat) */
