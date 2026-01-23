@@ -1681,6 +1681,28 @@ Items del catálogo
   border-color: rgba(120, 255, 150, 0.35);
 }
 
+.add-game.added {
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 22%,
+    rgba(255, 255, 255, 0.05)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 65%,
+    rgba(255, 255, 255, 0.15)
+  );
+  color: color-mix(in srgb, var(--text) 96%, white);
+  opacity: 0.95;
+}
+
+.add-game.blocked {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
 /* Mobile: selector más compacto */
 @media (max-width: 520px) {
   .selector-item {

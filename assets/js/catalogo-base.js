@@ -44,6 +44,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function refreshCatalogButtonsState() {
+    document.querySelectorAll(".add-game").forEach((btn) => {
+      const id = Number(btn.dataset.id);
+      const size = Number(btn.dataset.size);
+
+      const alreadyAdded = selectedGames.some((g) => g.id === id);
+
+      if (alreadyAdded) {
+        btn.disabled = true;
+        btn.textContent = "Agregado";
+        btn.classList.add("added");
+        return;
+      }
+
+      const noSpace = diskLimit !== null && totalSize + size > diskLimit;
+
+      btn.disabled = noSpace;
+
+      if (noSpace) {
+        btn.textContent = "No cabe";
+        btn.classList.add("blocked");
+      } else {
+        btn.textContent = "Agregar";
+        btn.classList.remove("blocked");
+      }
+    });
+  }
+
   /* =============================
     CARGAR STORAGE DESDE CONTEXTO
     ============================== */
@@ -199,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // binds a botones (solo los visibles)
       bindAddButtons();
+      refreshCatalogButtonsState();
     }
 
     // IMPORTANTE: aseguramos que el contenedor tenga scroll
@@ -480,6 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recEl.textContent = "";
       }
     }
+    refreshCatalogButtonsState();
   }
 
   function canAddAnyMoreGames() {
