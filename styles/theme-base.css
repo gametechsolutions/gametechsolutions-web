@@ -2232,6 +2232,47 @@ CONTACTO — CTA WhatsApp centrado DEFINITIVO
 }
 
 /* ============================================================
+CONTACTO — CTA Reset / Nueva selección centrado
+============================================================ */
+
+.cta-reset {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ✅ centra todo */
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.cta-reset #newSelectionBtn {
+  margin: 0 auto; /* ✅ por si algún layout raro lo afecta */
+}
+
+.cta-reset-hint {
+  margin: 0;
+  max-width: 560px;
+  opacity: 0.72;
+  line-height: 1.5;
+}
+
+/* Mobile: que no se vea gigante y quede centrado */
+@media (max-width: 520px) {
+  .cta-reset {
+    gap: 12px;
+  }
+
+  .cta-reset #newSelectionBtn {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .cta-reset-hint {
+    max-width: 32ch;
+  }
+}
+
+/* ============================================================
 13) FAQ
 ============================================================ */
 
