@@ -103,19 +103,27 @@
          DATOS CLIENTE
     ========================== -->
     <section>
-      <h2>Datos del cliente</h2>
+  <h2>Tus datos</h2>
 
-      <div class="card">
-        <label for="clientName"><strong>Tu nombre</strong></label>
-        <input
-          id="clientName"
-          type="text"
-          placeholder="Ej. Juan Pérez"
-          autocomplete="name"
-          style="width:100%; padding:10px; margin-top:8px;"
-        >
-      </div>
-    </section>
+  <div class="card form-card">
+    <label for="clientName" class="form-label">
+      Nombre y apellido
+    </label>
+
+    <input
+      id="clientName"
+      class="form-input"
+      type="text"
+      placeholder="Ej. Juan Pérez"
+      autocomplete="name"
+    >
+
+    <p class="form-hint">
+      Lo usaremos para identificar tu solicitud en WhatsApp.
+    </p>
+  </div>
+</section>
+
 
     <!-- =========================
          CTA WHATSAPP
