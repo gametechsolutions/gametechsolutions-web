@@ -2141,46 +2141,54 @@ CTA SECTION (Contacto WhatsApp + reset)
 }
 
 /* ============================================================
-DANGER ROW alineado PRO
+DANGER ROW — baseline alignment (fix descuadre)
 ============================================================ */
 
 .cta-danger-row {
   width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
-  align-items: center; /* ✅ centra vertical */
+
+  /* ✅ clave: que se alinee con la línea de texto */
+  align-items: baseline;
+
   column-gap: 18px;
   row-gap: 10px;
 }
 
-/* Botón danger alineado a la izquierda dentro del grid */
+/* Botón */
 .cta-danger-left {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  align-items: baseline; /* ✅ baseline */
 }
 
-/* El texto se centra vertical */
+/* Texto */
 .cta-danger-right {
   display: flex;
-  align-items: center;
-  text-align: left;
+  align-items: baseline; /* ✅ baseline */
 }
 
-/* Texto hint */
+/* Texto hint (alineado al botón) */
 .cta-danger-hint {
   margin: 0;
+
+  /* ✅ ajuste visual para que no “flote” */
+  padding-top: 2px;
+
   opacity: 0.75;
   font-size: 0.95rem;
   line-height: 1.35;
 }
 
-/* Botón danger más compacto */
+/* Botón danger más compacto y alineable */
 .cta-danger {
   width: auto !important;
   padding: 10px 14px;
   border-radius: 999px;
   font-size: 0.9rem;
+
+  /* ✅ evita que cambie su baseline raro */
+  line-height: 1;
 }
 
 /* ============================================================
