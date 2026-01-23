@@ -861,7 +861,7 @@ ACTION BAR (CTA fijo arriba del footer)
   right: 0;
 
   /* queda arriba del footer fijo */
-  bottom: 40px;
+  bottom: 45px;
 
   z-index: 997;
 
