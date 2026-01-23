@@ -1402,26 +1402,64 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   gap: 10px;
 }
 
-/* ===============================
-   Storage help chip: anti-inyección
-   =============================== */
-#storageHelp.selector-note {
-  display: inline-flex !important;
-  width: max-content !important; /* más fuerte que fit-content */
-  max-width: 100%;
-  align-items: center;
+/* =========================================
+   STORAGE HELP CHIP (sin selector-note)
+   Solo afecta a #storageHelp
+   ========================================= */
 
-  /* siempre abajo del h2 */
-  margin-top: var(--s-4);
+#storageHelp {
+  /* chip */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  /* tamaño */
+  width: max-content; /* 🔥 se ajusta al texto */
+  max-width: 100%;
+
+  /* estilo */
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(120, 255, 160, 0.18);
+  background:
+    radial-gradient(
+      500px 160px at 20% 0%,
+      rgba(120, 255, 160, 0.08),
+      transparent 60%
+    ),
+    rgba(0, 0, 0, 0.22);
+
+  color: rgba(240, 245, 255, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  margin-top: 14px; /* separación del h2 */
 }
 
-/* ⚠️ MUY IMPORTANTE:
-   si el JS mete spans/divs dentro, que no hagan width:100% */
-#storageHelp.selector-note * {
+/* ✅ Icono check automático */
+#storageHelp::before {
+  content: "✅";
+  font-size: 1.05rem;
+  line-height: 1;
+  opacity: 0.95;
+}
+
+/* 🛡️ Anti-inyección:
+   Si tu JS mete spans/divs adentro, no dejes que estiren al 100% */
+#storageHelp * {
   width: auto !important;
   max-width: 100%;
   display: inline !important;
-  white-space: normal;
+}
+
+/* ✅ en móvil centrado */
+@media (max-width: 520px) {
+  #storageHelp {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
 }
 
 /* ============================================================
