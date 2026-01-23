@@ -10,9 +10,9 @@
     },
     {
       "id": "slim",
+      "image": "/assets/img/consolas/ps2/models/slim.png",
       "name": "PlayStation 2 Slim",
-      "code": "Slimline",
-      "notes": "Compatible con Memory Card con Funtuna"
+      "code": "Slimline"
     }
   ]
 }
