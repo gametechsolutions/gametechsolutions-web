@@ -139,13 +139,13 @@ main {
 }
 
 section {
-  padding: var(--s-7) 0;
+  padding: var(--s-6) 0;
   position: relative;
 }
 
 /* separador suave entre secciones (con aire, no pegado) */
 section + section {
-  padding-top: calc(var(--s-7) + 14px);
+  padding-top: calc(var(--s-4) + 6px);
 }
 
 section + section::before {
