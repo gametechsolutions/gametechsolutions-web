@@ -5,18 +5,21 @@
 		{
 			"id": "fat",
 			"name": "PlayStation 4",
+			"code": "PlayStation 4",
 			"notes": "Modelo grande y robusto. Bordes rectos y diseño más voluminoso. Es la versión original de PS4.",
 			"image": "/assets/img/consolas/ps4/models/fat.png"
 		},
 		{
 			"id": "slim",
 			"name": "PlayStation 4 Slim",
+			"code": "Slim",
 			"notes": "Modelo más delgado y ligero. Diseño compacto con esquinas redondeadas.",
 			"image": "/assets/img/consolas/ps4/models/slim.png"
 		},
 		{
 			"id": "pro",
 			"name": "PlayStation 4 Pro",
+			"code": "Pro",
 			"notes": "Modelo más grande que la Slim. Suele tener tres niveles (tres “pisos”) en el diseño y mayor potencia.",
 			"image": "/assets/img/consolas/ps4/models/pro.png"
 		}

@@ -4,19 +4,22 @@
   "models": [
     {
       "id": "fat",
-      "name": "PlayStation 3 FAT",
+      "name": "PlayStation 3",
+      "code": "PlayStation 3",
       "notes": "Todos los modelos compatibles con CFW o HEN",
       "image": "/assets/img/consolas/ps3/models/fat.png"
     },
     {
       "id": "slim",
       "name": "PlayStation 3 Slim",
+      "code": "Slim",
       "notes": "Algunos modelos compatibles con CFW. Todos los modelos compatibles con HEN",
       "image": "/assets/img/consolas/ps3/models/slim.png"
     },
     {
       "id": "super slim",
       "name": "PlayStation 3 Super Slim",
+      "code": "Super Slim",
       "notes": "Todos los modelos compatibles solo con HEN",
       "image": "/assets/img/consolas/ps3/models/super-slim.png"
     }

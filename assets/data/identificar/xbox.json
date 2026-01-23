@@ -5,6 +5,7 @@
     {
       "id": "unique",
       "name": "Xbox",
+      "code": "Xbox",
       "notes": "Todos los modelos son compatibles con SoftMod y Chip",
       "image": "/assets/img/consolas/xbox/models/xbox.png"
     }

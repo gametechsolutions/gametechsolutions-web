@@ -6,7 +6,19 @@
       "id": "ps5",
       "image": "/assets/img/consolas/ps5/models/fat.png",
       "name": "PlayStation 5",
-      "notes": "La PS5 original, máximo rendimiento y experiencia next-gen en 4K."
+      "code": "PlayStation 5"
+    },
+    {
+      "id": "slim",
+      "image": "/assets/img/consolas/ps5/models/slim.png",
+      "name": "PlayStation 5 Slim",
+      "code": "Slim"
+    },
+    {
+      "id": "pro",
+      "image": "/assets/img/consolas/ps5/models/pro.png",
+      "name": "PlayStation 5 Pro",
+      "code": "Pro"
     }
   ]
 }

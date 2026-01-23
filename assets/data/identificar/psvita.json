@@ -5,7 +5,15 @@
     {
       "id": "psvita",
       "image": "/assets/img/consolas/psvita/models/psvita.png",
-      "name": "PlayStation Vita",
+      "name": "PlayStation Vita (Serie PCH-1000)",
+      "code": "PCH-1000",
+      "notes": "Excelente para modificación: potencia portátil, emulación y juegos en una sola consola."
+    },
+    {
+      "id": "psvita",
+      "image": "/assets/img/consolas/psvita/models/slim.png",
+      "name": "PlayStation Vita (Serie PCH-2000)",
+      "code": "PCH-2000",
       "notes": "Excelente para modificación: potencia portátil, emulación y juegos en una sola consola."
     }
   ]

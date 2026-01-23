@@ -3,9 +3,17 @@
   "description": "Selecciona el modelo de tu GameCube para continuar.",
   "models": [
     {
-      "id": "gc",
-      "image": "/assets/img/consolas/gamecube/models/gamecube.png",
-      "name": "GameCube",
+      "id": "dol001",
+      "image": "/assets/img/consolas/gamecube/models/dol001.png",
+      "name": "GameCube DOL-001",
+      "code": "DOL-001",
+      "notes": "Compatible con PicoBoot"
+    },
+    {
+      "id": "dol101",
+      "image": "/assets/img/consolas/gamecube/models/dol101.png",
+      "name": "GameCube DOL-101",
+      "code": "DOL-101",
       "notes": "Compatible con PicoBoot"
     }
   ]
