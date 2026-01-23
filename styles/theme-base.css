@@ -1435,6 +1435,24 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   transform: translateY(1px);
 }
 
+#storageHelp.selector-note {
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex; /* que se comporte como chip */
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 10px 14px;
+  margin-top: var(--s-4);
+}
+
+/* si quieres que quede centrado SOLO en móvil */
+@media (max-width: 520px) {
+  #storageHelp.selector-note {
+    margin-inline: auto; /* centra el chip */
+  }
+}
+
 /* ============================================================
 10) RESUMEN / PRICING (summaryCard)
 ============================================================ */
