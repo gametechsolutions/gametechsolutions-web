@@ -1263,7 +1263,6 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 
 #modelsContainer .card {
   padding: var(--s-5);
-  justify-content: center;
 }
 
 #modelsContainer .model-image {
@@ -1275,9 +1274,11 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 
 #modelsContainer .card h3 {
   font-size: 1.15rem;
+  justify-content: center;
 }
 #modelsContainer .card p {
   font-size: 0.98rem;
+  justify-content: center;
 }
 
 /* Button inside model cards (compat) */
