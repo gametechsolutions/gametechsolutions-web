@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Contacto | GameTechSolutions</title>
@@ -8,212 +9,206 @@
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="stylesheet" href="/styles/theme-base.css">
 </head>
+
 <body>
 
-<!-- HEADER -->
-<div id="header-container"></div>
+  <!-- HEADER -->
+  <div id="header-container"></div>
 
-<main>
-  <div class="container">
+  <main>
+    <div class="container">
 
-    <!-- INTRO -->
-    <section class="console-hero">
-      <h2>Contacto</h2>
-      <p>
-        Revisa tu selección y confirma tu información para continuar
-        con el servicio.
-      </p>
-    </section>
+      <!-- INTRO -->
+      <section class="console-hero">
+        <h2>Contacto</h2>
+        <p>
+          Revisa tu selección y confirma tu información para continuar
+          con el servicio.
+        </p>
+      </section>
 
-    <!-- =========================
+      <!-- =========================
          RESUMEN
     ========================== -->
-    <section>
-      <h2>Resumen de tu servicio</h2>
+      <section>
+        <h2>Resumen de tu servicio</h2>
 
-      <div class="card" id="summaryCard">
-        <div class="summary-grid">
+        <div class="card" id="summaryCard">
+          <div class="summary-grid">
 
-          <div class="summary-item">
-            <span class="label">🎮 Consola</span>
-            <span class="value" id="summary-console">—</span>
+            <div class="summary-item">
+              <span class="label">🎮 Consola</span>
+              <span class="value" id="summary-console">—</span>
+            </div>
+
+            <div class="summary-item">
+              <span class="label">🧩 Modelo</span>
+              <span class="value" id="summary-model">—</span>
+            </div>
+
+            <div class="summary-item">
+              <span class="label">💾 Almacenamiento</span>
+              <span class="value" id="summary-storage">No aplica</span>
+            </div>
+
+            <div class="summary-item">
+              <span class="label">🎯 Juegos</span>
+              <span class="value" id="summary-games">No aplica</span>
+            </div>
+
+            <div class="summary-item full">
+              <span class="label">🛠️ Servicios</span>
+              <span class="value" id="summary-services">—</span>
+            </div>
+
+            <div class="summary-item full">
+              <span class="label">🆔 ID de selección</span>
+              <span class="value mono" id="summary-id">—</span>
+            </div>
+
           </div>
-
-          <div class="summary-item">
-            <span class="label">🧩 Modelo</span>
-            <span class="value" id="summary-model">—</span>
-          </div>
-
-          <div class="summary-item">
-            <span class="label">💾 Almacenamiento</span>
-            <span class="value" id="summary-storage">No aplica</span>
-          </div>
-
-          <div class="summary-item">
-            <span class="label">🎯 Juegos</span>
-            <span class="value" id="summary-games">No aplica</span>
-          </div>
-
-          <div class="summary-item full">
-            <span class="label">🛠️ Servicios</span>
-            <span class="value" id="summary-services">—</span>
-          </div>
-
-          <div class="summary-item full">
-            <span class="label">🆔 ID de selección</span>
-            <span class="value mono" id="summary-id">—</span>
-          </div>
-
         </div>
-      </div>
 
-      <p class="selector-note pricing-note">
-        Verifica que toda la información sea correcta antes de continuar.
-      </p>
-    </section>
+        <p class="selector-note pricing-note">
+          Verifica que toda la información sea correcta antes de continuar.
+        </p>
+      </section>
 
-    <!-- =========================
+      <!-- =========================
          PRECIO (AUTOMÁTICO)
     ========================== -->
-    <section class="pricing-section">
-	  <h2 class="section-title">
-	    <span class="title-icon">💰</span>
-	    Precio estimado
-	  </h2>
-	
-	  <div class="card pricing-card">
-	    <div class="pricing-breakdown" id="pricingBreakdown">
-	      <div class="pricing-loading">
-	        <span class="pricing-spinner"></span>
-	        Calculando precio…
-	      </div>
-	    </div>
-	
-	    <div class="pricing-total-box">
-	      <span class="pricing-total-label">Total estimado</span>
-	      <span class="pricing-total-value" id="pricingTotal">—</span>
-	    </div>
-	  </div>
-    <p class="selector-note pricing-note">
-	      El precio final puede variar ligeramente tras revisión física.
-	    </p>
-	</section>
+      <section class="pricing-section">
+        <h2 class="section-title">
+          <span class="title-icon">💰</span>
+          Precio estimado
+        </h2>
 
-    <!-- =========================
+        <div class="card pricing-card">
+          <div class="pricing-breakdown" id="pricingBreakdown">
+            <div class="pricing-loading">
+              <span class="pricing-spinner"></span>
+              Calculando precio…
+            </div>
+          </div>
+
+          <div class="pricing-total-box">
+            <span class="pricing-total-label">Total estimado</span>
+            <span class="pricing-total-value" id="pricingTotal">—</span>
+          </div>
+        </div>
+        <p class="selector-note pricing-note">
+          El precio final puede variar ligeramente tras revisión física.
+        </p>
+      </section>
+
+      <!-- =========================
          DATOS CLIENTE
     ========================== -->
-    <section>
-  <h2>Tus datos</h2>
+      <section>
+        <h2>Tus datos</h2>
 
-  <div class="card form-card">
-    <label for="clientName" class="form-label">
-      Nombre y apellido
-    </label>
+        <div class="card form-card">
+          <label for="clientName" class="form-label">
+            Nombre y apellido
+          </label>
 
-    <input
-      id="clientName"
-      class="form-input"
-      type="text"
-      placeholder="Ej. Juan Pérez"
-      autocomplete="name"
-    >
+          <input id="clientName" class="form-input" type="text" placeholder="Ej. Juan Pérez" autocomplete="name">
 
-    <p class="form-hint">
-      Lo usaremos para identificar tu solicitud en WhatsApp.
-    </p>
-  </div>
-</section>
+          <p class="form-hint">
+            Lo usaremos para identificar tu solicitud en WhatsApp.
+          </p>
+        </div>
+      </section>
 
 
-    <!-- =========================
+      <!-- =========================
          CTA WHATSAPP
     ========================== -->
-    <section class="cta-section">
-  <div class="card cta-card">
+      <section class="cta-section">
+        <div class="card cta-card">
 
-    <button class="btn cta-primary" id="sendBtn">
-      📲 Contactar por WhatsApp
-    </button>
+          <button class="btn cta-primary" id="sendBtn">
+            📲 Contactar por WhatsApp
+          </button>
 
-    <p class="cta-hint">
-      Serás redirigido a WhatsApp con toda tu información lista.
-    </p>
+          <p class="cta-hint">
+            Serás redirigido a WhatsApp con toda tu información lista.
+          </p>
 
-    <div class="cta-divider"></div>
+          <div class="cta-divider"></div>
 
-    <div class="cta-danger-row">
-      <button class="btn danger cta-danger" id="newSelectionBtn">
-        🔄 Iniciar nueva selección
-      </button>
+          <div class="cta-danger-row">
+            <div class="cta-danger-left">
+              <button class="btn danger cta-danger" id="newSelectionBtn">
+                🔄 Iniciar nueva selección
+              </button>
+            </div>
 
-      <p class="cta-danger-hint">
-        Esto limpiará la selección actual y te permitirá empezar de nuevo.
-      </p>
-    </div>
+            <div class="cta-danger-right">
+              <p class="cta-danger-hint">
+                Esto limpiará la selección actual y te permitirá empezar de nuevo.
+              </p>
+            </div>
+          </div>
 
-  </div>
-</section>
+
+        </div>
+      </section>
 
 
-    <!-- =========================
+      <!-- =========================
          MAPA
     ========================== -->
-	  <h2 class="section-title">
-	  <span class="title-icon">📍</span>
-	  Ubicación
-	</h2>
- 
-	  <div class="map-shell">
+      <h2 class="section-title">
+        <span class="title-icon">📍</span>
+        Ubicación
+      </h2>
 
-		<!-- Glow decorativo -->
-		<div class="map-glow"></div>
+      <div class="map-shell">
 
-		<!-- Mapa -->
-		<div class="map-container">
-		  <iframe
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.7972359248342!2d-99.22092032410815!3d19.5503168369096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21dd7c106d715%3A0xf2b144c984956ce7!2sGame%20Tech%20Solutions!5e0!3m2!1ses-419!2smx!4v1767898318147!5m2!1ses-419!2smx"
-			width="100%"
-			height="340"
-			style="border:0;"
-			allowfullscreen
-			loading="lazy">
-		  </iframe>
-		</div>
+        <!-- Glow decorativo -->
+        <div class="map-glow"></div>
 
-		<!-- Info + CTA -->
-		<div class="map-footer">
-		  <div class="map-meta">
-			<span class="map-badge">
-			  <span class="map-dot"></span>
-			  GameTechSolutions • Estado de México
-			</span>
-		  </div>
+        <!-- Mapa -->
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.7972359248342!2d-99.22092032410815!3d19.5503168369096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21dd7c106d715%3A0xf2b144c984956ce7!2sGame%20Tech%20Solutions!5e0!3m2!1ses-419!2smx!4v1767898318147!5m2!1ses-419!2smx"
+            width="100%" height="340" style="border:0;" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
 
-		  <a
-			class="btn map-btn"
-			target="_blank"
-			rel="noopener noreferrer"
-			href="https://www.google.com/maps?q=Game+Tech+Solutions&hl=es-419&gl=mx">
-			Abrir en Google Maps →
-		  </a>
-		</div>
+        <!-- Info + CTA -->
+        <div class="map-footer">
+          <div class="map-meta">
+            <span class="map-badge">
+              <span class="map-dot"></span>
+              GameTechSolutions • Estado de México
+            </span>
+          </div>
 
-	  </div>
-	</section>
+          <a class="btn map-btn" target="_blank" rel="noopener noreferrer"
+            href="https://www.google.com/maps?q=Game+Tech+Solutions&hl=es-419&gl=mx">
+            Abrir en Google Maps →
+          </a>
+        </div>
 
-
-  </div>
-</main>
-
-<footer class="site-footer">
-      <div class="footer-inner">
-        <p class="footer-brand"><strong>GameTechSolutions</strong> © 2026</p>
       </div>
-    </footer>
+      </section>
 
-<script src="/assets/js/header.js"></script>
-<script src="/assets/js/context.js"></script>
-<script src="/assets/js/contacto.js"></script>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand"><strong>GameTechSolutions</strong> © 2026</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/context.js"></script>
+  <script src="/assets/js/contacto.js"></script>
 
 </body>
+
 </html>

@@ -2095,88 +2095,47 @@ FORM UI (Contacto)
   line-height: 1.4;
 }
 
-/* =========================================
-CTA CONTACTO (WhatsApp + reset)
-========================================= */
-
-.cta-section {
-  text-align: center;
+.cta-danger {
+  opacity: 0.85;
+  transform: scale(0.97);
 }
 
-.cta-card {
-  display: grid;
-  gap: 12px;
-  align-items: center;
-  justify-items: center;
-
-  padding: 20px;
+.cta-danger:hover {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.cta-primary {
-  width: min(520px, 100%);
-  font-size: 1.05rem;
-  padding: 14px 16px;
-  border-radius: 18px;
-}
-
-/* hint suave */
-.cta-hint {
-  margin: 0;
-  max-width: 560px;
-  opacity: 0.82;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-/* separador elegante */
-.cta-divider {
-  width: 100%;
-  height: 1px;
-  margin: 10px 0 6px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-}
-
-/* Danger row: menos protagónico */
+/* Danger row bien acomodado */
 .cta-danger-row {
   width: 100%;
   display: grid;
-  gap: 10px;
-  justify-items: center;
+  gap: 12px;
+  margin-top: 6px;
 }
 
-.cta-danger {
-  width: min(340px, 100%);
-  padding: 12px 14px;
-  border-radius: 16px;
-  opacity: 0.92;
+/* móvil: todo centrado pero compacto */
+.cta-danger-left {
+  display: flex;
+  justify-content: center;
+}
+.cta-danger-right {
+  text-align: center;
 }
 
-/* hint danger tipo nota, NO tipo alerta */
-.cta-danger-hint {
-  margin: 0;
-  max-width: 520px;
-  font-size: 0.92rem;
-  opacity: 0.7;
-  line-height: 1.35;
-}
-
-/* En desktop: fila horizontal para el danger */
+/* desktop: fila tipo “acciones” */
 @media (min-width: 980px) {
   .cta-danger-row {
     grid-template-columns: auto 1fr;
     align-items: center;
-    justify-items: start;
-    text-align: left;
-    gap: 14px;
+    column-gap: 18px;
   }
 
-  .cta-danger-hint {
-    margin-top: 0;
+  .cta-danger-left {
+    justify-content: flex-start;
+  }
+
+  .cta-danger-right {
+    text-align: left;
   }
 }
 
