@@ -1435,30 +1435,30 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   transform: translateY(1px);
 }
 
-/* ✅ StorageHelp: chip (ancho del texto) y SIEMPRE debajo del título */
+/* ✅ FIX DEFINITIVO: chip con ancho del texto, pero SIEMPRE debajo del h2 */
 #storageHelp.selector-note {
-  /* chip size */
-  display: inline-flex !important;
-  width: max-content !important;
+  width: fit-content;
   max-width: 100%;
 
-  /* layout */
-  margin-top: var(--s-4);
-  padding: 10px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 
-  /* ✅ fuerza salto de línea debajo del h2 */
+  padding: 10px 14px;
+  margin-top: var(--s-4);
+
+  /* 🔥 esto evita que se suba al lado del título */
   clear: both;
 }
 
-/* Desktop: pegado a la izquierda */
+/* Desktop: alineado izquierda */
 @media (min-width: 521px) {
   #storageHelp.selector-note {
-    margin-left: 0;
-    margin-right: 0;
+    margin-inline: 0;
   }
 }
 
-/* Mobile: centrado */
+/* Móvil: centrado */
 @media (max-width: 520px) {
   #storageHelp.selector-note {
     margin-inline: auto;
