@@ -1357,9 +1357,36 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 }
 
 .selector-note {
-  margin-top: 8px;
-  color: var(--muted);
+  margin-top: var(--s-4);
+  font-size: 0.92rem;
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  border: 1px solid
+    color-mix(in srgb, var(--accent-color) 18%, rgba(255, 255, 255, 0.1));
+  background:
+    radial-gradient(
+      500px 160px at 20% 0%,
+      color-mix(in srgb, var(--accent-color) 10%, transparent),
+      transparent 60%
+    ),
+    rgba(0, 0, 0, 0.22);
+
+  color: color-mix(in srgb, var(--text) 92%, var(--muted));
   font-size: 0.95rem;
+  line-height: 1.55;
+
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.selector-note::before {
+  content: "✅";
+  font-size: 1.05rem;
+  line-height: 1.1;
+  opacity: 0.95;
+  transform: translateY(1px);
 }
 
 /* ============================================================
