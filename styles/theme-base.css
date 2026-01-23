@@ -1402,66 +1402,6 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   gap: 10px;
 }
 
-/* =========================================
-   STORAGE HELP CHIP (sin selector-note)
-   Solo afecta a #storageHelp
-   ========================================= */
-
-#storageHelp {
-  /* chip */
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  /* tamaño */
-  width: max-content; /* 🔥 se ajusta al texto */
-  max-width: 100%;
-
-  /* estilo */
-  padding: 10px 14px;
-  border-radius: 14px;
-
-  border: 1px solid rgba(120, 255, 160, 0.18);
-  background:
-    radial-gradient(
-      500px 160px at 20% 0%,
-      rgba(120, 255, 160, 0.08),
-      transparent 60%
-    ),
-    rgba(0, 0, 0, 0.22);
-
-  color: rgba(240, 245, 255, 0.92);
-  font-size: 0.95rem;
-  line-height: 1.4;
-
-  margin-top: 14px; /* separación del h2 */
-}
-
-/* ✅ Icono check automático */
-#storageHelp::before {
-  content: "✅";
-  font-size: 1.05rem;
-  line-height: 1;
-  opacity: 0.95;
-}
-
-/* 🛡️ Anti-inyección:
-   Si tu JS mete spans/divs adentro, no dejes que estiren al 100% */
-#storageHelp * {
-  width: auto !important;
-  max-width: 100%;
-  display: inline !important;
-}
-
-/* ✅ en móvil centrado */
-@media (max-width: 520px) {
-  #storageHelp {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-  }
-}
-
 /* ============================================================
 10) RESUMEN / PRICING (summaryCard)
 ============================================================ */
@@ -2669,5 +2609,54 @@ Poner al FINAL de theme-base.css
       black calc(100% - 16px),
       transparent 100%
     );
+  }
+}
+
+/* ============================================================
+FIX DEFINITIVO: #storageHelp SIEMPRE debajo del título en desktop
+============================================================ */
+
+#storageHelp {
+  width: fit-content;
+  max-width: 100%;
+
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(120, 255, 160, 0.18);
+  background:
+    radial-gradient(
+      500px 160px at 20% 0%,
+      rgba(120, 255, 160, 0.08),
+      transparent 60%
+    ),
+    rgba(0, 0, 0, 0.22);
+
+  color: rgba(240, 245, 255, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  margin-top: 14px;
+}
+
+/* Icono check */
+#storageHelp::before {
+  content: "✅";
+  margin-right: 10px;
+}
+
+/* ✅ FIX REAL: en desktop debe ser BLOCK para que NO se ponga junto al h2 */
+@media (min-width: 521px) {
+  #storageHelp {
+    display: block !important;
+  }
+}
+
+/* ✅ En móvil lo centramos como chip */
+@media (max-width: 520px) {
+  #storageHelp {
+    display: inline-flex !important;
+    align-items: center;
+    margin-inline: auto;
   }
 }
