@@ -2273,6 +2273,167 @@ CONTACTO — CTA Reset / Nueva selección centrado
 }
 
 /* ============================================================
+CONTACTO — MAPA / UBICACIÓN (mejora visual)
+============================================================ */
+
+.map-shell {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  background:
+    radial-gradient(900px 320px at 20% 0%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%),
+    rgba(0, 0, 0, 0.22);
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* Glow decorativo */
+.map-glow {
+  position: absolute;
+  inset: -60px;
+
+  background:
+    radial-gradient(600px 220px at 20% 25%,
+      color-mix(in srgb, var(--accent-color) 24%, transparent),
+      transparent 65%),
+    radial-gradient(700px 260px at 75% 30%,
+      rgba(108, 99, 255, 0.18),
+      transparent 60%);
+
+  filter: blur(12px);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Contenedor iframe */
+.map-container {
+  position: relative;
+  border-radius: 22px;
+
+  overflow: hidden;
+  margin: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.50),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 340px;
+  display: block;
+
+  /* 🧠 le baja lo “amarillento” al mapa y lo integra con tu tema */
+  filter: saturate(0.92) contrast(1.05) brightness(0.96);
+}
+
+/* Footer (badge + botón) */
+.map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 14px 18px 18px;
+  margin: 0 16px 16px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.16);
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.map-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 850;
+  font-size: 0.92rem;
+  letter-spacing: 0.2px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  color: color-mix(in srgb, var(--text) 90%, white);
+}
+
+.map-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: color-mix(in srgb, var(--accent-color) 85%, white);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent-color) 20%, transparent),
+    0 0 22px rgba(120, 255, 150, 0.22);
+}
+
+/* Botón maps */
+.map-btn {
+  white-space: nowrap;
+  border-radius: 999px;
+  padding-inline: 18px;
+
+  border: 1px solid
+    color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
+  background:
+    radial-gradient(320px 120px at 25% 0%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 60%),
+    rgba(255, 255, 255, 0.04);
+
+  transition: transform var(--ease), border var(--ease), background var(--ease);
+}
+
+.map-btn:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 55%,
+    rgba(255, 255, 255, 0.14)
+  );
+  background:
+    radial-gradient(320px 120px at 25% 0%,
+      color-mix(in srgb, var(--accent-color) 22%, transparent),
+      transparent 60%),
+    rgba(255, 255, 255, 0.06);
+}
+
+/* ✅ Responsive */
+@media (max-width: 520px) {
+  .map-container iframe {
+    height: 260px;
+  }
+
+  .map-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .map-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .map-badge {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* ============================================================
 13) FAQ
 ============================================================ */
 
