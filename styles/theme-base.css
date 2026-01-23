@@ -2023,6 +2023,22 @@ CONTACTO — PRECIO ESTIMADO (UI premium)
   animation: spin 0.85s linear infinite;
 }
 
+/* Pricing note: que no sea full width */
+.pricing-note {
+  display: inline-flex; /* en vez de block */
+  align-items: center;
+  gap: 10px;
+
+  width: fit-content; /* ✅ se ajusta al texto */
+  max-width: 100%; /* por si el texto es largo en móvil */
+
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  border-radius: 16px; /* menos redondeado */
+
+  margin-top: 14px; /* separacion */
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -2071,6 +2087,8 @@ MOBILE ajustes (compactar mucho)
 
   .pricing-note {
     font-size: 0.88rem;
+    margin-inline: auto; /* centra el chip */
+    text-align: left;
   }
 }
 
