@@ -1435,22 +1435,29 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   transform: translateY(1px);
 }
 
+/* ✅ StorageHelp: chip SOLO en móvil, en desktop debe comportarse como bloque */
 #storageHelp.selector-note {
-  width: fit-content;
-  max-width: 100%;
-  display: inline-flex; /* que se comporte como chip */
-  align-items: center;
-  justify-content: flex-start;
-
-  padding: 10px 14px;
+  /* desktop/tablet: que NO se suba junto al título */
+  width: auto;
+  display: flex;
   margin-top: var(--s-4);
 }
 
-/* si quieres que quede centrado SOLO en móvil */
+/* ✅ chip bonito SOLO en móvil */
 @media (max-width: 520px) {
   #storageHelp.selector-note {
-    margin-inline: auto; /* centra el chip */
+    width: fit-content;
+    max-width: 100%;
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 10px 14px;
+    margin-inline: auto; /* centrado */
   }
+}
+
 }
 
 /* ============================================================
