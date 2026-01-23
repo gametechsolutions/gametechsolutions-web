@@ -2190,39 +2190,44 @@ MOBILE ajustes (compactar mucho)
 }
 
 /* ============================================================
-CONTACTO — Botón WhatsApp centrado y separado del form-card
+CONTACTO — CTA WhatsApp centrado DEFINITIVO
 ============================================================ */
 
-/* el botón y hint salen del card, centrados y con espacio */
-#sendBtn {
-  display: block;
-  width: fit-content;
-  margin: 18px auto 0; /* auto = centrado */
-}
-
-#sendBtn.cta-primary {
-  display: inline-flex;
-  margin: 18px auto 0; /* separación desde el card */
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
-}
-
-/* hint debajo del botón, centrado y con espacio */
-.cta-hint {
+.whatsapp-cta {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ✅ centra SIEMPRE */
+  justify-content: center;
+  gap: 10px;
   text-align: center;
-  margin: 10px auto 0;
+}
+
+.whatsapp-cta #sendBtn {
+  margin: 0 auto;
+}
+
+/* el hint debajo */
+.whatsapp-cta .cta-hint {
+  margin: 0;
   max-width: 560px;
   opacity: 0.75;
+  line-height: 1.5;
 }
 
-/* en mobile el botón ocupa más ancho pero sigue centrado */
+/* Mobile: botón más ancho pero centrado */
 @media (max-width: 520px) {
-  #sendBtn {
-    width: min(420px, 100%);
+  .whatsapp-cta {
+    gap: 12px;
   }
 
-  #sendBtn.cta-primary {
+  .whatsapp-cta #sendBtn.cta-primary {
     width: 100%;
     max-width: 420px;
+  }
+
+  .whatsapp-cta .cta-hint {
+    max-width: 32ch;
   }
 }
 
