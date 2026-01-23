@@ -1465,6 +1465,11 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   }
 }
 
+.storage-help-wrap {
+  display: block;
+  width: 100%;
+}
+
 /* ============================================================
 10) RESUMEN / PRICING (summaryCard)
 ============================================================ */
