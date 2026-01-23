@@ -1,32 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Redirigiendo…</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirigiendo…</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <script>
+      const config = {
+        code: "GC",
+        name: "GameCube",
+        short: "GC",
+        fullName: "GameCube",
+        brand: "nintendo",
+        gamesJson: "/assets/data/games/gamecube.json",
+        topGamesJson: "/assets/data/top-games/gamecube.json",
+        catalogPath: "/consolas/gamecube/catalogo.html",
+      };
 
-<script>
-  const config = {
-    code: 'GC',
-    name: 'GameCube',
-    short: 'GC',
-    fullName: 'GameCube',
-    brand: 'nintendo',
-    gamesJson: '/assets/data/games/gamecube.json',
-    topGamesJson: '/assets/data/top-games/gamecube.json',
-    catalogPath: '/consolas/gamecube/catalogo.html'
-  };
+      // 🔐 Persistir config para el template
+      sessionStorage.setItem("GTS_CONSOLE_CONFIG", JSON.stringify(config));
 
-  // 🔐 Persistir config para el template
-  sessionStorage.setItem(
-    'GTS_CONSOLE_CONFIG',
-    JSON.stringify(config)
-  );
-
-  window.location.replace('/consolas/_template/catalogo.html');
-</script>
-
-</body>
+      window.location.replace("/consolas/_template/catalogo.html");
+    </script>
+  </body>
 </html>

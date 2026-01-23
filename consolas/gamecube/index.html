@@ -1,32 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
 
-  <meta charset="UTF-8" />
-  <title id="pageTitle">GameTechSolutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title id="pageTitle">GameTechSolutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
-  <link rel="stylesheet" href="/styles/theme-base.css" />
-  <link rel="stylesheet" id="themeStylesheet">
-</head>
-<body>
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+    <link rel="stylesheet" href="/styles/theme-base.css" />
+    <link rel="stylesheet" id="themeStylesheet" />
+  </head>
+  <body>
+    <div id="header-container"></div>
 
-<div id="header-container"></div>
+    <main>
+      <div class="container">
+        <section class="console-hero">
+          <h2>Servicios para <strong class="console-name"></strong></h2>
+          <p>
+            Selecciona el modelo de tu consola y los servicios que necesitas.
+          </p>
+        </section>
 
-<main>
-  <div class="container">
-
-    <section>
-      <h2>Servicios para <strong class="console-name"></strong></h2>
-      <p>Selecciona el modelo de tu consola y los servicios que necesitas.</p>
-    </section>
-
-    <!-- MODELO -->
-    <section class="identify-step">
+        <section class="identify-step" data-step="1">
           <h2>Identifica tu modelo</h2>
           <div class="cards-grid" id="modelsContainer"></div>
 
@@ -38,46 +40,47 @@
           ></div>
         </section>
 
-    <!-- SERVICIOS -->
-    <section class="identify-step">
-      <h2>Selecciona los servicios</h2>
-      <div class="cards-grid" id="servicesContainer"></div>
-    </section>
+        <!-- SERVICIOS -->
+        <section class="identify-step" data-step="2">
+          <h2>Selecciona los servicios</h2>
+          <div class="cards-grid" id="servicesContainer"></div>
+        </section>
 
-    <!-- STORAGE -->
-    <section id="storageSection" style="display:none">
-      <h2>Almacenamiento</h2>
-      <p id="storageHelp" class="selector-note"></p>
-      <div class="disk-selector" id="storageOptions"></div>
-    </section>
+        <!-- STORAGE -->
+        <section id="storageSection" data-step="3" style="display: none">
+          <h2>Almacenamiento</h2>
+          <p id="storageHelp" class="selector-note"></p>
+          <div class="disk-selector" id="storageOptions"></div>
+        </section>
 
-    <!-- CONTINUAR -->
-    <section style="text-align:center; margin-top:30px">
-      <button class="btn" id="continueBtn">
-        Siguiente paso →
-      </button>
-    </section>
+        <!-- CONTINUAR -->
+        <section class="action-bar">
+          <div class="action-inner">
+            <button class="btn" id="continueBtn">Siguiente paso →</button>
+          </div>
+        </section>
+      </div>
+    </main>
 
-  </div>
-</main>
+    <!-- FOOTER FIJO -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand"><strong>GameTechSolutions</strong> © 2026</p>
+      </div>
+    </footer>
 
-<footer>
-  <p>GameTechSolutions ©️ 2026</p>
-</footer>
+    <script>
+      window.CONSOLE_CONFIG = {
+        code: "GC",
+        name: "GameCube",
+        brand: "nintendo",
+        modelsJson: "/assets/data/identificar/gamecube.json",
+        catalogPath: "/consolas/gamecube/catalogo.html",
+      };
+    </script>
 
-<script>
-  window.CONSOLE_CONFIG = {
-    code: 'GC',
-    name: 'GameCube',
-    brand: 'nintendo',
-    modelsJson: '/assets/data/identificar/gamecube.json',
-    catalogPath: '/consolas/gamecube/catalogo.html'
-  };
-</script>
-
-<script src="/assets/js/context.js"></script>
-<script src="/assets/js/header.js"></script>
-<script src="/assets/js/console-index-base.js"></script>
-
-</body>
+    <script src="/assets/js/context.js"></script>
+    <script src="/assets/js/header.js"></script>
+    <script src="/assets/js/console-index-base.js"></script>
+  </body>
 </html>

@@ -9,12 +9,12 @@
     },
     {
       "id": "slim",
-      "name": "Xbox 360 Slim",
+      "name": "Slim",
       "image": "/assets/img/consolas/xbox360/models/slim.png"
     },
     {
       "id": "e",
-      "name": "Xbox 360 E",
+      "name": "E",
       "warning": "La compatibilidad depende de la placa.",
       "image": "/assets/img/consolas/xbox360/models/e.png"
     }
