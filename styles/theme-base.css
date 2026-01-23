@@ -2141,117 +2141,63 @@ CTA SECTION (Contacto WhatsApp + reset)
 }
 
 /* ============================================================
-DANGER ROW — baseline alignment (fix descuadre)
+CTA DANGER ROW — FIX DEFINITIVO (sin duplicados)
 ============================================================ */
 
 .cta-danger-row {
   width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
-
-  /* ✅ clave: que se alinee con la línea de texto */
-  align-items: baseline;
-
   column-gap: 18px;
   row-gap: 10px;
+  align-items: center;
+  margin-top: 8px;
 }
 
-/* Botón */
 .cta-danger-left {
   display: flex;
-  align-items: baseline; /* ✅ baseline */
+  align-items: center;
+  justify-content: flex-start;
 }
 
-/* Texto */
 .cta-danger-right {
   display: flex;
-  align-items: baseline; /* ✅ baseline */
+  align-items: center;
+  justify-content: flex-start;
 }
 
-/* Texto hint (alineado al botón) */
 .cta-danger-hint {
   margin: 0;
-
-  /* ✅ ajuste visual para que no “flote” */
-  padding-top: 2px;
-
-  opacity: 0.75;
+  opacity: 0.78;
   font-size: 0.95rem;
   line-height: 1.35;
 }
 
-/* Botón danger más compacto y alineable */
 .cta-danger {
   width: auto !important;
   padding: 10px 14px;
   border-radius: 999px;
   font-size: 0.9rem;
-
-  /* ✅ evita que cambie su baseline raro */
   line-height: 1;
+  white-space: nowrap;
 }
 
-/* ============================================================
-Mobile: apilar para que NO se vea raro
-============================================================ */
-
+/* ✅ Mobile: apilado bonito */
 @media (max-width: 520px) {
   .cta-danger-row {
     grid-template-columns: 1fr;
+    justify-items: center;
     text-align: center;
   }
 
-  .cta-danger-left {
+  .cta-danger-left,
+  .cta-danger-right {
     justify-content: center;
   }
 
-  .cta-danger-right {
-    justify-content: center;
+  .cta-danger-hint {
     text-align: center;
-  }
-}
-
-.cta-danger {
-  opacity: 0.85;
-  transform: scale(0.97);
-}
-
-.cta-danger:hover {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Danger row bien acomodado */
-.cta-danger-row {
-  width: 100%;
-  display: grid;
-  gap: 12px;
-  margin-top: 6px;
-}
-
-/* móvil: todo centrado pero compacto */
-.cta-danger-left {
-  display: flex;
-  justify-content: center;
-}
-.cta-danger-right {
-  text-align: center;
-}
-
-/* desktop: fila tipo “acciones” */
-@media (min-width: 980px) {
-  .cta-danger-row {
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    column-gap: 18px;
-  }
-
-  .cta-danger-left {
-    justify-content: flex-start;
-  }
-
-  .cta-danger-right {
-    text-align: left;
+    max-width: 40ch;
   }
 }
 
