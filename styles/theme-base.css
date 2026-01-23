@@ -484,7 +484,7 @@ nav #header-title {
   bottom: 0;
   z-index: 998;
 
-  padding: 10px 0;
+  padding: 8px 0;
   border-top: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
   background: rgba(7, 10, 18, 0.78);
   backdrop-filter: blur(14px);
@@ -861,11 +861,11 @@ ACTION BAR (CTA fijo arriba del footer)
   right: 0;
 
   /* queda arriba del footer fijo */
-  bottom: 62px;
+  bottom: 50px;
 
   z-index: 997;
 
-  padding: 12px 0;
+  padding: 8px 0;
   background: rgba(7, 10, 18, 0.78);
   backdrop-filter: blur(14px);
 
