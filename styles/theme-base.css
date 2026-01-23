@@ -1262,23 +1262,53 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 ============================================================ */
 
 /* ✅ Models: centrar cards cuando hay pocas */
+/* ================================
+MODELOS: Layout centrado inteligente
+================================ */
+
+/* Contenedor de cards */
 #modelsContainer {
   display: grid;
-  gap: var(--s-6);
+  gap: var(--s-5);
 
-  /* cards con tamaño fijo → no se estiran a lo ancho */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* ✅ Desktop: 3 columnas SIEMPRE (cuando haya espacio) */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
-  /* ✅ si hay 1 o 2, se centra el bloque */
+  /* ✅ Esto centra cuando hay 1 o 2 cards */
   justify-content: center;
 
-  /* opcional */
+  /* ✅ evita que el grid se “encoga” y rompa */
   width: 100%;
+}
+
+/* ✅ Para que las cards no midan infinito, se ven mejor centradas */
+#modelsContainer .card {
+  width: 100%;
+  max-width: 360px; /* ajusta si quieres más grandes */
   text-align: center;
 }
 
-#modelsContainer .card {
-  padding: var(--s-5);
+/* ================================
+Breakpoints
+================================ */
+
+/* Tablet: 2 columnas */
+@media (max-width: 980px) {
+  #modelsContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile: 1 columna */
+@media (max-width: 520px) {
+  #modelsContainer {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+
+  #modelsContainer .card {
+    max-width: none;
+  }
 }
 
 #modelsContainer .model-image {
