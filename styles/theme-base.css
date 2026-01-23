@@ -2193,6 +2193,32 @@ MOBILE ajustes (compactar mucho)
   }
 }
 
+/* ============================================================
+CONTACTO — Botón WhatsApp centrado y separado del form-card
+============================================================ */
+
+/* el botón y hint salen del card, centrados y con espacio */
+#sendBtn.cta-primary {
+  display: inline-flex;
+  margin: 18px auto 0; /* separación desde el card */
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+/* hint debajo del botón, centrado y con espacio */
+.cta-hint {
+  text-align: center;
+  margin: 10px auto 0;
+  max-width: 560px;
+  opacity: 0.75;
+}
+
+/* en mobile el botón ocupa más ancho pero sigue centrado */
+@media (max-width: 520px) {
+  #sendBtn.cta-primary {
+    width: 100%;
+    max-width: 420px;
+  }
+}
 
 /* ============================================================
 13) FAQ
