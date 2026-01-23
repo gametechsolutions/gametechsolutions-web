@@ -1261,15 +1261,14 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 8) IDENTIFICAR MODELOS (modelsContainer)
 ============================================================ */
 
-/* Contenedor de cards */
 #modelsContainer {
   display: grid;
   gap: var(--s-5);
 
-  /* ✅ Desktop: 3 columnas pero con ancho real (NO 1fr infinito) */
-  grid-template-columns: repeat(3, minmax(260px, 360px));
-
-  /* ✅ ahora sí centra cuando hay 1 o 2 */
+  /* 🔥 Esto es lo importante:
+     crea 1,2,3 columnas según espacio,
+     y centra cuando hay menos de 3 */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
   justify-content: center;
 
   width: 100%;
@@ -1289,7 +1288,7 @@ Breakpoints
 /* Tablet: 2 columnas */
 @media (max-width: 980px) {
   #modelsContainer {
-    grid-template-columns: repeat(2, minmax(240px, 360px));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     justify-content: center;
   }
 }
@@ -1297,8 +1296,8 @@ Breakpoints
 /* Mobile: 1 columna */
 @media (max-width: 520px) {
   #modelsContainer {
-    grid-template-columns: minmax(0, 420px); /* ✅ se centra bonito */
-    justify-content: center;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
   }
 }
 
