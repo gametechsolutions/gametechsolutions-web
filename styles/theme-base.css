@@ -2095,6 +2095,114 @@ FORM UI (Contacto)
   line-height: 1.4;
 }
 
+/* ============================================================
+CTA SECTION (Contacto WhatsApp + reset)
+============================================================ */
+
+.cta-card {
+  text-align: center;
+}
+
+/* Botón principal NO full width: se ve premium */
+.cta-primary {
+  width: auto !important;
+  min-width: 260px;
+  max-width: 520px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 1.02rem;
+}
+
+/* En móvil sí se puede estirar un poco pero con límite */
+@media (max-width: 520px) {
+  .cta-primary {
+    width: 100% !important;
+    max-width: 420px;
+  }
+}
+
+/* Hint debajo */
+.cta-hint {
+  margin: 10px 0 2px;
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* Divider */
+.cta-divider {
+  height: 1px;
+  width: 100%;
+  margin: 18px 0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================================
+DANGER ROW alineado PRO
+============================================================ */
+
+.cta-danger-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center; /* ✅ centra vertical */
+  column-gap: 18px;
+  row-gap: 10px;
+}
+
+/* Botón danger alineado a la izquierda dentro del grid */
+.cta-danger-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* El texto se centra vertical */
+.cta-danger-right {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+/* Texto hint */
+.cta-danger-hint {
+  margin: 0;
+  opacity: 0.75;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+/* Botón danger más compacto */
+.cta-danger {
+  width: auto !important;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+Mobile: apilar para que NO se vea raro
+============================================================ */
+
+@media (max-width: 520px) {
+  .cta-danger-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cta-danger-left {
+    justify-content: center;
+  }
+
+  .cta-danger-right {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 .cta-danger {
   opacity: 0.85;
   transform: scale(0.97);
