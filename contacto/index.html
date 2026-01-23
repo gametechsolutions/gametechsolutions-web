@@ -105,23 +105,17 @@
     <section>
   <h2>Tus datos</h2>
 
-  <div class="card form-card">
-    <label for="clientName" class="form-label">
-      Nombre y apellido
-    </label>
+  <div class="input-shell">
+  <span class="input-icon">👤</span>
+  <input
+    id="clientName"
+    class="form-input"
+    type="text"
+    placeholder="Ej. Juan Pérez"
+    autocomplete="name"
+  >
+</div>
 
-    <input
-      id="clientName"
-      class="form-input"
-      type="text"
-      placeholder="Ej. Juan Pérez"
-      autocomplete="name"
-    >
-
-    <p class="form-hint">
-      Lo usaremos para identificar tu solicitud en WhatsApp.
-    </p>
-  </div>
 </section>
 
 
@@ -132,10 +126,6 @@
       <button class="btn" id="sendBtn">
         📲 Contactar por WhatsApp
       </button>
-
-      <p class="selector-note pricing-note">
-        Serás redirigido a WhatsApp con toda tu información lista.
-      </p>
 
       <div style="margin-top:20px;">
         <button class="btn danger" id="newSelectionBtn">

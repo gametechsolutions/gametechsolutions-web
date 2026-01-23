@@ -2039,60 +2039,21 @@ CONTACTO — PRECIO ESTIMADO (UI premium)
   margin-top: 14px; /* separacion */
 }
 
-/* =========================================
-FORM UI (Contacto)
-========================================= */
-
-.form-card {
-  display: grid;
-  gap: 10px;
+.input-shell {
+  position: relative;
 }
 
-.form-label {
-  font-weight: 900;
-  letter-spacing: 0.2px;
-  color: color-mix(in srgb, var(--text) 92%, white);
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-/* Input premium */
-.form-input {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 16px;
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.25);
-  color: var(--text);
-
-  outline: none;
-  transition:
-    border var(--ease),
-    box-shadow var(--ease),
-    transform var(--ease),
-    background var(--ease);
-}
-
-.form-input::placeholder {
-  color: rgba(234, 240, 255, 0.5);
-}
-
-.form-input:focus {
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 55%,
-    rgba(255, 255, 255, 0.18)
-  );
-  box-shadow:
-    0 0 0 4px rgba(40, 220, 120, 0.1),
-    0 18px 38px rgba(0, 0, 0, 0.28);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.form-hint {
-  margin: 0;
-  font-size: 0.92rem;
-  opacity: 0.78;
-  line-height: 1.4;
+.input-shell .form-input {
+  padding-left: 44px;
 }
 
 @keyframes spin {
