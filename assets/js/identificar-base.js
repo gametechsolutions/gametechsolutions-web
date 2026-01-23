@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
         ${model.image ? `
           <div class="model-image">
-            <img src="${model.image}" alt="${model.code}">
+            <img src="${model.image}" alt="${model.name}">
           </div>
         ` : ''}
       
