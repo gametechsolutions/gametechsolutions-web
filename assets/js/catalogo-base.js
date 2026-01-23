@@ -153,15 +153,22 @@ document.addEventListener("DOMContentLoaded", () => {
       item.className = "selector-item";
       item.style.height = `${ROW_HEIGHT}px`;
 
+      // ✅ revisa si ya fue agregado
+      const alreadyAdded = selectedGames.some(
+        (g) => Number(g.id) === Number(game.id),
+      );
+
       item.innerHTML = `
-      <span>${game.name}</span>
-      <span>${Number(game.size).toFixed(2)} GB</span>
-      <button class="btn-small add-game"
-              data-id="${game.id}"
-              data-size="${game.size}">
-        Agregar
-      </button>
-    `;
+    <span>${game.name}</span>
+    <span>${Number(game.size).toFixed(2)} GB</span>
+    <button class="btn-small add-game ${alreadyAdded ? "added" : ""}"
+            data-id="${game.id}"
+            data-size="${game.size}"
+            ${alreadyAdded ? "disabled" : ""}>
+      ${alreadyAdded ? "Agregado" : "Agregar"}
+    </button>
+  `;
+
       return item;
     }
 

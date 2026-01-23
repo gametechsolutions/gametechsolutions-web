@@ -1665,6 +1665,22 @@ Items del catálogo
   );
 }
 
+/* Estado agregado */
+.add-game.added,
+.add-game:disabled.added {
+  background: rgba(120, 255, 150, 0.14);
+  border-color: rgba(120, 255, 150, 0.35);
+  color: rgba(235, 255, 242, 0.95);
+  cursor: not-allowed;
+  opacity: 0.95;
+}
+
+/* Extra: hover ya no aplica */
+.add-game.added:hover {
+  background: rgba(120, 255, 150, 0.14);
+  border-color: rgba(120, 255, 150, 0.35);
+}
+
 /* Mobile: selector más compacto */
 @media (max-width: 520px) {
   .selector-item {
