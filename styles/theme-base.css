@@ -1435,39 +1435,42 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   transform: translateY(1px);
 }
 
-/* ✅ FIX DEFINITIVO: chip con ancho del texto, pero SIEMPRE debajo del h2 */
+/* ===============================
+   StorageHelp (chip debajo del h2)
+   =============================== */
+
 #storageHelp.selector-note {
+  /* Que NO se estire */
   width: fit-content;
   max-width: 100%;
 
+  /* Siempre en nueva línea */
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  clear: both;
 
+  /* Evita que el layout lo suba */
+  float: none;
+
+  /* Un poquito más compacto */
   padding: 10px 14px;
   margin-top: var(--s-4);
 
-  /* 🔥 esto evita que se suba al lado del título */
-  clear: both;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-/* Desktop: alineado izquierda */
+/* ✅ Desktop: alineado a la izquierda */
 @media (min-width: 521px) {
   #storageHelp.selector-note {
     margin-inline: 0;
   }
 }
 
-/* Móvil: centrado */
+/* ✅ Mobile: centrado */
 @media (max-width: 520px) {
   #storageHelp.selector-note {
     margin-inline: auto;
   }
-}
-
-.storage-help-wrap {
-  display: block;
-  width: 100%;
 }
 
 /* ============================================================
