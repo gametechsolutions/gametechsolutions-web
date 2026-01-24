@@ -82,11 +82,16 @@
           <h2>Consolas más solicitadas</h2>
 
           <div class="netflix-shell">
-            <a class="netflix-arrow left" href="#nf-start" aria-label="Anterior"
-              >‹</a
+            <button
+              type="button"
+              class="netflix-arrow left"
+              data-dir="left"
+              aria-label="Anterior"
             >
+              ‹
+            </button>
 
-            <div class="netflix-row" id="nf-start">
+            <div class="netflix-row">
               <a href="/consolas/gamecube/" class="console-card netflix-card">
                 <img
                   src="/assets/img/consolas/gamecube/logo/gamecube.png"
@@ -122,11 +127,7 @@
                 />
               </a>
 
-              <a
-                href="/consolas/xbox360/"
-                class="console-card netflix-card"
-                id="nf-end"
-              >
+              <a href="/consolas/xbox360/" class="console-card netflix-card">
                 <img
                   src="/assets/img/consolas/xbox360/logo/xbox360.png"
                   alt="Xbox 360"
@@ -134,9 +135,14 @@
               </a>
             </div>
 
-            <a class="netflix-arrow right" href="#nf-end" aria-label="Siguiente"
-              >›</a
+            <button
+              type="button"
+              class="netflix-arrow right"
+              data-dir="right"
+              aria-label="Siguiente"
             >
+              ›
+            </button>
           </div>
         </section>
 
@@ -174,5 +180,32 @@
     </footer>
 
     <script src="/assets/js/header.js"></script>
+
+      <!-- CONSOLAS DISPONIBLES -->
+  <section class="netflix-section">
+    ...
+  </section>
+
+  <!-- 👇 ESTE SCRIPT VA AQUÍ -->
+  <script>
+    document.querySelectorAll('.netflix-arrow').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const row = btn
+          .closest('.netflix-shell')
+          .querySelector('.netflix-row');
+
+        const dir = btn.dataset.dir === 'right' ? 1 : -1;
+
+        row.scrollBy({
+          left: 280 * dir,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+
   </body>
 </html>
