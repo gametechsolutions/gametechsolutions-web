@@ -2810,3 +2810,17 @@ FIX DEFINITIVO: #storageHelp SIEMPRE debajo del título en desktop
     margin-inline: auto;
   }
 }
+
+/* =========================================
+Netflix row: estilos SOLO para esta sección
+(no afecta otras console-card del sitio)
+========================================= */
+
+.cards-netflix .console-card {
+  padding: 0; /* evita padding grande del grid */
+  min-height: unset; /* evita altura del tile normal */
+}
+
+.cards-netflix .console-card img {
+  max-width: none; /* no limitar como en cards-grid */
+}
