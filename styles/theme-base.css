@@ -2824,3 +2824,177 @@ Netflix row: estilos SOLO para esta sección
 .cards-netflix .console-card img {
   max-width: none; /* no limitar como en cards-grid */
 }
+
+/* =========================================
+Consolas más solicitadas — Netflix row FINAL
+========================================= */
+
+.netflix-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 10px;
+}
+
+/* La fila horizontal */
+.netflix-row {
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 10px 6px 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* scroll suave + no brinca con anchors */
+  scroll-behavior: smooth;
+
+  /* degradado para sugerir scroll */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 24px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+/* scrollbar discreto */
+.netflix-row::-webkit-scrollbar {
+  height: 10px;
+}
+.netflix-row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 999px;
+}
+.netflix-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+}
+.netflix-row::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Cards tipo Netflix (NO rompe tus console-card originales) */
+.netflix-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+
+  width: 190px;
+  height: 118px;
+
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+
+  padding: 0 !important; /* para que no use padding de console-card */
+
+  background:
+    radial-gradient(
+      420px 140px at 15% 0%,
+      rgba(255, 255, 255, 0.09),
+      transparent 65%
+    ),
+    rgba(0, 0, 0, 0.22);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.netflix-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 22%,
+    rgba(255, 255, 255, 0.14)
+  );
+  background:
+    radial-gradient(
+      420px 140px at 15% 0%,
+      rgba(255, 255, 255, 0.12),
+      transparent 65%
+    ),
+    rgba(0, 0, 0, 0.26);
+}
+
+/* Logos dentro del tile */
+.netflix-card img {
+  width: 78%;
+  max-height: 70px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
+}
+
+/* Flechas */
+.netflix-arrow {
+  display: none; /* mobile no necesita */
+}
+
+/* Desktop: flechas visibles SIN JS */
+@media (min-width: 900px) {
+  .netflix-arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-soft);
+
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.92;
+
+    transition:
+      transform var(--ease),
+      background var(--ease),
+      border var(--ease),
+      opacity var(--ease);
+  }
+
+  .netflix-arrow:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: color-mix(
+      in srgb,
+      var(--accent-color) 30%,
+      rgba(255, 255, 255, 0.14)
+    );
+  }
+}
+
+/* Mobile compact */
+@media (max-width: 520px) {
+  .netflix-shell {
+    grid-template-columns: 1fr; /* sin flechas */
+  }
+
+  .netflix-row {
+    gap: 14px;
+    padding: 10px 6px 14px;
+  }
+
+  .netflix-card {
+    width: 160px;
+    height: 104px;
+    border-radius: 18px;
+  }
+
+  .netflix-card img {
+    max-height: 62px;
+  }
+}

@@ -78,51 +78,65 @@
         </section>
 
         <!-- CONSOLAS DISPONIBLES -->
-        <section>
+        <section class="netflix-section">
           <h2>Consolas más solicitadas</h2>
 
-          <div class="cards-netflix">
-            <a href="/consolas/gamecube/" class="console-card">
-              <img
-                src="/assets/img/consolas/gamecube/logo/gamecube.png"
-                alt="Nintendo GameCube"
-              />
-            </a>
+          <div class="netflix-shell">
+            <a class="netflix-arrow left" href="#nf-start" aria-label="Anterior"
+              >‹</a
+            >
 
-            <a href="/consolas/wii/" class="console-card">
-              <img
-                src="/assets/img/consolas/wii/logo/wii.png"
-                alt="Nintendo Wii"
-              />
-            </a>
+            <div class="netflix-row" id="nf-start">
+              <a href="/consolas/gamecube/" class="console-card netflix-card">
+                <img
+                  src="/assets/img/consolas/gamecube/logo/gamecube.png"
+                  alt="Nintendo GameCube"
+                />
+              </a>
 
-            <a href="/consolas/ps2/" class="console-card">
-              <img
-                src="/assets/img/consolas/ps2/logo/ps2.png"
-                alt="PlayStation 2"
-              />
-            </a>
+              <a href="/consolas/wii/" class="console-card netflix-card">
+                <img
+                  src="/assets/img/consolas/wii/logo/wii.png"
+                  alt="Nintendo Wii"
+                />
+              </a>
 
-            <a href="/consolas/ps3/" class="console-card">
-              <img
-                src="/assets/img/consolas/ps3/logo/ps3.png"
-                alt="PlayStation 3"
-              />
-            </a>
+              <a href="/consolas/ps2/" class="console-card netflix-card">
+                <img
+                  src="/assets/img/consolas/ps2/logo/ps2.png"
+                  alt="PlayStation 2"
+                />
+              </a>
 
-            <a href="/consolas/xbox/" class="console-card">
-              <img
-                src="/assets/img/consolas/xbox/logo/xbox.png"
-                alt="Xbox Clásica"
-              />
-            </a>
+              <a href="/consolas/ps3/" class="console-card netflix-card">
+                <img
+                  src="/assets/img/consolas/ps3/logo/ps3.png"
+                  alt="PlayStation 3"
+                />
+              </a>
 
-            <a href="/consolas/xbox360/" class="console-card">
-              <img
-                src="/assets/img/consolas/xbox360/logo/xbox360.png"
-                alt="Xbox 360"
-              />
-            </a>
+              <a href="/consolas/xbox/" class="console-card netflix-card">
+                <img
+                  src="/assets/img/consolas/xbox/logo/xbox.png"
+                  alt="Xbox Clásica"
+                />
+              </a>
+
+              <a
+                href="/consolas/xbox360/"
+                class="console-card netflix-card"
+                id="nf-end"
+              >
+                <img
+                  src="/assets/img/consolas/xbox360/logo/xbox360.png"
+                  alt="Xbox 360"
+                />
+              </a>
+            </div>
+
+            <a class="netflix-arrow right" href="#nf-end" aria-label="Siguiente"
+              >›</a
+            >
           </div>
         </section>
 
