@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 🔁 Restaurar selección previa
     if (ctx.model?.id === model.id) {
-      card.classList.add("selected");
+      card.classList.add("selected", "active");
       btn.textContent = "Seleccionado";
       selectedModelCard = card;
 
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (oldBtn) oldBtn.textContent = "Seleccionar";
       }
 
-      card.classList.add("selected");
+      card.classList.add("selected", "active");
       btn.textContent = "Seleccionado";
       selectedModelCard = card;
 
