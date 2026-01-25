@@ -1377,13 +1377,9 @@ Consolas más solicitadas — Netflix row
 #modelsContainer {
   display: grid;
   gap: var(--s-5);
-
   /* 3 columnas en desktop */
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  /* ✅ CENTRA CADA CARD SIEMPRE */
-  justify-items: center;
-
+  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
+  justify-content: center;
   width: 100%;
 }
 
