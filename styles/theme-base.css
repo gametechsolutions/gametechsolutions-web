@@ -1374,42 +1374,48 @@ Consolas más solicitadas — Netflix row
 8) IDENTIFICAR MODELOS (modelsContainer)
 ============================================================ */
 
+/* ============================
+MODELOS – LAYOUT DEFINITIVO
+============================ */
+
 #modelsContainer {
-  display: grid;
+  display: flex;
+  justify-content: center; /* 🔥 siempre centrado */
+  align-items: stretch;
   gap: var(--s-5);
-
-  /* columnas flexibles reales */
-  grid-template-columns: repeat(auto-fill, 360px);
-
-  justify-content: center;
-
+  flex-wrap: nowrap; /* 🔥 NUNCA se baja a otra fila en desktop */
   width: 100%;
 }
 
-/* cards con ancho fijo real (clave) */
+/* Cards tamaño fijo bonito */
 #modelsContainer .card {
-  width: 360px;
+  width: 320px; /* puedes subir a 340 si quieres más grandes */
   max-width: 100%;
   text-align: center;
 }
 
-/* ================================
-Breakpoints
-================================ */
+/* ============================
+RESPONSIVE
+============================ */
 
-/* Tablet: 2 columnas */
+/* Tablet → deja que se acomoden */
 @media (max-width: 980px) {
   #modelsContainer {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    flex-wrap: wrap;
     justify-content: center;
   }
 }
 
-/* Mobile: 1 columna */
+/* Móvil → una por fila */
 @media (max-width: 520px) {
   #modelsContainer {
-    grid-template-columns: 1fr;
-    justify-content: stretch;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #modelsContainer .card {
+    width: 100%;
+    max-width: 360px;
   }
 }
 
