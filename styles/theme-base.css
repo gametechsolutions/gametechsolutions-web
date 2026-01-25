@@ -1378,11 +1378,11 @@ Consolas más solicitadas — Netflix row
   display: grid;
   gap: var(--s-5);
 
-  /* 🔥 Esto es lo importante:
-     crea 1,2,3 columnas según espacio,
-     y centra cuando hay menos de 3 */
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  justify-content: center;
+  /* 3 columnas en desktop */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  /* ✅ CENTRA CADA CARD SIEMPRE */
+  justify-items: center;
 
   width: 100%;
 }
@@ -1390,6 +1390,7 @@ Consolas más solicitadas — Netflix row
 /* ✅ Para que las cards no midan infinito, se ven mejor centradas */
 #modelsContainer .card {
   width: 100%;
+  max-width: 360px;
   text-align: center;
 }
 
