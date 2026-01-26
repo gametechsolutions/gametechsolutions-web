@@ -338,13 +338,16 @@
 				"label": "USB / SD del cliente",
 				"sizes": {
 					"64": {
-						"usableGB": 57
+						"usableGB": 57,
+						"gamesIncluded": 20
 					},
 					"128": {
-						"usableGB": 115
+						"usableGB": 115,
+						"gamesIncluded": 40
 					},
 					"256": {
-						"usableGB": 230
+						"usableGB": 230,
+						"gamesIncluded": 80
 					}
 				}
 			},
@@ -447,16 +450,20 @@
 				"label": "microSD del cliente",
 				"sizes": {
 					"64": {
-						"usableGB": 58
+						"usableGB": 58,
+						"gamesIncluded": 10
 					},
 					"128": {
-						"usableGB": 115
+						"usableGB": 115,
+						"gamesIncluded": 20
 					},
 					"256": {
-						"usableGB": 230
+						"usableGB": 230,
+						"gamesIncluded": 40
 					},
 					"512": {
-						"usableGB": 460
+						"usableGB": 460,
+						"gamesIncluded": 80
 					}
 				}
 			},
@@ -634,19 +641,24 @@
 				"label": "Disco duro interno del cliente",
 				"sizes": {
 					"120": {
-						"usableGB": 105
+						"usableGB": 105,
+						"gamesIncluded": 5
 					},
 					"250": {
-						"usableGB": 226
+						"usableGB": 226,
+						"gamesIncluded": 15
 					},
 					"320": {
-						"usableGB": 293
+						"usableGB": 293,
+						"gamesIncluded": 20
 					},
 					"500": {
-						"usableGB": 460
+						"usableGB": 460,
+						"gamesIncluded": 30
 					},
 					"1000": {
-						"usableGB": 926
+						"usableGB": 926,
+						"gamesIncluded": 60
 					}
 				}
 			},
@@ -805,16 +817,20 @@
 				"label": "Memory Stick / microSD del cliente",
 				"sizes": {
 					"16": {
-						"usableGB": 14
+						"usableGB": 14,
+						"gamesIncluded": 10
 					},
 					"32": {
-						"usableGB": 29
+						"usableGB": 29,
+						"gamesIncluded": 20
 					},
 					"64": {
-						"usableGB": 58
+						"usableGB": 58,
+						"gamesIncluded": 40
 					},
 					"128": {
-						"usableGB": 115
+						"usableGB": 115,
+						"gamesIncluded": 80
 					}
 				}
 			},
@@ -908,16 +924,20 @@
 				"label": "microSD (SD2Vita) del cliente",
 				"sizes": {
 					"32": {
-						"usableGB": 29
+						"usableGB": 29,
+						"gamesIncluded": 10
 					},
 					"64": {
-						"usableGB": 58
+						"usableGB": 58,
+						"gamesIncluded": 20
 					},
 					"128": {
-						"usableGB": 115
+						"usableGB": 115,
+						"gamesIncluded": 40
 					},
 					"256": {
-						"usableGB": 230
+						"usableGB": 230,
+						"gamesIncluded": 80
 					}
 				}
 			},
