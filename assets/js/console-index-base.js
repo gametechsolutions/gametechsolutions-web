@@ -316,12 +316,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     Object.entries(storageConfig.sizes).forEach(([size, data]) => {
       const usable = typeof data === "object" ? data.usableGB : data;
 
+      const gamesInfo =
+        typeof data === "object" && data.gamesIncluded
+          ? `<span class="disk-games">≈ ${data.gamesIncluded} juegos</span>`
+          : "";
+
       const label = document.createElement("label");
       label.className = "disk-option";
 
       label.innerHTML = `
         <input type="radio" name="diskSize">
-        <strong>${size} GB</strong>
+        <div class="disk-main">
+          <strong>${size} GB</strong>
+          ${gamesInfo}
+        </div>
       `;
 
       const input = label.querySelector("input");
