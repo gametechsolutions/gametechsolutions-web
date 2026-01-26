@@ -3117,3 +3117,15 @@ HIGHLIGHT SUAVE — Selección premium
 .selected {
   will-change: transform, box-shadow;
 }
+
+.disk-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.disk-games {
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0.85;
+}
