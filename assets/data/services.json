@@ -269,21 +269,21 @@
 		"brand": "nintendo",
 		"storageOptions": {
 			"provided": {
-				"label": "SD / microSD proporcionada por GameTechSolutions",
+				"label": "MicroSD proporcionada por GameTechSolutions",
 				"sizes": {
 					"32": {
 						"usableGB": 29,
-						"price": 300,
+						"price": 200,
 						"gamesIncluded": 20
 					},
 					"64": {
 						"usableGB": 58,
-						"price": 450,
+						"price": 300,
 						"gamesIncluded": 40
 					},
 					"128": {
 						"usableGB": 115,
-						"price": 750,
+						"price": 400,
 						"gamesIncluded": 80
 					}
 				}
@@ -293,9 +293,8 @@
 			{
 				"id": "picoboot_install",
 				"name": "Instalación PicoBoot",
-				"description": "Instalación de PicoBoot con microSD.",
 				"category": "mod",
-				"price": 600,
+				"price": 400,
 				"requires": [],
 				"provides": [
 					"picoboot"
@@ -411,7 +410,7 @@
 			{
 				"id": "games_only",
 				"name": "Carga de juegos",
-				"description": "Carga de juegos en USB o SD del cliente.",
+				"description": "Carga de juegos en USB del cliente.",
 				"category": "games",
 				"priceByStorage": {
 					"64": 100,
@@ -667,12 +666,12 @@
 				"sizes": {
 					"500": {
 						"usableGB": 460,
-						"price": 600,
+						"price": 500,
 						"gamesIncluded": 30
 					},
 					"1000": {
 						"usableGB": 926,
-						"price": 800,
+						"price": 700,
 						"gamesIncluded": 60
 					}
 				}
