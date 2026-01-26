@@ -97,19 +97,24 @@
 				"label": "Disco duro del cliente",
 				"sizes": {
 					"120": {
-						"usableGB": 105
+						"usableGB": 105,
+						"gamesIncluded": 10 
 					},
 					"250": {
-						"usableGB": 226
+						"usableGB": 226,
+						"gamesIncluded": 25
 					},
 					"320": {
-						"usableGB": 293
+						"usableGB": 293,
+						"gamesIncluded": 30
 					},
 					"500": {
-						"usableGB": 460
+						"usableGB": 460,
+						"gamesIncluded": 50
 					},
 					"1000": {
-						"usableGB": 926
+						"usableGB": 926,
+						"gamesIncluded": 100
 					}
 				}
 			},
