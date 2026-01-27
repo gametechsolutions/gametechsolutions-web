@@ -20,8 +20,8 @@
       "code": "E",
       "warning": {
         "title": "Importante",
-        "message": "La compatibilidad depende de la placa.",
-        "note": "Si tu consola no es compatible, se revisa antes de continuar."
+        "message": "La compatibilidad depende de la placa",
+        "note": "Si tu consola no es compatible, se revisa antes de continuar"
       },
       "image": "/assets/img/consolas/xbox360/models/e.png"
     }
