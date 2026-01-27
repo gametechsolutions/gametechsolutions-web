@@ -6,13 +6,23 @@
       "id": "dol001",
       "image": "/assets/img/consolas/gamecube/models/dol001.png",
       "name": "GameCube DOL-001",
-      "code": "DOL-001"
+      "code": "DOL-001",
+      "message": {
+        "type": "note",
+        "title": "Nota",
+        "text": "Se caracteriza por tener puerto AV Digital"
+      }
     },
     {
       "id": "dol101",
       "image": "/assets/img/consolas/gamecube/models/dol101.png",
       "name": "GameCube DOL-101",
-      "code": "DOL-101"
+      "code": "DOL-101",
+      "message": {
+        "type": "note",
+        "title": "Nota",
+        "text": "Estos modelos ya no tienen puerto AV Digital"
+      }
     }
   ]
 }

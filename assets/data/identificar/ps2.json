@@ -9,10 +9,16 @@
       "code": "PlayStation 2"
     },
     {
-      "id": "slim",
+      "id": "scph-7000",
       "image": "/assets/img/consolas/ps2/models/slim.png",
-      "name": "PlayStation 2 Slim",
-      "code": "Slimline"
+      "name": "PlayStation 2 SCHP-7XXXX",
+      "code": "SCHP-7XXXX"
+    },
+    {
+      "id": "scph-9000",
+      "image": "/assets/img/consolas/ps2/models/scph-9000.png",
+      "name": "PlayStation 2 SCPH-9XXXX",
+      "code": "SCHP-9XXXX"
     }
   ]
 }
