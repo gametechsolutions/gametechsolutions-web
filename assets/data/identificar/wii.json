@@ -5,17 +5,32 @@
     {
       "id": "retrocompatible",
       "name": "Wii Original",
-      "image": "/assets/img/consolas/wii/models/wii-gamecube.png"
+      "image": "/assets/img/consolas/wii/models/wii-gamecube.png",
+      "message": {
+        "type": "note",
+        "title": "Nota",
+        "text": "Modelo retrocompatible con GameCube"
+      }
     },
     {
       "id": "wii",
       "name": "Wii Family Edition",
-      "image": "/assets/img/consolas/wii/models/wii.png"
+      "image": "/assets/img/consolas/wii/models/wii.png",
+      "message": {
+        "type": "note",
+        "title": "Nota",
+        "text": "Modelo retrocompatible con GameCube"
+      }
     },
     {
       "id": "mini",
       "name": "Wii Mini",
-      "image": "/assets/img/consolas/wii/models/wii-mini.png"
+      "image": "/assets/img/consolas/wii/models/wii-mini.png",
+      "message": {
+        "type": "warning",
+        "title": "Importante",
+        "text": "Modelo sin retrocompatibilidad con GameCube"
+      }
     }
   ]
 }

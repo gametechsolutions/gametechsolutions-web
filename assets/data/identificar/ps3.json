@@ -6,19 +6,35 @@
       "id": "fat",
       "name": "PlayStation 3",
       "code": "PlayStation 3",
-      "image": "/assets/img/consolas/ps3/models/fat.png"
+      "image": "/assets/img/consolas/ps3/models/fat.png",
+      "message": {
+        "type": "note",
+        "title": "Nota",
+        "text": "Compatible con CFW"
+      }
     },
     {
       "id": "slim",
       "name": "PlayStation 3 Slim",
       "code": "Slim",
-      "image": "/assets/img/consolas/ps3/models/slim.png"
+      "image": "/assets/img/consolas/ps3/models/slim.png",
+      "message": {
+        "type": "warning",
+        "title": "Importante",
+        "text": "La compatibilidad depende del modelo exacto.",
+        "note": "Algunos modelos compatibles con CFW o HEN."
+      }
     },
     {
       "id": "super slim",
       "name": "PlayStation 3 Super Slim",
       "code": "Super Slim",
-      "image": "/assets/img/consolas/ps3/models/super-slim.png"
+      "image": "/assets/img/consolas/ps3/models/super-slim.png",
+      "message": {
+        "type": "warning",
+        "title": "Importante",
+        "text": "Modelo NO compatible con CFW"
+      }
     }
   ]
 }
