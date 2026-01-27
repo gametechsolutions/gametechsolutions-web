@@ -77,14 +77,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const box = document.getElementById("modelWarningGlobal");
     if (!box) return;
 
-    if (model?.warning) {
-      const { title, message, note } = model.warning;
+    if (model?.message) {
+      const { type, title, text, note } = model.message;
+
+      box.className = `global-warning gw-${type}`;
 
       box.innerHTML = `
       <div class="gw-inner">
-        <span class="gw-icon">⚠️</span>
+        <span class="gw-icon">${type === "warning" ? "⚠️" : "ℹ️"}</span>
         <div class="gw-text">
-          <strong>${title}:</strong> ${message}
+          <strong>${title}:</strong> ${text}
           ${note ? `<div class="gw-sub">${note}</div>` : ""}
         </div>
       </div>
@@ -93,6 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       box.style.display = "block";
     } else {
       box.style.display = "none";
+      box.className = "global-warning";
       box.innerHTML = "";
     }
   }

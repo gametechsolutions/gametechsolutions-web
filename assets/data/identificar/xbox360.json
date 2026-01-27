@@ -6,22 +6,33 @@
       "id": "fat",
       "name": "Xbox 360",
       "code": "Xbox 360",
-      "image": "/assets/img/consolas/xbox360/models/fat.png"
+      "image": "/assets/img/consolas/xbox360/models/fat.png",
+      "message": {
+        "type": "note",
+        "title": "Nota",
+        "text": "Algunos modelos con mejor compatibilidad con RGH"
+      }
     },
     {
       "id": "slim",
       "name": "Xbox 360 Slim",
       "code": "S",
-      "image": "/assets/img/consolas/xbox360/models/slim.png"
+      "image": "/assets/img/consolas/xbox360/models/slim.png",
+      "message": {
+        "type": "note",
+        "title": "Nota",
+        "text": "Este modelo es el más compatible con RGH"
+      }
     },
     {
       "id": "e",
       "name": "Xbox 360 E",
       "code": "E",
-      "warning": {
+      "message": {
+        "type": "warning",
         "title": "Importante",
-        "message": "La compatibilidad depende de la placa",
-        "note": "Si tu consola no es compatible, se revisa antes de continuar"
+        "text": "La compatibilidad depende de la placa.",
+        "note": "Si tu consola no es compatible, se revisa antes de continuar."
       },
       "image": "/assets/img/consolas/xbox360/models/e.png"
     }
