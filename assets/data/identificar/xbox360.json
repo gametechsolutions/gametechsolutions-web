@@ -18,7 +18,11 @@
       "id": "e",
       "name": "Xbox 360 E",
       "code": "E",
-      "warning": "La compatibilidad depende de la placa.",
+      "warning": {
+        "title": "Importante",
+        "message": "La compatibilidad depende de la placa.",
+        "note": "Si tu consola no es compatible, se revisa antes de continuar."
+      },
       "image": "/assets/img/consolas/xbox360/models/e.png"
     }
   ]

@@ -78,16 +78,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!box) return;
 
     if (model?.warning) {
-      const warningText = String(model.warning).replace(/^⚠️\s*/, "");
+      const { title, message, note } = model.warning;
 
       box.innerHTML = `
       <div class="gw-inner">
         <span class="gw-icon">⚠️</span>
         <div class="gw-text">
-          <strong>Importante:</strong> ${warningText}
-          <div class="gw-sub">
-            Si tu consola no es compatible, se revisa antes de continuar.
-          </div>
+          <strong>${title}:</strong> ${message}
+          ${note ? `<div class="gw-sub">${note}</div>` : ""}
         </div>
       </div>
     `;
