@@ -541,25 +541,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const consoleCode = ctx.console?.code;
     const services = ctx.services;
 
-    // 🔹 Caso: almacenamiento con juegos incluidos
+    const size = ctx.storage.label.replace(" GB", "");
+
+    const storageOptions = window.SERVICES_DATA?.[consoleCode]?.storageOptions;
+
+    // 👉 Disco proporcionado por GameTechSolutions
     if (services.includes("storage_with_games")) {
-      const size = ctx.storage.label.replace(" GB", "");
-
-      const storage =
-        window.SERVICES_DATA?.[consoleCode]?.storageOptions?.provided?.sizes?.[
-          size
-        ];
-
-      return storage?.gamesIncluded || null;
+      return storageOptions?.provided?.sizes?.[size]?.gamesIncluded || null;
     }
 
-    // 🔹 Caso: juegos calculados por espacio (Xbox 360)
-    if (services.includes("games_only") && gamesData.length) {
-      const avgSize =
-        gamesData.reduce((acc, g) => acc + Number(g.size), 0) /
-        gamesData.length;
-
-      return Math.floor(diskLimit / avgSize);
+    // 👉 Disco del cliente (Carga de juegos)
+    if (services.includes("games_only")) {
+      return storageOptions?.client?.sizes?.[size]?.gamesIncluded || null;
     }
 
     return null;
