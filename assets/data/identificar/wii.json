@@ -6,6 +6,7 @@
       "id": "retrocompatible",
       "name": "Wii Original",
       "image": "/assets/img/consolas/wii/models/wii-gamecube.png",
+      "code": "RVL-001",
       "message": {
         "type": "note",
         "title": "Nota",
@@ -16,6 +17,7 @@
       "id": "wii",
       "name": "Wii Family Edition",
       "image": "/assets/img/consolas/wii/models/wii.png",
+      "code": "RVL-101",
       "message": {
         "type": "note",
         "title": "Nota",
@@ -26,6 +28,7 @@
       "id": "mini",
       "name": "Wii Mini",
       "image": "/assets/img/consolas/wii/models/wii-mini.png",
+      "code": "RVL-201",
       "message": {
         "type": "warning",
         "title": "Importante",
