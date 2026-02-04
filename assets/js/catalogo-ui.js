@@ -44,8 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
           card.className = "netflix-card cover-card";
 
           card.innerHTML = `
-          <img src="${game.image}" alt="${game.name}">
-          <h3>${game.name}</h3>
+          <img src="${game.image}">
         `;
 
           row.appendChild(card);
