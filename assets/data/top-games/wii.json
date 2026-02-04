@@ -1,22 +1,17 @@
 [
   {
-    "name": "Super Mario Galaxy",
     "image": "/assets/img/consolas/wii/top/supermariogalaxy.jpg"
   },
   {
-    "name": "Super Mario Galaxy 2",
     "image": "/assets/img/consolas/wii/top/supermariogalaxy2.jpg"
   },
   {
-    "name": "The Legend of Zelda: Twilight Princess",
     "image": "/assets/img/consolas/wii/top/zeldatwilight.jpg"
   },
   {
-    "name": "Super Smash Bros Brawl",
     "image": "/assets/img/consolas/wii/top/supersmashbrosbrawl.jpg"
   },
   {
-    "name": "The Legend of Zelda: Skyward Sword",
     "image": "/assets/img/consolas/wii/top/zeldaskyward.jpg"
   }
 ]
