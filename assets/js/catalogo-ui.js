@@ -27,8 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!CONSOLE_CONFIG.topGamesJson) return;
 
     const section = document.getElementById("topGamesSection");
-    const grid = document.getElementById("topGamesGrid");
-    if (!section || !grid) return;
+    const row = document.getElementById("topGamesRow");
+
+    if (!section || !row) return;
 
     fetch(CONSOLE_CONFIG.topGamesJson)
       .then((r) => r.json())
@@ -36,18 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!games.length) return;
 
         section.style.display = "block";
-        grid.innerHTML = "";
+        row.innerHTML = "";
 
         games.forEach((game) => {
           const card = document.createElement("div");
-          card.className = "card cover-card";
+          card.className = "netflix-card cover-card";
 
           card.innerHTML = `
-            <img src="${game.image}" alt="${game.name}">
-            <h3>${game.name}</h3>
-            `;
+          <img src="${game.image}" alt="${game.name}">
+          <h3>${game.name}</h3>
+        `;
 
-          grid.appendChild(card);
+          row.appendChild(card);
         });
       })
       .catch((err) => {

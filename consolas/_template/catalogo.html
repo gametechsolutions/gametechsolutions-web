@@ -58,10 +58,35 @@
           </div>
         </section>
 
-        <!-- TOP JUEGOS (OPCIONAL) -->
-        <section id="topGamesSection" style="display: none">
+        <!-- TOP JUEGOS (NETFLIX STYLE) -->
+        <section
+          id="topGamesSection"
+          class="netflix-section"
+          style="display: none"
+        >
           <h2>Juegos más populares</h2>
-          <div class="cards-grid" id="topGamesGrid"></div>
+
+          <div class="netflix-shell">
+            <button
+              type="button"
+              class="netflix-arrow left"
+              data-dir="left"
+              aria-label="Anterior"
+            >
+              ‹
+            </button>
+
+            <div class="netflix-row" id="topGamesRow"></div>
+
+            <button
+              type="button"
+              class="netflix-arrow right"
+              data-dir="right"
+              aria-label="Siguiente"
+            >
+              ›
+            </button>
+          </div>
         </section>
 
         <!-- STORAGE -->
@@ -137,5 +162,24 @@
     <script src="/assets/js/catalogo-base.js"></script>
 
     <script src="/assets/js/catalogo-ui.js"></script>
+
+    <script>
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".netflix-arrow");
+        if (!btn) return;
+
+        e.preventDefault();
+
+        const shell = btn.closest(".netflix-shell");
+        const row = shell.querySelector(".netflix-row");
+
+        const dir = btn.dataset.dir === "right" ? 1 : -1;
+
+        row.scrollBy({
+          left: 260 * dir,
+          behavior: "smooth",
+        });
+      });
+    </script>
   </body>
 </html>
