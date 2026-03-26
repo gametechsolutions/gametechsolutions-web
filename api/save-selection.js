@@ -19,6 +19,7 @@ export default async function handler(req, res) {
       priceBreakdown,
       selectedGames,
       jsonGames,
+      gameTitleIds,
       pricingJSON
     } = req.body;
 
@@ -46,6 +47,7 @@ export default async function handler(req, res) {
             priceBreakdown,
             selectedGames,
             jsonGames,
+            gameTitleIds,
             pricingJSON,
             status: 'Pendiente'
           }
