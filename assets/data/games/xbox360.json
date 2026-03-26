@@ -2,4051 +2,5335 @@
   {
     "id": "1",
     "name": "0D Beat Drop",
+    "titleId": "584109A8",
     "type": "Xbox 360",
-    "size": "0.1"
+    "sizeGb": "0.10"
   },
   {
     "id": "2",
     "name": "2010 FIFA World Cup South Africa",
+    "titleId": "454108E4",
     "type": "Xbox 360",
-    "size": "6.63"
+    "sizeGb": "6.63"
   },
   {
     "id": "3",
     "name": "2014 FIFA World Cup Brazil",
+    "titleId": "454109D4",
     "type": "Xbox 360",
-    "size": "5.33"
+    "sizeGb": "5.33"
   },
   {
     "id": "4",
     "name": "A Kingdom for Keflings",
+    "titleId": "584108DB",
     "type": "Xbox 360",
-    "size": "0.07"
+    "sizeGb": "0.07"
   },
   {
     "id": "5",
     "name": "A World of Keflings",
+    "titleId": "584109DB",
     "type": "Xbox 360",
-    "size": "0.29"
+    "sizeGb": "0.29"
   },
   {
     "id": "6",
     "name": "Ace Combat 6: Fires of Liberation",
+    "titleId": "4E4D07D1",
     "type": "Xbox 360",
-    "size": "5.09"
+    "sizeGb": "5.09"
   },
   {
     "id": "7",
     "name": "Ace Combat: Assault Horizon",
+    "titleId": "4E4D081C",
     "type": "Xbox 360",
-    "size": "8.18"
+    "sizeGb": "8.18"
   },
   {
     "id": "8",
-    "name": "Age of Booty",
+    "name": "Adventures of Shuggy",
+    "titleId": "58410A5C",
     "type": "Xbox 360",
-    "size": "0.08"
+    "sizeGb": "0.08"
   },
   {
     "id": "9",
-    "name": "Aggressive Inline",
-    "type": "Xbox",
-    "size": "1.2"
+    "name": "After Burner Climax",
+    "titleId": "58410A06",
+    "type": "Xbox 360",
+    "sizeGb": "0.48"
   },
   {
     "id": "10",
-    "name": "Akai Katana",
+    "name": "Age of Booty",
+    "titleId": "584108F0",
     "type": "Xbox 360",
-    "size": "1.15"
+    "sizeGb": "0.08"
   },
   {
     "id": "11",
-    "name": "Alan Wake",
-    "type": "Xbox 360",
-    "size": "7.55"
+    "name": "Aggressive Inline",
+    "titleId": "41430007",
+    "type": "Xbox",
+    "sizeGb": "1.20"
   },
   {
     "id": "12",
-    "name": "Alan Wake's American Nightmare",
+    "name": "Akai Katana",
+    "titleId": "545A07D3",
     "type": "Xbox 360",
-    "size": "1.33"
+    "sizeGb": "1.15"
   },
   {
     "id": "13",
-    "name": "Alien Hominid HD",
+    "name": "Alan Wake",
+    "titleId": "4D530805",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "7.55"
   },
   {
     "id": "14",
-    "name": "Alien: Isolation",
+    "name": "Alan Wake\u0027s American Nightmare",
+    "titleId": "58411233",
     "type": "Xbox 360",
-    "size": "14.18"
+    "sizeGb": "1.33"
   },
   {
     "id": "15",
-    "name": "All-Pro Football 2K8",
+    "name": "Alien Hominid HD",
+    "titleId": "58410846",
     "type": "Xbox 360",
-    "size": "3.67"
+    "sizeGb": "0.05"
   },
   {
     "id": "16",
-    "name": "Anomaly Warzone Earth",
+    "name": "Alien: Isolation",
+    "titleId": "5345085E",
     "type": "Xbox 360",
-    "size": "0.38"
+    "sizeGb": "14.18"
   },
   {
     "id": "17",
-    "name": "Army of Two: The 40th Day",
+    "name": "All-Pro Football 2K8",
+    "titleId": "54540807",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "3.67"
   },
   {
     "id": "18",
-    "name": "Assassin's Creed",
+    "name": "Amped 3",
+    "titleId": "545407D4",
     "type": "Xbox 360",
-    "size": "6.67"
+    "sizeGb": "6.03"
   },
   {
     "id": "19",
-    "name": "Assassin's Creed II",
+    "name": "Anarchy Reigns",
+    "titleId": "5345083F",
     "type": "Xbox 360",
-    "size": "8.89"
+    "sizeGb": "7.70"
   },
   {
     "id": "20",
-    "name": "Assassin's Creed III",
+    "name": "Anomaly Warzone Earth",
+    "titleId": "58411219",
     "type": "Xbox 360",
-    "size": "20.44"
+    "sizeGb": "0.38"
   },
   {
     "id": "21",
-    "name": "Assassin's Creed IV: Black Flag",
+    "name": "Army of Two: The 40th Day",
+    "titleId": "454108D8",
     "type": "Xbox 360",
-    "size": "10.66"
+    "sizeGb": "7.09"
   },
   {
     "id": "22",
-    "name": "Assassin's Creed: Brotherhood",
+    "name": "Assassin\u0027s Creed",
+    "titleId": "555307D4",
     "type": "Xbox 360",
-    "size": "8.81"
+    "sizeGb": "6.67"
   },
   {
     "id": "23",
-    "name": "Assassin's Creed: Revelations",
+    "name": "Assassin\u0027s Creed II",
+    "titleId": "5553083B",
     "type": "Xbox 360",
-    "size": "9.31"
+    "sizeGb": "8.89"
   },
   {
     "id": "24",
-    "name": "Assault Heroes",
+    "name": "Assassin\u0027s Creed III",
+    "titleId": "555308AE",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "20.44"
   },
   {
     "id": "25",
-    "name": "Assault Heroes 2",
+    "name": "Assassin\u0027s Creed IV: Black Flag",
+    "titleId": "555308C2",
     "type": "Xbox 360",
-    "size": "0.09"
+    "sizeGb": "10.66"
   },
   {
     "id": "26",
-    "name": "Astropop",
+    "name": "Assassin\u0027s Creed: Brotherhood",
+    "titleId": "5553085D",
     "type": "Xbox 360",
-    "size": "0.03"
+    "sizeGb": "8.81"
   },
   {
     "id": "27",
-    "name": "Awesomenauts",
+    "name": "Assassin\u0027s Creed: Revelations",
+    "titleId": "55530879",
     "type": "Xbox 360",
-    "size": "0.53"
+    "sizeGb": "9.31"
   },
   {
     "id": "28",
-    "name": "Baldur's Gate: Dark Alliance",
-    "type": "Xbox",
-    "size": "2.61"
+    "name": "Assault Heroes",
+    "titleId": "584107FE",
+    "type": "Xbox 360",
+    "sizeGb": "0.05"
   },
   {
     "id": "29",
-    "name": "Baldur's Gate: Dark Alliance II",
-    "type": "Xbox",
-    "size": "2.63"
+    "name": "Assault Heroes 2",
+    "titleId": "584108C3",
+    "type": "Xbox 360",
+    "sizeGb": "0.09"
   },
   {
     "id": "30",
-    "name": "Band Hero",
+    "name": "Astropop",
+    "titleId": "584107F2",
     "type": "Xbox 360",
-    "size": "5.12"
+    "sizeGb": "0.03"
   },
   {
     "id": "31",
-    "name": "Bangai-O HD",
+    "name": "Awesomenauts",
+    "titleId": "58410B5A",
     "type": "Xbox 360",
-    "size": "0.25"
+    "sizeGb": "0.53"
   },
   {
     "id": "32",
-    "name": "Banjo-Kazooie",
-    "type": "Xbox 360",
-    "size": "0.05"
+    "name": "Baldur\u0027s Gate: Dark Alliance",
+    "titleId": "5655001A",
+    "type": "Xbox",
+    "sizeGb": "2.61"
   },
   {
     "id": "33",
-    "name": "Banjo-Kazooie: Nuts & Bolts",
-    "type": "Xbox 360",
-    "size": "6.23"
+    "name": "Baldur\u0027s Gate: Dark Alliance II",
+    "titleId": "4950000A",
+    "type": "Xbox",
+    "sizeGb": "2.63"
   },
   {
     "id": "34",
-    "name": "Bastion",
+    "name": "Band Hero",
+    "titleId": "4156085C",
     "type": "Xbox 360",
-    "size": "0.58"
+    "sizeGb": "5.12"
   },
   {
     "id": "35",
-    "name": "Batman: Arkham Asylum",
+    "name": "BandFuse: Rock Legends",
+    "titleId": "4D4607D3",
     "type": "Xbox 360",
-    "size": "0.34"
+    "sizeGb": "5.23"
   },
   {
     "id": "36",
-    "name": "Batman: Arkham Asylum: Game of the Year Edition",
+    "name": "Bangai-O HD",
+    "titleId": "58410AF2",
     "type": "Xbox 360",
-    "size": "6.79"
+    "sizeGb": "0.25"
   },
   {
     "id": "37",
-    "name": "Batman: Arkham City",
+    "name": "Banjo-Kazooie",
+    "titleId": "58410954",
     "type": "Xbox 360",
-    "size": "11.16"
+    "sizeGb": "0.05"
   },
   {
     "id": "38",
-    "name": "Batman: Arkham Origins",
+    "name": "Banjo-Kazooie: Nuts \u0026 Bolts",
+    "titleId": "4D5307ED",
     "type": "Xbox 360",
-    "size": "13.51"
+    "sizeGb": "6.23"
   },
   {
     "id": "39",
-    "name": "BattleBlock Theater",
+    "name": "Banjo-Tooie",
+    "titleId": "58410955",
     "type": "Xbox 360",
-    "size": "1.16"
+    "sizeGb": "0.09"
   },
   {
     "id": "40",
-    "name": "Battlefield 1943",
+    "name": "Bastion",
+    "titleId": "58410B66",
     "type": "Xbox 360",
-    "size": "0.55"
+    "sizeGb": "0.58"
   },
   {
     "id": "41",
-    "name": "Battlefield 2: Modern Combat",
+    "name": "Batman: Arkham Asylum",
+    "titleId": "534307F6",
     "type": "Xbox 360",
-    "size": "6.36"
+    "sizeGb": "0.34"
   },
   {
     "id": "42",
-    "name": "Battlefield 3",
+    "name": "Batman: Arkham Asylum: Game of the Year Edition",
+    "titleId": "5343080B",
     "type": "Xbox 360",
-    "size": "23.86"
+    "sizeGb": "6.79"
   },
   {
     "id": "43",
-    "name": "Battlefield 4",
+    "name": "Batman: Arkham City",
+    "titleId": "57520802",
     "type": "Xbox 360",
-    "size": "26.15"
+    "sizeGb": "11.16"
   },
   {
     "id": "44",
-    "name": "Battlefield Hardline",
+    "name": "Batman: Arkham Origins",
+    "titleId": "57520828",
     "type": "Xbox 360",
-    "size": "16.29"
+    "sizeGb": "13.51"
   },
   {
     "id": "45",
-    "name": "Battlefield: Bad Company",
+    "name": "BattleBlock Theater",
+    "titleId": "58410A30",
     "type": "Xbox 360",
-    "size": "7.42"
+    "sizeGb": "1.16"
   },
   {
     "id": "46",
-    "name": "Battlefield: Bad Company 2",
+    "name": "Battlefield 1943",
+    "titleId": "5841097E",
     "type": "Xbox 360",
-    "size": "7.5"
+    "sizeGb": "0.55"
   },
   {
     "id": "47",
-    "name": "Battlestations: Pacific",
+    "name": "Battlefield 2: Modern Combat",
+    "titleId": "454107DB",
     "type": "Xbox 360",
-    "size": "5.83"
+    "sizeGb": "6.36"
   },
   {
     "id": "48",
-    "name": "Bayonetta",
+    "name": "Battlefield 3",
+    "titleId": "45410950",
     "type": "Xbox 360",
-    "size": "6.8"
+    "sizeGb": "23.86"
   },
   {
     "id": "49",
-    "name": "Bejeweled 3",
+    "name": "Battlefield 4",
+    "titleId": "454109BA",
     "type": "Xbox 360",
-    "size": "0.21"
+    "sizeGb": "26.15"
   },
   {
     "id": "50",
-    "name": "Beyond Good & Evil HD",
+    "name": "Battlefield: Bad Company",
+    "titleId": "454107F9",
     "type": "Xbox 360",
-    "size": "1.68"
+    "sizeGb": "7.42"
   },
   {
     "id": "51",
-    "name": "Binary Domain",
+    "name": "Battlefield: Bad Company 2",
+    "titleId": "454108A8",
     "type": "Xbox 360",
-    "size": "7.25"
+    "sizeGb": "7.50"
   },
   {
     "id": "52",
-    "name": "Bionic Commando Rearmed",
+    "name": "Battlestations: Midway",
+    "titleId": "534307D9",
     "type": "Xbox 360",
-    "size": "0.21"
+    "sizeGb": "4.75"
   },
   {
     "id": "53",
-    "name": "BioShock",
+    "name": "Battlestations: Pacific",
+    "titleId": "534307E9",
     "type": "Xbox 360",
-    "size": "7.96"
+    "sizeGb": "5.83"
   },
   {
     "id": "54",
-    "name": "BioShock 2",
+    "name": "Bayonetta",
+    "titleId": "53450813",
     "type": "Xbox 360",
-    "size": "9.57"
+    "sizeGb": "6.80"
   },
   {
     "id": "55",
-    "name": "BioShock Infinite",
+    "name": "Beautiful Katamari",
+    "titleId": "4E4D07DC",
     "type": "Xbox 360",
-    "size": "14.05"
+    "sizeGb": "2.70"
   },
   {
     "id": "56",
-    "name": "Birds of Steel",
+    "name": "Bejeweled 3",
+    "titleId": "584111D6",
     "type": "Xbox 360",
-    "size": "6.4"
+    "sizeGb": "0.21"
   },
   {
     "id": "57",
-    "name": "Black",
-    "type": "Xbox",
-    "size": "1.58"
+    "name": "Beyond Good \u0026 Evil HD",
+    "titleId": "58410AFA",
+    "type": "Xbox 360",
+    "sizeGb": "1.68"
   },
   {
     "id": "58",
-    "name": "BlazBlue: Continuum Shift",
+    "name": "Binary Domain",
+    "titleId": "5345085C",
     "type": "Xbox 360",
-    "size": "6.04"
+    "sizeGb": "7.25"
   },
   {
     "id": "59",
-    "name": "Blinx: The Time Sweeper",
-    "type": "Xbox",
-    "size": "1.09"
+    "name": "Bionic Commando Rearmed",
+    "titleId": "584108F1",
+    "type": "Xbox 360",
+    "sizeGb": "0.21"
   },
   {
     "id": "60",
-    "name": "Blood of the Werewolf",
+    "name": "BioShock",
+    "titleId": "545407D8",
     "type": "Xbox 360",
-    "size": "1.75"
+    "sizeGb": "7.96"
   },
   {
     "id": "61",
-    "name": "Blue Dragon",
+    "name": "BioShock 2",
+    "titleId": "54540861",
     "type": "Xbox 360",
-    "size": "21.27"
+    "sizeGb": "9.57"
   },
   {
     "id": "62",
-    "name": "Blur",
+    "name": "BioShock Infinite",
+    "titleId": "5454085D",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "14.05"
   },
   {
     "id": "63",
-    "name": "Bomberman Live",
+    "name": "Birds of Steel",
+    "titleId": "4B4E0839",
     "type": "Xbox 360",
-    "size": "0.06"
+    "sizeGb": "6.40"
   },
   {
     "id": "64",
-    "name": "Borderlands",
-    "type": "Xbox 360",
-    "size": "7.8"
+    "name": "Black",
+    "titleId": "45410083",
+    "type": "Xbox",
+    "sizeGb": "1.58"
   },
   {
     "id": "65",
-    "name": "Borderlands 2",
+    "name": "BlazBlue: Calamity Trigger",
+    "titleId": "415807D5",
     "type": "Xbox 360",
-    "size": "17.08"
+    "sizeGb": "3.02"
   },
   {
     "id": "66",
-    "name": "Borderlands: The Pre-Sequel",
+    "name": "BlazBlue: Continuum Shift",
+    "titleId": "415707DA",
     "type": "Xbox 360",
-    "size": "6.09"
+    "sizeGb": "6.04"
   },
   {
     "id": "67",
-    "name": "Braid",
+    "name": "Blazing Angels 2: Secret Missions of WWII",
+    "titleId": "555307FE",
     "type": "Xbox 360",
-    "size": "0.14"
+    "sizeGb": "6.19"
   },
   {
     "id": "68",
-    "name": "Brothers",
-    "type": "Xbox 360",
-    "size": "0.65"
+    "name": "Blinx: The Time Sweeper",
+    "titleId": "4D530013",
+    "type": "Xbox",
+    "sizeGb": "1.09"
   },
   {
     "id": "69",
-    "name": "Brothers in Arms: Hell's Highway",
+    "name": "Blood of the Werewolf",
+    "titleId": "5841142E",
     "type": "Xbox 360",
-    "size": "5.03"
+    "sizeGb": "1.75"
   },
   {
     "id": "70",
-    "name": "Brutal Legend",
+    "name": "Blue Dragon",
+    "titleId": "4D5307DF",
     "type": "Xbox 360",
-    "size": "6.08"
+    "sizeGb": "21.27"
   },
   {
     "id": "71",
-    "name": "Bulletstorm",
+    "name": "Blur",
+    "titleId": "41560845",
     "type": "Xbox 360",
-    "size": "5.82"
+    "sizeGb": "7.09"
   },
   {
     "id": "72",
-    "name": "Bully: Scholarship Edition",
+    "name": "Bomberman Live",
+    "titleId": "5841083F",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.06"
   },
   {
     "id": "73",
-    "name": "Burnout",
-    "type": "Xbox",
-    "size": "1.37"
+    "name": "Borderlands",
+    "titleId": "545407E7",
+    "type": "Xbox 360",
+    "sizeGb": "7.80"
   },
   {
     "id": "74",
-    "name": "Burnout 2: Point of Impact",
-    "type": "Xbox",
-    "size": "2.88"
+    "name": "Borderlands 2",
+    "titleId": "5454087C",
+    "type": "Xbox 360",
+    "sizeGb": "17.08"
   },
   {
     "id": "75",
-    "name": "Burnout 3: Takedown",
-    "type": "Xbox",
-    "size": "2.32"
+    "name": "Borderlands: The Pre-Sequel",
+    "titleId": "545408B4",
+    "type": "Xbox 360",
+    "sizeGb": "6.09"
   },
   {
     "id": "76",
-    "name": "Burnout Paradise",
+    "name": "Braid",
+    "titleId": "584108CE",
     "type": "Xbox 360",
-    "size": "8.72"
+    "sizeGb": "0.14"
   },
   {
     "id": "77",
-    "name": "Burnout Revenge",
+    "name": "Brothers",
+    "titleId": "584112A5",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.65"
   },
   {
     "id": "78",
-    "name": "Call of Cthulhu: Dark Corners of the Earth",
-    "type": "Xbox",
-    "size": "3.18"
+    "name": "Brothers in Arms: Hell\u0027s Highway",
+    "titleId": "555307EA",
+    "type": "Xbox 360",
+    "sizeGb": "5.03"
   },
   {
     "id": "79",
-    "name": "Call of Duty 2",
+    "name": "Brutal Legend",
+    "titleId": "454108C5",
     "type": "Xbox 360",
-    "size": "7.66"
+    "sizeGb": "6.08"
   },
   {
     "id": "80",
-    "name": "Call of Duty 2: Big Red One",
-    "type": "Xbox",
-    "size": "3.84"
+    "name": "Bulletstorm",
+    "titleId": "454108EF",
+    "type": "Xbox 360",
+    "sizeGb": "5.82"
   },
   {
     "id": "81",
-    "name": "Call of Duty 3",
+    "name": "Bully: Scholarship Edition",
+    "titleId": "5454081A",
     "type": "Xbox 360",
-    "size": "7.77"
+    "sizeGb": "7.08"
   },
   {
     "id": "82",
-    "name": "Call of Duty 3",
+    "name": "Burnout",
+    "titleId": "41430006",
     "type": "Xbox",
-    "size": "3.98"
+    "sizeGb": "1.37"
   },
   {
     "id": "83",
-    "name": "Call of Duty 4: Modern Warfare",
-    "type": "Xbox 360",
-    "size": "7.12"
+    "name": "Burnout 2: Point of Impact",
+    "titleId": "41430019",
+    "type": "Xbox",
+    "sizeGb": "2.88"
   },
   {
     "id": "84",
-    "name": "Call of Duty: Advanced Warfare",
-    "type": "Xbox 360",
-    "size": "21.44"
+    "name": "Burnout 3: Takedown",
+    "titleId": "4541005B",
+    "type": "Xbox",
+    "sizeGb": "2.32"
   },
   {
     "id": "85",
-    "name": "Call of Duty: Black Ops",
+    "name": "Burnout Paradise",
+    "titleId": "45410806",
     "type": "Xbox 360",
-    "size": "15.11"
+    "sizeGb": "8.72"
   },
   {
     "id": "86",
-    "name": "Call of Duty: Black Ops II",
+    "name": "Burnout Revenge",
+    "titleId": "454107DC",
     "type": "Xbox 360",
-    "size": "15.37"
+    "sizeGb": "7.08"
   },
   {
     "id": "87",
-    "name": "Call of Duty: Finest Hour",
+    "name": "Call of Cthulhu: Dark Corners of the Earth",
+    "titleId": "42530007",
     "type": "Xbox",
-    "size": "2.03"
+    "sizeGb": "3.18"
   },
   {
     "id": "88",
-    "name": "Call of Duty: Ghosts",
+    "name": "Call of Duty 2",
+    "titleId": "415607D1",
     "type": "Xbox 360",
-    "size": "16.29"
+    "sizeGb": "7.66"
   },
   {
     "id": "89",
-    "name": "Call of Duty: Modern Warfare 2",
-    "type": "Xbox 360",
-    "size": "7.76"
+    "name": "Call of Duty 2: Big Red One",
+    "titleId": "41560051",
+    "type": "Xbox",
+    "sizeGb": "3.84"
   },
   {
     "id": "90",
-    "name": "Call of Duty: Modern Warfare 3",
-    "type": "Xbox 360",
-    "size": "10.12"
+    "name": "Call of Duty 3",
+    "titleId": "4156005D",
+    "type": "Xbox",
+    "sizeGb": "3.98"
   },
   {
     "id": "91",
-    "name": "Call of Duty: World at War",
+    "name": "Call of Duty 3",
+    "titleId": "415607E1",
     "type": "Xbox 360",
-    "size": "8.56"
+    "sizeGb": "7.77"
   },
   {
     "id": "92",
-    "name": "Castle Crashers",
+    "name": "Call of Duty 4: Modern Warfare",
+    "titleId": "415607E6",
     "type": "Xbox 360",
-    "size": "0.14"
+    "sizeGb": "7.12"
   },
   {
     "id": "93",
-    "name": "CastleStorm",
+    "name": "Call of Duty: Black Ops",
+    "titleId": "41560855",
     "type": "Xbox 360",
-    "size": "0.42"
+    "sizeGb": "11.73"
   },
   {
     "id": "94",
-    "name": "Castlevania: Lord of Shadow - Mirror of Fate HD",
+    "name": "Call of Duty: Black Ops II",
+    "titleId": "415608C3",
     "type": "Xbox 360",
-    "size": "1.89"
+    "sizeGb": "15.40"
   },
   {
     "id": "95",
-    "name": "Castlevania: Lords of Shadow",
-    "type": "Xbox 360",
-    "size": "14.34"
+    "name": "Call of Duty: Finest Hour",
+    "titleId": "4156002A",
+    "type": "Xbox",
+    "sizeGb": "2.03"
   },
   {
     "id": "96",
-    "name": "Castlevania: Symphony of the Night",
+    "name": "Call of Duty: Ghosts",
+    "titleId": "415608FC",
     "type": "Xbox 360",
-    "size": "0.09"
+    "sizeGb": "16.29"
   },
   {
     "id": "97",
-    "name": "Catan",
+    "name": "Call of Duty: Modern Warfare 2",
+    "titleId": "41560817",
     "type": "Xbox 360",
-    "size": "0.03"
+    "sizeGb": "7.76"
   },
   {
     "id": "98",
-    "name": "Catherine",
+    "name": "Call of Duty: Modern Warfare 3",
+    "titleId": "415608CB",
     "type": "Xbox 360",
-    "size": "5.25"
+    "sizeGb": "10.12"
   },
   {
     "id": "99",
-    "name": "Charlie Murder",
+    "name": "Call of Duty: World at War",
+    "titleId": "4156081C",
     "type": "Xbox 360",
-    "size": "0.36"
+    "sizeGb": "8.56"
   },
   {
     "id": "100",
-    "name": "Chessmaster Live",
+    "name": "Capsized",
+    "titleId": "584113F0",
     "type": "Xbox 360",
-    "size": "0.18"
+    "sizeGb": "0.58"
   },
   {
     "id": "101",
-    "name": "Child of Eden",
+    "name": "Carcassonne",
+    "titleId": "58410840",
     "type": "Xbox 360",
-    "size": "2.29"
+    "sizeGb": "0.04"
   },
   {
     "id": "102",
-    "name": "Chime",
+    "name": "Cars 2",
+    "titleId": "425607FE",
     "type": "Xbox 360",
-    "size": "0.8"
+    "sizeGb": "2.88"
   },
   {
     "id": "103",
-    "name": "Cloning Clyde",
+    "name": "Castle Crashers",
+    "titleId": "584108B7",
     "type": "Xbox 360",
-    "size": "0.02"
+    "sizeGb": "0.14"
   },
   {
     "id": "104",
-    "name": "College Hoops 2K7",
+    "name": "CastleStorm",
+    "titleId": "5841129A",
     "type": "Xbox 360",
-    "size": "6.73"
+    "sizeGb": "0.42"
   },
   {
     "id": "105",
-    "name": "College Hoops 2K8",
+    "name": "Castlevania: Lord of Shadow - Mirror of Fate HD",
+    "titleId": "58411408",
     "type": "Xbox 360",
-    "size": "6.12"
+    "sizeGb": "1.89"
   },
   {
     "id": "106",
-    "name": "Command & Conquer 3: Kane's Wrath",
+    "name": "Castlevania: Lords of Shadow",
+    "titleId": "4B4E0809",
     "type": "Xbox 360",
-    "size": "3.32"
+    "sizeGb": "14.34"
   },
   {
     "id": "107",
-    "name": "Command & Conquer 3: Tiberium Wars",
+    "name": "Castlevania: Symphony of the Night",
+    "titleId": "58410847",
     "type": "Xbox 360",
-    "size": "5.54"
+    "sizeGb": "0.09"
   },
   {
     "id": "108",
-    "name": "Condemned 2: Bloodshot",
+    "name": "Catan",
+    "titleId": "5841083E",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.03"
   },
   {
     "id": "109",
-    "name": "Condemned: Criminal Origins",
+    "name": "Catherine",
+    "titleId": "415407D7",
     "type": "Xbox 360",
-    "size": "3.4"
+    "sizeGb": "5.25"
   },
   {
     "id": "110",
-    "name": "Conker: Live & Reloaded",
-    "type": "Xbox",
-    "size": "4.45"
+    "name": "Charlie Murder",
+    "titleId": "58410B83",
+    "type": "Xbox 360",
+    "sizeGb": "0.36"
   },
   {
     "id": "111",
-    "name": "Counter-Strike: GO",
+    "name": "Chessmaster Live",
+    "titleId": "58410866",
     "type": "Xbox 360",
-    "size": "1.93"
+    "sizeGb": "0.18"
   },
   {
     "id": "112",
-    "name": "Crackdown",
+    "name": "Child of Eden",
+    "titleId": "5553084C",
     "type": "Xbox 360",
-    "size": "6.24"
+    "sizeGb": "2.29"
   },
   {
     "id": "113",
-    "name": "Crash Bandicoot: The Wrath of Cortex",
-    "type": "Xbox",
-    "size": "0.91"
+    "name": "Chime",
+    "titleId": "58410A16",
+    "type": "Xbox 360",
+    "sizeGb": "0.80"
   },
   {
     "id": "114",
-    "name": "Crash Nitro Kart",
-    "type": "Xbox",
-    "size": "2.71"
+    "name": "Cloning Clyde",
+    "titleId": "584107E7",
+    "type": "Xbox 360",
+    "sizeGb": "0.02"
   },
   {
     "id": "115",
-    "name": "Crimson Skies: High Road to Revenge",
-    "type": "Xbox",
-    "size": "4.1"
+    "name": "College Hoops 2K7",
+    "titleId": "545407F1",
+    "type": "Xbox 360",
+    "sizeGb": "6.73"
   },
   {
     "id": "116",
-    "name": "Crysis",
+    "name": "College Hoops 2K8",
+    "titleId": "54540818",
     "type": "Xbox 360",
-    "size": "4.09"
+    "sizeGb": "6.12"
   },
   {
     "id": "117",
-    "name": "Crysis 2",
+    "name": "Comic Jumper",
+    "titleId": "58410A20",
     "type": "Xbox 360",
-    "size": "7.49"
+    "sizeGb": "1.92"
   },
   {
     "id": "118",
-    "name": "Crysis 3",
+    "name": "Command \u0026 Conquer 3: Kane\u0027s Wrath",
+    "titleId": "4541083A",
     "type": "Xbox 360",
-    "size": "8.83"
+    "sizeGb": "3.32"
   },
   {
     "id": "119",
-    "name": "Culdcept Saga",
+    "name": "Command \u0026 Conquer 3: Tiberium Wars",
+    "titleId": "4541080E",
     "type": "Xbox 360",
-    "size": "4.64"
+    "sizeGb": "5.54"
   },
   {
     "id": "120",
-    "name": "Dance Central",
+    "name": "Command \u0026 Conquer: Alarmstufe Rot 3 (Red Alert 3)",
+    "titleId": "45410860",
     "type": "Xbox 360",
-    "size": "7.21"
+    "sizeGb": "6.06"
   },
   {
     "id": "121",
-    "name": "Dance Central 2",
+    "name": "Commanders: Attack",
+    "titleId": "58410821",
     "type": "Xbox 360",
-    "size": "7.35"
+    "sizeGb": "0.09"
   },
   {
     "id": "122",
-    "name": "Dance Central 3",
+    "name": "Condemned 2: Bloodshot",
+    "titleId": "534507EF",
     "type": "Xbox 360",
-    "size": "9.46"
+    "sizeGb": "7.08"
   },
   {
     "id": "123",
-    "name": "Dark Souls",
+    "name": "Condemned: Criminal Origins",
+    "titleId": "534507D2",
     "type": "Xbox 360",
-    "size": "5.36"
+    "sizeGb": "3.40"
   },
   {
     "id": "124",
-    "name": "Dark Souls II",
-    "type": "Xbox 360",
-    "size": "8.63"
+    "name": "Conker: Live \u0026 Reloaded",
+    "titleId": "4D530051",
+    "type": "Xbox",
+    "sizeGb": "4.45"
   },
   {
     "id": "125",
-    "name": "Darksiders",
+    "name": "Costume Quest",
+    "titleId": "58410A79",
     "type": "Xbox 360",
-    "size": "6.6"
+    "sizeGb": "0.52"
   },
   {
     "id": "126",
-    "name": "Darksiders II",
+    "name": "Counter-Strike: GO",
+    "titleId": "5841125A",
     "type": "Xbox 360",
-    "size": "8.46"
+    "sizeGb": "1.93"
   },
   {
     "id": "127",
-    "name": "Darkstalkers Resurrection",
+    "name": "Crackdown",
+    "titleId": "4D5307DC",
     "type": "Xbox 360",
-    "size": "0.43"
+    "sizeGb": "6.24"
   },
   {
     "id": "128",
-    "name": "Darwinia+",
-    "type": "Xbox 360",
-    "size": "0.07"
+    "name": "Crash Bandicoot: The Wrath of Cortex",
+    "titleId": "56550003",
+    "type": "Xbox",
+    "sizeGb": "0.91"
   },
   {
     "id": "129",
-    "name": "de Blob 2",
-    "type": "Xbox 360",
-    "size": "7.09"
+    "name": "Crash Nitro Kart",
+    "titleId": "5655001F",
+    "type": "Xbox",
+    "sizeGb": "2.71"
   },
   {
     "id": "130",
-    "name": "Dead or Alive 1 Ultimate",
-    "type": "Xbox",
-    "size": "4.11"
+    "name": "Crimson Alliance",
+    "titleId": "58410983",
+    "type": "Xbox 360",
+    "sizeGb": "0.99"
   },
   {
     "id": "131",
-    "name": "Dead or Alive 3",
+    "name": "Crimson Skies: High Road to Revenge",
+    "titleId": "4D530021",
     "type": "Xbox",
-    "size": "3.92"
+    "sizeGb": "4.10"
   },
   {
     "id": "132",
-    "name": "Dead or Alive 4",
+    "name": "Crysis",
+    "titleId": "45410968",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "4.09"
   },
   {
     "id": "133",
-    "name": "Dead or Alive 5",
+    "name": "Crysis 2",
+    "titleId": "454108E3",
     "type": "Xbox 360",
-    "size": "9.1"
+    "sizeGb": "7.49"
   },
   {
     "id": "134",
-    "name": "Dead or Alive 5 Ultimate",
+    "name": "Crysis 3",
+    "titleId": "4541098E",
     "type": "Xbox 360",
-    "size": "10.04"
+    "sizeGb": "8.83"
   },
   {
     "id": "135",
-    "name": "Dead Rising",
+    "name": "Culdcept Saga",
+    "titleId": "424107DD",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "4.64"
   },
   {
     "id": "136",
-    "name": "Dead Rising 2",
+    "name": "Dance Central",
+    "titleId": "545607D3",
     "type": "Xbox 360",
-    "size": "7.11"
+    "sizeGb": "7.21"
   },
   {
     "id": "137",
-    "name": "Dead Rising 2: Case West",
+    "name": "Dance Central 2",
+    "titleId": "373307D2",
     "type": "Xbox 360",
-    "size": "1.14"
+    "sizeGb": "7.35"
   },
   {
     "id": "138",
-    "name": "Dead Rising 2: Case Zero",
+    "name": "Dance Central 3",
+    "titleId": "373307D9",
     "type": "Xbox 360",
-    "size": "0.81"
+    "sizeGb": "9.46"
   },
   {
     "id": "139",
-    "name": "Dead Rising 2: Off the Record",
+    "name": "Dance Dance Revolution Universe",
+    "titleId": "4B4E07DC",
     "type": "Xbox 360",
-    "size": "0.08"
+    "sizeGb": "3.00"
   },
   {
     "id": "140",
-    "name": "Dead Space",
+    "name": "Dante\u0027s Inferno",
+    "titleId": "454108CF",
     "type": "Xbox 360",
-    "size": "6.79"
+    "sizeGb": "5.52"
   },
   {
     "id": "141",
-    "name": "Dead Space 2",
+    "name": "Dark Souls",
+    "titleId": "4E4D083A",
     "type": "Xbox 360",
-    "size": "17.38"
+    "sizeGb": "5.36"
   },
   {
     "id": "142",
-    "name": "Dead Space 3",
+    "name": "Dark Souls II",
+    "titleId": "465307E4",
     "type": "Xbox 360",
-    "size": "17.44"
+    "sizeGb": "8.63"
   },
   {
     "id": "143",
-    "name": "DeathSmiles",
+    "name": "Darksiders",
+    "titleId": "545107E6",
     "type": "Xbox 360",
-    "size": "1.35"
+    "sizeGb": "6.60"
   },
   {
     "id": "144",
-    "name": "DeathSpank",
+    "name": "Darksiders II",
+    "titleId": "54510896",
     "type": "Xbox 360",
-    "size": "1"
+    "sizeGb": "8.46"
   },
   {
     "id": "145",
-    "name": "Def Jam Rapstar",
+    "name": "Darkstalkers Resurrection",
+    "titleId": "5841122F",
     "type": "Xbox 360",
-    "size": "5.98"
+    "sizeGb": "0.43"
   },
   {
     "id": "146",
-    "name": "Defense Grid",
+    "name": "Darwinia+",
+    "titleId": "58410822",
     "type": "Xbox 360",
-    "size": "0.57"
+    "sizeGb": "0.07"
   },
   {
     "id": "147",
-    "name": "Destiny",
+    "name": "Daytona USA",
+    "titleId": "58410B1D",
     "type": "Xbox 360",
-    "size": "21.91"
+    "sizeGb": "0.22"
   },
   {
     "id": "148",
-    "name": "Destroy All Humans!",
-    "type": "Xbox",
-    "size": "2.13"
+    "name": "de Blob 2",
+    "titleId": "54510865",
+    "type": "Xbox 360",
+    "sizeGb": "7.09"
   },
   {
     "id": "149",
-    "name": "Deus Ex: Human Revolution",
+    "name": "Dead Island",
+    "titleId": "4B4D07DF",
     "type": "Xbox 360",
-    "size": "15.46"
+    "sizeGb": "5.74"
   },
   {
     "id": "150",
-    "name": "Devil May Cry 4",
-    "type": "Xbox 360",
-    "size": "6.48"
+    "name": "Dead or Alive 1 Ultimate",
+    "titleId": "54430006",
+    "type": "Xbox",
+    "sizeGb": "4.11"
   },
   {
     "id": "151",
-    "name": "Devil May Cry HD Collection",
-    "type": "Xbox 360",
-    "size": "6.73"
+    "name": "Dead or Alive 3",
+    "titleId": "54430001",
+    "type": "Xbox",
+    "sizeGb": "3.92"
   },
   {
     "id": "152",
-    "name": "Diablo III",
+    "name": "Dead or Alive 4",
+    "titleId": "544307D1",
     "type": "Xbox 360",
-    "size": "6.94"
+    "sizeGb": "7.08"
   },
   {
     "id": "153",
-    "name": "Diablo III: Ultimate Evil Edition",
+    "name": "Dead or Alive 5",
+    "titleId": "4B5607DA",
     "type": "Xbox 360",
-    "size": "0.01"
+    "sizeGb": "9.10"
   },
   {
     "id": "154",
-    "name": "DiRT",
+    "name": "Dead or Alive 5 Ultimate",
+    "titleId": "4B5607E8",
     "type": "Xbox 360",
-    "size": "6.1"
+    "sizeGb": "10.04"
   },
   {
     "id": "155",
-    "name": "DiRT 2",
+    "name": "Dead Rising",
+    "titleId": "434307D2",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "7.08"
   },
   {
     "id": "156",
-    "name": "DiRT 3",
+    "name": "Dead Rising 2",
+    "titleId": "434307EC",
     "type": "Xbox 360",
-    "size": "7.36"
+    "sizeGb": "7.11"
   },
   {
     "id": "157",
-    "name": "DiRT: Showdown",
+    "name": "Dead Space",
+    "titleId": "45410857",
     "type": "Xbox 360",
-    "size": "4.17"
+    "sizeGb": "6.79"
   },
   {
     "id": "158",
-    "name": "Dishonored",
+    "name": "Dead Space 2",
+    "titleId": "454108DF",
     "type": "Xbox 360",
-    "size": "8.85"
+    "sizeGb": "17.38"
   },
   {
     "id": "159",
-    "name": "Disney Infinity",
+    "name": "Dead Space 3",
+    "titleId": "4541099D",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "17.44"
   },
   {
     "id": "160",
-    "name": "DJ Hero",
+    "name": "DeathSmiles",
+    "titleId": "415807D8",
     "type": "Xbox 360",
-    "size": "2.7"
+    "sizeGb": "1.35"
   },
   {
     "id": "161",
-    "name": "DJ Hero 2",
+    "name": "DeathSpank",
+    "titleId": "58410A6F",
     "type": "Xbox 360",
-    "size": "3.7"
+    "sizeGb": "1.00"
   },
   {
     "id": "162",
-    "name": "DmC: Devil May Cry",
+    "name": "Def Jam Rapstar",
+    "titleId": "4B4E0820",
     "type": "Xbox 360",
-    "size": "8.73"
+    "sizeGb": "5.98"
   },
   {
     "id": "163",
-    "name": "DOOM",
+    "name": "Defense Grid",
+    "titleId": "584108CB",
     "type": "Xbox 360",
-    "size": "0.02"
+    "sizeGb": "0.57"
   },
   {
     "id": "164",
-    "name": "Doom 3",
+    "name": "Der Herr der Ringe: Die Rückkehr des Königs",
+    "titleId": "4541003E",
     "type": "Xbox",
-    "size": "2.84"
+    "sizeGb": "2.19"
   },
   {
     "id": "165",
-    "name": "Doom 3: Resurrection of Evil",
-    "type": "Xbox",
-    "size": "2.18"
+    "name": "Der Pate (The Godfather)",
+    "titleId": "454107E9",
+    "type": "Xbox 360",
+    "sizeGb": "5.69"
   },
   {
     "id": "166",
-    "name": "DOOM II",
+    "name": "Destiny",
+    "titleId": "415608F8",
     "type": "Xbox 360",
-    "size": "0.03"
+    "sizeGb": "21.91"
   },
   {
     "id": "167",
-    "name": "Double Fine Happy Action Theater",
-    "type": "Xbox 360",
-    "size": "0.31"
+    "name": "Destroy All Humans!",
+    "titleId": "54510026",
+    "type": "Xbox",
+    "sizeGb": "2.13"
   },
   {
     "id": "168",
-    "name": "Dragon Age II",
+    "name": "Deus Ex: Human Revolution",
+    "titleId": "535107FA",
     "type": "Xbox 360",
-    "size": "6.04"
+    "sizeGb": "15.46"
   },
   {
     "id": "169",
-    "name": "Dragon Age: Origins",
+    "name": "Devil May Cry 4",
+    "titleId": "434307DF",
     "type": "Xbox 360",
-    "size": "11.08"
+    "sizeGb": "6.48"
   },
   {
     "id": "170",
-    "name": "Dragon Ball: XenoVerse",
+    "name": "Devil May Cry HD Collection",
+    "titleId": "4343081E",
     "type": "Xbox 360",
-    "size": "7.71"
+    "sizeGb": "6.73"
   },
   {
     "id": "171",
-    "name": "Dragon's Dogma",
+    "name": "Diablo III",
+    "titleId": "394F07D1",
     "type": "Xbox 360",
-    "size": "8.01"
+    "sizeGb": "6.94"
   },
   {
     "id": "172",
-    "name": "Driver: San Francisco",
+    "name": "Diablo III: Ultimate Evil Edition",
+    "titleId": "394F07D4",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "0.01"
   },
   {
     "id": "173",
-    "name": "Duke Nukem 3D",
+    "name": "DiRT",
+    "titleId": "434D07DB",
     "type": "Xbox 360",
-    "size": "0.08"
+    "sizeGb": "6.10"
   },
   {
     "id": "174",
-    "name": "Dust: An Elysian Tail",
+    "name": "DiRT 2",
+    "titleId": "434D0819",
     "type": "Xbox 360",
-    "size": "0.58"
+    "sizeGb": "7.09"
   },
   {
     "id": "175",
-    "name": "EA Sports MMA",
+    "name": "DiRT 3",
+    "titleId": "434D083D",
     "type": "Xbox 360",
-    "size": "6.33"
+    "sizeGb": "7.36"
   },
   {
     "id": "176",
-    "name": "Earthworm Jim HD",
+    "name": "DiRT: Showdown",
+    "titleId": "434D0845",
     "type": "Xbox 360",
-    "size": "0.42"
+    "sizeGb": "4.17"
   },
   {
     "id": "177",
-    "name": "El Shaddai: Ascension of the Metatron",
+    "name": "Dishonored",
+    "titleId": "425307E3",
     "type": "Xbox 360",
-    "size": "4.79"
+    "sizeGb": "8.85"
   },
   {
     "id": "178",
-    "name": "Enslaved: Odyssey to the West",
+    "name": "Disney Infinity",
+    "titleId": "4256081E",
     "type": "Xbox 360",
-    "size": "6.23"
+    "sizeGb": "7.09"
   },
   {
     "id": "179",
-    "name": "Eternal Sonata",
+    "name": "DJ Hero",
+    "titleId": "41560844",
     "type": "Xbox 360",
-    "size": "6.72"
+    "sizeGb": "2.70"
   },
   {
     "id": "180",
-    "name": "EXIT",
+    "name": "DJ Hero 2",
+    "titleId": "4156087F",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "3.70"
   },
   {
     "id": "181",
-    "name": "F.E.A.R.",
+    "name": "DmC: Devil May Cry",
+    "titleId": "43430824",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "8.73"
   },
   {
     "id": "182",
-    "name": "F.E.A.R. 2: Project Origin",
+    "name": "DoDonPachi Resurrection: Deluxe Edition",
+    "titleId": "545A07D2",
     "type": "Xbox 360",
-    "size": "8.24"
+    "sizeGb": "0.72"
   },
   {
     "id": "183",
-    "name": "F.E.A.R. 3",
+    "name": "DOOM",
+    "titleId": "58410824",
     "type": "Xbox 360",
-    "size": "6.17"
+    "sizeGb": "0.02"
   },
   {
     "id": "184",
-    "name": "F1 2001",
+    "name": "Doom 3",
+    "titleId": "41560020",
     "type": "Xbox",
-    "size": "0.93"
+    "sizeGb": "2.84"
   },
   {
     "id": "185",
-    "name": "F1 2010",
-    "type": "Xbox 360",
-    "size": "4.84"
+    "name": "Doom 3: Resurrection of Evil",
+    "titleId": "4156004E",
+    "type": "Xbox",
+    "sizeGb": "2.18"
   },
   {
     "id": "186",
-    "name": "F1 2011",
+    "name": "DOOM II",
+    "titleId": "584109B6",
     "type": "Xbox 360",
-    "size": "5.59"
+    "sizeGb": "0.03"
   },
   {
     "id": "187",
-    "name": "F1 2012",
+    "name": "Double Fine Happy Action Theater",
+    "titleId": "584111F3",
     "type": "Xbox 360",
-    "size": "6.91"
+    "sizeGb": "0.31"
   },
   {
     "id": "188",
-    "name": "Fable",
-    "type": "Xbox",
-    "size": "2.31"
+    "name": "Dragon Age II",
+    "titleId": "4541090B",
+    "type": "Xbox 360",
+    "sizeGb": "6.04"
   },
   {
     "id": "189",
-    "name": "Fable II",
+    "name": "Dragon Age: Origins",
+    "titleId": "454108C0",
     "type": "Xbox 360",
-    "size": "8.08"
+    "sizeGb": "11.08"
   },
   {
     "id": "190",
-    "name": "Fable III",
+    "name": "Dragon\u0027s Dogma",
+    "titleId": "43430814",
     "type": "Xbox 360",
-    "size": "8.14"
+    "sizeGb": "8.01"
   },
   {
     "id": "191",
-    "name": "Fable: The Lost Chapters",
-    "type": "Xbox",
-    "size": "3.29"
+    "name": "Driver: San Francisco",
+    "titleId": "5553087E",
+    "type": "Xbox 360",
+    "sizeGb": "8.15"
   },
   {
     "id": "192",
-    "name": "Fallout 3",
+    "name": "Duke Nukem 3D",
+    "titleId": "58410901",
     "type": "Xbox 360",
-    "size": "8.1"
+    "sizeGb": "0.08"
   },
   {
     "id": "193",
-    "name": "Fallout: New Vegas",
+    "name": "Dungeon Defenders",
+    "titleId": "58410B6D",
     "type": "Xbox 360",
-    "size": "8.5"
+    "sizeGb": "1.39"
   },
   {
     "id": "194",
-    "name": "Family Game Night",
+    "name": "Dungeons \u0026 Dragons: Chronicles of Mystara",
+    "titleId": "584113C3",
     "type": "Xbox 360",
-    "size": "0.35"
+    "sizeGb": "0.25"
   },
   {
     "id": "195",
-    "name": "Far Cry 2",
+    "name": "Dust: An Elysian Tail",
+    "titleId": "58410A67",
     "type": "Xbox 360",
-    "size": "3.65"
+    "sizeGb": "0.58"
   },
   {
     "id": "196",
-    "name": "Far Cry 3",
+    "name": "E4 (Every Extend Extra Extreme)",
+    "titleId": "58410872",
     "type": "Xbox 360",
-    "size": "8.5"
+    "sizeGb": "0.08"
   },
   {
     "id": "197",
-    "name": "Far Cry Instincts",
-    "type": "Xbox",
-    "size": "2.52"
+    "name": "EA Sports MMA",
+    "titleId": "454108FC",
+    "type": "Xbox 360",
+    "sizeGb": "6.33"
   },
   {
     "id": "198",
-    "name": "Far Cry Instincts Predator",
+    "name": "Earthworm Jim HD",
+    "titleId": "584109E2",
     "type": "Xbox 360",
-    "size": "4.51"
+    "sizeGb": "0.42"
   },
   {
     "id": "199",
-    "name": "Fatal Frame II: Crimson Butterfly: Director's Cut",
-    "type": "Xbox",
-    "size": "2.06"
+    "name": "Eets: Chowdown",
+    "titleId": "58410825",
+    "type": "Xbox 360",
+    "sizeGb": "0.04"
   },
   {
     "id": "200",
-    "name": "Fez",
+    "name": "El Shaddai: Ascension of the Metatron",
+    "titleId": "494F07D1",
     "type": "Xbox 360",
-    "size": "0.27"
+    "sizeGb": "4.79"
   },
   {
     "id": "201",
-    "name": "FIFA 07",
-    "type": "Xbox",
-    "size": "2.94"
+    "name": "Enslaved: Odyssey to the West",
+    "titleId": "4E4D07F1",
+    "type": "Xbox 360",
+    "sizeGb": "6.23"
   },
   {
     "id": "202",
-    "name": "FIFA 08",
+    "name": "Eternal Sonata",
+    "titleId": "4E4D07E4",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "6.72"
   },
   {
     "id": "203",
-    "name": "FIFA 09",
+    "name": "EXIT",
+    "titleId": "584108A7",
     "type": "Xbox 360",
-    "size": "6.44"
+    "sizeGb": "0.05"
   },
   {
     "id": "204",
-    "name": "FIFA 10",
+    "name": "F.E.A.R.",
+    "titleId": "565507D9",
     "type": "Xbox 360",
-    "size": "6.57"
+    "sizeGb": "7.08"
   },
   {
     "id": "205",
-    "name": "FIFA 11",
+    "name": "F.E.A.R. 2: Project Origin",
+    "titleId": "575207D3",
     "type": "Xbox 360",
-    "size": "6.62"
+    "sizeGb": "8.24"
   },
   {
     "id": "206",
-    "name": "FIFA 12",
+    "name": "F.E.A.R. 3",
+    "titleId": "57520800",
     "type": "Xbox 360",
-    "size": "7.07"
+    "sizeGb": "6.17"
   },
   {
     "id": "207",
-    "name": "FIFA 13",
-    "type": "Xbox 360",
-    "size": "7.28"
+    "name": "F1 2001",
+    "titleId": "45410007",
+    "type": "Xbox",
+    "sizeGb": "0.93"
   },
   {
     "id": "208",
-    "name": "FIFA 14",
+    "name": "F1 2010",
+    "titleId": "434D082D",
     "type": "Xbox 360",
-    "size": "6.69"
+    "sizeGb": "4.84"
   },
   {
     "id": "209",
-    "name": "FIFA 15",
+    "name": "F1 2011",
+    "titleId": "434D0842",
     "type": "Xbox 360",
-    "size": "6.61"
+    "sizeGb": "5.59"
   },
   {
     "id": "210",
-    "name": "FIFA 16",
+    "name": "F1 2012",
+    "titleId": "434D0847",
     "type": "Xbox 360",
-    "size": "6.75"
+    "sizeGb": "6.91"
   },
   {
     "id": "211",
-    "name": "FIFA 18 Legacy Edition",
+    "name": "F1 2013",
+    "titleId": "434D084F",
     "type": "Xbox 360",
-    "size": "8.16"
+    "sizeGb": "7.85"
   },
   {
     "id": "212",
-    "name": "FIFA 19 Legacy Edition",
-    "type": "Xbox 360",
-    "size": "6.14"
+    "name": "Fable",
+    "titleId": "4D53000D",
+    "type": "Xbox",
+    "sizeGb": "2.31"
   },
   {
     "id": "213",
-    "name": "FIFA Street",
+    "name": "Fable II",
+    "titleId": "4D5307F1",
     "type": "Xbox 360",
-    "size": "4.36"
+    "sizeGb": "8.08"
   },
   {
     "id": "214",
-    "name": "FIFA World Cup Germany 2006",
-    "type": "Xbox",
-    "size": "2.39"
+    "name": "Fable III",
+    "titleId": "4D5308D6",
+    "type": "Xbox 360",
+    "sizeGb": "8.14"
   },
   {
     "id": "215",
-    "name": "Fight Night Champion",
-    "type": "Xbox 360",
-    "size": "7.09"
+    "name": "Fable: The Lost Chapters",
+    "titleId": "4D5300D1",
+    "type": "Xbox",
+    "sizeGb": "3.29"
   },
   {
     "id": "216",
-    "name": "Fight Night Round 3",
-    "type": "Xbox 360",
-    "size": "3.19"
+    "name": "Fahrenheit",
+    "titleId": "4947007B",
+    "type": "Xbox",
+    "sizeGb": "1.90"
   },
   {
     "id": "217",
-    "name": "Fight Night Round 4",
+    "name": "Fallout 3",
+    "titleId": "425307D5",
     "type": "Xbox 360",
-    "size": "6.95"
+    "sizeGb": "8.10"
   },
   {
     "id": "218",
-    "name": "Final Fantasy XIII",
+    "name": "Fallout: New Vegas",
+    "titleId": "425307E0",
     "type": "Xbox 360",
-    "size": "18.21"
+    "sizeGb": "8.50"
   },
   {
     "id": "219",
-    "name": "Final Fantasy XIII-2",
+    "name": "Far Cry 2",
+    "titleId": "55530810",
     "type": "Xbox 360",
-    "size": "11.59"
+    "sizeGb": "3.65"
   },
   {
     "id": "220",
-    "name": "FlatOut: Ultimate Carnage",
+    "name": "Far Cry 3",
+    "titleId": "5553088C",
     "type": "Xbox 360",
-    "size": "4.33"
+    "sizeGb": "8.50"
   },
   {
     "id": "221",
-    "name": "Forza Horizon",
-    "type": "Xbox 360",
-    "size": "10.4"
+    "name": "Far Cry Instincts",
+    "titleId": "55530008",
+    "type": "Xbox",
+    "sizeGb": "2.52"
   },
   {
     "id": "222",
-    "name": "Forza Horizon 2",
+    "name": "Far Cry Instincts Predator",
+    "titleId": "555307DC",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "4.51"
   },
   {
     "id": "223",
-    "name": "Forza Motorsport",
+    "name": "Fatal Frame II: Crimson Butterfly: Director\u0027s Cut",
+    "titleId": "5443000A",
     "type": "Xbox",
-    "size": "3.05"
+    "sizeGb": "2.06"
   },
   {
     "id": "224",
-    "name": "Forza Motorsport 2",
+    "name": "Fez",
+    "titleId": "584109C0",
     "type": "Xbox 360",
-    "size": "5.92"
+    "sizeGb": "0.27"
   },
   {
     "id": "225",
-    "name": "Forza Motorsport 3",
+    "name": "FIFA 07",
+    "titleId": "454107EF",
     "type": "Xbox 360",
-    "size": "16.83"
+    "sizeGb": "4.35"
   },
   {
     "id": "226",
-    "name": "Forza Motorsport 4",
-    "type": "Xbox 360",
-    "size": "12.65"
+    "name": "FIFA 07",
+    "titleId": "454100A6",
+    "type": "Xbox",
+    "sizeGb": "2.94"
   },
   {
     "id": "227",
-    "name": "Freedom Fighters",
-    "type": "Xbox",
-    "size": "2.47"
+    "name": "FIFA 08",
+    "titleId": "4541081F",
+    "type": "Xbox 360",
+    "sizeGb": "7.08"
   },
   {
     "id": "228",
-    "name": "From Dust",
+    "name": "FIFA 09",
+    "titleId": "4541085B",
     "type": "Xbox 360",
-    "size": "1.15"
+    "sizeGb": "6.44"
   },
   {
     "id": "229",
-    "name": "Frontlines: Fuel of War",
+    "name": "FIFA 10",
+    "titleId": "454108BC",
     "type": "Xbox 360",
-    "size": "6.89"
+    "sizeGb": "6.57"
   },
   {
     "id": "230",
-    "name": "Full House Poker",
+    "name": "FIFA 11",
+    "titleId": "454108F3",
     "type": "Xbox 360",
-    "size": "0.66"
+    "sizeGb": "6.62"
   },
   {
     "id": "231",
-    "name": "Full Spectrum Warrior",
-    "type": "Xbox",
-    "size": "2.44"
+    "name": "FIFA 12",
+    "titleId": "45410967",
+    "type": "Xbox 360",
+    "sizeGb": "7.07"
   },
   {
     "id": "232",
-    "name": "Fuzion Frenzy",
-    "type": "Xbox",
-    "size": "1.95"
+    "name": "FIFA 13",
+    "titleId": "45410998",
+    "type": "Xbox 360",
+    "sizeGb": "7.28"
   },
   {
     "id": "233",
-    "name": "Garou: Mark of the Wolves",
+    "name": "FIFA 14",
+    "titleId": "454109C3",
     "type": "Xbox 360",
-    "size": "0.14"
+    "sizeGb": "6.69"
   },
   {
     "id": "234",
-    "name": "Gears of War",
+    "name": "FIFA 18 Legacy Edition",
+    "titleId": "454109F8",
     "type": "Xbox 360",
-    "size": "6.91"
+    "sizeGb": "8.16"
   },
   {
     "id": "235",
-    "name": "Gears of War 2",
+    "name": "FIFA 19 Legacy Edition",
+    "titleId": "454109F9",
     "type": "Xbox 360",
-    "size": "8.58"
+    "sizeGb": "6.14"
   },
   {
     "id": "236",
-    "name": "Gears of War 3",
+    "name": "FIFA Street",
+    "titleId": "4541097B",
     "type": "Xbox 360",
-    "size": "10.43"
+    "sizeGb": "4.36"
   },
   {
     "id": "237",
-    "name": "Gears of War: Judgment",
-    "type": "Xbox 360",
-    "size": "8.14"
+    "name": "FIFA World Cup Germany 2006",
+    "titleId": "4541009C",
+    "type": "Xbox",
+    "sizeGb": "2.39"
   },
   {
     "id": "238",
-    "name": "Genma Onimusha",
-    "type": "Xbox",
-    "size": "4.66"
+    "name": "Fight Night Champion",
+    "titleId": "45410915",
+    "type": "Xbox 360",
+    "sizeGb": "7.09"
   },
   {
     "id": "239",
-    "name": "Geometry Wars Evolved",
+    "name": "Fight Night Round 3",
+    "titleId": "454107DE",
     "type": "Xbox 360",
-    "size": "0.01"
+    "sizeGb": "3.19"
   },
   {
     "id": "240",
-    "name": "Geometry Wars Evolved 2",
+    "name": "Fight Night Round 4",
+    "titleId": "45410894",
     "type": "Xbox 360",
-    "size": "0.04"
+    "sizeGb": "6.95"
   },
   {
     "id": "241",
-    "name": "Ghostbusters: The Video Game",
+    "name": "Final Fantasy XIII",
+    "titleId": "535107E4",
     "type": "Xbox 360",
-    "size": "6.18"
+    "sizeGb": "18.21"
   },
   {
     "id": "242",
-    "name": "GoldenEye 007: Reloaded",
+    "name": "Final Fantasy XIII-2",
+    "titleId": "53510806",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "11.59"
   },
   {
     "id": "243",
-    "name": "Grand Theft Auto IV",
+    "name": "Final Fight: DblImpact",
+    "titleId": "584109DD",
     "type": "Xbox 360",
-    "size": "10.17"
+    "sizeGb": "0.19"
   },
   {
     "id": "244",
-    "name": "Grand Theft Auto V",
+    "name": "FlatOut: Ultimate Carnage",
+    "titleId": "454D07D2",
     "type": "Xbox 360",
-    "size": "15.58"
+    "sizeGb": "4.33"
   },
   {
     "id": "245",
-    "name": "Grand Theft Auto: San Andreas",
-    "type": "Xbox",
-    "size": "2.87"
+    "name": "Forza Horizon",
+    "titleId": "4D5309C9",
+    "type": "Xbox 360",
+    "sizeGb": "10.40"
   },
   {
     "id": "246",
-    "name": "Grand Theft Auto: Vice City",
+    "name": "Forza Motorsport",
+    "titleId": "4D53006E",
     "type": "Xbox",
-    "size": "1.3"
+    "sizeGb": "3.05"
   },
   {
     "id": "247",
-    "name": "Green Day: Rock Band",
+    "name": "Forza Motorsport 2",
+    "titleId": "4D5307EA",
     "type": "Xbox 360",
-    "size": "4.91"
+    "sizeGb": "5.92"
   },
   {
     "id": "248",
-    "name": "GRID",
+    "name": "Forza Motorsport 3",
+    "titleId": "4D53084D",
     "type": "Xbox 360",
-    "size": "6.37"
+    "sizeGb": "16.83"
   },
   {
     "id": "249",
-    "name": "GRID 2",
+    "name": "Forza Motorsport 4: Essentials Edition",
+    "titleId": "4D530910",
     "type": "Xbox 360",
-    "size": "6.17"
+    "sizeGb": "12.53"
   },
   {
     "id": "250",
-    "name": "GRID Autosport",
-    "type": "Xbox 360",
-    "size": "8.3"
+    "name": "Freedom Fighters",
+    "titleId": "4541002E",
+    "type": "Xbox",
+    "sizeGb": "2.47"
   },
   {
     "id": "251",
-    "name": "Guardian Heroes",
+    "name": "From Dust",
+    "titleId": "58410A91",
     "type": "Xbox 360",
-    "size": "0.9"
+    "sizeGb": "1.15"
   },
   {
     "id": "252",
-    "name": "Guilty Gear X2 #Reload: The Midnight Carnival",
-    "type": "Xbox",
-    "size": "0.88"
+    "name": "Frontlines: Fuel of War",
+    "titleId": "545107D8",
+    "type": "Xbox 360",
+    "sizeGb": "6.89"
   },
   {
     "id": "253",
-    "name": "Guitar Hero 5",
+    "name": "Full House Poker",
+    "titleId": "5841098D",
     "type": "Xbox 360",
-    "size": "15.15"
+    "sizeGb": "0.66"
   },
   {
     "id": "254",
-    "name": "Guitar Hero II",
-    "type": "Xbox 360",
-    "size": "3.65"
+    "name": "Full Spectrum Warrior",
+    "titleId": "54510022",
+    "type": "Xbox",
+    "sizeGb": "2.44"
   },
   {
     "id": "255",
-    "name": "Guitar Hero III: Legends of Rock",
-    "type": "Xbox 360",
-    "size": "8.76"
+    "name": "Fuzion Frenzy",
+    "titleId": "4D530002",
+    "type": "Xbox",
+    "sizeGb": "1.95"
   },
   {
     "id": "256",
-    "name": "Guitar Hero World Tour",
+    "name": "Galaga",
+    "titleId": "58410812",
     "type": "Xbox 360",
-    "size": "11.98"
+    "sizeGb": "0.01"
   },
   {
     "id": "257",
-    "name": "Guitar Hero: Metallica",
+    "name": "Galaga Legions DX",
+    "titleId": "58410AF9",
     "type": "Xbox 360",
-    "size": "6.76"
+    "sizeGb": "0.12"
   },
   {
     "id": "258",
-    "name": "Gun",
+    "name": "Garou: Mark of the Wolves",
+    "titleId": "58410971",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.14"
   },
   {
     "id": "259",
-    "name": "Guwange",
+    "name": "Gatling Gears",
+    "titleId": "58410B32",
     "type": "Xbox 360",
-    "size": "0.11"
+    "sizeGb": "1.48"
   },
   {
     "id": "260",
-    "name": "Gyromancer",
+    "name": "Gears of War",
+    "titleId": "4D5307D5",
     "type": "Xbox 360",
-    "size": "0.16"
+    "sizeGb": "6.91"
   },
   {
     "id": "261",
-    "name": "Half Minute Hero: Super Mega Neo Climax",
+    "name": "Gears of War 2",
+    "titleId": "4D53082D",
     "type": "Xbox 360",
-    "size": "0.32"
+    "sizeGb": "8.58"
   },
   {
     "id": "262",
-    "name": "Half-Life 2",
-    "type": "Xbox",
-    "size": "1.93"
+    "name": "Gears of War 3",
+    "titleId": "4D5308AB",
+    "type": "Xbox 360",
+    "sizeGb": "10.43"
   },
   {
     "id": "263",
-    "name": "Halo",
-    "type": "Xbox",
-    "size": "3.39"
+    "name": "Gears of War: Judgment",
+    "titleId": "4D530A26",
+    "type": "Xbox 360",
+    "sizeGb": "8.14"
   },
   {
     "id": "264",
-    "name": "Halo 2",
-    "type": "Xbox",
-    "size": "4.42"
+    "name": "Gel",
+    "titleId": "58410908",
+    "type": "Xbox 360",
+    "sizeGb": "0.08"
   },
   {
     "id": "265",
-    "name": "Halo 2 Multiplayer Map Pack",
+    "name": "Genma Onimusha",
+    "titleId": "43430001",
     "type": "Xbox",
-    "size": "5.13"
+    "sizeGb": "4.66"
   },
   {
     "id": "266",
-    "name": "Halo 3",
+    "name": "Geometry Wars Evolved",
+    "titleId": "584107ED",
     "type": "Xbox 360",
-    "size": "7.88"
+    "sizeGb": "0.01"
   },
   {
     "id": "267",
-    "name": "Halo 3: ODST",
+    "name": "Geometry Wars Evolved 2",
+    "titleId": "584108FF",
     "type": "Xbox 360",
-    "size": "3.47"
+    "sizeGb": "0.04"
   },
   {
     "id": "268",
-    "name": "Halo 4",
+    "name": "Ghostbusters: The Video Game",
+    "titleId": "494707F4",
     "type": "Xbox 360",
-    "size": "15.66"
+    "sizeGb": "6.18"
   },
   {
     "id": "269",
-    "name": "Halo Wars",
+    "name": "Grand Theft Auto IV",
+    "titleId": "545407F2",
     "type": "Xbox 360",
-    "size": "7.27"
+    "sizeGb": "10.17"
   },
   {
     "id": "270",
-    "name": "Halo: Combat Evolved Anniversary",
+    "name": "Grand Theft Auto V",
+    "titleId": "545408A7",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "15.58"
   },
   {
     "id": "271",
-    "name": "Halo: Reach",
-    "type": "Xbox 360",
-    "size": "6.86"
+    "name": "Grand Theft Auto: San Andreas",
+    "titleId": "545400A3",
+    "type": "Xbox",
+    "sizeGb": "2.87"
   },
   {
     "id": "272",
-    "name": "Hard Corps: Uprising",
-    "type": "Xbox 360",
-    "size": "1"
+    "name": "Grand Theft Auto: Vice City",
+    "titleId": "54540073",
+    "type": "Xbox",
+    "sizeGb": "1.30"
   },
   {
     "id": "273",
-    "name": "Hexic HD",
+    "name": "Greed Corp",
+    "titleId": "58410A24",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "0.21"
   },
   {
     "id": "274",
-    "name": "Hitman: Absolution",
+    "name": "Green Day: Rock Band",
+    "titleId": "454108E7",
     "type": "Xbox 360",
-    "size": "9.63"
+    "sizeGb": "4.91"
   },
   {
     "id": "275",
-    "name": "Hitman: Blood Money",
+    "name": "GRID",
+    "titleId": "434D07FF",
     "type": "Xbox 360",
-    "size": "4.94"
+    "sizeGb": "6.37"
   },
   {
     "id": "276",
-    "name": "Hitman: Contracts",
-    "type": "Xbox",
-    "size": "2.26"
+    "name": "GRID 2",
+    "titleId": "434D0844",
+    "type": "Xbox 360",
+    "sizeGb": "6.17"
   },
   {
     "id": "277",
-    "name": "Hydro Thunder",
+    "name": "GRID Autosport",
+    "titleId": "434D0851",
     "type": "Xbox 360",
-    "size": "0.55"
+    "sizeGb": "8.30"
   },
   {
     "id": "278",
-    "name": "Ikaruga",
+    "name": "GripShift",
+    "titleId": "5841089E",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "0.18"
   },
   {
     "id": "279",
-    "name": "IL-2 Sturmovik: Birds of Prey",
+    "name": "Guardian Heroes",
+    "titleId": "58410B2B",
     "type": "Xbox 360",
-    "size": "3.5"
+    "sizeGb": "0.90"
   },
   {
     "id": "280",
-    "name": "ilomilo",
-    "type": "Xbox 360",
-    "size": "0.26"
+    "name": "Guilty Gear X2 #Reload: The Midnight Carnival",
+    "titleId": "53410002",
+    "type": "Xbox",
+    "sizeGb": "0.88"
   },
   {
     "id": "281",
-    "name": "Indigo Prophecy",
-    "type": "Xbox",
-    "size": "1.9"
+    "name": "Guilty Gear XX Accent Core Plus",
+    "titleId": "584111DD",
+    "type": "Xbox 360",
+    "sizeGb": "1.15"
   },
   {
     "id": "282",
-    "name": "Injustice: Gods Among Us",
+    "name": "Guitar Hero 5",
+    "titleId": "41560840",
     "type": "Xbox 360",
-    "size": "8.76"
+    "sizeGb": "15.15"
   },
   {
     "id": "283",
-    "name": "Insanely Twisted Shadow Planet",
+    "name": "Guitar Hero II",
+    "titleId": "415607E7",
     "type": "Xbox 360",
-    "size": "0.64"
+    "sizeGb": "3.65"
   },
   {
     "id": "284",
-    "name": "Iron Brigade",
+    "name": "Guitar Hero III: Legends of Rock",
+    "titleId": "415607F7",
     "type": "Xbox 360",
-    "size": "1.7"
+    "sizeGb": "8.76"
   },
   {
     "id": "285",
-    "name": "Jade Empire",
-    "type": "Xbox",
-    "size": "6.17"
+    "name": "Guitar Hero World Tour",
+    "titleId": "4156081A",
+    "type": "Xbox 360",
+    "sizeGb": "11.98"
   },
   {
     "id": "286",
-    "name": "Joe Danger 2: The Movie",
+    "name": "Guitar Hero: Metallica",
+    "titleId": "41560830",
     "type": "Xbox 360",
-    "size": "0.92"
+    "sizeGb": "6.76"
   },
   {
     "id": "287",
-    "name": "Joe Danger Special Edition",
+    "name": "Gun",
+    "titleId": "415607D3",
     "type": "Xbox 360",
-    "size": "1.66"
+    "sizeGb": "7.08"
   },
   {
     "id": "288",
-    "name": "JSRF: Jet Set Radio Future",
-    "type": "Xbox",
-    "size": "2.34"
+    "name": "Guwange",
+    "titleId": "58410A78",
+    "type": "Xbox 360",
+    "sizeGb": "0.11"
   },
   {
     "id": "289",
-    "name": "Just Cause",
+    "name": "Gyromancer",
+    "titleId": "584109C6",
     "type": "Xbox 360",
-    "size": "5.39"
+    "sizeGb": "0.16"
   },
   {
     "id": "290",
-    "name": "Just Cause 2",
+    "name": "Half Minute Hero: Super Mega Neo Climax",
+    "titleId": "58410B3D",
     "type": "Xbox 360",
-    "size": "4.07"
+    "sizeGb": "0.32"
   },
   {
     "id": "291",
-    "name": "Just Dance 2014",
-    "type": "Xbox 360",
-    "size": "8.42"
+    "name": "Half-Life 2",
+    "titleId": "45410091",
+    "type": "Xbox",
+    "sizeGb": "1.93"
   },
   {
     "id": "292",
-    "name": "Just Dance 4",
-    "type": "Xbox 360",
-    "size": "6.61"
+    "name": "Halo",
+    "titleId": "4D530004",
+    "type": "Xbox",
+    "sizeGb": "3.39"
   },
   {
     "id": "293",
-    "name": "Kameo: Elements of Power",
-    "type": "Xbox 360",
-    "size": "5.42"
+    "name": "Halo 2",
+    "titleId": "4D530064",
+    "type": "Xbox",
+    "sizeGb": "4.42"
   },
   {
     "id": "294",
-    "name": "Kinect Party - Base Game",
-    "type": "Xbox 360",
-    "size": "0.56"
+    "name": "Halo 2 Multiplayer Map Pack",
+    "titleId": "4D5380CD",
+    "type": "Xbox",
+    "sizeGb": "5.13"
   },
   {
     "id": "295",
-    "name": "Kinectimals",
+    "name": "Halo 3",
+    "titleId": "4D5307E6",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "7.88"
   },
   {
     "id": "296",
-    "name": "Kingdom Under Fire: The Crusaders",
-    "type": "Xbox",
-    "size": "1.87"
+    "name": "Halo 3: ODST",
+    "titleId": "4D530877",
+    "type": "Xbox 360",
+    "sizeGb": "3.47"
   },
   {
     "id": "297",
-    "name": "Kingdoms of Amalur: Reckoning",
+    "name": "Halo 4",
+    "titleId": "4D530919",
     "type": "Xbox 360",
-    "size": "5.85"
+    "sizeGb": "15.66"
   },
   {
     "id": "298",
-    "name": "Kung Fu Panda",
+    "name": "Halo Wars",
+    "titleId": "4D530808",
     "type": "Xbox 360",
-    "size": "3.62"
+    "sizeGb": "7.27"
   },
   {
     "id": "299",
-    "name": "L.A. Noire",
+    "name": "Halo: Combat Evolved Anniversary",
+    "titleId": "4D5309B1",
     "type": "Xbox 360",
-    "size": "29.68"
+    "sizeGb": "8.15"
   },
   {
     "id": "300",
-    "name": "Lara Croft and the Guardian of Light",
+    "name": "Hard Corps: Uprising",
+    "titleId": "58410A18",
     "type": "Xbox 360",
-    "size": "2.57"
+    "sizeGb": "1.00"
   },
   {
     "id": "301",
-    "name": "Lara Croft Tomb Raider: Anniversary",
+    "name": "Heavy Weapon",
+    "titleId": "58410810",
     "type": "Xbox 360",
-    "size": "3.01"
+    "sizeGb": "0.04"
   },
   {
     "id": "302",
-    "name": "Lazy Raiders",
+    "name": "Hexic HD",
+    "titleId": "584107D1",
     "type": "Xbox 360",
-    "size": "0.17"
+    "sizeGb": "0.05"
   },
   {
     "id": "303",
-    "name": "Left 4 Dead",
+    "name": "Hitman: Absolution",
+    "titleId": "53510804",
     "type": "Xbox 360",
-    "size": "5.68"
+    "sizeGb": "9.63"
   },
   {
     "id": "304",
-    "name": "Left 4 Dead 2",
+    "name": "Hitman: Blood Money",
+    "titleId": "534307DB",
     "type": "Xbox 360",
-    "size": "7.81"
+    "sizeGb": "4.94"
   },
   {
     "id": "305",
-    "name": "LEGO Batman 2: DC Super Heroes",
-    "type": "Xbox 360",
-    "size": "4.2"
+    "name": "Hitman: Contracts",
+    "titleId": "45530012",
+    "type": "Xbox",
+    "sizeGb": "2.26"
   },
   {
     "id": "306",
-    "name": "LEGO Batman: The Videogame",
+    "name": "Hybrid",
+    "titleId": "584109E9",
     "type": "Xbox 360",
-    "size": "5.96"
+    "sizeGb": "1.59"
   },
   {
     "id": "307",
-    "name": "LEGO Harry Potter: Years 1-4",
+    "name": "Hydro Thunder",
+    "titleId": "5841096A",
     "type": "Xbox 360",
-    "size": "6.33"
+    "sizeGb": "0.55"
   },
   {
     "id": "308",
-    "name": "LEGO Harry Potter: Years 5-7",
+    "name": "Ikaruga",
+    "titleId": "58410878",
     "type": "Xbox 360",
-    "size": "7.74"
+    "sizeGb": "0.05"
   },
   {
     "id": "309",
-    "name": "LEGO Indiana Jones: The Original Adventures",
+    "name": "IL-2 Sturmovik: Birds of Prey",
+    "titleId": "464F07D1",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "3.50"
   },
   {
     "id": "310",
-    "name": "LEGO Marvel Super Heroes",
+    "name": "ilomilo",
+    "titleId": "58410A1B",
     "type": "Xbox 360",
-    "size": "5.16"
+    "sizeGb": "0.26"
   },
   {
     "id": "311",
-    "name": "LEGO Pirates of the Caribbean: The Video Game",
+    "name": "Injustice: Gods Among Us",
+    "titleId": "57520829",
     "type": "Xbox 360",
-    "size": "6.3"
+    "sizeGb": "8.76"
   },
   {
     "id": "312",
-    "name": "LEGO Star Wars II: The Original Trilogy",
+    "name": "Insanely Twisted Shadow Planet",
+    "titleId": "58410B1C",
     "type": "Xbox 360",
-    "size": "1.96"
+    "sizeGb": "0.64"
   },
   {
     "id": "313",
-    "name": "LEGO Star Wars II: The Original Trilogy",
-    "type": "Xbox",
-    "size": "1.59"
+    "name": "Iron Brigade",
+    "titleId": "58410A95",
+    "type": "Xbox 360",
+    "sizeGb": "1.70"
   },
   {
     "id": "314",
-    "name": "LEGO Star Wars III: The Clone Wars",
-    "type": "Xbox 360",
-    "size": "6.02"
+    "name": "Jade Empire",
+    "titleId": "4D53006D",
+    "type": "Xbox",
+    "sizeGb": "6.17"
   },
   {
     "id": "315",
-    "name": "LEGO Star Wars: The Complete Saga",
+    "name": "Jetpac Refuelled",
+    "titleId": "584107FB",
     "type": "Xbox 360",
-    "size": "5.71"
+    "sizeGb": "0.02"
   },
   {
     "id": "316",
-    "name": "LEGO The Lord of the Rings",
+    "name": "Joe Danger 2: The Movie",
+    "titleId": "584111F6",
     "type": "Xbox 360",
-    "size": "5.97"
+    "sizeGb": "0.92"
   },
   {
     "id": "317",
-    "name": "LIMBO",
+    "name": "Joe Danger Special Edition",
+    "titleId": "584111F5",
     "type": "Xbox 360",
-    "size": "0.11"
+    "sizeGb": "1.66"
   },
   {
     "id": "318",
-    "name": "Lode Runner",
-    "type": "Xbox 360",
-    "size": "0.07"
+    "name": "JSRF: Jet Set Radio Future",
+    "titleId": "5345000A",
+    "type": "Xbox",
+    "sizeGb": "2.34"
   },
   {
     "id": "319",
-    "name": "Lost Odyssey",
+    "name": "Just Cause",
+    "titleId": "534307D5",
     "type": "Xbox 360",
-    "size": "28.43"
+    "sizeGb": "5.39"
   },
   {
     "id": "320",
-    "name": "Lost Planet: Extreme Condition",
+    "name": "Just Cause 2",
+    "titleId": "534307E7",
     "type": "Xbox 360",
-    "size": "6.82"
+    "sizeGb": "4.07"
   },
   {
     "id": "321",
-    "name": "Madden NFL 07",
+    "name": "Just Dance 2014",
+    "titleId": "555308C1",
     "type": "Xbox 360",
-    "size": "4.13"
+    "sizeGb": "8.42"
   },
   {
     "id": "322",
-    "name": "Madden NFL 08",
+    "name": "Just Dance 4",
+    "titleId": "555308B5",
     "type": "Xbox 360",
-    "size": "5.83"
+    "sizeGb": "6.61"
   },
   {
     "id": "323",
-    "name": "Madden NFL 09",
+    "name": "Kameo: Elements of Power",
+    "titleId": "4D5307D2",
     "type": "Xbox 360",
-    "size": "6.59"
+    "sizeGb": "5.42"
   },
   {
     "id": "324",
-    "name": "Madden NFL 10",
+    "name": "Kinect Disneyland Adventures",
+    "titleId": "4D5309C1",
     "type": "Xbox 360",
-    "size": "5.71"
+    "sizeGb": "6.20"
   },
   {
     "id": "325",
-    "name": "Madden NFL 11",
+    "name": "Kinect Nat Geo TV",
+    "titleId": "4D5309CD",
     "type": "Xbox 360",
-    "size": "5.26"
+    "sizeGb": "11.49"
   },
   {
     "id": "326",
-    "name": "Madden NFL 13",
+    "name": "Kinect Party - Base Game",
+    "titleId": "5841125C",
     "type": "Xbox 360",
-    "size": "5.21"
+    "sizeGb": "0.56"
   },
   {
     "id": "327",
-    "name": "Madden NFL 25",
+    "name": "Kinect Sports",
+    "titleId": "4D5308C9",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "4.17"
   },
   {
     "id": "328",
-    "name": "Mafia II",
+    "name": "Kinectimals",
+    "titleId": "4D5308B3",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "7.09"
   },
   {
     "id": "329",
-    "name": "Magic 2012",
-    "type": "Xbox 360",
-    "size": "0.51"
+    "name": "Kingdom Under Fire: The Crusaders",
+    "titleId": "504C0002",
+    "type": "Xbox",
+    "sizeGb": "1.87"
   },
   {
     "id": "330",
-    "name": "Magic 2013",
+    "name": "Kingdoms of Amalur: Reckoning",
+    "titleId": "4541093E",
     "type": "Xbox 360",
-    "size": "1.41"
+    "sizeGb": "5.85"
   },
   {
     "id": "331",
-    "name": "Magic 2014 - Duels of the Planeswalkers",
+    "name": "KOF98UM",
+    "titleId": "584108D1",
     "type": "Xbox 360",
-    "size": "1.17"
+    "sizeGb": "0.19"
   },
   {
     "id": "332",
-    "name": "Magic: The Gathering",
+    "name": "Kung Fu Panda",
+    "titleId": "415607F2",
     "type": "Xbox 360",
-    "size": "0.27"
+    "sizeGb": "3.62"
   },
   {
     "id": "333",
-    "name": "Major League Baseball 2K10",
+    "name": "L.A. Noire",
+    "titleId": "5454086C",
     "type": "Xbox 360",
-    "size": "6.39"
+    "sizeGb": "29.68"
   },
   {
     "id": "334",
-    "name": "Mark of the Ninja",
+    "name": "Lara Croft and the Guardian of Light",
+    "titleId": "58410A59",
     "type": "Xbox 360",
-    "size": "1.79"
+    "sizeGb": "2.57"
   },
   {
     "id": "335",
-    "name": "Marvel vs. Capcom 2",
+    "name": "Lara Croft Tomb Raider: Anniversary",
+    "titleId": "534307EA",
     "type": "Xbox 360",
-    "size": "0.19"
+    "sizeGb": "3.01"
   },
   {
     "id": "336",
-    "name": "Marvel vs. Capcom 3: Fate of Two Worlds",
+    "name": "Lazy Raiders",
+    "titleId": "5841095F",
     "type": "Xbox 360",
-    "size": "2.8"
+    "sizeGb": "0.17"
   },
   {
     "id": "337",
-    "name": "Marvel: Ultimate Alliance",
+    "name": "Left 4 Dead",
+    "titleId": "45410830",
     "type": "Xbox 360",
-    "size": "7.16"
+    "sizeGb": "5.68"
   },
   {
     "id": "338",
-    "name": "Marvel: Ultimate Alliance 2",
+    "name": "Left 4 Dead 2",
+    "titleId": "454108D4",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "7.81"
   },
   {
     "id": "339",
-    "name": "Mass Effect",
+    "name": "LEGO Batman 2: DC Super Heroes",
+    "titleId": "57520817",
     "type": "Xbox 360",
-    "size": "7.58"
+    "sizeGb": "4.20"
   },
   {
     "id": "340",
-    "name": "Mass Effect 2",
+    "name": "LEGO Batman: The Videogame",
+    "titleId": "575207D7",
     "type": "Xbox 360",
-    "size": "19.31"
+    "sizeGb": "5.96"
   },
   {
     "id": "341",
-    "name": "Mass Effect 3",
+    "name": "LEGO Harry Potter: Years 1-4",
+    "titleId": "575207E6",
     "type": "Xbox 360",
-    "size": "29.04"
+    "sizeGb": "6.33"
   },
   {
     "id": "342",
-    "name": "Max Payne",
-    "type": "Xbox",
-    "size": "1.63"
+    "name": "LEGO Harry Potter: Years 5-7",
+    "titleId": "57520812",
+    "type": "Xbox 360",
+    "sizeGb": "7.74"
   },
   {
     "id": "343",
-    "name": "Max Payne 2: The Fall of Max Payne",
-    "type": "Xbox",
-    "size": "1.65"
+    "name": "LEGO Indiana Jones: The Original Adventures",
+    "titleId": "4C4107DF",
+    "type": "Xbox 360",
+    "sizeGb": "7.08"
   },
   {
     "id": "344",
-    "name": "Max Payne 3",
+    "name": "LEGO Marvel Super Heroes",
+    "titleId": "57520835",
     "type": "Xbox 360",
-    "size": "17.82"
+    "sizeGb": "5.16"
   },
   {
     "id": "345",
-    "name": "MechAssault 2: Lone Wolf",
-    "type": "Xbox",
-    "size": "2.19"
+    "name": "LEGO Pirates of the Caribbean: The Video Game",
+    "titleId": "42560802",
+    "type": "Xbox 360",
+    "sizeGb": "6.30"
   },
   {
     "id": "346",
-    "name": "Medal of Honor",
-    "type": "Xbox 360",
-    "size": "7.09"
+    "name": "LEGO Star Wars II: The Original Trilogy",
+    "titleId": "4C41001F",
+    "type": "Xbox",
+    "sizeGb": "1.59"
   },
   {
     "id": "347",
-    "name": "Medal of Honor: Airborne",
+    "name": "LEGO Star Wars II: The Original Trilogy",
+    "titleId": "4C4107D1",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "1.96"
   },
   {
     "id": "348",
-    "name": "Medal of Honor: Frontline",
-    "type": "Xbox",
-    "size": "2.97"
+    "name": "LEGO Star Wars III: The Clone Wars",
+    "titleId": "4C4107F3",
+    "type": "Xbox 360",
+    "sizeGb": "6.02"
   },
   {
     "id": "349",
-    "name": "Mega Man 10",
+    "name": "LEGO Star Wars: The Complete Saga",
+    "titleId": "4C4107D7",
     "type": "Xbox 360",
-    "size": "0.19"
+    "sizeGb": "5.71"
   },
   {
     "id": "350",
-    "name": "Mega Man 9",
+    "name": "LEGO The Lord of the Rings",
+    "titleId": "5752081D",
     "type": "Xbox 360",
-    "size": "0.09"
+    "sizeGb": "5.97"
   },
   {
     "id": "351",
-    "name": "Mercenaries",
-    "type": "Xbox",
-    "size": "2.35"
+    "name": "LIMBO",
+    "titleId": "584109D1",
+    "type": "Xbox 360",
+    "sizeGb": "0.11"
   },
   {
     "id": "352",
-    "name": "Metal Arms: Glitch in the System",
-    "type": "Xbox",
-    "size": "1.42"
+    "name": "Lode Runner",
+    "titleId": "5841085B",
+    "type": "Xbox 360",
+    "sizeGb": "0.07"
   },
   {
     "id": "353",
-    "name": "Metal Gear Rising: Revengeance",
+    "name": "Lost Odyssey",
+    "titleId": "4D5307FA",
     "type": "Xbox 360",
-    "size": "10.03"
+    "sizeGb": "28.43"
   },
   {
     "id": "354",
-    "name": "Metal Gear Solid HD Collection",
+    "name": "Lost Planet: Extreme Condition",
+    "titleId": "434307D3",
     "type": "Xbox 360",
-    "size": "7.4"
+    "sizeGb": "6.82"
   },
   {
     "id": "355",
-    "name": "Metal Slug 3",
+    "name": "Lost Planet: Extreme Condition: Colonies Edition",
+    "titleId": "434307DE",
     "type": "Xbox 360",
-    "size": "0.04"
+    "sizeGb": "6.62"
   },
   {
     "id": "356",
-    "name": "Metro 2033",
+    "name": "LUMINES LIVE!",
+    "titleId": "584107F8",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "0.05"
   },
   {
     "id": "357",
-    "name": "Metro: Last Light",
+    "name": "Madden NFL 06",
+    "titleId": "454107D2",
     "type": "Xbox 360",
-    "size": "7.54"
+    "sizeGb": "3.34"
   },
   {
     "id": "358",
-    "name": "Midnight Club: Los Angeles",
+    "name": "Madden NFL 07",
+    "titleId": "454107EB",
     "type": "Xbox 360",
-    "size": "7.58"
+    "sizeGb": "4.13"
   },
   {
     "id": "359",
-    "name": "Minecraft: Xbox 360 Edition",
+    "name": "Madden NFL 08",
+    "titleId": "4541081D",
     "type": "Xbox 360",
-    "size": "1.99"
+    "sizeGb": "5.83"
   },
   {
     "id": "360",
-    "name": "Mirror's Edge",
+    "name": "Madden NFL 09",
+    "titleId": "45410864",
     "type": "Xbox 360",
-    "size": "7.16"
+    "sizeGb": "6.59"
   },
   {
     "id": "361",
-    "name": "Monaco: What's Yours is Mine",
+    "name": "Madden NFL 10",
+    "titleId": "454108C6",
     "type": "Xbox 360",
-    "size": "0.39"
+    "sizeGb": "5.71"
   },
   {
     "id": "362",
-    "name": "Monday Night Combat",
+    "name": "Madden NFL 11",
+    "titleId": "454108FE",
     "type": "Xbox 360",
-    "size": "1.2"
+    "sizeGb": "5.26"
   },
   {
     "id": "363",
-    "name": "Mortal Kombat",
+    "name": "Madden NFL 12",
+    "titleId": "45410937",
     "type": "Xbox 360",
-    "size": "7.41"
+    "sizeGb": "4.71"
   },
   {
     "id": "364",
-    "name": "Mortal Kombat: Armageddon",
-    "type": "Xbox",
-    "size": "4.34"
+    "name": "Madden NFL 13",
+    "titleId": "4541098B",
+    "type": "Xbox 360",
+    "sizeGb": "5.21"
   },
   {
     "id": "365",
-    "name": "Mortal Kombat: Deception",
-    "type": "Xbox",
-    "size": "3.79"
+    "name": "Madden NFL 25",
+    "titleId": "454109C1",
+    "type": "Xbox 360",
+    "sizeGb": "7.08"
   },
   {
     "id": "366",
-    "name": "MotoGP",
-    "type": "Xbox",
-    "size": "2.01"
+    "name": "Mafia II",
+    "titleId": "545407E6",
+    "type": "Xbox 360",
+    "sizeGb": "7.09"
   },
   {
     "id": "367",
-    "name": "MotoGP '06",
+    "name": "Magic 2012",
+    "titleId": "58410B3F",
     "type": "Xbox 360",
-    "size": "4.54"
+    "sizeGb": "0.51"
   },
   {
     "id": "368",
-    "name": "MotoGP 2",
-    "type": "Xbox",
-    "size": "2.73"
+    "name": "Magic 2013",
+    "titleId": "58411213",
+    "type": "Xbox 360",
+    "sizeGb": "1.41"
   },
   {
     "id": "369",
-    "name": "Ms. Splosion Man",
+    "name": "Magic 2014 - Duels of the Planeswalkers",
+    "titleId": "584112C5",
     "type": "Xbox 360",
-    "size": "1.94"
+    "sizeGb": "1.17"
   },
   {
     "id": "370",
-    "name": "MX vs. ATV Reflex",
+    "name": "Magic: The Gathering",
+    "titleId": "58410860",
     "type": "Xbox 360",
-    "size": "6.76"
+    "sizeGb": "0.27"
   },
   {
     "id": "371",
-    "name": "N+",
+    "name": "Majin and the Forsaken Kingdom",
+    "titleId": "4E4D0816",
     "type": "Xbox 360",
-    "size": "0.01"
+    "sizeGb": "1.72"
   },
   {
     "id": "372",
-    "name": "Naruto Shippuden: Ultimate Ninja Storm 2",
+    "name": "Major League Baseball 2K10",
+    "titleId": "54540855",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "6.39"
   },
   {
     "id": "373",
-    "name": "Naruto Shippuden: Ultimate Ninja Storm Generations",
+    "name": "Major League Baseball 2K7",
+    "titleId": "545407FA",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "6.78"
   },
   {
     "id": "374",
-    "name": "Naruto: Rise of a Ninja",
+    "name": "Mark of the Ninja",
+    "titleId": "58411228",
     "type": "Xbox 360",
-    "size": "7.38"
+    "sizeGb": "1.79"
   },
   {
     "id": "375",
-    "name": "Naruto: The Broken Bond",
+    "name": "Marvel vs. Capcom 2",
+    "titleId": "58410976",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.19"
   },
   {
     "id": "376",
-    "name": "NBA 2K10",
+    "name": "Marvel vs. Capcom 3: Fate of Two Worlds",
+    "titleId": "43430806",
     "type": "Xbox 360",
-    "size": "6.15"
+    "sizeGb": "2.80"
   },
   {
     "id": "377",
-    "name": "NBA 2K11",
+    "name": "Marvel: Ultimate Alliance",
+    "titleId": "415607DA",
     "type": "Xbox 360",
-    "size": "6.62"
+    "sizeGb": "7.16"
   },
   {
     "id": "378",
-    "name": "NBA 2K12",
+    "name": "Marvel: Ultimate Alliance 2",
+    "titleId": "4156082F",
     "type": "Xbox 360",
-    "size": "7.52"
+    "sizeGb": "7.09"
   },
   {
     "id": "379",
-    "name": "NBA 2K13",
+    "name": "Mass Effect",
+    "titleId": "4D5307E8",
     "type": "Xbox 360",
-    "size": "8.62"
+    "sizeGb": "7.58"
   },
   {
     "id": "380",
-    "name": "NBA 2K14",
+    "name": "Mass Effect 2",
+    "titleId": "454108CE",
     "type": "Xbox 360",
-    "size": "8.92"
+    "sizeGb": "19.31"
   },
   {
     "id": "381",
-    "name": "NBA 2K6",
+    "name": "Mass Effect 3",
+    "titleId": "4541095D",
     "type": "Xbox 360",
-    "size": "6.59"
+    "sizeGb": "29.04"
   },
   {
     "id": "382",
-    "name": "NBA 2K7",
-    "type": "Xbox 360",
-    "size": "6.69"
+    "name": "Max Payne",
+    "titleId": "54540003",
+    "type": "Xbox",
+    "sizeGb": "1.63"
   },
   {
     "id": "383",
-    "name": "NBA 2K8",
-    "type": "Xbox 360",
-    "size": "6.81"
+    "name": "Max Payne 2: The Fall of Max Payne",
+    "titleId": "5454000C",
+    "type": "Xbox",
+    "sizeGb": "1.65"
   },
   {
     "id": "384",
-    "name": "NBA 2K9",
+    "name": "Max Payne 3",
+    "titleId": "5454086B",
     "type": "Xbox 360",
-    "size": "6.69"
+    "sizeGb": "17.82"
   },
   {
     "id": "385",
-    "name": "NBA JAM: On Fire Edition",
-    "type": "Xbox 360",
-    "size": "0.83"
+    "name": "MechAssault 2: Lone Wolf",
+    "titleId": "4D53006B",
+    "type": "Xbox",
+    "sizeGb": "2.19"
   },
   {
     "id": "386",
-    "name": "NBA Live 10",
+    "name": "Medal of Honor",
+    "titleId": "454108F7",
     "type": "Xbox 360",
-    "size": "6.01"
+    "sizeGb": "7.09"
   },
   {
     "id": "387",
-    "name": "NBA Street Homecourt",
+    "name": "Medal of Honor: Airborne",
+    "titleId": "454107F6",
     "type": "Xbox 360",
-    "size": "4.39"
+    "sizeGb": "7.08"
   },
   {
     "id": "388",
-    "name": "NCAA Basketball 10",
-    "type": "Xbox 360",
-    "size": "5.83"
+    "name": "Medal of Honor: En Première Ligne",
+    "titleId": "4541001A",
+    "type": "Xbox",
+    "sizeGb": "2.97"
   },
   {
     "id": "389",
-    "name": "NCAA Football 07",
+    "name": "Mega Man 10",
+    "titleId": "584109EE",
     "type": "Xbox 360",
-    "size": "5.29"
+    "sizeGb": "0.19"
   },
   {
     "id": "390",
-    "name": "NCAA Football 08",
+    "name": "Mega Man 9",
+    "titleId": "5841092A",
     "type": "Xbox 360",
-    "size": "5.98"
+    "sizeGb": "0.09"
   },
   {
     "id": "391",
-    "name": "NCAA Football 09",
-    "type": "Xbox 360",
-    "size": "6.25"
+    "name": "Mercenaries",
+    "titleId": "4C410015",
+    "type": "Xbox",
+    "sizeGb": "2.35"
   },
   {
     "id": "392",
-    "name": "NCAA Football 10",
+    "name": "Mercenaries 2: World in Flames",
+    "titleId": "45410828",
     "type": "Xbox 360",
-    "size": "5.51"
+    "sizeGb": "5.92"
   },
   {
     "id": "393",
-    "name": "NCAA Football 11",
+    "name": "Mercury Hg",
+    "titleId": "58410B8B",
     "type": "Xbox 360",
-    "size": "6.1"
+    "sizeGb": "0.17"
   },
   {
     "id": "394",
-    "name": "NCAA Football 12",
-    "type": "Xbox 360",
-    "size": "6.1"
+    "name": "Metal Arms: Glitch in the System",
+    "titleId": "5655000A",
+    "type": "Xbox",
+    "sizeGb": "1.42"
   },
   {
     "id": "395",
-    "name": "NCAA Football 13",
+    "name": "Metal Gear Rising: Revengeance",
+    "titleId": "4B4E080A",
     "type": "Xbox 360",
-    "size": "7.67"
+    "sizeGb": "10.03"
   },
   {
     "id": "396",
-    "name": "NCAA Football 14",
+    "name": "Metal Gear Solid HD Collection",
+    "titleId": "4B4E0840",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "7.40"
   },
   {
     "id": "397",
-    "name": "Need for Speed Carbon",
+    "name": "Metal Gear Solid V: The Phantom Pain",
+    "titleId": "4B4E085E",
     "type": "Xbox 360",
-    "size": "5.82"
+    "sizeGb": "13.32"
   },
   {
     "id": "398",
-    "name": "Need for Speed Most Wanted",
+    "name": "Metal Slug 3",
+    "titleId": "584108CF",
     "type": "Xbox 360",
-    "size": "6.79"
+    "sizeGb": "0.04"
   },
   {
     "id": "399",
-    "name": "Need for Speed Rivals",
+    "name": "Metro 2033",
+    "titleId": "54510842",
     "type": "Xbox 360",
-    "size": "8.51"
+    "sizeGb": "7.09"
   },
   {
     "id": "400",
-    "name": "Need for Speed Shift",
+    "name": "Metro: Last Light",
+    "titleId": "4B4D07F5",
     "type": "Xbox 360",
-    "size": "7.42"
+    "sizeGb": "7.54"
   },
   {
     "id": "401",
-    "name": "Need for Speed Shift 2: Unleashed",
+    "name": "Midnight Club: Los Angeles",
+    "titleId": "545407F8",
     "type": "Xbox 360",
-    "size": "5.89"
+    "sizeGb": "7.58"
   },
   {
     "id": "402",
-    "name": "Need for Speed: Hot Pursuit",
+    "name": "Might \u0026 Magic Clash of Heroes",
+    "titleId": "58410A19",
     "type": "Xbox 360",
-    "size": "7.25"
+    "sizeGb": "1.44"
   },
   {
     "id": "403",
-    "name": "Need for Speed: Most Wanted (2012)",
+    "name": "Minecraft: Xbox 360 Edition",
+    "titleId": "584111F7",
     "type": "Xbox 360",
-    "size": "6.15"
+    "sizeGb": "1.99"
   },
   {
     "id": "404",
-    "name": "NHL 07",
+    "name": "Mini Ninjas",
+    "titleId": "534307E4",
     "type": "Xbox 360",
-    "size": "3.15"
+    "sizeGb": "5.57"
   },
   {
     "id": "405",
-    "name": "NHL 08",
+    "name": "Mirror\u0027s Edge",
+    "titleId": "45410850",
     "type": "Xbox 360",
-    "size": "4.86"
+    "sizeGb": "7.16"
   },
   {
     "id": "406",
-    "name": "NHL 09",
+    "name": "Monaco: What\u0027s Yours is Mine",
+    "titleId": "58411297",
     "type": "Xbox 360",
-    "size": "5.05"
+    "sizeGb": "0.39"
   },
   {
     "id": "407",
-    "name": "NHL 10",
+    "name": "Monday Night Combat",
+    "titleId": "58410A3D",
     "type": "Xbox 360",
-    "size": "4.94"
+    "sizeGb": "1.20"
   },
   {
     "id": "408",
-    "name": "NHL 11",
+    "name": "Monkey Island",
+    "titleId": "58410995",
     "type": "Xbox 360",
-    "size": "4.59"
+    "sizeGb": "0.52"
   },
   {
     "id": "409",
-    "name": "NHL 12",
+    "name": "Monkey Island 2",
+    "titleId": "58410A53",
     "type": "Xbox 360",
-    "size": "5.64"
+    "sizeGb": "0.97"
   },
   {
     "id": "410",
-    "name": "NHL 13",
+    "name": "Mortal Kombat",
+    "titleId": "575207FD",
     "type": "Xbox 360",
-    "size": "5.91"
+    "sizeGb": "7.41"
   },
   {
     "id": "411",
-    "name": "NHL 14",
+    "name": "Mortal Kombat vs. DC Universe",
+    "titleId": "4D5707E9",
     "type": "Xbox 360",
-    "size": "6.33"
+    "sizeGb": "6.01"
   },
   {
     "id": "412",
-    "name": "NHL 2K6",
-    "type": "Xbox 360",
-    "size": "6.67"
+    "name": "Mortal Kombat: Armageddon",
+    "titleId": "4D570034",
+    "type": "Xbox",
+    "sizeGb": "4.34"
   },
   {
     "id": "413",
-    "name": "Ninja Gaiden",
+    "name": "Mortal Kombat: Deception",
+    "titleId": "4D570019",
     "type": "Xbox",
-    "size": "5.91"
+    "sizeGb": "3.79"
   },
   {
     "id": "414",
-    "name": "Ninja Gaiden Black",
-    "type": "Xbox",
-    "size": "5.93"
+    "name": "Motocross Madness",
+    "titleId": "58410B0F",
+    "type": "Xbox 360",
+    "sizeGb": "1.63"
   },
   {
     "id": "415",
-    "name": "Ninja Gaiden II",
-    "type": "Xbox 360",
-    "size": "6.93"
+    "name": "MotoGP",
+    "titleId": "54510008",
+    "type": "Xbox",
+    "sizeGb": "2.01"
   },
   {
     "id": "416",
-    "name": "Orcs Must Die!",
+    "name": "MotoGP \u002706",
+    "titleId": "545107D4",
     "type": "Xbox 360",
-    "size": "1.78"
+    "sizeGb": "4.54"
   },
   {
     "id": "417",
-    "name": "Outland",
+    "name": "MotoGP \u002707",
+    "titleId": "545107F6",
     "type": "Xbox 360",
-    "size": "0.51"
+    "sizeGb": "3.89"
   },
   {
     "id": "418",
-    "name": "Overlord",
+    "name": "MotoGP 13",
+    "titleId": "513107D1",
     "type": "Xbox 360",
-    "size": "3.15"
+    "sizeGb": "4.86"
   },
   {
     "id": "419",
-    "name": "Overlord II",
-    "type": "Xbox 360",
-    "size": "3.51"
+    "name": "MotoGP 2",
+    "titleId": "54510016",
+    "type": "Xbox",
+    "sizeGb": "2.73"
   },
   {
     "id": "420",
-    "name": "Pac-Man C.E.",
+    "name": "Ms. Splosion Man",
+    "titleId": "58410B19",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "1.94"
   },
   {
     "id": "421",
-    "name": "PAC-MAN Championship Edition DX+",
+    "name": "Mutant Storm Empire",
+    "titleId": "5841081E",
     "type": "Xbox 360",
-    "size": "0.22"
+    "sizeGb": "0.04"
   },
   {
     "id": "422",
-    "name": "Panzer Dragoon Orta",
-    "type": "Xbox",
-    "size": "2.9"
+    "name": "Mutant Storm Reloaded",
+    "titleId": "584107DA",
+    "type": "Xbox 360",
+    "sizeGb": "0.03"
   },
   {
     "id": "423",
-    "name": "Panzer General",
+    "name": "MX vs. ATV Reflex",
+    "titleId": "54510829",
     "type": "Xbox 360",
-    "size": "0.23"
+    "sizeGb": "6.76"
   },
   {
     "id": "424",
-    "name": "Payday 2",
+    "name": "N+",
+    "titleId": "5841085C",
     "type": "Xbox 360",
-    "size": "7.31"
+    "sizeGb": "0.01"
   },
   {
     "id": "425",
-    "name": "Peggle",
+    "name": "Naruto Shippuden: Ultimate Ninja Storm 2",
+    "titleId": "4E4D0819",
     "type": "Xbox 360",
-    "size": "0.13"
+    "sizeGb": "7.09"
   },
   {
     "id": "426",
-    "name": "Penny Arcade Episode 1",
+    "name": "Naruto Shippuden: Ultimate Ninja Storm Generations",
+    "titleId": "4E4D0842",
     "type": "Xbox 360",
-    "size": "0.16"
+    "sizeGb": "8.15"
   },
   {
     "id": "427",
-    "name": "Penny Arcade Episode 2",
+    "name": "Naruto: Rise of a Ninja",
+    "titleId": "555307E5",
     "type": "Xbox 360",
-    "size": "0.25"
+    "sizeGb": "7.38"
   },
   {
     "id": "428",
-    "name": "Perfect Dark Zero",
+    "name": "Naruto: The Broken Bond",
+    "titleId": "55530825",
     "type": "Xbox 360",
-    "size": "7.42"
+    "sizeGb": "7.08"
   },
   {
     "id": "429",
-    "name": "Persona 4 Arena Ultimax",
+    "name": "NASCAR The Game: Inside Line",
+    "titleId": "415608D2",
     "type": "Xbox 360",
-    "size": "7.15"
+    "sizeGb": "2.42"
   },
   {
     "id": "430",
-    "name": "Peter Jackson's King Kong",
+    "name": "NBA 2K10",
+    "titleId": "54540852",
     "type": "Xbox 360",
-    "size": "6.23"
+    "sizeGb": "6.15"
   },
   {
     "id": "431",
-    "name": "Phantom Dust",
-    "type": "Xbox",
-    "size": "4.07"
+    "name": "NBA 2K11",
+    "titleId": "5454087A",
+    "type": "Xbox 360",
+    "sizeGb": "6.62"
   },
   {
     "id": "432",
-    "name": "Pinball Arcade",
+    "name": "NBA 2K12",
+    "titleId": "54540894",
     "type": "Xbox 360",
-    "size": "1.75"
+    "sizeGb": "7.52"
   },
   {
     "id": "433",
-    "name": "Pinball FX2",
+    "name": "NBA 2K13",
+    "titleId": "545408A2",
     "type": "Xbox 360",
-    "size": "1.74"
+    "sizeGb": "8.62"
   },
   {
     "id": "434",
-    "name": "Plants vs. Zombies",
+    "name": "NBA 2K14",
+    "titleId": "545408B0",
     "type": "Xbox 360",
-    "size": "0.08"
+    "sizeGb": "8.92"
   },
   {
     "id": "435",
-    "name": "Poker Smash",
+    "name": "NBA 2K6",
+    "titleId": "545407E2",
     "type": "Xbox 360",
-    "size": "0.13"
+    "sizeGb": "6.59"
   },
   {
     "id": "436",
-    "name": "Portal 2",
+    "name": "NBA 2K7",
+    "titleId": "545407EF",
     "type": "Xbox 360",
-    "size": "8.46"
+    "sizeGb": "6.69"
   },
   {
     "id": "437",
-    "name": "Portal: Still Alive",
+    "name": "NBA 2K8",
+    "titleId": "5454080C",
     "type": "Xbox 360",
-    "size": "0.61"
+    "sizeGb": "6.81"
   },
   {
     "id": "438",
-    "name": "Prince of Persia",
+    "name": "NBA 2K9",
+    "titleId": "54540829",
     "type": "Xbox 360",
-    "size": "5.83"
+    "sizeGb": "6.69"
   },
   {
     "id": "439",
-    "name": "Prince of Persia",
+    "name": "NBA Baller Beats",
+    "titleId": "4D4A07E8",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "1.04"
   },
   {
     "id": "440",
-    "name": "Prince of Persia: The Forgotten Sands",
+    "name": "NBA JAM: On Fire Edition",
+    "titleId": "584111EC",
     "type": "Xbox 360",
-    "size": "4.58"
+    "sizeGb": "0.83"
   },
   {
     "id": "441",
-    "name": "Prince of Persia: The Sands of Time",
-    "type": "Xbox",
-    "size": "2.34"
+    "name": "NBA Live 08",
+    "titleId": "4541082B",
+    "type": "Xbox 360",
+    "sizeGb": "6.53"
   },
   {
     "id": "442",
-    "name": "Pro Evolution Soccer 2008",
+    "name": "NBA Live 09",
+    "titleId": "4541087A",
     "type": "Xbox 360",
-    "size": "4.5"
+    "sizeGb": "6.13"
   },
   {
     "id": "443",
-    "name": "Pro Evolution Soccer 2009",
+    "name": "NBA Live 10",
+    "titleId": "454108C1",
     "type": "Xbox 360",
-    "size": "6.34"
+    "sizeGb": "6.01"
   },
   {
     "id": "444",
-    "name": "Pro Evolution Soccer 2010",
+    "name": "NBA Street Homecourt",
+    "titleId": "454107F7",
     "type": "Xbox 360",
-    "size": "5.74"
+    "sizeGb": "4.39"
   },
   {
     "id": "445",
-    "name": "Pro Evolution Soccer 2010",
+    "name": "NCAA Basketball 10",
+    "titleId": "454108C3",
     "type": "Xbox 360",
-    "size": "0.08"
+    "sizeGb": "5.83"
   },
   {
     "id": "446",
-    "name": "Pro Evolution Soccer 2011",
+    "name": "NCAA Football 07",
+    "titleId": "454107E8",
     "type": "Xbox 360",
-    "size": "6"
+    "sizeGb": "5.29"
   },
   {
     "id": "447",
-    "name": "Pro Evolution Soccer 2012",
+    "name": "NCAA Football 08",
+    "titleId": "4541081A",
     "type": "Xbox 360",
-    "size": "6.06"
+    "sizeGb": "5.98"
   },
   {
     "id": "448",
-    "name": "Pro Evolution Soccer 2013",
+    "name": "NCAA Football 09",
+    "titleId": "4541085D",
     "type": "Xbox 360",
-    "size": "7.48"
+    "sizeGb": "6.25"
   },
   {
     "id": "449",
-    "name": "Pro Evolution Soccer 2014",
+    "name": "NCAA Football 10",
+    "titleId": "454108A4",
     "type": "Xbox 360",
-    "size": "8.28"
+    "sizeGb": "5.51"
   },
   {
     "id": "450",
-    "name": "Pro Evolution Soccer 2015",
+    "name": "NCAA Football 11",
+    "titleId": "45410900",
     "type": "Xbox 360",
-    "size": "6.15"
+    "sizeGb": "6.10"
   },
   {
     "id": "451",
-    "name": "Pro Evolution Soccer 2016",
+    "name": "NCAA Football 12",
+    "titleId": "4541094E",
     "type": "Xbox 360",
-    "size": "7.43"
+    "sizeGb": "6.10"
   },
   {
     "id": "452",
-    "name": "Pro Evolution Soccer 2017",
+    "name": "NCAA Football 13",
+    "titleId": "4541098A",
     "type": "Xbox 360",
-    "size": "6.64"
+    "sizeGb": "7.67"
   },
   {
     "id": "453",
-    "name": "Pro Evolution Soccer 2018",
+    "name": "NCAA Football 14",
+    "titleId": "454109B6",
     "type": "Xbox 360",
-    "size": "6.62"
+    "sizeGb": "6.97"
   },
   {
     "id": "454",
-    "name": "Project Gotham Racing",
-    "type": "Xbox",
-    "size": "2.08"
+    "name": "Need for Speed Carbon",
+    "titleId": "454107EC",
+    "type": "Xbox 360",
+    "sizeGb": "5.82"
   },
   {
     "id": "455",
-    "name": "Project Gotham Racing 2",
-    "type": "Xbox",
-    "size": "5.29"
+    "name": "Need for Speed Most Wanted",
+    "titleId": "454107D9",
+    "type": "Xbox 360",
+    "sizeGb": "6.79"
   },
   {
     "id": "456",
-    "name": "Project Gotham Racing 3",
+    "name": "Need for Speed Rivals",
+    "titleId": "454109C6",
     "type": "Xbox 360",
-    "size": "7.16"
+    "sizeGb": "8.51"
   },
   {
     "id": "457",
-    "name": "Project Gotham Racing 4",
+    "name": "Need for Speed Shift",
+    "titleId": "454108B4",
     "type": "Xbox 360",
-    "size": "6.06"
+    "sizeGb": "7.42"
   },
   {
     "id": "458",
-    "name": "Prototype",
+    "name": "Need for Speed Shift 2: Unleashed",
+    "titleId": "45410934",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "5.89"
   },
   {
     "id": "459",
-    "name": "Prototype 2",
+    "name": "Need for Speed: Hot Pursuit",
+    "titleId": "45410903",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "7.25"
   },
   {
     "id": "460",
-    "name": "Psychonauts",
-    "type": "Xbox",
-    "size": "3.87"
+    "name": "Need for Speed: Most Wanted (2012)",
+    "titleId": "45410961",
+    "type": "Xbox 360",
+    "sizeGb": "6.15"
   },
   {
     "id": "461",
-    "name": "Pure",
+    "name": "NFL Blitz",
+    "titleId": "58411235",
     "type": "Xbox 360",
-    "size": "4.38"
+    "sizeGb": "1.81"
   },
   {
     "id": "462",
-    "name": "Puzzle Quest 2",
+    "name": "NHL 07",
+    "titleId": "454107F3",
     "type": "Xbox 360",
-    "size": "0.4"
+    "sizeGb": "3.15"
   },
   {
     "id": "463",
-    "name": "Puzzle Quest Galactrix",
+    "name": "NHL 08",
+    "titleId": "45410820",
     "type": "Xbox 360",
-    "size": "0.28"
+    "sizeGb": "4.86"
   },
   {
     "id": "464",
-    "name": "Quake 4",
+    "name": "NHL 09",
+    "titleId": "45410872",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "5.05"
   },
   {
     "id": "465",
-    "name": "Quake 4 Bonus Disc",
+    "name": "NHL 10",
+    "titleId": "454108BA",
     "type": "Xbox 360",
-    "size": "1.27"
+    "sizeGb": "4.94"
   },
   {
     "id": "466",
-    "name": "Quantum Conundrum",
+    "name": "NHL 11",
+    "titleId": "454108FD",
     "type": "Xbox 360",
-    "size": "1.73"
+    "sizeGb": "4.59"
   },
   {
     "id": "467",
-    "name": "Quarrel",
+    "name": "NHL 12",
+    "titleId": "45410964",
     "type": "Xbox 360",
-    "size": "0.11"
+    "sizeGb": "5.64"
   },
   {
     "id": "468",
-    "name": "Radiant Silvergun",
+    "name": "NHL 13",
+    "titleId": "4541099B",
     "type": "Xbox 360",
-    "size": "0.6"
+    "sizeGb": "5.91"
   },
   {
     "id": "469",
-    "name": "Rage",
+    "name": "NHL 14",
+    "titleId": "454109BE",
     "type": "Xbox 360",
-    "size": "26.93"
+    "sizeGb": "6.33"
   },
   {
     "id": "470",
-    "name": "Raskulls",
+    "name": "NHL 2K6",
+    "titleId": "545407E3",
     "type": "Xbox 360",
-    "size": "0.15"
+    "sizeGb": "6.67"
   },
   {
     "id": "471",
-    "name": "Rayman Legends",
-    "type": "Xbox 360",
-    "size": "8.15"
+    "name": "Ninja Gaiden",
+    "titleId": "54430003",
+    "type": "Xbox",
+    "sizeGb": "5.91"
   },
   {
     "id": "472",
-    "name": "Rayman Origins",
-    "type": "Xbox 360",
-    "size": "8.15"
+    "name": "Ninja Gaiden Black",
+    "titleId": "5443000D",
+    "type": "Xbox",
+    "sizeGb": "5.93"
   },
   {
     "id": "473",
-    "name": "Red Dead Redemption",
+    "name": "Ninja Gaiden II",
+    "titleId": "544307D5",
     "type": "Xbox 360",
-    "size": "17.7"
+    "sizeGb": "6.93"
   },
   {
     "id": "474",
-    "name": "Red Faction: Guerrilla",
+    "name": "Omega Five",
+    "titleId": "584108A5",
     "type": "Xbox 360",
-    "size": "6.61"
+    "sizeGb": "0.05"
   },
   {
     "id": "475",
-    "name": "Renegade Ops",
+    "name": "Orcs Must Die!",
+    "titleId": "584111EB",
     "type": "Xbox 360",
-    "size": "2.68"
+    "sizeGb": "1.78"
   },
   {
     "id": "476",
-    "name": "Resident Evil",
+    "name": "Outland",
+    "titleId": "58410A05",
     "type": "Xbox 360",
-    "size": "5.89"
+    "sizeGb": "0.51"
   },
   {
     "id": "477",
-    "name": "Resident Evil 4",
+    "name": "Outpost Kaloki X",
+    "titleId": "584107DB",
     "type": "Xbox 360",
-    "size": "3.59"
+    "sizeGb": "0.02"
   },
   {
     "id": "478",
-    "name": "Resident Evil 5",
+    "name": "Overlord",
+    "titleId": "434D07D5",
     "type": "Xbox 360",
-    "size": "9.53"
+    "sizeGb": "3.15"
   },
   {
     "id": "479",
-    "name": "Resident Evil: Revelations",
+    "name": "Overlord II",
+    "titleId": "434D0809",
     "type": "Xbox 360",
-    "size": "7.82"
+    "sizeGb": "3.51"
   },
   {
     "id": "480",
-    "name": "Return to Castle Wolfenstein: Tides of War",
-    "type": "Xbox",
-    "size": "3.5"
+    "name": "Pac-Man C.E.",
+    "titleId": "58410877",
+    "type": "Xbox 360",
+    "sizeGb": "0.05"
   },
   {
     "id": "481",
-    "name": "Rez HD",
+    "name": "PAC-MAN Championship Edition DX+",
+    "titleId": "58410A8C",
     "type": "Xbox 360",
-    "size": "0.12"
+    "sizeGb": "0.22"
   },
   {
     "id": "482",
-    "name": "Ridge Racer 6",
-    "type": "Xbox 360",
-    "size": "1.9"
+    "name": "Panzer Dragoon Orta",
+    "titleId": "53450007",
+    "type": "Xbox",
+    "sizeGb": "2.90"
   },
   {
     "id": "483",
-    "name": "RoboBlitz",
+    "name": "Panzer General",
+    "titleId": "584109B4",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "0.23"
   },
   {
     "id": "484",
-    "name": "Rock Band",
+    "name": "Payday 2",
+    "titleId": "464F0800",
     "type": "Xbox 360",
-    "size": "8.46"
+    "sizeGb": "7.31"
   },
   {
     "id": "485",
-    "name": "Rock Band 2",
+    "name": "Peggle",
+    "titleId": "58410889",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.13"
   },
   {
     "id": "486",
-    "name": "Rock Band 3",
+    "name": "Penny Arcade Episode 1",
+    "titleId": "5841090D",
     "type": "Xbox 360",
-    "size": "5.64"
+    "sizeGb": "0.16"
   },
   {
     "id": "487",
-    "name": "Rocket Riot",
+    "name": "Penny Arcade Episode 2",
+    "titleId": "58410927",
     "type": "Xbox 360",
-    "size": "0.07"
+    "sizeGb": "0.25"
   },
   {
     "id": "488",
-    "name": "Rocksmith 2014",
+    "name": "Perfect Dark",
+    "titleId": "584109C2",
     "type": "Xbox 360",
-    "size": "6.26"
+    "sizeGb": "0.24"
   },
   {
     "id": "489",
-    "name": "Rockstar Games Presents Table Tennis",
+    "name": "Perfect Dark Zero",
+    "titleId": "4D5307D3",
     "type": "Xbox 360",
-    "size": "3.28"
+    "sizeGb": "7.42"
   },
   {
     "id": "490",
-    "name": "R-Type Dimensions",
+    "name": "Persona 4 Arena",
+    "titleId": "453907D2",
     "type": "Xbox 360",
-    "size": "0.15"
+    "sizeGb": "3.96"
   },
   {
     "id": "491",
-    "name": "Saints Row",
+    "name": "Persona 4 Arena Ultimax",
+    "titleId": "415407E2",
     "type": "Xbox 360",
-    "size": "7.24"
+    "sizeGb": "7.15"
   },
   {
     "id": "492",
-    "name": "Saints Row 2",
+    "name": "Peter Jackson\u0027s King Kong",
+    "titleId": "555307D3",
     "type": "Xbox 360",
-    "size": "7.42"
+    "sizeGb": "6.23"
   },
   {
     "id": "493",
-    "name": "Saints Row IV",
-    "type": "Xbox 360",
-    "size": "9.28"
+    "name": "Phantom Dust",
+    "titleId": "4D530046",
+    "type": "Xbox",
+    "sizeGb": "4.07"
   },
   {
     "id": "494",
-    "name": "Saints Row: The Third",
+    "name": "Pinball Arcade",
+    "titleId": "5841121D",
     "type": "Xbox 360",
-    "size": "8.65"
+    "sizeGb": "0.18"
   },
   {
     "id": "495",
-    "name": "Sam & Max Beyond Time and Space",
+    "name": "Pinball FX2",
+    "titleId": "58410A23",
     "type": "Xbox 360",
-    "size": "0.68"
+    "sizeGb": "1.74"
   },
   {
     "id": "496",
-    "name": "Scene It? Box Office Smash",
+    "name": "Plants vs. Zombies",
+    "titleId": "584109FF",
     "type": "Xbox 360",
-    "size": "0.55"
+    "sizeGb": "0.08"
   },
   {
     "id": "497",
-    "name": "Section 8: Prejudice",
+    "name": "Poker Smash",
+    "titleId": "5841089C",
     "type": "Xbox 360",
-    "size": "2.2"
+    "sizeGb": "0.13"
   },
   {
     "id": "498",
-    "name": "Sega GT 2002",
-    "type": "Xbox",
-    "size": "1.59"
+    "name": "Pool Nation",
+    "titleId": "5841127A",
+    "type": "Xbox 360",
+    "sizeGb": "1.12"
   },
   {
     "id": "499",
-    "name": "SEGA Rally Revo",
+    "name": "Portal 2",
+    "titleId": "45410912",
     "type": "Xbox 360",
-    "size": "3.56"
+    "sizeGb": "8.46"
   },
   {
     "id": "500",
-    "name": "Sensible World of Soccer",
+    "name": "Portal: Still Alive",
+    "titleId": "58410960",
     "type": "Xbox 360",
-    "size": "0.07"
+    "sizeGb": "0.61"
   },
   {
     "id": "501",
-    "name": "Sesame Street: Once Upon a Monster",
+    "name": "Prey",
+    "titleId": "545407E0",
     "type": "Xbox 360",
-    "size": "5.67"
+    "sizeGb": "4.27"
   },
   {
     "id": "502",
-    "name": "Shadow Complex",
+    "name": "Prince of Persia",
+    "titleId": "5553080C",
     "type": "Xbox 360",
-    "size": "0.82"
+    "sizeGb": "5.83"
   },
   {
     "id": "503",
-    "name": "Shadows of the Damned",
+    "name": "Prince of Persia",
+    "titleId": "58410865",
     "type": "Xbox 360",
-    "size": "5.57"
+    "sizeGb": "0.05"
   },
   {
     "id": "504",
-    "name": "Sid Meier's Civilization Revolution",
+    "name": "Prince of Persia: The Forgotten Sands",
+    "titleId": "5553083E",
     "type": "Xbox 360",
-    "size": "0.12"
+    "sizeGb": "4.58"
   },
   {
     "id": "505",
-    "name": "Silent Hill 2: Restless Dreams",
+    "name": "Prince of Persia: The Sands of Time",
+    "titleId": "5553001D",
     "type": "Xbox",
-    "size": "3.05"
+    "sizeGb": "2.34"
   },
   {
     "id": "506",
-    "name": "Silent Hill 4: The Room",
-    "type": "Xbox",
-    "size": "3.03"
+    "name": "Pro Evolution Soccer 2008",
+    "titleId": "4B4E07E9",
+    "type": "Xbox 360",
+    "sizeGb": "4.50"
   },
   {
     "id": "507",
-    "name": "Sine Mora",
+    "name": "Pro Evolution Soccer 2009",
+    "titleId": "4B4E07FA",
     "type": "Xbox 360",
-    "size": "0.88"
+    "sizeGb": "6.34"
   },
   {
     "id": "508",
-    "name": "Singularity",
+    "name": "Pro Evolution Soccer 2010",
+    "titleId": "4B4E0801",
     "type": "Xbox 360",
-    "size": "6.32"
+    "sizeGb": "0.08"
   },
   {
     "id": "509",
-    "name": "Skate",
+    "name": "Pro Evolution Soccer 2010",
+    "titleId": "4B4E0805",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "5.74"
   },
   {
     "id": "510",
-    "name": "Skate 2",
+    "name": "Pro Evolution Soccer 2011",
+    "titleId": "4B4E081D",
     "type": "Xbox 360",
-    "size": "7.7"
+    "sizeGb": "6.00"
   },
   {
     "id": "511",
-    "name": "Skate 3",
+    "name": "Pro Evolution Soccer 2012",
+    "titleId": "4B4E0837",
     "type": "Xbox 360",
-    "size": "7.72"
+    "sizeGb": "6.06"
   },
   {
     "id": "512",
-    "name": "Skulls of the Shogun",
+    "name": "Pro Evolution Soccer 2013",
+    "titleId": "4B4E084C",
     "type": "Xbox 360",
-    "size": "0.2"
+    "sizeGb": "7.48"
   },
   {
     "id": "513",
-    "name": "Skylanders: Giants",
+    "name": "Pro Evolution Soccer 2014",
+    "titleId": "4B4E0856",
     "type": "Xbox 360",
-    "size": "7.82"
+    "sizeGb": "8.28"
   },
   {
     "id": "514",
-    "name": "Skylanders: Swap Force",
+    "name": "Pro Evolution Soccer 2018",
+    "titleId": "4A3007D3",
     "type": "Xbox 360",
-    "size": "7.79"
+    "sizeGb": "6.62"
   },
   {
     "id": "515",
-    "name": "Sleeping Dogs",
-    "type": "Xbox 360",
-    "size": "15.78"
+    "name": "Project Gotham Racing",
+    "titleId": "4D530003",
+    "type": "Xbox",
+    "sizeGb": "2.08"
   },
   {
     "id": "516",
-    "name": "Snoopy Flying Ace",
-    "type": "Xbox 360",
-    "size": "0.54"
+    "name": "Project Gotham Racing 2",
+    "titleId": "4D53004B",
+    "type": "Xbox",
+    "sizeGb": "5.29"
   },
   {
     "id": "517",
-    "name": "Sonic & All-Stars Racing Transformed",
+    "name": "Project Gotham Racing 3",
+    "titleId": "4D5307D1",
     "type": "Xbox 360",
-    "size": "4.63"
+    "sizeGb": "7.16"
   },
   {
     "id": "518",
-    "name": "Sonic & SEGA All-Stars Racing with Banjo-Kazooie",
+    "name": "Project Gotham Racing 4",
+    "titleId": "4D5307F9",
     "type": "Xbox 360",
-    "size": "3.82"
+    "sizeGb": "6.06"
   },
   {
     "id": "519",
-    "name": "Sonic CD",
+    "name": "Prototype",
+    "titleId": "4156084E",
     "type": "Xbox 360",
-    "size": "0.3"
+    "sizeGb": "7.09"
   },
   {
     "id": "520",
-    "name": "Sonic Generations",
+    "name": "Prototype 2",
+    "titleId": "415608A7",
     "type": "Xbox 360",
-    "size": "8.2"
+    "sizeGb": "8.15"
   },
   {
     "id": "521",
-    "name": "Sonic the Hedgehog",
-    "type": "Xbox 360",
-    "size": "5.17"
+    "name": "Psychonauts",
+    "titleId": "4D4A0012",
+    "type": "Xbox",
+    "sizeGb": "3.87"
   },
   {
     "id": "522",
-    "name": "Sonic The Hedgehog 2",
+    "name": "Pure",
+    "titleId": "425607D9",
     "type": "Xbox 360",
-    "size": "0.03"
+    "sizeGb": "4.38"
   },
   {
     "id": "523",
-    "name": "Sonic's Ultimate Genesis Collection",
+    "name": "Puzzle Bobble Live!",
+    "titleId": "584109C1",
     "type": "Xbox 360",
-    "size": "0.68"
+    "sizeGb": "0.06"
   },
   {
     "id": "524",
-    "name": "Soulcalibur",
+    "name": "Puzzle Quest 2",
+    "titleId": "58410A3C",
     "type": "Xbox 360",
-    "size": "0.18"
+    "sizeGb": "0.40"
   },
   {
     "id": "525",
-    "name": "Soulcalibur II",
-    "type": "Xbox",
-    "size": "1.29"
+    "name": "Puzzle Quest Galactrix",
+    "titleId": "5841091B",
+    "type": "Xbox 360",
+    "sizeGb": "0.28"
   },
   {
     "id": "526",
-    "name": "Soulcalibur II HD",
+    "name": "Quantum Conundrum",
+    "titleId": "584111FF",
     "type": "Xbox 360",
-    "size": "0.53"
+    "sizeGb": "1.73"
   },
   {
     "id": "527",
-    "name": "SoulCalibur IV",
+    "name": "Quarrel",
+    "titleId": "584111EA",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.11"
   },
   {
     "id": "528",
-    "name": "SoulCalibur V",
+    "name": "Race Pro",
+    "titleId": "494707E4",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "5.14"
   },
   {
     "id": "529",
-    "name": "South Park: The Stick of Truth",
+    "name": "Radiant Silvergun",
+    "titleId": "58410A54",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "0.60"
   },
   {
     "id": "530",
-    "name": "Space Invaders Extreme",
+    "name": "Rage",
+    "titleId": "425307EC",
     "type": "Xbox 360",
-    "size": "0.07"
+    "sizeGb": "26.93"
   },
   {
     "id": "531",
-    "name": "Space Invaders: Infinity Gene",
+    "name": "Raskulls",
+    "titleId": "58410920",
     "type": "Xbox 360",
-    "size": "0.17"
+    "sizeGb": "0.15"
   },
   {
     "id": "532",
-    "name": "Spec Ops: The Line",
+    "name": "Rayman Legends",
+    "titleId": "555308C3",
     "type": "Xbox 360",
-    "size": "5.37"
+    "sizeGb": "8.15"
   },
   {
     "id": "533",
-    "name": "Spelunky",
+    "name": "Rayman Origins",
+    "titleId": "55530884",
     "type": "Xbox 360",
-    "size": "0.16"
+    "sizeGb": "8.15"
   },
   {
     "id": "534",
-    "name": "Spider-Man",
-    "type": "Xbox",
-    "size": "1.87"
+    "name": "Red Dead Redemption",
+    "titleId": "5454082B",
+    "type": "Xbox 360",
+    "sizeGb": "17.70"
   },
   {
     "id": "535",
-    "name": "Spider-Man 2",
-    "type": "Xbox",
-    "size": "1.61"
+    "name": "Red Faction: Guerrilla",
+    "titleId": "5451080D",
+    "type": "Xbox 360",
+    "sizeGb": "6.61"
   },
   {
     "id": "536",
-    "name": "Spider-Man: Shattered Dimensions",
+    "name": "Renegade Ops",
+    "titleId": "58410ABE",
     "type": "Xbox 360",
-    "size": "5.22"
+    "sizeGb": "2.68"
   },
   {
     "id": "537",
-    "name": "Split/Second",
+    "name": "Resident Evil 4",
+    "titleId": "4343081C",
     "type": "Xbox 360",
-    "size": "6.61"
+    "sizeGb": "3.59"
   },
   {
     "id": "538",
-    "name": "Splosion Man",
+    "name": "Resident Evil 5",
+    "titleId": "434307D4",
     "type": "Xbox 360",
-    "size": "0.33"
+    "sizeGb": "9.53"
   },
   {
     "id": "539",
-    "name": "SSX",
+    "name": "Resident Evil: Revelations",
+    "titleId": "43430833",
     "type": "Xbox 360",
-    "size": "3.92"
+    "sizeGb": "7.82"
   },
   {
     "id": "540",
-    "name": "SSX 3",
+    "name": "Return to Castle Wolfenstein: Tides of War",
+    "titleId": "41560010",
     "type": "Xbox",
-    "size": "1.97"
+    "sizeGb": "3.50"
   },
   {
     "id": "541",
-    "name": "Star Wars: Battlefront II",
-    "type": "Xbox",
-    "size": "3.45"
+    "name": "Rez HD",
+    "titleId": "584108B3",
+    "type": "Xbox 360",
+    "sizeGb": "0.12"
   },
   {
     "id": "542",
-    "name": "Star Wars: Knights of the Old Republic",
-    "type": "Xbox",
-    "size": "3.69"
+    "name": "Ridge Racer 6",
+    "titleId": "4E4D07D3",
+    "type": "Xbox 360",
+    "sizeGb": "1.90"
   },
   {
     "id": "543",
-    "name": "Star Wars: Knights of the Old Republic II: The Sith Lords",
-    "type": "Xbox",
-    "size": "3.85"
+    "name": "Risk: Factions",
+    "titleId": "58410A13",
+    "type": "Xbox 360",
+    "sizeGb": "0.75"
   },
   {
     "id": "544",
-    "name": "Star Wars: Republic Commando",
-    "type": "Xbox",
-    "size": "3.4"
+    "name": "RoboBlitz",
+    "titleId": "584107E5",
+    "type": "Xbox 360",
+    "sizeGb": "0.05"
   },
   {
     "id": "545",
-    "name": "Star Wars: The Force Unleashed",
+    "name": "Rock Band",
+    "titleId": "45410829",
     "type": "Xbox 360",
-    "size": "12.18"
+    "sizeGb": "8.46"
   },
   {
     "id": "546",
-    "name": "State of Decay",
+    "name": "Rock Band 2",
+    "titleId": "45410869",
     "type": "Xbox 360",
-    "size": "2.54"
+    "sizeGb": "7.08"
   },
   {
     "id": "547",
-    "name": "Street Fighter II: Hyper Fighting",
+    "name": "Rock Band 3",
+    "titleId": "45410914",
     "type": "Xbox 360",
-    "size": "0.05"
+    "sizeGb": "5.64"
   },
   {
     "id": "548",
-    "name": "Street Fighter IV",
+    "name": "Rock Band Blitz",
+    "titleId": "5841122D",
     "type": "Xbox 360",
-    "size": "4.61"
+    "sizeGb": "0.35"
   },
   {
     "id": "549",
-    "name": "Street Fighter X Tekken",
+    "name": "Rock of Ages",
+    "titleId": "58410A9A",
     "type": "Xbox 360",
-    "size": "5.57"
+    "sizeGb": "0.55"
   },
   {
     "id": "550",
-    "name": "Streets of Rage 2",
+    "name": "Rocket Riot",
+    "titleId": "584108CC",
     "type": "Xbox 360",
-    "size": "0.03"
+    "sizeGb": "0.07"
   },
   {
     "id": "551",
-    "name": "Strider",
+    "name": "Rocksmith 2014",
+    "titleId": "555308C0",
     "type": "Xbox 360",
-    "size": "1.48"
+    "sizeGb": "6.26"
   },
   {
     "id": "552",
-    "name": "Stuntman: Ignition",
+    "name": "Rockstar Games Presents Table Tennis",
+    "titleId": "545407DF",
     "type": "Xbox 360",
-    "size": "5.53"
+    "sizeGb": "3.28"
   },
   {
     "id": "553",
-    "name": "Super Meat Boy",
+    "name": "Roogoo",
+    "titleId": "584108F3",
     "type": "Xbox 360",
-    "size": "0.11"
+    "sizeGb": "0.06"
   },
   {
     "id": "554",
-    "name": "Super Street Fighter 2 Turbo HD",
+    "name": "R-Type Dimensions",
+    "titleId": "584108AD",
     "type": "Xbox 360",
-    "size": "0.36"
+    "sizeGb": "0.15"
   },
   {
     "id": "555",
-    "name": "Super Street Fighter IV",
+    "name": "Runner2",
+    "titleId": "58411221",
     "type": "Xbox 360",
-    "size": "9"
+    "sizeGb": "0.82"
   },
   {
     "id": "556",
-    "name": "Super Time Force",
+    "name": "Saints Row",
+    "titleId": "545107D1",
     "type": "Xbox 360",
-    "size": "0.54"
+    "sizeGb": "7.24"
   },
   {
     "id": "557",
-    "name": "Supreme Commander 2",
+    "name": "Saints Row 2",
+    "titleId": "545107FC",
     "type": "Xbox 360",
-    "size": "2.02"
+    "sizeGb": "7.42"
   },
   {
     "id": "558",
-    "name": "Tales of Vesperia",
+    "name": "Saints Row IV",
+    "titleId": "4B4D07F6",
     "type": "Xbox 360",
-    "size": "5.4"
+    "sizeGb": "9.28"
   },
   {
     "id": "559",
-    "name": "Tekken 6",
+    "name": "Saints Row: The Third",
+    "titleId": "5451086D",
     "type": "Xbox 360",
-    "size": "6.63"
+    "sizeGb": "8.65"
   },
   {
     "id": "560",
-    "name": "Tekken Tag Tournament 2",
+    "name": "Sam \u0026 Max Beyond Time and Space",
+    "titleId": "58410999",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "0.68"
   },
   {
     "id": "561",
-    "name": "Terraria",
+    "name": "Sam \u0026 Max Save the World",
+    "titleId": "5841097D",
     "type": "Xbox 360",
-    "size": "0.06"
+    "sizeGb": "0.46"
   },
   {
     "id": "562",
-    "name": "Test Drive Unlimited",
+    "name": "Samurai Shodown II",
+    "titleId": "584108D0",
     "type": "Xbox 360",
-    "size": "3.41"
+    "sizeGb": "0.06"
   },
   {
     "id": "563",
-    "name": "The Beatles: Rock Band",
+    "name": "Sanctum 2",
+    "titleId": "58411329",
     "type": "Xbox 360",
-    "size": "4.9"
+    "sizeGb": "1.55"
   },
   {
     "id": "564",
-    "name": "The Bigs",
+    "name": "Scene It? Box Office Smash",
+    "titleId": "4D530860",
     "type": "Xbox 360",
-    "size": "5.62"
+    "sizeGb": "0.55"
   },
   {
     "id": "565",
-    "name": "The Bigs 2",
+    "name": "Section 8: Prejudice",
+    "titleId": "58410B45",
     "type": "Xbox 360",
-    "size": "6.45"
+    "sizeGb": "2.20"
   },
   {
     "id": "566",
-    "name": "The Bridge",
-    "type": "Xbox 360",
-    "size": "0.29"
+    "name": "Sega GT 2002",
+    "titleId": "53450003",
+    "type": "Xbox",
+    "sizeGb": "1.59"
   },
   {
     "id": "567",
-    "name": "The Chronicles of Riddick: Assault on Dark Athena",
+    "name": "SEGA Rally Revo",
+    "titleId": "534507E6",
     "type": "Xbox 360",
-    "size": "7.64"
+    "sizeGb": "3.56"
   },
   {
     "id": "568",
-    "name": "The Club",
+    "name": "Sensible World of Soccer",
+    "titleId": "58410869",
     "type": "Xbox 360",
-    "size": "4.66"
+    "sizeGb": "0.07"
   },
   {
     "id": "569",
-    "name": "The Darkness",
+    "name": "Sesame Street: Once Upon a Monster",
+    "titleId": "5752080C",
     "type": "Xbox 360",
-    "size": "7.07"
+    "sizeGb": "5.67"
   },
   {
     "id": "570",
-    "name": "The Darkness II",
+    "name": "Shadow Complex",
+    "titleId": "584108F6",
     "type": "Xbox 360",
-    "size": "5.95"
+    "sizeGb": "0.82"
   },
   {
     "id": "571",
-    "name": "The Dishwasher",
+    "name": "Shadows of the Damned",
+    "titleId": "4541092A",
     "type": "Xbox 360",
-    "size": "0.12"
+    "sizeGb": "5.57"
   },
   {
     "id": "572",
-    "name": "The Dishwasher: Vampire Smile",
+    "name": "Shank2",
+    "titleId": "5841120C",
     "type": "Xbox 360",
-    "size": "0.15"
+    "sizeGb": "1.21"
   },
   {
     "id": "573",
-    "name": "The Elder Scrolls III: Morrowind: Game of the Year Edition",
-    "type": "Xbox",
-    "size": "0.95"
+    "name": "Sid Meier\u0027s Civilization Revolution",
+    "titleId": "545407E5",
+    "type": "Xbox 360",
+    "sizeGb": "0.12"
   },
   {
     "id": "574",
-    "name": "The Elder Scrolls IV: Oblivion",
-    "type": "Xbox 360",
-    "size": "8.19"
+    "name": "Silent Hill 2: Inner Fears",
+    "titleId": "4B4E0004",
+    "type": "Xbox",
+    "sizeGb": "3.05"
   },
   {
     "id": "575",
-    "name": "The Elder Scrolls V: Skyrim",
-    "type": "Xbox 360",
-    "size": "9.61"
+    "name": "Silent Hill 4: The Room",
+    "titleId": "4B4E001F",
+    "type": "Xbox",
+    "sizeGb": "3.03"
   },
   {
     "id": "576",
-    "name": "The Godfather",
+    "name": "Sine Mora",
+    "titleId": "58411234",
     "type": "Xbox 360",
-    "size": "5.69"
+    "sizeGb": "0.88"
   },
   {
     "id": "577",
-    "name": "The Incredible Hulk: Ultimate Destruction",
-    "type": "Xbox",
-    "size": "2.29"
+    "name": "Singularity",
+    "titleId": "415607EF",
+    "type": "Xbox 360",
+    "sizeGb": "6.32"
   },
   {
     "id": "578",
-    "name": "The King of Fighters XIII",
+    "name": "Skate",
+    "titleId": "45410813",
     "type": "Xbox 360",
-    "size": "2.07"
+    "sizeGb": "7.08"
   },
   {
     "id": "579",
-    "name": "The Lord of the Rings: The Battle for Middle-earth II",
+    "name": "Skate 2",
+    "titleId": "4541087F",
     "type": "Xbox 360",
-    "size": "3.49"
+    "sizeGb": "7.70"
   },
   {
     "id": "580",
-    "name": "The Lord of the Rings: The Return of the King",
-    "type": "Xbox",
-    "size": "2.19"
+    "name": "Skate 3",
+    "titleId": "454108E6",
+    "type": "Xbox 360",
+    "sizeGb": "7.72"
   },
   {
     "id": "581",
-    "name": "The Maw",
+    "name": "Skullgirls",
+    "titleId": "584111DB",
     "type": "Xbox 360",
-    "size": "0.15"
+    "sizeGb": "2.00"
   },
   {
     "id": "582",
-    "name": "The Orange Box - Half-Life 2 (incl. Episodes 1 & 2) / Team Fortress 2 / Portal",
+    "name": "Skulls of the Shogun",
+    "titleId": "584111D8",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.20"
   },
   {
     "id": "583",
-    "name": "The Simpsons: Hit & Run",
-    "type": "Xbox",
-    "size": "1.87"
+    "name": "SkyDrift",
+    "titleId": "58410B49",
+    "type": "Xbox 360",
+    "sizeGb": "0.51"
   },
   {
     "id": "584",
-    "name": "The Sims 2",
-    "type": "Xbox",
-    "size": "1.86"
+    "name": "Skylanders: Giants",
+    "titleId": "415608DA",
+    "type": "Xbox 360",
+    "sizeGb": "7.82"
   },
   {
     "id": "585",
-    "name": "The Sims 3",
+    "name": "Skylanders: Swap Force",
+    "titleId": "415608E9",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "7.79"
   },
   {
     "id": "586",
-    "name": "The Walking Dead",
+    "name": "Sleeping Dogs",
+    "titleId": "53510811",
     "type": "Xbox 360",
-    "size": "3.33"
+    "sizeGb": "15.78"
   },
   {
     "id": "587",
-    "name": "The Walking Dead",
+    "name": "Small Arms",
+    "titleId": "584107D5",
     "type": "Xbox 360",
-    "size": "3.27"
+    "sizeGb": "0.04"
   },
   {
     "id": "588",
-    "name": "The Walking Dead: Season Two",
+    "name": "Snoopy Flying Ace",
+    "titleId": "584109B5",
     "type": "Xbox 360",
-    "size": "2.53"
+    "sizeGb": "0.54"
   },
   {
     "id": "589",
-    "name": "The Walking Dead: Season Two",
+    "name": "Sonic \u0026 All-Stars Racing Transformed",
+    "titleId": "5345085D",
     "type": "Xbox 360",
-    "size": "2.47"
+    "sizeGb": "4.63"
   },
   {
     "id": "590",
-    "name": "The Witcher 2: Assassins of Kings - Enhanced Edition",
+    "name": "Sonic \u0026 SEGA All-Stars Racing with Banjo-Kazooie",
+    "titleId": "53450815",
     "type": "Xbox 360",
-    "size": "15.05"
+    "sizeGb": "3.82"
   },
   {
     "id": "591",
-    "name": "The Wolf Among Us",
+    "name": "Sonic CD",
+    "titleId": "584111F1",
     "type": "Xbox 360",
-    "size": "3.55"
+    "sizeGb": "0.30"
   },
   {
     "id": "592",
-    "name": "Thief: Deadly Shadows",
-    "type": "Xbox",
-    "size": "2.2"
+    "name": "Sonic Generations",
+    "titleId": "53450848",
+    "type": "Xbox 360",
+    "sizeGb": "8.20"
   },
   {
     "id": "593",
-    "name": "Tiger Woods PGA Tour 07",
+    "name": "Sonic the Hedgehog",
+    "titleId": "534507D6",
     "type": "Xbox 360",
-    "size": "6.07"
+    "sizeGb": "5.17"
   },
   {
     "id": "594",
-    "name": "Tiger Woods PGA Tour 08",
+    "name": "Sonic The Hedgehog 2",
+    "titleId": "58410863",
     "type": "Xbox 360",
-    "size": "6.71"
+    "sizeGb": "0.03"
   },
   {
     "id": "595",
-    "name": "Tiger Woods PGA Tour 09",
+    "name": "Sonic\u0027s Ultimate Genesis Collection",
+    "titleId": "53450810",
     "type": "Xbox 360",
-    "size": "5.92"
+    "sizeGb": "0.68"
   },
   {
     "id": "596",
-    "name": "Tiger Woods PGA Tour 10",
+    "name": "Soulcalibur",
+    "titleId": "58410904",
     "type": "Xbox 360",
-    "size": "6.44"
+    "sizeGb": "0.18"
   },
   {
     "id": "597",
-    "name": "Tiger Woods PGA Tour 12: The Masters",
-    "type": "Xbox 360",
-    "size": "5.26"
+    "name": "Soulcalibur II",
+    "titleId": "4E4D0003",
+    "type": "Xbox",
+    "sizeGb": "1.29"
   },
   {
     "id": "598",
-    "name": "Tiger Woods PGA Tour 13",
+    "name": "Soulcalibur II HD",
+    "titleId": "58411411",
     "type": "Xbox 360",
-    "size": "5.54"
+    "sizeGb": "0.53"
   },
   {
     "id": "599",
-    "name": "Titanfall",
+    "name": "SoulCalibur IV",
+    "titleId": "4E4D07E0",
     "type": "Xbox 360",
-    "size": "6.35"
+    "sizeGb": "7.08"
   },
   {
     "id": "600",
-    "name": "Tom Clancy's Ghost Recon",
-    "type": "Xbox",
-    "size": "0.69"
+    "name": "SoulCalibur V",
+    "titleId": "4E4D083D",
+    "type": "Xbox 360",
+    "sizeGb": "8.15"
   },
   {
     "id": "601",
-    "name": "Tom Clancy's Ghost Recon 2: Summit Strike",
-    "type": "Xbox",
-    "size": "2.37"
+    "name": "South Park: The Stick of Truth",
+    "titleId": "555308C5",
+    "type": "Xbox 360",
+    "sizeGb": "7.09"
   },
   {
     "id": "602",
-    "name": "Tom Clancy's Ghost Recon Advanced Warfighter",
+    "name": "Space Invaders Extreme",
+    "titleId": "58410996",
     "type": "Xbox 360",
-    "size": "4.78"
+    "sizeGb": "0.07"
   },
   {
     "id": "603",
-    "name": "Tom Clancy's Ghost Recon Advanced Warfighter 2",
+    "name": "Space Invaders: Infinity Gene",
+    "titleId": "58410A4D",
     "type": "Xbox 360",
-    "size": "6.77"
+    "sizeGb": "0.17"
   },
   {
     "id": "604",
-    "name": "Tom Clancy's Ghost Recon: Future Soldier",
+    "name": "Spec Ops: The Line",
+    "titleId": "54540843",
     "type": "Xbox 360",
-    "size": "9.76"
+    "sizeGb": "5.37"
   },
   {
     "id": "605",
-    "name": "Tom Clancy's H.A.W.X.",
+    "name": "Spelunky",
+    "titleId": "584109BE",
     "type": "Xbox 360",
-    "size": "5.93"
+    "sizeGb": "0.16"
   },
   {
     "id": "606",
-    "name": "Tom Clancy's Rainbow Six 3",
+    "name": "Spider-Man",
+    "titleId": "41560006",
     "type": "Xbox",
-    "size": "2.48"
+    "sizeGb": "1.87"
   },
   {
     "id": "607",
-    "name": "Tom Clancy's Rainbow Six 3: Black Arrow",
+    "name": "Spider-Man 2",
+    "titleId": "4156002B",
     "type": "Xbox",
-    "size": "2.27"
+    "sizeGb": "1.61"
   },
   {
     "id": "608",
-    "name": "Tom Clancy's Rainbow Six: Vegas",
+    "name": "Spider-Man: Shattered Dimensions",
+    "titleId": "41560881",
     "type": "Xbox 360",
-    "size": "7.95"
+    "sizeGb": "5.22"
   },
   {
     "id": "609",
-    "name": "Tom Clancy's Rainbow Six: Vegas 2",
+    "name": "Split/Second",
+    "titleId": "425607E7",
     "type": "Xbox 360",
-    "size": "6.71"
+    "sizeGb": "6.61"
   },
   {
     "id": "610",
-    "name": "Tom Clancy's Splinter Cell",
-    "type": "Xbox",
-    "size": "2.76"
+    "name": "Splosion Man",
+    "titleId": "5841098F",
+    "type": "Xbox 360",
+    "sizeGb": "0.33"
   },
   {
     "id": "611",
-    "name": "Tom Clancy's Splinter Cell: Blacklist",
+    "name": "SSX",
+    "titleId": "4541096D",
     "type": "Xbox 360",
-    "size": "16.29"
+    "sizeGb": "3.92"
   },
   {
     "id": "612",
-    "name": "Tom Clancy's Splinter Cell: Chaos Theory",
-    "type": "Xbox",
-    "size": "5.39"
+    "name": "Stacking",
+    "titleId": "58410A73",
+    "type": "Xbox 360",
+    "sizeGb": "0.97"
   },
   {
     "id": "613",
-    "name": "Tom Clancy's Splinter Cell: Conviction",
-    "type": "Xbox 360",
-    "size": "7.55"
+    "name": "Star Wars: Battlefront II",
+    "titleId": "4C41001A",
+    "type": "Xbox",
+    "sizeGb": "3.45"
   },
   {
     "id": "614",
-    "name": "Tom Clancy's Splinter Cell: Double Agent",
-    "type": "Xbox 360",
-    "size": "6.69"
+    "name": "Star Wars: Caballeros de la Antigua República",
+    "titleId": "4C410003",
+    "type": "Xbox",
+    "sizeGb": "3.69"
   },
   {
     "id": "615",
-    "name": "Tom Clancy's Splinter Cell: Double Agent",
+    "name": "Star Wars: Caballeros de la Antigua República II: Los Señores Sith",
+    "titleId": "4C410014",
     "type": "Xbox",
-    "size": "3.79"
+    "sizeGb": "3.85"
   },
   {
     "id": "616",
-    "name": "Tom Clancy's Splinter Cell: Pandora Tomorrow",
+    "name": "Star Wars: Republic Commando",
+    "titleId": "4C410013",
     "type": "Xbox",
-    "size": "2.92"
+    "sizeGb": "3.40"
   },
   {
     "id": "617",
-    "name": "Tomb Raider",
+    "name": "Star Wars: The Force Unleashed",
+    "titleId": "4C4107D2",
     "type": "Xbox 360",
-    "size": "7.16"
+    "sizeGb": "12.18"
   },
   {
     "id": "618",
-    "name": "Tomb Raider Legend",
+    "name": "State of Decay",
+    "titleId": "584111E8",
     "type": "Xbox 360",
-    "size": "16.2"
+    "sizeGb": "2.54"
   },
   {
     "id": "619",
-    "name": "Tomb Raider Underworld",
+    "name": "Street Fighter II: Hyper Fighting",
+    "titleId": "584107F4",
     "type": "Xbox 360",
-    "size": "8.92"
+    "sizeGb": "0.05"
   },
   {
     "id": "620",
-    "name": "Tony Hawk's American Wasteland",
+    "name": "Street Fighter III: Online Edition",
+    "titleId": "58410B16",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "0.69"
   },
   {
     "id": "621",
-    "name": "Tony Hawk's American Wasteland",
-    "type": "Xbox",
-    "size": "2.91"
+    "name": "Street Fighter IV",
+    "titleId": "434307E1",
+    "type": "Xbox 360",
+    "sizeGb": "4.61"
   },
   {
     "id": "622",
-    "name": "Tony Hawk's Pro Skater 2x",
-    "type": "Xbox",
-    "size": "1.15"
+    "name": "Street Fighter X Tekken",
+    "titleId": "4343080F",
+    "type": "Xbox 360",
+    "sizeGb": "5.57"
   },
   {
     "id": "623",
-    "name": "Tony Hawk's Pro Skater 3",
-    "type": "Xbox",
-    "size": "3.25"
+    "name": "Streets of Rage 2",
+    "titleId": "5841086D",
+    "type": "Xbox 360",
+    "sizeGb": "0.03"
   },
   {
     "id": "624",
-    "name": "Tony Hawk's Pro Skater 4",
-    "type": "Xbox",
-    "size": "1.51"
+    "name": "Strider",
+    "titleId": "584113C7",
+    "type": "Xbox 360",
+    "sizeGb": "1.48"
   },
   {
     "id": "625",
-    "name": "Tony Hawk's Project 8",
+    "name": "Stuntman: Ignition",
+    "titleId": "545107F4",
     "type": "Xbox 360",
-    "size": "4.68"
+    "sizeGb": "5.53"
   },
   {
     "id": "626",
-    "name": "Tony Hawk's Underground",
-    "type": "Xbox",
-    "size": "3.19"
+    "name": "Super Meat Boy",
+    "titleId": "58410A5A",
+    "type": "Xbox 360",
+    "sizeGb": "0.11"
   },
   {
     "id": "627",
-    "name": "Tony Hawk's Underground 2",
-    "type": "Xbox",
-    "size": "3.35"
+    "name": "Super Street Fighter 2 Turbo HD",
+    "titleId": "584108A4",
+    "type": "Xbox 360",
+    "sizeGb": "0.36"
   },
   {
     "id": "628",
-    "name": "Top Spin 2",
+    "name": "Super Street Fighter IV",
+    "titleId": "434307FC",
     "type": "Xbox 360",
-    "size": "0.02"
+    "sizeGb": "15.54"
   },
   {
     "id": "629",
-    "name": "Top Spin 4",
+    "name": "Super Time Force",
+    "titleId": "584112CE",
     "type": "Xbox 360",
-    "size": "5.37"
+    "sizeGb": "0.54"
   },
   {
     "id": "630",
-    "name": "Torchlight",
+    "name": "Supreme Commander 2",
+    "titleId": "535107E3",
     "type": "Xbox 360",
-    "size": "0.19"
+    "sizeGb": "2.02"
   },
   {
     "id": "631",
-    "name": "Toy Soldiers",
+    "name": "Switchball",
+    "titleId": "58410830",
     "type": "Xbox 360",
-    "size": "0.83"
+    "sizeGb": "0.05"
   },
   {
     "id": "632",
-    "name": "Toy Soldiers: Cold War",
+    "name": "Tales of Vesperia",
+    "titleId": "4E4D07E9",
     "type": "Xbox 360",
-    "size": "0.92"
+    "sizeGb": "5.40"
   },
   {
     "id": "633",
-    "name": "Toy Story 3",
+    "name": "Tekken 6",
+    "titleId": "4E4D07FC",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "6.63"
   },
   {
     "id": "634",
-    "name": "Transformers: Fall of Cybertron",
+    "name": "Tekken Tag Tournament 2",
+    "titleId": "4E4D0859",
     "type": "Xbox 360",
-    "size": "7.82"
+    "sizeGb": "8.15"
   },
   {
     "id": "635",
-    "name": "Transformers: War for Cybertron",
+    "name": "Terraria",
+    "titleId": "464F0802",
     "type": "Xbox 360",
-    "size": "7.94"
+    "sizeGb": "0.06"
   },
   {
     "id": "636",
-    "name": "Trials Evolution",
+    "name": "Test Drive Unlimited",
+    "titleId": "494707D4",
     "type": "Xbox 360",
-    "size": "3.08"
+    "sizeGb": "3.41"
   },
   {
     "id": "637",
-    "name": "Trials HD",
+    "name": "The Beatles: Rock Band",
+    "titleId": "454108B1",
     "type": "Xbox 360",
-    "size": "0.21"
+    "sizeGb": "4.90"
   },
   {
     "id": "638",
-    "name": "Trine 2",
+    "name": "The Bigs",
+    "titleId": "545407E4",
     "type": "Xbox 360",
-    "size": "1.08"
+    "sizeGb": "5.62"
   },
   {
     "id": "639",
-    "name": "Tropico 3",
+    "name": "The Bigs 2",
+    "titleId": "54540830",
     "type": "Xbox 360",
-    "size": "2.3"
+    "sizeGb": "6.45"
   },
   {
     "id": "640",
-    "name": "True Crime: Streets of LA",
-    "type": "Xbox",
-    "size": "2.35"
+    "name": "The Bridge",
+    "titleId": "58411414",
+    "type": "Xbox 360",
+    "sizeGb": "0.29"
   },
   {
     "id": "641",
-    "name": "UEFA Euro 2008",
+    "name": "The Chronicles of Riddick: Assault on Dark Athena",
+    "titleId": "494707EE",
     "type": "Xbox 360",
-    "size": "4.95"
+    "sizeGb": "7.64"
   },
   {
     "id": "642",
-    "name": "UFC 2009 Undisputed",
+    "name": "The Club",
+    "titleId": "534507DD",
     "type": "Xbox 360",
-    "size": "6.64"
+    "sizeGb": "4.66"
   },
   {
     "id": "643",
-    "name": "UFC Undisputed 2010",
+    "name": "The Darkness",
+    "titleId": "545407EE",
     "type": "Xbox 360",
-    "size": "6.13"
+    "sizeGb": "7.07"
   },
   {
     "id": "644",
-    "name": "UFC Undisputed 3",
+    "name": "The Darkness II",
+    "titleId": "5454088D",
     "type": "Xbox 360",
-    "size": "8"
+    "sizeGb": "5.95"
   },
   {
     "id": "645",
-    "name": "Ultimate Marvel vs. Capcom 3",
+    "name": "The Dishwasher",
+    "titleId": "58410902",
     "type": "Xbox 360",
-    "size": "7.09"
+    "sizeGb": "0.12"
   },
   {
     "id": "646",
-    "name": "Undertow",
+    "name": "The Dishwasher: Vampire Smile",
+    "titleId": "58410A21",
     "type": "Xbox 360",
-    "size": "0.07"
+    "sizeGb": "0.15"
   },
   {
     "id": "647",
-    "name": "Uno",
-    "type": "Xbox 360",
-    "size": "0.04"
+    "name": "The Elder Scrolls III: Morrowind: Game of the Year Edition",
+    "titleId": "42530005",
+    "type": "Xbox",
+    "sizeGb": "0.95"
   },
   {
     "id": "648",
-    "name": "Unreal Tournament III",
+    "name": "The Elder Scrolls IV: Oblivion",
+    "titleId": "425307D1",
     "type": "Xbox 360",
-    "size": "5.64"
+    "sizeGb": "8.19"
   },
   {
     "id": "649",
-    "name": "Vanquish",
+    "name": "The Elder Scrolls V: Skyrim",
+    "titleId": "425307E6",
     "type": "Xbox 360",
-    "size": "6.53"
+    "sizeGb": "9.61"
   },
   {
     "id": "650",
-    "name": "Virtua Fighter 5 Final Showdown",
+    "name": "The Evil Within",
+    "titleId": "425307F4",
     "type": "Xbox 360",
-    "size": "3.85"
+    "sizeGb": "10.94"
   },
   {
     "id": "651",
-    "name": "Virtua Tennis 3",
-    "type": "Xbox 360",
-    "size": "4.05"
+    "name": "The Incredible Hulk: Ultimate Destruction",
+    "titleId": "56550039",
+    "type": "Xbox",
+    "sizeGb": "2.29"
   },
   {
     "id": "652",
-    "name": "Viva Pinata",
+    "name": "The King of Fighters XIII",
+    "titleId": "534E07DC",
     "type": "Xbox 360",
-    "size": "7.08"
+    "sizeGb": "2.07"
   },
   {
     "id": "653",
-    "name": "Viva Pinata: Trouble in Paradise",
+    "name": "The Lord of the Rings: The Battle for Middle-earth II",
+    "titleId": "454107DF",
     "type": "Xbox 360",
-    "size": "4.94"
+    "sizeGb": "3.49"
   },
   {
     "id": "654",
-    "name": "Warhammer 40000: Space Marine",
+    "name": "The Maw",
+    "titleId": "584108C2",
     "type": "Xbox 360",
-    "size": "5.53"
+    "sizeGb": "0.15"
   },
   {
     "id": "655",
-    "name": "Winning Eleven: Pro Evolution Soccer 2007",
+    "name": "The Orange Box - Half-Life 2 (incl. Episodes 1 \u0026 2) / Team Fortress 2 / Portal",
+    "titleId": "4541080F",
     "type": "Xbox 360",
-    "size": "3.4"
+    "sizeGb": "7.08"
   },
   {
     "id": "656",
-    "name": "Winterbottom",
-    "type": "Xbox 360",
-    "size": "0.28"
+    "name": "The Simpsons: Hit \u0026 Run",
+    "titleId": "56550015",
+    "type": "Xbox",
+    "sizeGb": "1.87"
   },
   {
     "id": "657",
-    "name": "World Soccer Winning Eleven 8: International",
+    "name": "The Sims 2",
+    "titleId": "4541038B",
     "type": "Xbox",
-    "size": "1.88"
+    "sizeGb": "1.86"
   },
   {
     "id": "658",
-    "name": "World Soccer Winning Eleven 9",
-    "type": "Xbox",
-    "size": "2.34"
+    "name": "The Sims 3",
+    "titleId": "454108E2",
+    "type": "Xbox 360",
+    "sizeGb": "7.09"
   },
   {
     "id": "659",
-    "name": "Worms 2: Armageddon",
+    "name": "The Walking Dead",
+    "titleId": "443607D2",
     "type": "Xbox 360",
-    "size": "0.36"
+    "sizeGb": "3.33"
   },
   {
     "id": "660",
-    "name": "WWE '13",
+    "name": "The Walking Dead",
+    "titleId": "584111DE",
     "type": "Xbox 360",
-    "size": "8.41"
+    "sizeGb": "3.27"
   },
   {
     "id": "661",
-    "name": "WWE 2K14",
+    "name": "The Walking Dead: Season Two",
+    "titleId": "443607D4",
     "type": "Xbox 360",
-    "size": "8.15"
+    "sizeGb": "2.53"
   },
   {
     "id": "662",
-    "name": "WWE All Stars",
+    "name": "The Walking Dead: Season Two",
+    "titleId": "58411413",
     "type": "Xbox 360",
-    "size": "7.12"
+    "sizeGb": "2.47"
   },
   {
     "id": "663",
-    "name": "WWE SmackDown vs. Raw 2007",
+    "name": "The Witcher 2: Assassins of Kings - Enhanced Edition",
+    "titleId": "57520824",
     "type": "Xbox 360",
-    "size": "6.47"
+    "sizeGb": "15.05"
   },
   {
     "id": "664",
-    "name": "WWE SmackDown vs. Raw 2009",
+    "name": "The Wolf Among Us",
+    "titleId": "58411216",
     "type": "Xbox 360",
-    "size": "6.53"
+    "sizeGb": "3.55"
   },
   {
     "id": "665",
-    "name": "WWE SmackDown vs. Raw 2010",
-    "type": "Xbox 360",
-    "size": "6.37"
+    "name": "Thief: Deadly Shadows",
+    "titleId": "45530004",
+    "type": "Xbox",
+    "sizeGb": "2.20"
   },
   {
     "id": "666",
-    "name": "WWE SmackDown vs. Raw 2011",
+    "name": "Thrillville: Fuera de Control (Thrillville: Off the Rails)",
+    "titleId": "4C4107D6",
     "type": "Xbox 360",
-    "size": "5.63"
+    "sizeGb": "2.56"
   },
   {
     "id": "667",
-    "name": "Xbox 360 Dashboard",
+    "name": "Tiger Woods PGA Tour 07",
+    "titleId": "454107F4",
     "type": "Xbox 360",
-    "size": "0"
+    "sizeGb": "6.07"
   },
   {
     "id": "668",
-    "name": "XCOM: Enemy Unknown",
+    "name": "Tiger Woods PGA Tour 08",
+    "titleId": "45410821",
     "type": "Xbox 360",
-    "size": "7.17"
+    "sizeGb": "6.71"
   },
   {
     "id": "669",
-    "name": "XCOM: Enemy Within",
+    "name": "Tiger Woods PGA Tour 09",
+    "titleId": "45410870",
     "type": "Xbox 360",
-    "size": "7.82"
+    "sizeGb": "5.92"
   },
   {
     "id": "670",
-    "name": "X-Men Origins: Wolverine: Uncaged Edition",
+    "name": "Tiger Woods PGA Tour 10",
+    "titleId": "454108AD",
     "type": "Xbox 360",
-    "size": "6.41"
+    "sizeGb": "6.44"
   },
   {
     "id": "671",
-    "name": "You Don't Know Jack",
+    "name": "Tiger Woods PGA Tour 11",
+    "titleId": "454108EE",
     "type": "Xbox 360",
-    "size": "2.01"
+    "sizeGb": "5.73"
   },
   {
     "id": "672",
-    "name": "Your Shape: Fitness Evolved 2012",
+    "name": "Tiger Woods PGA Tour 12: The Masters",
+    "titleId": "4541094D",
     "type": "Xbox 360",
-    "size": "4.37"
+    "sizeGb": "5.26"
   },
   {
     "id": "673",
-    "name": "Zone of the Enders HD Collection",
+    "name": "Tiger Woods PGA Tour 13",
+    "titleId": "45410972",
     "type": "Xbox 360",
-    "size": "7.63"
+    "sizeGb": "5.54"
   },
   {
     "id": "674",
-    "name": "Zuma",
+    "name": "Tiger Woods PGA Tour 14",
+    "titleId": "454109A9",
     "type": "Xbox 360",
-    "size": "0.03"
+    "sizeGb": "6.40"
   },
   {
     "id": "675",
-    "name": "Zuma's Revenge!",
+    "name": "Titanfall",
+    "titleId": "454109D0",
     "type": "Xbox 360",
-    "size": "0.37"
+    "sizeGb": "6.35"
+  },
+  {
+    "id": "676",
+    "name": "Tom Clancy\u0027s EndWar",
+    "titleId": "555307E0",
+    "type": "Xbox 360",
+    "sizeGb": "4.85"
+  },
+  {
+    "id": "677",
+    "name": "Tom Clancy\u0027s Ghost Recon",
+    "titleId": "55530006",
+    "type": "Xbox",
+    "sizeGb": "0.69"
+  },
+  {
+    "id": "678",
+    "name": "Tom Clancy\u0027s Ghost Recon 2: Summit Strike",
+    "titleId": "5553004D",
+    "type": "Xbox",
+    "sizeGb": "2.37"
+  },
+  {
+    "id": "679",
+    "name": "Tom Clancy\u0027s Ghost Recon Advanced Warfighter",
+    "titleId": "555307D5",
+    "type": "Xbox 360",
+    "sizeGb": "4.78"
+  },
+  {
+    "id": "680",
+    "name": "Tom Clancy\u0027s Ghost Recon Advanced Warfighter 2",
+    "titleId": "555307F0",
+    "type": "Xbox 360",
+    "sizeGb": "6.77"
+  },
+  {
+    "id": "681",
+    "name": "Tom Clancy\u0027s Ghost Recon: Future Soldier",
+    "titleId": "55530833",
+    "type": "Xbox 360",
+    "sizeGb": "9.76"
+  },
+  {
+    "id": "682",
+    "name": "Tom Clancy\u0027s H.A.W.X.",
+    "titleId": "55530816",
+    "type": "Xbox 360",
+    "sizeGb": "5.93"
+  },
+  {
+    "id": "683",
+    "name": "Tom Clancy\u0027s Rainbow Six 3",
+    "titleId": "55530013",
+    "type": "Xbox",
+    "sizeGb": "2.48"
+  },
+  {
+    "id": "684",
+    "name": "Tom Clancy\u0027s Rainbow Six 3: Black Arrow",
+    "titleId": "55530037",
+    "type": "Xbox",
+    "sizeGb": "2.27"
+  },
+  {
+    "id": "685",
+    "name": "Tom Clancy\u0027s Rainbow Six: Vegas",
+    "titleId": "555307D6",
+    "type": "Xbox 360",
+    "sizeGb": "7.95"
+  },
+  {
+    "id": "686",
+    "name": "Tom Clancy\u0027s Rainbow Six: Vegas 2",
+    "titleId": "55530807",
+    "type": "Xbox 360",
+    "sizeGb": "6.71"
+  },
+  {
+    "id": "687",
+    "name": "Tom Clancy\u0027s Splinter Cell",
+    "titleId": "5553000C",
+    "type": "Xbox",
+    "sizeGb": "2.76"
+  },
+  {
+    "id": "688",
+    "name": "Tom Clancy\u0027s Splinter Cell: Blacklist",
+    "titleId": "555308B6",
+    "type": "Xbox 360",
+    "sizeGb": "16.29"
+  },
+  {
+    "id": "689",
+    "name": "Tom Clancy\u0027s Splinter Cell: Chaos Theory",
+    "titleId": "55530041",
+    "type": "Xbox",
+    "sizeGb": "5.39"
+  },
+  {
+    "id": "690",
+    "name": "Tom Clancy\u0027s Splinter Cell: Conviction",
+    "titleId": "5553080B",
+    "type": "Xbox 360",
+    "sizeGb": "7.55"
+  },
+  {
+    "id": "691",
+    "name": "Tom Clancy\u0027s Splinter Cell: Double Agent",
+    "titleId": "555307D7",
+    "type": "Xbox 360",
+    "sizeGb": "6.69"
+  },
+  {
+    "id": "692",
+    "name": "Tom Clancy\u0027s Splinter Cell: Double Agent",
+    "titleId": "5553005E",
+    "type": "Xbox",
+    "sizeGb": "3.79"
+  },
+  {
+    "id": "693",
+    "name": "Tom Clancy\u0027s Splinter Cell: Pandora Tomorrow",
+    "titleId": "55530019",
+    "type": "Xbox",
+    "sizeGb": "2.92"
+  },
+  {
+    "id": "694",
+    "name": "Tomb Raider",
+    "titleId": "53510802",
+    "type": "Xbox 360",
+    "sizeGb": "7.16"
+  },
+  {
+    "id": "695",
+    "name": "Tomb Raider Legend",
+    "titleId": "534307D4",
+    "type": "Xbox 360",
+    "sizeGb": "16.20"
+  },
+  {
+    "id": "696",
+    "name": "Tomb Raider Underworld",
+    "titleId": "534307EC",
+    "type": "Xbox 360",
+    "sizeGb": "8.92"
+  },
+  {
+    "id": "697",
+    "name": "Tony Hawk\u0027s American Wasteland",
+    "titleId": "41560049",
+    "type": "Xbox",
+    "sizeGb": "2.91"
+  },
+  {
+    "id": "698",
+    "name": "Tony Hawk\u0027s American Wasteland",
+    "titleId": "415607D4",
+    "type": "Xbox 360",
+    "sizeGb": "7.08"
+  },
+  {
+    "id": "699",
+    "name": "Tony Hawk\u0027s Pro Skater 2x",
+    "titleId": "41560001",
+    "type": "Xbox",
+    "sizeGb": "1.15"
+  },
+  {
+    "id": "700",
+    "name": "Tony Hawk\u0027s Pro Skater 3",
+    "titleId": "41560004",
+    "type": "Xbox",
+    "sizeGb": "3.25"
+  },
+  {
+    "id": "701",
+    "name": "Tony Hawk\u0027s Pro Skater 4",
+    "titleId": "41560017",
+    "type": "Xbox",
+    "sizeGb": "1.51"
+  },
+  {
+    "id": "702",
+    "name": "Tony Hawk\u0027s Project 8",
+    "titleId": "415607DD",
+    "type": "Xbox 360",
+    "sizeGb": "4.68"
+  },
+  {
+    "id": "703",
+    "name": "Tony Hawk\u0027s Underground",
+    "titleId": "4156002D",
+    "type": "Xbox",
+    "sizeGb": "3.19"
+  },
+  {
+    "id": "704",
+    "name": "Tony Hawk\u0027s Underground 2",
+    "titleId": "4156003C",
+    "type": "Xbox",
+    "sizeGb": "3.35"
+  },
+  {
+    "id": "705",
+    "name": "Top Spin 2",
+    "titleId": "545407D5",
+    "type": "Xbox 360",
+    "sizeGb": "0.02"
+  },
+  {
+    "id": "706",
+    "name": "Top Spin 4",
+    "titleId": "54540859",
+    "type": "Xbox 360",
+    "sizeGb": "5.37"
+  },
+  {
+    "id": "707",
+    "name": "Torchlight",
+    "titleId": "58410A7E",
+    "type": "Xbox 360",
+    "sizeGb": "0.19"
+  },
+  {
+    "id": "708",
+    "name": "Toy Soldiers",
+    "titleId": "5841099E",
+    "type": "Xbox 360",
+    "sizeGb": "0.83"
+  },
+  {
+    "id": "709",
+    "name": "Toy Soldiers: Cold War",
+    "titleId": "58410AAC",
+    "type": "Xbox 360",
+    "sizeGb": "0.92"
+  },
+  {
+    "id": "710",
+    "name": "Toy Story 3",
+    "titleId": "425607E5",
+    "type": "Xbox 360",
+    "sizeGb": "7.09"
+  },
+  {
+    "id": "711",
+    "name": "Transformers: Fall of Cybertron",
+    "titleId": "4156089C",
+    "type": "Xbox 360",
+    "sizeGb": "7.82"
+  },
+  {
+    "id": "712",
+    "name": "Transformers: War for Cybertron",
+    "titleId": "4156084C",
+    "type": "Xbox 360",
+    "sizeGb": "7.94"
+  },
+  {
+    "id": "713",
+    "name": "Trials Evolution",
+    "titleId": "58410AAD",
+    "type": "Xbox 360",
+    "sizeGb": "3.08"
+  },
+  {
+    "id": "714",
+    "name": "Trials HD",
+    "titleId": "5841095A",
+    "type": "Xbox 360",
+    "sizeGb": "0.21"
+  },
+  {
+    "id": "715",
+    "name": "Trine 2",
+    "titleId": "58410A9B",
+    "type": "Xbox 360",
+    "sizeGb": "1.08"
+  },
+  {
+    "id": "716",
+    "name": "Tropico 3",
+    "titleId": "4B5907D6",
+    "type": "Xbox 360",
+    "sizeGb": "2.30"
+  },
+  {
+    "id": "717",
+    "name": "True Crime: Streets of LA",
+    "titleId": "4156000E",
+    "type": "Xbox",
+    "sizeGb": "2.35"
+  },
+  {
+    "id": "718",
+    "name": "UEFA Euro 2008",
+    "titleId": "4541083F",
+    "type": "Xbox 360",
+    "sizeGb": "4.95"
+  },
+  {
+    "id": "719",
+    "name": "UFC 2009 Undisputed",
+    "titleId": "5451082A",
+    "type": "Xbox 360",
+    "sizeGb": "6.64"
+  },
+  {
+    "id": "720",
+    "name": "UFC Undisputed 2010",
+    "titleId": "54510851",
+    "type": "Xbox 360",
+    "sizeGb": "6.13"
+  },
+  {
+    "id": "721",
+    "name": "UFC Undisputed 3",
+    "titleId": "5451087D",
+    "type": "Xbox 360",
+    "sizeGb": "8.00"
+  },
+  {
+    "id": "722",
+    "name": "Ultimate Marvel vs. Capcom 3",
+    "titleId": "43430821",
+    "type": "Xbox 360",
+    "sizeGb": "7.09"
+  },
+  {
+    "id": "723",
+    "name": "Undertow",
+    "titleId": "58410873",
+    "type": "Xbox 360",
+    "sizeGb": "0.07"
+  },
+  {
+    "id": "724",
+    "name": "Uno",
+    "titleId": "584107F3",
+    "type": "Xbox 360",
+    "sizeGb": "0.04"
+  },
+  {
+    "id": "725",
+    "name": "Uno Rush",
+    "titleId": "5841089A",
+    "type": "Xbox 360",
+    "sizeGb": "0.07"
+  },
+  {
+    "id": "726",
+    "name": "Unreal Tournament III",
+    "titleId": "4D5707DB",
+    "type": "Xbox 360",
+    "sizeGb": "5.64"
+  },
+  {
+    "id": "727",
+    "name": "Vanquish",
+    "titleId": "53450841",
+    "type": "Xbox 360",
+    "sizeGb": "6.53"
+  },
+  {
+    "id": "728",
+    "name": "Virtua Fighter 5",
+    "titleId": "534507EE",
+    "type": "Xbox 360",
+    "sizeGb": "3.38"
+  },
+  {
+    "id": "729",
+    "name": "Virtua Fighter 5 Final Showdown",
+    "titleId": "584111FE",
+    "type": "Xbox 360",
+    "sizeGb": "3.85"
+  },
+  {
+    "id": "730",
+    "name": "Virtua Tennis 3",
+    "titleId": "534507E1",
+    "type": "Xbox 360",
+    "sizeGb": "4.05"
+  },
+  {
+    "id": "731",
+    "name": "Virtual-On OT",
+    "titleId": "58410985",
+    "type": "Xbox 360",
+    "sizeGb": "0.22"
+  },
+  {
+    "id": "732",
+    "name": "Viva Pinata",
+    "titleId": "4D5307F2",
+    "type": "Xbox 360",
+    "sizeGb": "7.08"
+  },
+  {
+    "id": "733",
+    "name": "Viva Pinata: Trouble in Paradise",
+    "titleId": "4D53085F",
+    "type": "Xbox 360",
+    "sizeGb": "4.94"
+  },
+  {
+    "id": "734",
+    "name": "Wallace \u0026 Gromit\u0027s Grand Adventures Episode 1: Fright of the Bumblebees",
+    "titleId": "5841093C",
+    "type": "Xbox 360",
+    "sizeGb": "0.28"
+  },
+  {
+    "id": "735",
+    "name": "Wallace \u0026 Gromit\u0027s Grand Adventures Episode 2: The Last Resort",
+    "titleId": "58410979",
+    "type": "Xbox 360",
+    "sizeGb": "0.36"
+  },
+  {
+    "id": "736",
+    "name": "Warhammer 40000: Space Marine",
+    "titleId": "5451082C",
+    "type": "Xbox 360",
+    "sizeGb": "5.53"
+  },
+  {
+    "id": "737",
+    "name": "Warp",
+    "titleId": "584111DC",
+    "type": "Xbox 360",
+    "sizeGb": "1.25"
+  },
+  {
+    "id": "738",
+    "name": "Watch_Dogs",
+    "titleId": "555308B7",
+    "type": "Xbox 360",
+    "sizeGb": "10.79"
+  },
+  {
+    "id": "739",
+    "name": "Wik: Fable of Souls",
+    "titleId": "584107DD",
+    "type": "Xbox 360",
+    "sizeGb": "0.03"
+  },
+  {
+    "id": "740",
+    "name": "Winning Eleven: Pro Evolution Soccer 2007",
+    "titleId": "4B4E07DF",
+    "type": "Xbox 360",
+    "sizeGb": "3.40"
+  },
+  {
+    "id": "741",
+    "name": "Winterbottom",
+    "titleId": "584109D9",
+    "type": "Xbox 360",
+    "sizeGb": "0.28"
+  },
+  {
+    "id": "742",
+    "name": "World Soccer Winning Eleven 8: International",
+    "titleId": "4B4E0027",
+    "type": "Xbox",
+    "sizeGb": "1.88"
+  },
+  {
+    "id": "743",
+    "name": "World Soccer Winning Eleven 9",
+    "titleId": "4B4E002F",
+    "type": "Xbox",
+    "sizeGb": "2.34"
+  },
+  {
+    "id": "744",
+    "name": "Worms 2: Armageddon",
+    "titleId": "58410912",
+    "type": "Xbox 360",
+    "sizeGb": "0.36"
+  },
+  {
+    "id": "745",
+    "name": "Worms Revolution",
+    "titleId": "58411290",
+    "type": "Xbox 360",
+    "sizeGb": "0.47"
+  },
+  {
+    "id": "746",
+    "name": "WWE \u002713",
+    "titleId": "545108B4",
+    "type": "Xbox 360",
+    "sizeGb": "8.41"
+  },
+  {
+    "id": "747",
+    "name": "WWE 2K14",
+    "titleId": "545408B2",
+    "type": "Xbox 360",
+    "sizeGb": "8.15"
+  },
+  {
+    "id": "748",
+    "name": "WWE All Stars",
+    "titleId": "54510866",
+    "type": "Xbox 360",
+    "sizeGb": "7.12"
+  },
+  {
+    "id": "749",
+    "name": "WWE SmackDown vs. Raw 2007",
+    "titleId": "545107E0",
+    "type": "Xbox 360",
+    "sizeGb": "6.47"
+  },
+  {
+    "id": "750",
+    "name": "WWE SmackDown vs. Raw 2009",
+    "titleId": "54510826",
+    "type": "Xbox 360",
+    "sizeGb": "6.53"
+  },
+  {
+    "id": "751",
+    "name": "WWE SmackDown vs. Raw 2010",
+    "titleId": "54510844",
+    "type": "Xbox 360",
+    "sizeGb": "6.37"
+  },
+  {
+    "id": "752",
+    "name": "WWE SmackDown vs. Raw 2011",
+    "titleId": "5451085D",
+    "type": "Xbox 360",
+    "sizeGb": "5.63"
+  },
+  {
+    "id": "753",
+    "name": "XCOM: Enemy Unknown",
+    "titleId": "54540882",
+    "type": "Xbox 360",
+    "sizeGb": "7.17"
+  },
+  {
+    "id": "754",
+    "name": "XCOM: Enemy Within",
+    "titleId": "545408AE",
+    "type": "Xbox 360",
+    "sizeGb": "7.82"
+  },
+  {
+    "id": "755",
+    "name": "X-Men Origins: Wolverine: Uncaged Edition",
+    "titleId": "41560816",
+    "type": "Xbox 360",
+    "sizeGb": "6.41"
+  },
+  {
+    "id": "756",
+    "name": "You Don\u0027t Know Jack",
+    "titleId": "54510869",
+    "type": "Xbox 360",
+    "sizeGb": "2.01"
+  },
+  {
+    "id": "757",
+    "name": "Your Shape: Fitness Evolved",
+    "titleId": "5553084F",
+    "type": "Xbox 360",
+    "sizeGb": "0.15"
+  },
+  {
+    "id": "758",
+    "name": "Your Shape: Fitness Evolved 2012",
+    "titleId": "55530886",
+    "type": "Xbox 360",
+    "sizeGb": "4.37"
+  },
+  {
+    "id": "759",
+    "name": "Zeno Clash UE",
+    "titleId": "584109DC",
+    "type": "Xbox 360",
+    "sizeGb": "1.50"
+  },
+  {
+    "id": "760",
+    "name": "Zone of the Enders HD Collection",
+    "titleId": "4B4E0842",
+    "type": "Xbox 360",
+    "sizeGb": "7.63"
+  },
+  {
+    "id": "761",
+    "name": "Zuma",
+    "titleId": "584107EF",
+    "type": "Xbox 360",
+    "sizeGb": "0.03"
+  },
+  {
+    "id": "762",
+    "name": "Zuma\u0027s Revenge!",
+    "titleId": "584111E9",
+    "type": "Xbox 360",
+    "sizeGb": "0.37"
   }
 ]

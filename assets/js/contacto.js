@@ -221,8 +221,6 @@ Almacenamiento: ${ctx.storage?.label || "No aplica"}
 Juegos: ${ctx.games?.count || 0}
 
 💰 Total estimado: $${pricing.total} MXN
-
-Gracias.
 `.trim();
 }
 
