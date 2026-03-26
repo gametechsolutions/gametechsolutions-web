@@ -325,9 +325,12 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
+        const fullGame = gamesData.find((g) => Number(g.id) === Number(id));
+
         selectedGames.push({
           id,
           size,
+          titleId: fullGame?.titleId ?? null,
         });
         totalSize += size;
 
@@ -428,11 +431,16 @@ document.addEventListener("DOMContentLoaded", () => {
         selectionID: selectionId,
         count: selectedGames.length,
         totalSizeGB: Number(totalSize.toFixed(2)),
-        list: selectedGames.map((g) => ({
-          id: g.id,
-          name: gamesData.find((x) => x.id == g.id)?.name || "Desconocido",
-          sizeGB: g.size,
-        })),
+        list: selectedGames.map((g) => {
+          const fullGame = gamesData.find((x) => Number(x.id) === Number(g.id));
+
+          return {
+            id: g.id,
+            titleId: fullGame?.titleId ?? g.titleId ?? null,
+            name: fullGame?.name || "Desconocido",
+            sizeGB: g.size,
+          };
+        }),
         humanList,
       },
 
