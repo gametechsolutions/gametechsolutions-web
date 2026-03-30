@@ -38,7 +38,7 @@ function validateContext(ctx) {
 
   if (needsGames) {
     if (!ctx.storage) return "No se detectó el almacenamiento.";
-    if (!ctx.games || !ctx.games.selectionID)
+    if (!ctx.games || !ctx.games.count || !ctx.games.list?.length)
       return "No se detectó la selección de juegos.";
   }
 
