@@ -189,21 +189,6 @@ function renderSummary(ctx, servicesCatalog, pricing) {
 }
 
 /* =============================
-ID SERVICIO SIN JUEGOS
-============================= */
-
-function generateServiceOnlyId(consoleCode) {
-  const year = new Date().getFullYear();
-  const key = `selectionCounter_${consoleCode}_SVC_${year}`;
-
-  let counter = Number(localStorage.getItem(key)) || 0;
-  counter += 1;
-
-  localStorage.setItem(key, counter);
-  return `${consoleCode}-SVC-${year}-${String(counter).padStart(3, "0")}`;
-}
-
-/* =============================
 WHATSAPP
 ============================= */
 
@@ -240,6 +225,7 @@ async function saveToAirtable(ctx) {
   const payload = {
     selectionID: ctx.games?.selectionID || "",
     clientName: ctx.clientName || "",
+    consoleCode: ctx.console?.code || "",
     console: ctx.console.name,
     model: ctx.model.description,
     services: ctx.services
@@ -266,13 +252,19 @@ async function saveToAirtable(ctx) {
       .join('\n')
   };
 
-  await fetch("/api/save-selection", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
+  const res = await fetch('/api/save-selection', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
   });
+
+  if (!res.ok) {
+      throw new Error('No se pudo guardar en Airtable');
+  }
+
+  return await res.json();
 }
 
 /* =============================
@@ -282,13 +274,11 @@ INIT
 document.addEventListener("DOMContentLoaded", async () => {
   let ctx = loadContext();
 
-  // 🆔 Asegurar ID incluso sin juegos
-  if (!ctx.games?.selectionID) {
-    ctx.games = ctx.games || {};
-    ctx.games.selectionID = generateServiceOnlyId(ctx.console.code);
-    saveContext(ctx);
-    ctx = loadContext();
-  }
+  // El selectionID definitivo ahora lo genera el backend
+  ctx.games = ctx.games || {};
+  ctx.games.selectionID = ctx.games.selectionID || null;
+  saveContext(ctx);
+  ctx = loadContext();
 
   const error = validateContext(ctx);
   if (error) {
@@ -330,12 +320,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
 
     try {
-      await saveToAirtable(ctx);
+        const result = await saveToAirtable(ctx);
+
+        if (result?.selectionID) {
+            ctx.games = ctx.games || {};
+            ctx.games.selectionID = result.selectionID;
+        }
     } catch (e) {
-      console.warn("Airtable error:", e);
+        console.warn('Airtable error:', e);
     }
 
-    ctx.status = "finalized";
+    ctx.status = 'finalized';
     saveContext(ctx);
   };
 

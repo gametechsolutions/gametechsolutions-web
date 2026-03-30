@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const hasGames = selectedGames.length > 0;
-    const selectionId = generateSelectionId(CONSOLE_CONFIG.code, hasGames);
+    const selectionId = null;
 
     const humanList = selectedGames
       .map((g) => {
@@ -428,7 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
 
       games: {
-        selectionID: selectionId,
+        selectionID: null,
         count: selectedGames.length,
         totalSizeGB: Number(totalSize.toFixed(2)),
         list: selectedGames.map((g) => {
@@ -464,18 +464,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =============================
     UTILIDADES
     ============================== */
-
-  function generateSelectionId(consoleCode, hasGames) {
-    const year = new Date().getFullYear();
-    const type = hasGames ? "GAMES" : "SVC";
-    const key = `selectionCounter_${consoleCode}_${type}_${year}`;
-
-    let counter = Number(localStorage.getItem(key)) || 0;
-    counter += 1;
-
-    localStorage.setItem(key, counter);
-    return `${consoleCode}-${type}-${year}-${String(counter).padStart(3, "0")}`;
-  }
 
   function resetSelection() {
     selectedGames = [];
