@@ -33,22 +33,37 @@ export default async function handler(req, res) {
     }
   }
 
-  function normalizeServiceList(services, servicesRaw) {
-    if (Array.isArray(services)) {
-      return services.filter(Boolean);
-    }
-
-    if (typeof services === "string" && services.trim()) {
-      return [services.trim()];
-    }
+  function extractServiceIds(services, servicesRaw) {
+    const ids = [];
 
     const parsedRaw = safeParseJsonArray(servicesRaw);
     if (parsedRaw.length > 0) {
-      return parsedRaw;
+      for (const item of parsedRaw) {
+        if (typeof item === "string" && item.trim()) {
+          ids.push(item.trim());
+          continue;
+        }
+
+        if (
+          item &&
+          typeof item === "object" &&
+          typeof item.id === "string" &&
+          item.id.trim()
+        ) {
+          ids.push(item.id.trim());
+        }
+      }
     }
 
-    if (typeof servicesRaw === "string" && servicesRaw.trim()) {
-      return [servicesRaw.trim()];
+    if (ids.length > 0) {
+      return ids;
+    }
+
+    if (Array.isArray(services)) {
+      return services
+        .filter(Boolean)
+        .map((value) => String(value).trim())
+        .filter(Boolean);
     }
 
     return [];
@@ -108,16 +123,19 @@ export default async function handler(req, res) {
     } = req.body;
 
     const parsedGames = safeParseJsonArray(jsonGames);
-    const normalizedServices = normalizeServiceList(services, servicesRaw);
+    const selectedServiceIds = extractServiceIds(services, servicesRaw);
 
-    const hasGames =
-      numberOrZero(CantidadJuegos) > 0 || parsedGames.length > 0;
+    const gameServiceIds = new Set(["games_only", "storage_with_games"]);
 
-    const hasService = normalizedServices.length > 0;
+    const hasGameService = selectedServiceIds.some((id) => gameServiceIds.has(id));
+    const hasNonGameService = selectedServiceIds.some((id) => !gameServiceIds.has(id));
 
-    const requestType = hasGames && hasService
+    const hasGames = hasGameService;
+    const hasService = hasNonGameService;
+
+    const requestType = hasGameService && hasNonGameService
       ? "MIXED"
-      : hasGames
+      : hasGameService
         ? "GAMES"
         : "SVC";
 
@@ -136,8 +154,8 @@ export default async function handler(req, res) {
           ? servicesRaw
           : JSON.stringify(servicesRaw || []),
 
-      CantidadJuegos: numberOrZero(CantidadJuegos),
-      totalSize: numberOrZero(totalSize),
+      CantidadJuegos: hasGameService ? numberOrZero(CantidadJuegos) : 0,
+      totalSize: hasGameService ? numberOrZero(totalSize) : 0,
       totalPrice: numberOrZero(totalPrice),
 
       priceBreakdown:
@@ -150,17 +168,19 @@ export default async function handler(req, res) {
           ? pricingJSON
           : JSON.stringify(pricingJSON || {}),
 
-      selectedGames:
-        typeof selectedGames === "string"
+      selectedGames: hasGameService
+        ? (typeof selectedGames === "string"
           ? selectedGames
-          : JSON.stringify(selectedGames || []),
+          : JSON.stringify(selectedGames || []))
+        : "",
 
-      jsonGames: JSON.stringify(parsedGames),
+      jsonGames: hasGameService ? JSON.stringify(parsedGames) : "[]",
 
-      gameTitleIds:
-        typeof gameTitleIds === "string"
+      gameTitleIds: hasGameService
+        ? (typeof gameTitleIds === "string"
           ? gameTitleIds
-          : JSON.stringify(gameTitleIds || []),
+          : JSON.stringify(gameTitleIds || []))
+        : "",
 
       notes: notes || "",
       requestType,
@@ -190,7 +210,7 @@ export default async function handler(req, res) {
 
     const normalizedDiskSize = normalizeDiskSizeLabel(diskSize);
 
-    if (normalizedDiskSize) {
+    if (hasGameService && normalizedDiskSize) {
       fields.diskSize = normalizedDiskSize;
 
       if (hasMeaningfulValue(diskLimit)) {

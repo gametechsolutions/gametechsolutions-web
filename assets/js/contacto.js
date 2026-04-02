@@ -72,6 +72,26 @@ function normalizeDiskLabel(value) {
   return `${amount} ${unit}`;
 }
 
+function getRequestFlags(ctx) {
+  const selectedIds = Array.isArray(ctx.services) ? ctx.services.filter(Boolean) : [];
+  const gameServiceIds = new Set(["games_only", "storage_with_games"]);
+
+  const hasGameService = selectedIds.some((id) => gameServiceIds.has(id));
+  const hasNonGameService = selectedIds.some((id) => !gameServiceIds.has(id));
+
+  const requestType = hasGameService && hasNonGameService
+    ? "MIXED"
+    : hasGameService
+      ? "GAMES"
+      : "SVC";
+
+  return {
+    hasGameService,
+    hasNonGameService,
+    requestType,
+  };
+}
+
 /* =============================
 PRICING
 ============================= */
@@ -240,6 +260,13 @@ AIRTABLE
 ============================= */
 
 async function saveToAirtable(ctx) {
+  const { hasGameService, hasNonGameService, requestType } = getRequestFlags(ctx);
+
+  const gamesList = hasGameService ? (ctx.games?.list || []) : [];
+  const gamesCount = hasGameService ? (ctx.games?.count || 0) : 0;
+  const gamesTotalSize = hasGameService ? (ctx.games?.totalSizeGB || 0) : 0;
+  const gamesHumanList = hasGameService ? (ctx.games?.humanList || "") : "";
+
   const payload = {
     selectionID: ctx.games?.selectionID || "",
     clientName: ctx.clientName || "",
@@ -263,14 +290,18 @@ async function saveToAirtable(ctx) {
       })),
     ),
 
-    CantidadJuegos: ctx.games?.count || 0,
-    totalSize: ctx.games?.totalSizeGB || 0,
+    requestType,
+    hasGames: hasGameService,
+    hasService: hasNonGameService,
+
+    CantidadJuegos: gamesCount,
+    totalSize: gamesTotalSize,
     totalPrice: ctx.pricing?.total || 0,
     priceBreakdown: (ctx.pricing?.breakdown || []).join("\n"),
     pricingJSON: JSON.stringify(ctx.pricing || {}),
-    selectedGames: ctx.games?.humanList || "",
-    jsonGames: JSON.stringify(ctx.games?.list || []),
-    gameTitleIds: (ctx.games?.list || [])
+    selectedGames: gamesHumanList,
+    jsonGames: JSON.stringify(gamesList),
+    gameTitleIds: gamesList
       .map((g) => `${g.name} [${g.titleId ?? "SIN_TITLE_ID"}]`)
       .join("\n"),
   };
@@ -282,7 +313,9 @@ async function saveToAirtable(ctx) {
     ctx.storage?.value ??
     "";
 
-  const normalizedDiskLabel = normalizeDiskLabel(rawDiskValue);
+  const normalizedDiskLabel = hasGameService
+    ? normalizeDiskLabel(rawDiskValue)
+    : "";
 
   if (normalizedDiskLabel) {
     payload.diskSize = normalizedDiskLabel;
