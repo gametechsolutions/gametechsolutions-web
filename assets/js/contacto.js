@@ -54,6 +54,24 @@ function setText(id, value) {
   if (el) el.textContent = value;
 }
 
+function normalizeDiskLabel(value) {
+  let raw = String(value ?? "").trim();
+  if (!raw) return "";
+
+  raw = raw
+    .replace(/\s+/g, " ")
+    .replace(/\b(GB|TB|MB)\b(?:\s+\1\b)+/gi, "$1")
+    .trim();
+
+  const match = raw.match(/^(\d+(?:\.\d+)?)\s*(TB|GB|MB)?$/i);
+  if (!match) return raw;
+
+  const amount = match[1];
+  const unit = (match[2] || "GB").toUpperCase();
+
+  return `${amount} ${unit}`;
+}
+
 /* =============================
 PRICING
 ============================= */
@@ -257,11 +275,22 @@ async function saveToAirtable(ctx) {
       .join("\n"),
   };
 
-  const rawDiskLabel = String(ctx.storage?.label || "").trim();
+  const rawDiskValue =
+    ctx.storage?.label ??
+    ctx.storage?.sizeLabel ??
+    ctx.storage?.size ??
+    ctx.storage?.value ??
+    "";
 
-  if (rawDiskLabel) {
-    payload.diskSize = rawDiskLabel;
-    payload.diskLimit = Number(ctx.storage?.usableGB || 0);
+  const normalizedDiskLabel = normalizeDiskLabel(rawDiskValue);
+
+  if (normalizedDiskLabel) {
+    payload.diskSize = normalizedDiskLabel;
+
+    const usable = Number(ctx.storage?.usableGB);
+    if (Number.isFinite(usable) && usable > 0) {
+      payload.diskLimit = usable;
+    }
   }
 
   const res = await fetch("/api/save-selection", {

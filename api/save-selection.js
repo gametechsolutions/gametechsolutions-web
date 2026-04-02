@@ -63,6 +63,24 @@ export default async function handler(req, res) {
     return value !== undefined && value !== null && String(value).trim() !== "";
   }
 
+  function normalizeDiskSizeLabel(value) {
+    let raw = String(value ?? "").trim();
+    if (!raw) return "";
+
+    raw = raw
+      .replace(/\s+/g, " ")
+      .replace(/\b(GB|TB|MB)\b(?:\s+\1\b)+/gi, "$1")
+      .trim();
+
+    const match = raw.match(/^(\d+(?:\.\d+)?)\s*(TB|GB|MB)?$/i);
+    if (!match) return raw;
+
+    const amount = match[1];
+    const unit = (match[2] || "GB").toUpperCase();
+
+    return `${amount} ${unit}`;
+  }
+
   try {
     const {
       selectionID, // se ignora, el backend genera el definitivo
@@ -170,9 +188,7 @@ export default async function handler(req, res) {
       fields.Serial = String(Serial).trim();
     }
 
-    const normalizedDiskSize = hasMeaningfulValue(diskSize)
-      ? String(diskSize).trim()
-      : null;
+    const normalizedDiskSize = normalizeDiskSizeLabel(diskSize);
 
     if (normalizedDiskSize) {
       fields.diskSize = normalizedDiskSize;
