@@ -58,9 +58,9 @@ export default async function handler(req, res) {
     const {
       selectionID, // se ignora, el backend genera el definitivo
       clientName,
+      consoleCode,
       clientPhone,
       clientEmail,
-      consoleCode,
       console,
       model,
       Serial,
@@ -114,12 +114,10 @@ export default async function handler(req, res) {
             clientName: clientName || "",
             clientPhone: clientPhone || "",
             clientEmail: clientEmail || "",
-
             consoleCode,
             console,
             model: model || "",
             Serial: Serial || "",
-
             services: services || "",
             servicesRaw:
               typeof servicesRaw === "string"
