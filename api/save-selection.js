@@ -108,7 +108,6 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           fields: {
             selectionID: finalSelectionID,
-            date: new Date().toISOString(),
             source: source || "Web",
 
             clientName: clientName || "",
