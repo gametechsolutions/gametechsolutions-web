@@ -54,13 +54,22 @@ export default async function handler(req, res) {
     return [];
   }
 
+  function numberOrZero(value) {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function hasMeaningfulValue(value) {
+    return value !== undefined && value !== null && String(value).trim() !== "";
+  }
+
   try {
     const {
       selectionID, // se ignora, el backend genera el definitivo
       clientName,
-      consoleCode,
       clientPhone,
       clientEmail,
+      consoleCode,
       console,
       model,
       Serial,
@@ -84,18 +93,93 @@ export default async function handler(req, res) {
     const normalizedServices = normalizeServiceList(services, servicesRaw);
 
     const hasGames =
-      Number(CantidadJuegos || 0) > 0 || parsedGames.length > 0;
+      numberOrZero(CantidadJuegos) > 0 || parsedGames.length > 0;
 
     const hasService = normalizedServices.length > 0;
 
     const requestType = hasGames && hasService
       ? "MIXED"
       : hasGames
-      ? "GAMES"
-      : "SVC";
+        ? "GAMES"
+        : "SVC";
 
     // Se mantiene esta lógica por compatibilidad con la transfer tool actual
     const finalSelectionID = generateUniqueSelectionID(consoleCode, hasGames);
+
+    const fields = {
+      selectionID: finalSelectionID,
+      source: source || "Web",
+      clientName: clientName || "",
+      consoleCode: consoleCode || "",
+      console: console || "",
+      services: typeof services === "string" ? services : "",
+      servicesRaw:
+        typeof servicesRaw === "string"
+          ? servicesRaw
+          : JSON.stringify(servicesRaw || []),
+
+      CantidadJuegos: numberOrZero(CantidadJuegos),
+      totalSize: numberOrZero(totalSize),
+      totalPrice: numberOrZero(totalPrice),
+
+      priceBreakdown:
+        typeof priceBreakdown === "string"
+          ? priceBreakdown
+          : JSON.stringify(priceBreakdown || {}),
+
+      pricingJSON:
+        typeof pricingJSON === "string"
+          ? pricingJSON
+          : JSON.stringify(pricingJSON || {}),
+
+      selectedGames:
+        typeof selectedGames === "string"
+          ? selectedGames
+          : JSON.stringify(selectedGames || []),
+
+      jsonGames: JSON.stringify(parsedGames),
+
+      gameTitleIds:
+        typeof gameTitleIds === "string"
+          ? gameTitleIds
+          : JSON.stringify(gameTitleIds || []),
+
+      notes: notes || "",
+      requestType,
+      hasGames,
+      hasService,
+      leadStatus: "Nuevo",
+
+      // Compatibilidad con tu flujo actual de transferencias
+      status: "Pendiente",
+    };
+
+    if (hasMeaningfulValue(clientPhone)) {
+      fields.clientPhone = String(clientPhone).trim();
+    }
+
+    if (hasMeaningfulValue(clientEmail)) {
+      fields.clientEmail = String(clientEmail).trim();
+    }
+
+    if (hasMeaningfulValue(model)) {
+      fields.model = String(model).trim();
+    }
+
+    if (hasMeaningfulValue(Serial)) {
+      fields.Serial = String(Serial).trim();
+    }
+
+    const normalizedDiskSize =
+      hasMeaningfulValue(diskSize) &&
+      String(diskSize).trim() !== "0"
+        ? String(diskSize).trim()
+        : null;
+
+    if (normalizedDiskSize) {
+      fields.diskSize = normalizedDiskSize;
+      fields.diskLimit = numberOrZero(diskLimit);
+    }
 
     const airtableRes = await fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Selections`,
@@ -105,71 +189,18 @@ export default async function handler(req, res) {
           Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          fields: {
-            selectionID: finalSelectionID,
-            source: source || "Web",
-
-            clientName: clientName || "",
-            clientPhone: clientPhone || "",
-            clientEmail: clientEmail || "",
-            consoleCode,
-            console,
-            model: model || "",
-            Serial: Serial || "",
-            services: services || "",
-            servicesRaw:
-              typeof servicesRaw === "string"
-                ? servicesRaw
-                : JSON.stringify(servicesRaw || []),
-
-            diskSize: diskSize || "",
-            diskLimit: Number(diskLimit || 0),
-            totalSize: Number(totalSize || 0),
-            CantidadJuegos: Number(CantidadJuegos || 0),
-            totalPrice: Number(totalPrice || 0),
-
-            priceBreakdown:
-              typeof priceBreakdown === "string"
-                ? priceBreakdown
-                : JSON.stringify(priceBreakdown || {}),
-
-            pricingJSON:
-              typeof pricingJSON === "string"
-                ? pricingJSON
-                : JSON.stringify(pricingJSON || {}),
-
-            selectedGames:
-              typeof selectedGames === "string"
-                ? selectedGames
-                : JSON.stringify(selectedGames || []),
-
-            jsonGames: JSON.stringify(parsedGames),
-            gameTitleIds:
-              typeof gameTitleIds === "string"
-                ? gameTitleIds
-                : JSON.stringify(gameTitleIds || []),
-
-            notes: notes || "",
-
-            requestType,
-            hasGames,
-            hasService,
-            leadStatus: "Nuevo",
-
-            // Se deja por compatibilidad con el flujo actual de transferencias.
-            // Más adelante, si separas totalmente GAMES y SVC, aquí podrás poner
-            // "No aplica" para SVC y MIXED sin tocar la tool antigua.
-            status: "Pendiente",
-          },
-        }),
+        body: JSON.stringify({ fields }),
       },
     );
 
     const data = await airtableRes.json();
 
     if (!airtableRes.ok) {
-      return res.status(500).json({ error: data });
+      return res.status(500).json({
+        error: "Airtable insert failed",
+        airtableStatus: airtableRes.status,
+        airtableBody: data,
+      });
     }
 
     return res.status(200).json({
@@ -178,6 +209,9 @@ export default async function handler(req, res) {
       requestType,
     });
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    return res.status(500).json({
+      error: "Unhandled server error",
+      message: err.message,
+    });
   }
 }

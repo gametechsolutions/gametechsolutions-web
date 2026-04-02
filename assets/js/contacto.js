@@ -144,15 +144,15 @@ function renderPricingBreakdown(lines) {
   el.innerHTML = `
     <div class="pricing-breakdown">
       ${parsed
-      .map(
-        (item) => `
+        .map(
+          (item) => `
           <div class="pricing-row">
             <span class="p-name">${item.name}</span>
             <span class="p-price">${item.price ? `$${item.price}` : ""}</span>
           </div>
         `,
-      )
-      .join("")}
+        )
+        .join("")}
     </div>
   `;
 }
@@ -200,8 +200,8 @@ Cliente: ${client.name}
 Consola: ${ctx.console.name}
 Modelo: ${ctx.model.description}
 Servicios: ${ctx.services
-      .map((id) => servicesCatalog[id]?.name || id)
-      .join(", ")}
+    .map((id) => servicesCatalog[id]?.name || id)
+    .join(", ")}
 Almacenamiento: ${ctx.storage?.label || "No aplica"}
 Juegos: ${ctx.games?.count || 0}
 
@@ -225,9 +225,15 @@ async function saveToAirtable(ctx) {
   const payload = {
     selectionID: ctx.games?.selectionID || "",
     clientName: ctx.clientName || "",
+    clientPhone: ctx.clientPhone || "",
+    clientEmail: ctx.clientEmail || "",
     consoleCode: ctx.console?.code || "",
-    console: ctx.console.name,
-    model: ctx.model.description,
+    console: ctx.console?.name || "",
+    model: ctx.model?.description || "",
+    Serial: ctx.serial || "",
+    source: "Web",
+    notes: ctx.notes || "",
+
     services: ctx.services
       .map((id) => servicesCatalog[id]?.name || id)
       .join(", "),
@@ -238,33 +244,54 @@ async function saveToAirtable(ctx) {
         name: servicesCatalog[id]?.name || id,
       })),
     ),
-    diskSize: parseInt(ctx.storage?.label || 0, 10),
-    diskLimit: ctx.storage?.usableGB || 0,
+
     CantidadJuegos: ctx.games?.count || 0,
     totalSize: ctx.games?.totalSizeGB || 0,
-    totalPrice: ctx.pricing.total,
-    priceBreakdown: ctx.pricing.breakdown.join("\n"),
-    pricingJSON: JSON.stringify(ctx.pricing),
+    totalPrice: ctx.pricing?.total || 0,
+    priceBreakdown: (ctx.pricing?.breakdown || []).join("\n"),
+    pricingJSON: JSON.stringify(ctx.pricing || {}),
     selectedGames: ctx.games?.humanList || "",
     jsonGames: JSON.stringify(ctx.games?.list || []),
     gameTitleIds: (ctx.games?.list || [])
-      .map(g => `${g.name} [${g.titleId ?? 'SIN_TITLE_ID'}]`)
-      .join('\n')
+      .map((g) => `${g.name} [${g.titleId ?? "SIN_TITLE_ID"}]`)
+      .join("\n"),
   };
 
-  const res = await fetch('/api/save-selection', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-  });
+  const parsedDiskSize = Number.parseInt(
+    String(ctx.storage?.label || "").trim(),
+    10,
+  );
 
-  if (!res.ok) {
-      throw new Error('No se pudo guardar en Airtable');
+  if (Number.isFinite(parsedDiskSize) && parsedDiskSize > 0) {
+    payload.diskSize = String(parsedDiskSize);
+    payload.diskLimit = Number(ctx.storage?.usableGB || 0);
   }
 
-  return await res.json();
+  const res = await fetch("/api/save-selection", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const raw = await res.text();
+
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    data = raw;
+  }
+
+  if (!res.ok) {
+    console.error("save-selection error:", data);
+    throw new Error(
+      typeof data === "string" ? data : JSON.stringify(data, null, 2),
+    );
+  }
+
+  return data;
 }
 
 /* =============================
@@ -320,17 +347,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
 
     try {
-        const result = await saveToAirtable(ctx);
+      const result = await saveToAirtable(ctx);
 
-        if (result?.selectionID) {
-            ctx.games = ctx.games || {};
-            ctx.games.selectionID = result.selectionID;
-        }
+      if (result?.selectionID) {
+        ctx.games = ctx.games || {};
+        ctx.games.selectionID = result.selectionID;
+      }
     } catch (e) {
-        console.warn('Airtable error:', e);
+      console.warn("Airtable error:", e);
+      alert(`Error al guardar en Airtable:\n${e.message}`);
     }
 
-    ctx.status = 'finalized';
+    ctx.status = "finalized";
     saveContext(ctx);
   };
 
