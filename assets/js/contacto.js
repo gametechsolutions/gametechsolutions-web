@@ -144,15 +144,15 @@ function renderPricingBreakdown(lines) {
   el.innerHTML = `
     <div class="pricing-breakdown">
       ${parsed
-        .map(
-          (item) => `
+      .map(
+        (item) => `
           <div class="pricing-row">
             <span class="p-name">${item.name}</span>
             <span class="p-price">${item.price ? `$${item.price}` : ""}</span>
           </div>
         `,
-        )
-        .join("")}
+      )
+      .join("")}
     </div>
   `;
 }
@@ -200,8 +200,8 @@ Cliente: ${client.name}
 Consola: ${ctx.console.name}
 Modelo: ${ctx.model.description}
 Servicios: ${ctx.services
-    .map((id) => servicesCatalog[id]?.name || id)
-    .join(", ")}
+      .map((id) => servicesCatalog[id]?.name || id)
+      .join(", ")}
 Almacenamiento: ${ctx.storage?.label || "No aplica"}
 Juegos: ${ctx.games?.count || 0}
 
@@ -257,13 +257,10 @@ async function saveToAirtable(ctx) {
       .join("\n"),
   };
 
-  const parsedDiskSize = Number.parseInt(
-    String(ctx.storage?.label || "").trim(),
-    10,
-  );
+  const rawDiskLabel = String(ctx.storage?.label || "").trim();
 
-  if (Number.isFinite(parsedDiskSize) && parsedDiskSize > 0) {
-    payload.diskSize = String(parsedDiskSize);
+  if (rawDiskLabel) {
+    payload.diskSize = rawDiskLabel;
     payload.diskLimit = Number(ctx.storage?.usableGB || 0);
   }
 

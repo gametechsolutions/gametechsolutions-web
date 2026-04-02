@@ -170,15 +170,16 @@ export default async function handler(req, res) {
       fields.Serial = String(Serial).trim();
     }
 
-    const normalizedDiskSize =
-      hasMeaningfulValue(diskSize) &&
-      String(diskSize).trim() !== "0"
-        ? String(diskSize).trim()
-        : null;
+    const normalizedDiskSize = hasMeaningfulValue(diskSize)
+      ? String(diskSize).trim()
+      : null;
 
     if (normalizedDiskSize) {
       fields.diskSize = normalizedDiskSize;
-      fields.diskLimit = numberOrZero(diskLimit);
+
+      if (hasMeaningfulValue(diskLimit)) {
+        fields.diskLimit = numberOrZero(diskLimit);
+      }
     }
 
     const airtableRes = await fetch(
