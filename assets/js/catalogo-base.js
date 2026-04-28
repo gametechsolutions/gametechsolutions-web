@@ -125,24 +125,43 @@ document.addEventListener("DOMContentLoaded", () => {
     CARGAR JUEGOS DESDE JSON
     ============================== */
 
-  fetch(CONSOLE_CONFIG.gamesJson)
-    .then((res) => {
-      if (!res.ok) throw new Error("No se pudo cargar el catálogo");
-      return res.json();
-    })
-    .then((data) => {
-      gamesData = data;
+  const localGamesUrl = CONSOLE_CONFIG.gamesJson;
+  const remoteGamesUrl = CONSOLE_CONFIG.gamesJsonRemote || null;
 
-      renderLetterFilter();
-      bindSearchControls();
+  async function loadGamesCatalog() {
+    const candidates = [remoteGamesUrl, localGamesUrl].filter(Boolean);
 
-      renderCatalog();
-    })
+    let lastError = null;
 
-    .catch((err) => {
-      console.error(err);
-      catalogEl.innerHTML = "<p>Error cargando el catálogo de juegos.</p>";
-    });
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error(`No se pudo cargar el catálogo desde ${url}`);
+        }
+
+        const data = await res.json();
+        gamesData = data;
+
+        renderLetterFilter();
+        bindSearchControls();
+        renderCatalog();
+
+        console.log(`Catálogo cargado desde: ${url}`);
+        return;
+      } catch (err) {
+        console.warn(`Falló carga de catálogo desde: ${url}`, err);
+        lastError = err;
+      }
+    }
+
+    throw lastError || new Error("No se pudo cargar el catálogo de juegos.");
+  }
+
+  loadGamesCatalog().catch((err) => {
+    console.error(err);
+    catalogEl.innerHTML = "<p>Error cargando el catálogo de juegos.</p>";
+  });
 
   function renderCatalog() {
     // ===== Virtual Scroll settings =====
