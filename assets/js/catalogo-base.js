@@ -126,7 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
     ============================== */
 
   const localGamesUrl = CONSOLE_CONFIG.gamesJson;
-  const remoteGamesUrl = CONSOLE_CONFIG.gamesJsonRemote || null;
+
+  const remoteCatalogConfig =
+    window.GTS_CATALOG_SOURCES?.[CONSOLE_CONFIG.code] || null;
+
+  const remoteGamesUrl =
+    CONSOLE_CONFIG.gamesJsonRemote ||
+    remoteCatalogConfig?.gamesJsonRemote ||
+    null;
 
   async function loadGamesCatalog() {
     const candidates = [remoteGamesUrl, localGamesUrl].filter(Boolean);
