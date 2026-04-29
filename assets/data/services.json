@@ -1,1035 +1,1045 @@
 {
-	"XBOX": {
-		"label": "Xbox Clásico",
-		"brand": "microsoft",
-		"storageOptions": {
-			"provided": {
-				"label": "Disco duro IDE/SATA proporcionado por GameTechSolutions",
-				"sizes": {
-					"500": {
-						"usableGB": 460,
-						"price": 900,
-						"gamesIncluded": 100
-					},
-					"1000": {
-						"usableGB": 926,
-						"price": 1300,
-						"gamesIncluded": 200
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "softmod_install",
-				"name": "Instalación Softmod",
-				"description": "Instalación de softmod con exploit y dashboard personalizado.",
-				"category": "softmod",
-				"price": 200,
-				"requires": [],
-				"provides": [
-					"softmod"
-				],
-				"exclusiveGroup": "xbox_mod",
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "chip_install",
-				"name": "Instalación Chip",
-				"description": "Instalación de chip con BIOS personalizada.",
-				"category": "mod",
-				"price": 750,
-				"requires": [],
-				"provides": [
-					"chip"
-				],
-				"exclusiveGroup": "xbox_mod",
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna completa con cambio de pasta térmica.",
-				"category": "maintenance",
-				"price": 300,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas o errores.",
-				"category": "support",
-				"price": 150,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "storage_with_games",
-				"name": "Disco duro con juegos",
-				"description": "Incluye disco duro interno con juegos para Xbox Clásico.",
-				"category": "storage",
-				"requires": [
-					"softmod",
-					"chip"
-				],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"X360": {
-		"label": "Xbox 360",
-		"brand": "microsoft",
-		"storageOptions": {
-			"client": {
-				"label": "Disco duro del cliente",
-				"sizes": {
-					"120": {
-						"usableGB": 105,
-						"gamesIncluded": 10
-					},
-					"250": {
-						"usableGB": 226,
-						"gamesIncluded": 25
-					},
-					"320": {
-						"usableGB": 293,
-						"gamesIncluded": 30
-					},
-					"500": {
-						"usableGB": 460,
-						"gamesIncluded": 50
-					},
-					"1000": {
-						"usableGB": 926,
-						"gamesIncluded": 100
-					}
-				}
-			},
-			"provided": {
-				"label": "Disco duro proporcionado por GameTechSolutions",
-				"sizes": {
-					"500": {
-						"usableGB": 460,
-						"price": 700,
-						"gamesIncluded": 50
-					},
-					"1000": {
-						"usableGB": 926,
-						"price": 900,
-						"gamesIncluded": 100
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "rgh_install",
-				"name": "Instalación RGH",
-				"description": "Instalación de RGH con cambio de pasta térmica.",
-				"category": "mod",
-				"price": 400,
-				"requires": [],
-				"provides": [
-					"rgh"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna completa con cambio de pasta térmica.",
-				"category": "maintenance",
-				"price": 300,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas o errores.",
-				"category": "support",
-				"price": 150,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "games_only",
-				"name": "Carga de juegos",
-				"description": "Carga de juegos en disco duro existente del cliente.",
-				"category": "games",
-				"priceByStorage": {
-					"120": 200,
-					"250": 250,
-					"320": 300,
-					"500": 350,
-					"1000": 450
-				},
-				"requires": [],
-				"provides": [
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "client"
-			},
-			{
-				"id": "storage_with_games",
-				"name": "Disco duro con juegos",
-				"description": "Incluye disco duro con juegos elegidos por el cliente.",
-				"category": "storage",
-				"requires": [],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"XONE": {
-		"label": "Xbox One",
-		"brand": "microsoft",
-		"storageOptions": {},
-		"services": [
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa con cambio de pasta térmica",
-				"description": "Limpieza interna profunda con cambio de pasta térmica para mejorar temperaturas y rendimiento.",
-				"category": "maintenance",
-				"price": 350,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
-				"category": "support",
-				"price": 250,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			}
-		]
-	},
-	"XSERIES": {
-		"label": "Xbox Series",
-		"brand": "microsoft",
-		"storageOptions": {},
-		"services": [
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa con cambio de pasta térmica",
-				"description": "Limpieza interna profunda con cambio de pasta térmica para mejorar temperaturas y rendimiento.",
-				"category": "maintenance",
-				"price": 450,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
-				"category": "support",
-				"price": 250,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			}
-		]
-	},
-	"GC": {
-		"label": "Nintendo GameCube",
-		"brand": "nintendo",
-		"storageOptions": {
-			"provided": {
-				"label": "MicroSD proporcionada por GameTechSolutions",
-				"sizes": {
-					"32": {
-						"usableGB": 29,
-						"price": 200,
-						"gamesIncluded": 20
-					},
-					"64": {
-						"usableGB": 58,
-						"price": 300,
-						"gamesIncluded": 40
-					},
-					"128": {
-						"usableGB": 115,
-						"price": 400,
-						"gamesIncluded": 80
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "picoboot_install",
-				"name": "Instalación PicoBoot",
-				"category": "mod",
-				"price": 400,
-				"requires": [],
-				"provides": [
-					"picoboot"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna completa.",
-				"category": "maintenance",
-				"price": 300,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "storage_with_games",
-				"name": "SD con juegos",
-				"description": "Incluye microSD con juegos para GameCube.",
-				"category": "storage",
-				"requires": [],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"WII": {
-		"label": "Nintendo Wii",
-		"brand": "nintendo",
-		"storageOptions": {
-			"client": {
-				"label": "USB / SD del cliente",
-				"sizes": {
-					"64": {
-						"usableGB": 57,
-						"gamesIncluded": 20
-					},
-					"128": {
-						"usableGB": 115,
-						"gamesIncluded": 40
-					},
-					"256": {
-						"usableGB": 230,
-						"gamesIncluded": 80
-					}
-				}
-			},
-			"provided": {
-				"label": "USB proporcionado por GameTechSolutions",
-				"sizes": {
-					"64": {
-						"usableGB": 57,
-						"price": 200,
-						"gamesIncluded": 20
-					},
-					"128": {
-						"usableGB": 115,
-						"price": 300,
-						"gamesIncluded": 40
-					},
-					"256": {
-						"usableGB": 230,
-						"price": 700,
-						"gamesIncluded": 80
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "softmod_install",
-				"name": "Instalación Homebrew (Softmod)",
-				"description": "Instalación de Homebrew Channel y configuración inicial.",
-				"category": "softmod",
-				"price": 300,
-				"requires": [],
-				"provides": [
-					"homebrew"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna completa de la consola.",
-				"category": "maintenance",
-				"price": 300,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas o problemas.",
-				"category": "support",
-				"price": 150,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "games_only",
-				"name": "Carga de juegos",
-				"description": "Carga de juegos en USB del cliente.",
-				"category": "games",
-				"priceByStorage": {
-					"64": 100,
-					"128": 150,
-					"256": 350
-				},
-				"requires": [],
-				"provides": [
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "client"
-			},
-			{
-				"id": "storage_with_games",
-				"name": "USB con juegos",
-				"description": "Incluye USB con juegos elegidos por el cliente.",
-				"category": "storage",
-				"requires": [],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"SWITCH": {
-		"label": "Nintendo Switch",
-		"brand": "nintendo",
-		"storageOptions": {
-			"client": {
-				"label": "microSD del cliente",
-				"sizes": {
-					"64": {
-						"usableGB": 58,
-						"gamesIncluded": 10
-					},
-					"128": {
-						"usableGB": 115,
-						"gamesIncluded": 20
-					},
-					"256": {
-						"usableGB": 230,
-						"gamesIncluded": 40
-					},
-					"512": {
-						"usableGB": 460,
-						"gamesIncluded": 80
-					}
-				}
-			},
-			"provided": {
-				"label": "microSD proporcionada por GameTechSolutions",
-				"sizes": {
-					"128": {
-						"usableGB": 115,
-						"price": 500,
-						"gamesIncluded": 20
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "chip_install",
-				"name": "Instalación de chip",
-				"description": "Instalación de chip (HWFLY / RP2040) según modelo de Nintendo Switch.",
-				"category": "mod",
-				"priceByModel": {
-					"lite": 600,
-					"core": 650,
-					"oled": 700
-				},
-				"requires": [],
-				"provides": [
-					"chip"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna completa y mantenimiento preventivo.",
-				"category": "maintenance",
-				"price": 400,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general de hardware y fallas.",
-				"category": "support",
-				"price": 250,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "games_only",
-				"name": "Carga de juegos",
-				"description": "Carga de juegos en microSD del cliente.",
-				"category": "games",
-				"priceByStorage": {
-					"64": 150,
-					"128": 200,
-					"256": 250,
-					"512": 300
-				},
-				"requires": [
-					"chip"
-				],
-				"provides": [
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "client"
-			},
-			{
-				"id": "storage_with_games",
-				"name": "microSD con juegos",
-				"description": "Incluye microSD con juegos listos para usar.",
-				"category": "storage",
-				"requires": [
-					"chip"
-				],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"PS2": {
-		"label": "PlayStation 2",
-		"brand": "sony",
-		"storageOptions": {
-			"provided": {
-				"label": "USB proporcionado por GameTechSolutions",
-				"sizes": {
-					"64": {
-						"usableGB": 57,
-						"price": 200,
-						"gamesIncluded": 20
-					},
-					"128": {
-						"usableGB": 115,
-						"price": 300,
-						"gamesIncluded": 40
-					},
-					"256": {
-						"usableGB": 230,
-						"price": 700,
-						"gamesIncluded": 80
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "fmcb_install",
-				"name": "Instalación FreeMCBoot",
-				"description": "Instalación de FMCB o Funtuna según modelo.",
-				"category": "softmod",
-				"price": 300,
-				"requires": [],
-				"provides": [
-					"fmcb"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna completa.",
-				"category": "maintenance",
-				"price": 300,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas o errores.",
-				"category": "support",
-				"price": 150,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "storage_with_games",
-				"name": "USB con juegos",
-				"description": "Incluye USB con juegos elegidos por el cliente.",
-				"category": "storage",
-				"requires": [],
-				"provides": [
-					"storage"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"PS3": {
-		"label": "PlayStation 3",
-		"brand": "sony",
-		"storageOptions": {
-			"client": {
-				"label": "Disco duro interno del cliente",
-				"sizes": {
-					"120": {
-						"usableGB": 105,
-						"gamesIncluded": 5
-					},
-					"250": {
-						"usableGB": 226,
-						"gamesIncluded": 15
-					},
-					"320": {
-						"usableGB": 293,
-						"gamesIncluded": 20
-					},
-					"500": {
-						"usableGB": 460,
-						"gamesIncluded": 30
-					},
-					"1000": {
-						"usableGB": 926,
-						"gamesIncluded": 60
-					}
-				}
-			},
-			"provided": {
-				"label": "Disco duro proporcionado por GameTechSolutions",
-				"sizes": {
-					"500": {
-						"usableGB": 460,
-						"price": 500,
-						"gamesIncluded": 30
-					},
-					"1000": {
-						"usableGB": 926,
-						"price": 700,
-						"gamesIncluded": 60
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "hen_cfw_install",
-				"name": "Instalación HEN o CFW",
-				"description": "Instalación y configuración de HEN o CFW según modelo.",
-				"category": "softmod",
-				"price": 300,
-				"requires": [],
-				"provides": [
-					"hen_cfw"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna con cambio de pasta térmica.",
-				"category": "maintenance",
-				"price": 300,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas.",
-				"category": "support",
-				"price": 200,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "games_only",
-				"name": "Carga de juegos",
-				"description": "Carga de juegos en el disco duro existente del cliente.",
-				"category": "games",
-				"priceByStorage": {
-					"120": 150,
-					"250": 200,
-					"320": 250,
-					"500": 300,
-					"1000": 500
-				},
-				"provides": [
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "client"
-			},
-			{
-				"id": "storage_with_games",
-				"name": "Disco duro con juegos",
-				"description": "Incluye disco duro interno con juegos elegidos por el cliente.",
-				"category": "storage",
-				"requires": [
-					"hen_cfw"
-				],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"PS4": {
-		"label": "PlayStation 4",
-		"brand": "sony",
-		"storageOptions": {},
-		"services": [
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa con cambio de pasta térmica",
-				"description": "Limpieza interna profunda con cambio de pasta térmica para mejorar temperaturas y rendimiento.",
-				"category": "maintenance",
-				"price": 350,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
-				"category": "support",
-				"price": 250,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			}
-		]
-	},
-	"PS5": {
-		"label": "PlayStation 5",
-		"brand": "sony",
-		"storageOptions": {},
-		"services": [
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa con cambio de pasta térmica",
-				"description": "Limpieza interna profunda con cambio de metal líquido para mejorar temperaturas y rendimiento.",
-				"category": "maintenance",
-				"price": 450,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
-				"category": "support",
-				"price": 250,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			}
-		]
-	},
-	"PSP": {
-		"label": "PlayStation Portable",
-		"brand": "sony",
-		"storageOptions": {
-			"client": {
-				"label": "Memory Stick / microSD del cliente",
-				"sizes": {
-					"16": {
-						"usableGB": 14,
-						"gamesIncluded": 10
-					},
-					"32": {
-						"usableGB": 29,
-						"gamesIncluded": 20
-					},
-					"64": {
-						"usableGB": 58,
-						"gamesIncluded": 40
-					},
-					"128": {
-						"usableGB": 115,
-						"gamesIncluded": 80
-					}
-				}
-			},
-			"provided": {
-				"label": "Memory Stick / microSD proporcionada por GameTechSolutions",
-				"sizes": {
-					"32": {
-						"usableGB": 29,
-						"price": 200,
-						"gamesIncluded": 20
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "cfw_install",
-				"name": "Instalación CFW permanente",
-				"description": "Instalación de Custom Firmware permanente compatible con el modelo.",
-				"category": "softmod",
-				"price": 300,
-				"requires": [],
-				"provides": [
-					"cfw"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna de la consola y botones.",
-				"category": "maintenance",
-				"price": 250,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas de lectura, botones o batería.",
-				"category": "support",
-				"price": 150,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "games_only",
-				"name": "Carga de juegos",
-				"description": "Carga de juegos en la Memory Stick del cliente.",
-				"category": "games",
-				"priceByStorage": {
-					"16": 150,
-					"32": 200,
-					"64": 250,
-					"128": 200
-				},
-				"requires": [],
-				"provides": [
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "client"
-			},
-			{
-				"id": "storage_with_games",
-				"name": "Memory Stick con juegos",
-				"description": "Incluye Memory Stick o microSD con juegos seleccionados.",
-				"category": "storage",
-				"requires": [],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	},
-	"PSVITA": {
-		"label": "PlayStation Vita",
-		"brand": "sony",
-		"storageOptions": {
-			"client": {
-				"label": "microSD (SD2Vita) del cliente",
-				"sizes": {
-					"32": {
-						"usableGB": 29,
-						"gamesIncluded": 10
-					},
-					"64": {
-						"usableGB": 58,
-						"gamesIncluded": 20
-					},
-					"128": {
-						"usableGB": 115,
-						"gamesIncluded": 40
-					},
-					"256": {
-						"usableGB": 230,
-						"gamesIncluded": 80
-					}
-				}
-			},
-			"provided": {
-				"label": "microSD (SD2Vita) proporcionada por GameTechSolutions",
-				"sizes": {
-					"32": {
-						"usableGB": 29,
-						"price": 200,
-						"gamesIncluded": 10
-					},
-					"64": {
-						"usableGB": 58,
-						"price": 300,
-						"gamesIncluded": 20
-					},
-					"128": {
-						"usableGB": 115,
-						"price": 400,
-						"gamesIncluded": 40
-					}
-				}
-			}
-		},
-		"services": [
-			{
-				"id": "henkaku_enso_install",
-				"name": "Instalación HENkaku / Ensō",
-				"description": "Instalación de HENkaku y Ensō permanente compatible con el modelo.",
-				"category": "softmod",
-				"price": 300,
-				"requires": [],
-				"provides": [
-					"henkaku"
-				],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "full_cleaning",
-				"name": "Limpieza completa",
-				"description": "Limpieza interna de botones, joystick y carcasa.",
-				"category": "maintenance",
-				"price": 250,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "diagnostic",
-				"name": "Revisión y diagnóstico",
-				"description": "Revisión general para detectar fallas de joystick, pantalla o batería.",
-				"category": "support",
-				"price": 150,
-				"requires": [],
-				"provides": [],
-				"allowsGames": false,
-				"requiresStorage": false
-			},
-			{
-				"id": "games_only",
-				"name": "Carga de juegos",
-				"description": "Carga de juegos en microSD del cliente mediante SD2Vita.",
-				"category": "games",
-				"priceByStorage": {
-					"32": 200,
-					"64": 250,
-					"128": 400,
-					"256": 700
-				},
-				"requires": [],
-				"provides": [
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "client"
-			},
-			{
-				"id": "storage_with_games",
-				"name": "microSD con juegos",
-				"description": "Incluye microSD configurada con SD2Vita y juegos seleccionados.",
-				"category": "storage",
-				"requires": [],
-				"provides": [
-					"storage",
-					"games"
-				],
-				"allowsGames": true,
-				"requiresStorage": true,
-				"storageMode": "provided"
-			}
-		]
-	}
+  "XBOX": {
+    "label": "Xbox Clásico",
+    "brand": "microsoft",
+    "storageOptions": {
+      "provided": {
+        "label": "Disco duro IDE/SATA proporcionado por GameTechSolutions",
+        "sizes": {
+          "500": {
+            "usableGB": 460,
+            "price": 1050,
+            "gamesIncluded": 100
+          },
+          "1000": {
+            "usableGB": 926,
+            "price": 1250,
+            "gamesIncluded": 200
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "softmod_install",
+        "name": "Instalación Softmod",
+        "description": "Instalación de softmod con exploit y dashboard personalizado.",
+        "category": "softmod",
+        "price": 200,
+        "requires": [],
+        "provides": [
+          "softmod"
+        ],
+        "exclusiveGroup": "xbox_mod",
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "chip_install",
+        "name": "Instalación Chip",
+        "description": "Instalación de chip con BIOS personalizada.",
+        "category": "mod",
+        "price": 750,
+        "requires": [],
+        "provides": [
+          "chip"
+        ],
+        "exclusiveGroup": "xbox_mod",
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa con cambio de pasta térmica.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o errores.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "storage_with_games",
+        "name": "Disco duro con juegos",
+        "description": "Incluye disco duro interno con juegos para Xbox Clásico.",
+        "category": "storage",
+        "requires": [
+          "softmod",
+          "chip"
+        ],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "X360": {
+    "label": "Xbox 360",
+    "brand": "microsoft",
+    "storageOptions": {
+      "client": {
+        "label": "Disco duro del cliente",
+        "sizes": {
+          "120": {
+            "usableGB": 105,
+            "gamesIncluded": 10
+          },
+          "250": {
+            "usableGB": 226,
+            "gamesIncluded": 25
+          },
+          "320": {
+            "usableGB": 293,
+            "gamesIncluded": 30
+          },
+          "500": {
+            "usableGB": 460,
+            "gamesIncluded": 50
+          },
+          "1000": {
+            "usableGB": 926,
+            "gamesIncluded": 100
+          }
+        }
+      },
+      "provided": {
+        "label": "Disco duro proporcionado por GameTechSolutions",
+        "sizes": {
+          "500": {
+            "usableGB": 460,
+            "price": 650,
+            "gamesIncluded": 50
+          },
+          "1000": {
+            "usableGB": 926,
+            "price": 850,
+            "gamesIncluded": 100
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "rgh_install",
+        "name": "Instalación RGH",
+        "description": "Instalación de RGH con cambio de pasta térmica.",
+        "category": "mod",
+        "price": 400,
+        "requires": [],
+        "provides": [
+          "rgh"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa con cambio de pasta térmica.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o errores.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en disco duro existente del cliente.",
+        "category": "games",
+        "priceByStorage": {
+          "120": 200,
+          "250": 250,
+          "320": 300,
+          "500": 350,
+          "1000": 450
+        },
+        "requires": [],
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "Disco duro con juegos",
+        "description": "Incluye disco duro con juegos elegidos por el cliente.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "XONE": {
+    "label": "Xbox One",
+    "brand": "microsoft",
+    "storageOptions": {},
+    "services": [
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa con cambio de pasta térmica",
+        "description": "Limpieza interna profunda con cambio de pasta térmica para mejorar temperaturas y rendimiento.",
+        "category": "maintenance",
+        "price": 350,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
+        "category": "support",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      }
+    ]
+  },
+  "XSERIES": {
+    "label": "Xbox Series",
+    "brand": "microsoft",
+    "storageOptions": {},
+    "services": [
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa con cambio de pasta térmica",
+        "description": "Limpieza interna profunda con cambio de pasta térmica para mejorar temperaturas y rendimiento.",
+        "category": "maintenance",
+        "price": 450,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
+        "category": "support",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      }
+    ]
+  },
+  "GC": {
+    "label": "Nintendo GameCube",
+    "brand": "nintendo",
+    "storageOptions": {
+      "provided": {
+        "label": "MicroSD proporcionada por GameTechSolutions",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "price": 650,
+            "gamesIncluded": 20
+          },
+          "64": {
+            "usableGB": 58,
+            "price": 650,
+            "gamesIncluded": 40
+          },
+          "128": {
+            "usableGB": 115,
+            "price": 800,
+            "gamesIncluded": 80
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "picoboot_install",
+        "name": "Instalación PicoBoot",
+        "category": "mod",
+        "price": 400,
+        "requires": [],
+        "provides": [
+          "picoboot"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "storage_with_games",
+        "name": "SD con juegos",
+        "description": "Incluye microSD con juegos para GameCube.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "WII": {
+    "label": "Nintendo Wii",
+    "brand": "nintendo",
+    "storageOptions": {
+      "client": {
+        "label": "USB / SD del cliente",
+        "sizes": {
+          "64": {
+            "usableGB": 57,
+            "gamesIncluded": 20
+          },
+          "128": {
+            "usableGB": 115,
+            "gamesIncluded": 40
+          },
+          "256": {
+            "usableGB": 230,
+            "gamesIncluded": 80
+          }
+        }
+      },
+      "provided": {
+        "label": "USB proporcionado por GameTechSolutions",
+        "sizes": {
+          "64": {
+            "usableGB": 57,
+            "price": 400,
+            "gamesIncluded": 20
+          },
+          "128": {
+            "usableGB": 115,
+            "price": 550,
+            "gamesIncluded": 40
+          },
+          "256": {
+            "usableGB": 230,
+            "price": 900,
+            "gamesIncluded": 80
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "softmod_install",
+        "name": "Instalación Homebrew (Softmod)",
+        "description": "Instalación de Homebrew Channel y configuración inicial.",
+        "category": "softmod",
+        "price": 300,
+        "requires": [],
+        "provides": [
+          "homebrew"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa de la consola.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o problemas.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en USB del cliente.",
+        "category": "games",
+        "priceByStorage": {
+          "64": 100,
+          "128": 150,
+          "256": 350
+        },
+        "requires": [],
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "USB con juegos",
+        "description": "Incluye USB con juegos elegidos por el cliente.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "SWITCH": {
+    "label": "Nintendo Switch",
+    "brand": "nintendo",
+    "storageOptions": {
+      "client": {
+        "label": "microSD del cliente",
+        "sizes": {
+          "64": {
+            "usableGB": 58,
+            "gamesIncluded": 10
+          },
+          "128": {
+            "usableGB": 115,
+            "gamesIncluded": 20
+          },
+          "256": {
+            "usableGB": 230,
+            "gamesIncluded": 40
+          },
+          "512": {
+            "usableGB": 460,
+            "gamesIncluded": 80
+          }
+        }
+      },
+      "provided": {
+        "label": "microSD proporcionada por GameTechSolutions",
+        "sizes": {
+          "128": {
+            "usableGB": 115,
+            "price": 400,
+            "gamesIncluded": 20
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "chip_install",
+        "name": "Instalación de chip",
+        "description": "Instalación de chip (HWFLY / RP2040) según modelo de Nintendo Switch.",
+        "category": "mod",
+        "priceByModel": {
+          "lite": 600,
+          "core": 650,
+          "oled": 700
+        },
+        "requires": [],
+        "provides": [
+          "chip"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa y mantenimiento preventivo.",
+        "category": "maintenance",
+        "price": 400,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general de hardware y fallas.",
+        "category": "support",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en microSD del cliente.",
+        "category": "games",
+        "priceByStorage": {
+          "64": 150,
+          "128": 200,
+          "256": 250,
+          "512": 300
+        },
+        "requires": [
+          "chip"
+        ],
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "microSD con juegos",
+        "description": "Incluye microSD con juegos listos para usar.",
+        "category": "storage",
+        "requires": [
+          "chip"
+        ],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "PS2": {
+    "label": "PlayStation 2",
+    "brand": "sony",
+    "storageOptions": {
+      "provided": {
+        "label": "USB proporcionado por GameTechSolutions",
+        "sizes": {
+          "64": {
+            "usableGB": 57,
+            "price": 400,
+            "gamesIncluded": 20
+          },
+          "128": {
+            "usableGB": 115,
+            "price": 550,
+            "gamesIncluded": 40
+          },
+          "256": {
+            "usableGB": 230,
+            "price": 850,
+            "gamesIncluded": 80
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "fmcb_install",
+        "name": "Instalación FreeMCBoot",
+        "description": "Instalación de FMCB o Funtuna según modelo.",
+        "category": "softmod",
+        "price": 300,
+        "requires": [],
+        "provides": [
+          "fmcb"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o errores.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "storage_with_games",
+        "name": "USB con juegos",
+        "description": "Incluye USB con juegos elegidos por el cliente.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "PS3": {
+    "label": "PlayStation 3",
+    "brand": "sony",
+    "storageOptions": {
+      "client": {
+        "label": "Disco duro interno del cliente",
+        "sizes": {
+          "120": {
+            "usableGB": 105,
+            "gamesIncluded": 5
+          },
+          "250": {
+            "usableGB": 226,
+            "gamesIncluded": 15
+          },
+          "320": {
+            "usableGB": 293,
+            "gamesIncluded": 20
+          },
+          "500": {
+            "usableGB": 460,
+            "gamesIncluded": 30
+          },
+          "1000": {
+            "usableGB": 926,
+            "gamesIncluded": 60
+          }
+        }
+      },
+      "provided": {
+        "label": "Disco duro proporcionado por GameTechSolutions",
+        "sizes": {
+          "500": {
+            "usableGB": 460,
+            "price": 500,
+            "gamesIncluded": 30
+          },
+          "1000": {
+            "usableGB": 926,
+            "price": 700,
+            "gamesIncluded": 60
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "hen_cfw_install",
+        "name": "Instalación HEN o CFW",
+        "description": "Instalación y configuración de HEN o CFW según modelo.",
+        "category": "softmod",
+        "price": 300,
+        "requires": [],
+        "provides": [
+          "hen_cfw"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna con cambio de pasta térmica.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas.",
+        "category": "support",
+        "price": 200,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en el disco duro existente del cliente.",
+        "category": "games",
+        "priceByStorage": {
+          "120": 150,
+          "250": 200,
+          "320": 250,
+          "500": 300,
+          "1000": 500
+        },
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "Disco duro con juegos",
+        "description": "Incluye disco duro interno con juegos elegidos por el cliente.",
+        "category": "storage",
+        "requires": [
+          "hen_cfw"
+        ],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "PS4": {
+    "label": "PlayStation 4",
+    "brand": "sony",
+    "storageOptions": {},
+    "services": [
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa con cambio de pasta térmica",
+        "description": "Limpieza interna profunda con cambio de pasta térmica para mejorar temperaturas y rendimiento.",
+        "category": "maintenance",
+        "price": 350,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
+        "category": "support",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      }
+    ]
+  },
+  "PS5": {
+    "label": "PlayStation 5",
+    "brand": "sony",
+    "storageOptions": {},
+    "services": [
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa con cambio de pasta térmica",
+        "description": "Limpieza interna profunda con cambio de metal líquido para mejorar temperaturas y rendimiento.",
+        "category": "maintenance",
+        "price": 450,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
+        "category": "support",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      }
+    ]
+  },
+  "PSP": {
+    "label": "PlayStation Portable",
+    "brand": "sony",
+    "storageOptions": {
+      "client": {
+        "label": "Memory Stick / microSD del cliente",
+        "sizes": {
+          "16": {
+            "usableGB": 14,
+            "gamesIncluded": 10
+          },
+          "32": {
+            "usableGB": 29,
+            "gamesIncluded": 20
+          },
+          "64": {
+            "usableGB": 58,
+            "gamesIncluded": 40
+          },
+          "128": {
+            "usableGB": 115,
+            "gamesIncluded": 80
+          }
+        }
+      },
+      "provided": {
+        "label": "Memory Stick / microSD proporcionada por GameTechSolutions",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "price": 350,
+            "gamesIncluded": 20
+          },
+          "64": {
+            "usableGB": 58,
+            "gamesIncluded": 40,
+            "price": 350
+          },
+          "128": {
+            "usableGB": 115,
+            "gamesIncluded": 80,
+            "price": 550
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "cfw_install",
+        "name": "Instalación CFW permanente",
+        "description": "Instalación de Custom Firmware permanente compatible con el modelo.",
+        "category": "softmod",
+        "price": 300,
+        "requires": [],
+        "provides": [
+          "cfw"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna de la consola y botones.",
+        "category": "maintenance",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas de lectura, botones o batería.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en la Memory Stick del cliente.",
+        "category": "games",
+        "priceByStorage": {
+          "16": 150,
+          "32": 200,
+          "64": 250,
+          "128": 200
+        },
+        "requires": [],
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "Memory Stick con juegos",
+        "description": "Incluye Memory Stick o microSD con juegos seleccionados.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "PSVITA": {
+    "label": "PlayStation Vita",
+    "brand": "sony",
+    "storageOptions": {
+      "client": {
+        "label": "microSD (SD2Vita) del cliente",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "gamesIncluded": 10
+          },
+          "64": {
+            "usableGB": 58,
+            "gamesIncluded": 20
+          },
+          "128": {
+            "usableGB": 115,
+            "gamesIncluded": 40
+          },
+          "256": {
+            "usableGB": 230,
+            "gamesIncluded": 80
+          }
+        }
+      },
+      "provided": {
+        "label": "microSD (SD2Vita) proporcionada por GameTechSolutions",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "price": 300,
+            "gamesIncluded": 10
+          },
+          "64": {
+            "usableGB": 58,
+            "price": 300,
+            "gamesIncluded": 20
+          },
+          "128": {
+            "usableGB": 115,
+            "price": 500,
+            "gamesIncluded": 40
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "henkaku_enso_install",
+        "name": "Instalación HENkaku / Ensō",
+        "description": "Instalación de HENkaku y Ensō permanente compatible con el modelo.",
+        "category": "softmod",
+        "price": 300,
+        "requires": [],
+        "provides": [
+          "henkaku"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna de botones, joystick y carcasa.",
+        "category": "maintenance",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas de joystick, pantalla o batería.",
+        "category": "support",
+        "price": 150,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en microSD del cliente mediante SD2Vita.",
+        "category": "games",
+        "priceByStorage": {
+          "32": 200,
+          "64": 250,
+          "128": 400,
+          "256": 700
+        },
+        "requires": [],
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "microSD con juegos",
+        "description": "Incluye microSD configurada con SD2Vita y juegos seleccionados.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  }
 }

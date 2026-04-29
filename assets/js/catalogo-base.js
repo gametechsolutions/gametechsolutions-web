@@ -84,19 +84,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let servicesData = {};
 
-  fetch("/assets/data/services.json")
-    .then((res) => {
-      if (!res.ok) throw new Error("No se pudo cargar services.json");
-      return res.json();
-    })
-    .then((data) => {
-      servicesData = data;
-      // 🌍 Exponer globalmente
-      window.SERVICES_DATA = data;
-    })
-    .catch((err) => {
-      console.error("Error cargando services.json:", err);
-    });
+  const localServicesUrl = "/assets/data/services.json";
+  const remoteServicesUrl =
+    window.GTS_REMOTE_CONFIG?.servicesJsonRemote || null;
+
+  async function loadServicesConfig() {
+    const candidates = [remoteServicesUrl, localServicesUrl].filter(Boolean);
+
+    let lastError = null;
+
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error(`No se pudo cargar services.json desde ${url}`);
+        }
+
+        const data = await res.json();
+        servicesData = data;
+        window.SERVICES_DATA = data;
+
+        console.log(`services.json cargado desde: ${url}`);
+        return;
+      } catch (err) {
+        console.warn(`Falló carga de services.json desde: ${url}`, err);
+        lastError = err;
+      }
+    }
+
+    throw lastError || new Error("No se pudo cargar services.json.");
+  }
+
+  loadServicesConfig().catch((err) => {
+    console.error("Error cargando services.json:", err);
+  });
 
   if (ctx?.storage) {
     diskLimit = Number(ctx.storage.usableGB);

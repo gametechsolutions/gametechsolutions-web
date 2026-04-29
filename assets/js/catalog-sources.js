@@ -40,3 +40,8 @@ window.GTS_CATALOG_SOURCES = {
       "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/switch.json",
   },
 };
+
+window.GTS_REMOTE_CONFIG = {
+  servicesJsonRemote:
+    "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/config/services.json",
+};
