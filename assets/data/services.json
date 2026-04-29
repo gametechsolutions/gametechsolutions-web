@@ -4,7 +4,7 @@
     "brand": "microsoft",
     "storageOptions": {
       "provided": {
-        "label": "Disco duro IDE/SATA proporcionado por GameTechSolutions",
+        "label": "Disco duro proporcionado por GameTechSolutions",
         "sizes": {
           "500": {
             "usableGB": 460,
@@ -293,6 +293,7 @@
       {
         "id": "picoboot_install",
         "name": "Instalación PicoBoot",
+        "description": "Instalación de PicoBoot",
         "category": "mod",
         "price": 400,
         "requires": [],
@@ -308,6 +309,17 @@
         "description": "Limpieza interna completa.",
         "category": "maintenance",
         "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o errores.",
+        "category": "support",
+        "price": 150,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -351,7 +363,7 @@
         }
       },
       "provided": {
-        "label": "USB proporcionado por GameTechSolutions",
+        "label": "USB proporcionada por GameTechSolutions",
         "sizes": {
           "64": {
             "usableGB": 57,
@@ -481,7 +493,7 @@
       {
         "id": "chip_install",
         "name": "Instalación de chip",
-        "description": "Instalación de chip (HWFLY / RP2040) según modelo de Nintendo Switch.",
+        "description": "Instalación de chip según modelo de Nintendo Switch.",
         "category": "mod",
         "priceByModel": {
           "lite": 600,
@@ -561,7 +573,7 @@
     "brand": "sony",
     "storageOptions": {
       "provided": {
-        "label": "USB proporcionado por GameTechSolutions",
+        "label": "USB proporcionada por GameTechSolutions",
         "sizes": {
           "64": {
             "usableGB": 57,
@@ -813,7 +825,7 @@
     "brand": "sony",
     "storageOptions": {
       "client": {
-        "label": "Memory Stick / microSD del cliente",
+        "label": "microSD del cliente",
         "sizes": {
           "16": {
             "usableGB": 14,
@@ -834,7 +846,7 @@
         }
       },
       "provided": {
-        "label": "Memory Stick / microSD proporcionada por GameTechSolutions",
+        "label": "microSD proporcionada por GameTechSolutions",
         "sizes": {
           "32": {
             "usableGB": 29,
@@ -912,7 +924,7 @@
       {
         "id": "storage_with_games",
         "name": "Memory Stick con juegos",
-        "description": "Incluye Memory Stick o microSD con juegos seleccionados.",
+        "description": "microSD con juegos seleccionados.",
         "category": "storage",
         "requires": [],
         "provides": [
@@ -930,7 +942,7 @@
     "brand": "sony",
     "storageOptions": {
       "client": {
-        "label": "microSD (SD2Vita) del cliente",
+        "label": "microSD del cliente",
         "sizes": {
           "32": {
             "usableGB": 29,
@@ -951,7 +963,7 @@
         }
       },
       "provided": {
-        "label": "microSD (SD2Vita) proporcionada por GameTechSolutions",
+        "label": "microSD proporcionada por GameTechSolutions",
         "sizes": {
           "32": {
             "usableGB": 29,
@@ -1010,7 +1022,7 @@
       {
         "id": "games_only",
         "name": "Carga de juegos",
-        "description": "Carga de juegos en microSD del cliente mediante SD2Vita.",
+        "description": "Carga de juegos en microSD del cliente.",
         "category": "games",
         "priceByStorage": {
           "32": 200,
@@ -1029,7 +1041,7 @@
       {
         "id": "storage_with_games",
         "name": "microSD con juegos",
-        "description": "Incluye microSD configurada con SD2Vita y juegos seleccionados.",
+        "description": "Incluye microSD configurada y juegos seleccionados.",
         "category": "storage",
         "requires": [],
         "provides": [
