@@ -5,17 +5,20 @@
 		{
 			"id": "lite",
 			"name": "Nintendo Switch Lite",
-			"image": "/assets/img/consolas/switch/models/lite.png"
+			"image": "/assets/img/consolas/switch/models/lite.png",
+			"code": "Lite"
 		},
 		{
 			"id": "core",
 			"name": "Nintendo Switch Core",
-			"image": "/assets/img/consolas/switch/models/core.png"
+			"image": "/assets/img/consolas/switch/models/core.png",
+			"code": "Core"
 		},
 		{
 			"id": "oled",
 			"name": "Nintendo Switch OLED",
-			"image": "/assets/img/consolas/switch/models/oled.png"
+			"image": "/assets/img/consolas/switch/models/oled.png",
+			"code": "OLED"
 		}
 	]
 }
