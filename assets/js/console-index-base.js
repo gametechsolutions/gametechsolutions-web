@@ -153,9 +153,35 @@ document.addEventListener("DOMContentLoaded", async () => {
       SERVICIOS
       ============================== */
 
-  const servicesData = await fetch("/assets/data/services.json").then((r) =>
-    r.json(),
-  );
+  const localServicesUrl = "/assets/data/services.json";
+  const remoteServicesUrl =
+    window.GTS_REMOTE_CONFIG?.servicesJsonRemote || null;
+
+  async function loadServicesConfig() {
+    const candidates = [remoteServicesUrl, localServicesUrl].filter(Boolean);
+
+    let lastError = null;
+
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error(`No se pudo cargar services.json desde ${url}`);
+        }
+
+        const data = await res.json();
+        console.log(`services.json cargado desde: ${url}`);
+        return data;
+      } catch (err) {
+        console.warn(`Falló carga de services.json desde: ${url}`, err);
+        lastError = err;
+      }
+    }
+
+    throw lastError || new Error("No se pudo cargar services.json.");
+  }
+
+  const servicesData = await loadServicesConfig();
 
   const consoleServices = servicesData[CONSOLE_CONFIG.code];
   if (!consoleServices) {
@@ -230,8 +256,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (conflict) {
             alert(
               '⚠️ El servicio "' +
-                service.name +
-                '" no puede combinarse con otro método de modificación.',
+              service.name +
+              '" no puede combinarse con otro método de modificación.',
             );
             return;
           }
