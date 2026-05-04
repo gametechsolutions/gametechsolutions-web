@@ -800,8 +800,8 @@
     "services": [
       {
         "id": "full_cleaning",
-        "name": "Limpieza completa con cambio de pasta térmica",
-        "description": "Limpieza interna profunda con cambio de metal líquido para mejorar temperaturas y rendimiento.",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna profunda para mejorar temperaturas y rendimiento.",
         "category": "maintenance",
         "price": 950,
         "requires": [],
