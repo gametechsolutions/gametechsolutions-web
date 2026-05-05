@@ -116,6 +116,14 @@ function generateControllerRequestID() {
   return `CTRL-${year}${month}${day}-${random}`;
 }
 
+function getControllerFormData() {
+  return {
+    controllerConsole: document.getElementById("controllerConsole")?.value.trim() || "",
+    controllerModel: document.getElementById("controllerModel")?.value.trim() || "",
+    controllerIssue: document.getElementById("controllerIssue")?.value.trim() || "",
+  };
+}
+
 /* =============================
 PRICING
 ============================= */
@@ -272,8 +280,8 @@ function findControllerService(data, requestedValue) {
 }
 
 function renderControllerContactSummary(service, requestID) {
-  setText("summary-console", "Control de consola");
-  setText("summary-model", "Por confirmar");
+  setText("summary-console", "Servicio para control");
+  setText("summary-model", "Captura el modelo abajo");
   setText("summary-storage", "No aplica");
   setText("summary-games", "No aplica");
   setText("summary-services", service?.name || "Servicio para control");
@@ -292,7 +300,7 @@ function renderControllerContactSummary(service, requestID) {
   ]);
 }
 
-function buildControllerWhatsAppMessage(service, client, requestID) {
+function buildControllerWhatsAppMessage(service, client, requestID, controllerData) {
   const priceLabel = service?.priceLabel || (
     typeof service?.price === "number"
       ? `$${service.price} MXN`
@@ -307,9 +315,9 @@ Cliente: ${client.name}
 Servicio solicitado: ${service?.name || "Servicio para control"}
 Precio mostrado en página: ${priceLabel}
 
-Modelo del control:
-Consola a la que pertenece:
-Falla o detalle:
+Consola del control: ${controllerData.controllerConsole || "Por confirmar"}
+Modelo del control: ${controllerData.controllerModel || "Por confirmar"}
+Falla o detalle: ${controllerData.controllerIssue || "Por confirmar"}
 `.trim();
 }
 
@@ -320,6 +328,8 @@ async function initControllerContactMode() {
   const requestID = generateControllerRequestID();
 
   renderControllerContactSummary(service, requestID);
+
+  document.getElementById("controllerDetailsCard")?.classList.remove("hidden");
 
   const sendBtn = document.getElementById("sendBtn");
   if (sendBtn) {
@@ -332,13 +342,19 @@ async function initControllerContactMode() {
       }
 
       const client = { name };
+      const controllerData = getControllerFormData();
 
       sendToWhatsApp(
-        buildControllerWhatsAppMessage(service, client, requestID),
+        buildControllerWhatsAppMessage(service, client, requestID, controllerData),
       );
 
       try {
-        const result = await saveControllerRequest(service, client, requestID);
+        const result = await saveControllerRequest(
+          service,
+          client,
+          requestID,
+          controllerData,
+        );
 
         console.log("Solicitud de control guardada:", result);
       } catch (error) {
@@ -392,7 +408,7 @@ function sendToWhatsApp(message) {
 AIRTABLE
 ============================= */
 
-async function saveControllerRequest(service, client, requestID) {
+async function saveControllerRequest(service, client, requestID, controllerData) {
   const priceLabel = service?.priceLabel || (
     typeof service?.price === "number"
       ? `$${service.price} MXN`
@@ -411,6 +427,10 @@ async function saveControllerRequest(service, client, requestID) {
     source: "Web - Controles",
     pageUrl: window.location.href,
     notes: `Solicitud iniciada desde la página de controles. ID: ${requestID}`,
+
+    controllerConsole: controllerData.controllerConsole,
+    controllerModel: controllerData.controllerModel,
+    controllerIssue: controllerData.controllerIssue,
   };
 
   const res = await fetch("/api/save-controller-request", {

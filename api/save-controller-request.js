@@ -58,6 +58,9 @@ export default async function handler(req, res) {
     const source = cleanText(body.source || "Web - Controles", 120);
     const pageUrl = cleanText(body.pageUrl, 500);
     const notes = cleanText(body.notes, 1000);
+    const controllerConsole = cleanText(body.controllerConsole, 160);
+    const controllerModel = cleanText(body.controllerModel, 160);
+    const controllerIssue = cleanText(body.controllerIssue, 1000);
 
     const price =
       typeof body.price === "number" && Number.isFinite(body.price)
@@ -93,6 +96,9 @@ export default async function handler(req, res) {
       source,
       pageUrl,
       notes,
+      controllerConsole,
+      controllerModel,
+      controllerIssue,
     };
 
     if (price !== null) {
