@@ -7,6 +7,18 @@ const CONTEXT_KEY = "GTS_CONTEXT";
 
 let servicesCatalog = {};
 
+const CONTROLLER_SERVICES_URL = "/assets/data/controller-services.json";
+
+function getContactMode() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("tipo") === "control" ? "control" : "console";
+}
+
+function getRequestedControllerServiceId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("servicio") || "";
+}
+
 /* =============================
 CONTEXTO
 ============================= */
@@ -226,6 +238,101 @@ function renderSummary(ctx, servicesCatalog, pricing) {
   renderPricingBreakdown(pricing.breakdown);
 }
 
+async function loadControllerServicesConfig() {
+  const res = await fetch(CONTROLLER_SERVICES_URL, { cache: "no-store" });
+
+  if (!res.ok) {
+    throw new Error("No se pudo cargar controller-services.json.");
+  }
+
+  return res.json();
+}
+
+function findControllerService(data, requestedValue) {
+  const services = Array.isArray(data.services) ? data.services : [];
+
+  return (
+    services.find((service) => service.contactServiceValue === requestedValue) ||
+    services.find((service) => service.id === requestedValue) ||
+    services[0] ||
+    null
+  );
+}
+
+function renderControllerContactSummary(service) {
+  setText("summary-console", "Control de consola");
+  setText("summary-model", "Por confirmar");
+  setText("summary-storage", "No aplica");
+  setText("summary-games", "No aplica");
+  setText("summary-services", service?.name || "Servicio para control");
+  setText("summary-id", "No aplica");
+
+  const priceLabel = service?.priceLabel || (
+    typeof service?.price === "number"
+      ? `$${service.price} MXN`
+      : "Precio por definir"
+  );
+
+  setText("pricingTotal", priceLabel);
+
+  renderPricingBreakdown([
+    `${service?.name || "Servicio para control"}: ${priceLabel}`,
+  ]);
+}
+
+function buildControllerWhatsAppMessage(service, client) {
+  const priceLabel = service?.priceLabel || (
+    typeof service?.price === "number"
+      ? `$${service.price} MXN`
+      : "Precio por definir"
+  );
+
+  return `
+Hola, quiero solicitar servicio para un control.
+
+Cliente: ${client.name}
+Servicio solicitado: ${service?.name || "Servicio para control"}
+Precio mostrado en página: ${priceLabel}
+
+Modelo del control:
+Consola a la que pertenece:
+Falla o detalle:
+`.trim();
+}
+
+async function initControllerContactMode() {
+  const requestedService = getRequestedControllerServiceId();
+  const data = await loadControllerServicesConfig();
+  const service = findControllerService(data, requestedService);
+
+  renderControllerContactSummary(service);
+
+  const sendBtn = document.getElementById("sendBtn");
+  if (sendBtn) {
+    sendBtn.onclick = () => {
+      const name = document.getElementById("clientName").value.trim();
+
+      if (!name) {
+        alert("Ingresa tu nombre.");
+        return;
+      }
+
+      sendToWhatsApp(
+        buildControllerWhatsAppMessage(service, {
+          name,
+        }),
+      );
+    };
+  }
+
+  const newSelectionBtn = document.getElementById("newSelectionBtn");
+  if (newSelectionBtn) {
+    newSelectionBtn.onclick = () => {
+      window.location.href = "/controles/";
+    };
+  }
+}
+
 /* =============================
 WHATSAPP
 ============================= */
@@ -358,6 +465,19 @@ INIT
 ============================= */
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const contactMode = getContactMode();
+
+  if (contactMode === "control") {
+    try {
+      await initControllerContactMode();
+    } catch (error) {
+      console.error("Controller contact error:", error);
+      alert("⚠️ No se pudo cargar la información del servicio para controles.");
+      window.location.href = "/controles/";
+    }
+
+    return;
+  }
   let ctx = loadContext();
 
   // El selectionID definitivo ahora lo genera el backend
