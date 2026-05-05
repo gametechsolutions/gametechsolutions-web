@@ -104,6 +104,18 @@ function getRequestFlags(ctx) {
   };
 }
 
+function generateControllerRequestID() {
+  const now = new Date();
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+
+  const random = Math.random().toString(36).slice(2, 7).toUpperCase();
+
+  return `CTRL-${year}${month}${day}-${random}`;
+}
+
 /* =============================
 PRICING
 ============================= */
@@ -259,13 +271,13 @@ function findControllerService(data, requestedValue) {
   );
 }
 
-function renderControllerContactSummary(service) {
+function renderControllerContactSummary(service, requestID) {
   setText("summary-console", "Control de consola");
   setText("summary-model", "Por confirmar");
   setText("summary-storage", "No aplica");
   setText("summary-games", "No aplica");
   setText("summary-services", service?.name || "Servicio para control");
-  setText("summary-id", "No aplica");
+  setText("summary-id", requestID || "—");
 
   const priceLabel = service?.priceLabel || (
     typeof service?.price === "number"
@@ -280,7 +292,7 @@ function renderControllerContactSummary(service) {
   ]);
 }
 
-function buildControllerWhatsAppMessage(service, client) {
+function buildControllerWhatsAppMessage(service, client, requestID) {
   const priceLabel = service?.priceLabel || (
     typeof service?.price === "number"
       ? `$${service.price} MXN`
@@ -290,6 +302,7 @@ function buildControllerWhatsAppMessage(service, client) {
   return `
 Hola, quiero solicitar servicio para un control.
 
+ID de solicitud: ${requestID}
 Cliente: ${client.name}
 Servicio solicitado: ${service?.name || "Servicio para control"}
 Precio mostrado en página: ${priceLabel}
@@ -304,8 +317,9 @@ async function initControllerContactMode() {
   const requestedService = getRequestedControllerServiceId();
   const data = await loadControllerServicesConfig();
   const service = findControllerService(data, requestedService);
+  const requestID = generateControllerRequestID();
 
-  renderControllerContactSummary(service);
+  renderControllerContactSummary(service, requestID);
 
   const sendBtn = document.getElementById("sendBtn");
   if (sendBtn) {
@@ -378,7 +392,7 @@ function sendToWhatsApp(message) {
 AIRTABLE
 ============================= */
 
-async function saveControllerRequest(service, client) {
+async function saveControllerRequest(service, client, requestID) {
   const priceLabel = service?.priceLabel || (
     typeof service?.price === "number"
       ? `$${service.price} MXN`
@@ -386,6 +400,7 @@ async function saveControllerRequest(service, client) {
   );
 
   const payload = {
+    requestID,
     clientName: client.name,
     serviceId: service?.id || "",
     serviceName: service?.name || "Servicio para control",
@@ -395,7 +410,7 @@ async function saveControllerRequest(service, client) {
     status: "Nuevo",
     source: "Web - Controles",
     pageUrl: window.location.href,
-    notes: "Solicitud iniciada desde la página de controles.",
+    notes: `Solicitud iniciada desde la página de controles. ID: ${requestID}`,
   };
 
   const res = await fetch("/api/save-controller-request", {

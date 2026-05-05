@@ -16,6 +16,16 @@ function cleanText(value, maxLength = 500) {
     .slice(0, maxLength);
 }
 
+function normalizeControllerRequestID(value) {
+  const clean = cleanText(value, 80).toUpperCase();
+
+  if (/^CTRL-\d{8}-[A-Z0-9]{5}$/.test(clean)) {
+    return clean;
+  }
+
+  return "";
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({
@@ -68,7 +78,8 @@ export default async function handler(req, res) {
       });
     }
 
-    const requestID = generateControllerRequestID();
+    const requestID =
+      normalizeControllerRequestID(body.requestID) || generateControllerRequestID();
 
     const fields = {
       requestID,
