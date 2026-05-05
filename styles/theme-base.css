@@ -83,16 +83,12 @@ body {
   font-family: var(--font);
   color: var(--text);
   background:
-    radial-gradient(
-      1200px 520px at 10% 0%,
+    radial-gradient(1200px 520px at 10% 0%,
       color-mix(in srgb, var(--accent-color) 22%, transparent),
-      transparent 55%
-    ),
-    radial-gradient(
-      900px 450px at 90% 20%,
+      transparent 55%),
+    radial-gradient(900px 450px at 90% 20%,
       rgba(120, 100, 255, 0.16),
-      transparent 55%
-    ),
+      transparent 55%),
     linear-gradient(180deg, var(--bg), var(--bg-2));
   min-height: 100vh;
   line-height: 1.5;
@@ -103,10 +99,12 @@ img {
   height: auto;
   display: block;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 button,
 input,
 select,
@@ -144,11 +142,11 @@ section {
 }
 
 /* separador suave entre secciones (con aire, no pegado) */
-section + section {
+section+section {
   padding-top: calc(var(--s-4) + 6px);
 }
 
-section + section::before {
+section+section::before {
   content: "";
   position: absolute;
   left: 0;
@@ -157,12 +155,10 @@ section + section::before {
 
   /* línea suave estilo Apple */
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.08),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      transparent);
 
   opacity: 0.8;
 }
@@ -178,6 +174,7 @@ h3 {
   margin: 0 0 var(--s-3);
   letter-spacing: 0.2px;
 }
+
 p {
   margin: 0 0 var(--s-3);
   color: var(--muted);
@@ -207,7 +204,9 @@ h2::after {
 
 #pageTitle {
   display: none;
-} /* existe como id en <title>, no afecta DOM */
+}
+
+/* existe como id en <title>, no afecta DOM */
 
 /* ============================================================
 4) HEADER / NAV (partials/header.html)
@@ -227,7 +226,7 @@ header {
   backdrop-filter: blur(14px);
 }
 
-header > div {
+header>div {
   width: min(100% - 2rem, var(--container));
   margin-inline: auto;
 
@@ -319,7 +318,8 @@ nav #header-title {
   list-style: none;
   padding: 0;
   margin: var(--s-4) 0 0;
-  display: none; /* mobile hidden */
+  display: none;
+  /* mobile hidden */
   gap: 10px;
 
   /* Mobile: dropdown ocupa el ancho completo */
@@ -384,12 +384,12 @@ nav #header-title {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.nav-menu li.active > .submenu {
+.nav-menu li.active>.submenu {
   display: block;
 }
 
 /* When checkbox is checked, show menu */
-.menu-toggle:checked ~ .nav-menu {
+.menu-toggle:checked~.nav-menu {
   display: grid;
 }
 
@@ -398,7 +398,7 @@ nav #header-title {
 ========================= */
 
 @media (min-width: 900px) {
-  header > div {
+  header>div {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -467,8 +467,8 @@ nav #header-title {
   }
 
   /* Hover/focus estable (no se cae cuando mueves mouse) */
-  .nav-menu li:hover > .submenu,
-  .nav-menu li:focus-within > .submenu {
+  .nav-menu li:hover>.submenu,
+  .nav-menu li:focus-within>.submenu {
     display: block;
   }
 }
@@ -512,8 +512,10 @@ nav #header-title {
 @media (max-width: 720px) {
   .footer-inner {
     flex-direction: column;
-    align-items: center; /* ✅ centrado */
-    justify-content: center; /* ✅ centrado */
+    align-items: center;
+    /* ✅ centrado */
+    justify-content: center;
+    /* ✅ centrado */
     gap: 2px;
     text-align: center;
   }
@@ -534,11 +536,9 @@ section .card,
   position: relative;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.03)
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.03));
   box-shadow: var(--glow);
   padding: var(--s-5);
   overflow: hidden;
@@ -554,11 +554,9 @@ section .card,
   pointer-events: none;
   opacity: 0;
   transition: opacity var(--ease-slow);
-  background: radial-gradient(
-    500px 220px at 30% 0%,
-    color-mix(in srgb, var(--accent-color) 25%, transparent),
-    transparent 65%
-  );
+  background: radial-gradient(500px 220px at 30% 0%,
+      color-mix(in srgb, var(--accent-color) 25%, transparent),
+      transparent 65%);
 }
 
 .card:hover::after,
@@ -571,6 +569,7 @@ section .card,
   margin: 0 0 var(--s-2);
   font-size: 1.1rem;
 }
+
 .card p {
   margin: 0 0 var(--s-3);
 }
@@ -581,12 +580,14 @@ section .card,
   padding: 0;
   list-style: none;
 }
+
 .card li {
   position: relative;
   padding-left: 18px;
   margin: 8px 0;
   color: color-mix(in srgb, var(--muted) 92%, white);
 }
+
 .card li::before {
   content: "•";
   position: absolute;
@@ -621,11 +622,9 @@ section .card,
 .card button:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 28%,
-    rgba(255, 255, 255, 0.14)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
 }
 
 .btn:active,
@@ -662,11 +661,9 @@ section .card,
 .btn-small:hover {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.07);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 20%,
-    rgba(255, 255, 255, 0.12)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 20%,
+      rgba(255, 255, 255, 0.12));
 }
 
 .btn-small:active {
@@ -709,11 +706,9 @@ HERO (Inicio: ¿Quiénes somos?)
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    radial-gradient(
-      700px 320px at 15% 0%,
+    radial-gradient(700px 320px at 15% 0%,
       color-mix(in srgb, var(--accent-color) 18%, transparent),
-      transparent 65%
-    ),
+      transparent 65%),
     rgba(255, 255, 255, 0.03);
   box-shadow: var(--shadow);
   padding: clamp(22px, 4vw, 42px);
@@ -830,11 +825,9 @@ CONSOLE HERO (Cabecera de páginas de consolas)
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    radial-gradient(
-      700px 320px at 15% 0%,
+    radial-gradient(700px 320px at 15% 0%,
       color-mix(in srgb, var(--accent-color) 16%, transparent),
-      transparent 65%
-    ),
+      transparent 65%),
     rgba(255, 255, 255, 0.03);
   box-shadow: var(--shadow);
   padding: clamp(18px, 3.5vw, 34px);
@@ -886,11 +879,9 @@ ACTION BAR (CTA fijo arriba del footer)
   font-weight: 800;
 
   border: none;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--accent-color) 85%, white),
-    rgba(108, 99, 255, 0.95)
-  );
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-color) 85%, white),
+      rgba(108, 99, 255, 0.95));
   color: #08101e;
 }
 
@@ -911,8 +902,10 @@ STORAGE SELECTOR (Almacenamiento)
 }
 
 .disk-option {
-  flex: 0 0 auto; /* no se estira raro */
-  min-width: 180px; /* ✅ más ancho */
+  flex: 0 0 auto;
+  /* no se estira raro */
+  min-width: 180px;
+  /* ✅ más ancho */
   padding: 14px 16px;
   border-radius: 18px;
 
@@ -933,11 +926,9 @@ STORAGE SELECTOR (Almacenamiento)
 
 .disk-option:hover {
   transform: translateY(-1px);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 22%,
-    rgba(255, 255, 255, 0.14)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.14));
   background: rgba(255, 255, 255, 0.045);
 }
 
@@ -957,17 +948,13 @@ STORAGE SELECTOR (Almacenamiento)
 
 /* estado seleccionado */
 .disk-option.selected {
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 50%,
-    rgba(255, 255, 255, 0.14)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 50%,
+      rgba(255, 255, 255, 0.14));
   background:
-    radial-gradient(
-      300px 120px at 40% 0%,
+    radial-gradient(300px 120px at 40% 0%,
       color-mix(in srgb, var(--accent-color) 18%, transparent),
-      transparent 55%
-    ),
+      transparent 55%),
     rgba(255, 255, 255, 0.05);
 
   transform: translateY(-1px);
@@ -1055,10 +1042,12 @@ MOBILE: Storage selector en 2/3 columnas
 ============================================================ */
 
 @media (max-width: 520px) {
+
   /* grid de opciones */
   #storageOptions.disk-selector {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columnas */
+    grid-template-columns: repeat(2, 1fr);
+    /* ✅ 2 columnas */
     gap: 12px;
 
     padding: 12px;
@@ -1069,13 +1058,15 @@ MOBILE: Storage selector en 2/3 columnas
   /* si quieres 3 columnas en pantallas más chicas anchas */
   @media (min-width: 420px) {
     #storageOptions.disk-selector {
-      grid-template-columns: repeat(3, 1fr); /* ✅ 3 columnas */
+      grid-template-columns: repeat(3, 1fr);
+      /* ✅ 3 columnas */
     }
   }
 
   /* cada opción ocupa toda su celda */
   #storageOptions .disk-option {
-    min-width: 0; /* ✅ anula el min-width:180px */
+    min-width: 0;
+    /* ✅ anula el min-width:180px */
     width: 100%;
     justify-content: center;
     text-align: center;
@@ -1123,11 +1114,9 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
 
   border: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    radial-gradient(
-      500px 180px at 20% 0%,
+    radial-gradient(500px 180px at 20% 0%,
       color-mix(in srgb, var(--accent-color) 10%, transparent),
-      transparent 65%
-    ),
+      transparent 65%),
     rgba(0, 0, 0, 0.22);
 
   box-shadow: var(--shadow-soft);
@@ -1163,28 +1152,29 @@ Consolas más solicitadas — Netflix row
   -webkit-overflow-scrolling: touch;
 
   /* se ve más pro */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black 20px,
-    black calc(100% - 20px),
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0,
+      black 20px,
+      black calc(100% - 20px),
+      transparent 100%);
 }
 
 /* scrollbar discreto */
 .cards-netflix::-webkit-scrollbar {
   height: 10px;
 }
+
 .cards-netflix::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 999px;
 }
+
 .cards-netflix::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   border: 2px solid rgba(0, 0, 0, 0.35);
 }
+
 .cards-netflix::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.18);
 }
@@ -1202,11 +1192,9 @@ Consolas más solicitadas — Netflix row
   place-items: center;
 
   background:
-    radial-gradient(
-      420px 140px at 15% 0%,
+    radial-gradient(420px 140px at 15% 0%,
       rgba(255, 255, 255, 0.09),
-      transparent 65%
-    ),
+      transparent 65%),
     rgba(0, 0, 0, 0.22);
 
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1221,17 +1209,13 @@ Consolas más solicitadas — Netflix row
 /* hover sexy */
 .cards-netflix .console-card:hover {
   transform: translateY(-2px) scale(1.02);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 22%,
-    rgba(255, 255, 255, 0.14)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.14));
   background:
-    radial-gradient(
-      420px 140px at 15% 0%,
+    radial-gradient(420px 140px at 15% 0%,
       rgba(255, 255, 255, 0.12),
-      transparent 65%
-    ),
+      transparent 65%),
     rgba(0, 0, 0, 0.26);
 }
 
@@ -1248,11 +1232,13 @@ Consolas más solicitadas — Netflix row
     gap: 14px;
     padding: 10px 6px 14px;
   }
+
   .cards-netflix .console-card {
     width: 160px;
     height: 104px;
     border-radius: 18px;
   }
+
   .cards-netflix .console-card img {
     max-height: 62px;
   }
@@ -1312,6 +1298,7 @@ section {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1347,6 +1334,7 @@ section {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (min-width: 1024px) {
   .cards-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -1377,17 +1365,16 @@ section {
 
 .console-card:hover {
   transform: translateY(-2px);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 26%,
-    rgba(255, 255, 255, 0.1)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 26%,
+      rgba(255, 255, 255, 0.1));
   background: rgba(255, 255, 255, 0.045);
 }
 
 .console-card img {
   width: 100%;
-  max-width: 190px; /* más controlado */
+  max-width: 190px;
+  /* más controlado */
   margin: 0 auto;
 
   opacity: 0.92;
@@ -1423,11 +1410,9 @@ section {
   height: 44px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: radial-gradient(
-    120px 80px at 40% 20%,
-    rgba(255, 255, 255, 0.1),
-    rgba(0, 0, 0, 0.12)
-  );
+  background: radial-gradient(120px 80px at 40% 20%,
+      rgba(255, 255, 255, 0.1),
+      rgba(0, 0, 0, 0.12));
   display: grid;
   place-items: center;
   flex: 0 0 auto;
@@ -1440,6 +1425,7 @@ section {
   display: grid;
   gap: 8px;
 }
+
 .svc-points li {
   margin: 0;
 }
@@ -1454,16 +1440,19 @@ MODELOS – LAYOUT DEFINITIVO
 
 #modelsContainer {
   display: flex;
-  justify-content: center; /* 🔥 siempre centrado */
+  justify-content: center;
+  /* 🔥 siempre centrado */
   align-items: stretch;
   gap: var(--s-5);
-  flex-wrap: nowrap; /* 🔥 NUNCA se baja a otra fila en desktop */
+  flex-wrap: nowrap;
+  /* 🔥 NUNCA se baja a otra fila en desktop */
   width: 100%;
 }
 
 /* Cards tamaño fijo bonito */
 #modelsContainer .card {
-  width: 320px; /* puedes subir a 340 si quieres más grandes */
+  width: 320px;
+  /* puedes subir a 340 si quieres más grandes */
   max-width: 100%;
   text-align: center;
 }
@@ -1524,11 +1513,9 @@ RESPONSIVE
 
   border: 1px solid rgba(255, 210, 90, 0.22);
   background:
-    radial-gradient(
-      600px 200px at 18% 0%,
+    radial-gradient(600px 200px at 18% 0%,
       rgba(255, 210, 90, 0.1),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(10, 14, 26, 0.92);
 
   backdrop-filter: blur(14px);
@@ -1602,6 +1589,7 @@ RESPONSIVE
     opacity: 0;
     transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1693,6 +1681,7 @@ RESPONSIVE
   display: grid;
   gap: 10px;
 }
+
 #pricingTotal {
   margin-top: 12px;
   font-weight: 900;
@@ -1723,11 +1712,9 @@ RESPONSIVE
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    radial-gradient(
-      700px 220px at 20% 0%,
+    radial-gradient(700px 220px at 20% 0%,
       rgba(255, 255, 255, 0.06),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(0, 0, 0, 0.22);
   box-shadow: var(--shadow-soft);
   padding: var(--s-5);
@@ -1753,7 +1740,8 @@ RESPONSIVE
 /* PANEL CATALOGO: estructura vertical estable */
 .selector-catalog {
   display: grid;
-  grid-template-rows: auto auto 1fr; /* toolbar, letras, lista */
+  grid-template-rows: auto auto 1fr;
+  /* toolbar, letras, lista */
   gap: 10px;
   max-height: 70vh;
 
@@ -1811,16 +1799,12 @@ RESPONSIVE
 }
 
 .catalog-letters button.active {
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 55%,
-    rgba(255, 255, 255, 0.14)
-  );
-  background: color-mix(
-    in srgb,
-    var(--accent-color) 14%,
-    rgba(255, 255, 255, 0.03)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
+  background: color-mix(in srgb,
+      var(--accent-color) 14%,
+      rgba(255, 255, 255, 0.03));
 }
 
 /* ✅ MOBILE: QUITAMOS FILTRO POR LETRAS */
@@ -1850,15 +1834,18 @@ RESPONSIVE
 .catalog-list::-webkit-scrollbar {
   width: 10px;
 }
+
 .catalog-list::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 999px;
 }
+
 .catalog-list::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   border: 2px solid rgba(0, 0, 0, 0.3);
 }
+
 .catalog-list::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.16);
 }
@@ -1887,11 +1874,9 @@ Items del catálogo
 
 .selector-item:hover {
   transform: translateY(-1px);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 18%,
-    rgba(255, 255, 255, 0.1)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 18%,
+      rgba(255, 255, 255, 0.1));
   background: rgba(255, 255, 255, 0.045);
 }
 
@@ -1914,24 +1899,19 @@ Items del catálogo
   padding: 9px 12px;
   border-radius: 999px;
 
-  border: 1px solid
-    color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
+  border: 1px solid color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
   background: rgba(255, 255, 255, 0.04);
   color: color-mix(in srgb, var(--text) 94%, white);
   font-weight: 900;
 }
 
 .add-game:hover {
-  background: color-mix(
-    in srgb,
-    var(--accent-color) 12%,
-    rgba(255, 255, 255, 0.05)
-  );
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 55%,
-    rgba(255, 255, 255, 0.14)
-  );
+  background: color-mix(in srgb,
+      var(--accent-color) 12%,
+      rgba(255, 255, 255, 0.05));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
 }
 
 /* Estado agregado */
@@ -1951,16 +1931,12 @@ Items del catálogo
 }
 
 .add-game.added {
-  background: color-mix(
-    in srgb,
-    var(--accent-color) 22%,
-    rgba(255, 255, 255, 0.05)
-  );
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 65%,
-    rgba(255, 255, 255, 0.15)
-  );
+  background: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.05));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 65%,
+      rgba(255, 255, 255, 0.15));
   color: color-mix(in srgb, var(--text) 96%, white);
   opacity: 0.95;
 }
@@ -2017,11 +1993,9 @@ Items del catálogo
 
   border: 1px solid rgba(255, 210, 90, 0.22);
   background:
-    radial-gradient(
-      500px 160px at 20% 0%,
+    radial-gradient(500px 160px at 20% 0%,
       rgba(255, 210, 90, 0.09),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(10, 14, 26, 0.85);
 
   color: color-mix(in srgb, var(--text) 96%, white);
@@ -2043,11 +2017,9 @@ Items del catálogo
 
 #saveSelection.btn-small {
   border: none;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--accent-color) 85%, white),
-    rgba(108, 99, 255, 0.95)
-  );
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-color) 85%, white),
+      rgba(108, 99, 255, 0.95));
   color: #08101e;
   font-weight: 900;
 }
@@ -2088,11 +2060,9 @@ Items del catálogo
 
 #contactForm input:focus,
 #contactForm textarea:focus {
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 45%,
-    rgba(255, 255, 255, 0.12)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 45%,
+      rgba(255, 255, 255, 0.12));
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -2117,15 +2087,13 @@ CONTACTO — PRECIO ESTIMADO (UI premium)
   position: absolute;
   inset: -1px;
   pointer-events: none;
-  background: radial-gradient(
-    700px 240px at 15% 0%,
-    color-mix(in srgb, var(--accent-color) 18%, transparent),
-    transparent 62%
-  );
+  background: radial-gradient(700px 240px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 18%, transparent),
+      transparent 62%);
   opacity: 0.9;
 }
 
-.pricing-card > * {
+.pricing-card>* {
   position: relative;
   z-index: 1;
 }
@@ -2203,14 +2171,11 @@ CONTACTO — PRECIO ESTIMADO (UI premium)
   justify-content: space-between;
   gap: 12px;
 
-  border: 1px solid
-    color-mix(in srgb, var(--accent-color) 28%, rgba(255, 255, 255, 0.12));
+  border: 1px solid color-mix(in srgb, var(--accent-color) 28%, rgba(255, 255, 255, 0.12));
   background:
-    radial-gradient(
-      500px 180px at 20% 0%,
+    radial-gradient(500px 180px at 20% 0%,
       color-mix(in srgb, var(--accent-color) 16%, transparent),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(0, 0, 0, 0.25);
 
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
@@ -2263,18 +2228,23 @@ CONTACTO — PRECIO ESTIMADO (UI premium)
 
 /* Pricing note: que no sea full width */
 .pricing-note {
-  display: inline-flex; /* en vez de block */
+  display: inline-flex;
+  /* en vez de block */
   align-items: center;
   gap: 10px;
 
-  width: fit-content; /* ✅ se ajusta al texto */
-  max-width: 100%; /* por si el texto es largo en móvil */
+  width: fit-content;
+  /* ✅ se ajusta al texto */
+  max-width: 100%;
+  /* por si el texto es largo en móvil */
 
   padding: 10px 12px;
   font-size: 0.92rem;
-  border-radius: 16px; /* menos redondeado */
+  border-radius: 16px;
+  /* menos redondeado */
 
-  margin-top: 14px; /* separacion */
+  margin-top: 14px;
+  /* separacion */
 }
 
 /* =========================================
@@ -2315,11 +2285,9 @@ FORM UI (Contacto)
 }
 
 .form-input:focus {
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 55%,
-    rgba(255, 255, 255, 0.18)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.18));
   box-shadow:
     0 0 0 4px rgba(40, 220, 120, 0.1),
     0 18px 38px rgba(0, 0, 0, 0.28);
@@ -2426,7 +2394,8 @@ MOBILE ajustes (compactar mucho)
 
   .pricing-note {
     font-size: 0.88rem;
-    margin-inline: auto; /* centra el chip */
+    margin-inline: auto;
+    /* centra el chip */
     text-align: left;
   }
 }
@@ -2439,7 +2408,8 @@ CONTACTO — CTA WhatsApp centrado DEFINITIVO
   margin-top: 18px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* ✅ centra SIEMPRE */
+  align-items: center;
+  /* ✅ centra SIEMPRE */
   justify-content: center;
   gap: 10px;
   text-align: center;
@@ -2481,14 +2451,16 @@ CONTACTO — CTA Reset / Nueva selección centrado
   margin-top: 18px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* ✅ centra todo */
+  align-items: center;
+  /* ✅ centra todo */
   justify-content: center;
   gap: 10px;
   text-align: center;
 }
 
 .cta-reset #newSelectionBtn {
-  margin: 0 auto; /* ✅ por si algún layout raro lo afecta */
+  margin: 0 auto;
+  /* ✅ por si algún layout raro lo afecta */
 }
 
 .cta-reset-hint {
@@ -2526,11 +2498,9 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
   border: 1px solid rgba(255, 255, 255, 0.1);
 
   background:
-    radial-gradient(
-      900px 320px at 20% 0%,
+    radial-gradient(900px 320px at 20% 0%,
       rgba(255, 255, 255, 0.06),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(0, 0, 0, 0.22);
 
   box-shadow: var(--shadow-soft);
@@ -2542,16 +2512,12 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
   inset: -60px;
 
   background:
-    radial-gradient(
-      600px 220px at 20% 25%,
+    radial-gradient(600px 220px at 20% 25%,
       color-mix(in srgb, var(--accent-color) 24%, transparent),
-      transparent 65%
-    ),
-    radial-gradient(
-      700px 260px at 75% 30%,
+      transparent 65%),
+    radial-gradient(700px 260px at 75% 30%,
       rgba(108, 99, 255, 0.18),
-      transparent 60%
-    );
+      transparent 60%);
 
   filter: blur(12px);
   opacity: 0.85;
@@ -2632,14 +2598,11 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
   border-radius: 999px;
   padding-inline: 18px;
 
-  border: 1px solid
-    color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
+  border: 1px solid color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
   background:
-    radial-gradient(
-      320px 120px at 25% 0%,
+    radial-gradient(320px 120px at 25% 0%,
       color-mix(in srgb, var(--accent-color) 16%, transparent),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(255, 255, 255, 0.04);
 
   transition:
@@ -2650,17 +2613,13 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
 
 .map-btn:hover {
   transform: translateY(-1px);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 55%,
-    rgba(255, 255, 255, 0.14)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
   background:
-    radial-gradient(
-      320px 120px at 25% 0%,
+    radial-gradient(320px 120px at 25% 0%,
       color-mix(in srgb, var(--accent-color) 22%, transparent),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(255, 255, 255, 0.06);
 }
 
@@ -2714,26 +2673,25 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
     background var(--ease),
     border var(--ease);
 }
+
 .faq-tab:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-1px);
 }
+
 .faq-tab.active {
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 40%,
-    rgba(255, 255, 255, 0.12)
-  );
-  background: color-mix(
-    in srgb,
-    var(--accent-color) 16%,
-    rgba(255, 255, 255, 0.04)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 40%,
+      rgba(255, 255, 255, 0.12));
+  background: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.04));
 }
 
 .faq-section {
   display: none;
 }
+
 .faq-section.active {
   display: grid;
   gap: var(--s-4);
@@ -2742,9 +2700,11 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
 .faq-item {
   padding: var(--s-5);
 }
+
 .faq-item h3 {
   margin-bottom: 10px;
 }
+
 .faq-item p {
   margin: 0;
 }
@@ -2756,9 +2716,11 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
 .hidden {
   display: none !important;
 }
+
 .full {
   width: 100%;
 }
+
 .center {
   text-align: center;
 }
@@ -2777,6 +2739,7 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
   * {
     scroll-behavior: auto !important;
   }
+
   .card,
   .btn,
   .menu-icon,
@@ -2824,20 +2787,19 @@ Poner al FINAL de theme-base.css
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
 
-    position: relative !important; /* NO sticky */
+    position: relative !important;
+    /* NO sticky */
     top: auto !important;
 
     margin: 0 !important;
     padding: 6px 2px 8px !important;
     z-index: 1 !important;
 
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      black 16px,
-      black calc(100% - 16px),
-      transparent 100%
-    );
+    mask-image: linear-gradient(to right,
+        transparent 0,
+        black 16px,
+        black calc(100% - 16px),
+        transparent 100%);
   }
 }
 
@@ -2854,11 +2816,9 @@ FIX DEFINITIVO: #storageHelp SIEMPRE debajo del título en desktop
 
   border: 1px solid rgba(120, 255, 160, 0.18);
   background:
-    radial-gradient(
-      500px 160px at 20% 0%,
+    radial-gradient(500px 160px at 20% 0%,
       rgba(120, 255, 160, 0.08),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(0, 0, 0, 0.22);
 
   color: rgba(240, 245, 255, 0.92);
@@ -2896,12 +2856,15 @@ Netflix row: estilos SOLO para esta sección
 ========================================= */
 
 .cards-netflix .console-card {
-  padding: 0; /* evita padding grande del grid */
-  min-height: unset; /* evita altura del tile normal */
+  padding: 0;
+  /* evita padding grande del grid */
+  min-height: unset;
+  /* evita altura del tile normal */
 }
 
 .cards-netflix .console-card img {
-  max-width: none; /* no limitar como en cards-grid */
+  max-width: none;
+  /* no limitar como en cards-grid */
 }
 
 /* =========================================
@@ -2932,28 +2895,29 @@ Consolas más solicitadas — Netflix row FINAL
   scroll-behavior: smooth;
 
   /* degradado para sugerir scroll */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black 24px,
-    black calc(100% - 24px),
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0,
+      black 24px,
+      black calc(100% - 24px),
+      transparent 100%);
 }
 
 /* scrollbar discreto */
 .netflix-row::-webkit-scrollbar {
   height: 10px;
 }
+
 .netflix-row::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 999px;
 }
+
 .netflix-row::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   border: 2px solid rgba(0, 0, 0, 0.35);
 }
+
 .netflix-row::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.18);
 }
@@ -2970,14 +2934,13 @@ Consolas más solicitadas — Netflix row FINAL
   display: grid;
   place-items: center;
 
-  padding: 0 !important; /* para que no use padding de console-card */
+  padding: 0 !important;
+  /* para que no use padding de console-card */
 
   background:
-    radial-gradient(
-      420px 140px at 15% 0%,
+    radial-gradient(420px 140px at 15% 0%,
       rgba(255, 255, 255, 0.09),
-      transparent 65%
-    ),
+      transparent 65%),
     rgba(0, 0, 0, 0.22);
 
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2991,17 +2954,13 @@ Consolas más solicitadas — Netflix row FINAL
 
 .netflix-card:hover {
   transform: translateY(-2px) scale(1.02);
-  border-color: color-mix(
-    in srgb,
-    var(--accent-color) 22%,
-    rgba(255, 255, 255, 0.14)
-  );
+  border-color: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.14));
   background:
-    radial-gradient(
-      420px 140px at 15% 0%,
+    radial-gradient(420px 140px at 15% 0%,
       rgba(255, 255, 255, 0.12),
-      transparent 65%
-    ),
+      transparent 65%),
     rgba(0, 0, 0, 0.26);
 }
 
@@ -3015,7 +2974,8 @@ Consolas más solicitadas — Netflix row FINAL
 
 /* Flechas */
 .netflix-arrow {
-  display: none; /* mobile no necesita */
+  display: none;
+  /* mobile no necesita */
 }
 
 /* Desktop: flechas visibles SIN JS */
@@ -3048,18 +3008,17 @@ Consolas más solicitadas — Netflix row FINAL
     opacity: 1;
     transform: translateY(-1px);
     background: rgba(255, 255, 255, 0.06);
-    border-color: color-mix(
-      in srgb,
-      var(--accent-color) 30%,
-      rgba(255, 255, 255, 0.14)
-    );
+    border-color: color-mix(in srgb,
+        var(--accent-color) 30%,
+        rgba(255, 255, 255, 0.14));
   }
 }
 
 /* Mobile compact */
 @media (max-width: 520px) {
   .netflix-shell {
-    grid-template-columns: 1fr; /* sin flechas */
+    grid-template-columns: 1fr;
+    /* sin flechas */
   }
 
   .netflix-row {
@@ -3098,11 +3057,9 @@ HIGHLIGHT SUAVE — Selección premium
 .is-selected,
 .active-selection {
   background:
-    radial-gradient(
-      500px 180px at 20% 0%,
+    radial-gradient(500px 180px at 20% 0%,
       rgba(120, 180, 255, 0.18),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(255, 255, 255, 0.05);
 
   border-color: rgba(120, 180, 255, 0.45);
@@ -3141,11 +3098,9 @@ VARIANTES DE MENSAJES (warning / note)
   border: 1px solid rgba(255, 210, 90, 0.28);
 
   background:
-    radial-gradient(
-      600px 200px at 18% 0%,
+    radial-gradient(600px 200px at 18% 0%,
       rgba(255, 210, 90, 0.12),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(10, 14, 26, 0.92);
 
   color: color-mix(in srgb, var(--text) 95%, white);
@@ -3165,11 +3120,9 @@ VARIANTES DE MENSAJES (warning / note)
   border: 1px solid rgba(120, 180, 255, 0.28);
 
   background:
-    radial-gradient(
-      600px 200px at 18% 0%,
+    radial-gradient(600px 200px at 18% 0%,
       rgba(120, 180, 255, 0.12),
-      transparent 60%
-    ),
+      transparent 60%),
     rgba(10, 14, 26, 0.92);
 
   color: color-mix(in srgb, var(--text) 95%, white);
@@ -3182,4 +3135,14 @@ VARIANTES DE MENSAJES (warning / note)
 
 .global-warning.gw-note .gw-text strong {
   color: rgba(170, 210, 255, 0.98);
+}
+
+.service-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-card-link:hover {
+  text-decoration: none;
 }
