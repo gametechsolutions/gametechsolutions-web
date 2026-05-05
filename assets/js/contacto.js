@@ -279,9 +279,130 @@ function findControllerService(data, requestedValue) {
   );
 }
 
+function getControllerOptions(data) {
+  return Array.isArray(data.controllerOptions) ? data.controllerOptions : [];
+}
+
+function resetControllerModelSelect(message = "Primero selecciona una consola") {
+  const modelSelect = document.getElementById("controllerModel");
+  if (!modelSelect) return;
+
+  modelSelect.innerHTML = "";
+  modelSelect.add(new Option(message, ""));
+  modelSelect.disabled = true;
+}
+
+function populateControllerConsoleSelect(data) {
+  const consoleSelect = document.getElementById("controllerConsole");
+  if (!consoleSelect) return;
+
+  const options = getControllerOptions(data);
+
+  consoleSelect.innerHTML = "";
+  consoleSelect.add(new Option("Selecciona una consola", ""));
+
+  options.forEach((group) => {
+    consoleSelect.add(new Option(group.consoleLabel, group.consoleId));
+  });
+}
+
+function populateControllerModelSelect(data, consoleId) {
+  const modelSelect = document.getElementById("controllerModel");
+  if (!modelSelect) return;
+
+  const options = getControllerOptions(data);
+  const selectedGroup = options.find((group) => group.consoleId === consoleId);
+
+  modelSelect.innerHTML = "";
+
+  if (!selectedGroup) {
+    resetControllerModelSelect("Primero selecciona una consola");
+    return;
+  }
+
+  modelSelect.disabled = false;
+  modelSelect.add(new Option("Selecciona el modelo del control", ""));
+
+  const models = Array.isArray(selectedGroup.models) ? selectedGroup.models : [];
+
+  models.forEach((model) => {
+    modelSelect.add(new Option(model.modelLabel, model.modelId));
+  });
+}
+
+function getSelectedOptionText(selectId) {
+  const select = document.getElementById(selectId);
+  if (!select || !select.value) return "";
+
+  return select.options[select.selectedIndex]?.textContent?.trim() || "";
+}
+
+function updateControllerSummaryFromForm() {
+  const controllerConsole = getSelectedOptionText("controllerConsole");
+  const controllerModel = getSelectedOptionText("controllerModel");
+
+  setText("summary-console", controllerConsole || "Selecciona una consola");
+  setText("summary-model", controllerModel || "Selecciona un modelo");
+}
+
+function initControllerDropdowns(data) {
+  const consoleSelect = document.getElementById("controllerConsole");
+  const modelSelect = document.getElementById("controllerModel");
+
+  if (!consoleSelect || !modelSelect) return;
+
+  populateControllerConsoleSelect(data);
+  resetControllerModelSelect();
+
+  consoleSelect.addEventListener("change", () => {
+    populateControllerModelSelect(data, consoleSelect.value);
+    updateControllerSummaryFromForm();
+  });
+
+  modelSelect.addEventListener("change", () => {
+    updateControllerSummaryFromForm();
+  });
+}
+
+function getControllerFormData() {
+  return {
+    controllerConsoleId: document.getElementById("controllerConsole")?.value || "",
+    controllerConsole: getSelectedOptionText("controllerConsole"),
+
+    controllerModelId: document.getElementById("controllerModel")?.value || "",
+    controllerModel: getSelectedOptionText("controllerModel"),
+
+    controllerIssue: document.getElementById("controllerIssue")?.value.trim() || "",
+  };
+}
+
+function validateControllerRequest(client, controllerData) {
+  if (!client.name) {
+    return "Ingresa tu nombre.";
+  }
+
+  if (!controllerData.controllerConsoleId) {
+    return "Selecciona la consola a la que pertenece el control.";
+  }
+
+  if (!controllerData.controllerModelId) {
+    return "Selecciona el modelo del control.";
+  }
+
+  if (!controllerData.controllerIssue) {
+    return "Describe la falla o detalle del control.";
+  }
+
+  if (controllerData.controllerIssue.length < 8) {
+    return "Describe la falla con un poco más de detalle.";
+  }
+
+  return null;
+}
+
 function renderControllerContactSummary(service, requestID) {
-  setText("summary-console", "Servicio para control");
-  setText("summary-model", "Captura el modelo abajo");
+  setText("summary-console", "Selecciona una consola");
+  setText("summary-model", "Selecciona un modelo");
   setText("summary-storage", "No aplica");
   setText("summary-games", "No aplica");
   setText("summary-services", service?.name || "Servicio para control");
@@ -315,9 +436,9 @@ Cliente: ${client.name}
 Servicio solicitado: ${service?.name || "Servicio para control"}
 Precio mostrado en página: ${priceLabel}
 
-Consola del control: ${controllerData.controllerConsole || "Por confirmar"}
-Modelo del control: ${controllerData.controllerModel || "Por confirmar"}
-Falla o detalle: ${controllerData.controllerIssue || "Por confirmar"}
+Consola del control: ${controllerData.controllerConsole}
+Modelo del control: ${controllerData.controllerModel}
+Falla o detalle: ${controllerData.controllerIssue}
 `.trim();
 }
 
@@ -330,19 +451,22 @@ async function initControllerContactMode() {
   renderControllerContactSummary(service, requestID);
 
   document.getElementById("controllerDetailsCard")?.classList.remove("hidden");
+  initControllerDropdowns(data);
+  updateControllerSummaryFromForm();
 
   const sendBtn = document.getElementById("sendBtn");
   if (sendBtn) {
     sendBtn.onclick = async () => {
       const name = document.getElementById("clientName").value.trim();
 
-      if (!name) {
-        alert("Ingresa tu nombre.");
-        return;
-      }
-
       const client = { name };
       const controllerData = getControllerFormData();
+
+      const validationError = validateControllerRequest(client, controllerData);
+      if (validationError) {
+        alert(validationError);
+        return;
+      }
 
       sendToWhatsApp(
         buildControllerWhatsAppMessage(service, client, requestID, controllerData),
@@ -427,7 +551,6 @@ async function saveControllerRequest(service, client, requestID, controllerData)
     source: "Web - Controles",
     pageUrl: window.location.href,
     notes: `Solicitud iniciada desde la página de controles. ID: ${requestID}`,
-
     controllerConsole: controllerData.controllerConsole,
     controllerModel: controllerData.controllerModel,
     controllerIssue: controllerData.controllerIssue,

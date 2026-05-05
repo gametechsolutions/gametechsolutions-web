@@ -3146,3 +3146,13 @@ VARIANTES DE MENSAJES (warning / note)
 .service-card-link:hover {
   text-decoration: none;
 }
+
+.form-input option {
+  background: var(--bg-2);
+  color: var(--text);
+}
+
+.form-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

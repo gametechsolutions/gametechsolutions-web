@@ -117,14 +117,16 @@
           <label for="controllerConsole" class="form-label">
             Consola a la que pertenece el control
           </label>
-          <input id="controllerConsole" class="form-input" type="text"
-            placeholder="Ej. Xbox Series, PS5, Nintendo Switch" />
+          <select id="controllerConsole" class="form-input">
+            <option value="">Selecciona una consola</option>
+          </select>
 
           <label for="controllerModel" class="form-label">
             Modelo del control
           </label>
-          <input id="controllerModel" class="form-input" type="text"
-            placeholder="Ej. DualSense, control Xbox Series, Joy-Con izquierdo" />
+          <select id="controllerModel" class="form-input" disabled>
+            <option value="">Primero selecciona una consola</option>
+          </select>
 
           <label for="controllerIssue" class="form-label">
             Falla o detalle
@@ -133,7 +135,8 @@
             placeholder="Ej. No enciende, tiene drift, botones pegados, no carga, etc."></textarea>
 
           <p class="form-hint">
-            Estos datos ayudan a revisar mejor la solicitud antes de responderte por WhatsApp.
+            Solo aceptamos controles originales de las consolas listadas. No revisamos genéricos, réplicas ni
+            compatibles de terceros.
           </p>
         </div>
 
