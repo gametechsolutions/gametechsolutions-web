@@ -3,260 +3,7 @@
   "page": {
     "title": "Servicio para controles",
     "subtitle": "Revisión, diagnóstico y limpieza completa para controles de Xbox, PlayStation y Nintendo.",
-    "importantNote": "La limpieza completa ayuda en casos de suciedad, residuos o botones pegados, pero no garantiza corregir fallas electrónicas, stick drift severo, daño por líquido o componentes desgastados. Si el control ya presenta una falla clara, lo más recomendable es iniciar con revisión y diagnóstico.",
-    "controllerPolicy": {
-      "originalOnly": true,
-      "acceptedOnlyMessage": "Solo revisamos controles originales de Microsoft, Sony o Nintendo correspondientes a las consolas listadas.",
-      "notAcceptedMessage": "No revisamos controles genéricos, réplicas, compatibles de terceros, controles tipo Pro no oficiales ni controles de otras consolas.",
-      "notAccepted": [
-        "Controles genéricos",
-        "Controles compatibles de terceros",
-        "Réplicas o imitaciones",
-        "Controles tipo Pro no oficiales",
-        "Controles de consolas no listadas",
-        "Controles con modificaciones previas no verificables"
-      ]
-    },
-    "compatibleControllers": [
-      {
-        "brand": "Microsoft",
-        "models": [
-          "Xbox Clásico",
-          "Xbox 360",
-          "Xbox One",
-          "Xbox Series S/X"
-        ]
-      },
-      {
-        "brand": "Sony",
-        "models": [
-          "PlayStation 2",
-          "PlayStation 3",
-          "PlayStation 4",
-          "PlayStation 5"
-        ]
-      },
-      {
-        "brand": "Nintendo",
-        "models": [
-          "Nintendo GameCube",
-          "Nintendo Wii",
-          "Nintendo Switch"
-        ]
-      }
-    ],
-    "controllerOptions": [
-      {
-        "consoleId": "xbox_classic",
-        "consoleLabel": "Xbox Clásico",
-        "models": [
-          {
-            "modelId": "xbox_classic_controller_duke",
-            "modelLabel": "Xbox Controller / Duke"
-          },
-          {
-            "modelId": "xbox_classic_controller_s",
-            "modelLabel": "Xbox Controller S"
-          },
-          {
-            "modelId": "xbox_classic_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de Xbox Clásico"
-          }
-        ]
-      },
-      {
-        "consoleId": "xbox_360",
-        "consoleLabel": "Xbox 360",
-        "models": [
-          {
-            "modelId": "xbox_360_wired_controller",
-            "modelLabel": "Xbox 360 Wired Controller"
-          },
-          {
-            "modelId": "xbox_360_wireless_controller",
-            "modelLabel": "Xbox 360 Wireless Controller"
-          },
-          {
-            "modelId": "xbox_360_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de Xbox 360"
-          }
-        ]
-      },
-      {
-        "consoleId": "xbox_one",
-        "consoleLabel": "Xbox One",
-        "models": [
-          {
-            "modelId": "xbox_one_wireless_controller",
-            "modelLabel": "Xbox One Wireless Controller"
-          },
-          {
-            "modelId": "xbox_elite_wireless_controller_series_1",
-            "modelLabel": "Xbox Elite Wireless Controller Series 1"
-          },
-          {
-            "modelId": "xbox_one_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de Xbox One"
-          }
-        ]
-      },
-      {
-        "consoleId": "xbox_series",
-        "consoleLabel": "Xbox Series S/X",
-        "models": [
-          {
-            "modelId": "xbox_wireless_controller_series",
-            "modelLabel": "Xbox Wireless Controller"
-          },
-          {
-            "modelId": "xbox_elite_wireless_controller_series_2",
-            "modelLabel": "Xbox Elite Wireless Controller Series 2"
-          },
-          {
-            "modelId": "xbox_series_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de Xbox Series S/X"
-          }
-        ]
-      },
-      {
-        "consoleId": "ps2",
-        "consoleLabel": "PlayStation 2",
-        "models": [
-          {
-            "modelId": "dualshock_2",
-            "modelLabel": "DualShock 2"
-          },
-          {
-            "modelId": "ps2_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 2"
-          }
-        ]
-      },
-      {
-        "consoleId": "ps3",
-        "consoleLabel": "PlayStation 3",
-        "models": [
-          {
-            "modelId": "sixaxis",
-            "modelLabel": "SIXAXIS Wireless Controller"
-          },
-          {
-            "modelId": "dualshock_3",
-            "modelLabel": "DualShock 3 Wireless Controller"
-          },
-          {
-            "modelId": "ps3_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 3"
-          }
-        ]
-      },
-      {
-        "consoleId": "ps4",
-        "consoleLabel": "PlayStation 4",
-        "models": [
-          {
-            "modelId": "dualshock_4",
-            "modelLabel": "DualShock 4 Wireless Controller"
-          },
-          {
-            "modelId": "ps4_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 4"
-          }
-        ]
-      },
-      {
-        "consoleId": "ps5",
-        "consoleLabel": "PlayStation 5",
-        "models": [
-          {
-            "modelId": "dualsense",
-            "modelLabel": "DualSense Wireless Controller"
-          },
-          {
-            "modelId": "dualsense_edge",
-            "modelLabel": "DualSense Edge Wireless Controller"
-          },
-          {
-            "modelId": "ps5_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 5"
-          }
-        ]
-      },
-      {
-        "consoleId": "gamecube",
-        "consoleLabel": "Nintendo GameCube",
-        "models": [
-          {
-            "modelId": "gamecube_controller",
-            "modelLabel": "Nintendo GameCube Controller"
-          },
-          {
-            "modelId": "wavebird_wireless_controller",
-            "modelLabel": "WaveBird Wireless Controller"
-          },
-          {
-            "modelId": "gamecube_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de Nintendo GameCube"
-          }
-        ]
-      },
-      {
-        "consoleId": "wii",
-        "consoleLabel": "Nintendo Wii",
-        "models": [
-          {
-            "modelId": "wii_remote",
-            "modelLabel": "Wii Remote"
-          },
-          {
-            "modelId": "wii_remote_plus",
-            "modelLabel": "Wii Remote Plus"
-          },
-          {
-            "modelId": "nunchuk",
-            "modelLabel": "Nunchuk"
-          },
-          {
-            "modelId": "classic_controller",
-            "modelLabel": "Classic Controller"
-          },
-          {
-            "modelId": "classic_controller_pro",
-            "modelLabel": "Classic Controller Pro"
-          },
-          {
-            "modelId": "wii_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de Nintendo Wii"
-          }
-        ]
-      },
-      {
-        "consoleId": "switch",
-        "consoleLabel": "Nintendo Switch",
-        "models": [
-          {
-            "modelId": "joycon_left",
-            "modelLabel": "Joy-Con izquierdo"
-          },
-          {
-            "modelId": "joycon_right",
-            "modelLabel": "Joy-Con derecho"
-          },
-          {
-            "modelId": "joycon_pair",
-            "modelLabel": "Par de Joy-Con"
-          },
-          {
-            "modelId": "switch_pro_controller",
-            "modelLabel": "Nintendo Switch Pro Controller"
-          },
-          {
-            "modelId": "switch_original_unknown",
-            "modelLabel": "No sé el modelo exacto, pero es original de Nintendo Switch"
-          }
-        ]
-      }
-    ]
+    "importantNote": "La limpieza completa ayuda en casos de suciedad, residuos o botones pegados, pero no garantiza corregir fallas electrónicas, stick drift severo, daño por líquido o componentes desgastados. Si el control ya presenta una falla clara, lo más recomendable es iniciar con revisión y diagnóstico."
   },
   "services": [
     {
@@ -314,30 +61,256 @@
       "contactServiceValue": "limpieza_control"
     }
   ],
+  "controllerPolicy": {
+    "originalOnly": true,
+    "acceptedOnlyMessage": "Solo revisamos controles originales de Microsoft, Sony o Nintendo correspondientes a las consolas listadas.",
+    "notAcceptedMessage": "No revisamos controles genéricos, réplicas, compatibles de terceros, controles tipo Pro no oficiales ni controles de otras consolas.",
+    "notAccepted": [
+      "Controles genéricos",
+      "Controles compatibles de terceros",
+      "Réplicas o imitaciones",
+      "Controles tipo Pro no oficiales",
+      "Controles de consolas no listadas",
+      "Controles con modificaciones previas no verificables"
+    ]
+  },
   "compatibleControllers": [
     {
-      "brand": "Xbox",
+      "brand": "Microsoft",
       "models": [
+        "Xbox Clásico",
         "Xbox 360",
         "Xbox One",
         "Xbox Series S/X"
       ]
     },
     {
-      "brand": "PlayStation",
+      "brand": "Sony",
       "models": [
-        "DualShock 3",
-        "DualShock 4",
-        "DualSense"
+        "PlayStation 2",
+        "PlayStation 3",
+        "PlayStation 4",
+        "PlayStation 5"
       ]
     },
     {
       "brand": "Nintendo",
       "models": [
-        "Joy-Con",
-        "Pro Controller",
-        "Wii Remote",
-        "Controles compatibles"
+        "Nintendo GameCube",
+        "Nintendo Wii",
+        "Nintendo Switch"
+      ]
+    }
+  ],
+  "controllerOptions": [
+    {
+      "consoleId": "xbox_classic",
+      "consoleLabel": "Xbox Clásico",
+      "models": [
+        {
+          "modelId": "xbox_classic_controller_duke",
+          "modelLabel": "Xbox Controller / Duke"
+        },
+        {
+          "modelId": "xbox_classic_controller_s",
+          "modelLabel": "Xbox Controller S"
+        },
+        {
+          "modelId": "xbox_classic_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de Xbox Clásico"
+        }
+      ]
+    },
+    {
+      "consoleId": "xbox_360",
+      "consoleLabel": "Xbox 360",
+      "models": [
+        {
+          "modelId": "xbox_360_wired_controller",
+          "modelLabel": "Xbox 360 Wired Controller"
+        },
+        {
+          "modelId": "xbox_360_wireless_controller",
+          "modelLabel": "Xbox 360 Wireless Controller"
+        },
+        {
+          "modelId": "xbox_360_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de Xbox 360"
+        }
+      ]
+    },
+    {
+      "consoleId": "xbox_one",
+      "consoleLabel": "Xbox One",
+      "models": [
+        {
+          "modelId": "xbox_one_wireless_controller",
+          "modelLabel": "Xbox One Wireless Controller"
+        },
+        {
+          "modelId": "xbox_elite_wireless_controller_series_1",
+          "modelLabel": "Xbox Elite Wireless Controller Series 1"
+        },
+        {
+          "modelId": "xbox_one_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de Xbox One"
+        }
+      ]
+    },
+    {
+      "consoleId": "xbox_series",
+      "consoleLabel": "Xbox Series S/X",
+      "models": [
+        {
+          "modelId": "xbox_wireless_controller_series",
+          "modelLabel": "Xbox Wireless Controller"
+        },
+        {
+          "modelId": "xbox_elite_wireless_controller_series_2",
+          "modelLabel": "Xbox Elite Wireless Controller Series 2"
+        },
+        {
+          "modelId": "xbox_series_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de Xbox Series S/X"
+        }
+      ]
+    },
+    {
+      "consoleId": "ps2",
+      "consoleLabel": "PlayStation 2",
+      "models": [
+        {
+          "modelId": "dualshock_2",
+          "modelLabel": "DualShock 2"
+        },
+        {
+          "modelId": "ps2_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 2"
+        }
+      ]
+    },
+    {
+      "consoleId": "ps3",
+      "consoleLabel": "PlayStation 3",
+      "models": [
+        {
+          "modelId": "sixaxis",
+          "modelLabel": "SIXAXIS Wireless Controller"
+        },
+        {
+          "modelId": "dualshock_3",
+          "modelLabel": "DualShock 3 Wireless Controller"
+        },
+        {
+          "modelId": "ps3_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 3"
+        }
+      ]
+    },
+    {
+      "consoleId": "ps4",
+      "consoleLabel": "PlayStation 4",
+      "models": [
+        {
+          "modelId": "dualshock_4",
+          "modelLabel": "DualShock 4 Wireless Controller"
+        },
+        {
+          "modelId": "ps4_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 4"
+        }
+      ]
+    },
+    {
+      "consoleId": "ps5",
+      "consoleLabel": "PlayStation 5",
+      "models": [
+        {
+          "modelId": "dualsense",
+          "modelLabel": "DualSense Wireless Controller"
+        },
+        {
+          "modelId": "dualsense_edge",
+          "modelLabel": "DualSense Edge Wireless Controller"
+        },
+        {
+          "modelId": "ps5_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de PlayStation 5"
+        }
+      ]
+    },
+    {
+      "consoleId": "gamecube",
+      "consoleLabel": "Nintendo GameCube",
+      "models": [
+        {
+          "modelId": "gamecube_controller",
+          "modelLabel": "Nintendo GameCube Controller"
+        },
+        {
+          "modelId": "wavebird_wireless_controller",
+          "modelLabel": "WaveBird Wireless Controller"
+        },
+        {
+          "modelId": "gamecube_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de Nintendo GameCube"
+        }
+      ]
+    },
+    {
+      "consoleId": "wii",
+      "consoleLabel": "Nintendo Wii",
+      "models": [
+        {
+          "modelId": "wii_remote",
+          "modelLabel": "Wii Remote"
+        },
+        {
+          "modelId": "wii_remote_plus",
+          "modelLabel": "Wii Remote Plus"
+        },
+        {
+          "modelId": "nunchuk",
+          "modelLabel": "Nunchuk"
+        },
+        {
+          "modelId": "classic_controller",
+          "modelLabel": "Classic Controller"
+        },
+        {
+          "modelId": "classic_controller_pro",
+          "modelLabel": "Classic Controller Pro"
+        },
+        {
+          "modelId": "wii_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de Nintendo Wii"
+        }
+      ]
+    },
+    {
+      "consoleId": "switch",
+      "consoleLabel": "Nintendo Switch",
+      "models": [
+        {
+          "modelId": "joycon_left",
+          "modelLabel": "Joy-Con izquierdo"
+        },
+        {
+          "modelId": "joycon_right",
+          "modelLabel": "Joy-Con derecho"
+        },
+        {
+          "modelId": "joycon_pair",
+          "modelLabel": "Par de Joy-Con"
+        },
+        {
+          "modelId": "switch_pro_controller",
+          "modelLabel": "Nintendo Switch Pro Controller"
+        },
+        {
+          "modelId": "switch_original_unknown",
+          "modelLabel": "No sé el modelo exacto, pero es original de Nintendo Switch"
+        }
       ]
     }
   ]
