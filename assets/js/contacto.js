@@ -416,13 +416,14 @@ async function saveControllerRequest(service, client) {
   }
 
   if (!res.ok) {
-    console.error("save-controller-request error:", data);
+    console.error("save-controller-request error full:", data);
 
-    throw new Error(
+    const details =
       typeof data === "string"
         ? data
-        : data?.error || JSON.stringify(data, null, 2),
-    );
+        : JSON.stringify(data, null, 2);
+
+    throw new Error(details);
   }
 
   return data;
