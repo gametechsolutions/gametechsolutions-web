@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "page": {
+    "title": "Servicio para controles",
+    "subtitle": "Revisión, diagnóstico y limpieza completa para controles de Xbox, PlayStation y Nintendo.",
+    "importantNote": "La limpieza completa ayuda en casos de suciedad, residuos o botones pegados, pero no garantiza corregir fallas electrónicas, stick drift severo, daño por líquido o componentes desgastados. Si el control ya presenta una falla clara, lo más recomendable es iniciar con revisión y diagnóstico."
+  },
+  "services": [
+    {
+      "id": "controller_diagnostic",
+      "name": "Revisión y diagnóstico",
+      "badge": "DIAG",
+      "icon": "🔎",
+      "status": "active",
+      "price": null,
+      "priceLabel": "Precio por definir",
+      "shortDescription": "Para controles que presentan fallas y necesitan una revisión antes de definir si conviene reparar, limpiar o reemplazar piezas.",
+      "includes": [
+        "Revisión visual externa e interna",
+        "Pruebas básicas de encendido, carga y conexión",
+        "Revisión de botones, sticks y gatillos",
+        "Identificación preliminar de la falla",
+        "Recomendación del siguiente paso"
+      ],
+      "commonIssues": [
+        "No enciende",
+        "No carga",
+        "No sincroniza",
+        "Botones o gatillos fallando",
+        "Stick drift o movimiento fantasma",
+        "Daño por caída o líquido"
+      ],
+      "ctaLabel": "Pedir diagnóstico",
+      "contactServiceValue": "diagnostico_control"
+    },
+    {
+      "id": "controller_full_cleaning",
+      "name": "Limpieza completa",
+      "badge": "CLEAN",
+      "icon": "🧼",
+      "status": "active",
+      "price": null,
+      "priceLabel": "Precio por definir",
+      "shortDescription": "Servicio recomendado para controles con suciedad acumulada, botones pegajosos o mantenimiento preventivo.",
+      "includes": [
+        "Desarme completo",
+        "Limpieza de carcasa y botones",
+        "Limpieza de membranas",
+        "Limpieza interna con IPA",
+        "Revisión visual de la placa",
+        "Prueba final de funcionamiento"
+      ],
+      "commonIssues": [
+        "Botones pegados",
+        "Suciedad interna",
+        "Mantenimiento preventivo",
+        "Residuos por uso",
+        "Sensación rígida en botones o gatillos"
+      ],
+      "ctaLabel": "Pedir limpieza",
+      "contactServiceValue": "limpieza_control"
+    }
+  ],
+  "compatibleControllers": [
+    {
+      "brand": "Xbox",
+      "models": [
+        "Xbox 360",
+        "Xbox One",
+        "Xbox Series S/X"
+      ]
+    },
+    {
+      "brand": "PlayStation",
+      "models": [
+        "DualShock 3",
+        "DualShock 4",
+        "DualSense"
+      ]
+    },
+    {
+      "brand": "Nintendo",
+      "models": [
+        "Joy-Con",
+        "Pro Controller",
+        "Wii Remote",
+        "Controles compatibles"
+      ]
+    }
+  ]
+}

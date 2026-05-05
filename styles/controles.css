@@ -430,3 +430,25 @@ RESPONSIVE
     transition: none !important;
   }
 }
+
+
+.controllers-price {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+
+  margin: var(--s-3) 0 var(--s-2);
+  padding: 8px 10px;
+  border-radius: 999px;
+
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.12));
+  background: color-mix(in srgb,
+      var(--accent-color) 10%,
+      rgba(255, 255, 255, 0.04));
+
+  color: color-mix(in srgb, var(--text) 94%, white);
+  font-weight: 900;
+  font-size: 0.92rem;
+}
