@@ -309,7 +309,7 @@ async function initControllerContactMode() {
 
   const sendBtn = document.getElementById("sendBtn");
   if (sendBtn) {
-    sendBtn.onclick = () => {
+    sendBtn.onclick = async () => {
       const name = document.getElementById("clientName").value.trim();
 
       if (!name) {
@@ -317,11 +317,23 @@ async function initControllerContactMode() {
         return;
       }
 
+      const client = { name };
+
       sendToWhatsApp(
-        buildControllerWhatsAppMessage(service, {
-          name,
-        }),
+        buildControllerWhatsAppMessage(service, client),
       );
+
+      try {
+        const result = await saveControllerRequest(service, client);
+
+        console.log("Solicitud de control guardada:", result);
+      } catch (error) {
+        console.warn("Error guardando solicitud de control:", error);
+
+        alert(
+          "El mensaje de WhatsApp ya se abrió, pero no se pudo guardar la solicitud en el sistema.",
+        );
+      }
     };
   }
 
@@ -365,6 +377,56 @@ function sendToWhatsApp(message) {
 /* =============================
 AIRTABLE
 ============================= */
+
+async function saveControllerRequest(service, client) {
+  const priceLabel = service?.priceLabel || (
+    typeof service?.price === "number"
+      ? `$${service.price} MXN`
+      : "Precio por definir"
+  );
+
+  const payload = {
+    clientName: client.name,
+    serviceId: service?.id || "",
+    serviceName: service?.name || "Servicio para control",
+    serviceValue: service?.contactServiceValue || "",
+    price: typeof service?.price === "number" ? service.price : null,
+    priceLabel,
+    status: "Nuevo",
+    source: "Web - Controles",
+    pageUrl: window.location.href,
+    notes: "Solicitud iniciada desde la página de controles.",
+  };
+
+  const res = await fetch("/api/save-controller-request", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const raw = await res.text();
+
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    data = raw;
+  }
+
+  if (!res.ok) {
+    console.error("save-controller-request error:", data);
+
+    throw new Error(
+      typeof data === "string"
+        ? data
+        : data?.error || JSON.stringify(data, null, 2),
+    );
+  }
+
+  return data;
+}
 
 async function saveToAirtable(ctx) {
   const { hasGameService, hasNonGameService, requestType } = getRequestFlags(ctx);
