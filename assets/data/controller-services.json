@@ -12,8 +12,8 @@
       "badge": "DIAG",
       "icon": "🔎",
       "status": "active",
-      "price": null,
-      "priceLabel": "Precio por definir",
+      "price": 150,
+      "priceLabel": "$150 MXN",
       "shortDescription": "Para controles que presentan fallas y necesitan una revisión antes de definir si conviene reparar, limpiar o reemplazar piezas.",
       "includes": [
         "Revisión visual externa e interna",
@@ -39,8 +39,8 @@
       "badge": "CLEAN",
       "icon": "🧼",
       "status": "active",
-      "price": null,
-      "priceLabel": "Precio por definir",
+      "price": 250,
+      "priceLabel": "$250 MXN",
       "shortDescription": "Servicio recomendado para controles con suciedad acumulada, botones pegajosos o mantenimiento preventivo.",
       "includes": [
         "Desarme completo",
