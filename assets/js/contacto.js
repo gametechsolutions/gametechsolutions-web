@@ -334,11 +334,11 @@ async function initControllerContactMode() {
       const client = { name };
 
       sendToWhatsApp(
-        buildControllerWhatsAppMessage(service, client),
+        buildControllerWhatsAppMessage(service, client, requestID),
       );
 
       try {
-        const result = await saveControllerRequest(service, client);
+        const result = await saveControllerRequest(service, client, requestID);
 
         console.log("Solicitud de control guardada:", result);
       } catch (error) {
