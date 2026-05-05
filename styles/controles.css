@@ -1,226 +1,411 @@
+/* ============================================================
+CONTROLES — GameTechSolutions
+Página: /controles/
+Usa el sistema visual de theme-base.css
+============================================================ */
+
 .page-controles {
-  background: var(--bg-main);
-  color: var(--text-main);
+  color: var(--text);
 }
 
+/* Main propio, pero respetando header/footer fijos del sitio */
 .controllers-main {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 48px 0 72px;
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+  padding: calc(var(--s-6) + 74px) 0 calc(var(--s-8) + 62px + 74px);
 }
+
+/* ============================================================
+HERO
+============================================================ */
 
 .controllers-hero {
-  display: grid;
-  place-items: center;
-  min-height: 420px;
-  padding: 56px 24px;
-  border: 1px solid var(--border-soft);
   border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    radial-gradient(circle at top left, rgba(106, 176, 76, 0.22), transparent 34%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+    radial-gradient(700px 320px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 18%, transparent),
+      transparent 65%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
   overflow: hidden;
+
+  display: grid;
+  gap: 12px;
 }
 
 .controllers-hero__content {
-  max-width: 760px;
-  text-align: center;
+  max-width: 820px;
 }
 
 .controllers-eyebrow {
-  margin: 0 0 12px;
-  color: var(--accent-color);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0 0 var(--s-3);
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+
+  color: color-mix(in srgb, var(--text) 88%, white);
+  font-size: 0.92rem;
+  font-weight: 850;
+  letter-spacing: 0.2px;
 }
 
 .controllers-hero h1 {
-  margin: 0;
-  font-size: clamp(2.3rem, 6vw, 4.5rem);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
+  margin: 0 0 var(--s-3);
+  max-width: 780px;
+
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-weight: 950;
 }
 
 .controllers-hero__text {
-  max-width: 680px;
-  margin: 22px auto 0;
-  color: var(--text-muted);
-  font-size: 1.08rem;
-  line-height: 1.7;
+  max-width: 80ch;
+  margin: 0;
+
+  color: color-mix(in srgb, var(--muted) 92%, white);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.75;
 }
 
 .controllers-hero__actions {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 32px;
+  gap: 12px;
+  margin-top: var(--s-5);
 }
+
+/* ============================================================
+BOTONES
+============================================================ */
 
 .controllers-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+
   min-height: 46px;
-  padding: 0 20px;
+  padding: 12px 18px;
   border-radius: 999px;
-  font-weight: 700;
+
+  font-weight: 900;
   text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+
   transition:
-    transform 0.18s ease,
-    background-color 0.18s ease,
-    border-color 0.18s ease;
+    transform var(--ease),
+    background var(--ease),
+    border var(--ease),
+    filter var(--ease);
 }
 
 .controllers-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+}
+
+.controllers-btn:active {
+  transform: translateY(0) scale(0.99);
 }
 
 .controllers-btn--primary {
-  color: #081008;
-  background: var(--accent-color);
+  border: none;
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-color) 85%, white),
+      rgba(108, 99, 255, 0.95));
+  color: #08101e;
 }
 
 .controllers-btn--primary:hover {
-  background: var(--accent-hover);
+  filter: brightness(1.06);
 }
 
 .controllers-btn--secondary {
-  color: var(--text-main);
-  border: 1px solid var(--border-soft);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: color-mix(in srgb, var(--text) 92%, white);
 }
 
 .controllers-btn--secondary:hover {
-  border-color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
 }
 
+/* ============================================================
+SECCIONES
+============================================================ */
+
 .controllers-section {
-  margin-top: 72px;
+  padding: var(--s-8) 0 var(--s-6);
 }
 
 .controllers-section__heading {
   max-width: 760px;
-  margin-bottom: 28px;
+  margin-bottom: var(--s-6);
 }
 
 .controllers-section__heading h2,
 .controllers-warning h2,
 .controllers-cta h2 {
-  margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
-  letter-spacing: -0.04em;
+  margin-top: 0;
 }
 
 .controllers-section__heading p,
 .controllers-warning p,
 .controllers-cta p {
-  color: var(--text-muted);
+  color: color-mix(in srgb, var(--muted) 92%, white);
   line-height: 1.7;
 }
 
+/* ============================================================
+CARDS
+============================================================ */
+
 .controllers-service-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: var(--s-6);
+}
+
+.controllers-compatible-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
 }
 
 .controllers-card,
 .controllers-mini-card,
 .controllers-warning,
 .controllers-cta {
-  border: 1px solid var(--border-soft);
-  border-radius: 24px;
-  background: var(--bg-panel);
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.03));
+  box-shadow: var(--glow);
 }
 
-.controllers-card {
-  padding: 28px;
+.controllers-card::after,
+.controllers-mini-card::after,
+.controllers-warning::after,
+.controllers-cta::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--ease-slow);
+  background: radial-gradient(500px 220px at 30% 0%,
+      color-mix(in srgb, var(--accent-color) 25%, transparent),
+      transparent 65%);
+}
+
+.controllers-card:hover::after,
+.controllers-mini-card:hover::after,
+.controllers-warning:hover::after,
+.controllers-cta:hover::after {
+  opacity: 1;
+}
+
+.controllers-card,
+.controllers-mini-card {
+  padding: var(--s-5);
+  transition:
+    transform var(--ease),
+    box-shadow var(--ease),
+    border-color var(--ease);
+}
+
+.controllers-card:hover,
+.controllers-mini-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(120, 180, 255, 0.18);
+}
+
+.controllers-card>*,
+.controllers-mini-card>*,
+.controllers-warning>*,
+.controllers-cta>* {
+  position: relative;
+  z-index: 1;
 }
 
 .controllers-card h3,
 .controllers-mini-card h3 {
-  margin: 0 0 12px;
-  font-size: 1.35rem;
+  margin: 0 0 var(--s-2);
+  font-size: 1.1rem;
 }
 
 .controllers-card p,
 .controllers-mini-card p {
-  color: var(--text-muted);
+  margin: 0 0 var(--s-3);
+  color: var(--muted);
   line-height: 1.7;
 }
 
 .controllers-card ul {
   display: grid;
-  gap: 9px;
-  margin: 22px 0;
-  padding-left: 20px;
-  color: var(--text-muted);
+  gap: 8px;
+
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.controllers-card li::marker {
-  color: var(--accent-color);
+.controllers-card li {
+  position: relative;
+  margin: 0;
+  padding-left: 18px;
+
+  color: color-mix(in srgb, var(--muted) 92%, white);
+  line-height: 1.55;
+}
+
+.controllers-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+
+  color: color-mix(in srgb, var(--accent-color) 80%, white);
 }
 
 .controllers-card__link {
-  color: var(--accent-color);
-  font-weight: 800;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: var(--s-5);
+  padding: 10px 12px;
+  border-radius: 999px;
+
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 35%,
+      rgba(255, 255, 255, 0.12));
+  background: rgba(255, 255, 255, 0.04);
+
+  color: color-mix(in srgb, var(--text) 94%, white);
+  font-weight: 900;
   text-decoration: none;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border-color var(--ease);
 }
 
 .controllers-card__link:hover {
-  text-decoration: underline;
+  transform: translateY(-1px);
+  background: color-mix(in srgb,
+      var(--accent-color) 12%,
+      rgba(255, 255, 255, 0.05));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
 }
 
-.controllers-compatible-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.controllers-mini-card {
-  padding: 24px;
-}
+/* ============================================================
+WARNING / CTA
+============================================================ */
 
 .controllers-warning {
-  margin-top: 72px;
-  padding: 30px;
-  border-color: rgba(255, 193, 7, 0.35);
+  margin-top: var(--s-6);
+  padding: 18px 20px;
+
+  border-color: rgba(255, 210, 90, 0.28);
   background:
-    linear-gradient(135deg, rgba(255, 193, 7, 0.09), rgba(255, 255, 255, 0.02)),
-    var(--bg-panel);
+    radial-gradient(600px 200px at 18% 0%,
+      rgba(255, 210, 90, 0.12),
+      transparent 60%),
+    rgba(10, 14, 26, 0.92);
+
+  color: color-mix(in srgb, var(--text) 95%, white);
+  line-height: 1.65;
+}
+
+.controllers-warning h2 {
+  color: color-mix(in srgb, var(--text) 96%, white);
+}
+
+.controllers-warning p:last-child,
+.controllers-cta p:last-child {
+  margin-bottom: 0;
 }
 
 .controllers-cta {
-  margin-top: 32px;
-  padding: 34px;
+  margin-top: var(--s-6);
+  padding: clamp(22px, 4vw, 34px);
   text-align: center;
+
+  background:
+    radial-gradient(700px 240px at 50% 0%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 65%),
+    rgba(255, 255, 255, 0.03);
 }
 
 .controllers-cta p {
   max-width: 640px;
-  margin: 16px auto 26px;
+  margin: 0 auto var(--s-5);
 }
 
-@media (max-width: 820px) {
+/* ============================================================
+RESPONSIVE
+============================================================ */
+
+@media (min-width: 720px) {
+  .controllers-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .controllers-compatible-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
   .controllers-main {
-    width: min(100% - 22px, 1120px);
-    padding-top: 28px;
+    width: min(100% - 1.25rem, var(--container));
+    padding-top: calc(var(--s-5) + 74px);
   }
 
   .controllers-hero {
-    min-height: auto;
-    padding: 46px 18px;
     border-radius: 22px;
+    padding: 22px;
   }
 
-  .controllers-service-grid,
-  .controllers-compatible-grid {
+  .controllers-hero h1 {
+    font-size: clamp(2rem, 11vw, 2.65rem);
+  }
+
+  .controllers-hero__actions {
+    display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .controllers-btn {
+    width: 100%;
+  }
+
+  .controllers-section {
+    padding: var(--s-7) 0 var(--s-5);
   }
 
   .controllers-card,
@@ -228,5 +413,20 @@
   .controllers-warning,
   .controllers-cta {
     border-radius: 20px;
+  }
+
+  .controllers-card,
+  .controllers-mini-card {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .controllers-card,
+  .controllers-mini-card,
+  .controllers-btn,
+  .controllers-card__link {
+    transition: none !important;
   }
 }
