@@ -22,121 +22,132 @@
       }
     },
     {
-      "id": "slim_20xx",
-      "name": "PlayStation 3 Slim CECH-20xx",
-      "code": "Slim CECH-20xx",
+      "id": "slim",
+      "name": "PlayStation 3 Slim",
+      "code": "Slim",
       "image": "/assets/img/consolas/ps3/models/slim.png",
-      "compatibility": {
-        "modType": "cfw",
-        "cfwPossible": true,
-        "henOnly": false,
-        "ps1Games": true,
-        "ps2IsoGames": true
-      },
-      "message": {
-        "type": "note",
-        "title": "Nota",
-        "text": "Compatible con CFW.",
-        "note": "Este modelo permite habilitar catálogo PS2 dentro del flujo."
-      }
-    },
-    {
-      "id": "slim_21xx",
-      "name": "PlayStation 3 Slim CECH-21xx",
-      "code": "Slim CECH-21xx",
-      "image": "/assets/img/consolas/ps3/models/slim.png",
-      "compatibility": {
-        "modType": "cfw",
-        "cfwPossible": true,
-        "henOnly": false,
-        "ps1Games": true,
-        "ps2IsoGames": true
-      },
-      "message": {
-        "type": "note",
-        "title": "Nota",
-        "text": "Compatible con CFW.",
-        "note": "Este modelo permite habilitar catálogo PS2 dentro del flujo."
-      }
-    },
-    {
-      "id": "slim_25xx_confirmed_cfw",
-      "name": "PlayStation 3 Slim CECH-25xx compatible con CFW",
-      "code": "Slim CECH-25xx compatible con CFW",
-      "image": "/assets/img/consolas/ps3/models/slim.png",
-      "compatibility": {
-        "modType": "cfw",
-        "cfwPossible": true,
-        "henOnly": false,
-        "ps1Games": true,
-        "ps2IsoGames": true,
-        "needsExactModel": true
-      },
+      "requiresVariant": true,
+      "variantLabel": "Modelo exacto de PS3 Slim",
+      "variantHelp": "Selecciona el modelo CECH aproximado. Si no lo sabes, elige la opción no confirmada.",
       "message": {
         "type": "warning",
         "title": "Importante",
-        "text": "Solo aplica si ya se confirmó compatibilidad con CFW.",
-        "note": "En CECH-25xx la compatibilidad debe verificarse con modelo exacto/BGToolSet/MinVerChk antes de ofrecer PS2 ISO."
-      }
-    },
-    {
-      "id": "slim_25xx_not_confirmed",
-      "name": "PlayStation 3 Slim CECH-25xx no confirmado",
-      "code": "Slim CECH-25xx no confirmado",
-      "image": "/assets/img/consolas/ps3/models/slim.png",
-      "compatibility": {
-        "modType": "unknown",
-        "cfwPossible": null,
-        "henOnly": null,
-        "ps1Games": true,
-        "ps2IsoGames": false,
-        "needsExactModel": true
+        "text": "La compatibilidad depende del modelo exacto.",
+        "note": "Algunos modelos Slim permiten CFW y otros solo HEN. Para PS2 ISO se requiere compatibilidad con CFW."
       },
-      "message": {
-        "type": "warning",
-        "title": "Importante",
-        "text": "La compatibilidad con CFW debe confirmarse antes.",
-        "note": "Por seguridad, este flujo no habilita juegos de PS2 ISO hasta confirmar que acepta CFW."
-      }
-    },
-    {
-      "id": "slim_30xx",
-      "name": "PlayStation 3 Slim CECH-30xx",
-      "code": "Slim CECH-30xx",
-      "image": "/assets/img/consolas/ps3/models/slim.png",
-      "compatibility": {
-        "modType": "hen",
-        "cfwPossible": false,
-        "henOnly": true,
-        "ps1Games": true,
-        "ps2IsoGames": false
-      },
-      "message": {
-        "type": "warning",
-        "title": "Importante",
-        "text": "Modelo no compatible con CFW.",
-        "note": "No se habilitan juegos de PS2 ISO para este modelo dentro de este flujo."
-      }
-    },
-    {
-      "id": "slim_unknown",
-      "name": "PlayStation 3 Slim - no sé el modelo exacto",
-      "code": "Slim no confirmado",
-      "image": "/assets/img/consolas/ps3/models/slim.png",
-      "compatibility": {
-        "modType": "unknown",
-        "cfwPossible": null,
-        "henOnly": null,
-        "ps1Games": true,
-        "ps2IsoGames": false,
-        "needsExactModel": true
-      },
-      "message": {
-        "type": "warning",
-        "title": "Importante",
-        "text": "Necesitamos confirmar el modelo exacto.",
-        "note": "Por seguridad, este flujo no habilita juegos de PS2 ISO si no se confirma compatibilidad con CFW."
-      }
+      "variants": [
+        {
+          "id": "slim_20xx",
+          "name": "CECH-20xx",
+          "code": "Slim CECH-20xx",
+          "compatibility": {
+            "modType": "cfw",
+            "cfwPossible": true,
+            "henOnly": false,
+            "ps1Games": true,
+            "ps2IsoGames": true
+          },
+          "message": {
+            "type": "note",
+            "title": "Nota",
+            "text": "Compatible con CFW.",
+            "note": "Este modelo permite habilitar catálogo PS2 dentro del flujo."
+          }
+        },
+        {
+          "id": "slim_21xx",
+          "name": "CECH-21xx",
+          "code": "Slim CECH-21xx",
+          "compatibility": {
+            "modType": "cfw",
+            "cfwPossible": true,
+            "henOnly": false,
+            "ps1Games": true,
+            "ps2IsoGames": true
+          },
+          "message": {
+            "type": "note",
+            "title": "Nota",
+            "text": "Compatible con CFW.",
+            "note": "Este modelo permite habilitar catálogo PS2 dentro del flujo."
+          }
+        },
+        {
+          "id": "slim_25xx_confirmed_cfw",
+          "name": "CECH-25xx compatible con CFW",
+          "code": "Slim CECH-25xx compatible con CFW",
+          "compatibility": {
+            "modType": "cfw",
+            "cfwPossible": true,
+            "henOnly": false,
+            "ps1Games": true,
+            "ps2IsoGames": true,
+            "needsExactModel": true
+          },
+          "message": {
+            "type": "warning",
+            "title": "Importante",
+            "text": "Solo aplica si ya se confirmó compatibilidad con CFW.",
+            "note": "En CECH-25xx la compatibilidad debe verificarse antes de ofrecer PS2 ISO."
+          }
+        },
+        {
+          "id": "slim_25xx_not_confirmed",
+          "name": "CECH-25xx no confirmado",
+          "code": "Slim CECH-25xx no confirmado",
+          "compatibility": {
+            "modType": "unknown",
+            "cfwPossible": null,
+            "henOnly": null,
+            "ps1Games": true,
+            "ps2IsoGames": false,
+            "needsExactModel": true
+          },
+          "message": {
+            "type": "warning",
+            "title": "Importante",
+            "text": "La compatibilidad con CFW debe confirmarse antes.",
+            "note": "Por seguridad, este flujo no habilita juegos de PS2 ISO hasta confirmar compatibilidad con CFW."
+          }
+        },
+        {
+          "id": "slim_30xx",
+          "name": "CECH-30xx",
+          "code": "Slim CECH-30xx",
+          "compatibility": {
+            "modType": "hen",
+            "cfwPossible": false,
+            "henOnly": true,
+            "ps1Games": true,
+            "ps2IsoGames": false
+          },
+          "message": {
+            "type": "warning",
+            "title": "Importante",
+            "text": "Modelo no compatible con CFW.",
+            "note": "No se habilitan juegos de PS2 ISO para este modelo dentro de este flujo."
+          }
+        },
+        {
+          "id": "slim_unknown",
+          "name": "No sé el modelo exacto",
+          "code": "Slim no confirmado",
+          "compatibility": {
+            "modType": "unknown",
+            "cfwPossible": null,
+            "henOnly": null,
+            "ps1Games": true,
+            "ps2IsoGames": false,
+            "needsExactModel": true
+          },
+          "message": {
+            "type": "warning",
+            "title": "Importante",
+            "text": "Necesitamos confirmar el modelo exacto.",
+            "note": "Por seguridad, este flujo no habilita juegos de PS2 ISO si no se confirma compatibilidad con CFW."
+          }
+        }
+      ]
     },
     {
       "id": "super_slim",

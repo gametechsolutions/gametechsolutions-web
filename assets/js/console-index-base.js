@@ -48,6 +48,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       return false;
     }
 
+    if (ctx.model?.requiresVariant && !ctx.model?.variant) {
+      alert("Debes seleccionar el modelo exacto de tu consola.");
+      return false;
+    }
+
     if (!ctx.services?.length) {
       alert("Debes seleccionar al menos un servicio.");
       return false;
@@ -71,6 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const modelsContainer = document.getElementById("modelsContainer");
   let selectedModelCard = null;
+  let selectedBaseModel = null;
   const ctx = ctxAPI.load();
 
   function showModelWarning(model) {
@@ -98,6 +104,116 @@ document.addEventListener("DOMContentLoaded", async () => {
       box.className = "global-warning";
       box.innerHTML = "";
     }
+  }
+
+  function getModelVariantSection() {
+    let section = document.getElementById("modelVariantSection");
+
+    if (!section) {
+      section = document.createElement("div");
+      section.id = "modelVariantSection";
+      section.className = "model-variant-card card hidden";
+
+      const warningBox = document.getElementById("modelWarningGlobal");
+      warningBox?.insertAdjacentElement("afterend", section);
+    }
+
+    return section;
+  }
+
+  function hideModelVariantSection() {
+    const section = document.getElementById("modelVariantSection");
+    if (!section) return;
+
+    section.classList.add("hidden");
+    section.innerHTML = "";
+  }
+
+  function renderModelVariantSelector(model) {
+    const section = getModelVariantSection();
+    const variants = Array.isArray(model.variants) ? model.variants : [];
+
+    if (!model.requiresVariant || !variants.length) {
+      hideModelVariantSection();
+      return;
+    }
+
+    section.classList.remove("hidden");
+
+    section.innerHTML = `
+    <label for="modelVariantSelect" class="form-label">
+      ${model.variantLabel || "Modelo exacto"}
+    </label>
+
+    <select id="modelVariantSelect" class="form-input">
+      <option value="">Selecciona una opción</option>
+      ${variants
+        .map(
+          (variant) => `
+            <option value="${variant.id}">
+              ${variant.name}
+            </option>
+          `,
+        )
+        .join("")}
+    </select>
+
+    <p class="form-hint">
+      ${model.variantHelp || "Selecciona el modelo exacto para validar compatibilidad."}
+    </p>
+  `;
+
+    const select = section.querySelector("#modelVariantSelect");
+
+    const currentCtx = ctxAPI.load();
+    const savedVariantId = currentCtx.model?.variant?.id;
+
+    if (savedVariantId && variants.some((variant) => variant.id === savedVariantId)) {
+      select.value = savedVariantId;
+    }
+
+    select.onchange = () => {
+      const selectedVariant = variants.find((variant) => variant.id === select.value);
+
+      if (!selectedVariant) {
+        ctxAPI.save({
+          console: CONSOLE_CONFIG,
+          model: {
+            id: model.id,
+            description: model.code,
+            notes: model.notes || null,
+            requiresVariant: true,
+            variant: null,
+            compatibility: null
+          },
+          compatibility: null
+        });
+
+        showModelWarning(model);
+        updateStorageUI();
+        return;
+      }
+
+      ctxAPI.save({
+        console: CONSOLE_CONFIG,
+        model: {
+          id: model.id,
+          description: selectedVariant.code,
+          notes: selectedVariant.name || null,
+          requiresVariant: true,
+          variant: {
+            id: selectedVariant.id,
+            name: selectedVariant.name,
+            code: selectedVariant.code
+          },
+          compatibility: selectedVariant.compatibility || null
+        },
+        compatibility: selectedVariant.compatibility || null
+      });
+
+      showModelWarning(selectedVariant.message ? selectedVariant : model);
+      updateStorageUI();
+    };
   }
 
   modelsData.models.forEach((model) => {
@@ -133,17 +249,42 @@ document.addEventListener("DOMContentLoaded", async () => {
       btn.textContent = "Seleccionado";
       selectedModelCard = card;
 
+      selectedBaseModel = model;
+
+      if (model.requiresVariant) {
+        ctxAPI.save({
+          console: CONSOLE_CONFIG,
+          model: {
+            id: model.id,
+            description: model.code,
+            notes: model.notes || null,
+            requiresVariant: true,
+            variant: null,
+            compatibility: null
+          },
+          compatibility: null
+        });
+
+        showModelWarning(model);
+        renderModelVariantSelector(model);
+        updateStorageUI();
+        return;
+      }
+
       ctxAPI.save({
         console: CONSOLE_CONFIG,
         model: {
           id: model.id,
           description: model.code,
           notes: model.notes || null,
-          compatibility: model.compatibility || null,
+          requiresVariant: false,
+          variant: null,
+          compatibility: model.compatibility || null
         },
-        compatibility: model.compatibility || null,
+        compatibility: model.compatibility || null
       });
 
+      hideModelVariantSection();
       showModelWarning(model);
       updateStorageUI();
     };

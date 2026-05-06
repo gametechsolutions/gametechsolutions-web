@@ -3212,3 +3212,12 @@ VARIANTES DE MENSAJES (warning / note)
     flex: 0 0 auto;
   }
 }
+
+.model-variant-card {
+  margin-top: var(--s-5);
+  max-width: 520px;
+}
+
+.model-variant-card.hidden {
+  display: none;
+}
