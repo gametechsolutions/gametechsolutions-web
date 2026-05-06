@@ -124,31 +124,34 @@
       "consoleCode": "PS3",
       "consoleLabel": "PlayStation 3",
       "nativeLibraryId": "ps3",
-      "enabled": false,
+      "enabled": true,
       "extraLibraries": [
         {
           "libraryId": "ps1",
-          "status": "planned",
+          "status": "active",
           "emulatorId": "ps3_ps1_compat",
           "emulatorName": "Compatibilidad PlayStation 1 en PS3",
           "emulatorInstallSizeGB": 0,
           "autoAddEmulatorBase": false,
           "requires": {
-            "modType": ["cfw", "hen"]
+            "ps1Games": true
           },
-          "notes": "Activar después de definir reglas exactas para PS3."
+          "notes": "Disponible para PS3 según compatibilidad y configuración."
         },
         {
           "libraryId": "ps2",
-          "status": "planned",
+          "status": "draft",
           "emulatorId": "ps3_ps2_iso_compat",
           "emulatorName": "Compatibilidad PlayStation 2 ISO en PS3",
           "emulatorInstallSizeGB": 0,
           "autoAddEmulatorBase": false,
           "requires": {
-            "modType": ["cfw"]
+            "modType": [
+              "cfw"
+            ],
+            "ps2IsoGames": true
           },
-          "notes": "No activar para HEN, Slim no compatible o Super Slim."
+          "notes": "No activar hasta validar reglas exactas para PS3 CFW."
         }
       ]
     }

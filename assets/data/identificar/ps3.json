@@ -7,6 +7,13 @@
       "name": "PlayStation 3",
       "code": "PlayStation 3",
       "image": "/assets/img/consolas/ps3/models/fat.png",
+      "compatibility": {
+        "modType": "cfw",
+        "cfwPossible": true,
+        "henOnly": false,
+        "ps1Games": true,
+        "ps2IsoGames": true
+      },
       "message": {
         "type": "note",
         "title": "Nota",
@@ -18,11 +25,19 @@
       "name": "PlayStation 3 Slim",
       "code": "Slim",
       "image": "/assets/img/consolas/ps3/models/slim.png",
+      "compatibility": {
+        "modType": "unknown",
+        "cfwPossible": null,
+        "henOnly": null,
+        "ps1Games": true,
+        "ps2IsoGames": false,
+        "needsExactModel": true
+      },
       "message": {
         "type": "warning",
         "title": "Importante",
         "text": "La compatibilidad depende del modelo exacto.",
-        "note": "Algunos modelos compatibles con CFW o HEN."
+        "note": "Algunos modelos son compatibles con CFW y otros solo con HEN. Para juegos de PS2 en formato ISO se requiere confirmar compatibilidad con CFW."
       }
     },
     {
@@ -30,10 +45,18 @@
       "name": "PlayStation 3 Super Slim",
       "code": "Super Slim",
       "image": "/assets/img/consolas/ps3/models/super-slim.png",
+      "compatibility": {
+        "modType": "hen",
+        "cfwPossible": false,
+        "henOnly": true,
+        "ps1Games": true,
+        "ps2IsoGames": false
+      },
       "message": {
         "type": "warning",
         "title": "Importante",
-        "text": "Modelo NO compatible con CFW"
+        "text": "Modelo NO compatible con CFW",
+        "note": "No se ofrecen juegos de PS2 en formato ISO para este modelo dentro de este flujo."
       }
     }
   ]

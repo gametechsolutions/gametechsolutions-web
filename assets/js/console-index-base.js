@@ -139,7 +139,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           id: model.id,
           description: model.code,
           notes: model.notes || null,
+          compatibility: model.compatibility || null,
         },
+        compatibility: model.compatibility || null,
       });
 
       showModelWarning(model);

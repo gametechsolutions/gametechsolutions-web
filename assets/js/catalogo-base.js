@@ -387,6 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       extraLibraries
         .filter((entry) => entry.status === "active")
+        .filter((entry) => isLibraryAllowedByContext(entry, ctx))
         .forEach((entry) => {
           const definition = definitions[entry.libraryId];
           if (!definition) {
@@ -408,6 +409,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     return result;
+  }
+
+  function isLibraryAllowedByContext(entry, ctx) {
+    const requires = entry.requires;
+    if (!requires) return true;
+
+    const compatibility = ctx?.compatibility || ctx?.model?.compatibility || {};
+
+    if (Array.isArray(requires.modType) && requires.modType.length) {
+      if (!requires.modType.includes(compatibility.modType)) {
+        return false;
+      }
+    }
+
+    if (
+      typeof requires.ps2IsoGames === "boolean" &&
+      compatibility.ps2IsoGames !== requires.ps2IsoGames
+    ) {
+      return false;
+    }
+
+    if (
+      typeof requires.ps1Games === "boolean" &&
+      compatibility.ps1Games !== requires.ps1Games
+    ) {
+      return false;
+    }
+
+    return true;
   }
 
   function getCatalogCandidatesForLibrary(library) {
