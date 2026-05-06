@@ -120,6 +120,12 @@ export default async function handler(req, res) {
       pricingJSON,
       notes,
       source,
+      selectedGamesSizeGB,
+      emulatorBaseSizeGB,
+      emulatorBases,
+      emulatorBasesJSON,
+      librarySummary,
+      librarySummaryJSON,
     } = req.body;
 
     const parsedGames = safeParseJsonArray(jsonGames);
@@ -190,12 +196,28 @@ export default async function handler(req, res) {
 
       // Compatibilidad con tu flujo actual de transferencias
       status: "Pendiente",
-      selectedGamesSizeGB: body.selectedGamesSizeGB,
-      emulatorBaseSizeGB: body.emulatorBaseSizeGB,
-      emulatorBases: body.emulatorBases,
-      emulatorBasesJSON: body.emulatorBasesJSON,
-      librarySummary: body.librarySummary,
-      librarySummaryJSON: body.librarySummaryJSON,
+      selectedGamesSizeGB: hasGameService ? numberOrZero(selectedGamesSizeGB) : 0,
+      emulatorBaseSizeGB: hasGameService ? numberOrZero(emulatorBaseSizeGB) : 0,
+      emulatorBases: hasGameService
+        ? (typeof emulatorBases === "string"
+          ? emulatorBases
+          : JSON.stringify(emulatorBases || []))
+        : "",
+      emulatorBasesJSON: hasGameService
+        ? (typeof emulatorBasesJSON === "string"
+          ? emulatorBasesJSON
+          : JSON.stringify(emulatorBasesJSON || []))
+        : "[]",
+      librarySummary: hasGameService
+        ? (typeof librarySummary === "string"
+          ? librarySummary
+          : JSON.stringify(librarySummary || []))
+        : "",
+      librarySummaryJSON: hasGameService
+        ? (typeof librarySummaryJSON === "string"
+          ? librarySummaryJSON
+          : JSON.stringify(librarySummaryJSON || []))
+        : "[]",
     };
 
     if (hasMeaningfulValue(clientPhone)) {
