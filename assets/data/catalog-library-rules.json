@@ -224,7 +224,7 @@
         },
         {
           "libraryId": "snes",
-          "status": "draft",
+          "status": "active",
           "emulatorId": "xbox_snes",
           "emulatorName": "Emulador SNES para Xbox Clásico",
           "emulatorInstallSizeGB": 0.206,
@@ -233,7 +233,7 @@
         },
         {
           "libraryId": "n64",
-          "status": "draft",
+          "status": "active",
           "emulatorId": "xbox_n64",
           "emulatorName": "Emulador Nintendo 64 para Xbox Clásico",
           "emulatorInstallSizeGB": 0.472,
@@ -242,7 +242,7 @@
         },
         {
           "libraryId": "ps1_emulator",
-          "status": "draft",
+          "status": "active",
           "emulatorId": "xbox_ps1",
           "emulatorName": "Emulador PlayStation 1 para Xbox Clásico",
           "emulatorInstallSizeGB": 0.205,
@@ -251,7 +251,7 @@
         },
         {
           "libraryId": "mame",
-          "status": "draft",
+          "status": "active",
           "emulatorId": "xbox_mame",
           "emulatorName": "Emulador MAME para Xbox Clásico",
           "emulatorInstallSizeGB": 1.69,
