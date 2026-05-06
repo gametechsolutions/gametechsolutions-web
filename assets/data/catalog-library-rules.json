@@ -93,10 +93,10 @@
         },
         {
           "libraryId": "snes",
-          "status": "draft",
+          "status": "active",
           "emulatorId": "x360_snes",
           "emulatorName": "Emulador SNES para Xbox 360",
-          "emulatorInstallSizeGB": null,
+          "emulatorInstallSizeGB": 0.0442,
           "autoAddEmulatorBase": true,
           "notes": "Completar tamaño real del emulador antes de activar."
         },
@@ -111,10 +111,10 @@
         },
         {
           "libraryId": "mame",
-          "status": "draft",
+          "status": "active",
           "emulatorId": "x360_mame",
           "emulatorName": "Emulador MAME para Xbox 360",
-          "emulatorInstallSizeGB": null,
+          "emulatorInstallSizeGB": 0.063,
           "autoAddEmulatorBase": true,
           "notes": "Completar tamaño real del emulador antes de activar. Validar romset usado para evitar incompatibilidades."
         }
