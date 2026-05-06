@@ -3156,3 +3156,59 @@ VARIANTES DE MENSAJES (warning / note)
   opacity: 0.55;
   cursor: not-allowed;
 }
+
+.catalog-library-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 10px;
+  padding: 2px 0 8px;
+}
+
+.catalog-library-tabs button {
+  padding: 9px 12px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+
+  font-weight: 900;
+  cursor: pointer;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border var(--ease);
+}
+
+.catalog-library-tabs button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+}
+
+.catalog-library-tabs button.active {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
+  background: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.04));
+}
+
+@media (max-width: 520px) {
+  .catalog-library-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .catalog-library-tabs button {
+    flex: 0 0 auto;
+  }
+}

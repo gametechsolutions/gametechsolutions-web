@@ -39,6 +39,26 @@ window.GTS_CATALOG_SOURCES = {
     gamesJsonRemote:
       "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/switch.json",
   },
+  NES: {
+    gamesJsonRemote:
+      "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/nes.json",
+  },
+  SNES: {
+    gamesJsonRemote:
+      "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/snes.json",
+  },
+  N64: {
+    gamesJsonRemote:
+      "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/n64.json",
+  },
+  ARCADE: {
+    gamesJsonRemote:
+      "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/arcade.json",
+  },
+  MAME: {
+    gamesJsonRemote:
+      "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/mame.json",
+  },
 };
 
 window.GTS_REMOTE_CONFIG = {

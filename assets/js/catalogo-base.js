@@ -1,13 +1,24 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
   /* =============================
     VARIABLES BASE
     ============================== */
 
+  const LIBRARY_RULES_URL = "/assets/data/catalog-library-rules.json";
+  const CONTEXT_KEY = "GTS_CONTEXT";
+
   let selectedGames = [];
+  let emulatorBases = {};
   let totalSize = 0;
   let diskLimit = null;
   let diskLabel = "";
-  let gamesData = [];
+  let servicesData = {};
+
+  let libraries = [];
+  let librariesData = {};
+  let gamesByKey = new Map();
+  let activeLibraryId = "";
 
   /* =============================
     FILTROS (SEARCH + LETRAS)
@@ -16,26 +27,179 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchTerm = "";
   let activeLetter = "ALL"; // ALL | # | A-Z
 
+  /* =============================
+    UTILIDADES
+    ============================== */
+
+  function escapeHTML(value = "") {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function safeNumber(value, fallback = 0) {
+    const num = Number(value);
+    return Number.isFinite(num) ? num : fallback;
+  }
+
+  function getContext() {
+    if (window.GTSContext && typeof window.GTSContext.load === "function") {
+      return window.GTSContext.load();
+    }
+
+    try {
+      return JSON.parse(localStorage.getItem(CONTEXT_KEY)) || {};
+    } catch {
+      return {};
+    }
+  }
+
+  function saveContextPayload(payload) {
+    if (window.GTSContext && typeof window.GTSContext.save === "function") {
+      window.GTSContext.save(payload);
+    } else {
+      localStorage.setItem(CONTEXT_KEY, JSON.stringify(payload));
+    }
+  }
+
+  function getConsoleHomePath() {
+    if (CONSOLE_CONFIG.catalogPath) {
+      return CONSOLE_CONFIG.catalogPath.replace("/catalogo.html", "/");
+    }
+
+    return "/";
+  }
+
+  function getLibrary(libraryId) {
+    return libraries.find((library) => library.libraryId === libraryId) || null;
+  }
+
+  function getCurrentGames() {
+    return librariesData[activeLibraryId] || [];
+  }
+
+  function getSelectedGamesForLibrary(libraryId) {
+    return selectedGames.filter((game) => game.libraryId === libraryId);
+  }
+
+  function recalculateTotalSize() {
+    const gamesTotal = selectedGames.reduce(
+      (sum, game) => sum + safeNumber(game.sizeGB),
+      0,
+    );
+
+    const basesTotal = Object.values(emulatorBases).reduce(
+      (sum, base) => sum + safeNumber(base.sizeGB),
+      0,
+    );
+
+    totalSize = Number((gamesTotal + basesTotal).toFixed(3));
+  }
+
+  function shouldAutoAddEmulatorBase(library) {
+    return Boolean(
+      library &&
+      library.requiresEmulator &&
+      library.autoAddEmulatorBase &&
+      safeNumber(library.emulatorInstallSizeGB) > 0,
+    );
+  }
+
+  function getPotentialEmulatorBaseSize(library) {
+    if (!shouldAutoAddEmulatorBase(library)) return 0;
+    if (emulatorBases[library.libraryId]) return 0;
+    if (getSelectedGamesForLibrary(library.libraryId).length > 0) return 0;
+
+    return safeNumber(library.emulatorInstallSizeGB);
+  }
+
+  function getAdditionalSizeForGame(game) {
+    const library = getLibrary(game.libraryId);
+    return Number(
+      (safeNumber(game.sizeGB) + getPotentialEmulatorBaseSize(library)).toFixed(3),
+    );
+  }
+
+  function ensureEmulatorBaseForLibrary(libraryId) {
+    const library = getLibrary(libraryId);
+    if (!shouldAutoAddEmulatorBase(library)) return;
+
+    if (emulatorBases[libraryId]) return;
+
+    emulatorBases[libraryId] = {
+      id: library.emulatorId || `emulator_${libraryId}`,
+      name: library.emulatorName || `Emulador ${library.label}`,
+      libraryId: library.libraryId,
+      libraryLabel: library.label,
+      type: "emulator_base",
+      sizeGB: safeNumber(library.emulatorInstallSizeGB),
+      autoAdded: true,
+    };
+  }
+
+  function removeEmulatorBaseIfUnused(libraryId) {
+    const hasGamesInLibrary = selectedGames.some(
+      (game) => game.libraryId === libraryId,
+    );
+
+    if (!hasGamesInLibrary) {
+      delete emulatorBases[libraryId];
+    }
+  }
+
+  function normalizeGame(rawGame, library, index) {
+    const rawId =
+      rawGame.id ??
+      rawGame.titleId ??
+      rawGame.name ??
+      `${library.libraryId}_${index}`;
+
+    const name = String(rawGame.name || rawGame.title || rawId).trim();
+    const sizeGB = safeNumber(
+      rawGame.size ?? rawGame.sizeGB ?? rawGame.sizeGb ?? rawGame.gb,
+      0,
+    );
+
+    const id = String(rawId).trim();
+    const key = `${library.libraryId}:${id}`;
+
+    return {
+      key,
+      id,
+      titleId: rawGame.titleId ?? null,
+      name,
+      sizeGB,
+      size: sizeGB,
+      libraryId: library.libraryId,
+      libraryLabel: library.label,
+      catalogSourceRef: library.catalogSourceRef || "",
+      type: library.type === "native" ? "native_game" : "emulator_game",
+      raw: rawGame,
+    };
+  }
+
   function getFilteredGames() {
     const term = searchTerm.trim().toLowerCase();
+    const games = getCurrentGames();
 
-    return gamesData.filter((g) => {
-      const name = String(g.name || "").trim();
+    return games.filter((game) => {
+      const name = String(game.name || "").trim();
       if (!name) return false;
 
-      // filtro por letra
       if (activeLetter !== "ALL") {
         const first = name[0].toUpperCase();
         const isNum = /^[0-9]/.test(first);
 
         if (activeLetter === "#") {
           if (!isNum) return false;
-        } else {
-          if (first !== activeLetter) return false;
+        } else if (first !== activeLetter) {
+          return false;
         }
       }
 
-      // búsqueda
       if (term) {
         return name.toLowerCase().includes(term);
       }
@@ -46,10 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function refreshCatalogButtonsState() {
     document.querySelectorAll(".add-game").forEach((btn) => {
-      const id = Number(btn.dataset.id);
-      const size = Number(btn.dataset.size);
+      const key = btn.dataset.key;
+      const game = gamesByKey.get(key);
+      if (!game) return;
 
-      const alreadyAdded = selectedGames.some((g) => g.id === id);
+      const alreadyAdded = selectedGames.some((g) => g.key === key);
+
+      btn.classList.remove("added", "blocked");
 
       if (alreadyAdded) {
         btn.disabled = true;
@@ -58,7 +225,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const noSpace = diskLimit !== null && totalSize + size > diskLimit;
+      const additionalSize = getAdditionalSizeForGame(game);
+      const noSpace = diskLimit !== null && totalSize + additionalSize > diskLimit;
 
       btn.disabled = noSpace;
 
@@ -67,7 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.add("blocked");
       } else {
         btn.textContent = "Agregar";
-        btn.classList.remove("blocked");
       }
     });
   }
@@ -76,13 +243,40 @@ document.addEventListener("DOMContentLoaded", () => {
     CARGAR STORAGE DESDE CONTEXTO
     ============================== */
 
-  const ctx = window.GTSContext?.load?.();
+  const ctx = getContext();
+
+  if (ctx?.storage) {
+    diskLimit = Number(ctx.storage.usableGB);
+    diskLabel = ctx.storage.label;
+  } else {
+    alert("No se detectó almacenamiento válido para el catálogo.");
+    window.location.href = getConsoleHomePath();
+    return;
+  }
+
+  const gameCountEl = document.getElementById("gameCount");
+  const totalSizeEl = document.getElementById("totalSize");
+  const catalogEl = document.querySelector(".selector-catalog .catalog-list");
+  const saveBtn = document.getElementById("saveSelection");
+
+  if (!catalogEl) {
+    console.error("No se encontró .selector-catalog .catalog-list");
+    return;
+  }
+
+  /* =============================
+    TEXTOS DINÁMICOS
+    ============================== */
+
+  document.title = `Catálogo de juegos ${CONSOLE_CONFIG.fullName} | GameTechSolutions`;
+
+  document.querySelectorAll(".consoleFull").forEach((el) => {
+    el.textContent = CONSOLE_CONFIG.fullName;
+  });
 
   /* =============================
     CARGAR SERVICES.JSON (GLOBAL)
     ============================= */
-
-  let servicesData = {};
 
   const localServicesUrl = "/assets/data/services.json";
   const remoteServicesUrl =
@@ -105,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.SERVICES_DATA = data;
 
         console.log(`services.json cargado desde: ${url}`);
-        return;
+        return data;
       } catch (err) {
         console.warn(`Falló carga de services.json desde: ${url}`, err);
         lastError = err;
@@ -119,45 +313,101 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Error cargando services.json:", err);
   });
 
-  if (ctx?.storage) {
-    diskLimit = Number(ctx.storage.usableGB);
-    diskLabel = ctx.storage.label;
-  } else {
-    alert("No se detectó almacenamiento válido para el catálogo.");
-    window.location.href = "/consolas/xbox360/";
+  /* =============================
+    REGLAS DE BIBLIOTECAS
+    ============================= */
+
+  async function loadLibraryRules() {
+    try {
+      const res = await fetch(LIBRARY_RULES_URL, { cache: "no-store" });
+      if (!res.ok) {
+        throw new Error(`No se pudo cargar ${LIBRARY_RULES_URL}`);
+      }
+
+      return await res.json();
+    } catch (err) {
+      console.warn("No se pudieron cargar reglas de bibliotecas. Usando catálogo base.", err);
+      return null;
+    }
   }
 
-  const gameCountEl = document.getElementById("gameCount");
-  const totalSizeEl = document.getElementById("totalSize");
-  const catalogEl = document.querySelector(".selector-catalog .catalog-list");
-  const saveBtn = document.getElementById("saveSelection");
+  function buildLibrariesFromRules(rules) {
+    const definitions = rules?.libraryDefinitions || {};
+    const profile = rules?.consoleProfiles?.[CONSOLE_CONFIG.code] || null;
 
-  /* =============================
-    TEXTOS DINÁMICOS
-    ============================== */
+    const nativeDefinition =
+      definitions[profile?.nativeLibraryId] || {
+        libraryId: String(CONSOLE_CONFIG.code || "native").toLowerCase(),
+        label: CONSOLE_CONFIG.fullName,
+        type: "native",
+        catalogSourceRef: CONSOLE_CONFIG.code,
+        requiresEmulator: false,
+      };
 
-  document.title = `Catálogo de juegos ${CONSOLE_CONFIG.fullName} | GameTechSolutions`;
+    const nativeLibrary = {
+      ...nativeDefinition,
+      libraryId: nativeDefinition.libraryId,
+      label: nativeDefinition.label || CONSOLE_CONFIG.fullName,
+      type: nativeDefinition.type || "native",
+      catalogSourceRef: nativeDefinition.catalogSourceRef || CONSOLE_CONFIG.code,
+      requiresEmulator: false,
+      isNative: true,
+      status: "active",
+    };
 
-  document.querySelectorAll(".consoleFull").forEach((el) => {
-    el.textContent = CONSOLE_CONFIG.fullName;
-  });
+    const result = [nativeLibrary];
 
-  /* =============================
-    CARGAR JUEGOS DESDE JSON
-    ============================== */
+    if (profile?.enabled) {
+      const extraLibraries = Array.isArray(profile.extraLibraries)
+        ? profile.extraLibraries
+        : [];
 
-  const localGamesUrl = CONSOLE_CONFIG.gamesJson;
+      extraLibraries
+        .filter((entry) => entry.status === "active")
+        .forEach((entry) => {
+          const definition = definitions[entry.libraryId];
+          if (!definition) {
+            console.warn(`No existe libraryDefinition para ${entry.libraryId}`);
+            return;
+          }
 
-  const remoteCatalogConfig =
-    window.GTS_CATALOG_SOURCES?.[CONSOLE_CONFIG.code] || null;
+          result.push({
+            ...definition,
+            ...entry,
+            libraryId: entry.libraryId,
+            label: definition.label || entry.libraryId,
+            type: definition.type || "emulator",
+            catalogSourceRef: definition.catalogSourceRef,
+            requiresEmulator: Boolean(definition.requiresEmulator),
+            isNative: false,
+          });
+        });
+    }
 
-  const remoteGamesUrl =
-    CONSOLE_CONFIG.gamesJsonRemote ||
-    remoteCatalogConfig?.gamesJsonRemote ||
-    null;
+    return result;
+  }
 
-  async function loadGamesCatalog() {
-    const candidates = [remoteGamesUrl, localGamesUrl].filter(Boolean);
+  function getCatalogCandidatesForLibrary(library) {
+    const remoteFromSources =
+      window.GTS_CATALOG_SOURCES?.[library.catalogSourceRef]?.gamesJsonRemote ||
+      null;
+
+    const remoteFromConsole =
+      library.isNative ? CONSOLE_CONFIG.gamesJsonRemote || null : null;
+
+    const localFromConsole = library.isNative ? CONSOLE_CONFIG.gamesJson : null;
+    const localFallback = `/assets/data/games/${library.libraryId}.json`;
+
+    return [
+      remoteFromConsole,
+      remoteFromSources,
+      localFromConsole,
+      localFallback,
+    ].filter(Boolean);
+  }
+
+  async function loadGamesForLibrary(library) {
+    const candidates = getCatalogCandidatesForLibrary(library);
 
     let lastError = null;
 
@@ -165,130 +415,134 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) {
-          throw new Error(`No se pudo cargar el catálogo desde ${url}`);
+          throw new Error(`No se pudo cargar catálogo desde ${url}`);
         }
 
-        const data = await res.json();
-        gamesData = data;
+        const rawData = await res.json();
+        const list = Array.isArray(rawData)
+          ? rawData
+          : Array.isArray(rawData.games)
+            ? rawData.games
+            : [];
 
-        renderLetterFilter();
-        bindSearchControls();
-        renderCatalog();
+        const normalized = list
+          .map((game, index) => normalizeGame(game, library, index))
+          .filter((game) => game.name && game.sizeGB >= 0);
 
-        console.log(`Catálogo cargado desde: ${url}`);
-        return;
+        console.log(
+          `Catálogo ${library.label} cargado desde: ${url} (${normalized.length} juegos)`,
+        );
+
+        return normalized;
       } catch (err) {
-        console.warn(`Falló carga de catálogo desde: ${url}`, err);
+        console.warn(
+          `Falló carga de catálogo ${library.label} desde: ${url}`,
+          err,
+        );
         lastError = err;
       }
     }
 
-    throw lastError || new Error("No se pudo cargar el catálogo de juegos.");
+    throw lastError || new Error(`No se pudo cargar catálogo ${library.label}.`);
   }
 
-  loadGamesCatalog().catch((err) => {
+  async function loadAllLibraries() {
+    const rules = await loadLibraryRules();
+    const candidateLibraries = buildLibrariesFromRules(rules);
+
+    const loadedLibraries = [];
+    librariesData = {};
+    gamesByKey = new Map();
+
+    for (const library of candidateLibraries) {
+      try {
+        const games = await loadGamesForLibrary(library);
+
+        loadedLibraries.push(library);
+        librariesData[library.libraryId] = games;
+
+        games.forEach((game) => {
+          gamesByKey.set(game.key, game);
+        });
+      } catch (err) {
+        if (library.isNative) {
+          throw err;
+        }
+
+        console.warn(
+          `Biblioteca extra omitida por error de carga: ${library.label}`,
+          err,
+        );
+      }
+    }
+
+    libraries = loadedLibraries;
+
+    if (!libraries.length) {
+      throw new Error("No se pudo cargar ninguna biblioteca de juegos.");
+    }
+
+    activeLibraryId = libraries[0].libraryId;
+
+    renderLibraryTabs();
+    renderLetterFilter();
+    bindSearchControls();
+    renderCatalog();
+    updateSummary();
+
+    return libraries;
+  }
+
+  loadAllLibraries().catch((err) => {
     console.error(err);
     catalogEl.innerHTML = "<p>Error cargando el catálogo de juegos.</p>";
   });
 
-  function renderCatalog() {
-    // ===== Virtual Scroll settings =====
-    const ROW_HEIGHT = 72; // ajusta si cambias padding/alto en CSS
-    const OVERSCAN = 10; // items extra arriba/abajo para scroll suave
-    const filteredGames = getFilteredGames();
+  /* =============================
+    UI BIBLIOTECAS
+    ============================== */
 
-    catalogEl.innerHTML = "";
+  function renderLibraryTabs() {
+    const shell = document.querySelector(".selector-catalog");
+    if (!shell) return;
 
-    // contenedor virtual
-    const vwrap = document.createElement("div");
-    vwrap.className = "catalog-virtual";
-    vwrap.style.position = "relative";
-    vwrap.style.width = "100%";
+    document.getElementById("catalogLibraryTabs")?.remove();
 
-    // “phantom” para simular altura total del catálogo
-    const phantom = document.createElement("div");
-    phantom.className = "catalog-phantom";
-    phantom.style.height = `${filteredGames.length * ROW_HEIGHT}px`;
+    if (libraries.length <= 1) return;
 
-    // capa donde realmente pintamos filas
-    const viewport = document.createElement("div");
-    viewport.className = "catalog-viewport";
-    viewport.style.position = "absolute";
-    viewport.style.left = "0";
-    viewport.style.right = "0";
-    viewport.style.top = "0";
+    const tabs = document.createElement("div");
+    tabs.id = "catalogLibraryTabs";
+    tabs.className = "catalog-library-tabs";
 
-    vwrap.appendChild(phantom);
-    vwrap.appendChild(viewport);
-    catalogEl.appendChild(vwrap);
+    libraries.forEach((library) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = library.label;
+      btn.dataset.libraryId = library.libraryId;
 
-    // crea item DOM
-    function createRow(game) {
-      const item = document.createElement("div");
-      item.className = "selector-item";
-      item.style.height = `${ROW_HEIGHT}px`;
-
-      // ✅ revisa si ya fue agregado
-      const alreadyAdded = selectedGames.some(
-        (g) => Number(g.id) === Number(game.id),
-      );
-
-      item.innerHTML = `
-    <span>${game.name}</span>
-    <span>${Number(game.size).toFixed(2)} GB</span>
-    <button class="btn-small add-game ${alreadyAdded ? "added" : ""}"
-            data-id="${game.id}"
-            data-size="${game.size}"
-            ${alreadyAdded ? "disabled" : ""}>
-      ${alreadyAdded ? "Agregado" : "Agregar"}
-    </button>
-  `;
-
-      return item;
-    }
-
-    // renderizado por ventana
-    function updateVisibleRows() {
-      const scrollTop = catalogEl.scrollTop;
-      const viewHeight = catalogEl.clientHeight;
-
-      let startIndex = Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN;
-      let endIndex =
-        Math.ceil((scrollTop + viewHeight) / ROW_HEIGHT) + OVERSCAN;
-
-      startIndex = Math.max(0, startIndex);
-      endIndex = Math.min(filteredGames.length - 1, endIndex);
-
-      viewport.innerHTML = "";
-
-      // desplaza viewport a su posición real
-      viewport.style.transform = `translateY(${startIndex * ROW_HEIGHT}px)`;
-
-      const fragment = document.createDocumentFragment();
-
-      for (let i = startIndex; i <= endIndex; i++) {
-        fragment.appendChild(createRow(filteredGames[i]));
+      if (library.libraryId === activeLibraryId) {
+        btn.classList.add("active");
       }
 
-      viewport.appendChild(fragment);
+      btn.addEventListener("click", () => {
+        activeLibraryId = library.libraryId;
+        activeLetter = "ALL";
 
-      // binds a botones (solo los visibles)
-      bindAddButtons();
-      refreshCatalogButtonsState();
-    }
+        tabs.querySelectorAll("button").forEach((item) => {
+          item.classList.toggle(
+            "active",
+            item.dataset.libraryId === activeLibraryId,
+          );
+        });
 
-    // IMPORTANTE: aseguramos que el contenedor tenga scroll
-    // Si tu CSS ya lo controla en otro wrapper, no pasa nada.
-    catalogEl.style.overflowY = "auto";
-    catalogEl.style.position = "relative";
+        renderLetterFilter();
+        renderCatalog();
+      });
 
-    // primer render
-    updateVisibleRows();
+      tabs.appendChild(btn);
+    });
 
-    // scroll listener
-    catalogEl.onscroll = () => {
-      window.requestAnimationFrame(updateVisibleRows);
-    };
+    shell.prepend(tabs);
   }
 
   /* =============================
@@ -299,14 +553,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("catalogSearch");
     const clearBtn = document.getElementById("clearSearch");
 
-    if (input) {
+    if (input && !input.dataset.boundSearch) {
+      input.dataset.boundSearch = "1";
+
       input.addEventListener("input", () => {
         searchTerm = input.value || "";
         renderCatalog();
       });
     }
 
-    if (clearBtn) {
+    if (clearBtn && !clearBtn.dataset.boundClear) {
+      clearBtn.dataset.boundClear = "1";
+
       clearBtn.addEventListener("click", () => {
         if (input) input.value = "";
         searchTerm = "";
@@ -325,15 +583,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     el.innerHTML = "";
 
-    letters.forEach((L) => {
+    letters.forEach((letter) => {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.textContent = L === "ALL" ? "Todo" : L;
+      btn.textContent = letter === "ALL" ? "Todo" : letter;
 
-      if (activeLetter === L) btn.classList.add("active");
+      if (activeLetter === letter) btn.classList.add("active");
 
       btn.addEventListener("click", () => {
-        activeLetter = L;
+        activeLetter = letter;
 
         el.querySelectorAll("button").forEach((b) =>
           b.classList.remove("active"),
@@ -348,23 +606,130 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =============================
+    RENDER CATÁLOGO
+    ============================== */
+
+  function renderCatalog() {
+    const ROW_HEIGHT = 72;
+    const OVERSCAN = 10;
+    const filteredGames = getFilteredGames();
+
+    catalogEl.innerHTML = "";
+    catalogEl.scrollTop = 0;
+
+    if (!filteredGames.length) {
+      const activeLibrary = getLibrary(activeLibraryId);
+      catalogEl.innerHTML = `
+        <p class="limit-warning">
+          No hay juegos disponibles para ${escapeHTML(activeLibrary?.label || "esta biblioteca")} con los filtros actuales.
+        </p>
+      `;
+      return;
+    }
+
+    const vwrap = document.createElement("div");
+    vwrap.className = "catalog-virtual";
+    vwrap.style.position = "relative";
+    vwrap.style.width = "100%";
+
+    const phantom = document.createElement("div");
+    phantom.className = "catalog-phantom";
+    phantom.style.height = `${filteredGames.length * ROW_HEIGHT}px`;
+
+    const viewport = document.createElement("div");
+    viewport.className = "catalog-viewport";
+    viewport.style.position = "absolute";
+    viewport.style.left = "0";
+    viewport.style.right = "0";
+    viewport.style.top = "0";
+
+    vwrap.appendChild(phantom);
+    vwrap.appendChild(viewport);
+    catalogEl.appendChild(vwrap);
+
+    function createRow(game) {
+      const item = document.createElement("div");
+      item.className = "selector-item";
+      item.style.height = `${ROW_HEIGHT}px`;
+
+      const alreadyAdded = selectedGames.some((g) => g.key === game.key);
+
+      item.innerHTML = `
+        <span>${escapeHTML(game.name)}</span>
+        <span>${game.sizeGB.toFixed(3)} GB</span>
+        <button class="btn-small add-game ${alreadyAdded ? "added" : ""}"
+                data-key="${escapeHTML(game.key)}"
+                data-library-id="${escapeHTML(game.libraryId)}"
+                data-size="${game.sizeGB}"
+                ${alreadyAdded ? "disabled" : ""}>
+          ${alreadyAdded ? "Agregado" : "Agregar"}
+        </button>
+      `;
+
+      return item;
+    }
+
+    function updateVisibleRows() {
+      const scrollTop = catalogEl.scrollTop;
+      const viewHeight = catalogEl.clientHeight;
+
+      let startIndex = Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN;
+      let endIndex =
+        Math.ceil((scrollTop + viewHeight) / ROW_HEIGHT) + OVERSCAN;
+
+      startIndex = Math.max(0, startIndex);
+      endIndex = Math.min(filteredGames.length - 1, endIndex);
+
+      viewport.innerHTML = "";
+      viewport.style.transform = `translateY(${startIndex * ROW_HEIGHT}px)`;
+
+      const fragment = document.createDocumentFragment();
+
+      for (let i = startIndex; i <= endIndex; i++) {
+        fragment.appendChild(createRow(filteredGames[i]));
+      }
+
+      viewport.appendChild(fragment);
+
+      bindAddButtons();
+      refreshCatalogButtonsState();
+    }
+
+    catalogEl.style.overflowY = "auto";
+    catalogEl.style.position = "relative";
+
+    updateVisibleRows();
+
+    catalogEl.onscroll = () => {
+      window.requestAnimationFrame(updateVisibleRows);
+    };
+  }
+
+  /* =============================
     AGREGAR JUEGOS
     ============================== */
 
   function bindAddButtons() {
     document.querySelectorAll(".add-game").forEach((button) => {
+      if (button.dataset.boundAdd === "1") return;
+      button.dataset.boundAdd = "1";
+
       button.addEventListener("click", () => {
-        const id = Number(button.dataset.id);
-        const size = Number(button.dataset.size);
+        const key = button.dataset.key;
+        const game = gamesByKey.get(key);
+
+        if (!game) return;
 
         if (diskLimit === null) {
           alert("Primero selecciona el tamaño del almacenamiento.");
           return;
         }
 
-        if (selectedGames.some((g) => g.id === id)) return;
+        if (selectedGames.some((g) => g.key === key)) return;
 
-        if (totalSize + size > diskLimit) {
+        const additionalSize = getAdditionalSizeForGame(game);
+
+        if (totalSize + additionalSize > diskLimit) {
           showLimitWarning(
             "⚠️ No hay espacio suficiente para agregar más juegos.",
           );
@@ -372,14 +737,22 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        const fullGame = gamesData.find((g) => Number(g.id) === Number(id));
+        ensureEmulatorBaseForLibrary(game.libraryId);
 
         selectedGames.push({
-          id,
-          size,
-          titleId: fullGame?.titleId ?? null,
+          key: game.key,
+          id: game.id,
+          titleId: game.titleId ?? null,
+          name: game.name,
+          sizeGB: game.sizeGB,
+          size: game.sizeGB,
+          libraryId: game.libraryId,
+          libraryLabel: game.libraryLabel,
+          catalogSourceRef: game.catalogSourceRef,
+          type: game.type,
         });
-        totalSize += size;
+
+        recalculateTotalSize();
 
         button.disabled = true;
         button.textContent = "Agregado";
@@ -398,13 +771,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!selectedGames.length) return;
 
     const removed = selectedGames.pop();
-    totalSize -= removed.size;
+    removeEmulatorBaseIfUnused(removed.libraryId);
+    recalculateTotalSize();
 
-    const btn = document.querySelector(`.add-game[data-id="${removed.id}"]`);
+    const btn = document.querySelector(
+      `.add-game[data-key="${CSS.escape(removed.key)}"]`,
+    );
+
     if (btn) {
       btn.disabled = false;
       btn.textContent = "Agregar";
-      btn.classList.remove("added");
+      btn.classList.remove("added", "blocked");
     }
 
     updateSummary();
@@ -435,21 +812,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const hasGames = selectedGames.length > 0;
-    const selectionId = null;
-
     const humanList = selectedGames
-      .map((g) => {
-        const game = gamesData.find((x) => Number(x.id) === Number(g.id));
-        return game ? game.name : null;
-      })
-      .filter(Boolean)
+      .map((game) => `[${game.libraryLabel}] ${game.name}`)
       .join("\n");
 
-    // 🔒 RECUPERAR CONTEXTO EXISTENTE (NO BORRAR MODELO)
-    const prevContext = JSON.parse(localStorage.getItem("GTS_CONTEXT")) || {};
+    const emulatorBaseList = Object.values(emulatorBases);
+    const librarySummary = buildLibrarySummary();
 
-    // 🧩 Inyectar modelo por defecto si la consola no tiene identificación
+    const prevContext = JSON.parse(localStorage.getItem(CONTEXT_KEY)) || {};
+
     if (!prevContext.model) {
       prevContext.model = {
         id: "default",
@@ -458,9 +829,8 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     }
 
-    // ✅ GUARDAR CONTEXTO GLOBAL (ROBUSTO)
     const contextPayload = {
-      ...prevContext, // 👈 CLAVE: conserva model, package, etc.
+      ...prevContext,
 
       console: {
         ...prevContext.console,
@@ -478,16 +848,28 @@ document.addEventListener("DOMContentLoaded", () => {
         selectionID: null,
         count: selectedGames.length,
         totalSizeGB: Number(totalSize.toFixed(2)),
-        list: selectedGames.map((g) => {
-          const fullGame = gamesData.find((x) => Number(x.id) === Number(g.id));
-
-          return {
-            id: g.id,
-            titleId: fullGame?.titleId ?? g.titleId ?? null,
-            name: fullGame?.name || "Desconocido",
-            sizeGB: g.size,
-          };
-        }),
+        selectedGamesSizeGB: Number(
+          selectedGames
+            .reduce((sum, game) => sum + safeNumber(game.sizeGB), 0)
+            .toFixed(2),
+        ),
+        emulatorBaseSizeGB: Number(
+          emulatorBaseList
+            .reduce((sum, base) => sum + safeNumber(base.sizeGB), 0)
+            .toFixed(2),
+        ),
+        list: selectedGames.map((game) => ({
+          id: game.id,
+          titleId: game.titleId ?? null,
+          name: game.name,
+          sizeGB: game.sizeGB,
+          libraryId: game.libraryId,
+          libraryLabel: game.libraryLabel,
+          catalogSourceRef: game.catalogSourceRef,
+          type: game.type,
+        })),
+        emulatorBases: emulatorBaseList,
+        librarySummary,
         humanList,
       },
 
@@ -498,46 +880,39 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     };
 
-    if (window.GTSContext && typeof window.GTSContext.save === "function") {
-      // PS2 / Xbox 360 (con context.js)
-      window.GTSContext.save(contextPayload);
-    } else {
-      // Xbox clásica y fallback seguro
-      localStorage.setItem("GTS_CONTEXT", JSON.stringify(contextPayload));
-    }
+    saveContextPayload(contextPayload);
+
     window.location.href = "/contacto/";
   });
 
   /* =============================
-    UTILIDADES
+    UTILIDADES UI
     ============================== */
 
   function resetSelection() {
     selectedGames = [];
-    totalSize = 0;
+    emulatorBases = {};
+    recalculateTotalSize();
 
     document.querySelectorAll(".add-game").forEach((btn) => {
       btn.disabled = false;
       btn.textContent = "Agregar";
-      btn.classList.remove("added");
+      btn.classList.remove("added", "blocked");
     });
 
     hideLimitWarning();
   }
 
   function updateSummary() {
-    gameCountEl.textContent = selectedGames.length;
-    totalSizeEl.textContent = totalSize.toFixed(2);
+    recalculateTotalSize();
+
+    if (gameCountEl) gameCountEl.textContent = selectedGames.length;
+    if (totalSizeEl) totalSizeEl.textContent = totalSize.toFixed(2);
 
     hideLimitWarning();
+    refreshCatalogButtonsState();
 
-    // 🔒 Deshabilitar botones que ya no caben
-    document.querySelectorAll(".add-game:not(.added)").forEach((btn) => {
-      const size = Number(btn.dataset.size);
-      btn.disabled = diskLimit !== null && totalSize + size > diskLimit;
-    });
-
-    if (diskLimit !== null && !canAddAnyMoreGames()) {
+    if (diskLimit !== null && selectedGames.length && !canAddAnyMoreGames()) {
       showLimitWarning(
         "⚠️ Ya no hay espacio suficiente para agregar más juegos.",
       );
@@ -552,12 +927,20 @@ document.addEventListener("DOMContentLoaded", () => {
         recEl.textContent = "";
       }
     }
-    refreshCatalogButtonsState();
+
+    renderLibraryUsageHint();
   }
 
   function canAddAnyMoreGames() {
     if (diskLimit === null) return true;
-    return gamesData.some((g) => totalSize + Number(g.size) <= diskLimit);
+
+    return Array.from(gamesByKey.values()).some((game) => {
+      if (selectedGames.some((selected) => selected.key === game.key)) {
+        return false;
+      }
+
+      return totalSize + getAdditionalSizeForGame(game) <= diskLimit;
+    });
   }
 
   function showLimitWarning(message) {
@@ -575,25 +958,102 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("limitWarning")?.remove();
   }
 
+  function buildLibrarySummary() {
+    const summary = {};
+
+    selectedGames.forEach((game) => {
+      if (!summary[game.libraryId]) {
+        summary[game.libraryId] = {
+          libraryId: game.libraryId,
+          libraryLabel: game.libraryLabel,
+          gamesCount: 0,
+          gamesSizeGB: 0,
+          emulatorBaseSizeGB: 0,
+          totalSizeGB: 0,
+        };
+      }
+
+      summary[game.libraryId].gamesCount += 1;
+      summary[game.libraryId].gamesSizeGB += safeNumber(game.sizeGB);
+    });
+
+    Object.values(emulatorBases).forEach((base) => {
+      if (!summary[base.libraryId]) {
+        summary[base.libraryId] = {
+          libraryId: base.libraryId,
+          libraryLabel: base.libraryLabel,
+          gamesCount: 0,
+          gamesSizeGB: 0,
+          emulatorBaseSizeGB: 0,
+          totalSizeGB: 0,
+        };
+      }
+
+      summary[base.libraryId].emulatorBaseSizeGB += safeNumber(base.sizeGB);
+    });
+
+    Object.values(summary).forEach((item) => {
+      item.gamesSizeGB = Number(item.gamesSizeGB.toFixed(3));
+      item.emulatorBaseSizeGB = Number(item.emulatorBaseSizeGB.toFixed(3));
+      item.totalSizeGB = Number(
+        (item.gamesSizeGB + item.emulatorBaseSizeGB).toFixed(3),
+      );
+    });
+
+    return Object.values(summary);
+  }
+
+  function renderLibraryUsageHint() {
+    const summaryBox = document.querySelector(".selector-summary");
+    if (!summaryBox) return;
+
+    let el = document.getElementById("libraryUsageSummary");
+
+    const summary = buildLibrarySummary();
+
+    if (!summary.length) {
+      el?.remove();
+      return;
+    }
+
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "libraryUsageSummary";
+      el.className = "limit-warning";
+      summaryBox.appendChild(el);
+    }
+
+    el.innerHTML = `
+      <strong>Resumen por biblioteca</strong><br>
+      ${summary
+        .map((item) => {
+          const baseText = item.emulatorBaseSizeGB
+            ? ` + ${item.emulatorBaseSizeGB.toFixed(2)} GB emulador`
+            : "";
+
+          return `${escapeHTML(item.libraryLabel)}: ${item.gamesCount} juego(s), ${item.gamesSizeGB.toFixed(2)} GB${baseText}`;
+        })
+        .join("<br>")}
+    `;
+  }
+
   function getRecommendedGames() {
-    const ctx = window.GTSContext.load();
-    if (!ctx?.storage || !ctx?.services) return null;
+    const currentCtx = getContext();
+    if (!currentCtx?.storage || !currentCtx?.services) return null;
 
     if (!window.SERVICES_DATA) return null;
 
-    const consoleCode = ctx.console?.code;
-    const services = ctx.services;
+    const consoleCode = currentCtx.console?.code;
+    const services = currentCtx.services;
 
-    const size = ctx.storage.label.replace(" GB", "");
+    const size = String(currentCtx.storage.label || "").replace(" GB", "");
 
     const storageOptions = window.SERVICES_DATA?.[consoleCode]?.storageOptions;
 
-    // 👉 Disco proporcionado por GameTechSolutions
     if (services.includes("storage_with_games")) {
       return storageOptions?.provided?.sizes?.[size]?.gamesIncluded || null;
     }
 
-    // 👉 Disco del cliente (Carga de juegos)
     if (services.includes("games_only")) {
       return storageOptions?.client?.sizes?.[size]?.gamesIncluded || null;
     }

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "description": "Reglas de bibliotecas de juegos y emuladores disponibles por consola en GameTechSolutions.",
+  "libraryDefinitions": {
+    "xbox360": {
+      "libraryId": "xbox360",
+      "label": "Xbox 360",
+      "type": "native",
+      "catalogSourceRef": "X360",
+      "requiresEmulator": false,
+      "description": "Juegos nativos de Xbox 360 en el formato manejado por GameTechSolutions."
+    },
+    "nes": {
+      "libraryId": "nes",
+      "label": "NES",
+      "type": "emulator",
+      "catalogSourceRef": "NES",
+      "requiresEmulator": true,
+      "description": "Juegos de Nintendo Entertainment System disponibles para emulación."
+    },
+    "snes": {
+      "libraryId": "snes",
+      "label": "SNES",
+      "type": "emulator",
+      "catalogSourceRef": "SNES",
+      "requiresEmulator": true,
+      "description": "Juegos de Super Nintendo disponibles para emulación."
+    },
+    "n64": {
+      "libraryId": "n64",
+      "label": "Nintendo 64",
+      "type": "emulator",
+      "catalogSourceRef": "N64",
+      "requiresEmulator": true,
+      "description": "Juegos de Nintendo 64 disponibles para emulación."
+    },
+    "arcade": {
+      "libraryId": "arcade",
+      "label": "Arcade",
+      "type": "emulator",
+      "catalogSourceRef": "ARCADE",
+      "requiresEmulator": true,
+      "description": "Juegos arcade seleccionados disponibles para emulación."
+    },
+    "mame": {
+      "libraryId": "mame",
+      "label": "MAME",
+      "type": "emulator",
+      "catalogSourceRef": "MAME",
+      "requiresEmulator": true,
+      "description": "Juegos MAME disponibles según el romset y emulador utilizado."
+    },
+    "ps1": {
+      "libraryId": "ps1",
+      "label": "PlayStation 1",
+      "type": "compatibility",
+      "catalogSourceRef": "PS1",
+      "requiresEmulator": false,
+      "description": "Juegos de PlayStation 1 disponibles según compatibilidad de la consola."
+    },
+    "ps2": {
+      "libraryId": "ps2",
+      "label": "PlayStation 2",
+      "type": "compatibility",
+      "catalogSourceRef": "PS2",
+      "requiresEmulator": false,
+      "description": "Juegos de PlayStation 2 disponibles según compatibilidad de la consola."
+    },
+    "ps3": {
+      "libraryId": "ps3",
+      "label": "PlayStation 3",
+      "type": "native",
+      "catalogSourceRef": "PS3",
+      "requiresEmulator": false,
+      "description": "Juegos nativos de PlayStation 3."
+    }
+  },
+  "consoleProfiles": {
+    "X360": {
+      "consoleCode": "X360",
+      "consoleLabel": "Xbox 360",
+      "nativeLibraryId": "xbox360",
+      "enabled": true,
+      "extraLibraries": [
+        {
+          "libraryId": "nes",
+          "status": "active",
+          "emulatorId": "x360_nes",
+          "emulatorName": "Emulador NES para Xbox 360",
+          "emulatorInstallSizeGB": 0.0512,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "snes",
+          "status": "draft",
+          "emulatorId": "x360_snes",
+          "emulatorName": "Emulador SNES para Xbox 360",
+          "emulatorInstallSizeGB": null,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "arcade",
+          "status": "draft",
+          "emulatorId": "x360_arcade",
+          "emulatorName": "Emulador Arcade para Xbox 360",
+          "emulatorInstallSizeGB": null,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar. Evitar duplicar juegos que también existan en MAME."
+        },
+        {
+          "libraryId": "mame",
+          "status": "draft",
+          "emulatorId": "x360_mame",
+          "emulatorName": "Emulador MAME para Xbox 360",
+          "emulatorInstallSizeGB": null,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar. Validar romset usado para evitar incompatibilidades."
+        }
+      ]
+    },
+    "PS3": {
+      "consoleCode": "PS3",
+      "consoleLabel": "PlayStation 3",
+      "nativeLibraryId": "ps3",
+      "enabled": false,
+      "extraLibraries": [
+        {
+          "libraryId": "ps1",
+          "status": "planned",
+          "emulatorId": "ps3_ps1_compat",
+          "emulatorName": "Compatibilidad PlayStation 1 en PS3",
+          "emulatorInstallSizeGB": 0,
+          "autoAddEmulatorBase": false,
+          "requires": {
+            "modType": ["cfw", "hen"]
+          },
+          "notes": "Activar después de definir reglas exactas para PS3."
+        },
+        {
+          "libraryId": "ps2",
+          "status": "planned",
+          "emulatorId": "ps3_ps2_iso_compat",
+          "emulatorName": "Compatibilidad PlayStation 2 ISO en PS3",
+          "emulatorInstallSizeGB": 0,
+          "autoAddEmulatorBase": false,
+          "requires": {
+            "modType": ["cfw"]
+          },
+          "notes": "No activar para HEN, Slim no compatible o Super Slim."
+        }
+      ]
+    }
+  }
+}
