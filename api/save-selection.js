@@ -190,6 +190,12 @@ export default async function handler(req, res) {
 
       // Compatibilidad con tu flujo actual de transferencias
       status: "Pendiente",
+      selectedGamesSizeGB: body.selectedGamesSizeGB,
+      emulatorBaseSizeGB: body.emulatorBaseSizeGB,
+      emulatorBases: body.emulatorBases,
+      emulatorBasesJSON: body.emulatorBasesJSON,
+      librarySummary: body.librarySummary,
+      librarySummaryJSON: body.librarySummaryJSON,
     };
 
     if (hasMeaningfulValue(clientPhone)) {

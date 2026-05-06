@@ -591,9 +591,36 @@ async function saveToAirtable(ctx) {
   const { hasGameService, hasNonGameService, requestType } = getRequestFlags(ctx);
 
   const gamesList = hasGameService ? (ctx.games?.list || []) : [];
+  const emulatorBases = hasGameService ? (ctx.games?.emulatorBases || []) : [];
+  const librarySummary = hasGameService ? (ctx.games?.librarySummary || []) : [];
+
   const gamesCount = hasGameService ? (ctx.games?.count || 0) : 0;
   const gamesTotalSize = hasGameService ? (ctx.games?.totalSizeGB || 0) : 0;
+  const selectedGamesSizeGB = hasGameService
+    ? (ctx.games?.selectedGamesSizeGB || 0)
+    : 0;
+  const emulatorBaseSizeGB = hasGameService
+    ? (ctx.games?.emulatorBaseSizeGB || 0)
+    : 0;
+
   const gamesHumanList = hasGameService ? (ctx.games?.humanList || "") : "";
+
+  const emulatorBasesHumanList = emulatorBases
+    .map((base) => {
+      const size = Number(base.sizeGB || 0);
+      return `${base.libraryLabel || base.libraryId || "Emulador"}: ${base.name || "Emulador base"} (${size.toFixed(3)} GB)`;
+    })
+    .join("\n");
+
+  const librarySummaryHumanList = librarySummary
+    .map((item) => {
+      const gamesSize = Number(item.gamesSizeGB || 0);
+      const emulatorSize = Number(item.emulatorBaseSizeGB || 0);
+      const total = Number(item.totalSizeGB || 0);
+
+      return `${item.libraryLabel || item.libraryId}: ${item.gamesCount || 0} juego(s), juegos ${gamesSize.toFixed(3)} GB, emulador ${emulatorSize.toFixed(3)} GB, total ${total.toFixed(3)} GB`;
+    })
+    .join("\n");
 
   const payload = {
     selectionID: ctx.games?.selectionID || "",
@@ -624,13 +651,29 @@ async function saveToAirtable(ctx) {
 
     CantidadJuegos: gamesCount,
     totalSize: gamesTotalSize,
+
+    selectedGamesSizeGB,
+    emulatorBaseSizeGB,
+
     totalPrice: ctx.pricing?.total || 0,
     priceBreakdown: (ctx.pricing?.breakdown || []).join("\n"),
     pricingJSON: JSON.stringify(ctx.pricing || {}),
+
     selectedGames: gamesHumanList,
     jsonGames: JSON.stringify(gamesList),
+
+    emulatorBases: emulatorBasesHumanList,
+    emulatorBasesJSON: JSON.stringify(emulatorBases),
+    librarySummary: librarySummaryHumanList,
+    librarySummaryJSON: JSON.stringify(librarySummary),
+
     gameTitleIds: gamesList
-      .map((g) => `${g.name} [${g.titleId ?? "SIN_TITLE_ID"}]`)
+      .map((g) => {
+        const library = g.libraryLabel || g.libraryId || "Catálogo";
+        const titleId = g.titleId ? ` [${g.titleId}]` : "";
+
+        return `[${library}] ${g.name}${titleId}`;
+      })
       .join("\n"),
   };
 
