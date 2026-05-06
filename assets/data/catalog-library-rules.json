@@ -140,7 +140,7 @@
         },
         {
           "libraryId": "ps2",
-          "status": "draft",
+          "status": "active",
           "emulatorId": "ps3_ps2_iso_compat",
           "emulatorName": "Compatibilidad PlayStation 2 ISO en PS3",
           "emulatorInstallSizeGB": 0,
