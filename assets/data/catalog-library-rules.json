@@ -82,8 +82,8 @@
       "requiresEmulator": false,
       "description": "Juegos nativos de Nintendo Wii."
     },
-    "gamecube": {
-      "libraryId": "gamecube",
+    "gamecube_on_wii": {
+      "libraryId": "gamecube_on_wii",
       "label": "Nintendo GameCube",
       "type": "compatibility",
       "catalogSourceRef": "GC",
@@ -105,6 +105,22 @@
       "catalogSourceRef": "PS1",
       "requiresEmulator": true,
       "description": "Juegos de PlayStation 1 disponibles para emulación en Xbox Clásico."
+    },
+    "gamecube": {
+      "libraryId": "gamecube",
+      "label": "Nintendo GameCube",
+      "type": "native",
+      "catalogSourceRef": "GC",
+      "requiresEmulator": false,
+      "description": "Juegos nativos de Nintendo GameCube."
+    },
+    "gba": {
+      "libraryId": "gba",
+      "label": "Game Boy Advance",
+      "type": "emulator",
+      "catalogSourceRef": "GBA",
+      "requiresEmulator": true,
+      "description": "Juegos de Game Boy Advance disponibles para emulación en Nintendo GameCube."
     }
   },
   "consoleProfiles": {
@@ -194,7 +210,7 @@
       "enabled": true,
       "extraLibraries": [
         {
-          "libraryId": "gamecube",
+          "libraryId": "gamecube_on_wii",
           "status": "active",
           "emulatorId": "wii_gamecube_compat",
           "emulatorName": "Compatibilidad GameCube en Wii",
@@ -257,6 +273,50 @@
           "emulatorInstallSizeGB": 1.69,
           "autoAddEmulatorBase": true,
           "notes": "Completar tamaño real del emulador antes de activar. Validar romset usado para evitar incompatibilidades."
+        }
+      ]
+    },
+    "GC": {
+      "consoleCode": "GC",
+      "consoleLabel": "Nintendo GameCube",
+      "nativeLibraryId": "gamecube",
+      "enabled": true,
+      "extraLibraries": [
+        {
+          "libraryId": "nes",
+          "status": "active",
+          "emulatorId": "gc_nes",
+          "emulatorName": "Emulador NES para Nintendo GameCube",
+          "emulatorInstallSizeGB": 0.013,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "snes",
+          "status": "active",
+          "emulatorId": "gc_snes",
+          "emulatorName": "Emulador SNES para Nintendo GameCube",
+          "emulatorInstallSizeGB": 0.0127,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "n64",
+          "status": "active",
+          "emulatorId": "gc_n64",
+          "emulatorName": "Emulador Nintendo 64 para Nintendo GameCube",
+          "emulatorInstallSizeGB": 0.001,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "gba",
+          "status": "draft",
+          "emulatorId": "gc_gba",
+          "emulatorName": "Emulador Game Boy Advance para Nintendo GameCube",
+          "emulatorInstallSizeGB": 0.00125,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
         }
       ]
     }
