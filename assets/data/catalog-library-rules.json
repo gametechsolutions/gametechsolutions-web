@@ -89,6 +89,22 @@
       "catalogSourceRef": "GC",
       "requiresEmulator": false,
       "description": "Juegos de Nintendo GameCube disponibles para modelos compatibles de Wii."
+    },
+    "xbox": {
+      "libraryId": "xbox",
+      "label": "Xbox Clásico",
+      "type": "native",
+      "catalogSourceRef": "XBOX",
+      "requiresEmulator": false,
+      "description": "Juegos nativos de Xbox Clásico."
+    },
+    "ps1_emulator": {
+      "libraryId": "ps1_emulator",
+      "label": "PlayStation 1",
+      "type": "emulator",
+      "catalogSourceRef": "PS1",
+      "requiresEmulator": true,
+      "description": "Juegos de PlayStation 1 disponibles para emulación en Xbox Clásico."
     }
   },
   "consoleProfiles": {
@@ -188,6 +204,59 @@
             "gamecubeGames": true
           },
           "notes": "Disponible solo para modelos de Wii configurados para cargar juegos de GameCube."
+        }
+      ]
+    },
+    "XBOX": {
+      "consoleCode": "XBOX",
+      "consoleLabel": "Xbox Clásico",
+      "nativeLibraryId": "xbox",
+      "enabled": true,
+      "extraLibraries": [
+        {
+          "libraryId": "nes",
+          "status": "active",
+          "emulatorId": "xbox_nes",
+          "emulatorName": "Emulador NES para Xbox Clásico",
+          "emulatorInstallSizeGB": 0.0537,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "snes",
+          "status": "draft",
+          "emulatorId": "xbox_snes",
+          "emulatorName": "Emulador SNES para Xbox Clásico",
+          "emulatorInstallSizeGB": 0.206,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "n64",
+          "status": "draft",
+          "emulatorId": "xbox_n64",
+          "emulatorName": "Emulador Nintendo 64 para Xbox Clásico",
+          "emulatorInstallSizeGB": 0.472,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "ps1_emulator",
+          "status": "draft",
+          "emulatorId": "xbox_ps1",
+          "emulatorName": "Emulador PlayStation 1 para Xbox Clásico",
+          "emulatorInstallSizeGB": 0.205,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar."
+        },
+        {
+          "libraryId": "mame",
+          "status": "draft",
+          "emulatorId": "xbox_mame",
+          "emulatorName": "Emulador MAME para Xbox Clásico",
+          "emulatorInstallSizeGB": 1.69,
+          "autoAddEmulatorBase": true,
+          "notes": "Completar tamaño real del emulador antes de activar. Validar romset usado para evitar incompatibilidades."
         }
       ]
     }
