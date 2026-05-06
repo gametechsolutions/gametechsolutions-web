@@ -73,6 +73,22 @@
       "catalogSourceRef": "PS3",
       "requiresEmulator": false,
       "description": "Juegos nativos de PlayStation 3."
+    },
+    "wii": {
+      "libraryId": "wii",
+      "label": "Nintendo Wii",
+      "type": "native",
+      "catalogSourceRef": "WII",
+      "requiresEmulator": false,
+      "description": "Juegos nativos de Nintendo Wii."
+    },
+    "gamecube": {
+      "libraryId": "gamecube",
+      "label": "Nintendo GameCube",
+      "type": "compatibility",
+      "catalogSourceRef": "GC",
+      "requiresEmulator": false,
+      "description": "Juegos de Nintendo GameCube disponibles para modelos compatibles de Wii."
     }
   },
   "consoleProfiles": {
@@ -152,6 +168,26 @@
             "ps2IsoGames": true
           },
           "notes": "No activar hasta validar reglas exactas para PS3 CFW."
+        }
+      ]
+    },
+    "WII": {
+      "consoleCode": "WII",
+      "consoleLabel": "Nintendo Wii",
+      "nativeLibraryId": "wii",
+      "enabled": true,
+      "extraLibraries": [
+        {
+          "libraryId": "gamecube",
+          "status": "active",
+          "emulatorId": "wii_gamecube_compat",
+          "emulatorName": "Compatibilidad GameCube en Wii",
+          "emulatorInstallSizeGB": 0,
+          "autoAddEmulatorBase": false,
+          "requires": {
+            "gamecubeGames": true
+          },
+          "notes": "Disponible solo para modelos de Wii configurados para cargar juegos de GameCube."
         }
       ]
     }

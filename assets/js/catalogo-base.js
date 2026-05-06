@@ -437,6 +437,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
+    if (
+      typeof requires.gamecubeGames === "boolean" &&
+      compatibility.gamecubeGames !== requires.gamecubeGames
+    ) {
+      return false;
+    }
+
     return true;
   }
 

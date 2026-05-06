@@ -234,8 +234,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.classList.add("selected", "active");
       btn.textContent = "Seleccionado";
       selectedModelCard = card;
+      selectedBaseModel = model;
 
-      showModelWarning(model);
+      if (model.requiresVariant) {
+        showModelWarning(model);
+        renderModelVariantSelector(model);
+      } else {
+        showModelWarning(model);
+      }
     }
 
     btn.onclick = () => {

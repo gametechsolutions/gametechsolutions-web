@@ -1,38 +1,51 @@
 {
-  "title": "Identificar Wii",
-  "description": "Selecciona el modelo de tu Wii para continuar.",
+  "title": "Identificar Nintendo Wii",
+  "description": "Selecciona el modelo de tu Nintendo Wii para continuar.",
   "models": [
     {
-      "id": "retrocompatible",
-      "name": "Wii Original",
+      "id": "wii_original",
+      "name": "Nintendo Wii Original",
+      "code": "Wii Original",
       "image": "/assets/img/consolas/wii/models/wii-gamecube.png",
-      "code": "RVL-001",
+      "compatibility": {
+        "gamecubeGames": true
+      },
       "message": {
         "type": "note",
         "title": "Nota",
-        "text": "Modelo retrocompatible con GameCube"
+        "text": "Compatible con juegos de Wii y GameCube.",
+        "note": "Es el modelo más recomendable si el cliente quiere juegos de GameCube."
       }
     },
     {
-      "id": "wii",
-      "name": "Wii Family Edition",
+      "id": "wii_family",
+      "name": "Nintendo Wii Family Edition",
+      "code": "Wii Family Edition",
       "image": "/assets/img/consolas/wii/models/wii.png",
-      "code": "RVL-101",
-      "message": {
-        "type": "note",
-        "title": "Nota",
-        "text": "Modelo retrocompatible con GameCube"
-      }
-    },
-    {
-      "id": "mini",
-      "name": "Wii Mini",
-      "image": "/assets/img/consolas/wii/models/wii-mini.png",
-      "code": "RVL-201",
+      "compatibility": {
+        "gamecubeGames": true,
+        "gamecubeNeedsNintendont": true
+      },
       "message": {
         "type": "warning",
         "title": "Importante",
-        "text": "Modelo sin retrocompatibilidad con GameCube"
+        "text": "Puede cargar juegos de GameCube mediante configuración compatible.",
+        "note": "Este modelo no tiene puertos físicos de control ni memory card de GameCube, por lo que requiere configuración adecuada y controles compatibles."
+      }
+    },
+    {
+      "id": "wii_mini",
+      "name": "Nintendo Wii Mini",
+      "code": "Wii Mini",
+      "image": "/assets/img/consolas/wii/models/wii-mini.png",
+      "compatibility": {
+        "gamecubeGames": false
+      },
+      "message": {
+        "type": "warning",
+        "title": "Importante",
+        "text": "No se ofrece catálogo de GameCube para este modelo.",
+        "note": "Dentro de este flujo solo se ofrecen juegos de Wii."
       }
     }
   ]
