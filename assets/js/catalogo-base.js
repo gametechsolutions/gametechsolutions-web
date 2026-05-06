@@ -45,6 +45,29 @@ document.addEventListener("DOMContentLoaded", () => {
     return Number.isFinite(num) ? num : fallback;
   }
 
+  function formatGameSize(sizeGB) {
+    const gb = safeNumber(sizeGB);
+
+    if (gb <= 0) return "0 GB";
+
+    const mb = gb * 1024;
+    const kb = mb * 1024;
+
+    if (gb >= 1) {
+      return `${gb.toFixed(2)} GB`;
+    }
+
+    if (mb >= 1) {
+      return `${mb.toFixed(2)} MB`;
+    }
+
+    return `${kb.toFixed(0)} KB`;
+  }
+
+  function roundSizeGB(value) {
+    return Number(safeNumber(value).toFixed(6));
+  }
+
   function getContext() {
     if (window.GTSContext && typeof window.GTSContext.load === "function") {
       return window.GTSContext.load();
@@ -96,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       0,
     );
 
-    totalSize = Number((gamesTotal + basesTotal).toFixed(3));
+    totalSize = roundSizeGB(gamesTotal + basesTotal);
   }
 
   function shouldAutoAddEmulatorBase(library) {
@@ -118,8 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getAdditionalSizeForGame(game) {
     const library = getLibrary(game.libraryId);
-    return Number(
-      (safeNumber(game.sizeGB) + getPotentialEmulatorBaseSize(library)).toFixed(3),
+    return roundSizeGB(
+      safeNumber(game.sizeGB) + getPotentialEmulatorBaseSize(library),
     );
   }
 
@@ -656,7 +679,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       item.innerHTML = `
         <span>${escapeHTML(game.name)}</span>
-        <span>${game.sizeGB.toFixed(3)} GB</span>
+        <span>${formatGameSize(game.sizeGB)}</span>
         <button class="btn-small add-game ${alreadyAdded ? "added" : ""}"
                 data-key="${escapeHTML(game.key)}"
                 data-library-id="${escapeHTML(game.libraryId)}"
@@ -847,16 +870,12 @@ document.addEventListener("DOMContentLoaded", () => {
       games: {
         selectionID: null,
         count: selectedGames.length,
-        totalSizeGB: Number(totalSize.toFixed(2)),
-        selectedGamesSizeGB: Number(
-          selectedGames
-            .reduce((sum, game) => sum + safeNumber(game.sizeGB), 0)
-            .toFixed(2),
+        totalSizeGB: roundSizeGB(totalSize),
+        selectedGamesSizeGB: roundSizeGB(
+          selectedGames.reduce((sum, game) => sum + safeNumber(game.sizeGB), 0),
         ),
-        emulatorBaseSizeGB: Number(
-          emulatorBaseList
-            .reduce((sum, base) => sum + safeNumber(base.sizeGB), 0)
-            .toFixed(2),
+        emulatorBaseSizeGB: roundSizeGB(
+          emulatorBaseList.reduce((sum, base) => sum + safeNumber(base.sizeGB), 0),
         ),
         list: selectedGames.map((game) => ({
           id: game.id,
@@ -907,7 +926,7 @@ document.addEventListener("DOMContentLoaded", () => {
     recalculateTotalSize();
 
     if (gameCountEl) gameCountEl.textContent = selectedGames.length;
-    if (totalSizeEl) totalSizeEl.textContent = totalSize.toFixed(2);
+    if (totalSizeEl) totalSizeEl.textContent = totalSize.toFixed(3);
 
     hideLimitWarning();
     refreshCatalogButtonsState();
@@ -993,11 +1012,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     Object.values(summary).forEach((item) => {
-      item.gamesSizeGB = Number(item.gamesSizeGB.toFixed(3));
-      item.emulatorBaseSizeGB = Number(item.emulatorBaseSizeGB.toFixed(3));
-      item.totalSizeGB = Number(
-        (item.gamesSizeGB + item.emulatorBaseSizeGB).toFixed(3),
-      );
+      item.gamesSizeGB = roundSizeGB(item.gamesSizeGB);
+      item.emulatorBaseSizeGB = roundSizeGB(item.emulatorBaseSizeGB);
+      item.totalSizeGB = roundSizeGB(item.gamesSizeGB + item.emulatorBaseSizeGB);
     });
 
     return Object.values(summary);
@@ -1028,10 +1045,10 @@ document.addEventListener("DOMContentLoaded", () => {
       ${summary
         .map((item) => {
           const baseText = item.emulatorBaseSizeGB
-            ? ` + ${item.emulatorBaseSizeGB.toFixed(2)} GB emulador`
+            ? ` + ${formatGameSize(item.emulatorBaseSizeGB)} emulador`
             : "";
 
-          return `${escapeHTML(item.libraryLabel)}: ${item.gamesCount} juego(s), ${item.gamesSizeGB.toFixed(2)} GB${baseText}`;
+          return `${escapeHTML(item.libraryLabel)}: ${item.gamesCount} juego(s), ${formatGameSize(item.gamesSizeGB)}${baseText}`;
         })
         .join("<br>")}
     `;
