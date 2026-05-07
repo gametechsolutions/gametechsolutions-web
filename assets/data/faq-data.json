@@ -97,6 +97,18 @@
           "answer": "RGH es una modificación interna que permite ejecutar software no oficial, cargar juegos desde almacenamiento y usar funciones avanzadas. Es una modificación permanente, pero requiere instalación física y configuración."
         },
         {
+          "question": "¿Mi Xbox 360 es compatible con RGH?",
+          "answer": "Depende del modelo y de la placa interna. En general, las Xbox 360 Fat sin HDMI suelen requerir chip físico y revisión más específica. Las Fat con HDMI, Slim y algunas Xbox 360 E pueden ser compatibles con RGH o RGH3, según la placa. En Xbox 360 E hay que tener más cuidado: algunos modelos recientes pueden traer placa Winchester, la cual no es compatible con RGH. La fecha de fabricación puede dar una pista, pero no es 100% confiable; la forma más segura es revisar la placa internamente."
+        },
+        {
+          "question": "¿Mi Xbox 360 es compatible con RGH?",
+          "answer": "Depende del modelo y de la placa interna. En general, las Xbox 360 Fat sin HDMI suelen requerir chip físico y revisión más específica. Las Fat con HDMI, Slim y algunas Xbox 360 E pueden ser compatibles con RGH o RGH3, según la placa. En Xbox 360 E hay que tener más cuidado: algunos modelos recientes pueden traer placa Winchester, la cual no es compatible con RGH. La fecha de fabricación puede dar una pista, pero no es 100% confiable; la forma más segura es revisar la placa internamente."
+        },
+        {
+          "question": "¿Pueden confirmar compatibilidad de RGH solo con fotos externas?",
+          "answer": "Las fotos externas pueden ayudar a identificar el modelo, pero no siempre confirman compatibilidad. Para confirmar con seguridad, especialmente en Xbox 360 E, puede ser necesario abrir la consola y revisar la placa."
+        },
+        {
           "question": "¿RGH sirve para jugar en línea?",
           "answer": "No se recomienda usar una Xbox 360 con RGH para juego en línea oficial. La modificación está pensada para uso local, carga de juegos, emuladores y funciones personalizadas. Usarla en servicios oficiales puede implicar riesgos de bloqueo."
         },
@@ -189,6 +201,26 @@
         {
           "question": "¿Qué diferencia hay entre HEN y CFW en PS3?",
           "answer": "CFW es un firmware personalizado para modelos compatibles y ofrece mayor compatibilidad. HEN es una modificación para modelos que no aceptan CFW, como muchos Slim y Super Slim. La opción depende del modelo exacto de la consola."
+        },
+        {
+          "question": "¿Mi PS3 es compatible con CFW?",
+          "answer": "Depende del modelo exacto. Las PS3 Fat normalmente son compatibles con CFW. Las PS3 Slim CECH-20xx y CECH-21xx también suelen ser compatibles. En las Slim CECH-25xx se debe verificar la compatibilidad antes de prometer CFW. Las Slim CECH-30xx y las Super Slim no son compatibles con CFW."
+        },
+        {
+          "question": "¿Qué pasa si mi PS3 no es compatible con CFW?",
+          "answer": "Si tu PS3 no acepta CFW, normalmente se puede instalar HEN. HEN permite cargar homebrew y juegos compatibles, pero tiene algunas limitaciones frente a CFW y debe activarse desde el sistema cada vez que se reinicia la consola."
+        },
+        {
+          "question": "¿Cómo puedo saber el modelo exacto de mi PS3?",
+          "answer": "El modelo suele venir en una etiqueta de la consola con formato CECH. En PS3 Slim, ese dato es importante porque no todas tienen la misma compatibilidad. Si no se puede confirmar el modelo exacto, se trabaja con las opciones seguras y no se habilitan funciones que requieran CFW confirmado."
+        },
+        {
+          "question": "¿Pueden confirmar si mi PS3 acepta CFW solo con fotos externas?",
+          "answer": "Las fotos externas pueden ayudar a identificar si es Fat, Slim o Super Slim, pero no siempre confirman compatibilidad total. En modelos Slim, especialmente CECH-25xx, puede ser necesario verificar con herramientas o revisar más información antes de confirmar CFW."
+        },
+        {
+          "question": "¿CFW y HEN permiten lo mismo?",
+          "answer": "No exactamente. CFW suele ofrecer mayor compatibilidad y más control del sistema en modelos compatibles. HEN es una alternativa para modelos que no aceptan CFW, como muchas Slim y todas las Super Slim, pero puede tener más limitaciones y requiere activación después de reiniciar."
         },
         {
           "question": "¿Todas las PS3 pueden correr juegos de PS2?",
