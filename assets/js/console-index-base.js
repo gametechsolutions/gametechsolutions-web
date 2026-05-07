@@ -340,6 +340,106 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const services = consoleServices.services;
 
+  function formatMXN(value) {
+    const amount = Number(value);
+
+    if (!Number.isFinite(amount)) return null;
+
+    return `$${amount.toLocaleString("es-MX")} MXN`;
+  }
+
+  function getMinNumberFromObject(obj) {
+    if (!obj || typeof obj !== "object") return null;
+
+    const values = Object.values(obj)
+      .map((value) => Number(value))
+      .filter((value) => Number.isFinite(value));
+
+    if (!values.length) return null;
+
+    return Math.min(...values);
+  }
+
+  function getStoragePricesForMode(mode) {
+    const sizes = consoleServices.storageOptions?.[mode]?.sizes;
+
+    if (!sizes || typeof sizes !== "object") return [];
+
+    return Object.values(sizes)
+      .map((item) => {
+        if (typeof item === "number") return null;
+        return Number(item?.price);
+      })
+      .filter((price) => Number.isFinite(price));
+  }
+
+  function getServicePriceLabel(service) {
+    if (typeof service.price === "number") {
+      return {
+        label: formatMXN(service.price),
+        note: "Precio del servicio"
+      };
+    }
+
+    if (service.priceByModel) {
+      const minPrice = getMinNumberFromObject(service.priceByModel);
+
+      if (minPrice !== null) {
+        return {
+          label: `Desde ${formatMXN(minPrice)}`,
+          note: "Depende del modelo seleccionado"
+        };
+      }
+    }
+
+    if (service.priceByStorage) {
+      const minPrice = getMinNumberFromObject(service.priceByStorage);
+
+      if (minPrice !== null) {
+        return {
+          label: `Desde ${formatMXN(minPrice)}`,
+          note: "Depende del almacenamiento"
+        };
+      }
+    }
+
+    if (service.storageMode === "provided") {
+      const prices = getStoragePricesForMode("provided");
+
+      if (prices.length) {
+        const minPrice = Math.min(...prices);
+
+        return {
+          label: `Desde ${formatMXN(minPrice)}`,
+          note: "Depende de la capacidad elegida"
+        };
+      }
+    }
+
+    if (service.requiresStorage || service.allowsGames) {
+      return {
+        label: "Precio según selección",
+        note: "Se calcula con el almacenamiento"
+      };
+    }
+
+    return {
+      label: "Precio por confirmar",
+      note: "Se confirma al revisar la solicitud"
+    };
+  }
+
+  function renderServicePrice(service) {
+    const price = getServicePriceLabel(service);
+
+    return `
+    <div class="service-price-box">
+      <span class="service-price-label">${price.label}</span>
+      <span class="service-price-note">${price.note}</span>
+    </div>
+  `;
+  }
+
   /* =============================
       VALIDACIÓN DE DEPENDENCIAS
       ============================= */
@@ -376,6 +476,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     card.innerHTML = `
       <h3>${service.name}</h3>
       <p>${service.description}</p>
+
+      ${renderServicePrice(service)}
+
       <button class="btn btn-outline" data-id="${service.id}">
         ${selectedServices.has(service.id) ? "Quitar" : "Agregar"}
       </button>

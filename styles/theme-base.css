@@ -3221,3 +3221,36 @@ VARIANTES DE MENSAJES (warning / note)
 .model-variant-card.hidden {
   display: none;
 }
+
+.service-price-box {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+
+  width: fit-content;
+  margin: 12px 0 16px;
+  padding: 9px 12px;
+
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+
+  background: color-mix(in srgb,
+      var(--accent-color) 10%,
+      rgba(255, 255, 255, 0.04));
+}
+
+.service-price-label {
+  color: color-mix(in srgb, var(--text) 96%, white);
+  font-size: 0.98rem;
+  font-weight: 950;
+  line-height: 1.2;
+}
+
+.service-price-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
