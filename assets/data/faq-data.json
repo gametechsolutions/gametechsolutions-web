@@ -1,5 +1,66 @@
 {
-  "general": [],
+  "general": [
+    {
+      "question": "¿Puedo elegir los juegos que quiero?",
+      "answer": "Sí. En los servicios que incluyen juegos, puedes elegirlos desde el catálogo disponible para tu consola. La selección queda limitada por el espacio usable del almacenamiento elegido."
+    },
+    {
+      "question": "¿Qué pasa si quiero un juego que no aparece en el catálogo?",
+      "answer": "Solo se pueden seleccionar juegos que estén disponibles en el catálogo actual. Si buscas un título específico que no aparece, puedes preguntarnos, pero no se garantiza disponibilidad."
+    },
+    {
+      "question": "¿Por qué el espacio usable es menor al tamaño anunciado del disco, USB o microSD?",
+      "answer": "Porque el tamaño comercial no equivale al espacio real usable. Además, parte del almacenamiento puede reservarse para formato, sistema, archivos necesarios, emuladores o configuración."
+    },
+    {
+      "question": "¿Los juegos instalados tienen garantía?",
+      "answer": "Sí. Los juegos instalados por GameTechSolutions cuentan con 30 días de garantía contra errores de instalación o archivos dañados."
+    },
+    {
+      "question": "¿Qué no cubre la garantía de los juegos?",
+      "answer": "No cubre borrado accidental, formateo del almacenamiento, cambios hechos por el cliente, golpes, daños en la consola, daño físico del disco/USB/microSD ni fallas ajenas a la instalación realizada."
+    },
+    {
+      "question": "¿Puedo agregar más juegos después?",
+      "answer": "Sí, siempre que haya espacio disponible y que los juegos sean compatibles con tu consola y configuración. Si el almacenamiento ya está lleno, será necesario borrar juegos o usar uno de mayor capacidad."
+    },
+    {
+      "question": "¿El precio que veo en la página es el precio final?",
+      "answer": "El precio mostrado es una estimación basada en el servicio, modelo y almacenamiento seleccionados. El precio final puede variar si al revisar físicamente la consola se detectan fallas, piezas dañadas o trabajo adicional."
+    },
+    {
+      "question": "¿La revisión y diagnóstico se descuenta si autorizo la reparación o servicio?",
+      "answer": "Depende del caso y del servicio solicitado. En algunos trabajos puede descontarse del total, pero se confirma antes de iniciar para que no haya confusiones."
+    },
+    {
+      "question": "¿Cuánto tiempo tarda un servicio?",
+      "answer": "Depende del tipo de servicio, la consola, la cantidad de juegos y la carga de trabajo del momento. Servicios simples pueden estar el mismo día; instalaciones con muchos juegos o diagnósticos pueden tardar más."
+    },
+    {
+      "question": "¿Puedo llevar mi propio disco duro, USB o microSD?",
+      "answer": "Sí, en los servicios que aceptan almacenamiento del cliente. Debe estar en buen estado y tener capacidad suficiente. Si el dispositivo presenta errores, lentitud o sectores dañados, puede afectar el servicio."
+    },
+    {
+      "question": "¿Se borra la información que ya tengo en mi almacenamiento?",
+      "answer": "En muchos servicios puede ser necesario formatear o modificar el almacenamiento. Si tienes información importante, respáldala antes de entregar tu consola o memoria."
+    },
+    {
+      "question": "¿Instalan juegos en cualquier consola?",
+      "answer": "No. Depende del modelo, modificación, compatibilidad y método disponible para cada consola. La página solo muestra catálogos y opciones compatibles según la selección realizada."
+    },
+    {
+      "question": "¿Qué pasa si mi consola tiene una falla además del servicio que quiero?",
+      "answer": "Si durante la revisión se detecta una falla que impide completar el servicio, se te informará antes de continuar. No se realizan trabajos adicionales sin autorización."
+    },
+    {
+      "question": "¿Hacen respaldo de mis partidas o datos?",
+      "answer": "No se garantiza respaldo de partidas, perfiles o archivos personales como parte del servicio estándar. Si necesitas conservar algo, avísanos antes y respáldalo si es posible."
+    },
+    {
+      "question": "¿Puedo cancelar o cambiar mi selección de juegos?",
+      "answer": "Sí, mientras el proceso de instalación no haya comenzado. Una vez iniciado el copiado o preparación del almacenamiento, los cambios pueden generar tiempo adicional."
+    }
+  ],
   "xbox": [],
   "playstation": [],
   "nintendo": [],
