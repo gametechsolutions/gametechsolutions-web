@@ -3295,3 +3295,228 @@ VARIANTES DE MENSAJES (warning / note)
 .disk-main-row .disk-games {
   margin: 0;
 }
+
+/* ============================================================
+FAQ — GameTechSolutions
+============================================================ */
+
+.faq-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin: var(--s-5) 0 var(--s-6);
+  padding: 10px;
+
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: var(--glow);
+}
+
+.faq-tab {
+  min-height: 42px;
+  padding: 10px 15px;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+
+  color: var(--muted);
+  font-weight: 900;
+  cursor: pointer;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    color var(--ease),
+    border-color var(--ease);
+}
+
+.faq-tab:hover {
+  transform: translateY(-1px);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.faq-tab.active {
+  color: color-mix(in srgb, var(--text) 96%, white);
+  background: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.04));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 44%,
+      rgba(255, 255, 255, 0.14));
+}
+
+.faq-content {
+  margin-bottom: calc(var(--s-8) + 74px);
+}
+
+.faq-accordion {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-item {
+  overflow: hidden;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.025));
+
+  box-shadow: var(--glow);
+
+  transition:
+    transform var(--ease),
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.12));
+}
+
+.faq-item.open {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 44%,
+      rgba(255, 255, 255, 0.14));
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(120, 180, 255, 0.12);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  width: 100%;
+  padding: 18px 20px;
+
+  border: none;
+  background: transparent;
+
+  color: var(--text);
+  text-align: left;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 950;
+  line-height: 1.35;
+
+  cursor: pointer;
+}
+
+.faq-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.045);
+  color: color-mix(in srgb, var(--accent-color) 86%, white);
+
+  font-size: 1.15rem;
+  font-weight: 950;
+  line-height: 1;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 40%,
+      rgba(255, 255, 255, 0.14));
+  background: color-mix(in srgb,
+      var(--accent-color) 14%,
+      rgba(255, 255, 255, 0.04));
+}
+
+.faq-answer {
+  padding: 0 20px 20px;
+}
+
+.faq-answer p {
+  max-width: 92ch;
+  margin: 0;
+
+  color: color-mix(in srgb, var(--muted) 94%, white);
+  line-height: 1.75;
+}
+
+.faq-empty {
+  padding: 22px;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: var(--glow);
+}
+
+.faq-empty h3 {
+  margin-top: 0;
+}
+
+.faq-empty p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 680px) {
+  .faq-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    border-radius: 22px;
+    padding: 8px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .faq-tab {
+    flex: 0 0 auto;
+  }
+
+  .faq-question {
+    align-items: flex-start;
+    padding: 16px;
+    font-size: 0.98rem;
+  }
+
+  .faq-answer {
+    padding: 0 16px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-tab,
+  .faq-item,
+  .faq-icon {
+    transition: none !important;
+  }
+
+  .faq-item:hover {
+    transform: none;
+  }
+}
