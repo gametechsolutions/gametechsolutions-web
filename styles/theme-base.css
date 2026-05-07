@@ -3223,12 +3223,12 @@ VARIANTES DE MENSAJES (warning / note)
 }
 
 .service-price-box {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   gap: 2px;
 
   width: fit-content;
-  margin: 12px 0 16px;
+  margin: 12px 0 14px;
   padding: 9px 12px;
 
   border-radius: 14px;
@@ -3239,6 +3239,12 @@ VARIANTES DE MENSAJES (warning / note)
   background: color-mix(in srgb,
       var(--accent-color) 10%,
       rgba(255, 255, 255, 0.04));
+}
+
+#servicesContainer .card .btn {
+  display: flex;
+  width: fit-content;
+  margin-top: 6px;
 }
 
 .service-price-label {
