@@ -938,7 +938,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     saveContextPayload(contextPayload);
 
-    window.location.href = "/contacto/";
+    window.location.href = "/solicitud/";
   });
 
   /* =============================

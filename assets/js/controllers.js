@@ -27,7 +27,7 @@ function buildContactUrl(service) {
     servicio: service.contactServiceValue || service.id || ''
   });
 
-  return `/contacto/?${params.toString()}`;
+  return `/solicitud/?${params.toString()}`;
 }
 
 function renderPageInfo(data) {
