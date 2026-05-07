@@ -3614,3 +3614,49 @@ FAQ — GameTechSolutions
     grid-template-columns: 1fr;
   }
 }
+
+.contact-hours {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  margin: 4px 0 6px;
+}
+
+.contact-hours div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 9px 11px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.contact-hours span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.contact-hours strong {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 950;
+  text-align: right;
+}
+
+@media (max-width: 520px) {
+  .contact-hours div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .contact-hours strong {
+    text-align: left;
+  }
+}
