@@ -584,6 +584,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const storageConfig = consoleServices.storageOptions?.[mode];
     if (!storageConfig?.sizes) return;
 
+    const selectedStorageService = services.find((service) => {
+      return ctx.services?.includes(service.id) && service.storageMode === mode;
+    });
+
     storageSection.style.display = "block";
 
     storageHelp.textContent =
@@ -600,9 +604,19 @@ document.addEventListener("DOMContentLoaded", async () => {
           ? `<span class="disk-games">≈ ${data.gamesIncluded} juegos</span>`
           : "";
 
-      const priceInfo =
+      const storageProvidedPrice =
         typeof data === "object" && typeof data.price === "number"
-          ? `<span class="disk-price">${formatMXN(data.price)}</span>`
+          ? data.price
+          : null;
+
+      const storageClientPrice =
+        selectedStorageService?.priceByStorage?.[size] ?? null;
+
+      const storagePrice = storageProvidedPrice ?? storageClientPrice;
+
+      const priceInfo =
+        typeof storagePrice === "number"
+          ? `<span class="disk-price">${formatMXN(storagePrice)}</span>`
           : "";
 
       const label = document.createElement("label");
