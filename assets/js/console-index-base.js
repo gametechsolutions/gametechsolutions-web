@@ -77,7 +77,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modelsContainer = document.getElementById("modelsContainer");
   let selectedModelCard = null;
   let selectedBaseModel = null;
-  const ctx = ctxAPI.load();
+
+  const ctx = typeof ctxAPI.startConsoleFlow === "function"
+    ? ctxAPI.startConsoleFlow(CONSOLE_CONFIG)
+    : ctxAPI.load();
 
   function showModelWarning(model) {
     const box = document.getElementById("modelWarningGlobal");
@@ -186,7 +189,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             variant: null,
             compatibility: null
           },
-          compatibility: null
+          compatibility: null,
+          services: [],
+          storage: null,
+          games: null,
+          pricing: null,
+          status: "draft"
         });
 
         showModelWarning(model);
@@ -208,7 +216,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           },
           compatibility: selectedVariant.compatibility || null
         },
-        compatibility: selectedVariant.compatibility || null
+        compatibility: selectedVariant.compatibility || null,
+        services: [],
+        storage: null,
+        games: null,
+        pricing: null,
+        status: "draft"
       });
 
       showModelWarning(selectedVariant.message ? selectedVariant : model);
@@ -268,7 +281,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             variant: null,
             compatibility: null
           },
-          compatibility: null
+          compatibility: null,
+          services: [],
+          storage: null,
+          games: null,
+          pricing: null,
+          status: "draft"
         });
 
         showModelWarning(model);
@@ -287,7 +305,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           variant: null,
           compatibility: model.compatibility || null
         },
-        compatibility: model.compatibility || null
+        compatibility: model.compatibility || null,
+        services: [],
+        storage: null,
+        games: null,
+        pricing: null,
+        status: "draft"
       });
 
       hideModelVariantSection();
@@ -556,6 +579,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       ctxAPI.save({
         services: nextServices,
         storage: prevMode !== nextMode ? null : prevCtx.storage,
+        games: null,
+        pricing: null,
+        status: "draft"
       });
 
       updateStorageUI();
@@ -654,6 +680,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             label: `${size} GB`,
             usableGB: usable,
           },
+          games: null,
+          pricing: null,
+          status: "draft"
         });
       };
 
@@ -673,6 +702,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ctx = ctxAPI.load();
     window.location.href = needsCatalog(ctx)
       ? CONSOLE_CONFIG.catalogPath
-      : "/contacto/";
+      : "/solicitud/";
   };
 });

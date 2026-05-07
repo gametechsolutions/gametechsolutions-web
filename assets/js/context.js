@@ -79,6 +79,42 @@ Estado global del flujo del cliente
         localStorage.removeItem(STORAGE_KEY);
     }
 
+    function startConsoleFlow(consoleConfig) {
+        const current = load();
+        const isSameConsole = current.console?.code === consoleConfig?.code;
+
+        if (isSameConsole && current.status !== 'finalized') {
+            return save({
+                console: {
+                    code: consoleConfig.code,
+                    name: consoleConfig.name,
+                    brand: consoleConfig.brand
+                },
+                meta: {
+                    ...current.meta,
+                    source: 'console-index'
+                }
+            });
+        }
+
+        const fresh = {
+            ...structuredClone(DEFAULT_CONTEXT),
+            console: {
+                code: consoleConfig.code,
+                name: consoleConfig.name,
+                brand: consoleConfig.brand
+            },
+            meta: {
+                createdAt: now(),
+                updatedAt: now(),
+                source: 'console-index'
+            }
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
+        return fresh;
+    }
+
     function require(fields = []) {
         const ctx = load();
         const missing = fields.filter(f => !ctx[f]);
@@ -99,6 +135,7 @@ Estado global del flujo del cliente
         save,
         set,
         clear,
+        startConsoleFlow,
         require,
         debug
     };
