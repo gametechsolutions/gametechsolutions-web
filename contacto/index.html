@@ -6,165 +6,68 @@
   <title>Contacto | GameTechSolutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <meta name="description"
+    content="Contacto de GameTechSolutions. Ubicación, WhatsApp e información para solicitar servicios de consolas y controles." />
+
   <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
   <link rel="stylesheet" href="/styles/theme-base.css" />
 </head>
 
 <body>
-  <!-- HEADER -->
   <div id="header-container"></div>
 
   <main>
     <div class="container">
-      <!-- INTRO -->
       <section class="console-hero">
         <h2>Contacto</h2>
         <p>
-          Revisa tu selección y confirma tu información para continuar con el
-          servicio.
+          Escríbenos por WhatsApp o revisa nuestra ubicación. Para obtener un
+          resumen con precio estimado, primero selecciona tu consola o el
+          servicio para controles.
         </p>
       </section>
 
-      <!-- =========================
-         RESUMEN
-    ========================== -->
-      <section>
-        <h2>Resumen de tu servicio</h2>
-
-        <div class="card" id="summaryCard">
-          <div class="summary-grid">
-            <div class="summary-item">
-              <span class="label">🎮 Consola</span>
-              <span class="value" id="summary-console">—</span>
-            </div>
-
-            <div class="summary-item">
-              <span class="label">🧩 Modelo</span>
-              <span class="value" id="summary-model">—</span>
-            </div>
-
-            <div class="summary-item">
-              <span class="label">💾 Almacenamiento</span>
-              <span class="value" id="summary-storage">No aplica</span>
-            </div>
-
-            <div class="summary-item">
-              <span class="label">🎯 Juegos</span>
-              <span class="value" id="summary-games">No aplica</span>
-            </div>
-
-            <div class="summary-item full">
-              <span class="label">🛠️ Servicios</span>
-              <span class="value" id="summary-services">—</span>
-            </div>
-
-            <div class="summary-item full">
-              <span class="label">🆔 ID de selección</span>
-              <span class="value mono" id="summary-id">—</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="selector-note pricing-note">
-          Verifica que toda la información sea correcta antes de continuar.
-        </p>
-      </section>
-
-      <!-- =========================
-         PRECIO (AUTOMÁTICO)
-    ========================== -->
-      <section class="pricing-section">
-        <h2 class="section-title">
-          <span class="title-icon">💰</span>
-          Precio estimado
-        </h2>
-
-        <div class="card pricing-card">
-          <div class="pricing-breakdown" id="pricingBreakdown">
-            <div class="pricing-loading">
-              <span class="pricing-spinner"></span>
-              Calculando precio…
-            </div>
-          </div>
-
-          <div class="pricing-total-box">
-            <span class="pricing-total-label">Total estimado</span>
-            <span class="pricing-total-value" id="pricingTotal">—</span>
-          </div>
-        </div>
-        <p class="selector-note pricing-note">
-          El precio final puede variar ligeramente tras revisión física.
-        </p>
-      </section>
-
-      <!-- =========================
-         DATOS CLIENTE
-    ========================== -->
-      <section>
-        <h2>Tus datos</h2>
-
-        <div class="card form-card">
-          <label for="clientName" class="form-label">
-            Nombre y apellido
-          </label>
-          <input id="clientName" class="form-input" type="text" placeholder="Ej. Juan Pérez" autocomplete="name" />
-          <p class="form-hint">
-            Lo usaremos para identificar tu solicitud en WhatsApp.
+      <section class="contact-public-grid">
+        <article class="card contact-public-card">
+          <span class="contact-public-icon">📲</span>
+          <h3>WhatsApp</h3>
+          <p>
+            Escríbenos para dudas generales, seguimiento de servicios o
+            confirmar disponibilidad antes de acudir.
           </p>
-        </div>
 
-        <div class="card form-card hidden" id="controllerDetailsCard">
-          <label for="controllerConsole" class="form-label">
-            Consola a la que pertenece el control
-          </label>
-          <select id="controllerConsole" class="form-input">
-            <option value="">Selecciona una consola</option>
-          </select>
+          <a class="btn cta-primary" target="_blank" rel="noopener noreferrer"
+            href="https://wa.me/5215543613500?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20servicio%20de%20GameTechSolutions.">
+            Enviar mensaje por WhatsApp
+          </a>
+        </article>
 
-          <label for="controllerModel" class="form-label">
-            Modelo del control
-          </label>
-          <select id="controllerModel" class="form-input" disabled>
-            <option value="">Primero selecciona una consola</option>
-          </select>
-
-          <label for="controllerIssue" class="form-label">
-            Falla o detalle
-          </label>
-          <textarea id="controllerIssue" class="form-input" rows="4"
-            placeholder="Ej. No enciende, tiene drift, botones pegados, no carga, etc."></textarea>
-
-          <p class="form-hint">
-            Solo aceptamos controles originales de las consolas listadas. No revisamos genéricos, réplicas ni
-            compatibles de terceros.
+        <article class="card contact-public-card">
+          <span class="contact-public-icon">🎮</span>
+          <h3>Solicitar servicio con precio estimado</h3>
+          <p>
+            Si quieres generar una solicitud con resumen, servicios, juegos,
+            almacenamiento y precio estimado, empieza seleccionando tu consola.
           </p>
-        </div>
 
-        <!-- ✅ wrapper centrador -->
-        <div class="whatsapp-cta">
-          <button class="btn cta-primary" id="sendBtn">
-            📲 Contactar por WhatsApp
-          </button>
+          <div class="contact-public-actions">
+            <a class="btn" href="/">Ver consolas</a>
+            <a class="btn btn-outline" href="/controles/">Servicio para controles</a>
+          </div>
+        </article>
 
-          <p class="cta-hint">Serás redirigido a WhatsApp.</p>
-        </div>
+        <article class="card contact-public-card">
+          <span class="contact-public-icon">⚠️</span>
+          <h3>Antes de acudir</h3>
+          <p>
+            Si tu consola presenta fallas, lo recomendable es solicitar una
+            revisión o diagnóstico. No se prometen reparaciones o
+            modificaciones sin revisar el equipo cuando existe una falla
+            previa.
+          </p>
+        </article>
       </section>
 
-      <section class="cta-section">
-        <div class="cta-reset">
-          <button class="btn danger cta-danger" id="newSelectionBtn">
-            🔄 Iniciar nueva selección
-          </button>
-
-          <p class="cta-hint cta-reset-hint">
-            Esto limpiará la selección actual y te permitirá empezar de nuevo.
-          </p>
-        </div>
-      </section>
-
-      <!-- =========================
-         MAPA
-    ========================== -->
       <section>
         <h2 class="section-title">
           <span class="title-icon">📍</span>
@@ -172,10 +75,8 @@
         </h2>
 
         <div class="map-shell">
-          <!-- Glow decorativo -->
           <div class="map-glow"></div>
 
-          <!-- Mapa -->
           <div class="map-container">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.7972359248342!2d-99.22092032410815!3d19.5503168369096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21dd7c106d715%3A0xf2b144c984956ce7!2sGame%20Tech%20Solutions!5e0!3m2!1ses-419!2smx!4v1767898318147!5m2!1ses-419!2smx"
@@ -183,7 +84,6 @@
             </iframe>
           </div>
 
-          <!-- Info + CTA -->
           <div class="map-footer">
             <div class="map-meta">
               <span class="map-badge">
@@ -209,9 +109,6 @@
   </footer>
 
   <script src="/assets/js/header.js"></script>
-  <script src="/assets/js/context.js"></script>
-  <script src="/assets/js/catalog-sources.js"></script>
-  <script src="/assets/js/contacto.js"></script>
 </body>
 
 </html>
