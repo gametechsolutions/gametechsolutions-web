@@ -3260,3 +3260,38 @@ VARIANTES DE MENSAJES (warning / note)
   font-weight: 700;
   line-height: 1.25;
 }
+
+.disk-price {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 6px 9px;
+
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+
+  background: color-mix(in srgb,
+      var(--accent-color) 10%,
+      rgba(255, 255, 255, 0.04));
+
+  color: color-mix(in srgb, var(--text) 96%, white);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.disk-main-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.disk-main-row strong {
+  line-height: 1.2;
+}
+
+.disk-main-row .disk-games {
+  margin: 0;
+}

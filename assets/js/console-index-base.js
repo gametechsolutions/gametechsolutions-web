@@ -600,14 +600,22 @@ document.addEventListener("DOMContentLoaded", async () => {
           ? `<span class="disk-games">≈ ${data.gamesIncluded} juegos</span>`
           : "";
 
+      const priceInfo =
+        typeof data === "object" && typeof data.price === "number"
+          ? `<span class="disk-price">${formatMXN(data.price)}</span>`
+          : "";
+
       const label = document.createElement("label");
       label.className = "disk-option";
 
       label.innerHTML = `
         <input type="radio" name="diskSize">
         <div class="disk-main">
-          <strong>${size} GB</strong>
-          ${gamesInfo}
+          <div class="disk-main-row">
+            <strong>${size} GB</strong>
+            ${gamesInfo}
+          </div>
+          ${priceInfo}
         </div>
       `;
 
