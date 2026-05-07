@@ -101,8 +101,8 @@
           "answer": "Depende del modelo y de la placa interna. En general, las Xbox 360 Fat sin HDMI suelen requerir chip físico y revisión más específica. Las Fat con HDMI, Slim y algunas Xbox 360 E pueden ser compatibles con RGH o RGH3, según la placa. En Xbox 360 E hay que tener más cuidado: algunos modelos recientes pueden traer placa Winchester, la cual no es compatible con RGH. La fecha de fabricación puede dar una pista, pero no es 100% confiable; la forma más segura es revisar la placa internamente."
         },
         {
-          "question": "¿Mi Xbox 360 es compatible con RGH?",
-          "answer": "Depende del modelo y de la placa interna. En general, las Xbox 360 Fat sin HDMI suelen requerir chip físico y revisión más específica. Las Fat con HDMI, Slim y algunas Xbox 360 E pueden ser compatibles con RGH o RGH3, según la placa. En Xbox 360 E hay que tener más cuidado: algunos modelos recientes pueden traer placa Winchester, la cual no es compatible con RGH. La fecha de fabricación puede dar una pista, pero no es 100% confiable; la forma más segura es revisar la placa internamente."
+          "question": "¿Cómo puedo saber si mi Xbox 360 E es compatible?",
+          "answer": "La Xbox 360 E necesita revisión más cuidadosa. La fecha de fabricación puede orientar, pero no confirma compatibilidad por sí sola. Para estar seguros, se debe abrir la consola y verificar la placa interna. Si trae placa compatible, se puede trabajar; si trae placa Winchester, no se ofrece RGH."
         },
         {
           "question": "¿Pueden confirmar compatibilidad de RGH solo con fotos externas?",
