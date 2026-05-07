@@ -1,5 +1,5 @@
 /* =========================================
-CONTACTO.JS — GameTechSolutions
+SOLICITUD.JS — GameTechSolutions
 Pricing automático por servicios (FINAL)
 ========================================= */
 
