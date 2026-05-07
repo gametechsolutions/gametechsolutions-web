@@ -135,7 +135,190 @@
       "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. Para mantener tiempos claros y evitar errores, la selección principal se realiza con los juegos disponibles en el catálogo actual."
     }
   ],
-  "playstation": [],
-  "nintendo": [],
-  "controles": []
+  "playstation": [
+    {
+      "question": "¿Qué servicios manejan para PlayStation 2?",
+      "answer": "Para PlayStation 2 manejamos instalación de FreeMCBoot o Funtuna según el modelo, limpieza completa, revisión y diagnóstico, y opciones de almacenamiento con juegos cuando aplica."
+    },
+    {
+      "question": "¿Qué diferencia hay entre FreeMCBoot y Funtuna en PS2?",
+      "answer": "FreeMCBoot funciona en muchos modelos de PS2 compatibles, mientras que Funtuna se usa principalmente en modelos donde FreeMCBoot tradicional no aplica de la misma forma. La opción correcta depende del modelo de la consola."
+    },
+    {
+      "question": "¿PS2 usa USB, disco duro interno o memory card?",
+      "answer": "Depende del modelo y del método usado. Algunos modelos pueden trabajar con disco duro interno, otros con USB y siempre se requiere una configuración compatible. La velocidad y compatibilidad pueden variar según el método."
+    },
+    {
+      "question": "¿Qué servicios manejan para PlayStation 3?",
+      "answer": "Para PlayStation 3 manejamos instalación de HEN o CFW según el modelo, limpieza completa, revisión y diagnóstico, carga de juegos y opciones de disco duro con juegos."
+    },
+    {
+      "question": "¿Qué diferencia hay entre HEN y CFW en PS3?",
+      "answer": "CFW es un firmware personalizado para modelos compatibles y ofrece mayor compatibilidad. HEN es una modificación para modelos que no aceptan CFW, como muchos Slim y Super Slim. La opción depende del modelo exacto de la consola."
+    },
+    {
+      "question": "¿Todas las PS3 pueden correr juegos de PS2?",
+      "answer": "No. En este servicio, los juegos de PS2 en formato ISO solo se ofrecen para PS3 con compatibilidad CFW confirmada. Si la consola usa HEN o no se confirma compatibilidad con CFW, no se habilita el catálogo de PS2."
+    },
+    {
+      "question": "¿Las PS3 pueden correr juegos de PS1?",
+      "answer": "Sí, los juegos de PS1 pueden estar disponibles según la configuración y compatibilidad del modelo. En la página solo se muestran las bibliotecas permitidas según la selección realizada."
+    },
+    {
+      "question": "¿Por qué tengo que seleccionar el modelo exacto de PS3 Slim?",
+      "answer": "Porque no todas las PS3 Slim tienen la misma compatibilidad. Algunas pueden usar CFW y otras solo HEN. Para evitar ofrecer juegos o funciones incompatibles, se pide seleccionar el modelo exacto o elegir la opción no confirmada."
+    },
+    {
+      "question": "¿Qué pasa si no sé el modelo exacto de mi PS3?",
+      "answer": "Puedes elegir la opción no confirmada. En ese caso se muestran solo opciones seguras y no se habilitan funciones que requieran compatibilidad específica, como juegos de PS2 en formato ISO."
+    },
+    {
+      "question": "¿Qué servicios manejan para PlayStation 4 y PlayStation 5?",
+      "answer": "Para PS4 y PS5 manejamos principalmente revisión, diagnóstico, limpieza completa y mantenimiento preventivo. No se ofrecen servicios de carga de juegos como en consolas modificadas antiguas."
+    },
+    {
+      "question": "¿La limpieza de PS5 incluye metal líquido?",
+      "answer": "La limpieza estándar no siempre implica cambio o intervención del metal líquido. Si se requiere limpieza avanzada o revisión del metal líquido, se evalúa el caso y se informa antes de realizar el trabajo."
+    },
+    {
+      "question": "¿Qué servicios manejan para PSP?",
+      "answer": "Para PSP manejamos instalación de CFW, limpieza completa, revisión y diagnóstico, carga de juegos en Memory Stick o microSD con adaptador, según el servicio seleccionado."
+    },
+    {
+      "question": "¿Qué servicios manejan para PS Vita?",
+      "answer": "Para PS Vita manejamos instalación de HENkaku/Ensō, configuración de microSD con SD2Vita cuando aplica, carga de juegos, limpieza completa, revisión y diagnóstico."
+    },
+    {
+      "question": "¿Puedo llevar mi propia microSD para PSP o PS Vita?",
+      "answer": "Sí, siempre que sea compatible, tenga capacidad suficiente y esté en buen estado. Si la memoria presenta errores, baja velocidad o fallas, puede afectar la instalación o carga de juegos."
+    },
+    {
+      "question": "¿Puedo pedir juegos que no aparecen en el catálogo de PlayStation?",
+      "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. La selección principal se realiza con los juegos disponibles en el catálogo actual."
+    }
+  ],
+  "nintendo": [
+    {
+      "question": "¿Qué servicios manejan para Nintendo GameCube?",
+      "answer": "Para Nintendo GameCube manejamos instalación de PicoBoot, limpieza completa, revisión y diagnóstico, y opciones de SD con juegos cuando aplica."
+    },
+    {
+      "question": "¿Qué es PicoBoot en GameCube?",
+      "answer": "PicoBoot es una modificación interna que permite iniciar software como Swiss para cargar juegos y funciones adicionales desde almacenamiento compatible. Requiere instalación física en la consola."
+    },
+    {
+      "question": "¿GameCube puede usar emuladores?",
+      "answer": "Sí. En GameCube ofrecemos emuladores disponibles dentro de nuestro catálogo, como NES, SNES, Nintendo 64 y Game Boy Advance. Solo se pueden seleccionar juegos que estén disponibles en el catálogo actual."
+    },
+    {
+      "question": "¿Los emuladores de GameCube ocupan espacio adicional?",
+      "answer": "Sí. Cuando eliges juegos de un emulador, también se considera el espacio necesario para el emulador base. El total mostrado incluye juegos de GameCube, juegos de emuladores y archivos necesarios para ejecutarlos."
+    },
+    {
+      "question": "¿Qué almacenamiento usa GameCube para juegos?",
+      "answer": "Depende de la configuración. Normalmente se usa una microSD mediante adaptadores compatibles. La capacidad seleccionada limita cuántos juegos pueden agregarse."
+    },
+    {
+      "question": "¿Qué servicios manejan para Nintendo Wii?",
+      "answer": "Para Nintendo Wii manejamos instalación de Homebrew, limpieza completa, revisión y diagnóstico, carga de juegos en USB/SD del cliente y opciones de USB con juegos."
+    },
+    {
+      "question": "¿Todas las Wii pueden cargar juegos de GameCube?",
+      "answer": "No. En este servicio, el catálogo de GameCube se muestra solo en modelos compatibles dentro del flujo: Wii Original y Wii Family Edition. Wii Mini no muestra catálogo de GameCube."
+    },
+    {
+      "question": "¿La Wii Family Edition corre juegos de GameCube aunque no tenga puertos de control?",
+      "answer": "Puede cargar juegos de GameCube mediante configuración compatible, pero no tiene puertos físicos de control ni memory card de GameCube. Por eso se requiere configuración adecuada y controles compatibles."
+    },
+    {
+      "question": "¿Qué pasa si tengo una Wii Mini?",
+      "answer": "Para Wii Mini no se ofrece catálogo de GameCube dentro del flujo. Solo se muestran opciones compatibles con Wii según el servicio seleccionado."
+    },
+    {
+      "question": "¿Wii usa USB o SD para los juegos?",
+      "answer": "Puede usar USB o SD dependiendo de la configuración y del servicio seleccionado. Para bibliotecas grandes normalmente se recomienda un almacenamiento con capacidad suficiente y buen estado."
+    },
+    {
+      "question": "¿Qué servicios manejan para Nintendo Switch?",
+      "answer": "Para Nintendo Switch manejamos instalación de chip según modelo, limpieza completa, revisión y diagnóstico, carga de juegos en microSD del cliente y opciones de microSD con juegos cuando aplica."
+    },
+    {
+      "question": "¿Todas las Nintendo Switch requieren chip?",
+      "answer": "Depende del modelo y del tipo de modificación. En la página se muestran los servicios disponibles según la consola y el flujo seleccionado. Si hay dudas sobre compatibilidad, se recomienda revisión antes de cotizar algo definitivo."
+    },
+    {
+      "question": "¿Puedo llevar mi propia microSD para Nintendo Switch?",
+      "answer": "Sí. Debe estar en buen estado, tener capacidad suficiente y ser confiable. Una microSD lenta, dañada o falsa puede causar errores, instalaciones fallidas o mal funcionamiento."
+    },
+    {
+      "question": "¿La limpieza de Switch incluye revisión de Joy-Con?",
+      "answer": "No necesariamente. La limpieza de la consola y el servicio para Joy-Con o controles se manejan por separado. Si también necesitas revisar Joy-Con, debe solicitarse como servicio para controles."
+    },
+    {
+      "question": "¿Puedo pedir juegos que no aparecen en el catálogo de Nintendo?",
+      "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. La selección principal se realiza con los juegos disponibles en el catálogo actual."
+    }
+  ],
+  "controles": [
+    {
+      "question": "¿Qué servicios manejan para controles?",
+      "answer": "Para controles manejamos revisión y diagnóstico, además de limpieza completa. El servicio aplica únicamente para controles originales de Xbox, PlayStation y Nintendo de las consolas listadas en la página."
+    },
+    {
+      "question": "¿Revisan controles genéricos o compatibles?",
+      "answer": "No. Solo revisamos controles originales de Microsoft, Sony o Nintendo. No revisamos controles genéricos, réplicas, compatibles de terceros ni controles tipo Pro no oficiales."
+    },
+    {
+      "question": "¿Qué incluye la revisión y diagnóstico de un control?",
+      "answer": "Incluye revisión visual, pruebas básicas de encendido, carga, conexión, botones, sticks y gatillos. El objetivo es identificar la falla y recomendar el siguiente paso."
+    },
+    {
+      "question": "¿Qué incluye la limpieza completa de un control?",
+      "answer": "Incluye desarme completo, limpieza de carcasa, botones, membranas, limpieza interna con IPA, revisión visual de la placa y prueba final de funcionamiento."
+    },
+    {
+      "question": "¿La limpieza completa corrige el stick drift?",
+      "answer": "No se garantiza. La limpieza puede ayudar si el problema se debe a suciedad o residuos, pero si el stick está desgastado o dañado, puede requerir cambio de pieza o reparación adicional."
+    },
+    {
+      "question": "¿La limpieza corrige botones pegados o duros?",
+      "answer": "Puede ayudar si el problema es suciedad, residuos o acumulación interna. Si el botón, membrana, flex o placa están dañados, se requiere diagnóstico y posible reparación adicional."
+    },
+    {
+      "question": "¿Reparan controles que no encienden?",
+      "answer": "Primero se realiza revisión y diagnóstico. Un control que no enciende puede tener falla de batería, puerto de carga, placa, flex, daño por líquido o componentes dañados."
+    },
+    {
+      "question": "¿Reparan controles con daño por líquido?",
+      "answer": "Se pueden revisar, pero no se garantiza reparación. El daño por líquido puede provocar corrosión, cortos o daño en componentes internos. En estos casos se recomienda diagnóstico antes de prometer una solución."
+    },
+    {
+      "question": "¿Cambian sticks, botones o piezas internas?",
+      "answer": "Depende del modelo del control, disponibilidad de piezas y estado de la placa. Primero se revisa el control y se informa si conviene reparar, limpiar o reemplazar componentes."
+    },
+    {
+      "question": "¿Qué controles de Xbox revisan?",
+      "answer": "Revisamos controles originales de Xbox Clásico, Xbox 360, Xbox One y Xbox Series S/X. También se consideran modelos originales como Xbox Elite cuando aplica."
+    },
+    {
+      "question": "¿Qué controles de PlayStation revisan?",
+      "answer": "Revisamos controles originales de PlayStation 2, PlayStation 3, PlayStation 4 y PlayStation 5, incluyendo DualShock 2, DualShock 3, DualShock 4, DualSense y DualSense Edge cuando aplica."
+    },
+    {
+      "question": "¿Qué controles de Nintendo revisan?",
+      "answer": "Revisamos controles originales de Nintendo GameCube, Wii y Nintendo Switch, incluyendo Joy-Con, Nintendo Switch Pro Controller, Wii Remote, Nunchuk, Classic Controller y controles originales de GameCube."
+    },
+    {
+      "question": "¿El servicio de controles tiene garantía?",
+      "answer": "La garantía depende del servicio realizado y de la falla encontrada. En limpieza o diagnóstico no se garantiza corregir fallas electrónicas o desgaste de componentes. Si se realiza una reparación específica, se indicará la garantía correspondiente."
+    },
+    {
+      "question": "¿Debo llevar la consola junto con el control?",
+      "answer": "No siempre, pero puede ser recomendable si la falla está relacionada con sincronización, conexión, carga o funcionamiento específico con la consola. Si solo es limpieza o una falla evidente del control, normalmente basta con llevar el control."
+    },
+    {
+      "question": "¿Puedo solicitar servicio para controles desde la página?",
+      "answer": "Sí. En la sección de controles puedes elegir revisión y diagnóstico o limpieza completa, seleccionar la consola, el modelo del control y describir la falla antes de enviar tu solicitud por WhatsApp."
+    }
+  ]
 }
