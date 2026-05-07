@@ -63,200 +63,278 @@
   ],
   "xbox": [
     {
-      "question": "¿Qué servicios manejan para Xbox Clásico?",
-      "answer": "Para Xbox Clásico manejamos servicios como instalación de softmod, instalación de chip, mantenimiento, diagnóstico y opciones de almacenamiento con juegos. La disponibilidad puede depender del estado de la consola y del disco duro."
+      "group": "Xbox Clásico",
+      "description": "Servicios, modificación, almacenamiento y emuladores para Xbox Clásico.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para Xbox Clásico?",
+          "answer": "Para Xbox Clásico manejamos servicios como instalación de softmod, instalación de chip, mantenimiento, diagnóstico y opciones de almacenamiento con juegos. La disponibilidad puede depender del estado de la consola y del disco duro."
+        },
+        {
+          "question": "¿Qué diferencia hay entre softmod y chip en Xbox Clásico?",
+          "answer": "El softmod modifica la consola por software, mientras que el chip implica una instalación física en la placa. Ambos permiten usar funciones avanzadas, pero el chip suele ser una opción más robusta para ciertos casos, especialmente si el disco duro original falla o se requiere una recuperación más completa."
+        },
+        {
+          "question": "¿Puedo ponerle disco duro con juegos a un Xbox Clásico?",
+          "answer": "Sí. Se puede instalar o configurar almacenamiento con juegos, siempre que la consola tenga la modificación adecuada y el disco sea compatible. El espacio disponible depende de la capacidad elegida y de los archivos necesarios para el sistema."
+        },
+        {
+          "question": "¿El Xbox Clásico puede tener emuladores?",
+          "answer": "Sí. En Xbox Clásico ofrecemos emuladores disponibles dentro de nuestro catálogo, como NES, SNES, Nintendo 64, PlayStation 1 y MAME. Solo se pueden seleccionar juegos que estén disponibles en el catálogo actual."
+        }
+      ]
     },
     {
-      "question": "¿Qué diferencia hay entre softmod y chip en Xbox Clásico?",
-      "answer": "El softmod modifica la consola por software, mientras que el chip implica una instalación física en la placa. Ambos permiten usar funciones avanzadas, pero el chip suele ser una opción más robusta para ciertos casos, especialmente si el disco duro original falla o se requiere una recuperación más completa."
+      "group": "Xbox 360",
+      "description": "RGH, juegos, almacenamiento y emuladores para Xbox 360.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para Xbox 360?",
+          "answer": "Para Xbox 360 manejamos instalación RGH, limpieza completa, revisión y diagnóstico, carga de juegos en disco del cliente y opciones de disco duro con juegos, según disponibilidad y compatibilidad."
+        },
+        {
+          "question": "¿Qué es RGH en Xbox 360?",
+          "answer": "RGH es una modificación interna que permite ejecutar software no oficial, cargar juegos desde almacenamiento y usar funciones avanzadas. Es una modificación permanente, pero requiere instalación física y configuración."
+        },
+        {
+          "question": "¿RGH sirve para jugar en línea?",
+          "answer": "No se recomienda usar una Xbox 360 con RGH para juego en línea oficial. La modificación está pensada para uso local, carga de juegos, emuladores y funciones personalizadas. Usarla en servicios oficiales puede implicar riesgos de bloqueo."
+        },
+        {
+          "question": "¿Puedo elegir juegos de Xbox 360 y emuladores en la misma selección?",
+          "answer": "Sí. En las consolas compatibles, el catálogo permite seleccionar juegos nativos y juegos de emuladores disponibles. Todo se suma al mismo almacenamiento para evitar exceder el espacio disponible."
+        },
+        {
+          "question": "¿Qué emuladores ofrecen para Xbox 360?",
+          "answer": "Para Xbox 360 ofrecemos los emuladores disponibles en nuestro catálogo actual. La disponibilidad puede incluir sistemas como NES, SNES y MAME, dependiendo de la configuración y de los archivos que tengamos preparados."
+        },
+        {
+          "question": "¿Puedo llevar mi propio disco duro para Xbox 360?",
+          "answer": "Sí, en los servicios de carga de juegos puedes llevar tu propio disco duro compatible. Debe estar en buen estado y tener espacio suficiente. Si el disco presenta errores o problemas de lectura, puede afectar el servicio."
+        },
+        {
+          "question": "¿Qué pasa si mi Xbox 360 tiene fallas antes del RGH?",
+          "answer": "Si la consola presenta fallas de encendido, luces rojas, errores de almacenamiento, problemas de video o apagados, primero se recomienda revisión y diagnóstico. No conviene instalar RGH en una consola inestable sin revisar la falla."
+        }
+      ]
     },
     {
-      "question": "¿Puedo ponerle disco duro con juegos a un Xbox Clásico?",
-      "answer": "Sí. Se puede instalar o configurar almacenamiento con juegos, siempre que la consola tenga la modificación adecuada y el disco sea compatible. El espacio disponible depende de la capacidad elegida y de los archivos necesarios para el sistema."
+      "group": "Xbox One y Xbox Series",
+      "description": "Mantenimiento, diagnóstico y límites de servicio en consolas Xbox modernas.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para Xbox One?",
+          "answer": "Para Xbox One manejamos principalmente revisión y diagnóstico, limpieza completa y mantenimiento preventivo. No se ofrece modificación para carga de juegos como en Xbox Clásico o Xbox 360."
+        },
+        {
+          "question": "¿Qué servicios manejan para Xbox Series S/X?",
+          "answer": "Para Xbox Series S/X manejamos revisión y diagnóstico, limpieza completa y mantenimiento. También pueden revisarse casos relacionados con configuración o servicios específicos, según el problema presentado."
+        },
+        {
+          "question": "¿Se pueden instalar juegos como en Xbox 360 en Xbox One o Xbox Series?",
+          "answer": "No. Xbox One y Xbox Series no se manejan igual que Xbox Clásico o Xbox 360 modificadas. En estas consolas no ofrecemos carga de juegos de la misma forma; los servicios se enfocan principalmente en mantenimiento, diagnóstico y configuración permitida."
+        }
+      ]
     },
     {
-      "question": "¿El Xbox Clásico puede tener emuladores?",
-      "answer": "Sí. En Xbox Clásico ofrecemos emuladores disponibles dentro de nuestro catálogo, como NES, SNES, Nintendo 64, PlayStation 1 y MAME. Solo se pueden seleccionar juegos que estén disponibles en el catálogo actual."
-    },
-    {
-      "question": "¿Los emuladores ocupan espacio además de los juegos?",
-      "answer": "Sí. Cuando eliges juegos de un emulador, también se considera el espacio necesario para el emulador base. Por eso el cálculo total puede incluir juegos nativos, juegos de emuladores y archivos necesarios para ejecutarlos."
-    },
-    {
-      "question": "¿Qué servicios manejan para Xbox 360?",
-      "answer": "Para Xbox 360 manejamos instalación RGH, limpieza completa, revisión y diagnóstico, carga de juegos en disco del cliente y opciones de disco duro con juegos, según disponibilidad y compatibilidad."
-    },
-    {
-      "question": "¿Qué es RGH en Xbox 360?",
-      "answer": "RGH es una modificación interna que permite ejecutar software no oficial, cargar juegos desde almacenamiento y usar funciones avanzadas. Es una modificación permanente, pero requiere instalación física y configuración."
-    },
-    {
-      "question": "¿RGH sirve para jugar en línea?",
-      "answer": "No se recomienda usar una Xbox 360 con RGH para juego en línea oficial. La modificación está pensada para uso local, carga de juegos, emuladores y funciones personalizadas. Usarla en servicios oficiales puede implicar riesgos de bloqueo."
-    },
-    {
-      "question": "¿Puedo elegir juegos de Xbox 360 y emuladores en la misma selección?",
-      "answer": "Sí. En las consolas compatibles, el catálogo permite seleccionar juegos nativos y juegos de emuladores disponibles. Todo se suma al mismo almacenamiento para evitar exceder el espacio disponible."
-    },
-    {
-      "question": "¿Qué emuladores ofrecen para Xbox 360?",
-      "answer": "Para Xbox 360 ofrecemos los emuladores disponibles en nuestro catálogo actual. La disponibilidad puede incluir sistemas como NES, SNES y MAME, dependiendo de la configuración y de los archivos que tengamos preparados."
-    },
-    {
-      "question": "¿Puedo llevar mi propio disco duro para Xbox 360?",
-      "answer": "Sí, en los servicios de carga de juegos puedes llevar tu propio disco duro compatible. Debe estar en buen estado y tener espacio suficiente. Si el disco presenta errores o problemas de lectura, puede afectar el servicio."
-    },
-    {
-      "question": "¿Qué pasa si mi Xbox 360 tiene fallas antes del RGH?",
-      "answer": "Si la consola presenta fallas de encendido, luces rojas, errores de almacenamiento, problemas de video o apagados, primero se recomienda revisión y diagnóstico. No conviene instalar RGH en una consola inestable sin revisar la falla."
-    },
-    {
-      "question": "¿Qué servicios manejan para Xbox One?",
-      "answer": "Para Xbox One manejamos principalmente revisión y diagnóstico, limpieza completa y mantenimiento preventivo. No se ofrece modificación para carga de juegos como en Xbox Clásico o Xbox 360."
-    },
-    {
-      "question": "¿Qué servicios manejan para Xbox Series S/X?",
-      "answer": "Para Xbox Series S/X manejamos revisión y diagnóstico, limpieza completa y mantenimiento. También pueden revisarse casos relacionados con configuración o servicios específicos, según el problema presentado."
-    },
-    {
-      "question": "¿Se pueden instalar juegos como en Xbox 360 en Xbox One o Xbox Series?",
-      "answer": "No. Xbox One y Xbox Series no se manejan igual que Xbox Clásico o Xbox 360 modificadas. En estas consolas no ofrecemos carga de juegos de la misma forma; los servicios se enfocan principalmente en mantenimiento, diagnóstico y configuración permitida."
-    },
-    {
-      "question": "¿La limpieza completa de Xbox incluye cambio de pasta térmica?",
-      "answer": "Sí, cuando aplica según el modelo. En consolas como Xbox Clásico, Xbox 360, Xbox One y Xbox Series, el mantenimiento puede incluir limpieza interna y cambio de pasta térmica si corresponde."
-    },
-    {
-      "question": "¿El diagnóstico es obligatorio si la consola tiene una falla?",
-      "answer": "Sí es recomendable. Si la consola no enciende, se apaga, no da video, muestra errores o tiene fallas intermitentes, primero debe revisarse antes de prometer una reparación o modificación."
-    },
-    {
-      "question": "¿Puedo pedir juegos que no aparecen en el catálogo de Xbox?",
-      "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. Para mantener tiempos claros y evitar errores, la selección principal se realiza con los juegos disponibles en el catálogo actual."
+      "group": "Mantenimiento y diagnóstico Xbox",
+      "description": "Preguntas comunes sobre revisión, limpieza y fallas en consolas Xbox.",
+      "items": [
+        {
+          "question": "¿La limpieza completa de Xbox incluye cambio de pasta térmica?",
+          "answer": "Sí, cuando aplica según el modelo. En consolas como Xbox Clásico, Xbox 360, Xbox One y Xbox Series, el mantenimiento puede incluir limpieza interna y cambio de pasta térmica si corresponde."
+        },
+        {
+          "question": "¿El diagnóstico es obligatorio si la consola tiene una falla?",
+          "answer": "Sí es recomendable. Si la consola no enciende, se apaga, no da video, muestra errores o tiene fallas intermitentes, primero debe revisarse antes de prometer una reparación o modificación."
+        },
+        {
+          "question": "¿Puedo pedir juegos que no aparecen en el catálogo de Xbox?",
+          "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. Para mantener tiempos claros y evitar errores, la selección principal se realiza con los juegos disponibles en el catálogo actual."
+        },
+        {
+          "question": "¿Los emuladores ocupan espacio además de los juegos?",
+          "answer": "Sí. Cuando eliges juegos de un emulador, también se considera el espacio necesario para el emulador base. Por eso el cálculo total puede incluir juegos nativos, juegos de emuladores y archivos necesarios para ejecutarlos."
+        }
+      ]
     }
   ],
   "playstation": [
     {
-      "question": "¿Qué servicios manejan para PlayStation 2?",
-      "answer": "Para PlayStation 2 manejamos instalación de FreeMCBoot o Funtuna según el modelo, limpieza completa, revisión y diagnóstico, y opciones de almacenamiento con juegos cuando aplica."
+      "group": "PlayStation 2",
+      "description": "FreeMCBoot, Funtuna, almacenamiento y compatibilidad en PS2.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para PlayStation 2?",
+          "answer": "Para PlayStation 2 manejamos instalación de FreeMCBoot o Funtuna según el modelo, limpieza completa, revisión y diagnóstico, y opciones de almacenamiento con juegos cuando aplica."
+        },
+        {
+          "question": "¿Qué diferencia hay entre FreeMCBoot y Funtuna en PS2?",
+          "answer": "FreeMCBoot funciona en muchos modelos de PS2 compatibles, mientras que Funtuna se usa principalmente en modelos donde FreeMCBoot tradicional no aplica de la misma forma. La opción correcta depende del modelo de la consola."
+        },
+        {
+          "question": "¿PS2 usa USB, disco duro interno o memory card?",
+          "answer": "Depende del modelo y del método usado. Algunos modelos pueden trabajar con disco duro interno, otros con USB y siempre se requiere una configuración compatible. La velocidad y compatibilidad pueden variar según el método."
+        }
+      ]
     },
     {
-      "question": "¿Qué diferencia hay entre FreeMCBoot y Funtuna en PS2?",
-      "answer": "FreeMCBoot funciona en muchos modelos de PS2 compatibles, mientras que Funtuna se usa principalmente en modelos donde FreeMCBoot tradicional no aplica de la misma forma. La opción correcta depende del modelo de la consola."
+      "group": "PlayStation 3",
+      "description": "HEN, CFW, juegos de PS1/PS2 y compatibilidad por modelo.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para PlayStation 3?",
+          "answer": "Para PlayStation 3 manejamos instalación de HEN o CFW según el modelo, limpieza completa, revisión y diagnóstico, carga de juegos y opciones de disco duro con juegos."
+        },
+        {
+          "question": "¿Qué diferencia hay entre HEN y CFW en PS3?",
+          "answer": "CFW es un firmware personalizado para modelos compatibles y ofrece mayor compatibilidad. HEN es una modificación para modelos que no aceptan CFW, como muchos Slim y Super Slim. La opción depende del modelo exacto de la consola."
+        },
+        {
+          "question": "¿Todas las PS3 pueden correr juegos de PS2?",
+          "answer": "No. En este servicio, los juegos de PS2 en formato ISO solo se ofrecen para PS3 con compatibilidad CFW confirmada. Si la consola usa HEN o no se confirma compatibilidad con CFW, no se habilita el catálogo de PS2."
+        },
+        {
+          "question": "¿Las PS3 pueden correr juegos de PS1?",
+          "answer": "Sí, los juegos de PS1 pueden estar disponibles según la configuración y compatibilidad del modelo. En la página solo se muestran las bibliotecas permitidas según la selección realizada."
+        },
+        {
+          "question": "¿Por qué tengo que seleccionar el modelo exacto de PS3 Slim?",
+          "answer": "Porque no todas las PS3 Slim tienen la misma compatibilidad. Algunas pueden usar CFW y otras solo HEN. Para evitar ofrecer juegos o funciones incompatibles, se pide seleccionar el modelo exacto o elegir la opción no confirmada."
+        },
+        {
+          "question": "¿Qué pasa si no sé el modelo exacto de mi PS3?",
+          "answer": "Puedes elegir la opción no confirmada. En ese caso se muestran solo opciones seguras y no se habilitan funciones que requieran compatibilidad específica, como juegos de PS2 en formato ISO."
+        }
+      ]
     },
     {
-      "question": "¿PS2 usa USB, disco duro interno o memory card?",
-      "answer": "Depende del modelo y del método usado. Algunos modelos pueden trabajar con disco duro interno, otros con USB y siempre se requiere una configuración compatible. La velocidad y compatibilidad pueden variar según el método."
+      "group": "PlayStation 4 y PlayStation 5",
+      "description": "Mantenimiento, limpieza y diagnóstico en consolas PlayStation modernas.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para PlayStation 4 y PlayStation 5?",
+          "answer": "Para PS4 y PS5 manejamos principalmente revisión, diagnóstico, limpieza completa y mantenimiento preventivo. No se ofrecen servicios de carga de juegos como en consolas modificadas antiguas."
+        },
+        {
+          "question": "¿La limpieza de PS5 incluye metal líquido?",
+          "answer": "La limpieza estándar no siempre implica cambio o intervención del metal líquido. Si se requiere limpieza avanzada o revisión del metal líquido, se evalúa el caso y se informa antes de realizar el trabajo."
+        }
+      ]
     },
     {
-      "question": "¿Qué servicios manejan para PlayStation 3?",
-      "answer": "Para PlayStation 3 manejamos instalación de HEN o CFW según el modelo, limpieza completa, revisión y diagnóstico, carga de juegos y opciones de disco duro con juegos."
+      "group": "PSP y PS Vita",
+      "description": "Liberación, almacenamiento y carga de juegos en portátiles PlayStation.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para PSP?",
+          "answer": "Para PSP manejamos instalación de CFW, limpieza completa, revisión y diagnóstico, carga de juegos en Memory Stick o microSD con adaptador, según el servicio seleccionado."
+        },
+        {
+          "question": "¿Qué servicios manejan para PS Vita?",
+          "answer": "Para PS Vita manejamos instalación de HENkaku/Ensō, configuración de microSD con SD2Vita cuando aplica, carga de juegos, limpieza completa, revisión y diagnóstico."
+        },
+        {
+          "question": "¿Puedo llevar mi propia microSD para PSP o PS Vita?",
+          "answer": "Sí, siempre que sea compatible, tenga capacidad suficiente y esté en buen estado. Si la memoria presenta errores, baja velocidad o fallas, puede afectar la instalación o carga de juegos."
+        }
+      ]
     },
     {
-      "question": "¿Qué diferencia hay entre HEN y CFW en PS3?",
-      "answer": "CFW es un firmware personalizado para modelos compatibles y ofrece mayor compatibilidad. HEN es una modificación para modelos que no aceptan CFW, como muchos Slim y Super Slim. La opción depende del modelo exacto de la consola."
-    },
-    {
-      "question": "¿Todas las PS3 pueden correr juegos de PS2?",
-      "answer": "No. En este servicio, los juegos de PS2 en formato ISO solo se ofrecen para PS3 con compatibilidad CFW confirmada. Si la consola usa HEN o no se confirma compatibilidad con CFW, no se habilita el catálogo de PS2."
-    },
-    {
-      "question": "¿Las PS3 pueden correr juegos de PS1?",
-      "answer": "Sí, los juegos de PS1 pueden estar disponibles según la configuración y compatibilidad del modelo. En la página solo se muestran las bibliotecas permitidas según la selección realizada."
-    },
-    {
-      "question": "¿Por qué tengo que seleccionar el modelo exacto de PS3 Slim?",
-      "answer": "Porque no todas las PS3 Slim tienen la misma compatibilidad. Algunas pueden usar CFW y otras solo HEN. Para evitar ofrecer juegos o funciones incompatibles, se pide seleccionar el modelo exacto o elegir la opción no confirmada."
-    },
-    {
-      "question": "¿Qué pasa si no sé el modelo exacto de mi PS3?",
-      "answer": "Puedes elegir la opción no confirmada. En ese caso se muestran solo opciones seguras y no se habilitan funciones que requieran compatibilidad específica, como juegos de PS2 en formato ISO."
-    },
-    {
-      "question": "¿Qué servicios manejan para PlayStation 4 y PlayStation 5?",
-      "answer": "Para PS4 y PS5 manejamos principalmente revisión, diagnóstico, limpieza completa y mantenimiento preventivo. No se ofrecen servicios de carga de juegos como en consolas modificadas antiguas."
-    },
-    {
-      "question": "¿La limpieza de PS5 incluye metal líquido?",
-      "answer": "La limpieza estándar no siempre implica cambio o intervención del metal líquido. Si se requiere limpieza avanzada o revisión del metal líquido, se evalúa el caso y se informa antes de realizar el trabajo."
-    },
-    {
-      "question": "¿Qué servicios manejan para PSP?",
-      "answer": "Para PSP manejamos instalación de CFW, limpieza completa, revisión y diagnóstico, carga de juegos en Memory Stick o microSD con adaptador, según el servicio seleccionado."
-    },
-    {
-      "question": "¿Qué servicios manejan para PS Vita?",
-      "answer": "Para PS Vita manejamos instalación de HENkaku/Ensō, configuración de microSD con SD2Vita cuando aplica, carga de juegos, limpieza completa, revisión y diagnóstico."
-    },
-    {
-      "question": "¿Puedo llevar mi propia microSD para PSP o PS Vita?",
-      "answer": "Sí, siempre que sea compatible, tenga capacidad suficiente y esté en buen estado. Si la memoria presenta errores, baja velocidad o fallas, puede afectar la instalación o carga de juegos."
-    },
-    {
-      "question": "¿Puedo pedir juegos que no aparecen en el catálogo de PlayStation?",
-      "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. La selección principal se realiza con los juegos disponibles en el catálogo actual."
+      "group": "Juegos PlayStation",
+      "description": "Disponibilidad de juegos y límites del catálogo PlayStation.",
+      "items": [
+        {
+          "question": "¿Puedo pedir juegos que no aparecen en el catálogo de PlayStation?",
+          "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. La selección principal se realiza con los juegos disponibles en el catálogo actual."
+        }
+      ]
     }
   ],
   "nintendo": [
     {
-      "question": "¿Qué servicios manejan para Nintendo GameCube?",
-      "answer": "Para Nintendo GameCube manejamos instalación de PicoBoot, limpieza completa, revisión y diagnóstico, y opciones de SD con juegos cuando aplica."
+      "group": "Nintendo GameCube",
+      "description": "PicoBoot, Swiss, SD con juegos y emuladores en GameCube.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para Nintendo GameCube?",
+          "answer": "Para Nintendo GameCube manejamos instalación de PicoBoot, limpieza completa, revisión y diagnóstico, y opciones de SD con juegos cuando aplica."
+        },
+        {
+          "question": "¿Qué es PicoBoot en GameCube?",
+          "answer": "PicoBoot es una modificación interna que permite iniciar software como Swiss para cargar juegos y funciones adicionales desde almacenamiento compatible. Requiere instalación física en la consola."
+        },
+        {
+          "question": "¿GameCube puede usar emuladores?",
+          "answer": "Sí. En GameCube ofrecemos emuladores disponibles dentro de nuestro catálogo, como NES, SNES, Nintendo 64 y Game Boy Advance. Solo se pueden seleccionar juegos que estén disponibles en el catálogo actual."
+        },
+        {
+          "question": "¿Los emuladores de GameCube ocupan espacio adicional?",
+          "answer": "Sí. Cuando eliges juegos de un emulador, también se considera el espacio necesario para el emulador base. El total mostrado incluye juegos de GameCube, juegos de emuladores y archivos necesarios para ejecutarlos."
+        },
+        {
+          "question": "¿Qué almacenamiento usa GameCube para juegos?",
+          "answer": "Depende de la configuración. Normalmente se usa una microSD mediante adaptadores compatibles. La capacidad seleccionada limita cuántos juegos pueden agregarse."
+        }
+      ]
     },
     {
-      "question": "¿Qué es PicoBoot en GameCube?",
-      "answer": "PicoBoot es una modificación interna que permite iniciar software como Swiss para cargar juegos y funciones adicionales desde almacenamiento compatible. Requiere instalación física en la consola."
+      "group": "Nintendo Wii",
+      "description": "Homebrew, USB/SD, GameCube en Wii y compatibilidad por modelo.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para Nintendo Wii?",
+          "answer": "Para Nintendo Wii manejamos instalación de Homebrew, limpieza completa, revisión y diagnóstico, carga de juegos en USB/SD del cliente y opciones de USB con juegos."
+        },
+        {
+          "question": "¿Todas las Wii pueden cargar juegos de GameCube?",
+          "answer": "No. En este servicio, el catálogo de GameCube se muestra solo en modelos compatibles dentro del flujo: Wii Original y Wii Family Edition. Wii Mini no muestra catálogo de GameCube."
+        },
+        {
+          "question": "¿La Wii Family Edition corre juegos de GameCube aunque no tenga puertos de control?",
+          "answer": "Puede cargar juegos de GameCube mediante configuración compatible, pero no tiene puertos físicos de control ni memory card de GameCube. Por eso se requiere configuración adecuada y controles compatibles."
+        },
+        {
+          "question": "¿Qué pasa si tengo una Wii Mini?",
+          "answer": "Para Wii Mini no se ofrece catálogo de GameCube dentro del flujo. Solo se muestran opciones compatibles con Wii según el servicio seleccionado."
+        },
+        {
+          "question": "¿Wii usa USB o SD para los juegos?",
+          "answer": "Puede usar USB o SD dependiendo de la configuración y del servicio seleccionado. Para bibliotecas grandes normalmente se recomienda un almacenamiento con capacidad suficiente y buen estado."
+        }
+      ]
     },
     {
-      "question": "¿GameCube puede usar emuladores?",
-      "answer": "Sí. En GameCube ofrecemos emuladores disponibles dentro de nuestro catálogo, como NES, SNES, Nintendo 64 y Game Boy Advance. Solo se pueden seleccionar juegos que estén disponibles en el catálogo actual."
+      "group": "Nintendo Switch",
+      "description": "Chip, microSD, limpieza y diagnóstico en Nintendo Switch.",
+      "items": [
+        {
+          "question": "¿Qué servicios manejan para Nintendo Switch?",
+          "answer": "Para Nintendo Switch manejamos instalación de chip según modelo, limpieza completa, revisión y diagnóstico, carga de juegos en microSD del cliente y opciones de microSD con juegos cuando aplica."
+        },
+        {
+          "question": "¿Todas las Nintendo Switch requieren chip?",
+          "answer": "Depende del modelo y del tipo de modificación. En la página se muestran los servicios disponibles según la consola y el flujo seleccionado. Si hay dudas sobre compatibilidad, se recomienda revisión antes de cotizar algo definitivo."
+        },
+        {
+          "question": "¿Puedo llevar mi propia microSD para Nintendo Switch?",
+          "answer": "Sí. Debe estar en buen estado, tener capacidad suficiente y ser confiable. Una microSD lenta, dañada o falsa puede causar errores, instalaciones fallidas o mal funcionamiento."
+        },
+        {
+          "question": "¿La limpieza de Switch incluye revisión de Joy-Con?",
+          "answer": "No necesariamente. La limpieza de la consola y el servicio para Joy-Con o controles se manejan por separado. Si también necesitas revisar Joy-Con, debe solicitarse como servicio para controles."
+        }
+      ]
     },
     {
-      "question": "¿Los emuladores de GameCube ocupan espacio adicional?",
-      "answer": "Sí. Cuando eliges juegos de un emulador, también se considera el espacio necesario para el emulador base. El total mostrado incluye juegos de GameCube, juegos de emuladores y archivos necesarios para ejecutarlos."
-    },
-    {
-      "question": "¿Qué almacenamiento usa GameCube para juegos?",
-      "answer": "Depende de la configuración. Normalmente se usa una microSD mediante adaptadores compatibles. La capacidad seleccionada limita cuántos juegos pueden agregarse."
-    },
-    {
-      "question": "¿Qué servicios manejan para Nintendo Wii?",
-      "answer": "Para Nintendo Wii manejamos instalación de Homebrew, limpieza completa, revisión y diagnóstico, carga de juegos en USB/SD del cliente y opciones de USB con juegos."
-    },
-    {
-      "question": "¿Todas las Wii pueden cargar juegos de GameCube?",
-      "answer": "No. En este servicio, el catálogo de GameCube se muestra solo en modelos compatibles dentro del flujo: Wii Original y Wii Family Edition. Wii Mini no muestra catálogo de GameCube."
-    },
-    {
-      "question": "¿La Wii Family Edition corre juegos de GameCube aunque no tenga puertos de control?",
-      "answer": "Puede cargar juegos de GameCube mediante configuración compatible, pero no tiene puertos físicos de control ni memory card de GameCube. Por eso se requiere configuración adecuada y controles compatibles."
-    },
-    {
-      "question": "¿Qué pasa si tengo una Wii Mini?",
-      "answer": "Para Wii Mini no se ofrece catálogo de GameCube dentro del flujo. Solo se muestran opciones compatibles con Wii según el servicio seleccionado."
-    },
-    {
-      "question": "¿Wii usa USB o SD para los juegos?",
-      "answer": "Puede usar USB o SD dependiendo de la configuración y del servicio seleccionado. Para bibliotecas grandes normalmente se recomienda un almacenamiento con capacidad suficiente y buen estado."
-    },
-    {
-      "question": "¿Qué servicios manejan para Nintendo Switch?",
-      "answer": "Para Nintendo Switch manejamos instalación de chip según modelo, limpieza completa, revisión y diagnóstico, carga de juegos en microSD del cliente y opciones de microSD con juegos cuando aplica."
-    },
-    {
-      "question": "¿Todas las Nintendo Switch requieren chip?",
-      "answer": "Depende del modelo y del tipo de modificación. En la página se muestran los servicios disponibles según la consola y el flujo seleccionado. Si hay dudas sobre compatibilidad, se recomienda revisión antes de cotizar algo definitivo."
-    },
-    {
-      "question": "¿Puedo llevar mi propia microSD para Nintendo Switch?",
-      "answer": "Sí. Debe estar en buen estado, tener capacidad suficiente y ser confiable. Una microSD lenta, dañada o falsa puede causar errores, instalaciones fallidas o mal funcionamiento."
-    },
-    {
-      "question": "¿La limpieza de Switch incluye revisión de Joy-Con?",
-      "answer": "No necesariamente. La limpieza de la consola y el servicio para Joy-Con o controles se manejan por separado. Si también necesitas revisar Joy-Con, debe solicitarse como servicio para controles."
-    },
-    {
-      "question": "¿Puedo pedir juegos que no aparecen en el catálogo de Nintendo?",
-      "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. La selección principal se realiza con los juegos disponibles en el catálogo actual."
+      "group": "Juegos Nintendo",
+      "description": "Disponibilidad de juegos y límites del catálogo Nintendo.",
+      "items": [
+        {
+          "question": "¿Puedo pedir juegos que no aparecen en el catálogo de Nintendo?",
+          "answer": "Puedes preguntar por un título específico, pero no se garantiza disponibilidad. La selección principal se realiza con los juegos disponibles en el catálogo actual."
+        }
+      ]
     }
   ],
   "controles": [

@@ -74,6 +74,98 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  function createFaqItem(item, sectionKey, groupIndex, itemIndex) {
+    const faqItem = document.createElement("article");
+    faqItem.className = "faq-item";
+
+    const answerId = `faq-answer-${sectionKey}-${groupIndex}-${itemIndex}`;
+
+    faqItem.innerHTML = `
+      <button
+        class="faq-question"
+        type="button"
+        aria-expanded="false"
+        aria-controls="${answerId}"
+      >
+        <span>${escapeHTML(item.question)}</span>
+        <span class="faq-icon" aria-hidden="true">+</span>
+      </button>
+
+      <div class="faq-answer" id="${answerId}" hidden>
+        <p>${escapeHTML(item.answer)}</p>
+      </div>
+    `;
+
+    const button = faqItem.querySelector(".faq-question");
+    const answer = faqItem.querySelector(".faq-answer");
+
+    button.addEventListener("click", () => {
+      const isOpen = faqItem.classList.contains("open");
+
+      closeOtherItems(faqItem);
+
+      faqItem.classList.toggle("open", !isOpen);
+      button.setAttribute("aria-expanded", !isOpen ? "true" : "false");
+      answer.hidden = isOpen;
+    });
+
+    return faqItem;
+  }
+
+  function isGroupedSection(items) {
+    return Array.isArray(items) && items.some((entry) => Array.isArray(entry.items));
+  }
+
+  function renderFlatSection(items, sectionKey) {
+    const section = document.createElement("div");
+    section.className = "faq-accordion";
+
+    items.forEach((item, index) => {
+      section.appendChild(createFaqItem(item, sectionKey, 0, index));
+    });
+
+    container.appendChild(section);
+  }
+
+  function renderGroupedSection(groups, sectionKey) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "faq-groups";
+
+    groups.forEach((group, groupIndex) => {
+      const items = Array.isArray(group.items) ? group.items : [];
+
+      if (!items.length) return;
+
+      const groupSection = document.createElement("section");
+      groupSection.className = "faq-group";
+
+      groupSection.innerHTML = `
+        <div class="faq-group-heading">
+          <h3>${escapeHTML(group.group || "Sección")}</h3>
+          ${
+            group.description
+              ? `<p>${escapeHTML(group.description)}</p>`
+              : ""
+          }
+        </div>
+      `;
+
+      const accordion = document.createElement("div");
+      accordion.className = "faq-accordion";
+
+      items.forEach((item, itemIndex) => {
+        accordion.appendChild(
+          createFaqItem(item, sectionKey, groupIndex, itemIndex),
+        );
+      });
+
+      groupSection.appendChild(accordion);
+      wrapper.appendChild(groupSection);
+    });
+
+    container.appendChild(wrapper);
+  }
+
   function renderSection(sectionKey) {
     container.innerHTML = "";
 
@@ -89,48 +181,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    const section = document.createElement("div");
-    section.className = "faq-accordion";
+    if (isGroupedSection(items)) {
+      renderGroupedSection(items, sectionKey);
+      return;
+    }
 
-    items.forEach((item, index) => {
-      const faqItem = document.createElement("article");
-      faqItem.className = "faq-item";
-
-      const answerId = `faq-answer-${sectionKey}-${index}`;
-
-      faqItem.innerHTML = `
-        <button
-          class="faq-question"
-          type="button"
-          aria-expanded="false"
-          aria-controls="${answerId}"
-        >
-          <span>${escapeHTML(item.question)}</span>
-          <span class="faq-icon" aria-hidden="true">+</span>
-        </button>
-
-        <div class="faq-answer" id="${answerId}" hidden>
-          <p>${escapeHTML(item.answer)}</p>
-        </div>
-      `;
-
-      const button = faqItem.querySelector(".faq-question");
-      const answer = faqItem.querySelector(".faq-answer");
-
-      button.addEventListener("click", () => {
-        const isOpen = faqItem.classList.contains("open");
-
-        closeOtherItems(faqItem);
-
-        faqItem.classList.toggle("open", !isOpen);
-        button.setAttribute("aria-expanded", !isOpen ? "true" : "false");
-        answer.hidden = isOpen;
-      });
-
-      section.appendChild(faqItem);
-    });
-
-    container.appendChild(section);
+    renderFlatSection(items, sectionKey);
   }
 
   function activateSection(sectionKey) {

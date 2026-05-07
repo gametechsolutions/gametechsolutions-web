@@ -3520,3 +3520,41 @@ FAQ — GameTechSolutions
     transform: none;
   }
 }
+
+.faq-groups {
+  display: grid;
+  gap: var(--s-7);
+}
+
+.faq-group {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-group-heading {
+  max-width: 860px;
+}
+
+.faq-group-heading h3 {
+  margin: 0 0 6px;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+.faq-group-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.faq-group-heading::after {
+  content: "";
+  display: block;
+
+  width: 72px;
+  height: 3px;
+  margin-top: 12px;
+
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 70%, transparent);
+}
