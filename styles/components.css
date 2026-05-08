@@ -444,18 +444,45 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   content: none;
 }
 
+/* ============================================================
+CARDS — comportamiento por intención
+============================================================ */
+
+/* Card informativa: no debe brincar fuerte */
 .card {
   transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
+    border-color var(--ease),
+    box-shadow var(--ease),
+    background var(--ease);
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.01);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.12));
+}
+
+/* Card interactiva: selección, consola, servicio, modelo, etc. */
+.card-interactive,
+.console-card,
+#modelsContainer .card,
+#servicesContainer .card,
+.faq-item {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.card-interactive:hover,
+.console-card:hover,
+#modelsContainer .card:hover,
+#servicesContainer .card:hover {
+  transform: translateY(-5px) scale(1.01);
   box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(120, 180, 255, 0.18);
+    0 18px 45px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(120, 180, 255, 0.16);
 }
 
 .btn {
@@ -491,11 +518,29 @@ section {
   }
 }
 
-.card.selected {
+.card.selected,
+#modelsContainer .card.selected,
+#servicesContainer .card.selected {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 54%,
+      rgba(255, 255, 255, 0.16));
+
   box-shadow:
-    0 0 0 2px rgba(120, 200, 255, 0.35),
-    0 18px 40px rgba(0, 0, 0, 0.5);
-  transform: scale(1.02);
+    0 0 0 2px color-mix(in srgb,
+      var(--accent-color) 28%,
+      transparent),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+
+  transform: scale(1.015);
+}
+
+/* Cards informativas: no levantar ni escalar */
+#summaryCard:hover,
+.pricing-card:hover,
+.form-card:hover,
+.contact-public-card:hover,
+.map-shell:hover {
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
