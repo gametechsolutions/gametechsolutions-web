@@ -1,0 +1,2932 @@
+/* ============================================================
+COMPONENTS — GameTechSolutions
+Componentes visuales compartidos
+Se carga después de theme-base.css
+============================================================ */
+
+/* ============================================================
+HERO (Inicio: ¿Quiénes somos?)
+============================================================ */
+
+.hero {
+  padding: var(--s-8) 0;
+}
+
+.hero-shell {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(700px 320px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 18%, transparent),
+      transparent 65%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 42px);
+  overflow: hidden;
+
+  display: grid;
+  gap: 12px;
+}
+
+.hero-shell h2 {
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+/* badge superior */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  color: color-mix(in srgb, var(--text) 88%, white);
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+
+  justify-self: start;
+}
+
+/* lead */
+.hero-lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+  color: color-mix(in srgb, var(--text) 88%, var(--muted));
+  margin: 0;
+  max-width: none;
+}
+
+/* layout grid */
+.hero-grid {
+  margin-top: var(--s-6);
+  display: grid;
+  gap: var(--s-6);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-points {
+    width: 100%;
+  }
+}
+
+.hero-text {
+  margin: 0;
+  margin-top: var(--s-5);
+  max-width: none;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--muted) 95%, white);
+}
+
+/* bullets premium */
+.hero-points {
+  margin: 0;
+  padding: 16px 16px;
+  list-style: none;
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+
+  margin-top: 6px;
+
+  /* clave: que no se estire full width */
+  width: fit-content;
+  max-width: 100%;
+}
+
+.hero-points li {
+  position: relative;
+  padding-left: 22px;
+  margin: 10px 0;
+  color: color-mix(in srgb, var(--text) 92%, white);
+  font-weight: 650;
+}
+
+.hero-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 80%, white);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.04);
+  transform: translateY(-50%);
+}
+
+/* ============================================================
+CONSOLE HERO (Cabecera de páginas de consolas)
+============================================================ */
+
+.console-hero {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(700px 320px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 65%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 3.5vw, 34px);
+}
+
+.console-hero h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.console-hero p {
+  margin: 0;
+  max-width: 80ch;
+  color: color-mix(in srgb, var(--muted) 92%, white);
+}
+
+/* ============================================================
+ACTION BAR (CTA fijo arriba del footer)
+============================================================ */
+
+.action-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  /* queda arriba del footer fijo */
+  bottom: 45px;
+
+  z-index: 997;
+
+  padding: 8px 0;
+  background: rgba(7, 10, 18, 0.78);
+  backdrop-filter: blur(14px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.action-inner {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* CTA más pro */
+.action-bar .btn {
+  min-width: min(520px, 100%);
+  font-weight: 800;
+
+  border: none;
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-color) 85%, white),
+      rgba(108, 99, 255, 0.95));
+  color: #08101e;
+}
+
+.action-bar .btn:hover {
+  filter: brightness(1.05);
+}
+
+/* ============================================================
+STORAGE SELECTOR (Almacenamiento)
+============================================================ */
+
+.disk-selector {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.disk-option {
+  flex: 0 0 auto;
+  /* no se estira raro */
+  min-width: 180px;
+  /* ✅ más ancho */
+  padding: 14px 16px;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform var(--ease),
+    border var(--ease),
+    background var(--ease);
+}
+
+.disk-option:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.14));
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.disk-option strong {
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: color-mix(in srgb, var(--text) 94%, white);
+}
+
+/* esconder radio nativo */
+.disk-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* estado seleccionado */
+.disk-option.selected {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 50%,
+      rgba(255, 255, 255, 0.14));
+  background:
+    radial-gradient(300px 120px at 40% 0%,
+      color-mix(in srgb, var(--accent-color) 18%, transparent),
+      transparent 55%),
+    rgba(255, 255, 255, 0.05);
+
+  transform: translateY(-1px);
+}
+
+/* check visual */
+.disk-option.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 0.95rem;
+
+  background: color-mix(in srgb, var(--accent-color) 70%, white);
+  color: #08101e;
+
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.3);
+}
+
+/* ===============================
+   STORAGE DISPLAY (Resumen)
+   =============================== */
+
+#storageDisplay.disk-selector {
+  width: 100%;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+/* La opción seleccionada en modo resumen (chip) */
+#storageDisplay .disk-option {
+  min-width: unset;
+  padding: 14px 16px;
+
+  /* ✅ menos redondeado SOLO AQUÍ */
+  border-radius: 18px;
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 6px;
+  justify-content: flex-start;
+
+  width: auto;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.18);
+
+  /* ✅ ya no hace cosas raras con texto */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+/* Ajusta el texto dentro del chip */
+#storageDisplay .disk-option strong {
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+/* ✅ para que el texto “Espacio usable…” no se corte */
+#storageDisplay .disk-option span,
+#storageDisplay .disk-option small,
+#storageDisplay .disk-option div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#storageOptions.disk-selector {
+  max-width: 760px;
+  margin-inline: auto;
+  justify-content: center;
+  padding: 18px;
+}
+
+/* ============================================================
+MOBILE: Storage selector en 2/3 columnas
+============================================================ */
+
+@media (max-width: 520px) {
+
+  /* grid de opciones */
+  #storageOptions.disk-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* ✅ 2 columnas */
+    gap: 12px;
+
+    padding: 12px;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  /* si quieres 3 columnas en pantallas más chicas anchas */
+  @media (min-width: 420px) {
+    #storageOptions.disk-selector {
+      grid-template-columns: repeat(3, 1fr);
+      /* ✅ 3 columnas */
+    }
+  }
+
+  /* cada opción ocupa toda su celda */
+  #storageOptions .disk-option {
+    min-width: 0;
+    /* ✅ anula el min-width:180px */
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    padding: 14px 10px;
+    border-radius: 18px;
+  }
+
+  /* texto más compacto */
+  #storageOptions .disk-option strong {
+    font-size: 0.98rem;
+  }
+
+  /* check centrado sin estorbar */
+  #storageOptions .disk-option.selected::after {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* ============================================================
+CATÁLOGO — Almacenamiento seleccionado (display-only)
+============================================================ */
+
+.storage-display {
+  margin-top: var(--s-4);
+  display: flex;
+  justify-content: flex-start;
+
+  /* sin caja gigante exterior */
+  background: transparent;
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.storage-display .disk-option {
+  /* card informativa compacta */
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 16px;
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(500px 180px at 20% 0%,
+      color-mix(in srgb, var(--accent-color) 10%, transparent),
+      transparent 65%),
+    rgba(0, 0, 0, 0.22);
+
+  box-shadow: var(--shadow-soft);
+  width: auto;
+  max-width: 520px;
+}
+
+.storage-display .disk-option strong {
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.storage-display .disk-option::after {
+  /* check bonito pero sin comer espacio */
+  content: none;
+}
+
+/* =========================================
+Consolas más solicitadas — Netflix row
+========================================= */
+
+.cards-netflix {
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 12px 6px 18px;
+  margin-inline: -6px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* se ve más pro */
+  mask-image: linear-gradient(to right,
+      transparent 0,
+      black 20px,
+      black calc(100% - 20px),
+      transparent 100%);
+}
+
+/* scrollbar discreto */
+.cards-netflix::-webkit-scrollbar {
+  height: 10px;
+}
+
+.cards-netflix::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 999px;
+}
+
+.cards-netflix::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+}
+
+.cards-netflix::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* cards tipo Netflix */
+.cards-netflix .console-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+
+  width: 190px;
+  height: 120px;
+
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+
+  background:
+    radial-gradient(420px 140px at 15% 0%,
+      rgba(255, 255, 255, 0.09),
+      transparent 65%),
+    rgba(0, 0, 0, 0.22);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+/* hover sexy */
+.cards-netflix .console-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.14));
+  background:
+    radial-gradient(420px 140px at 15% 0%,
+      rgba(255, 255, 255, 0.12),
+      transparent 65%),
+    rgba(0, 0, 0, 0.26);
+}
+
+.cards-netflix .console-card img {
+  width: 100%;
+  max-height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
+}
+
+/* ✅ Mobile: más compactas */
+@media (max-width: 520px) {
+  .cards-netflix {
+    gap: 14px;
+    padding: 10px 6px 14px;
+  }
+
+  .cards-netflix .console-card {
+    width: 160px;
+    height: 104px;
+    border-radius: 18px;
+  }
+
+  .cards-netflix .console-card img {
+    max-height: 62px;
+  }
+}
+
+.card {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(120, 180, 255, 0.18);
+}
+
+.card {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(120, 180, 255, 0.18);
+}
+
+.btn {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    filter 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.section,
+section {
+  animation: fadeUp 420ms ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card.selected {
+  box-shadow:
+    0 0 0 2px rgba(120, 200, 255, 0.35),
+    0 18px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+7) GRIDS / TARJETAS DE CONSOLA / SERVICIOS
+============================================================ */
+
+.cards-grid {
+  display: grid;
+  gap: var(--s-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Console cards (home + consola) */
+.console-card {
+  cursor: pointer;
+  text-align: center;
+
+  /* tile look */
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow-soft);
+
+  padding: var(--s-6) var(--s-5);
+  transition:
+    transform var(--ease),
+    border var(--ease),
+    background var(--ease);
+
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+}
+
+.console-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 26%,
+      rgba(255, 255, 255, 0.1));
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.console-card img {
+  width: 100%;
+  max-width: 190px;
+  /* más controlado */
+  margin: 0 auto;
+
+  opacity: 0.92;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
+  transition:
+    transform var(--ease),
+    opacity var(--ease),
+    filter var(--ease);
+}
+
+.console-card:hover img {
+  transform: scale(1.04);
+  opacity: 1;
+  filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.55));
+}
+
+.console-name {
+  font-weight: 800;
+  color: color-mix(in srgb, var(--text) 94%, white);
+}
+
+/* Service cards */
+.service-card .svc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-bottom: var(--s-3);
+}
+
+.svc-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: radial-gradient(120px 80px at 40% 20%,
+      rgba(255, 255, 255, 0.1),
+      rgba(0, 0, 0, 0.12));
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.svc-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.svc-points li {
+  margin: 0;
+}
+
+/* ============================================================
+8) IDENTIFICAR MODELOS (modelsContainer)
+============================================================ */
+
+/* ============================
+MODELOS – LAYOUT DEFINITIVO
+============================ */
+
+#modelsContainer {
+  display: flex;
+  justify-content: center;
+  /* 🔥 siempre centrado */
+  align-items: stretch;
+  gap: var(--s-5);
+  flex-wrap: nowrap;
+  /* 🔥 NUNCA se baja a otra fila en desktop */
+  width: 100%;
+}
+
+/* Cards tamaño fijo bonito */
+#modelsContainer .card {
+  width: 320px;
+  /* puedes subir a 340 si quieres más grandes */
+  max-width: 100%;
+  text-align: center;
+}
+
+/* ============================
+RESPONSIVE
+============================ */
+
+/* Tablet → deja que se acomoden */
+@media (max-width: 980px) {
+  #modelsContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Móvil → una por fila */
+@media (max-width: 520px) {
+  #modelsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #modelsContainer .card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+#modelsContainer .model-image {
+  width: 100%;
+  max-height: 190px;
+  object-fit: contain;
+  margin: 0 auto var(--s-3);
+}
+
+#modelsContainer .card h3 {
+  font-size: 1.15rem;
+}
+
+#modelsContainer .card p {
+  font-size: 0.98rem;
+}
+
+/* Button inside model cards (compat) */
+#modelsContainer .model-btn,
+#modelsContainer .card button {
+  width: 100%;
+  margin-top: var(--s-4);
+}
+
+/* Global warning banner */
+.global-warning {
+  margin-top: var(--s-6);
+  border-radius: 22px;
+
+  padding: 18px 20px;
+
+  border: 1px solid rgba(255, 210, 90, 0.22);
+  background:
+    radial-gradient(600px 200px at 18% 0%,
+      rgba(255, 210, 90, 0.1),
+      transparent 60%),
+    rgba(10, 14, 26, 0.92);
+
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+
+  color: color-mix(in srgb, var(--text) 95%, white);
+  line-height: 1.65;
+
+  animation: warningFadeIn 220ms var(--ease);
+}
+
+/* Warning layout interno (HTML inyectado desde console-index-base.js) */
+.global-warning .gw-inner {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.global-warning .gw-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(255, 210, 90, 0.12);
+  border: 1px solid rgba(255, 210, 90, 0.22);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.global-warning .gw-text strong {
+  display: inline-block;
+  margin-right: 6px;
+  color: rgba(255, 233, 180, 0.98);
+  font-weight: 900;
+}
+
+.global-warning .gw-sub {
+  margin-top: 6px;
+  padding-top: 8px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+  color: color-mix(in srgb, var(--muted) 92%, white);
+  font-size: 0.95rem;
+}
+
+/* icono automático */
+.global-warning::before {
+  content: none;
+  font-size: 1.15rem;
+  line-height: 1;
+  margin-top: 2px;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
+}
+
+/* si el warning trae links */
+.global-warning a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--warning) 55%, transparent);
+  text-underline-offset: 3px;
+}
+
+@keyframes warningFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+9) SELECTORES (almacenamiento/juegos) — compat
+============================================================ */
+
+.disk-selector,
+.selector-summary {
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.22);
+  padding: var(--s-5);
+}
+
+.selector-layout {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.selector-catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ============================================================
+10) RESUMEN / PRICING (summaryCard)
+============================================================ */
+
+#summaryCard {
+  padding: var(--s-6);
+}
+
+.summary-grid {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: 1fr;
+  margin-top: var(--s-4);
+}
+
+@media (min-width: 720px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.summary-item {
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.label {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.value {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--text) 96%, white);
+}
+
+.alert {
+  margin-top: var(--s-4);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: color-mix(in srgb, var(--muted) 90%, white);
+}
+
+.alert.danger,
+.danger {
+  border-color: color-mix(in srgb, var(--danger) 45%, rgba(255, 255, 255, 0.1));
+  background: color-mix(in srgb, var(--danger) 14%, rgba(255, 255, 255, 0.03));
+}
+
+/* Pricing breakdown compatibility ids */
+#pricingBreakdown {
+  margin-top: var(--s-4);
+  display: grid;
+  gap: 10px;
+}
+
+#pricingTotal {
+  margin-top: 12px;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: color-mix(in srgb, var(--accent-color) 65%, white);
+}
+
+/* ============================================================
+11) CATÁLOGO (catalogo.html) — BLOQUE ÚNICO FINAL (sin duplicados)
+============================================================ */
+
+/* Layout general tipo app */
+.selector-app {
+  display: grid;
+  gap: var(--s-5);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 980px) {
+  .selector-app {
+    grid-template-columns: 1.45fr 0.75fr;
+  }
+}
+
+/* Panel genérico (catalog y summary) */
+.selector-panel {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(700px 220px at 20% 0%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%),
+    rgba(0, 0, 0, 0.22);
+  box-shadow: var(--shadow-soft);
+  padding: var(--s-5);
+}
+
+/* Summary sticky en desktop */
+@media (min-width: 980px) {
+  .selector-summary {
+    position: sticky;
+    top: calc(74px + var(--s-4));
+  }
+}
+
+/* Títulos internos */
+.selector-catalog h3,
+.selector-summary h3 {
+  margin: 0 0 var(--s-4);
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+/* PANEL CATALOGO: estructura vertical estable */
+.selector-catalog {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  /* toolbar, letras, lista */
+  gap: 10px;
+  max-height: 70vh;
+
+  /* panel NO scrollea, solo la lista */
+  overflow: hidden;
+  padding-right: 0;
+}
+
+@media (max-width: 980px) {
+  .selector-catalog {
+    max-height: 60vh;
+  }
+}
+
+/* Barra superior */
+.catalog-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+}
+
+#catalogSearch {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+}
+
+#catalogSearch::placeholder {
+  color: rgba(234, 240, 255, 0.55);
+}
+
+/* Letras (solo DESKTOP/TABLET) */
+.catalog-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 0 6px;
+}
+
+.catalog-letters button {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.catalog-letters button.active {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
+  background: color-mix(in srgb,
+      var(--accent-color) 14%,
+      rgba(255, 255, 255, 0.03));
+}
+
+/* ✅ MOBILE: QUITAMOS FILTRO POR LETRAS */
+@media (max-width: 520px) {
+  .catalog-letters {
+    display: none !important;
+  }
+
+  /* toolbar + lista */
+  .selector-catalog {
+    grid-template-rows: auto 1fr;
+  }
+}
+
+/* La lista es la ÚNICA que scrollea */
+.catalog-list {
+  overflow-y: auto;
+  max-height: none;
+  padding-right: 6px;
+  margin-top: 2px;
+
+  /* CRÍTICO en grid para scroll */
+  min-height: 0;
+}
+
+/* Scrollbar bonito aplicado a la lista */
+.catalog-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.catalog-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 999px;
+}
+
+.catalog-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.catalog-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ============================================================
+Items del catálogo
+============================================================ */
+
+.selector-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+
+  transition:
+    transform var(--ease),
+    border var(--ease),
+    background var(--ease);
+}
+
+.selector-item:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 18%,
+      rgba(255, 255, 255, 0.1));
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.selector-item span:first-child {
+  font-weight: 850;
+  font-size: 0.98rem;
+  color: color-mix(in srgb, var(--text) 96%, white);
+}
+
+.selector-item span:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  opacity: 0.95;
+  color: color-mix(in srgb, var(--muted) 90%, white);
+  font-size: 0.95rem;
+}
+
+/* Botón add-game */
+.add-game {
+  padding: 9px 12px;
+  border-radius: 999px;
+
+  border: 1px solid color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
+  background: rgba(255, 255, 255, 0.04);
+  color: color-mix(in srgb, var(--text) 94%, white);
+  font-weight: 900;
+}
+
+.add-game:hover {
+  background: color-mix(in srgb,
+      var(--accent-color) 12%,
+      rgba(255, 255, 255, 0.05));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
+}
+
+/* Estado agregado */
+.add-game.added,
+.add-game:disabled.added {
+  background: rgba(120, 255, 150, 0.14);
+  border-color: rgba(120, 255, 150, 0.35);
+  color: rgba(235, 255, 242, 0.95);
+  cursor: not-allowed;
+  opacity: 0.95;
+}
+
+/* Extra: hover ya no aplica */
+.add-game.added:hover {
+  background: rgba(120, 255, 150, 0.14);
+  border-color: rgba(120, 255, 150, 0.35);
+}
+
+.add-game.added {
+  background: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.05));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 65%,
+      rgba(255, 255, 255, 0.15));
+  color: color-mix(in srgb, var(--text) 96%, white);
+  opacity: 0.95;
+}
+
+.add-game.blocked {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Mobile: selector más compacto */
+@media (max-width: 520px) {
+  .selector-item {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+
+    gap: 4px 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .selector-item span:first-child {
+    font-size: 0.92rem;
+    font-weight: 850;
+    line-height: 1.15;
+  }
+
+  .selector-item span:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 0.78rem;
+    opacity: 0.7;
+  }
+
+  .selector-item .add-game {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+
+    padding: 7px 10px;
+    font-size: 0.78rem;
+    border-radius: 999px;
+    min-height: unset;
+    border-width: 1px;
+  }
+}
+
+/* Warnings / límites */
+.limit-warning {
+  margin-top: var(--s-4);
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  border: 1px solid rgba(255, 210, 90, 0.22);
+  background:
+    radial-gradient(500px 160px at 20% 0%,
+      rgba(255, 210, 90, 0.09),
+      transparent 60%),
+    rgba(10, 14, 26, 0.85);
+
+  color: color-mix(in srgb, var(--text) 96%, white);
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+/* Acciones en summary */
+.selection-actions {
+  margin-top: var(--s-4);
+  display: grid;
+  gap: 10px;
+}
+
+.selection-actions .btn-small {
+  width: 100%;
+  justify-content: center;
+}
+
+#saveSelection.btn-small {
+  border: none;
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-color) 85%, white),
+      rgba(108, 99, 255, 0.95));
+  color: #08101e;
+  font-weight: 900;
+}
+
+#saveSelection.btn-small:hover {
+  filter: brightness(1.06);
+}
+
+/* ============================================================
+12) CONTACTO
+============================================================ */
+
+#contactForm {
+  display: grid;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+
+#contactForm label {
+  display: grid;
+  gap: 8px;
+  color: color-mix(in srgb, var(--text) 86%, white);
+  font-weight: 700;
+}
+
+#contactForm input,
+#contactForm textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 14px;
+  outline: none;
+  transition:
+    border var(--ease),
+    background var(--ease);
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 45%,
+      rgba(255, 255, 255, 0.12));
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================================
+CONTACTO — PRECIO ESTIMADO (UI premium)
+============================================================ */
+
+.pricing-section {
+  margin-top: var(--s-6);
+}
+
+.pricing-card {
+  padding: 18px;
+  border-radius: 26px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* glow suave */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background: radial-gradient(700px 240px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 18%, transparent),
+      transparent 62%);
+  opacity: 0.9;
+}
+
+.pricing-card>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.pricing-header {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.pricing-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.2px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.pricing-hint {
+  font-size: 0.95rem;
+  color: rgba(234, 240, 255, 0.72);
+  line-height: 1.45;
+}
+
+/* Breakdown lista tipo recibo */
+.pricing-breakdown {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+/* cada línea precio */
+.pricing-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  padding: 10px 2px;
+  align-items: center;
+
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.pricing-row:last-child {
+  border-bottom: 0;
+}
+
+.pricing-row .p-name {
+  font-weight: 850;
+  opacity: 0.92;
+}
+
+.pricing-row .p-price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 950;
+  letter-spacing: 0.2px;
+  opacity: 0.95;
+}
+
+/* Total como "hero" */
+.pricing-total-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+
+  border: 1px solid color-mix(in srgb, var(--accent-color) 28%, rgba(255, 255, 255, 0.12));
+  background:
+    radial-gradient(500px 180px at 20% 0%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 60%),
+    rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.pricing-total-label {
+  font-size: 0.92rem;
+  font-weight: 850;
+  opacity: 0.82;
+}
+
+.pricing-total-value {
+  font-size: 1.45rem;
+  font-weight: 1000;
+  letter-spacing: 0.2px;
+  color: color-mix(in srgb, var(--accent-color) 45%, #ffffff);
+}
+
+/* Nota final (más discreta aquí) */
+.pricing-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  border: 1px solid rgba(120, 255, 150, 0.18);
+  background: rgba(120, 255, 150, 0.06);
+  color: rgba(235, 255, 242, 0.95);
+
+  font-size: 0.92rem;
+}
+
+/* Spinner / loading */
+.pricing-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  opacity: 0.85;
+  font-weight: 750;
+}
+
+.pricing-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-top-color: color-mix(in srgb, var(--accent-color) 70%, white);
+  animation: spin 0.85s linear infinite;
+}
+
+/* Pricing note: que no sea full width */
+.pricing-note {
+  display: inline-flex;
+  /* en vez de block */
+  align-items: center;
+  gap: 10px;
+
+  width: fit-content;
+  /* ✅ se ajusta al texto */
+  max-width: 100%;
+  /* por si el texto es largo en móvil */
+
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  border-radius: 16px;
+  /* menos redondeado */
+
+  margin-top: 14px;
+  /* separacion */
+}
+
+/* =========================================
+FORM UI (Contacto)
+========================================= */
+
+.form-card {
+  display: grid;
+  gap: 10px;
+}
+
+.form-label {
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: color-mix(in srgb, var(--text) 92%, white);
+}
+
+/* Input premium */
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+
+  outline: none;
+  transition:
+    border var(--ease),
+    box-shadow var(--ease),
+    transform var(--ease),
+    background var(--ease);
+}
+
+.form-input::placeholder {
+  color: rgba(234, 240, 255, 0.5);
+}
+
+.form-input:focus {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.18));
+  box-shadow:
+    0 0 0 4px rgba(40, 220, 120, 0.1),
+    0 18px 38px rgba(0, 0, 0, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.form-hint {
+  margin: 0;
+  font-size: 0.92rem;
+  opacity: 0.78;
+  line-height: 1.4;
+}
+
+/* ============================================================
+CTA SECTION (Contacto WhatsApp + reset)
+============================================================ */
+
+.cta-card {
+  text-align: center;
+}
+
+/* Botón principal NO full width: se ve premium */
+.cta-primary {
+  width: auto !important;
+  min-width: 260px;
+  max-width: 520px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 1.02rem;
+}
+
+/* En móvil sí se puede estirar un poco pero con límite */
+@media (max-width: 520px) {
+  .cta-primary {
+    width: 100% !important;
+    max-width: 420px;
+  }
+}
+
+/* Hint debajo */
+.cta-hint {
+  margin: 10px 0 2px;
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* Divider */
+.cta-divider {
+  height: 1px;
+  width: 100%;
+  margin: 18px 0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+MOBILE ajustes (compactar mucho)
+============================================================ */
+
+@media (max-width: 520px) {
+  .pricing-card {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .pricing-breakdown {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .pricing-row {
+    padding: 9px 2px;
+  }
+
+  .pricing-row .p-name {
+    font-size: 0.95rem;
+  }
+
+  .pricing-row .p-price {
+    font-size: 0.95rem;
+  }
+
+  .pricing-total-box {
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  .pricing-total-value {
+    font-size: 1.25rem;
+  }
+
+  .pricing-hint {
+    font-size: 0.9rem;
+  }
+
+  .pricing-note {
+    font-size: 0.88rem;
+    margin-inline: auto;
+    /* centra el chip */
+    text-align: left;
+  }
+}
+
+/* ============================================================
+CONTACTO — CTA WhatsApp centrado DEFINITIVO
+============================================================ */
+
+.whatsapp-cta {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* ✅ centra SIEMPRE */
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.whatsapp-cta #sendBtn {
+  margin: 0 auto;
+}
+
+/* el hint debajo */
+.whatsapp-cta .cta-hint {
+  margin: 0;
+  max-width: 560px;
+  opacity: 0.75;
+  line-height: 1.5;
+}
+
+/* Mobile: botón más ancho pero centrado */
+@media (max-width: 520px) {
+  .whatsapp-cta {
+    gap: 12px;
+  }
+
+  .whatsapp-cta #sendBtn.cta-primary {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .whatsapp-cta .cta-hint {
+    max-width: 32ch;
+  }
+}
+
+/* ============================================================
+CONTACTO — CTA Reset / Nueva selección centrado
+============================================================ */
+
+.cta-reset {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* ✅ centra todo */
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.cta-reset #newSelectionBtn {
+  margin: 0 auto;
+  /* ✅ por si algún layout raro lo afecta */
+}
+
+.cta-reset-hint {
+  margin: 0;
+  max-width: 560px;
+  opacity: 0.72;
+  line-height: 1.5;
+}
+
+/* Mobile: que no se vea gigante y quede centrado */
+@media (max-width: 520px) {
+  .cta-reset {
+    gap: 12px;
+  }
+
+  .cta-reset #newSelectionBtn {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .cta-reset-hint {
+    max-width: 32ch;
+  }
+}
+
+/* ============================================================
+CONTACTO — MAPA / UBICACIÓN (mejora visual)
+============================================================ */
+
+.map-shell {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background:
+    radial-gradient(900px 320px at 20% 0%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%),
+    rgba(0, 0, 0, 0.22);
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* Glow decorativo */
+.map-glow {
+  position: absolute;
+  inset: -60px;
+
+  background:
+    radial-gradient(600px 220px at 20% 25%,
+      color-mix(in srgb, var(--accent-color) 24%, transparent),
+      transparent 65%),
+    radial-gradient(700px 260px at 75% 30%,
+      rgba(108, 99, 255, 0.18),
+      transparent 60%);
+
+  filter: blur(12px);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Contenedor iframe */
+.map-container {
+  position: relative;
+  border-radius: 22px;
+
+  overflow: hidden;
+  margin: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 340px;
+  display: block;
+
+  /* 🧠 le baja lo “amarillento” al mapa y lo integra con tu tema */
+  filter: saturate(0.92) contrast(1.05) brightness(0.96);
+}
+
+/* Footer (badge + botón) */
+.map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 14px 18px 18px;
+  margin: 0 16px 16px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.16);
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.map-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 850;
+  font-size: 0.92rem;
+  letter-spacing: 0.2px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: color-mix(in srgb, var(--text) 90%, white);
+}
+
+.map-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: color-mix(in srgb, var(--accent-color) 85%, white);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent-color) 20%, transparent),
+    0 0 22px rgba(120, 255, 150, 0.22);
+}
+
+/* Botón maps */
+.map-btn {
+  white-space: nowrap;
+  border-radius: 999px;
+  padding-inline: 18px;
+
+  border: 1px solid color-mix(in srgb, var(--accent-color) 35%, rgba(255, 255, 255, 0.12));
+  background:
+    radial-gradient(320px 120px at 25% 0%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 60%),
+    rgba(255, 255, 255, 0.04);
+
+  transition:
+    transform var(--ease),
+    border var(--ease),
+    background var(--ease);
+}
+
+.map-btn:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
+  background:
+    radial-gradient(320px 120px at 25% 0%,
+      color-mix(in srgb, var(--accent-color) 22%, transparent),
+      transparent 60%),
+    rgba(255, 255, 255, 0.06);
+}
+
+/* ✅ Responsive */
+@media (max-width: 520px) {
+  .map-container iframe {
+    height: 260px;
+  }
+
+  .map-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .map-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .map-badge {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* ============================================================
+13) FAQ
+============================================================ */
+
+#faq-container {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.faq-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.faq-tab {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border var(--ease);
+}
+
+.faq-tab:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.faq-tab.active {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 40%,
+      rgba(255, 255, 255, 0.12));
+  background: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.04));
+}
+
+.faq-section {
+  display: none;
+}
+
+.faq-section.active {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.faq-item {
+  padding: var(--s-5);
+}
+
+.faq-item h3 {
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  margin: 0;
+}
+
+/* ============================================================
+FIX OVERRIDE — selector-catalog NO debe ser flex (rompe mobile)
+Poner al FINAL de theme-base.css
+============================================================ */
+
+.selector-layout {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.selector-catalog {
+  display: grid !important;
+  grid-template-rows: auto auto 1fr !important;
+  gap: 10px !important;
+
+  max-height: 70vh !important;
+  overflow: hidden !important;
+  padding-right: 0 !important;
+}
+
+/* La lista es el único scroll */
+.selector-catalog .catalog-list {
+  overflow-y: auto !important;
+  min-height: 0 !important;
+}
+
+/* Chips letras en móvil: scroll horizontal y NO se enciman */
+@media (max-width: 520px) {
+  .selector-catalog {
+    max-height: 60vh !important;
+  }
+
+  .catalog-letters {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+
+    position: relative !important;
+    /* NO sticky */
+    top: auto !important;
+
+    margin: 0 !important;
+    padding: 6px 2px 8px !important;
+    z-index: 1 !important;
+
+    mask-image: linear-gradient(to right,
+        transparent 0,
+        black 16px,
+        black calc(100% - 16px),
+        transparent 100%);
+  }
+}
+
+/* ============================================================
+FIX DEFINITIVO: #storageHelp SIEMPRE debajo del título en desktop
+============================================================ */
+
+#storageHelp {
+  width: fit-content;
+  max-width: 100%;
+
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(120, 255, 160, 0.18);
+  background:
+    radial-gradient(500px 160px at 20% 0%,
+      rgba(120, 255, 160, 0.08),
+      transparent 60%),
+    rgba(0, 0, 0, 0.22);
+
+  color: rgba(240, 245, 255, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  margin-top: 14px;
+}
+
+/* Icono check */
+#storageHelp::before {
+  content: "✅";
+  margin-right: 10px;
+}
+
+/* ✅ FIX REAL: en desktop debe ser BLOCK para que NO se ponga junto al h2 */
+@media (min-width: 521px) {
+  #storageHelp {
+    display: block !important;
+  }
+}
+
+/* ✅ En móvil lo centramos como chip */
+@media (max-width: 520px) {
+  #storageHelp {
+    display: inline-flex !important;
+    align-items: center;
+    margin-inline: auto;
+  }
+}
+
+/* =========================================
+Netflix row: estilos SOLO para esta sección
+(no afecta otras console-card del sitio)
+========================================= */
+
+.cards-netflix .console-card {
+  padding: 0;
+  /* evita padding grande del grid */
+  min-height: unset;
+  /* evita altura del tile normal */
+}
+
+.cards-netflix .console-card img {
+  max-width: none;
+  /* no limitar como en cards-grid */
+}
+
+/* =========================================
+Consolas más solicitadas — Netflix row FINAL
+========================================= */
+
+.netflix-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 10px;
+}
+
+/* La fila horizontal */
+.netflix-row {
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 10px 6px 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* scroll suave + no brinca con anchors */
+  scroll-behavior: smooth;
+
+  /* degradado para sugerir scroll */
+  mask-image: linear-gradient(to right,
+      transparent 0,
+      black 24px,
+      black calc(100% - 24px),
+      transparent 100%);
+}
+
+/* scrollbar discreto */
+.netflix-row::-webkit-scrollbar {
+  height: 10px;
+}
+
+.netflix-row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 999px;
+}
+
+.netflix-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+}
+
+.netflix-row::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Cards tipo Netflix (NO rompe tus console-card originales) */
+.netflix-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+
+  width: 190px;
+  height: 118px;
+
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+
+  padding: 0 !important;
+  /* para que no use padding de console-card */
+
+  background:
+    radial-gradient(420px 140px at 15% 0%,
+      rgba(255, 255, 255, 0.09),
+      transparent 65%),
+    rgba(0, 0, 0, 0.22);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.netflix-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.14));
+  background:
+    radial-gradient(420px 140px at 15% 0%,
+      rgba(255, 255, 255, 0.12),
+      transparent 65%),
+    rgba(0, 0, 0, 0.26);
+}
+
+/* Logos dentro del tile */
+.netflix-card img {
+  width: 78%;
+  max-height: 70px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
+}
+
+/* Flechas */
+.netflix-arrow {
+  display: none;
+  /* mobile no necesita */
+}
+
+/* Desktop: flechas visibles SIN JS */
+@media (min-width: 900px) {
+  .netflix-arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-soft);
+
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.92;
+
+    transition:
+      transform var(--ease),
+      background var(--ease),
+      border var(--ease),
+      opacity var(--ease);
+  }
+
+  .netflix-arrow:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: color-mix(in srgb,
+        var(--accent-color) 30%,
+        rgba(255, 255, 255, 0.14));
+  }
+}
+
+/* Mobile compact */
+@media (max-width: 520px) {
+  .netflix-shell {
+    grid-template-columns: 1fr;
+    /* sin flechas */
+  }
+
+  .netflix-row {
+    gap: 14px;
+    padding: 10px 6px 14px;
+  }
+
+  .netflix-card {
+    width: 160px;
+    height: 104px;
+    border-radius: 18px;
+  }
+
+  .netflix-card img {
+    max-height: 62px;
+  }
+}
+
+/* ===================================
+HIGHLIGHT SUAVE — Selección premium
+=================================== */
+
+.service-card,
+.disk-option,
+.selector-item,
+.model-card {
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 180ms ease;
+}
+
+/* Estado seleccionado */
+.selected,
+.is-selected,
+.active-selection {
+  background:
+    radial-gradient(500px 180px at 20% 0%,
+      rgba(120, 180, 255, 0.18),
+      transparent 60%),
+    rgba(255, 255, 255, 0.05);
+
+  border-color: rgba(120, 180, 255, 0.45);
+
+  box-shadow:
+    0 0 0 1px rgba(120, 180, 255, 0.35),
+    0 14px 36px rgba(0, 0, 0, 0.45);
+
+  transform: scale(1.02);
+}
+
+.selected {
+  will-change: transform, box-shadow;
+}
+
+.disk-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.disk-games {
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+/* ================================
+VARIANTES DE MENSAJES (warning / note)
+================================ */
+
+/* Base ya la tienes: .global-warning */
+
+/* ⚠️ WARNING (amarillo) */
+.global-warning.gw-warning {
+  border: 1px solid rgba(255, 210, 90, 0.28);
+
+  background:
+    radial-gradient(600px 200px at 18% 0%,
+      rgba(255, 210, 90, 0.12),
+      transparent 60%),
+    rgba(10, 14, 26, 0.92);
+
+  color: color-mix(in srgb, var(--text) 95%, white);
+}
+
+.global-warning.gw-warning .gw-icon {
+  background: rgba(255, 210, 90, 0.14);
+  border: 1px solid rgba(255, 210, 90, 0.3);
+}
+
+.global-warning.gw-warning .gw-text strong {
+  color: rgba(255, 233, 180, 0.98);
+}
+
+/* ℹ️ NOTE / INFO (azul) */
+.global-warning.gw-note {
+  border: 1px solid rgba(120, 180, 255, 0.28);
+
+  background:
+    radial-gradient(600px 200px at 18% 0%,
+      rgba(120, 180, 255, 0.12),
+      transparent 60%),
+    rgba(10, 14, 26, 0.92);
+
+  color: color-mix(in srgb, var(--text) 95%, white);
+}
+
+.global-warning.gw-note .gw-icon {
+  background: rgba(120, 180, 255, 0.14);
+  border: 1px solid rgba(120, 180, 255, 0.3);
+}
+
+.global-warning.gw-note .gw-text strong {
+  color: rgba(170, 210, 255, 0.98);
+}
+
+.service-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-card-link:hover {
+  text-decoration: none;
+}
+
+.form-input option {
+  background: var(--bg-2);
+  color: var(--text);
+}
+
+.form-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.catalog-library-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 10px;
+  padding: 2px 0 8px;
+}
+
+.catalog-library-tabs button {
+  padding: 9px 12px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+
+  font-weight: 900;
+  cursor: pointer;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border var(--ease);
+}
+
+.catalog-library-tabs button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+}
+
+.catalog-library-tabs button.active {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
+  background: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.04));
+}
+
+@media (max-width: 520px) {
+  .catalog-library-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .catalog-library-tabs button {
+    flex: 0 0 auto;
+  }
+}
+
+.model-variant-card {
+  margin-top: var(--s-5);
+  max-width: 520px;
+}
+
+.model-variant-card.hidden {
+  display: none;
+}
+
+.service-price-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  width: fit-content;
+  margin: 12px 0 14px;
+  padding: 9px 12px;
+
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+
+  background: color-mix(in srgb,
+      var(--accent-color) 10%,
+      rgba(255, 255, 255, 0.04));
+}
+
+#servicesContainer .card .btn {
+  display: flex;
+  width: fit-content;
+  margin-top: 6px;
+}
+
+.service-price-label {
+  color: color-mix(in srgb, var(--text) 96%, white);
+  font-size: 0.98rem;
+  font-weight: 950;
+  line-height: 1.2;
+}
+
+.service-price-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.disk-price {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 6px 9px;
+
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+
+  background: color-mix(in srgb,
+      var(--accent-color) 10%,
+      rgba(255, 255, 255, 0.04));
+
+  color: color-mix(in srgb, var(--text) 96%, white);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.disk-main-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.disk-main-row strong {
+  line-height: 1.2;
+}
+
+.disk-main-row .disk-games {
+  margin: 0;
+}
+
+/* ============================================================
+FAQ — GameTechSolutions
+============================================================ */
+
+.faq-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin: var(--s-5) 0 var(--s-6);
+  padding: 10px;
+
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: var(--glow);
+}
+
+.faq-tab {
+  min-height: 42px;
+  padding: 10px 15px;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+
+  color: var(--muted);
+  font-weight: 900;
+  cursor: pointer;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    color var(--ease),
+    border-color var(--ease);
+}
+
+.faq-tab:hover {
+  transform: translateY(-1px);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.faq-tab.active {
+  color: color-mix(in srgb, var(--text) 96%, white);
+  background: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.04));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 44%,
+      rgba(255, 255, 255, 0.14));
+}
+
+.faq-content {
+  margin-bottom: calc(var(--s-8) + 74px);
+}
+
+.faq-accordion {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-item {
+  overflow: hidden;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.025));
+
+  box-shadow: var(--glow);
+
+  transition:
+    transform var(--ease),
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.12));
+}
+
+.faq-item.open {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 44%,
+      rgba(255, 255, 255, 0.14));
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(120, 180, 255, 0.12);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  width: 100%;
+  padding: 18px 20px;
+
+  border: none;
+  background: transparent;
+
+  color: var(--text);
+  text-align: left;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 950;
+  line-height: 1.35;
+
+  cursor: pointer;
+}
+
+.faq-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.045);
+  color: color-mix(in srgb, var(--accent-color) 86%, white);
+
+  font-size: 1.15rem;
+  font-weight: 950;
+  line-height: 1;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 40%,
+      rgba(255, 255, 255, 0.14));
+  background: color-mix(in srgb,
+      var(--accent-color) 14%,
+      rgba(255, 255, 255, 0.04));
+}
+
+.faq-answer {
+  padding: 0 20px 20px;
+}
+
+.faq-answer p {
+  max-width: 92ch;
+  margin: 0;
+
+  color: color-mix(in srgb, var(--muted) 94%, white);
+  line-height: 1.75;
+}
+
+.faq-empty {
+  padding: 22px;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: var(--glow);
+}
+
+.faq-empty h3 {
+  margin-top: 0;
+}
+
+.faq-empty p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 680px) {
+  .faq-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    border-radius: 22px;
+    padding: 8px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .faq-tab {
+    flex: 0 0 auto;
+  }
+
+  .faq-question {
+    align-items: flex-start;
+    padding: 16px;
+    font-size: 0.98rem;
+  }
+
+  .faq-answer {
+    padding: 0 16px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .faq-tab,
+  .faq-item,
+  .faq-icon {
+    transition: none !important;
+  }
+
+  .faq-item:hover {
+    transform: none;
+  }
+}
+
+.faq-groups {
+  display: grid;
+  gap: var(--s-7);
+}
+
+.faq-group {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-group-heading {
+  max-width: 860px;
+}
+
+.faq-group-heading h3 {
+  margin: 0 0 6px;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+.faq-group-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.faq-group-heading::after {
+  content: "";
+  display: block;
+
+  width: 72px;
+  height: 3px;
+  margin-top: 12px;
+
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color) 70%, transparent);
+}
+
+.contact-public-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-4);
+  margin: var(--s-6) 0 var(--s-7);
+}
+
+.contact-public-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.contact-public-icon {
+  display: inline-grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+
+  background: color-mix(in srgb,
+      var(--accent-color) 12%,
+      rgba(255, 255, 255, 0.04));
+
+  font-size: 1.25rem;
+}
+
+.contact-public-card h3 {
+  margin: 4px 0 0;
+}
+
+.contact-public-card p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.contact-public-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+@media (max-width: 880px) {
+  .contact-public-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-hours {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  margin: 4px 0 6px;
+}
+
+.contact-hours div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 9px 11px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.contact-hours span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.contact-hours strong {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 950;
+  text-align: right;
+}
+
+@media (max-width: 520px) {
+  .contact-hours div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .contact-hours strong {
+    text-align: left;
+  }
+}
