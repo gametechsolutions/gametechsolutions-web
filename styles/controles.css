@@ -394,3 +394,53 @@ CONTROLES — Cards dinámicas generadas por controllers.js
 .controllers-mini-card:hover {
   transform: none;
 }
+
+/* ============================================================
+CONTROLES — Título de servicio con icono
+============================================================ */
+
+.controllers-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: var(--s-2);
+}
+
+.controllers-card-title h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.controllers-card-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+
+  background: color-mix(in srgb,
+      var(--accent-color) 12%,
+      rgba(255, 255, 255, 0.04));
+
+  font-size: 1.05rem;
+}
+
+@media (max-width: 520px) {
+  .controllers-card-title {
+    gap: 9px;
+  }
+
+  .controllers-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 13px;
+    font-size: 1rem;
+  }
+}

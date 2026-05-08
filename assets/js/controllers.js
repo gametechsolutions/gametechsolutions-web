@@ -107,29 +107,27 @@ function renderServices(data) {
     const listItems = includes.length ? includes : commonIssues;
 
     return `
-      <article class="controllers-card" data-service-id="${escapeHTML(service.id)}">
-        <div class="svc-top">
-          <span class="svc-icon">${escapeHTML(service.icon || '🎮')}</span>
-          <span class="svc-badge">${escapeHTML(service.badge || 'CTRL')}</span>
-        </div>
+  <article class="controllers-card" data-service-id="${escapeHTML(service.id)}">
+    <div class="controllers-card-title">
+      <span class="controllers-card-icon">${escapeHTML(service.icon || '🎮')}</span>
+      <h3>${escapeHTML(service.name)}</h3>
+    </div>
 
-        <h3>${escapeHTML(service.name)}</h3>
+    <p>${escapeHTML(service.shortDescription || '')}</p>
 
-        <p>${escapeHTML(service.shortDescription || '')}</p>
+    <p class="controllers-price">
+      ${escapeHTML(formatPrice(service))}
+    </p>
 
-        <p class="controllers-price">
-          ${escapeHTML(formatPrice(service))}
-        </p>
+    <ul>
+      ${listItems.map(item => `<li>${escapeHTML(item)}</li>`).join('')}
+    </ul>
 
-        <ul>
-          ${listItems.map(item => `<li>${escapeHTML(item)}</li>`).join('')}
-        </ul>
-
-        <a class="controllers-card__link" href="${escapeHTML(buildContactUrl(service))}">
-          ${escapeHTML(service.ctaLabel || 'Solicitar servicio')}
-        </a>
-      </article>
-    `;
+    <a class="controllers-card__link" href="${escapeHTML(buildContactUrl(service))}">
+      ${escapeHTML(service.ctaLabel || 'Solicitar servicio')}
+    </a>
+  </article>
+`;
   }).join('');
 }
 
