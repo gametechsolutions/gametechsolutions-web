@@ -733,17 +733,23 @@ section .card,
 MOBILE UX — Header/Footer sin tapar contenido
 ============================================================ */
 
+/* ============================================================
+MOBILE UX — Header fijo, footer sin tapar contenido
+============================================================ */
+
 @media (max-width: 720px) {
   header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 999;
 
     padding: 8px 0;
   }
 
   main {
-    padding-top: var(--s-5);
+    padding-top: calc(var(--s-6) + 74px);
     padding-bottom: var(--s-7);
   }
 
@@ -755,7 +761,7 @@ MOBILE UX — Header/Footer sin tapar contenido
     padding: var(--s-5) 0;
   }
 
-  section + section {
+  section+section {
     padding-top: var(--s-5);
   }
 

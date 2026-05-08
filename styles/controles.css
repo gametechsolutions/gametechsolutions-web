@@ -503,7 +503,7 @@ MOBILE UX — /controles/
 @media (max-width: 720px) {
   .controllers-main {
     width: min(100% - 1.25rem, var(--container));
-    padding-top: var(--s-5);
+    padding-top: calc(var(--s-6) + 74px);
     padding-bottom: var(--s-7);
   }
 }
