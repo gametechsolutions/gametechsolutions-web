@@ -3057,3 +3057,110 @@ MOBILE UX — Solicitud / recibo más compacto con varios servicios
     line-height: 1.2;
   }
 }
+
+/* ============================================================
+MOBILE UX — Contacto público
+============================================================ */
+
+@media (max-width: 520px) {
+  .contact-public-grid {
+    gap: 14px;
+    margin: var(--s-5) 0 var(--s-6);
+  }
+
+  .contact-public-card {
+    padding: 18px;
+    border-radius: 22px;
+    gap: 8px;
+  }
+
+  .contact-public-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+    font-size: 1.08rem;
+  }
+
+  .contact-public-card h3 {
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 1.05rem;
+    line-height: 1.15;
+  }
+
+  .contact-public-card p {
+    margin-bottom: 10px;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .contact-public-card .btn {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 14px;
+    font-size: 0.92rem;
+  }
+
+  .contact-public-actions {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .contact-public-actions .btn {
+    justify-content: center;
+  }
+
+  .contact-hours {
+    gap: 7px;
+    margin: 2px 0 8px;
+  }
+
+  .contact-hours div {
+    padding: 9px 10px;
+    border-radius: 13px;
+  }
+
+  .contact-hours span {
+    font-size: 0.82rem;
+  }
+
+  .contact-hours strong {
+    font-size: 0.88rem;
+  }
+}
+
+/* ============================================================
+MOBILE UX — Contacto / mapa
+============================================================ */
+
+@media (max-width: 520px) {
+  .map-shell {
+    border-radius: 22px;
+  }
+
+  .map-container {
+    margin: 12px;
+    border-radius: 18px;
+  }
+
+  .map-container iframe {
+    height: 240px;
+  }
+
+  .map-footer {
+    margin: 0 12px 12px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .map-badge {
+    font-size: 0.84rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .map-btn {
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+}
