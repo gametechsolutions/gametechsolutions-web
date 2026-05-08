@@ -3015,3 +3015,45 @@ MOBILE UX — Solicitud / precio y formulario
     font-size: 0.92rem;
   }
 }
+
+/* ============================================================
+MOBILE UX — Solicitud / recibo más compacto con varios servicios
+============================================================ */
+
+@media (max-width: 520px) {
+  .pricing-card {
+    padding: 12px;
+  }
+
+  .pricing-breakdown {
+    padding: 8px 10px;
+  }
+
+  .pricing-row {
+    padding: 9px 0;
+    gap: 8px;
+  }
+
+  .pricing-row .p-name {
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .pricing-row .p-price {
+    font-size: 0.92rem;
+  }
+
+  .pricing-total-box {
+    margin-top: 10px;
+    padding: 12px 14px;
+  }
+
+  .pricing-total-value {
+    font-size: 1.18rem;
+  }
+
+  .pricing-note {
+    font-size: 0.84rem;
+    line-height: 1.2;
+  }
+}
