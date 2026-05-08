@@ -507,3 +507,329 @@ MOBILE UX — /controles/
     padding-bottom: var(--s-7);
   }
 }
+
+/* ============================================================
+CONTROLES — Normalización visual con el sistema actual
+============================================================ */
+
+/* Layout general más alineado al resto del sitio */
+.controllers-main {
+  width: min(100% - 2rem, var(--container));
+  padding-top: calc(var(--s-6) + 74px);
+  padding-bottom: var(--s-8);
+}
+
+/* Hero menos “landing aparte”, más parecido a console/contact hero */
+.controllers-hero {
+  border-radius: 28px;
+  padding: clamp(22px, 4vw, 36px);
+
+  background:
+    radial-gradient(700px 320px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 16%, transparent),
+      transparent 65%),
+    rgba(255, 255, 255, 0.03);
+
+  box-shadow: var(--shadow);
+}
+
+.controllers-hero__content {
+  max-width: 760px;
+}
+
+.controllers-eyebrow {
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 26%,
+      rgba(255, 255, 255, 0.12));
+
+  background: color-mix(in srgb,
+      var(--accent-color) 9%,
+      rgba(255, 255, 255, 0.04));
+
+  color: color-mix(in srgb, var(--text) 94%, white);
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
+.controllers-hero h1 {
+  max-width: 620px;
+  margin-bottom: var(--s-4);
+
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.controllers-hero__text {
+  max-width: 64ch;
+  font-size: clamp(1rem, 1.3vw, 1.08rem);
+  line-height: 1.65;
+}
+
+/* Botones alineados al sistema general */
+.controllers-hero__actions {
+  gap: 10px;
+  margin-top: var(--s-5);
+}
+
+.controllers-btn {
+  min-height: 46px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 950;
+}
+
+.controllers-btn--primary {
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-color) 85%, white),
+      rgba(108, 99, 255, 0.95));
+  color: #08101e;
+}
+
+.controllers-btn--secondary {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+/* Secciones menos separadas */
+.controllers-section {
+  padding: var(--s-7) 0 var(--s-5);
+}
+
+.controllers-section__heading {
+  margin-bottom: var(--s-5);
+}
+
+.controllers-section__heading h2,
+.controllers-warning h2,
+.controllers-cta h2,
+.controllers-policy h2 {
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  letter-spacing: 0.2px;
+}
+
+/* Cards: menos “efecto página aparte” */
+.controllers-card,
+.controllers-mini-card,
+.controllers-warning,
+.controllers-cta,
+.controllers-policy {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.025));
+
+  box-shadow: var(--glow);
+}
+
+/* Solo las cards de servicio tienen un hover leve */
+.controllers-card,
+.controllers-mini-card {
+  transition:
+    border-color var(--ease),
+    box-shadow var(--ease),
+    background var(--ease),
+    transform var(--ease);
+}
+
+.controllers-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 24%,
+      rgba(255, 255, 255, 0.12));
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(120, 180, 255, 0.12);
+}
+
+/* Compatibilidad, warning y CTA no deben sentirse como botones */
+.controllers-mini-card:hover,
+.controllers-warning:hover,
+.controllers-cta:hover,
+.controllers-policy:hover {
+  transform: none;
+}
+
+.controllers-card:hover::after,
+.controllers-mini-card:hover::after,
+.controllers-warning:hover::after,
+.controllers-cta:hover::after {
+  opacity: 0.45;
+}
+
+/* Cards internas más consistentes */
+.controllers-card h3,
+.controllers-mini-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.controllers-card p,
+.controllers-mini-card p,
+.controllers-warning p,
+.controllers-cta p,
+.controllers-policy p {
+  line-height: 1.62;
+}
+
+/* Botones dentro de cards */
+.controllers-card__link {
+  margin-top: var(--s-4);
+  min-height: 42px;
+  padding: 10px 13px;
+  border-radius: 999px;
+}
+
+/* Warning más parecido al resto de avisos */
+.controllers-warning {
+  margin-top: var(--s-5);
+  border-color: rgba(255, 210, 90, 0.28);
+}
+
+/* Política de controles: icono junto al contenido en mobile/desktop */
+.controllers-policy::before {
+  margin-bottom: 10px;
+}
+
+/* CTA final más compacto */
+.controllers-cta {
+  margin-top: var(--s-5);
+  padding: clamp(22px, 4vw, 30px);
+}
+
+/* ============================================================
+MOBILE UX — Controles más integrado al sitio
+============================================================ */
+
+@media (max-width: 720px) {
+  .controllers-main {
+    width: min(100% - 1.25rem, var(--container));
+    padding-top: calc(var(--s-6) + 74px);
+    padding-bottom: var(--s-7);
+  }
+}
+
+@media (max-width: 520px) {
+  .controllers-hero {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .controllers-eyebrow {
+    font-size: 0.82rem;
+    padding: 7px 10px;
+  }
+
+  .controllers-hero h1 {
+    font-size: clamp(2.15rem, 10vw, 2.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  .controllers-hero__text {
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .controllers-hero__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: var(--s-5);
+  }
+
+  .controllers-btn {
+    width: 100%;
+    min-height: 46px;
+    font-size: 0.94rem;
+  }
+
+  .controllers-section {
+    padding: var(--s-6) 0 var(--s-5);
+  }
+
+  .controllers-section__heading {
+    margin-bottom: var(--s-4);
+  }
+
+  .controllers-section__heading h2,
+  .controllers-warning h2,
+  .controllers-cta h2,
+  .controllers-policy h2 {
+    font-size: 1.25rem;
+    line-height: 1.18;
+  }
+
+  .controllers-section__heading p,
+  .controllers-warning p,
+  .controllers-cta p,
+  .controllers-policy p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .controllers-service-grid,
+  .controllers-compatible-grid {
+    gap: 14px;
+  }
+
+  .controllers-card,
+  .controllers-mini-card,
+  .controllers-warning,
+  .controllers-cta,
+  .controllers-policy {
+    border-radius: 20px;
+  }
+
+  .controllers-card,
+  .controllers-mini-card {
+    padding: 18px;
+  }
+
+  .controllers-card h3,
+  .controllers-mini-card h3 {
+    font-size: 1rem;
+  }
+
+  .controllers-card p,
+  .controllers-mini-card p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .controllers-card ul {
+    gap: 7px;
+    margin-top: var(--s-3);
+  }
+
+  .controllers-card li {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .controllers-card__link {
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--s-4);
+  }
+
+  .controllers-warning,
+  .controllers-policy {
+    padding: 18px;
+  }
+
+  .controllers-cta {
+    padding: 20px 18px;
+  }
+
+  .controllers-cta .controllers-btn,
+  .controllers-cta .btn {
+    width: 100%;
+  }
+}
