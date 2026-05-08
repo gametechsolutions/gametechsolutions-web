@@ -2912,3 +2912,106 @@ MOBILE UX — Ajuste fino del selector de catálogo
     margin-bottom: 12px;
   }
 }
+
+/* ============================================================
+MOBILE UX — Solicitud / precio y formulario
+============================================================ */
+
+@media (max-width: 520px) {
+  .pricing-section {
+    margin-top: var(--s-5);
+  }
+
+  .pricing-card {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .pricing-breakdown {
+    margin-top: 0;
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .pricing-row {
+    padding: 12px 2px;
+    gap: 10px;
+  }
+
+  .pricing-row .p-name {
+    font-size: 0.92rem;
+    line-height: 1.25;
+  }
+
+  .pricing-row .p-price {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .pricing-total-box {
+    margin-top: 12px;
+    padding: 13px 14px;
+    border-radius: 18px;
+  }
+
+  .pricing-total-label {
+    font-size: 0.9rem;
+  }
+
+  .pricing-total-value {
+    font-size: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .pricing-note {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 18px;
+
+    font-size: 0.88rem;
+    line-height: 1.25;
+  }
+
+  .form-card {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .form-label {
+    font-size: 0.95rem;
+  }
+
+  .form-input {
+    min-height: 46px;
+    padding: 11px 13px;
+    border-radius: 15px;
+  }
+
+  .form-hint {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .whatsapp-cta {
+    margin-top: 14px;
+  }
+
+  .whatsapp-cta #sendBtn.cta-primary {
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .cta-reset {
+    margin-top: 18px;
+  }
+
+  .cta-reset #newSelectionBtn {
+    min-height: 46px;
+    font-size: 0.92rem;
+  }
+}
