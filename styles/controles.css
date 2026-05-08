@@ -833,3 +833,211 @@ MOBILE UX — Controles más integrado al sitio
     width: 100%;
   }
 }
+
+/* ============================================================
+CONTROLES — Normalización visual fuerte V2
+============================================================ */
+
+/* Hero más alineado al resto del sitio */
+.controllers-hero {
+  max-width: 100%;
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.controllers-hero h1 {
+  max-width: 620px;
+  font-size: clamp(2.35rem, 4.6vw, 3.15rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.controllers-hero__text {
+  max-width: 62ch;
+  line-height: 1.62;
+}
+
+/* Botones del hero más parecidos al resto */
+.controllers-hero__actions {
+  gap: 10px;
+}
+
+.controllers-btn {
+  min-height: 46px;
+  padding: 12px 18px;
+}
+
+/* Controles aceptados: dejar de verse como bloque raro con icono flotante */
+.controllers-policy {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  column-gap: 12px;
+  row-gap: 10px;
+
+  padding: 20px;
+  border-radius: 24px;
+}
+
+.controllers-policy::before {
+  grid-column: 1;
+  grid-row: 1;
+
+  width: 38px;
+  height: 38px;
+  margin: 0;
+}
+
+.controllers-policy h2 {
+  grid-column: 2;
+  grid-row: 1;
+
+  align-self: center;
+  margin: 0;
+}
+
+.controllers-policy p {
+  grid-column: 1 / -1;
+}
+
+/* Quitar sensación de “card botón” en bloques informativos */
+.controllers-policy:hover,
+.controllers-warning:hover,
+.controllers-cta:hover,
+.controllers-mini-card:hover {
+  transform: none;
+}
+
+/* Compatibilidad: más parecida a cards informativas del sitio */
+.controllers-mini-card {
+  padding: 20px;
+}
+
+.controllers-mini-card h3 {
+  font-size: 1.05rem;
+}
+
+.controllers-mini-card p {
+  line-height: 1.6;
+}
+
+/* Servicios: sí pueden sentirse interactivos, pero menos exagerado */
+.controllers-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Secciones con ritmo más parecido a contacto/FAQ */
+.controllers-section {
+  padding: var(--s-7) 0 var(--s-5);
+}
+
+.controllers-section__heading {
+  margin-bottom: var(--s-5);
+}
+
+/* CTA final más sobria */
+.controllers-cta {
+  border-radius: 24px;
+  padding: clamp(22px, 4vw, 30px);
+}
+
+/* ============================================================
+MOBILE — Controles más consistente con contacto
+============================================================ */
+
+@media (max-width: 520px) {
+  .controllers-hero {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .controllers-eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .controllers-hero h1 {
+    font-size: clamp(2.05rem, 9vw, 2.45rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+  }
+
+  .controllers-hero__text {
+    font-size: 0.96rem;
+    line-height: 1.58;
+  }
+
+  .controllers-hero__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .controllers-btn {
+    width: 100%;
+    min-height: 46px;
+    font-size: 0.93rem;
+  }
+
+  .controllers-policy {
+    grid-template-columns: 38px 1fr;
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .controllers-policy::before {
+    width: 36px;
+    height: 36px;
+  }
+
+  .controllers-policy h2 {
+    font-size: 1.22rem;
+    line-height: 1.15;
+  }
+
+  .controllers-policy p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .controllers-section {
+    padding: var(--s-6) 0 var(--s-5);
+  }
+
+  .controllers-section__heading {
+    margin-bottom: var(--s-4);
+  }
+
+  .controllers-section__heading h2 {
+    font-size: 1.25rem;
+    line-height: 1.18;
+  }
+
+  .controllers-section__heading p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .controllers-card,
+  .controllers-mini-card,
+  .controllers-warning,
+  .controllers-cta {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .controllers-card h3,
+  .controllers-mini-card h3 {
+    font-size: 1rem;
+  }
+
+  .controllers-card p,
+  .controllers-mini-card p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .controllers-card__link {
+    width: 100%;
+    justify-content: center;
+  }
+}
