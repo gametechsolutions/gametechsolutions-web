@@ -2841,3 +2841,74 @@ MOBILE UX — Action bar y componentes compactos
     margin: var(--s-5) 0 var(--s-6);
   }
 }
+
+/* ============================================================
+MOBILE UX — Ajuste fino del selector de catálogo
+============================================================ */
+
+@media (max-width: 520px) {
+  .selector-app {
+    gap: 14px;
+  }
+
+  .selector-panel {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .selector-catalog {
+    max-height: 52vh !important;
+  }
+
+  .catalog-library-tabs {
+    gap: 7px;
+    margin-bottom: 6px;
+  }
+
+  .catalog-library-tabs button {
+    padding: 8px 11px;
+    font-size: 0.86rem;
+    min-height: 40px;
+  }
+
+  .selector-catalog h3 {
+    margin-bottom: 10px;
+  }
+
+  .catalog-toolbar {
+    gap: 8px;
+  }
+
+  #catalogSearch {
+    height: 44px;
+    padding: 10px 12px;
+  }
+
+  .catalog-toolbar .btn-small,
+  .catalog-toolbar button {
+    min-height: 44px;
+    padding: 9px 12px;
+  }
+
+  .catalog-list {
+    padding-right: 4px;
+  }
+
+  .selector-item {
+    min-height: 56px;
+    padding: 8px 10px;
+  }
+
+  .selector-item .add-game {
+    min-height: 38px;
+    padding: 7px 10px;
+  }
+
+  .selector-summary {
+    padding: 16px;
+  }
+
+  .selector-summary h3 {
+    margin-bottom: 12px;
+  }
+}
