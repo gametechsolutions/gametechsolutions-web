@@ -2795,3 +2795,49 @@ CHIPS / BADGES — sistema visual compartido
   background: rgba(255, 210, 90, 0.08);
   color: rgba(255, 241, 205, 0.96);
 }
+
+/* ============================================================
+MOBILE UX — Action bar y componentes compactos
+============================================================ */
+
+@media (max-width: 720px) {
+  .action-bar {
+    bottom: 0;
+    padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .action-inner {
+    width: min(100% - 1.25rem, var(--container));
+  }
+
+  body:has(.action-bar) main {
+    padding-bottom: calc(var(--s-8) + 86px);
+  }
+}
+
+@media (max-width: 520px) {
+  .console-hero {
+    border-radius: 22px;
+    padding: 22px 18px;
+  }
+
+  #summaryCard {
+    padding: 18px;
+  }
+
+  .summary-grid {
+    gap: 12px;
+  }
+
+  .summary-item {
+    padding: 13px 14px;
+  }
+
+  .faq-content {
+    margin-bottom: var(--s-7);
+  }
+
+  .contact-public-grid {
+    margin: var(--s-5) 0 var(--s-6);
+  }
+}

@@ -728,3 +728,48 @@ section .card,
     transition: none !important;
   }
 }
+
+/* ============================================================
+MOBILE UX — Header/Footer sin tapar contenido
+============================================================ */
+
+@media (max-width: 720px) {
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    padding: 8px 0;
+  }
+
+  main {
+    padding-top: var(--s-5);
+    padding-bottom: var(--s-7);
+  }
+
+  .container {
+    width: min(100% - 1.25rem, var(--container));
+  }
+
+  section {
+    padding: var(--s-5) 0;
+  }
+
+  section + section {
+    padding-top: var(--s-5);
+  }
+
+  .site-footer {
+    position: static;
+    z-index: auto;
+
+    margin-top: var(--s-7);
+    padding: 12px 0;
+
+    border-top: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  }
+
+  .footer-inner {
+    width: min(100% - 1.25rem, var(--container));
+  }
+}
