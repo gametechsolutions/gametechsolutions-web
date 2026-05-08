@@ -444,130 +444,6 @@ CATÁLOGO — Almacenamiento seleccionado (display-only)
   content: none;
 }
 
-/* =========================================
-Consolas más solicitadas — Netflix row
-========================================= */
-
-.cards-netflix {
-  display: flex;
-  gap: 18px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  padding: 12px 6px 18px;
-  margin-inline: -6px;
-
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  /* se ve más pro */
-  mask-image: linear-gradient(to right,
-      transparent 0,
-      black 20px,
-      black calc(100% - 20px),
-      transparent 100%);
-}
-
-/* scrollbar discreto */
-.cards-netflix::-webkit-scrollbar {
-  height: 10px;
-}
-
-.cards-netflix::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 999px;
-}
-
-.cards-netflix::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  border: 2px solid rgba(0, 0, 0, 0.35);
-}
-
-.cards-netflix::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-/* cards tipo Netflix */
-.cards-netflix .console-card {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-
-  width: 190px;
-  height: 120px;
-
-  border-radius: 20px;
-  display: grid;
-  place-items: center;
-
-  background:
-    radial-gradient(420px 140px at 15% 0%,
-      rgba(255, 255, 255, 0.09),
-      transparent 65%),
-    rgba(0, 0, 0, 0.22);
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
-
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease;
-}
-
-/* hover sexy */
-.cards-netflix .console-card:hover {
-  transform: translateY(-2px) scale(1.02);
-  border-color: color-mix(in srgb,
-      var(--accent-color) 22%,
-      rgba(255, 255, 255, 0.14));
-  background:
-    radial-gradient(420px 140px at 15% 0%,
-      rgba(255, 255, 255, 0.12),
-      transparent 65%),
-    rgba(0, 0, 0, 0.26);
-}
-
-.cards-netflix .console-card img {
-  width: 100%;
-  max-height: 72px;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
-}
-
-/* ✅ Mobile: más compactas */
-@media (max-width: 520px) {
-  .cards-netflix {
-    gap: 14px;
-    padding: 10px 6px 14px;
-  }
-
-  .cards-netflix .console-card {
-    width: 160px;
-    height: 104px;
-    border-radius: 18px;
-  }
-
-  .cards-netflix .console-card img {
-    max-height: 62px;
-  }
-}
-
-.card {
-  transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
-}
-
-.card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(120, 180, 255, 0.18);
-}
-
 .card {
   transition:
     transform 220ms ease,
@@ -923,12 +799,6 @@ RESPONSIVE
   gap: var(--s-4);
 }
 
-.selector-catalog {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 /* ============================================================
 10) RESUMEN / PRICING (summaryCard)
 ============================================================ */
@@ -1227,20 +1097,6 @@ Items del catálogo
 /* Estado agregado */
 .add-game.added,
 .add-game:disabled.added {
-  background: rgba(120, 255, 150, 0.14);
-  border-color: rgba(120, 255, 150, 0.35);
-  color: rgba(235, 255, 242, 0.95);
-  cursor: not-allowed;
-  opacity: 0.95;
-}
-
-/* Extra: hover ya no aplica */
-.add-game.added:hover {
-  background: rgba(120, 255, 150, 0.14);
-  border-color: rgba(120, 255, 150, 0.35);
-}
-
-.add-game.added {
   background: color-mix(in srgb,
       var(--accent-color) 22%,
       rgba(255, 255, 255, 0.05));
@@ -1248,7 +1104,17 @@ Items del catálogo
       var(--accent-color) 65%,
       rgba(255, 255, 255, 0.15));
   color: color-mix(in srgb, var(--text) 96%, white);
+  cursor: not-allowed;
   opacity: 0.95;
+}
+
+.add-game.added:hover {
+  background: color-mix(in srgb,
+      var(--accent-color) 22%,
+      rgba(255, 255, 255, 0.05));
+  border-color: color-mix(in srgb,
+      var(--accent-color) 65%,
+      rgba(255, 255, 255, 0.15));
 }
 
 .add-game.blocked {
@@ -1504,16 +1370,21 @@ CONTACTO — PRECIO ESTIMADO (UI premium)
   color: color-mix(in srgb, var(--accent-color) 45%, #ffffff);
 }
 
-/* Nota final (más discreta aquí) */
 .pricing-note {
-  margin-top: 14px;
-  padding: 12px 14px;
-  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 14px;
+  padding: 10px 12px;
+
+  border-radius: 16px;
   border: 1px solid rgba(120, 255, 150, 0.18);
   background: rgba(120, 255, 150, 0.06);
-  color: rgba(235, 255, 242, 0.95);
 
+  color: rgba(235, 255, 242, 0.95);
   font-size: 0.92rem;
 }
 
@@ -1534,27 +1405,6 @@ CONTACTO — PRECIO ESTIMADO (UI premium)
   border: 2px solid rgba(255, 255, 255, 0.22);
   border-top-color: color-mix(in srgb, var(--accent-color) 70%, white);
   animation: spin 0.85s linear infinite;
-}
-
-/* Pricing note: que no sea full width */
-.pricing-note {
-  display: inline-flex;
-  /* en vez de block */
-  align-items: center;
-  gap: 10px;
-
-  width: fit-content;
-  /* ✅ se ajusta al texto */
-  max-width: 100%;
-  /* por si el texto es largo en móvil */
-
-  padding: 10px 12px;
-  font-size: 0.92rem;
-  border-radius: 16px;
-  /* menos redondeado */
-
-  margin-top: 14px;
-  /* separacion */
 }
 
 /* =========================================
@@ -1958,65 +1808,12 @@ CONTACTO — MAPA / UBICACIÓN (mejora visual)
 }
 
 /* ============================================================
-13) FAQ
+FAQ container base
 ============================================================ */
 
 #faq-container {
   display: grid;
   gap: var(--s-5);
-}
-
-.faq-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.faq-tab {
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  cursor: pointer;
-  transition:
-    transform var(--ease),
-    background var(--ease),
-    border var(--ease);
-}
-
-.faq-tab:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-.faq-tab.active {
-  border-color: color-mix(in srgb,
-      var(--accent-color) 40%,
-      rgba(255, 255, 255, 0.12));
-  background: color-mix(in srgb,
-      var(--accent-color) 16%,
-      rgba(255, 255, 255, 0.04));
-}
-
-.faq-section {
-  display: none;
-}
-
-.faq-section.active {
-  display: grid;
-  gap: var(--s-4);
-}
-
-.faq-item {
-  padding: var(--s-5);
-}
-
-.faq-item h3 {
-  margin-bottom: 10px;
-}
-
-.faq-item p {
-  margin: 0;
 }
 
 /* ============================================================
