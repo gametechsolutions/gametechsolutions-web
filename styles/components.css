@@ -3205,3 +3205,87 @@ MOBILE UX — Contacto / icono junto al título
     margin-top: 2px;
   }
 }
+
+/* ============================================================
+MOBILE UX — FAQ compacta y cómoda
+============================================================ */
+
+@media (max-width: 520px) {
+  .faq-tabs {
+    gap: 8px;
+    margin: var(--s-4) 0 var(--s-5);
+    padding: 7px;
+
+    border-radius: 20px;
+
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .faq-tab {
+    min-height: 40px;
+    padding: 9px 13px;
+
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .faq-accordion {
+    gap: 10px;
+  }
+
+  .faq-item {
+    border-radius: 18px;
+  }
+
+  .faq-question {
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 14px;
+    font-size: 0.94rem;
+    line-height: 1.22;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+
+    font-size: 1rem;
+  }
+
+  .faq-answer {
+    padding: 0 14px 16px;
+  }
+
+  .faq-answer p {
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .faq-groups {
+    gap: var(--s-6);
+  }
+
+  .faq-group {
+    gap: 12px;
+  }
+
+  .faq-group-heading h3 {
+    font-size: 1.28rem;
+  }
+
+  .faq-group-heading p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .faq-group-heading::after {
+    width: 54px;
+    height: 3px;
+    margin-top: 10px;
+  }
+}
