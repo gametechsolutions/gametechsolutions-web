@@ -324,3 +324,73 @@ Ajustes específicos sobre el sistema global
     width: 100%;
   }
 }
+
+/* ============================================================
+CONTROLES — Cards dinámicas generadas por controllers.js
+============================================================ */
+
+.controllers-card,
+.controllers-mini-card {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.025));
+
+  box-shadow: var(--glow);
+}
+
+.controllers-card::after,
+.controllers-mini-card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--ease-slow);
+
+  background: radial-gradient(500px 220px at 30% 0%,
+      color-mix(in srgb, var(--accent-color) 20%, transparent),
+      transparent 65%);
+}
+
+.controllers-card:hover::after {
+  opacity: 0.8;
+}
+
+.controllers-mini-card:hover::after {
+  opacity: 0.35;
+}
+
+.controllers-card>*,
+.controllers-mini-card>* {
+  position: relative;
+  z-index: 1;
+}
+
+.controllers-card {
+  transition:
+    transform var(--ease),
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+.controllers-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 26%,
+      rgba(255, 255, 255, 0.12));
+
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(120, 180, 255, 0.12);
+}
+
+.controllers-mini-card:hover {
+  transform: none;
+}
