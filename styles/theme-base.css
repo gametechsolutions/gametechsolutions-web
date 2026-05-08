@@ -133,7 +133,7 @@ body {
 }
 
 main {
-  padding: calc(var(--s-6) + 74px) 0 calc(var(--s-8) + 62px + 74px);
+  padding: calc(var(--s-6) + 74px) 0 var(--s-8);
 }
 
 section {
@@ -478,13 +478,11 @@ nav #header-title {
 ============================================================ */
 
 .site-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 998;
+  position: static;
 
-  padding: 8px 0;
+  padding: 12px 0;
+  margin-top: var(--s-7);
+
   border-top: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
   background: rgba(7, 10, 18, 0.78);
   backdrop-filter: blur(14px);
