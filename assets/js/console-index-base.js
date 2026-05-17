@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         status: "draft"
       });
 
-      selectModel(model, card)
+      resetSelectedServicesUI();
 
       showModelWarning(model);
       renderModelVariantSelector(model);
