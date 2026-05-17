@@ -197,6 +197,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           status: "draft"
         });
 
+        resetSelectedServicesUI();
+
         showModelWarning(model);
         updateStorageUI();
         return;
@@ -223,6 +225,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         pricing: null,
         status: "draft"
       });
+
+      resetSelectedServicesUI();
 
       showModelWarning(selectedVariant.message ? selectedVariant : model);
       updateStorageUI();
@@ -268,6 +272,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         status: "draft"
       });
 
+      selectModel(model, card)
+
       showModelWarning(model);
       renderModelVariantSelector(model);
       updateStorageUI();
@@ -291,6 +297,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       pricing: null,
       status: "draft"
     });
+
+    resetSelectedServicesUI();
 
     hideModelVariantSection();
     showModelWarning(model);
@@ -512,6 +520,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const servicesContainer = document.getElementById("servicesContainer");
   const selectedServices = new Set(ctx.services || []);
+
+  function resetSelectedServicesUI() {
+    selectedServices.clear();
+
+    document.querySelectorAll("#servicesContainer .service-row").forEach((row) => {
+      row.classList.remove("selected", "active");
+    });
+
+    document.querySelectorAll("#servicesContainer .service-toggle-btn").forEach((btn) => {
+      btn.textContent = "+";
+      btn.setAttribute("aria-pressed", "false");
+
+      const id = btn.dataset.id;
+      const service = services.find((item) => item.id === id);
+
+      if (service) {
+        btn.setAttribute("aria-label", `Agregar ${service.name}`);
+      }
+    });
+  }
 
   const EXCLUSIVE_STORAGE_SERVICES = ["games_only", "storage_with_games"];
 
