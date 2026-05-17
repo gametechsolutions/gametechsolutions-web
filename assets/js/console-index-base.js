@@ -229,28 +229,96 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
   }
 
+  function clearSelectedModelCard() {
+    if (!selectedModelCard) return;
+
+    selectedModelCard.classList.remove("selected", "active");
+    selectedModelCard.setAttribute("aria-pressed", "false");
+  }
+
+  function setSelectedModelCard(card, model) {
+    clearSelectedModelCard();
+
+    card.classList.add("selected", "active");
+    card.setAttribute("aria-pressed", "true");
+
+    selectedModelCard = card;
+    selectedBaseModel = model;
+  }
+
+  function selectModel(model, card) {
+    setSelectedModelCard(card, model);
+
+    if (model.requiresVariant) {
+      ctxAPI.save({
+        console: CONSOLE_CONFIG,
+        model: {
+          id: model.id,
+          description: model.code,
+          notes: model.notes || null,
+          requiresVariant: true,
+          variant: null,
+          compatibility: null
+        },
+        compatibility: null,
+        services: [],
+        storage: null,
+        games: null,
+        pricing: null,
+        status: "draft"
+      });
+
+      showModelWarning(model);
+      renderModelVariantSelector(model);
+      updateStorageUI();
+      return;
+    }
+
+    ctxAPI.save({
+      console: CONSOLE_CONFIG,
+      model: {
+        id: model.id,
+        description: model.code,
+        notes: model.notes || null,
+        requiresVariant: false,
+        variant: null,
+        compatibility: model.compatibility || null
+      },
+      compatibility: model.compatibility || null,
+      services: [],
+      storage: null,
+      games: null,
+      pricing: null,
+      status: "draft"
+    });
+
+    hideModelVariantSection();
+    showModelWarning(model);
+    updateStorageUI();
+  }
+
   modelsData.models.forEach((model) => {
-    const card = document.createElement("div");
-    card.className = "card model-card";
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "card model-card model-choice";
+    card.setAttribute("aria-pressed", "false");
+    card.setAttribute("aria-label", `Seleccionar modelo ${model.name}`);
 
     card.innerHTML = `
-      <div class="model-card-media">
-        ${model.image ? `<img src="${model.image}" class="identify-img" alt="${model.name}">` : ""}
-      </div>
+    <div class="model-card-media">
+      ${model.image ? `<img src="${model.image}" class="identify-img" alt="${model.name}">` : ""}
+    </div>
 
-      <div class="model-card-body">
-        <h3>${model.name}</h3>
-        ${model.notes ? `<p>${model.notes}</p>` : ""}
-        <button class="btn btn-outline">Seleccionar</button>
-      </div>
-    `;
+    <div class="model-card-body">
+      <h3>${model.name}</h3>
+      ${model.notes ? `<p>${model.notes}</p>` : ""}
+    </div>
+  `;
 
-    const btn = card.querySelector("button");
-
-    // 🔁 Restaurar selección previa
     if (ctx.model?.id === model.id) {
       card.classList.add("selected", "active");
-      btn.textContent = "Seleccionado";
+      card.setAttribute("aria-pressed", "true");
+
       selectedModelCard = card;
       selectedBaseModel = model;
 
@@ -262,66 +330,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
 
-    btn.onclick = () => {
-      if (selectedModelCard) {
-        selectedModelCard.classList.remove("selected");
-        const oldBtn = selectedModelCard.querySelector("button");
-        if (oldBtn) oldBtn.textContent = "Seleccionar";
-      }
+    card.addEventListener("click", () => {
+      selectModel(model, card);
+    });
 
-      card.classList.add("selected", "active");
-      btn.textContent = "Seleccionado";
-      selectedModelCard = card;
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
 
-      selectedBaseModel = model;
-
-      if (model.requiresVariant) {
-        ctxAPI.save({
-          console: CONSOLE_CONFIG,
-          model: {
-            id: model.id,
-            description: model.code,
-            notes: model.notes || null,
-            requiresVariant: true,
-            variant: null,
-            compatibility: null
-          },
-          compatibility: null,
-          services: [],
-          storage: null,
-          games: null,
-          pricing: null,
-          status: "draft"
-        });
-
-        showModelWarning(model);
-        renderModelVariantSelector(model);
-        updateStorageUI();
-        return;
-      }
-
-      ctxAPI.save({
-        console: CONSOLE_CONFIG,
-        model: {
-          id: model.id,
-          description: model.code,
-          notes: model.notes || null,
-          requiresVariant: false,
-          variant: null,
-          compatibility: model.compatibility || null
-        },
-        compatibility: model.compatibility || null,
-        services: [],
-        storage: null,
-        games: null,
-        pricing: null,
-        status: "draft"
-      });
-
-      hideModelVariantSection();
-      showModelWarning(model);
-      updateStorageUI();
-    };
+      event.preventDefault();
+      selectModel(model, card);
+    });
 
     modelsContainer.appendChild(card);
   });
@@ -501,30 +519,56 @@ document.addEventListener("DOMContentLoaded", async () => {
     const card = document.createElement("div");
     card.className = "service-row";
 
+    const isSelected = selectedServices.has(service.id);
+
     card.innerHTML = `
-      <div class="service-row-main">
-        <div class="service-row-copy">
+    <div class="service-row-main">
+      <div class="service-row-copy">
+        <div class="service-row-title">
           <h3>${service.name}</h3>
-          <p>${service.description}</p>
+          ${service.description
+        ? `<button class="service-info-btn" type="button" aria-expanded="false" aria-label="Ver información de ${service.name}">i</button>`
+        : ""
+      }
         </div>
 
-        <div class="service-row-side">
-          ${renderServicePrice(service)}
-
-          <button class="btn btn-outline" data-id="${service.id}">
-            ${selectedServices.has(service.id) ? "Quitar" : "Agregar"}
-          </button>
-        </div>
+        ${service.description
+        ? `<p class="service-row-description" hidden>${service.description}</p>`
+        : ""
+      }
       </div>
-    `;
 
-    const btn = card.querySelector("button");
+      <div class="service-row-side">
+        ${renderServicePrice(service)}
 
-    if (selectedServices.has(service.id)) {
+        <button class="service-toggle-btn" type="button" data-id="${service.id}" aria-pressed="${isSelected ? "true" : "false"}" aria-label="${isSelected ? `Quitar ${service.name}` : `Agregar ${service.name}`}">
+          ${isSelected ? "✓" : "+"}
+        </button>
+      </div>
+    </div>
+  `;
+
+    const btn = card.querySelector(".service-toggle-btn");
+    const infoBtn = card.querySelector(".service-info-btn");
+    const description = card.querySelector(".service-row-description");
+
+    if (isSelected) {
       card.classList.add("selected", "active");
     }
 
-    btn.onclick = () => {
+    function setServiceUI(selected) {
+      btn.textContent = selected ? "✓" : "+";
+      btn.setAttribute("aria-pressed", selected ? "true" : "false");
+      btn.setAttribute(
+        "aria-label",
+        selected ? `Quitar ${service.name}` : `Agregar ${service.name}`
+      );
+
+      card.classList.toggle("selected", selected);
+      card.classList.toggle("active", selected);
+    }
+
+    function toggleService() {
       const prevCtx = ctxAPI.load();
 
       if (!prevCtx.model) {
@@ -534,10 +578,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (selectedServices.has(service.id)) {
         selectedServices.delete(service.id);
-        btn.textContent = "Agregar";
-        card.classList.remove("selected", "active");
+        setServiceUI(false);
       } else {
-        // 🔒 Validar exclusión por grupo (softmod / chip)
         if (service.exclusiveGroup) {
           const conflict = Array.from(selectedServices).some((id) => {
             const s = services.find((x) => x.id === id);
@@ -554,7 +596,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         }
 
-        // 🔒 Validar dependencias del servicio (PS3)
         const ok = hasRequiredCapabilities(
           service,
           Array.from(selectedServices),
@@ -582,7 +623,8 @@ document.addEventListener("DOMContentLoaded", async () => {
               const otherBtn = document.querySelector(`[data-id="${id}"]`);
 
               if (otherBtn) {
-                otherBtn.textContent = "Agregar";
+                otherBtn.textContent = "+";
+                otherBtn.setAttribute("aria-pressed", "false");
                 otherBtn.closest(".service-row")?.classList.remove("selected", "active");
               }
             }
@@ -590,8 +632,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         selectedServices.add(service.id);
-        btn.textContent = "Quitar";
-        card.classList.add("selected", "active");
+        setServiceUI(true);
       }
 
       const nextServices = Array.from(selectedServices);
@@ -607,7 +648,32 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       updateStorageUI();
-    };
+    }
+
+    btn.onclick = toggleService;
+
+    card.addEventListener("click", (event) => {
+      if (
+        event.target.closest(".service-info-btn") ||
+        event.target.closest(".service-toggle-btn")
+      ) {
+        return;
+      }
+
+      toggleService();
+    });
+
+    if (infoBtn && description) {
+      infoBtn.onclick = (event) => {
+        event.stopPropagation();
+
+        const isOpen = !description.hidden;
+
+        description.hidden = isOpen;
+        infoBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        card.classList.toggle("show-description", !isOpen);
+      };
+    }
 
     servicesContainer.appendChild(card);
   });

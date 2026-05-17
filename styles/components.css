@@ -3828,3 +3828,267 @@ body:has(.action-bar) main {
     min-width: 0;
   }
 }
+
+/* ============================================================
+CONSOLE INDEX — Selección ultra compacta V2
+Modelos sin botón + servicios con info y toggle compacto
+============================================================ */
+
+/* Modelos: toda la card es botón */
+#modelsContainer .model-choice {
+  cursor: pointer;
+  appearance: none;
+  font: inherit;
+  color: inherit;
+}
+
+#modelsContainer .model-choice:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent-color) 65%, white);
+  outline-offset: 4px;
+}
+
+#modelsContainer .model-card-body {
+  justify-items: center;
+}
+
+#modelsContainer .model-choice.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  background: color-mix(in srgb, var(--accent-color) 72%, white);
+  color: #08101e;
+
+  font-size: 0.95rem;
+  font-weight: 950;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.36);
+}
+
+@media (min-width: 721px) {
+  #modelsContainer .model-choice {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 720px) {
+  #modelsContainer .model-choice {
+    grid-template-columns: 96px 1fr;
+    min-height: 116px;
+  }
+
+  #modelsContainer .model-card-body {
+    justify-items: start;
+  }
+
+  #modelsContainer .model-choice.selected::after {
+    top: 10px;
+    right: 10px;
+
+    width: 24px;
+    height: 24px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Servicios: layout compacto real */
+#servicesContainer,
+#servicesContainer.cards-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+
+  width: min(100%, 920px);
+  margin-inline: auto;
+}
+
+#servicesContainer .service-row {
+  cursor: pointer;
+}
+
+#servicesContainer .service-row-main {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  padding: 12px 14px;
+}
+
+.service-row-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-row-title h3 {
+  margin: 0;
+}
+
+.service-info-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+
+  display: inline-grid;
+  place-items: center;
+
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 30%,
+      rgba(255, 255, 255, 0.14));
+
+  background: rgba(255, 255, 255, 0.045);
+  color: color-mix(in srgb, var(--accent-color) 80%, white);
+
+  font-size: 0.82rem;
+  font-weight: 950;
+  line-height: 1;
+
+  cursor: help;
+}
+
+.service-info-btn:hover,
+.service-info-btn[aria-expanded="true"] {
+  background: color-mix(in srgb,
+      var(--accent-color) 16%,
+      rgba(255, 255, 255, 0.05));
+}
+
+.service-row-description {
+  margin: 8px 0 0;
+  max-width: 68ch;
+
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.service-row-side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.service-toggle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  border: 1px solid color-mix(in srgb,
+      var(--accent-color) 34%,
+      rgba(255, 255, 255, 0.14));
+
+  background: rgba(255, 255, 255, 0.045);
+  color: color-mix(in srgb, var(--text) 94%, white);
+
+  font-size: 1.25rem;
+  font-weight: 950;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform var(--ease),
+    background var(--ease),
+    border-color var(--ease);
+}
+
+.service-toggle-btn:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 55%,
+      rgba(255, 255, 255, 0.14));
+}
+
+.service-toggle-btn[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent-color) 68%, white);
+  border-color: transparent;
+  color: #08101e;
+}
+
+#servicesContainer .service-row.selected::before {
+  content: none;
+}
+
+#servicesContainer .service-row.selected .service-row-copy {
+  padding-left: 0;
+}
+
+/* Precio más compacto dentro de servicios */
+#servicesContainer .service-price-box {
+  margin: 0;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+#servicesContainer .service-price-label {
+  font-size: 0.92rem;
+}
+
+#servicesContainer .service-price-note {
+  font-size: 0.72rem;
+}
+
+/* Mobile: servicio en 3 columnas: nombre/info | precio | + */
+@media (max-width: 720px) {
+  #servicesContainer .service-row-main {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  #servicesContainer .service-row-side {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #servicesContainer .service-price-box {
+    max-width: 150px;
+  }
+
+  .service-row-title h3 {
+    font-size: 0.96rem;
+    line-height: 1.15;
+  }
+
+  .service-info-btn {
+    width: 23px;
+    height: 23px;
+    font-size: 0.78rem;
+  }
+
+  .service-toggle-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.18rem;
+  }
+
+  .service-row-description {
+    grid-column: 1 / -1;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 430px) {
+  #servicesContainer .service-row-main {
+    grid-template-columns: 1fr;
+  }
+
+  #servicesContainer .service-row-side {
+    justify-content: space-between;
+  }
+
+  #servicesContainer .service-price-box {
+    max-width: none;
+  }
+}
