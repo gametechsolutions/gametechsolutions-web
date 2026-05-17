@@ -247,10 +247,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const btn = card.querySelector("button");
 
-    if (selectedServices.has(service.id)) {
-      card.classList.add("selected", "active");
-    }
-
     // 🔁 Restaurar selección previa
     if (ctx.model?.id === model.id) {
       card.classList.add("selected", "active");
