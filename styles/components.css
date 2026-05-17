@@ -3609,3 +3609,222 @@ CONSOLE INDEX — Action bar solo fija en mobile
     min-width: min(420px, 100%);
   }
 }
+
+/* ============================================================
+FIX — Console index servicios compactos + action bar sin encimar
+============================================================ */
+
+/* El contenedor de servicios NO debe comportarse como cards-grid */
+#servicesContainer,
+#servicesContainer.cards-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+
+  width: min(100%, 920px);
+  margin-inline: auto;
+}
+
+/* Fila de servicio */
+#servicesContainer .service-row {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 18px;
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.052),
+      rgba(255, 255, 255, 0.024));
+
+  box-shadow: var(--glow);
+
+  transition:
+    border-color var(--ease),
+    box-shadow var(--ease),
+    background var(--ease),
+    transform var(--ease);
+}
+
+#servicesContainer .service-row:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 24%,
+      rgba(255, 255, 255, 0.12));
+}
+
+#servicesContainer .service-row-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+
+  padding: 14px 16px;
+}
+
+#servicesContainer .service-row-copy {
+  min-width: 0;
+}
+
+#servicesContainer .service-row-copy h3 {
+  margin: 0 0 5px;
+
+  font-size: 1.02rem;
+  line-height: 1.2;
+}
+
+#servicesContainer .service-row-copy p {
+  margin: 0;
+
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+#servicesContainer .service-row-side {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  min-width: fit-content;
+}
+
+#servicesContainer .service-price-box {
+  margin: 0;
+  white-space: nowrap;
+}
+
+#servicesContainer .service-row .btn {
+  min-height: 40px;
+  padding: 9px 13px;
+  white-space: nowrap;
+}
+
+/* Estado seleccionado */
+#servicesContainer .service-row.selected {
+  border-color: color-mix(in srgb,
+      var(--accent-color) 48%,
+      rgba(255, 255, 255, 0.14));
+
+  background:
+    radial-gradient(500px 160px at 18% 0%,
+      color-mix(in srgb, var(--accent-color) 14%, transparent),
+      transparent 60%),
+    rgba(255, 255, 255, 0.04);
+
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent-color) 22%, transparent),
+    var(--glow);
+
+  transform: none;
+}
+
+#servicesContainer .service-row.selected::before {
+  content: "✓";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  background: color-mix(in srgb, var(--accent-color) 72%, white);
+  color: #08101e;
+
+  font-size: 0.9rem;
+  font-weight: 950;
+}
+
+#servicesContainer .service-row.selected .service-row-copy {
+  padding-left: 32px;
+}
+
+/* Mobile: fila compacta, pero sin aplastar */
+@media (max-width: 720px) {
+  #servicesContainer,
+  #servicesContainer.cards-grid {
+    width: 100%;
+    gap: 10px !important;
+  }
+
+  #servicesContainer .service-row-main {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  #servicesContainer .service-row-copy h3 {
+    font-size: 1rem;
+  }
+
+  #servicesContainer .service-row-copy p {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  #servicesContainer .service-row-side {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #servicesContainer .service-price-box {
+    white-space: normal;
+  }
+
+  #servicesContainer .service-row .btn {
+    min-width: 110px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 380px) {
+  #servicesContainer .service-row-side {
+    grid-template-columns: 1fr;
+  }
+
+  #servicesContainer .service-row .btn {
+    width: 100%;
+  }
+}
+
+/* Action bar: ya no flotante para que no tape servicios */
+.action-bar {
+  position: static !important;
+  margin-top: var(--s-6);
+  padding: 0 !important;
+
+  background: transparent !important;
+  border-top: 0 !important;
+  backdrop-filter: none !important;
+}
+
+.action-inner {
+  width: min(100% - 2rem, var(--container));
+}
+
+.action-bar .btn {
+  min-width: min(420px, 100%);
+}
+
+/* Ya no necesitamos reservar espacio extra para una barra fija */
+body:has(.action-bar) main {
+  padding-bottom: var(--s-8) !important;
+}
+
+@media (max-width: 720px) {
+  .action-inner {
+    width: min(100% - 1.25rem, var(--container));
+  }
+
+  .action-bar .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}

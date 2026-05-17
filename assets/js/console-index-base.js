@@ -578,8 +578,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           EXCLUSIVE_STORAGE_SERVICES.forEach((id) => {
             if (selectedServices.has(id)) {
               selectedServices.delete(id);
+
               const otherBtn = document.querySelector(`[data-id="${id}"]`);
-              if (otherBtn) otherBtn.textContent = "Agregar";
+
+              if (otherBtn) {
+                otherBtn.textContent = "Agregar";
+                otherBtn.closest(".service-row")?.classList.remove("selected", "active");
+              }
             }
           });
         }
