@@ -231,16 +231,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   modelsData.models.forEach((model) => {
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "card model-card";
 
     card.innerHTML = `
-  <h3>${model.name}</h3>
-  <p>${model.notes || ""}</p>
-  ${model.image ? `<img src="${model.image}" class="identify-img">` : ""}
-  <button class="btn btn-outline">Seleccionar</button>
-`;
+      <div class="model-card-media">
+        ${model.image ? `<img src="${model.image}" class="identify-img" alt="${model.name}">` : ""}
+      </div>
+
+      <div class="model-card-body">
+        <h3>${model.name}</h3>
+        ${model.notes ? `<p>${model.notes}</p>` : ""}
+        <button class="btn btn-outline">Seleccionar</button>
+      </div>
+    `;
 
     const btn = card.querySelector("button");
+
+    if (selectedServices.has(service.id)) {
+      card.classList.add("selected", "active");
+    }
 
     // 🔁 Restaurar selección previa
     if (ctx.model?.id === model.id) {
@@ -494,20 +503,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   services.forEach((service) => {
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "service-row";
 
     card.innerHTML = `
-      <h3>${service.name}</h3>
-      <p>${service.description}</p>
+      <div class="service-row-main">
+        <div class="service-row-copy">
+          <h3>${service.name}</h3>
+          <p>${service.description}</p>
+        </div>
 
-      ${renderServicePrice(service)}
+        <div class="service-row-side">
+          ${renderServicePrice(service)}
 
-      <button class="btn btn-outline" data-id="${service.id}">
-        ${selectedServices.has(service.id) ? "Quitar" : "Agregar"}
-      </button>
+          <button class="btn btn-outline" data-id="${service.id}">
+            ${selectedServices.has(service.id) ? "Quitar" : "Agregar"}
+          </button>
+        </div>
+      </div>
     `;
 
     const btn = card.querySelector("button");
+
+    if (selectedServices.has(service.id)) {
+      card.classList.add("selected", "active");
+    }
 
     btn.onclick = () => {
       const prevCtx = ctxAPI.load();
@@ -520,6 +539,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (selectedServices.has(service.id)) {
         selectedServices.delete(service.id);
         btn.textContent = "Agregar";
+        card.classList.remove("selected", "active");
       } else {
         // 🔒 Validar exclusión por grupo (softmod / chip)
         if (service.exclusiveGroup) {
@@ -570,6 +590,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         selectedServices.add(service.id);
         btn.textContent = "Quitar";
+        card.classList.add("selected", "active");
       }
 
       const nextServices = Array.from(selectedServices);
