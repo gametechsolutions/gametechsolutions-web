@@ -243,8 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (alreadyAdded) {
         btn.disabled = true;
-        btn.textContent = "Agregado";
+        btn.textContent = "✓";
         btn.classList.add("added");
+        btn.setAttribute("aria-label", `Juego agregado: ${game.name}`);
         return;
       }
 
@@ -254,10 +255,12 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.disabled = noSpace;
 
       if (noSpace) {
-        btn.textContent = "No cabe";
+        btn.textContent = "×";
         btn.classList.add("blocked");
+        btn.setAttribute("aria-label", `No hay espacio para ${game.name}`);
       } else {
-        btn.textContent = "Agregar";
+        btn.textContent = "+";
+        btn.setAttribute("aria-label", `Agregar ${game.name}`);
       }
     });
   }
@@ -670,7 +673,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ============================== */
 
   function renderCatalog() {
-    const ROW_HEIGHT = 72;
+    const ROW_HEIGHT = window.matchMedia("(max-width: 520px)").matches ? 58 : 62;
     const OVERSCAN = 10;
     const filteredGames = getFilteredGames();
 
@@ -721,8 +724,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 data-key="${escapeHTML(game.key)}"
                 data-library-id="${escapeHTML(game.libraryId)}"
                 data-size="${game.sizeGB}"
+                aria-label="${alreadyAdded ? `Juego agregado: ${escapeHTML(game.name)}` : `Agregar ${escapeHTML(game.name)}`}"
                 ${alreadyAdded ? "disabled" : ""}>
-          ${alreadyAdded ? "Agregado" : "Agregar"}
+          ${alreadyAdded ? "✓" : "+"}
         </button>
       `;
 
@@ -815,7 +819,8 @@ document.addEventListener("DOMContentLoaded", () => {
         recalculateTotalSize();
 
         button.disabled = true;
-        button.textContent = "Agregado";
+        button.textContent = "✓";
+        button.setAttribute("aria-label", `Juego agregado: ${game.name}`);
         button.classList.add("added");
 
         updateSummary();
@@ -840,7 +845,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btn) {
       btn.disabled = false;
-      btn.textContent = "Agregar";
+      btn.textContent = "+";
       btn.classList.remove("added", "blocked");
     }
 
@@ -952,7 +957,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".add-game").forEach((btn) => {
       btn.disabled = false;
-      btn.textContent = "Agregar";
+      btn.textContent = "+";
       btn.classList.remove("added", "blocked");
     });
 
@@ -984,6 +989,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    renderStorageProgress();
     renderLibraryUsageHint();
   }
 
@@ -1010,8 +1016,49 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".selector-summary")?.appendChild(p);
   }
 
-  function hideLimitWarning() {
-    document.getElementById("limitWarning")?.remove();
+  function renderStorageProgress() {
+    const summaryBox = document.querySelector(".selector-summary");
+    if (!summaryBox || diskLimit === null) return;
+
+    let progress = document.getElementById("storageProgress");
+
+    if (!progress) {
+      progress = document.createElement("div");
+      progress.id = "storageProgress";
+      progress.className = "storage-progress";
+
+      const stats = document.querySelector(".selection-stats");
+      if (stats) {
+        stats.insertAdjacentElement("afterend", progress);
+      } else {
+        summaryBox.prepend(progress);
+      }
+    }
+
+    const percent = diskLimit > 0
+      ? Math.min(100, Math.max(0, (totalSize / diskLimit) * 100))
+      : 0;
+
+    const remaining = Math.max(0, diskLimit - totalSize);
+
+    progress.innerHTML = `
+      <div class="storage-progress-head">
+        <span>Espacio usado</span>
+        <strong>${percent.toFixed(1)}%</strong>
+      </div>
+
+      <div class="storage-progress-track">
+        <div class="storage-progress-fill" style="width: ${percent}%;"></div>
+      </div>
+
+      <div class="storage-progress-meta">
+        <span>${totalSize.toFixed(3)} GB usados</span>
+        <span>${remaining.toFixed(3)} GB libres</span>
+      </div>
+  `;
+
+    progress.classList.toggle("is-warning", percent >= 85 && percent < 100);
+    progress.classList.toggle("is-full", percent >= 100);
   }
 
   function buildLibrarySummary() {
