@@ -69,16 +69,21 @@
           <aside class="selector-summary selector-panel">
             <h3>Mi selección</h3>
 
-            <div class="summary-storage-block">
+            <div class="summary-section summary-storage">
               <h4>Almacenamiento</h4>
               <div class="storage-display" id="storageDisplay"></div>
             </div>
 
-            <div class="selection-stats">
-              <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
-              <p>💾 Espacio estimado: <strong id="totalSize">0</strong> GB</p>
-              <p class="selector-note" id="recommendedGames"></p>
+            <div class="summary-section summary-games">
+              <h4>Juegos</h4>
+
+              <div class="selection-stats">
+                <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
+                <span class="sr-only">Espacio usado: <strong id="totalSize">0</strong> GB</span>
+              </div>
             </div>
+
+            <p class="selector-note" id="recommendedGames"></p>
 
             <div class="selection-actions">
               <button class="btn-small" id="saveSelection">

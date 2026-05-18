@@ -958,15 +958,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".add-game").forEach((btn) => {
       btn.disabled = false;
-btn.textContent = "+";
-btn.classList.remove("added", "blocked");
+      btn.textContent = "+";
+      btn.classList.remove("added", "blocked");
 
-const key = btn.dataset.key;
-const game = gamesByKey.get(key);
+      const key = btn.dataset.key;
+      const game = gamesByKey.get(key);
 
-if (game) {
-  btn.setAttribute("aria-label", `Agregar ${game.name}`);
-}
+      if (game) {
+        btn.setAttribute("aria-label", `Agregar ${game.name}`);
+      }
     });
 
     hideLimitWarning();
@@ -1039,9 +1039,9 @@ if (game) {
       progress.id = "storageProgress";
       progress.className = "storage-progress";
 
-      const stats = document.querySelector(".selection-stats");
-      if (stats) {
-        stats.insertAdjacentElement("afterend", progress);
+      const gamesBlock = document.querySelector(".summary-games");
+      if (gamesBlock) {
+        gamesBlock.insertAdjacentElement("afterend", progress);
       } else {
         summaryBox.prepend(progress);
       }
