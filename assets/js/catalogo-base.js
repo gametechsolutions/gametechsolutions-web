@@ -847,6 +847,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.disabled = false;
       btn.textContent = "+";
       btn.classList.remove("added", "blocked");
+      btn.setAttribute("aria-label", `Agregar ${removed.name}`);
     }
 
     updateSummary();
@@ -957,8 +958,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".add-game").forEach((btn) => {
       btn.disabled = false;
-      btn.textContent = "+";
-      btn.classList.remove("added", "blocked");
+btn.textContent = "+";
+btn.classList.remove("added", "blocked");
+
+const key = btn.dataset.key;
+const game = gamesByKey.get(key);
+
+if (game) {
+  btn.setAttribute("aria-label", `Agregar ${game.name}`);
+}
     });
 
     hideLimitWarning();
@@ -1014,6 +1022,10 @@ document.addEventListener("DOMContentLoaded", () => {
     p.textContent = message;
 
     document.querySelector(".selector-summary")?.appendChild(p);
+  }
+
+  function hideLimitWarning() {
+    document.getElementById("limitWarning")?.remove();
   }
 
   function renderStorageProgress() {
