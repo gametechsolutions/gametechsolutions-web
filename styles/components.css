@@ -5042,3 +5042,84 @@ CATÁLOGO — Top juegos como portadas verticales
     border-radius: 15px;
   }
 }
+
+/* ============================================================
+HOME — Consolas más solicitadas como logo tiles compactos
+============================================================ */
+
+.home-consoles-section .netflix-row {
+  gap: 14px;
+  padding: 8px 6px 14px;
+}
+
+.home-consoles-section .netflix-card {
+  width: 160px;
+  height: 86px;
+
+  border-radius: 18px;
+
+  background:
+    radial-gradient(360px 120px at 18% 0%,
+      rgba(255, 255, 255, 0.08),
+      transparent 62%),
+    rgba(255, 255, 255, 0.028);
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.home-consoles-section .netflix-card img {
+  width: 82%;
+  max-width: 120px;
+  max-height: 46px;
+
+  object-fit: contain;
+  opacity: 0.92;
+
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.38));
+}
+
+.home-consoles-section .netflix-card:hover img {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+/* Desktop: un poco más amplio, pero sin cajas gigantes */
+@media (min-width: 900px) {
+  .home-consoles-section .netflix-row {
+    gap: 16px;
+  }
+
+  .home-consoles-section .netflix-card {
+    width: 180px;
+    height: 92px;
+  }
+
+  .home-consoles-section .netflix-card img {
+    max-width: 135px;
+    max-height: 50px;
+  }
+}
+
+/* Mobile: más compacto para que no robe tanta pantalla */
+@media (max-width: 520px) {
+  .home-consoles-section .netflix-row {
+    gap: 12px;
+    padding: 8px 4px 12px;
+  }
+
+  .home-consoles-section .netflix-card {
+    width: 136px;
+    height: 76px;
+    border-radius: 16px;
+  }
+
+  .home-consoles-section .netflix-card img {
+    width: 84%;
+    max-width: 106px;
+    max-height: 40px;
+  }
+}
