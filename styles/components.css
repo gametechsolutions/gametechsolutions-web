@@ -4353,7 +4353,7 @@ CATÁLOGO — UX compacta V2
   }
 
   .selection-actions {
-    gap: 8px;
+    gap: 9px;
   }
 
   .selection-actions .btn-small {
@@ -4945,4 +4945,21 @@ CATÁLOGO — Mi selección más compacta
   clip-path: inset(50%) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+/* ============================================================
+CATÁLOGO — Botón ✓ ahora también quita juego
+============================================================ */
+
+.selector-item .add-game.added {
+  cursor: pointer;
+}
+
+.selector-item .add-game.added:hover {
+  transform: translateY(-1px) scale(1.04);
+  filter: brightness(1.06);
+}
+
+.selector-item .add-game.added::after {
+  content: none;
 }

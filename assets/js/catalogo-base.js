@@ -242,10 +242,11 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.remove("added", "blocked");
 
       if (alreadyAdded) {
-        btn.disabled = true;
+        btn.disabled = false;
         btn.textContent = "✓";
         btn.classList.add("added");
-        btn.setAttribute("aria-label", `Juego agregado: ${game.name}`);
+        btn.setAttribute("aria-pressed", "true");
+        btn.setAttribute("aria-label", `Quitar ${game.name}`);
         return;
       }
 
@@ -255,11 +256,15 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.disabled = noSpace;
 
       if (noSpace) {
+        btn.disabled = true;
         btn.textContent = "×";
         btn.classList.add("blocked");
+        btn.setAttribute("aria-pressed", "false");
         btn.setAttribute("aria-label", `No hay espacio para ${game.name}`);
       } else {
+        btn.disabled = false;
         btn.textContent = "+";
+        btn.setAttribute("aria-pressed", "false");
         btn.setAttribute("aria-label", `Agregar ${game.name}`);
       }
     });
@@ -726,8 +731,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 data-key="${escapeHTML(game.key)}"
                 data-library-id="${escapeHTML(game.libraryId)}"
                 data-size="${game.sizeGB}"
-                aria-label="${alreadyAdded ? `Juego agregado: ${escapeHTML(game.name)}` : `Agregar ${escapeHTML(game.name)}`}"
-                ${alreadyAdded ? "disabled" : ""}>
+                aria-pressed="${alreadyAdded ? "true" : "false"}"
+                aria-label="${alreadyAdded ? `Quitar ${escapeHTML(game.name)}` : `Agregar ${escapeHTML(game.name)}`}">
           ${alreadyAdded ? "✓" : "+"}
         </button>
       `;
@@ -791,7 +796,23 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-        if (selectedGames.some((g) => g.key === key)) return;
+        const existingIndex = selectedGames.findIndex((g) => g.key === key);
+
+        // ✅ Si ya estaba agregado, tocar ✓ lo quita
+        if (existingIndex !== -1) {
+          selectedGames.splice(existingIndex, 1);
+          removeEmulatorBaseIfUnused(game.libraryId);
+          recalculateTotalSize();
+
+          button.disabled = false;
+          button.textContent = "+";
+          button.classList.remove("added", "blocked");
+          button.setAttribute("aria-pressed", "false");
+          button.setAttribute("aria-label", `Agregar ${game.name}`);
+
+          updateSummary();
+          return;
+        }
 
         const additionalSize = getAdditionalSizeForGame(game);
 
@@ -820,9 +841,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         recalculateTotalSize();
 
-        button.disabled = true;
+        button.disabled = false;
         button.textContent = "✓";
-        button.setAttribute("aria-label", `Juego agregado: ${game.name}`);
+        button.setAttribute("aria-pressed", "true");
+        button.setAttribute("aria-label", `Quitar ${game.name}`);
         button.classList.add("added");
 
         updateSummary();
@@ -833,27 +855,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =============================
     CONTROLES
     ============================== */
-
-  document.getElementById("removeLast")?.addEventListener("click", () => {
-    if (!selectedGames.length) return;
-
-    const removed = selectedGames.pop();
-    removeEmulatorBaseIfUnused(removed.libraryId);
-    recalculateTotalSize();
-
-    const btn = document.querySelector(
-      `.add-game[data-key="${CSS.escape(removed.key)}"]`,
-    );
-
-    if (btn) {
-      btn.disabled = false;
-      btn.textContent = "+";
-      btn.classList.remove("added", "blocked");
-      btn.setAttribute("aria-label", `Agregar ${removed.name}`);
-    }
-
-    updateSummary();
-  });
 
   document.getElementById("clearAll")?.addEventListener("click", () => {
     resetSelection();
