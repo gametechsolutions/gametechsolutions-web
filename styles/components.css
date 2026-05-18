@@ -4859,7 +4859,7 @@ CATÁLOGO — Mi selección más compacta
   gap: 12px;
 }
 
-.selector-summary > h3 {
+.selector-summary>h3 {
   margin-bottom: 2px;
 }
 
@@ -4971,4 +4971,74 @@ FIX — Icono del resumen por biblioteca dentro de su summary
 .library-summary-details summary {
   position: relative;
   padding-right: 48px;
+}
+
+/* ============================================================
+CATÁLOGO — Top juegos como portadas verticales
+============================================================ */
+
+.catalog-top-games .netflix-row {
+  gap: 14px;
+  padding: 8px 6px 14px;
+}
+
+.catalog-top-games .netflix-card.cover-card {
+  width: 96px;
+  height: 136px;
+
+  padding: 0 !important;
+  overflow: hidden;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.catalog-top-games .netflix-card.cover-card img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+
+  object-fit: cover;
+  display: block;
+
+  filter: none;
+}
+
+.catalog-top-games .netflix-card.cover-card:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: color-mix(in srgb,
+      var(--accent-color) 28%,
+      rgba(255, 255, 255, 0.14));
+}
+
+/* Desktop: portadas un poco más grandes */
+@media (min-width: 900px) {
+  .catalog-top-games .netflix-row {
+    gap: 18px;
+  }
+
+  .catalog-top-games .netflix-card.cover-card {
+    width: 118px;
+    height: 166px;
+    border-radius: 18px;
+  }
+}
+
+/* Mobile: compactas pero legibles */
+@media (max-width: 520px) {
+  .catalog-top-games .netflix-row {
+    gap: 12px;
+    padding: 8px 4px 14px;
+  }
+
+  .catalog-top-games .netflix-card.cover-card {
+    width: 92px;
+    height: 130px;
+    border-radius: 15px;
+  }
 }
