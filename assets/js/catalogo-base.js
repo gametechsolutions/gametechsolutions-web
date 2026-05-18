@@ -1017,21 +1017,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderCatalogSpaceNotice() {
-  document.getElementById("catalogSpaceNotice")?.remove();
+    document.getElementById("catalogSpaceNotice")?.remove();
 
-  if (diskLimit === null) return;
-  if (!selectedGames.length) return;
-  if (canAddAnyMoreGames()) return;
+    if (diskLimit === null) return;
+    if (!selectedGames.length) return;
+    if (canAddAnyMoreGames()) return;
 
-  const notice = document.createElement("p");
-  notice.id = "catalogSpaceNotice";
-  notice.className = "catalog-space-notice";
-  notice.textContent =
-    "Sin espacio disponible para agregar más juegos. Quita un juego o elige un almacenamiento mayor.";
+    const notice = document.createElement("p");
+    notice.id = "catalogSpaceNotice";
+    notice.className = "catalog-space-notice";
+    notice.textContent =
+      "Sin espacio disponible para agregar más juegos. Quita un juego o elige un almacenamiento mayor.";
 
-  const toolbar = document.querySelector(".catalog-toolbar");
-  toolbar?.insertAdjacentElement("afterend", notice);
-}
+    const toolbar = document.querySelector(".catalog-toolbar");
+    toolbar?.insertAdjacentElement("afterend", notice);
+  }
 
   function showLimitWarning(message) {
     if (document.getElementById("limitWarning")) return;
@@ -1157,9 +1157,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const totalLibraries = summary.length;
-const totalGames = summary.reduce((sum, item) => sum + item.gamesCount, 0);
+    const totalGames = summary.reduce((sum, item) => sum + item.gamesCount, 0);
 
-el.innerHTML = `
+    el.innerHTML = `
   <details class="library-summary-details">
     <summary>
       <span>Resumen por biblioteca</span>
