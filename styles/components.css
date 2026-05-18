@@ -4963,3 +4963,12 @@ CATÁLOGO — Botón ✓ ahora también quita juego
 .selector-item .add-game.added::after {
   content: none;
 }
+
+/* ============================================================
+FIX — Icono del resumen por biblioteca dentro de su summary
+============================================================ */
+
+.library-summary-details summary {
+  position: relative;
+  padding-right: 48px;
+}
