@@ -4850,3 +4850,87 @@ CATÁLOGO — Fase 3: avisos, resumen colapsable y ajustes mobile
     max-height: 66vh !important;
   }
 }
+
+/* ============================================================
+CATÁLOGO — Mi selección más compacta
+============================================================ */
+
+.selector-summary {
+  gap: 12px;
+}
+
+.selector-summary > h3 {
+  margin-bottom: 2px;
+}
+
+.summary-section {
+  gap: 4px;
+  padding-bottom: 8px;
+}
+
+.summary-section h4 {
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+.catalog-storage-lines {
+  gap: 2px;
+}
+
+.catalog-storage-lines p,
+.selection-stats p {
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.summary-games {
+  padding-bottom: 4px;
+}
+
+/* La barra ya comunica el espacio usado */
+.storage-progress {
+  margin-top: 0;
+  gap: 7px;
+}
+
+.storage-progress-head {
+  line-height: 1.25;
+}
+
+.storage-progress-meta {
+  margin-top: -2px;
+}
+
+/* La referencia queda más pegada a la barra */
+.selector-note {
+  margin-top: -4px;
+}
+
+/* Botones separados, pero sin aire excesivo */
+.selection-actions {
+  margin-top: 0;
+}
+
+/* Mobile todavía más compacto */
+@media (max-width: 520px) {
+  .selector-summary {
+    gap: 11px;
+  }
+
+  .summary-section {
+    padding-bottom: 7px;
+  }
+
+  .summary-section h4 {
+    font-size: 0.9rem;
+  }
+
+  .catalog-storage-lines p,
+  .selection-stats p {
+    font-size: 0.88rem;
+  }
+
+  .storage-progress {
+    padding: 10px;
+  }
+}
