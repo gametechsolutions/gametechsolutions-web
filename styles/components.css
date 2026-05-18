@@ -5044,28 +5044,35 @@ CATÁLOGO — Top juegos como portadas verticales
 }
 
 /* ============================================================
-HOME — Consolas más solicitadas como tiles compactos
+HOME — Consolas más solicitadas como tiles de consola
 ============================================================ */
 
 .home-consoles-section .netflix-row {
   gap: 12px;
-  padding: 8px 4px 12px;
+  padding: 8px 4px 14px;
 }
 
-.home-consoles-section .netflix-card {
-  width: 150px !important;
-  height: 88px !important;
+.home-consoles-section .console-tile {
+  position: relative;
+  overflow: hidden;
 
-  padding: 14px !important;
-  border-radius: 18px;
+  width: 150px;
+  height: 96px;
 
   display: grid;
-  place-items: center;
+  align-content: end;
+  gap: 4px;
+
+  padding: 14px;
+
+  border-radius: 18px;
+  text-decoration: none;
+  text-align: left;
 
   background:
-    radial-gradient(260px 120px at 50% 0%,
-      rgba(255, 255, 255, 0.09),
-      transparent 64%),
+    radial-gradient(260px 140px at 80% 20%,
+      color-mix(in srgb, var(--accent-color) 13%, transparent),
+      transparent 68%),
     rgba(255, 255, 255, 0.035);
 
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -5075,24 +5082,58 @@ HOME — Consolas más solicitadas como tiles compactos
     inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
-.home-consoles-section .netflix-card img {
-  width: 100% !important;
-  height: 100% !important;
+.home-consoles-section .console-tile strong {
+  position: relative;
+  z-index: 2;
 
-  max-width: none !important;
-  max-height: none !important;
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.08;
+  font-weight: 950;
+}
+
+.home-consoles-section .console-tile-brand {
+  position: relative;
+  z-index: 2;
+
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.home-consoles-section .console-tile img {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+
+  width: 76px;
+  height: 42px;
 
   object-fit: contain;
 
-  opacity: 0.95;
-  transform: scale(1.28);
+  opacity: 0.15;
+  filter:
+    grayscale(1)
+    drop-shadow(0 10px 16px rgba(0, 0, 0, 0.5));
 
-  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.42));
+  pointer-events: none;
 }
 
-.home-consoles-section .netflix-card:hover img {
-  opacity: 1;
-  transform: scale(1.34);
+.home-consoles-section .console-tile:hover {
+  transform: translateY(-2px);
+
+  border-color: color-mix(in srgb,
+      var(--accent-color) 26%,
+      rgba(255, 255, 255, 0.14));
+
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.home-consoles-section .console-tile:hover img {
+  opacity: 0.24;
 }
 
 /* Desktop */
@@ -5101,34 +5142,45 @@ HOME — Consolas más solicitadas como tiles compactos
     gap: 16px;
   }
 
-  .home-consoles-section .netflix-card {
-    width: 178px !important;
-    height: 96px !important;
-    padding: 16px !important;
+  .home-consoles-section .console-tile {
+    width: 176px;
+    height: 104px;
+    padding: 16px;
   }
 
-  .home-consoles-section .netflix-card img {
-    transform: scale(1.22);
+  .home-consoles-section .console-tile strong {
+    font-size: 1.14rem;
   }
 
-  .home-consoles-section .netflix-card:hover img {
-    transform: scale(1.28);
+  .home-consoles-section .console-tile img {
+    width: 86px;
+    height: 48px;
   }
 }
 
 /* Mobile */
 @media (max-width: 520px) {
-  .home-consoles-section .netflix-card {
-    width: 138px !important;
-    height: 84px !important;
-    padding: 12px !important;
+  .home-consoles-section .netflix-row {
+    gap: 12px;
+    padding: 8px 4px 12px;
   }
 
-  .home-consoles-section .netflix-card img {
-    transform: scale(1.35);
+  .home-consoles-section .console-tile {
+    width: 142px;
+    height: 94px;
+    padding: 13px;
   }
 
-  .home-consoles-section .netflix-card:hover img {
-    transform: scale(1.35);
+  .home-consoles-section .console-tile strong {
+    font-size: 1rem;
+  }
+
+  .home-consoles-section .console-tile-brand {
+    font-size: 0.72rem;
+  }
+
+  .home-consoles-section .console-tile img {
+    width: 70px;
+    height: 40px;
   }
 }
