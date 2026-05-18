@@ -4543,3 +4543,156 @@ CATÁLOGO — Fase 2: filas compactas + botones + / ✓ + progreso
     gap: 3px;
   }
 }
+
+/* ============================================================
+CATÁLOGO — Fase 3: avisos, resumen colapsable y ajustes mobile
+============================================================ */
+
+/* Aviso contextual cerca del catálogo */
+.catalog-space-notice {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 210, 90, 0.24);
+
+  background:
+    radial-gradient(500px 160px at 20% 0%,
+      rgba(255, 210, 90, 0.1),
+      transparent 60%),
+    rgba(10, 14, 26, 0.88);
+
+  color: rgba(255, 241, 205, 0.96);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* Resumen por biblioteca colapsable */
+#libraryUsageSummary {
+  padding: 0;
+  overflow: hidden;
+}
+
+.library-summary-details {
+  padding: 0;
+}
+
+.library-summary-details summary {
+  display: grid;
+  gap: 4px;
+
+  padding: 13px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.library-summary-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.library-summary-details summary span {
+  font-weight: 950;
+}
+
+.library-summary-details summary strong {
+  color: color-mix(in srgb, var(--muted) 92%, white);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.library-summary-details summary::after {
+  content: "+";
+  position: absolute;
+  top: 12px;
+  right: 14px;
+
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.045);
+
+  color: color-mix(in srgb, var(--accent-color) 86%, white);
+  font-weight: 950;
+}
+
+.library-summary-details[open] summary::after {
+  content: "×";
+}
+
+.library-summary-list {
+  display: grid;
+  gap: 8px;
+
+  padding: 0 14px 14px;
+}
+
+.library-summary-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px 10px;
+
+  padding: 9px 10px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.library-summary-row span {
+  font-weight: 900;
+}
+
+.library-summary-row strong {
+  white-space: nowrap;
+  font-size: 0.88rem;
+}
+
+.library-summary-row small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+/* Botón principal más claro */
+#saveSelection {
+  font-weight: 950;
+}
+
+/* Mobile: un poco más de altura útil en catálogo */
+@media (max-width: 720px) {
+  .selector-catalog {
+    max-height: 64vh !important;
+  }
+
+  .catalog-space-notice {
+    font-size: 0.86rem;
+    padding: 9px 10px;
+    border-radius: 14px;
+  }
+
+  .selector-note {
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .library-summary-details summary {
+    padding: 12px;
+  }
+
+  .library-summary-list {
+    padding: 0 12px 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .selector-catalog {
+    max-height: 66vh !important;
+  }
+}

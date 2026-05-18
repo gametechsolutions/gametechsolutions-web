@@ -690,6 +690,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    renderCatalogSpaceNotice();
+
     const vwrap = document.createElement("div");
     vwrap.className = "catalog-virtual";
     vwrap.style.position = "relative";
@@ -980,6 +982,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hideLimitWarning();
     refreshCatalogButtonsState();
+    renderCatalogSpaceNotice();
 
     if (diskLimit !== null && selectedGames.length && !canAddAnyMoreGames()) {
       showLimitWarning(
@@ -991,7 +994,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (recEl) {
       const rec = getRecommendedGames();
       if (rec) {
-        recEl.textContent = `💡 Recomendación para tu disco de (${diskLabel}): aproximadamente ${rec} juegos.`;
+        recEl.textContent = `💡 Referencia: aprox. ${rec} juegos principales para ${diskLabel}. La cantidad real puede variar con juegos ligeros o emuladores.`;
       } else {
         recEl.textContent = "";
       }
@@ -1012,6 +1015,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return totalSize + getAdditionalSizeForGame(game) <= diskLimit;
     });
   }
+
+  function renderCatalogSpaceNotice() {
+  document.getElementById("catalogSpaceNotice")?.remove();
+
+  if (diskLimit === null) return;
+  if (!selectedGames.length) return;
+  if (canAddAnyMoreGames()) return;
+
+  const notice = document.createElement("p");
+  notice.id = "catalogSpaceNotice";
+  notice.className = "catalog-space-notice";
+  notice.textContent =
+    "Sin espacio disponible para agregar más juegos. Quita un juego o elige un almacenamiento mayor.";
+
+  const toolbar = document.querySelector(".catalog-toolbar");
+  toolbar?.insertAdjacentElement("afterend", notice);
+}
 
   function showLimitWarning(message) {
     if (document.getElementById("limitWarning")) return;
@@ -1136,18 +1156,35 @@ document.addEventListener("DOMContentLoaded", () => {
       summaryBox.appendChild(el);
     }
 
-    el.innerHTML = `
-      <strong>Resumen por biblioteca</strong><br>
+    const totalLibraries = summary.length;
+const totalGames = summary.reduce((sum, item) => sum + item.gamesCount, 0);
+
+el.innerHTML = `
+  <details class="library-summary-details">
+    <summary>
+      <span>Resumen por biblioteca</span>
+      <strong>${totalLibraries} biblioteca(s) · ${totalGames} juego(s)</strong>
+    </summary>
+
+    <div class="library-summary-list">
       ${summary
         .map((item) => {
           const baseText = item.emulatorBaseSizeGB
             ? ` + ${formatGameSize(item.emulatorBaseSizeGB)} emulador`
             : "";
 
-          return `${escapeHTML(item.libraryLabel)}: ${item.gamesCount} juego(s), ${formatGameSize(item.gamesSizeGB)}${baseText}`;
+          return `
+            <div class="library-summary-row">
+              <span>${escapeHTML(item.libraryLabel)}</span>
+              <strong>${item.gamesCount} juego(s)</strong>
+              <small>${formatGameSize(item.gamesSizeGB)}${baseText}</small>
+            </div>
+          `;
         })
-        .join("<br>")}
-    `;
+        .join("")}
+    </div>
+  </details>
+`;
   }
 
   function getRecommendedGames() {
