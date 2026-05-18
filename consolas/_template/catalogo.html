@@ -1,186 +1,178 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Catálogo de juegos | GameTechSolutions</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
-    <link rel="stylesheet" href="/styles/theme-base.css" />
-	<link rel="stylesheet" href="/styles/components.css" />
-    <link rel="stylesheet" id="themeStylesheet" />
-  </head>
-  <body>
-    <div id="header-container"></div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Catálogo de juegos | GameTechSolutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script>
-      // 🔑 Recuperar config de la consola
-      const storedConfig = sessionStorage.getItem("GTS_CONSOLE_CONFIG");
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+  <link rel="stylesheet" href="/styles/theme-base.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
+  <link rel="stylesheet" id="themeStylesheet" />
+</head>
 
-      if (!storedConfig) {
-        alert("No se detectó la configuración de la consola.");
-        window.location.href = "/";
-      } else {
-        window.CONSOLE_CONFIG = JSON.parse(storedConfig);
-      }
-    </script>
+<body>
+  <div id="header-container"></div>
 
-    <main>
-      <div class="container">
-        <!-- INTRO -->
-        <section class="console-hero">
+  <script>
+    // 🔑 Recuperar config de la consola
+    const storedConfig = sessionStorage.getItem("GTS_CONSOLE_CONFIG");
+
+    if (!storedConfig) {
+      alert("No se detectó la configuración de la consola.");
+      window.location.href = "/";
+    } else {
+      window.CONSOLE_CONFIG = JSON.parse(storedConfig);
+    }
+  </script>
+
+  <main>
+    <div class="container catalog-page">
+      <!-- INTRO COMPACTA -->
+      <section class="console-hero catalog-hero">
+        <div>
           <h2>¿Cómo funciona el catálogo?</h2>
+
           <p>
-            Desde aquí puedes consultar los juegos disponibles para
-            <strong class="consoleFull"></strong>.
+            Consulta los juegos disponibles para
+            <strong class="consoleFull"></strong>. La cantidad final depende del
+            almacenamiento disponible y del peso de cada título.
           </p>
-          <p>
-            La cantidad final de juegos instalados depende del tamaño del
-            almacenamiento y del peso de cada título.
-          </p>
-        </section>
+        </div>
+      </section>
 
-        <!-- NOTAS -->
-        <section>
-          <h2>Notas importantes</h2>
-          <div class="cards-grid">
-            <div class="card">
-              <h3>💾 Espacio disponible</h3>
-              <p>No todos los juegos caben en todos los discos.</p>
-            </div>
-            <div class="card">
-              <h3>⚠️ Compatibilidad</h3>
-              <p>Algunos títulos pueden requerir configuraciones especiales.</p>
-            </div>
-            <div class="card">
-              <h3>🛡️ Garantía</h3>
-              <p>Los juegos instalados cuentan con garantía de 30 días.</p>
-            </div>
-          </div>
-        </section>
+      <!-- SELECTOR -->
+      <section class="catalog-main-section">
+        <h2>Selector de juegos</h2>
 
-        <!-- TOP JUEGOS (NETFLIX STYLE) -->
-        <section
-          id="topGamesSection"
-          class="netflix-section"
-          style="display: none"
-        >
-          <h2>Juegos más populares</h2>
-
-          <div class="netflix-shell">
-            <button
-              type="button"
-              class="netflix-arrow left"
-              data-dir="left"
-              aria-label="Anterior"
-            >
-              ‹
-            </button>
-
-            <div class="netflix-row" id="topGamesRow"></div>
-
-            <button
-              type="button"
-              class="netflix-arrow right"
-              data-dir="right"
-              aria-label="Siguiente"
-            >
-              ›
-            </button>
-          </div>
-        </section>
-
-        <!-- STORAGE -->
-        <section>
-          <h2>Almacenamiento seleccionado</h2>
-          <div class="storage-display" id="storageDisplay"></div>
-        </section>
-
-        <!-- SELECTOR -->
-        <section>
-          <h2>Selector de juegos</h2>
-
-          <div class="selector-layout selector-app">
-            <div class="selector-catalog selector-panel">
+        <div class="selector-layout selector-app catalog-app">
+          <div class="selector-catalog selector-panel">
+            <div class="catalog-panel-heading">
               <h3>Catálogo</h3>
-
-              <!-- 🔎 Search bar -->
-              <div class="catalog-toolbar">
-                <input
-                  id="catalogSearch"
-                  type="text"
-                  placeholder="Buscar juego..."
-                />
-                <button class="btn-small" id="clearSearch">Limpiar</button>
-              </div>
-
-              <!-- 🔤 Navegador A-Z (aquí debe salir) -->
-              <div id="catalogLetters" class="catalog-letters"></div>
-
-              <!-- ✅ LISTA SCROLLEABLE (aquí va virtual scroll) -->
-              <div class="catalog-list"></div>
+              <p>Busca juegos y agrégalos a tu selección.</p>
             </div>
 
-            <div class="selector-summary selector-panel">
-              <h3>Mi selección</h3>
+            <!-- 🔎 Search bar -->
+            <div class="catalog-toolbar">
+              <input id="catalogSearch" type="text" placeholder="Buscar juego..." />
+              <button class="btn-small" id="clearSearch">Limpiar</button>
+            </div>
 
+            <!-- 🔤 Navegador A-Z -->
+            <div id="catalogLetters" class="catalog-letters"></div>
+
+            <!-- ✅ LISTA SCROLLEABLE -->
+            <div class="catalog-list"></div>
+          </div>
+
+          <aside class="selector-summary selector-panel">
+            <h3>Mi selección</h3>
+
+            <div class="summary-storage-block">
+              <h4>Almacenamiento</h4>
+              <div class="storage-display" id="storageDisplay"></div>
+            </div>
+
+            <div class="selection-stats">
               <p>🎮 Juegos seleccionados: <strong id="gameCount">0</strong></p>
               <p>💾 Espacio estimado: <strong id="totalSize">0</strong> GB</p>
               <p class="selector-note" id="recommendedGames"></p>
-
-              <div class="selection-actions">
-                <button class="btn-small" id="saveSelection">
-                  Guardar selección
-                </button>
-                <button class="btn-small" id="removeLast">Quitar último</button>
-                <button class="btn-small danger" id="clearAll">
-                  Vaciar selección
-                </button>
-              </div>
             </div>
+
+            <div class="selection-actions">
+              <button class="btn-small" id="saveSelection">
+                Guardar selección
+              </button>
+              <button class="btn-small" id="removeLast">Quitar último</button>
+              <button class="btn-small danger" id="clearAll">
+                Vaciar selección
+              </button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- TOP JUEGOS -->
+      <section id="topGamesSection" class="netflix-section catalog-top-games" style="display: none">
+        <h2>Juegos más populares</h2>
+
+        <div class="netflix-shell">
+          <button type="button" class="netflix-arrow left" data-dir="left" aria-label="Anterior">
+            ‹
+          </button>
+
+          <div class="netflix-row" id="topGamesRow"></div>
+
+          <button type="button" class="netflix-arrow right" data-dir="right" aria-label="Siguiente">
+            ›
+          </button>
+        </div>
+      </section>
+
+      <!-- NOTAS COMPACTAS -->
+      <section class="catalog-notes-section">
+        <h2>Notas importantes</h2>
+
+        <div class="catalog-notes-card">
+          <div class="catalog-note-item">
+            <strong>💾 Espacio disponible</strong>
+            <span>No todos los juegos caben en todos los discos.</span>
           </div>
-        </section>
-      </div>
-    </main>
 
-    <!-- FOOTER FIJO -->
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p class="footer-brand"><strong>GameTechSolutions</strong> © 2026</p>
-      </div>
-    </footer>
+          <div class="catalog-note-item">
+            <strong>⚠️ Compatibilidad</strong>
+            <span>Algunos títulos pueden requerir configuraciones especiales.</span>
+          </div>
 
-    <script>
-      // ⛔ ESTE OBJETO DEBE EXISTIR ANTES DE catalogo-base.js
-      if (!window.CONSOLE_CONFIG) {
-        alert("CONSOLE_CONFIG no definido. Acceso inválido al catálogo.");
-        window.location.href = "/";
-      }
-    </script>
+          <div class="catalog-note-item">
+            <strong>🛡️ Garantía</strong>
+            <span>Los juegos instalados cuentan con garantía de 30 días.</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
-    <script src="/assets/js/context.js"></script>
-    <script src="/assets/js/header.js"></script>
-    <script src="/assets/js/catalog-sources.js"></script>
-    <script src="/assets/js/catalogo-base.js"></script>
-    <script src="/assets/js/catalogo-ui.js"></script>
+  <!-- FOOTER FIJO -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand"><strong>GameTechSolutions</strong> © 2026</p>
+    </div>
+  </footer>
 
-    <script>
-      document.addEventListener("click", (e) => {
-        const btn = e.target.closest(".netflix-arrow");
-        if (!btn) return;
+  <script>
+    // ⛔ ESTE OBJETO DEBE EXISTIR ANTES DE catalogo-base.js
+    if (!window.CONSOLE_CONFIG) {
+      alert("CONSOLE_CONFIG no definido. Acceso inválido al catálogo.");
+      window.location.href = "/";
+    }
+  </script>
 
-        e.preventDefault();
+  <script src="/assets/js/context.js"></script>
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/catalog-sources.js"></script>
+  <script src="/assets/js/catalogo-base.js"></script>
+  <script src="/assets/js/catalogo-ui.js"></script>
 
-        const shell = btn.closest(".netflix-shell");
-        const row = shell.querySelector(".netflix-row");
+  <script>
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".netflix-arrow");
+      if (!btn) return;
 
-        const dir = btn.dataset.dir === "right" ? 1 : -1;
+      e.preventDefault();
 
-        row.scrollBy({
-          left: 260 * dir,
-          behavior: "smooth",
-        });
+      const shell = btn.closest(".netflix-shell");
+      const row = shell.querySelector(".netflix-row");
+
+      const dir = btn.dataset.dir === "right" ? 1 : -1;
+
+      row.scrollBy({
+        left: 260 * dir,
+        behavior: "smooth",
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

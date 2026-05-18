@@ -3746,6 +3746,7 @@ FIX — Console index servicios compactos + action bar sin encimar
 
 /* Mobile: fila compacta, pero sin aplastar */
 @media (max-width: 720px) {
+
   #servicesContainer,
   #servicesContainer.cards-grid {
     width: 100%;
@@ -4126,6 +4127,7 @@ FIX — Check permanente en modelo seleccionado
 }
 
 @media (max-width: 720px) {
+
   #modelsContainer .model-choice.selected::after,
   #modelsContainer .model-choice.active::after,
   #modelsContainer .model-choice[aria-pressed="true"]::after {
@@ -4135,5 +4137,240 @@ FIX — Check permanente en modelo seleccionado
     width: 24px;
     height: 24px;
     font-size: 0.82rem;
+  }
+}
+
+/* ============================================================
+CATÁLOGO — UX compacta V2
+============================================================ */
+
+.catalog-page {
+  display: grid;
+  gap: var(--s-7);
+}
+
+.catalog-hero {
+  padding-block: clamp(18px, 3vw, 30px);
+}
+
+.catalog-hero h2 {
+  margin-bottom: 8px;
+}
+
+.catalog-hero p {
+  max-width: 78ch;
+  line-height: 1.6;
+}
+
+.catalog-main-section {
+  display: grid;
+  gap: var(--s-4);
+}
+
+/* Selector más protagonista */
+.catalog-app {
+  align-items: start;
+}
+
+@media (min-width: 980px) {
+  .catalog-app {
+    grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.75fr);
+  }
+}
+
+.catalog-panel-heading {
+  display: grid;
+  gap: 4px;
+  margin-bottom: var(--s-4);
+}
+
+.catalog-panel-heading h3 {
+  margin: 0;
+}
+
+.catalog-panel-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* El panel del catálogo debe sentirse más app */
+.selector-catalog {
+  min-height: 560px;
+}
+
+@media (min-width: 980px) {
+  .selector-catalog {
+    max-height: 680px !important;
+  }
+}
+
+/* Summary */
+.selector-summary {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.summary-storage-block {
+  display: grid;
+  gap: 10px;
+
+  padding: 12px;
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.summary-storage-block h4 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.summary-storage-block .storage-display {
+  margin: 0;
+}
+
+.summary-storage-block #storageDisplay .disk-option,
+.summary-storage-block .storage-display .disk-option {
+  width: 100%;
+  max-width: none;
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.selection-stats {
+  display: grid;
+  gap: 8px;
+}
+
+.selection-stats p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.selector-note {
+  color: var(--muted);
+}
+
+/* Top games después del selector */
+.catalog-top-games {
+  margin-top: 0;
+}
+
+/* Notas compactas */
+.catalog-notes-section {
+  margin-bottom: var(--s-5);
+}
+
+.catalog-notes-card {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+
+  padding: 14px;
+
+  border-radius: 22px;
+  border: 1px solid var(--border);
+
+  background:
+    radial-gradient(700px 220px at 15% 0%,
+      color-mix(in srgb, var(--accent-color) 10%, transparent),
+      transparent 62%),
+    rgba(255, 255, 255, 0.025);
+
+  box-shadow: var(--glow);
+}
+
+.catalog-note-item {
+  display: grid;
+  gap: 5px;
+
+  padding: 12px;
+
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.catalog-note-item strong {
+  font-size: 0.95rem;
+}
+
+.catalog-note-item span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .catalog-page {
+    gap: var(--s-6);
+  }
+
+  .catalog-hero {
+    padding: 20px 18px;
+  }
+
+  .catalog-hero p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .catalog-main-section {
+    gap: var(--s-3);
+  }
+
+  .selector-catalog {
+    min-height: 0;
+    max-height: 58vh !important;
+  }
+
+  .catalog-panel-heading {
+    margin-bottom: 10px;
+  }
+
+  .catalog-panel-heading p {
+    font-size: 0.9rem;
+  }
+
+  .selector-summary {
+    gap: 12px;
+  }
+
+  .summary-storage-block {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .selection-stats {
+    gap: 7px;
+  }
+
+  .selection-stats p {
+    font-size: 0.92rem;
+  }
+
+  .selection-actions {
+    gap: 8px;
+  }
+
+  .selection-actions .btn-small {
+    min-height: 44px;
+  }
+
+  .catalog-notes-card {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .catalog-note-item {
+    padding: 11px 12px;
+  }
+
+  .catalog-top-games .netflix-row {
+    padding-top: 4px;
   }
 }
