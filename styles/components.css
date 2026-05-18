@@ -5104,18 +5104,19 @@ HOME — Consolas más solicitadas como tiles de consola
 
 .home-consoles-section .console-tile img {
   position: absolute;
-  right: 9px;
-  top: 9px;
+  left: 50%;
+  top: 10px;
 
-  width: 76px;
-  height: 42px;
+  width: 82px;
+  height: 38px;
 
   object-fit: contain;
 
   opacity: 0.15;
+  transform: translateX(-50%);
+
   filter:
-    grayscale(1)
-    drop-shadow(0 10px 16px rgba(0, 0, 0, 0.5));
+    grayscale(1) drop-shadow(0 10px 16px rgba(0, 0, 0, 0.5));
 
   pointer-events: none;
 }
