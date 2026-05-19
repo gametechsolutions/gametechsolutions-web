@@ -444,3 +444,37 @@ CONTROLES — Título de servicio con icono
     font-size: 1rem;
   }
 }
+
+/* ============================================================
+CONTROLES — Centrado sutil de textos en desktop
+============================================================ */
+
+@media (min-width: 900px) {
+  .controllers-hero,
+  .controllers-info-card,
+  .controllers-warning,
+  .controllers-cta {
+    text-align: center;
+  }
+
+  .controllers-hero h2,
+  .controllers-hero p:not(.svc-badge),
+  .controllers-info-card p,
+  .controllers-warning p,
+  .controllers-cta p {
+    margin-inline: auto;
+  }
+
+  .controllers-hero-actions {
+    justify-content: center;
+  }
+
+  .controllers-card-heading {
+    justify-content: center;
+  }
+
+  .controllers-warning h2,
+  .controllers-cta h2 {
+    text-align: center;
+  }
+}
