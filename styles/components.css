@@ -5273,3 +5273,172 @@ HOME — Hero inicial
     min-width: 0;
   }
 }
+
+/* ============================================================
+HOME — Hero inicial en dos columnas
+============================================================ */
+
+.home-hero {
+  display: grid;
+  gap: var(--s-5);
+
+  width: min(100%, 980px);
+  margin-inline: auto;
+  margin-bottom: var(--s-7);
+
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.home-hero-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.home-hero h1 {
+  max-width: 620px;
+  margin: 0;
+
+  color: var(--text);
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 950;
+}
+
+.home-hero p:not(.svc-badge) {
+  max-width: 620px;
+  margin: 0;
+
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.2vw, 1.05rem);
+  line-height: 1.6;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: var(--s-3);
+}
+
+.home-hero-actions .btn {
+  min-width: 180px;
+}
+
+.home-hero-highlights {
+  display: grid;
+  gap: 10px;
+}
+
+.home-hero-highlights div {
+  padding: 13px 14px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background:
+    radial-gradient(300px 120px at 18% 0%,
+      color-mix(in srgb, var(--accent-color) 10%, transparent),
+      transparent 65%),
+    rgba(0, 0, 0, 0.16);
+}
+
+.home-hero-highlights strong {
+  display: block;
+
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 950;
+  line-height: 1.2;
+}
+
+.home-hero-highlights span {
+  display: block;
+  margin-top: 3px;
+
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+/* Desktop: usar el espacio derecho */
+@media (min-width: 900px) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    align-items: center;
+  }
+}
+
+/* Mobile: vuelve a una sola columna */
+@media (max-width: 520px) {
+  .home-hero {
+    gap: 16px;
+    padding: 20px;
+    border-radius: 22px;
+    margin-bottom: var(--s-6);
+  }
+
+  .home-hero h1 {
+    font-size: clamp(1.65rem, 7.8vw, 2.1rem);
+    line-height: 1.07;
+    letter-spacing: -0.035em;
+  }
+
+  .home-hero p:not(.svc-badge) {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .home-hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: var(--s-3);
+  }
+
+  .home-hero-actions .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-hero-highlights {
+    gap: 8px;
+  }
+
+  .home-hero-highlights div {
+    padding: 11px 12px;
+    border-radius: 16px;
+  }
+}
+
+/* ============================================================
+HOME — ¿Quiénes somos? mejor balanceado en desktop
+============================================================ */
+
+@media (min-width: 900px) {
+  .hero-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+    gap: var(--s-6);
+  }
+
+  .hero-shell h2,
+  .hero-shell .hero-lead,
+  .hero-shell .hero-text {
+    grid-column: 1;
+  }
+
+  .hero-shell .hero-grid {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .hero-shell .hero-points {
+    width: 100%;
+  }
+}
