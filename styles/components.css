@@ -5442,3 +5442,84 @@ HOME — ¿Quiénes somos? mejor balanceado en desktop
     width: 100%;
   }
 }
+
+/* HOME — Hero highlights centrados */
+.home-hero-highlights div {
+  text-align: center;
+}
+
+.home-hero-highlights strong,
+.home-hero-highlights span {
+  text-align: center;
+}
+
+/* ============================================================
+HOME — Ajustes finales de hero y servicios
+============================================================ */
+
+/* Hero highlights centrados */
+.home-hero-highlights div,
+.home-hero-highlights strong,
+.home-hero-highlights span {
+  text-align: center;
+}
+
+/* Servicios principales: icono + título + badge en una línea */
+.services-main .service-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.services-main .svc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.services-main .svc-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.services-main .svc-title h3 {
+  margin: 0;
+
+  font-size: 1.05rem;
+  line-height: 1.15;
+}
+
+.services-main .svc-head .svc-badge {
+  flex: 0 0 auto;
+}
+
+.services-main .svc-icon {
+  flex: 0 0 auto;
+}
+
+.services-main .service-card > p {
+  margin: 0;
+}
+
+.services-main .svc-points {
+  margin-top: 0;
+}
+
+/* Evita que títulos largos choquen con el badge */
+@media (max-width: 380px) {
+  .services-main .svc-head {
+    align-items: flex-start;
+  }
+
+  .services-main .svc-title {
+    align-items: flex-start;
+  }
+
+  .services-main .svc-title h3 {
+    font-size: 1rem;
+  }
+}
