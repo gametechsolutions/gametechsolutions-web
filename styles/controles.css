@@ -444,31 +444,3 @@ CONTROLES — Título de servicio con icono
     font-size: 1rem;
   }
 }
-
-/* ============================================================
-CONTROLES — Ajuste desktop conservador
-============================================================ */
-
-@media (min-width: 900px) {
-  .controllers-hero h2 {
-    max-width: 700px;
-  }
-
-  .controllers-hero p:not(.svc-badge) {
-    max-width: 68ch;
-  }
-
-  .controllers-info-card p,
-  .controllers-warning p {
-    max-width: 78ch;
-  }
-
-  .controllers-service-grid .controllers-card {
-    min-height: auto;
-  }
-
-  .controllers-service-grid .controllers-card p,
-  .controllers-service-grid .controllers-card ul {
-    max-width: 56ch;
-  }
-}
