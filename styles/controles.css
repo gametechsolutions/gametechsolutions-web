@@ -446,173 +446,29 @@ CONTROLES — Título de servicio con icono
 }
 
 /* ============================================================
-CONTROLES — Balance desktop sin afectar mobile
+CONTROLES — Ajuste desktop conservador
 ============================================================ */
 
 @media (min-width: 900px) {
-  /* Hero: texto izquierda + marcas derecha */
-  .controllers-hero {
-    grid-template-columns: minmax(0, 1fr) 300px;
-    align-items: center;
-    gap: var(--s-6);
-  }
-
-  .controllers-hero::after {
-    content: "Xbox\a PlayStation\a Nintendo";
-    white-space: pre-line;
-
-    display: grid;
-    place-items: center;
-
-    min-height: 150px;
-    padding: 22px;
-
-    border-radius: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    background:
-      radial-gradient(320px 150px at 50% 0%,
-        color-mix(in srgb, var(--accent-color) 15%, transparent),
-        transparent 68%),
-      rgba(0, 0, 0, 0.16);
-
-    color: color-mix(in srgb, var(--text) 92%, white);
-    font-weight: 950;
-    text-align: center;
-    line-height: 1.75;
-  }
-
   .controllers-hero h2 {
-    max-width: 660px;
+    max-width: 700px;
   }
 
   .controllers-hero p:not(.svc-badge) {
-    max-width: 66ch;
+    max-width: 68ch;
   }
 
-  .controllers-hero-actions {
-    margin-top: var(--s-3);
-  }
-
-  /* Controles aceptados: texto izquierda + resumen derecha */
-  .controllers-info-card {
-    grid-template-columns: minmax(0, 1fr) 280px;
-    align-items: center;
-    gap: var(--s-5);
-  }
-
-  .controllers-info-card .controllers-card-heading,
-  .controllers-info-card p {
-    grid-column: 1;
-  }
-
-  .controllers-info-card::after {
-    content: "Solo controles originales\aMicrosoft · Sony · Nintendo";
-    white-space: pre-line;
-
-    grid-column: 2;
-    grid-row: 1 / span 3;
-
-    display: grid;
-    place-items: center;
-
-    min-height: 112px;
-    padding: 18px;
-
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    background:
-      radial-gradient(260px 120px at 50% 0%,
-        color-mix(in srgb, var(--accent-color) 10%, transparent),
-        transparent 65%),
-      rgba(0, 0, 0, 0.16);
-
-    color: var(--muted);
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.55;
-  }
-
-  /* Servicios: usar mejor el espacio interno */
-  .controllers-service-grid .controllers-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 210px;
-    grid-template-areas:
-      "title price"
-      "desc  price"
-      "list  cta";
-    column-gap: var(--s-5);
-    align-items: start;
-  }
-
-  .controllers-service-grid .controllers-card-title {
-    grid-area: title;
-  }
-
-  .controllers-service-grid .controllers-card > p:not(.controllers-price) {
-    grid-area: desc;
-    max-width: 54ch;
-  }
-
-  .controllers-service-grid .controllers-price {
-    grid-area: price;
-    justify-self: end;
-    align-self: start;
-
-    margin: 0;
-    white-space: nowrap;
-  }
-
-  .controllers-service-grid .controllers-card ul {
-    grid-area: list;
-    max-width: 54ch;
-  }
-
-  .controllers-service-grid .controllers-card__link {
-    grid-area: cta;
-    justify-self: end;
-    align-self: end;
-    margin-top: 0;
-  }
-
-  /* Advertencia: texto izquierda + recomendación derecha */
-  .controllers-warning {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 280px;
-    align-items: center;
-    gap: var(--s-5);
-  }
-
-  .controllers-warning h2,
+  .controllers-info-card p,
   .controllers-warning p {
-    grid-column: 1;
+    max-width: 78ch;
   }
 
-  .controllers-warning::after {
-    content: "Si el control ya presenta falla clara, inicia con revisión y diagnóstico.";
+  .controllers-service-grid .controllers-card {
+    min-height: auto;
+  }
 
-    grid-column: 2;
-    grid-row: 1 / span 2;
-
-    display: grid;
-    place-items: center;
-
-    min-height: 112px;
-    padding: 18px;
-
-    border-radius: 20px;
-    border: 1px solid rgba(255, 210, 90, 0.18);
-
-    background:
-      radial-gradient(260px 120px at 50% 0%,
-        rgba(255, 210, 90, 0.1),
-        transparent 65%),
-      rgba(0, 0, 0, 0.14);
-
-    color: rgba(255, 241, 205, 0.92);
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.5;
+  .controllers-service-grid .controllers-card p,
+  .controllers-service-grid .controllers-card ul {
+    max-width: 56ch;
   }
 }
