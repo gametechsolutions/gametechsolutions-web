@@ -80,6 +80,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const answerId = `faq-answer-${sectionKey}-${groupIndex}-${itemIndex}`;
 
+    function renderVideoButton(video) {
+      if (!video || video.type !== "youtube" || !video.id) return "";
+
+      return `
+    <div class="faq-video-shell" data-video-id="${escapeHTML(video.id)}">
+      <button
+        class="faq-video-button"
+        type="button"
+        data-video-title="${escapeHTML(video.title || "Video explicativo")}"
+      >
+        ▶ Ver video explicativo
+      </button>
+    </div>
+  `;
+    }
+
     faqItem.innerHTML = `
       <button
         class="faq-question"
@@ -93,11 +109,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       <div class="faq-answer" id="${answerId}" hidden>
         <p>${escapeHTML(item.answer)}</p>
+        ${renderVideoButton(item.video)}
       </div>
     `;
 
     const button = faqItem.querySelector(".faq-question");
     const answer = faqItem.querySelector(".faq-answer");
+
+    const videoButton = faqItem.querySelector(".faq-video-button");
+
+    if (videoButton) {
+      videoButton.addEventListener("click", () => {
+        const shell = videoButton.closest(".faq-video-shell");
+        const videoId = shell?.dataset.videoId;
+        const title = videoButton.dataset.videoTitle || "Video explicativo";
+
+        if (!shell || !videoId) return;
+
+        shell.innerHTML = `
+      <div class="faq-video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/${escapeHTML(videoId)}"
+          title="${escapeHTML(title)}"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    `;
+      });
+    }
 
     button.addEventListener("click", () => {
       const isOpen = faqItem.classList.contains("open");
@@ -142,11 +183,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       groupSection.innerHTML = `
         <div class="faq-group-heading">
           <h3>${escapeHTML(group.group || "Sección")}</h3>
-          ${
-            group.description
-              ? `<p>${escapeHTML(group.description)}</p>`
-              : ""
-          }
+          ${group.description
+          ? `<p>${escapeHTML(group.description)}</p>`
+          : ""
+        }
         </div>
       `;
 

@@ -102,7 +102,12 @@
         },
         {
           "question": "¿Cómo puedo saber si mi Xbox 360 E es compatible?",
-          "answer": "La Xbox 360 E necesita revisión más cuidadosa. La fecha de fabricación puede orientar, pero no confirma compatibilidad por sí sola. Para estar seguros, se debe abrir la consola y verificar la placa interna. Si trae placa compatible, se puede trabajar; si trae placa Winchester, no se ofrece RGH."
+          "answer": "La Xbox 360 E necesita revisión más cuidadosa. La fecha de fabricación puede orientar, pero no confirma compatibilidad por sí sola. Para estar seguros, se debe abrir la consola y verificar la placa interna. Si trae placa compatible, se puede trabajar; si trae placa Winchester, no se ofrece RGH.",
+          "video": {
+            "type": "youtube",
+            "id": "sU9O9TDOgio",
+            "title": "Xbox 360 E: cómo saber si es compatible con RGH"
+          }
         },
         {
           "question": "¿Pueden confirmar compatibilidad de RGH solo con fotos externas?",
