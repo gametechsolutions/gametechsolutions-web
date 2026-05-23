@@ -261,6 +261,17 @@
         "provides": [],
         "allowsGames": false,
         "requiresStorage": false
+      },
+      {
+        "id": "retroarch_devmode_setup",
+        "name": "Instalación y configuración RetroArch",
+        "description": "Configuración de RetroArch para Xbox Series S/X en modo desarrollador. Servicio en preparación.",
+        "category": "configuration",
+        "status": "coming_soon",
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
       }
     ]
   },
@@ -786,6 +797,17 @@
         "description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
         "category": "support",
         "price": 350,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "goldhen_setup",
+        "name": "Instalación GoldHEN",
+        "description": "Instalación y configuración de GoldHEN según firmware compatible. Servicio en preparación.",
+        "category": "softmod",
+        "status": "coming_soon",
         "requires": [],
         "provides": [],
         "allowsGames": false,

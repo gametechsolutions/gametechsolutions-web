@@ -5601,3 +5601,75 @@ FAQ — Video embebido en acordeones
     font-size: 0.92rem;
   }
 }
+
+/* ============================================================
+CONSOLE INDEX — Servicios próximamente
+============================================================ */
+
+#servicesContainer .service-row-coming-soon {
+  cursor: default;
+  opacity: 0.82;
+}
+
+#servicesContainer .service-row-coming-soon:hover {
+  transform: none;
+  border-color: var(--border);
+}
+
+.service-coming-soon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  padding: 9px 13px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 210, 90, 0.24);
+  background:
+    radial-gradient(260px 110px at 50% 0%,
+      rgba(255, 210, 90, 0.12),
+      transparent 70%),
+    rgba(255, 255, 255, 0.035);
+
+  color: rgba(255, 241, 205, 0.96);
+  font-size: 0.86rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+#servicesContainer .service-row-coming-soon .service-price-box {
+  display: none;
+}
+
+#servicesContainer .service-row-coming-soon .service-row-title h3::after {
+  content: "Próximamente";
+  display: inline-flex;
+  margin-left: 8px;
+  vertical-align: middle;
+
+  padding: 4px 8px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 210, 90, 0.22);
+  background: rgba(255, 210, 90, 0.075);
+
+  color: rgba(255, 241, 205, 0.96);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 520px) {
+  #servicesContainer .service-row-coming-soon .service-row-title h3::after {
+    display: flex;
+    width: fit-content;
+    margin: 6px 0 0;
+  }
+
+  .service-coming-soon-chip {
+    width: 100%;
+    min-height: 38px;
+  }
+}

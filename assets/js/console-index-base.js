@@ -545,9 +545,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   services.forEach((service) => {
     const card = document.createElement("div");
-    card.className = "service-row";
 
-    const isSelected = selectedServices.has(service.id);
+    const isComingSoon = service.status === "coming_soon";
+    const isSelected = !isComingSoon && selectedServices.has(service.id);
+
+    card.className = `service-row${isComingSoon ? " service-row-coming-soon" : ""}`;
 
     card.innerHTML = `
     <div class="service-row-main">
@@ -569,9 +571,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div class="service-row-side">
         ${renderServicePrice(service)}
 
-        <button class="service-toggle-btn" type="button" data-id="${service.id}" aria-pressed="${isSelected ? "true" : "false"}" aria-label="${isSelected ? `Quitar ${service.name}` : `Agregar ${service.name}`}">
-          ${isSelected ? "✓" : "+"}
-        </button>
+        ${isComingSoon
+        ? `<span class="service-coming-soon-chip">Próximamente</span>`
+        : `<button class="service-toggle-btn" type="button" data-id="${service.id}" aria-pressed="${isSelected ? "true" : "false"}" aria-label="${isSelected ? `Quitar ${service.name}` : `Agregar ${service.name}`}">
+        ${isSelected ? "✓" : "+"}
+      </button>`
+      }
       </div>
     </div>
   `;
@@ -579,6 +584,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btn = card.querySelector(".service-toggle-btn");
     const infoBtn = card.querySelector(".service-info-btn");
     const description = card.querySelector(".service-row-description");
+
+    if (isComingSoon) {
+      if (infoBtn && description) {
+        infoBtn.onclick = (event) => {
+          event.stopPropagation();
+
+          const isOpen = !description.hidden;
+
+          description.hidden = isOpen;
+          infoBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+          card.classList.toggle("show-description", !isOpen);
+        };
+      }
+
+      servicesContainer.appendChild(card);
+      return;
+    }
 
     if (isSelected) {
       card.classList.add("selected", "active");
