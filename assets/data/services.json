@@ -602,6 +602,11 @@
             "usableGB": 230,
             "price": 850,
             "gamesIncluded": 80
+          },
+          "1000": {
+            "usableGB": 926,
+            "price": 500,
+            "gamesIncluded": 300
           }
         }
       }
