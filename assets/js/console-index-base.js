@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function getStorageMode(services = []) {
     if (services.includes("games_only")) return "client";
     if (services.includes("storage_with_games")) return "provided";
+    if (services.includes("hdd_ofw_install")) return "provided_ofw";
     return null;
   }
 
@@ -541,7 +542,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  const EXCLUSIVE_STORAGE_SERVICES = ["games_only", "storage_with_games"];
+  const EXCLUSIVE_STORAGE_SERVICES = [
+    "games_only",
+    "storage_with_games",
+    "hdd_ofw_install"
+  ];
 
   services.forEach((service) => {
     const card = document.createElement("div");

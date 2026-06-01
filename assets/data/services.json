@@ -603,6 +603,11 @@
             "price": 850,
             "gamesIncluded": 80
           },
+          "500": {
+            "usableGB": 460,
+            "price": 750,
+            "gamesIncluded": 150
+          },
           "1000": {
             "usableGB": 926,
             "price": 950,
@@ -783,7 +788,53 @@
   "PS4": {
     "label": "PlayStation 4",
     "brand": "sony",
-    "storageOptions": {},
+    "storageOptions": {
+      "client": {
+        "label": "Disco duro interno del cliente",
+        "sizes": {
+          "500": {
+            "usableGB": 460,
+            "gamesIncluded": 30
+          },
+          "1000": {
+            "usableGB": 926,
+            "gamesIncluded": 60
+          },
+          "2000": {
+            "usableGB": 1850,
+            "gamesIncluded": 120
+          }
+        }
+      },
+      "provided": {
+        "label": "Disco duro proporcionado por GameTechSolutions",
+        "sizes": {
+          "500": {
+            "usableGB": 460,
+            "price": 600,
+            "gamesIncluded": 30
+          },
+          "1000": {
+            "usableGB": 926,
+            "price": 800,
+            "gamesIncluded": 60
+          }
+        }
+      },
+      "provided_ofw": {
+        "label": "Disco duro con firmware oficial instalado",
+        "sizes": {
+          "500": {
+            "usableGB": 460,
+            "price": 800
+          },
+          "1000": {
+            "usableGB": 926,
+            "price": 1000
+          }
+        }
+      }
+    },
     "services": [
       {
         "id": "full_cleaning",
@@ -808,15 +859,69 @@
         "requiresStorage": false
       },
       {
-        "id": "goldhen_setup",
+        "id": "goldhen_install",
         "name": "Instalación GoldHEN",
-        "description": "Instalación y configuración de GoldHEN según firmware compatible. Servicio en preparación.",
+        "description": "Instalación y configuración de GoldHEN para PS4 con firmware compatible de 7.00 a 13.00. No incluye carga de juegos.",
         "category": "softmod",
-        "status": "coming_soon",
+        "price": 350,
         "requires": [],
-        "provides": [],
+        "provides": [
+          "goldhen"
+        ],
         "allowsGames": false,
-        "requiresStorage": false
+        "requiresStorage": false,
+        "firmwareMin": 7.00,
+        "firmwareMax": 13.00
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en el disco duro interno existente del cliente. Requiere GoldHEN instalado o solicitado.",
+        "category": "games",
+        "priceByStorage": {
+          "500": 300,
+          "1000": 400,
+          "2000": 600
+        },
+        "requires": [
+          "goldhen"
+        ],
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "Disco duro con juegos",
+        "description": "Incluye disco duro interno proporcionado por GameTechSolutions con juegos seleccionados. Requiere GoldHEN instalado o solicitado.",
+        "category": "storage",
+        "requires": [
+          "goldhen"
+        ],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      },
+      {
+        "id": "hdd_ofw_install",
+        "name": "Cambio de disco duro con firmware oficial",
+        "description": "Incluye disco duro interno proporcionado por GameTechSolutions con instalación limpia del firmware oficial de PS4. No incluye GoldHEN ni juegos.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage",
+          "ofw"
+        ],
+        "allowsGames": false,
+        "requiresStorage": true,
+        "storageMode": "provided_ofw"
       }
     ]
   },
