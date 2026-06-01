@@ -175,6 +175,17 @@ function calculatePricing(ctx, consoleData) {
         breakdown.push(`• Disco ${disk} GB con juegos: $${opt.price}`);
       }
     }
+
+    // Cambio de disco duro con firmware oficial
+    if (id === "hdd_ofw_install" && ctx.storage) {
+      const disk = String(parseInt(ctx.storage.label, 10));
+      const opt = consoleData.storageOptions?.provided_ofw?.sizes?.[disk];
+
+      if (opt?.price) {
+        total += opt.price;
+        breakdown.push(`• Disco ${disk} GB con firmware oficial: $${opt.price}`);
+      }
+    }
   });
 
   return {
@@ -249,7 +260,7 @@ function renderSummary(ctx, servicesCatalog, pricing) {
   setText(
     "summary-services",
     ctx.services
-      .map((id) => servicesCatalog[id]?.name)
+      .map((id) => servicesCatalog[id]?.name || id)
       .filter(Boolean)
       .join(", "),
   );
