@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirigiendo…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<script>
+  const config = {
+    code: 'PS4',
+    name: 'PlayStation 4',
+    short: 'PS4',
+    fullName: 'PlayStation 4',
+    brand: 'sony',
+    gamesJson: '/assets/data/games/ps4.json',
+    topGamesJson: '/assets/data/top-games/ps4.json',
+    catalogPath: '/consolas/ps4/catalogo.html'
+  };
+
+  // 🔐 Persistir config para el template
+  sessionStorage.setItem(
+    'GTS_CONSOLE_CONFIG',
+    JSON.stringify(config)
+  );
+
+  window.location.replace('/consolas/_template/catalogo.html');
+</script>
+
+</body>
+</html>

@@ -7,6 +7,10 @@ window.GTS_CATALOG_SOURCES = {
     gamesJsonRemote:
       "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/ps3.json",
   },
+  PS4: {
+    gamesJsonRemote:
+      "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/ps4.json",
+  },
   PS2: {
     gamesJsonRemote:
       "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/ps2.json",
