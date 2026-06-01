@@ -513,6 +513,60 @@ document.addEventListener("DOMContentLoaded", async () => {
     return service.requires.some((req) => provided.has(req));
   }
 
+  function parseFirmwareVersion(value) {
+    const normalized = String(value || "")
+      .trim()
+      .replace(",", ".");
+
+    if (!normalized) return null;
+
+    const number = Number(normalized);
+
+    if (!Number.isFinite(number)) return null;
+
+    return number;
+  }
+
+  function validateFirmwareForService(service) {
+    if (
+      typeof service.firmwareMin !== "number" ||
+      typeof service.firmwareMax !== "number"
+    ) {
+      return true;
+    }
+
+    const input = window.prompt(
+      `Para este servicio necesitamos confirmar el firmware de tu consola.\n\nIngresa la versión del firmware de tu PS4.\nCompatible: ${service.firmwareMin.toFixed(2)} a ${service.firmwareMax.toFixed(2)}\n\nEjemplo: 9.00, 11.00 o 13.00`
+    );
+
+    if (input === null) return false;
+
+    const firmware = parseFirmwareVersion(input);
+
+    if (firmware === null) {
+      alert("Ingresa una versión válida de firmware. Ejemplo: 9.00, 11.00 o 13.00.");
+      return false;
+    }
+
+    if (firmware < service.firmwareMin || firmware > service.firmwareMax) {
+      alert(
+        `⚠️ Este servicio solo está disponible para firmware ${service.firmwareMin.toFixed(2)} a ${service.firmwareMax.toFixed(2)}.\n\nTu versión ingresada fue: ${firmware.toFixed(2)}.\n\nEn este caso no se puede ofrecer GoldHEN desde la página.`
+      );
+      return false;
+    }
+
+    ctxAPI.save({
+      firmware: {
+        serviceId: service.id,
+        version: firmware.toFixed(2),
+        compatible: true
+      },
+      status: "draft"
+    });
+
+    return true;
+  }
+
   function needsCatalog(ctx) {
     return ctx.services?.some(
       (id) => services.find((s) => s.id === id)?.allowsGames,
@@ -640,6 +694,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (selectedServices.has(service.id)) {
         selectedServices.delete(service.id);
         setServiceUI(false);
+
+        const currentCtx = ctxAPI.load();
+
+        if (currentCtx.firmware?.serviceId === service.id) {
+          ctxAPI.save({
+            firmware: null,
+            status: "draft"
+          });
+        }
       } else {
         if (service.exclusiveGroup) {
           const conflict = Array.from(selectedServices).some((id) => {
@@ -673,6 +736,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           alert(
             `⚠️ El servicio "${service.name}" requiere instalar previamente:\n• ${requiredServiceNames.join("\n• ")}`,
           );
+          return;
+        }
+
+        if (!validateFirmwareForService(service)) {
           return;
         }
 
