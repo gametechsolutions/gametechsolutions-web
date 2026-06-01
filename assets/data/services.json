@@ -914,6 +914,8 @@
         "name": "Cambio de disco duro con firmware oficial",
         "description": "Incluye disco duro interno proporcionado por GameTechSolutions con instalación limpia del firmware oficial de PS4. No incluye GoldHEN ni juegos.",
         "category": "storage",
+        "priceLabel": "Desde $800 MXN",
+        "priceNote": "Depende de la capacidad elegida",
         "requires": [],
         "provides": [
           "storage",

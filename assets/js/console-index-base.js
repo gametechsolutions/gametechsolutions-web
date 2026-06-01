@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return false;
     }
 
-    if (needsCatalog(ctx) && !ctx.storage) {
+    if (needsStorage(ctx) && !ctx.storage) {
       alert("Debes seleccionar el tamaño del almacenamiento.");
       return false;
     }
@@ -458,8 +458,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
 
-    if (service.storageMode === "provided") {
-      const prices = getStoragePricesForMode("provided");
+    if (service.storageMode) {
+      const prices = getStoragePricesForMode(service.storageMode);
 
       if (prices.length) {
         const minPrice = Math.min(...prices);
@@ -516,6 +516,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   function needsCatalog(ctx) {
     return ctx.services?.some(
       (id) => services.find((s) => s.id === id)?.allowsGames,
+    );
+  }
+
+  function needsStorage(ctx) {
+    return ctx.services?.some(
+      (id) => services.find((s) => s.id === id)?.requiresStorage,
     );
   }
 
@@ -747,7 +753,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     storageOptions.innerHTML = "";
     storageSection.style.display = "none";
 
-    if (!needsCatalog(ctx)) return;
+    if (!needsStorage(ctx)) return;
 
     const mode = getStorageMode(ctx.services);
     const storageConfig = consoleServices.storageOptions?.[mode];
