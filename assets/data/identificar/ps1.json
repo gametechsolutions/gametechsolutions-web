@@ -5,7 +5,7 @@
       "name": "SCPH-100X",
       "code": "SCPH-1000 / 1001 / 1002",
       "notes": "Compatible con PicoStation.",
-      "image": "/assets/img/consolas/ps1/models/scph-100x.png",
+      "image": "/assets/img/consolas/ps1/models/ps1.png",
       "compatibility": {
         "picostation": true
       },
@@ -21,7 +21,7 @@
       "name": "SCPH-55XX",
       "code": "SCPH-5500 / 5501 / 5502",
       "notes": "Compatible con PicoStation.",
-      "image": "/assets/img/consolas/ps1/models/scph-55xx.png",
+      "image": "/assets/img/consolas/ps1/models/ps1.png",
       "compatibility": {
         "picostation": true
       },
@@ -37,7 +37,7 @@
       "name": "Otro modelo / PS One",
       "code": "SCPH-3000 / 5000 / 7000 / 7500 / 9000 / PS One u otro",
       "notes": "Limpieza disponible. PicoStation no disponible desde la página para este modelo.",
-      "image": "/assets/img/consolas/ps1/models/ps1-other.png",
+      "image": "/assets/img/consolas/ps1/models/psone.png",
       "compatibility": {
         "picostation": false
       },
