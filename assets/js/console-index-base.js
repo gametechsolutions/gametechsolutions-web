@@ -513,6 +513,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     return service.requires.some((req) => provided.has(req));
   }
 
+  function hasRequiredModelCompatibility(service, ctx) {
+    const required = service.requiresModelCompatibility;
+
+    if (!required || typeof required !== "object") return true;
+
+    const compatibility = ctx.compatibility || ctx.model?.compatibility || {};
+
+    return Object.entries(required).every(([key, expectedValue]) => {
+      return compatibility?.[key] === expectedValue;
+    });
+  }
+
   function needsFirmwareSelection(service) {
     return Boolean(
       service.firmwareRequired &&
@@ -798,6 +810,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!prevCtx.model) {
         alert("Primero selecciona el modelo de tu consola.");
+        return;
+      }
+
+      if (!hasRequiredModelCompatibility(service, prevCtx)) {
+        alert(
+          `⚠️ El servicio "${service.name}" no está disponible para el modelo seleccionado.`
+        );
         return;
       }
 
