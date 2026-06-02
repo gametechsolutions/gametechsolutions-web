@@ -513,6 +513,116 @@ document.addEventListener("DOMContentLoaded", async () => {
     return service.requires.some((req) => provided.has(req));
   }
 
+  function needsFirmwareSelection(service) {
+    return Boolean(
+      service.firmwareRequired &&
+      Array.isArray(service.firmwareOptions) &&
+      service.firmwareOptions.length
+    );
+  }
+
+  function getFirmwareSection() {
+    let section = document.getElementById("firmwareSection");
+
+    if (!section) {
+      section = document.createElement("section");
+      section.id = "firmwareSection";
+      section.className = "model-variant-card card hidden";
+
+      servicesContainer.insertAdjacentElement("afterend", section);
+    }
+
+    return section;
+  }
+
+  function hideFirmwareSection() {
+    const section = document.getElementById("firmwareSection");
+    if (!section) return;
+
+    section.classList.add("hidden");
+    section.innerHTML = "";
+  }
+
+  function renderFirmwareSelector(service, onCompatible) {
+    const section = getFirmwareSection();
+
+    section.classList.remove("hidden");
+
+    section.innerHTML = `
+    <label for="firmwareOptionSelect" class="form-label">
+      Firmware de tu PS4
+    </label>
+
+    <select id="firmwareOptionSelect" class="form-input">
+      <option value="">Selecciona una opción</option>
+      ${service.firmwareOptions
+        .map(
+          (option) => `
+            <option value="${option.id}">
+              ${option.label}
+            </option>
+          `,
+        )
+        .join("")}
+    </select>
+
+    <p class="form-hint">
+      Para GoldHEN, la versión 13 solo aplica si es exactamente 13.00. Si no sabes tu versión o es mayor, selecciona “No sé / otra versión”.
+    </p>
+
+    <div class="firmware-actions">
+      <button type="button" class="btn btn-small" id="confirmFirmwareBtn">
+        Confirmar firmware
+      </button>
+    </div>
+  `;
+
+    const select = section.querySelector("#firmwareOptionSelect");
+    const confirmBtn = section.querySelector("#confirmFirmwareBtn");
+
+    confirmBtn.onclick = () => {
+      const selectedOption = service.firmwareOptions.find(
+        (option) => option.id === select.value,
+      );
+
+      if (!selectedOption) {
+        alert("Selecciona el firmware de tu PS4.");
+        return;
+      }
+
+      if (!selectedOption.compatible) {
+        ctxAPI.save({
+          firmware: {
+            serviceId: service.id,
+            optionId: selectedOption.id,
+            label: selectedOption.label,
+            compatible: false
+          },
+          status: "draft"
+        });
+
+        alert(
+          "⚠️ No se puede continuar con GoldHEN desde la página si no conoces la versión exacta o si el firmware está fuera del rango compatible. En este caso se recomienda revisión."
+        );
+
+        return;
+      }
+
+      ctxAPI.save({
+        firmware: {
+          serviceId: service.id,
+          optionId: selectedOption.id,
+          label: selectedOption.label,
+          compatible: true
+        },
+        status: "draft"
+      });
+
+      hideFirmwareSection();
+      onCompatible();
+    };
+  }
+
   function parseFirmwareVersion(value) {
     const normalized = String(value || "")
       .trim()
@@ -703,6 +813,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             status: "draft"
           });
         }
+
+        hideFirmwareSection();
+
       } else {
         if (service.exclusiveGroup) {
           const conflict = Array.from(selectedServices).some((id) => {
@@ -741,6 +854,38 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (!validateFirmwareForService(service)) {
           return;
+        }
+
+        if (needsFirmwareSelection(service)) {
+          const currentCtx = ctxAPI.load();
+          const savedFirmware = currentCtx.firmware;
+
+          const hasCompatibleFirmware =
+            savedFirmware?.serviceId === service.id &&
+            savedFirmware?.compatible === true;
+
+          if (!hasCompatibleFirmware) {
+            renderFirmwareSelector(service, () => {
+              selectedServices.add(service.id);
+              setServiceUI(true);
+
+              const nextServices = Array.from(selectedServices);
+              const prevMode = getStorageMode(currentCtx.services || []);
+              const nextMode = getStorageMode(nextServices);
+
+              ctxAPI.save({
+                services: nextServices,
+                storage: prevMode !== nextMode ? null : currentCtx.storage,
+                games: null,
+                pricing: null,
+                status: "draft"
+              });
+
+              updateStorageUI();
+            });
+
+            return;
+          }
         }
 
         if (EXCLUSIVE_STORAGE_SERVICES.includes(service.id)) {

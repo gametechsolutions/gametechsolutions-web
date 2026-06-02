@@ -861,7 +861,7 @@
       {
         "id": "goldhen_install",
         "name": "Instalación GoldHEN",
-        "description": "Instalación y configuración de GoldHEN para PS4 con firmware compatible de 7.00 a 13.00. No incluye carga de juegos.",
+        "description": "Instalación y configuración de GoldHEN para PS4 con firmware compatible. No incluye carga de juegos.",
         "category": "softmod",
         "price": 350,
         "requires": [],
@@ -870,8 +870,49 @@
         ],
         "allowsGames": false,
         "requiresStorage": false,
-        "firmwareMin": 7.00,
-        "firmwareMax": 13.00
+        "firmwareRequired": true,
+        "firmwareOptions": [
+          {
+            "id": "fw_7",
+            "label": "7.00 / 7.xx",
+            "compatible": true
+          },
+          {
+            "id": "fw_8",
+            "label": "8.00 / 8.xx",
+            "compatible": true
+          },
+          {
+            "id": "fw_9",
+            "label": "9.00 / 9.xx",
+            "compatible": true
+          },
+          {
+            "id": "fw_10",
+            "label": "10.00 / 10.xx",
+            "compatible": true
+          },
+          {
+            "id": "fw_11",
+            "label": "11.00 / 11.xx",
+            "compatible": true
+          },
+          {
+            "id": "fw_12",
+            "label": "12.00 / 12.xx",
+            "compatible": true
+          },
+          {
+            "id": "fw_13",
+            "label": "13.00",
+            "compatible": true
+          },
+          {
+            "id": "fw_other",
+            "label": "No sé / otra versión",
+            "compatible": false
+          }
+        ]
       },
       {
         "id": "games_only",

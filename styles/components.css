@@ -5673,3 +5673,30 @@ CONSOLE INDEX — Servicios próximamente
     min-height: 38px;
   }
 }
+
+/* ============================================================
+CONSOLE INDEX — Selector de firmware
+============================================================ */
+
+#firmwareSection {
+  margin-top: var(--s-5);
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.firmware-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (max-width: 520px) {
+  #firmwareSection {
+    max-width: none;
+  }
+
+  .firmware-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
