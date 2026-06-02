@@ -581,6 +581,74 @@
       }
     ]
   },
+  "PS1": {
+    "label": "PlayStation 1",
+    "brand": "sony",
+    "storageOptions": {
+      "provided": {
+        "label": "SD proporcionada por GameTechSolutions",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "price": 650,
+            "gamesIncluded": 20
+          },
+          "64": {
+            "usableGB": 58,
+            "price": 650,
+            "gamesIncluded": 40
+          },
+          "128": {
+            "usableGB": 115,
+            "price": 800,
+            "gamesIncluded": 80
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "picostation_install",
+        "name": "Instalación PicoStation",
+        "description": "Instalación de PicoStation para cargar juegos desde SD en PlayStation 1 compatible.",
+        "category": "mod",
+        "price": 400,
+        "requires": [],
+        "provides": [
+          "picostation"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna completa de la consola.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "storage_with_games",
+        "name": "SD con juegos",
+        "description": "Incluye SD proporcionada por GameTechSolutions con juegos seleccionados para PlayStation 1.",
+        "category": "storage",
+        "requires": [
+          "picostation"
+        ],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
   "PS2": {
     "label": "PlayStation 2",
     "brand": "sony",
