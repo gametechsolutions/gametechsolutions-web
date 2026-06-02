@@ -610,7 +610,7 @@
       {
         "id": "picostation_install",
         "name": "Instalación PicoStation",
-        "description": "Instalación de PicoStation para cargar juegos desde SD en PlayStation 1 compatible.",
+        "description": "Instalación de PicoStation para cargar juegos desde SD en modelos compatibles de PlayStation 1.",
         "category": "mod",
         "price": 400,
         "requires": [],
@@ -618,12 +618,15 @@
           "picostation"
         ],
         "allowsGames": false,
-        "requiresStorage": false
+        "requiresStorage": false,
+        "requiresModelCompatibility": {
+          "picostation": true
+        }
       },
       {
         "id": "full_cleaning",
         "name": "Limpieza completa",
-        "description": "Limpieza interna completa de la consola.",
+        "description": "Limpieza interna completa para PlayStation 1 o PS One.",
         "category": "maintenance",
         "price": 300,
         "requires": [],
@@ -634,7 +637,7 @@
       {
         "id": "storage_with_games",
         "name": "SD con juegos",
-        "description": "Incluye SD proporcionada por GameTechSolutions con juegos seleccionados para PlayStation 1.",
+        "description": "Incluye SD proporcionada por GameTechSolutions con juegos seleccionados para PlayStation 1 con PicoStation.",
         "category": "storage",
         "requires": [
           "picostation"
@@ -645,7 +648,10 @@
         ],
         "allowsGames": true,
         "requiresStorage": true,
-        "storageMode": "provided"
+        "storageMode": "provided",
+        "requiresModelCompatibility": {
+          "picostation": true
+        }
       }
     ]
   },

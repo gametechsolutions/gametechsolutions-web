@@ -4,51 +4,48 @@
       "id": "scph_100x",
       "name": "SCPH-100X",
       "code": "SCPH-1000 / 1001 / 1002",
-      "notes": "Modelo compatible con PicoStation.",
+      "notes": "Compatible con PicoStation.",
       "image": "/assets/img/consolas/ps1/models/scph-100x.png",
       "compatibility": {
-        "modType": "picostation",
         "picostation": true
       },
       "message": {
         "type": "note",
         "title": "Modelo compatible",
         "text": "Este modelo es compatible con instalación PicoStation.",
-        "note": "Se recomienda confirmar físicamente el modelo exacto antes de realizar el servicio."
+        "note": "También se puede solicitar limpieza completa."
       }
     },
     {
       "id": "scph_55xx",
       "name": "SCPH-55XX",
       "code": "SCPH-5500 / 5501 / 5502",
-      "notes": "Modelo compatible con PicoStation.",
+      "notes": "Compatible con PicoStation.",
       "image": "/assets/img/consolas/ps1/models/scph-55xx.png",
       "compatibility": {
-        "modType": "picostation",
         "picostation": true
       },
       "message": {
         "type": "note",
         "title": "Modelo compatible",
         "text": "Este modelo es compatible con instalación PicoStation.",
-        "note": "Se recomienda confirmar físicamente el modelo exacto antes de realizar el servicio."
+        "note": "También se puede solicitar limpieza completa."
       }
     },
     {
       "id": "other_ps1",
-      "name": "Otro modelo de PlayStation 1",
+      "name": "Otro modelo / PS One",
       "code": "SCPH-3000 / 5000 / 7000 / 7500 / 9000 / PS One u otro",
-      "notes": "No se ofrece PicoStation desde la página para este modelo.",
+      "notes": "Limpieza disponible. PicoStation no disponible desde la página para este modelo.",
       "image": "/assets/img/consolas/ps1/models/ps1-other.png",
       "compatibility": {
-        "modType": "unsupported",
         "picostation": false
       },
       "message": {
         "type": "warning",
         "title": "Compatibilidad limitada",
-        "text": "De momento PicoStation solo se ofrece para modelos SCPH-100X y SCPH-55XX.",
-        "note": "Si tu consola es otro modelo, se recomienda solicitar revisión antes de confirmar el servicio."
+        "text": "Para este modelo sí se puede solicitar limpieza completa, pero de momento PicoStation solo se ofrece para SCPH-100X y SCPH-55XX.",
+        "note": "Si quieres modificar otro modelo, primero habría que revisarlo."
       }
     }
   ]
