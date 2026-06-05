@@ -1,54 +1,39 @@
 {
   "models": [
     {
-      "id": "scph_100x",
-      "name": "SCPH-100X",
-      "code": "SCPH-1000 / 1001 / 1002",
-      "notes": "Modelo compatible con PicoStation.",
-      "image": "/assets/img/consolas/ps1/models/scph-100x.png",
+      "id": "xbox_1_0_1_4",
+      "name": "Xbox Clásico 1.0 - 1.4",
+      "code": "Versiones 1.0, 1.1, 1.2, 1.3 y 1.4",
+      "notes": "Compatible con Softmod y ModXO.",
+      "image": "/assets/img/consolas/xbox/models/xbox.png",
       "compatibility": {
-        "modType": "picostation",
-        "picostation": true
+        "softmod": true,
+        "modxo": true,
+        "lpcRebuild": false
       },
       "message": {
         "type": "note",
         "title": "Modelo compatible",
-        "text": "Este modelo es compatible con instalación PicoStation.",
-        "note": "Se recomienda confirmar físicamente el modelo exacto antes de realizar el servicio."
+        "text": "Este modelo es compatible con los servicios principales para Xbox Clásico.",
+        "note": "La versión exacta se confirma físicamente durante la revisión."
       }
     },
     {
-      "id": "scph_55xx",
-      "name": "SCPH-55XX",
-      "code": "SCPH-5500 / 5501 / 5502",
-      "notes": "Modelo compatible con PicoStation.",
-      "image": "/assets/img/consolas/ps1/models/scph-55xx.png",
+      "id": "xbox_1_6_1_6b",
+      "name": "Xbox Clásico 1.6 / 1.6b",
+      "code": "Versiones 1.6 y 1.6b",
+      "notes": "Compatible con Softmod y ModXO.",
+      "image": "/assets/img/consolas/xbox/models/xbox.png",
       "compatibility": {
-        "modType": "picostation",
-        "picostation": true
+        "softmod": true,
+        "modxo": true,
+        "lpcRebuild": true
       },
       "message": {
         "type": "note",
         "title": "Modelo compatible",
-        "text": "Este modelo es compatible con instalación PicoStation.",
-        "note": "Se recomienda confirmar físicamente el modelo exacto antes de realizar el servicio."
-      }
-    },
-    {
-      "id": "other_ps1",
-      "name": "Otro modelo de PlayStation 1",
-      "code": "SCPH-3000 / 5000 / 7000 / 7500 / 9000 / PS One u otro",
-      "notes": "No se ofrece PicoStation desde la página para este modelo.",
-      "image": "/assets/img/consolas/ps1/models/ps1-other.png",
-      "compatibility": {
-        "modType": "unsupported",
-        "picostation": false
-      },
-      "message": {
-        "type": "warning",
-        "title": "Compatibilidad limitada",
-        "text": "De momento PicoStation solo se ofrece para modelos SCPH-100X y SCPH-55XX.",
-        "note": "Si tu consola es otro modelo, se recomienda solicitar revisión antes de confirmar el servicio."
+        "text": "Este modelo es compatible con los servicios principales para Xbox Clásico.",
+        "note": "En instalación con ModXO puede requerir reconstrucción LPC, lo cual se confirma durante la revisión."
       }
     }
   ]
