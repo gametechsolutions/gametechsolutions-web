@@ -18,5 +18,29 @@
   {
     "name": "TC: Splinter Cell - Chaos Theory",
     "image": "/assets/img/consolas/xbox/top/sc-ct.jpg"
+  },
+  {
+    "name": "Burnout 3: Takedown",
+    "image": "/assets/img/consolas/xbox/top/burnout3.jpg"
+  },
+  {
+    "name": "Star Wars Knights of the Old Republic",
+    "image": "/assets/img/consolas/xbox/top/sw-kotor.jpg"
+  },
+  {
+    "name": "TC: Splinter Cell - Pandora Tomorrow",
+    "image": "/assets/img/consolas/xbox/top/sc-pt.jpg"
+  },
+  {
+    "name": "Tony Hawk's Pro Skater 3",
+    "image": "/assets/img/consolas/xbox/top/tw-ps3.jpg"
+  },
+  {
+    "name": "TC: Splinter Cell",
+    "image": "/assets/img/consolas/xbox/top/sc.jpg"
+  },
+  {
+    "name": "Grand Theft Auto San Andreas",
+    "image": "/assets/img/consolas/xbox/top/gta-sa.jpg"
   }
 ]
