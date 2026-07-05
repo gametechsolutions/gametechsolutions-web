@@ -1159,10 +1159,10 @@
         "description": "Carga de juegos en la Memory Stick del cliente.",
         "category": "games",
         "priceByStorage": {
-          "16": 150,
-          "32": 100,
-          "64": 100,
-          "128": 200
+          "16": 250,
+          "32": 300,
+          "64": 350,
+          "128": 450
         },
         "requires": [],
         "provides": [
