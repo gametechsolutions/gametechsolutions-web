@@ -25,7 +25,7 @@
         "name": "Instalación Softmod",
         "description": "Instalación de softmod con exploit y dashboard personalizado.",
         "category": "softmod",
-        "price": 250,
+        "price": 200,
         "requires": [],
         "provides": [
           "softmod"
@@ -39,7 +39,7 @@
         "name": "Instalación Chip",
         "description": "Instalación de chip con BIOS personalizada.",
         "category": "mod",
-        "price": 300,
+        "price": 400,
         "requires": [],
         "provides": [
           "chip"
@@ -53,7 +53,7 @@
         "name": "Limpieza completa",
         "description": "Limpieza interna completa con cambio de pasta térmica.",
         "category": "maintenance",
-        "price": 400,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -164,7 +164,7 @@
         "name": "Revisión y diagnóstico",
         "description": "Revisión general para detectar fallas o errores.",
         "category": "support",
-        "price": 250,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -227,7 +227,7 @@
         "name": "Revisión y diagnóstico",
         "description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
         "category": "support",
-        "price": 350,
+        "price": 400,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -306,7 +306,7 @@
         "name": "Instalación PicoBoot",
         "description": "Instalación de PicoBoot",
         "category": "mod",
-        "price": 300,
+        "price": 350,
         "requires": [],
         "provides": [
           "picoboot"
@@ -319,7 +319,7 @@
         "name": "Limpieza completa",
         "description": "Limpieza interna completa.",
         "category": "maintenance",
-        "price": 400,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -424,7 +424,7 @@
         "name": "Revisión y diagnóstico",
         "description": "Revisión general para detectar fallas o problemas.",
         "category": "support",
-        "price": 250,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -535,7 +535,7 @@
         "name": "Revisión y diagnóstico",
         "description": "Revisión general de hardware y fallas.",
         "category": "support",
-        "price": 350,
+        "price": 500,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -590,18 +590,18 @@
         "sizes": {
           "32": {
             "usableGB": 29,
-            "price": 650,
-            "gamesIncluded": 20
+            "price": 500,
+            "gamesIncluded": 50
           },
           "64": {
             "usableGB": 58,
-            "price": 650,
-            "gamesIncluded": 40
+            "price": 600,
+            "gamesIncluded": 100
           },
           "128": {
             "usableGB": 115,
-            "price": 800,
-            "gamesIncluded": 80
+            "price": 900,
+            "gamesIncluded": 200
           }
         }
       }
@@ -628,7 +628,18 @@
         "name": "Limpieza completa",
         "description": "Limpieza interna completa para PlayStation 1 o PS One.",
         "category": "maintenance",
-        "price": 300,
+        "price": 200,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas o errores.",
+        "category": "support",
+        "price": 150,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -696,7 +707,7 @@
         "name": "Instalación FreeMCBoot",
         "description": "Instalación de FMCB o Funtuna según modelo.",
         "category": "softmod",
-        "price": 300,
+        "price": 200,
         "requires": [],
         "provides": [
           "fmcb"
@@ -709,7 +720,7 @@
         "name": "Limpieza completa",
         "description": "Limpieza interna completa.",
         "category": "maintenance",
-        "price": 400,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -805,7 +816,7 @@
         "name": "Limpieza completa",
         "description": "Limpieza interna con cambio de pasta térmica.",
         "category": "maintenance",
-        "price": 450,
+        "price": 400,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -816,7 +827,7 @@
         "name": "Revisión y diagnóstico",
         "description": "Revisión general para detectar fallas.",
         "category": "support",
-        "price": 350,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -926,7 +937,7 @@
         "name": "Revisión y diagnóstico",
         "description": "Revisión general para detectar fallas de encendido, video, disco duro o sobrecalentamiento.",
         "category": "support",
-        "price": 350,
+        "price": 400,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -1123,7 +1134,7 @@
         "name": "Instalación CFW permanente",
         "description": "Instalación de Custom Firmware permanente compatible con el modelo.",
         "category": "softmod",
-        "price": 300,
+        "price": 250,
         "requires": [],
         "provides": [
           "cfw"
@@ -1136,7 +1147,7 @@
         "name": "Limpieza completa",
         "description": "Limpieza interna de la consola y botones.",
         "category": "maintenance",
-        "price": 350,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
@@ -1159,10 +1170,10 @@
         "description": "Carga de juegos en la Memory Stick del cliente.",
         "category": "games",
         "priceByStorage": {
-          "16": 150,
-          "32": 100,
-          "64": 100,
-          "128": 200
+          "16": 250,
+          "32": 300,
+          "64": 350,
+          "128": 450
         },
         "requires": [],
         "provides": [
@@ -1240,7 +1251,7 @@
         "name": "Instalación HENkaku / Ensō",
         "description": "Instalación de HENkaku y Ensō permanente compatible con el modelo.",
         "category": "softmod",
-        "price": 300,
+        "price": 200,
         "requires": [],
         "provides": [
           "henkaku"
@@ -1253,7 +1264,7 @@
         "name": "Limpieza completa",
         "description": "Limpieza interna de botones, joystick y carcasa.",
         "category": "maintenance",
-        "price": 350,
+        "price": 300,
         "requires": [],
         "provides": [],
         "allowsGames": false,
