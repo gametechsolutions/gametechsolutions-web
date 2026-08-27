@@ -96,6 +96,10 @@
       "client": {
         "label": "Disco duro del cliente",
         "sizes": {
+          "60": {
+            "usableGB": 52,
+            "gamesIncluded": 5
+          },
           "120": {
             "usableGB": 105,
             "gamesIncluded": 10
@@ -121,6 +125,11 @@
       "provided": {
         "label": "Disco duro proporcionado por GameTechSolutions",
         "sizes": {
+          "160": {
+            "usableGB": 143,
+            "price": 250,
+            "gamesIncluded": 15
+          },
           "500": {
             "usableGB": 460,
             "price": 650,
@@ -128,7 +137,7 @@
           },
           "1000": {
             "usableGB": 926,
-            "price": 850,
+            "price": 900,
             "gamesIncluded": 100
           }
         }
@@ -176,6 +185,7 @@
         "description": "Carga de juegos en disco duro existente del cliente.",
         "category": "games",
         "priceByStorage": {
+          "60": 100,
           "120": 200,
           "250": 250,
           "320": 300,
@@ -284,7 +294,7 @@
         "sizes": {
           "32": {
             "usableGB": 29,
-            "price": 650,
+            "price": 600,
             "gamesIncluded": 20
           },
           "64": {
@@ -294,7 +304,7 @@
           },
           "128": {
             "usableGB": 115,
-            "price": 800,
+            "price": 900,
             "gamesIncluded": 80
           }
         }
@@ -340,6 +350,119 @@
         "id": "storage_with_games",
         "name": "SD con juegos",
         "description": "Incluye microSD con juegos para GameCube.",
+        "category": "storage",
+        "requires": [],
+        "provides": [
+          "storage",
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "provided"
+      }
+    ]
+  },
+  "PSP": {
+    "label": "PlayStation Portable",
+    "brand": "sony",
+    "storageOptions": {
+      "client": {
+        "label": "microSD del cliente",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "gamesIncluded": 20
+          },
+          "64": {
+            "usableGB": 58,
+            "gamesIncluded": 40
+          },
+          "128": {
+            "usableGB": 115,
+            "gamesIncluded": 80
+          }
+        }
+      },
+      "provided": {
+        "label": "microSD proporcionada por GameTechSolutions",
+        "sizes": {
+          "32": {
+            "usableGB": 29,
+            "price": 600,
+            "gamesIncluded": 20
+          },
+          "64": {
+            "usableGB": 58,
+            "gamesIncluded": 40,
+            "price": 650
+          },
+          "128": {
+            "usableGB": 115,
+            "gamesIncluded": 80,
+            "price": 900
+          }
+        }
+      }
+    },
+    "services": [
+      {
+        "id": "cfw_install",
+        "name": "Instalación CFW permanente",
+        "description": "Instalación de Custom Firmware permanente compatible con el modelo.",
+        "category": "softmod",
+        "price": 250,
+        "requires": [],
+        "provides": [
+          "cfw"
+        ],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "full_cleaning",
+        "name": "Limpieza completa",
+        "description": "Limpieza interna de la consola y botones.",
+        "category": "maintenance",
+        "price": 300,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "diagnostic",
+        "name": "Revisión y diagnóstico",
+        "description": "Revisión general para detectar fallas de lectura, botones o batería.",
+        "category": "support",
+        "price": 250,
+        "requires": [],
+        "provides": [],
+        "allowsGames": false,
+        "requiresStorage": false
+      },
+      {
+        "id": "games_only",
+        "name": "Carga de juegos",
+        "description": "Carga de juegos en la Memory Stick del cliente.",
+        "category": "games",
+        "priceByStorage": {
+          "16": 200,
+          "32": 250,
+          "64": 300,
+          "128": 400
+        },
+        "requires": [],
+        "provides": [
+          "games"
+        ],
+        "allowsGames": true,
+        "requiresStorage": true,
+        "storageMode": "client"
+      },
+      {
+        "id": "storage_with_games",
+        "name": "Memory Stick con juegos",
+        "description": "microSD con juegos seleccionados.",
         "category": "storage",
         "requires": [],
         "provides": [
@@ -495,7 +618,7 @@
         "sizes": {
           "128": {
             "usableGB": 115,
-            "price": 400,
+            "price": 800,
             "gamesIncluded": 20
           }
         }
@@ -547,11 +670,11 @@
         "description": "Carga de juegos en microSD del cliente.",
         "category": "games",
         "priceByStorage": {
-          "64": 100,
-          "128": 200,
-          "256": 500,
-          "512": 600,
-          "32": 100
+          "32": 250,
+          "64": 300,
+          "128": 400,
+          "256": 600,
+          "512": 800
         },
         "requires": [
           "chip"
@@ -1089,10 +1212,6 @@
       "client": {
         "label": "microSD del cliente",
         "sizes": {
-          "16": {
-            "usableGB": 14,
-            "gamesIncluded": 10
-          },
           "32": {
             "usableGB": 29,
             "gamesIncluded": 20
@@ -1112,18 +1231,18 @@
         "sizes": {
           "32": {
             "usableGB": 29,
-            "price": 350,
+            "price": 600,
             "gamesIncluded": 20
           },
           "64": {
             "usableGB": 58,
             "gamesIncluded": 40,
-            "price": 350
+            "price": 650
           },
           "128": {
             "usableGB": 115,
             "gamesIncluded": 80,
-            "price": 550
+            "price": 900
           }
         }
       }
@@ -1170,10 +1289,10 @@
         "description": "Carga de juegos en la Memory Stick del cliente.",
         "category": "games",
         "priceByStorage": {
-          "16": 250,
-          "32": 300,
-          "64": 350,
-          "128": 450
+          "16": 200,
+          "32": 250,
+          "64": 300,
+          "128": 400
         },
         "requires": [],
         "provides": [
@@ -1229,17 +1348,17 @@
         "sizes": {
           "32": {
             "usableGB": 29,
-            "price": 300,
+            "price": 600,
             "gamesIncluded": 10
           },
           "64": {
             "usableGB": 58,
-            "price": 300,
+            "price": 650,
             "gamesIncluded": 20
           },
           "128": {
             "usableGB": 115,
-            "price": 500,
+            "price": 900,
             "gamesIncluded": 40
           }
         }
@@ -1287,10 +1406,10 @@
         "description": "Carga de juegos en microSD del cliente.",
         "category": "games",
         "priceByStorage": {
-          "32": 100,
-          "64": 100,
-          "128": 200,
-          "256": 700
+          "32": 250,
+          "64": 300,
+          "128": 400,
+          "256": 600
         },
         "requires": [],
         "provides": [

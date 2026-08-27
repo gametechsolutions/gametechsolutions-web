@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirigiendo…</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <script>
+      const config = {
+        code: "DS",
+        name: "Nintendo DS",
+        short: "DS",
+        fullName: "Nintendo DS",
+        brand: "nintendo",
+        gamesJson: "/assets/data/games/psp.json",
+        topGamesJson: "/assets/data/top-games/psp.json",
+        catalogPath: "/consolas/ds/catalogo.html",
+      };
+
+      // 🔐 Persistir config para el template
+      sessionStorage.setItem("GTS_CONSOLE_CONFIG", JSON.stringify(config));
+
+      window.location.replace("/consolas/_template/catalogo.html");
+    </script>
+  </body>
+</html>
