@@ -362,9 +362,9 @@
       }
     ]
   },
-  "PSP": {
-    "label": "PlayStation Portable",
-    "brand": "sony",
+  "DS": {
+    "label": "Nintendo DS",
+    "brand": "nintendo",
     "storageOptions": {
       "client": {
         "label": "microSD del cliente",
@@ -405,19 +405,6 @@
       }
     },
     "services": [
-      {
-        "id": "cfw_install",
-        "name": "Instalación CFW permanente",
-        "description": "Instalación de Custom Firmware permanente compatible con el modelo.",
-        "category": "softmod",
-        "price": 250,
-        "requires": [],
-        "provides": [
-          "cfw"
-        ],
-        "allowsGames": false,
-        "requiresStorage": false
-      },
       {
         "id": "full_cleaning",
         "name": "Limpieza completa",

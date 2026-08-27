@@ -1,0 +1,12 @@
+{
+  "title": "Identificar Nintendo DS",
+  "description": "Selecciona el modelo de tu Nintendo DS para continuar.",
+  "models": [
+    {
+      "id": "ds lite",
+      "image": "/assets/img/consolas/ds/models/lite.png",
+      "name": "Nintendo DS Lite",
+      "code": "lite"
+    }
+  ]
+}
