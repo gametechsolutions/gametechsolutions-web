@@ -430,7 +430,7 @@
       {
         "id": "games_only",
         "name": "Carga de juegos",
-        "description": "Carga de juegos en la Memory Stick del cliente.",
+        "description": "Carga de juegos en la microSD del cliente.",
         "category": "games",
         "priceByStorage": {
           "16": 200,
@@ -448,7 +448,7 @@
       },
       {
         "id": "storage_with_games",
-        "name": "Memory Stick con juegos",
+        "name": "microSD con juegos",
         "description": "microSD con juegos seleccionados.",
         "category": "storage",
         "requires": [],

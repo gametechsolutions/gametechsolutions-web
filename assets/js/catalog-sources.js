@@ -43,6 +43,10 @@ window.GTS_CATALOG_SOURCES = {
     gamesJsonRemote:
       "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/switch.json",
   },
+  DS: {
+    gamesJsonRemote:
+      "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/ds.json",
+  },
   NES: {
     gamesJsonRemote:
       "https://f83g8go61dihwhi7.public.blob.vercel-storage.com/catalogs/nes.json",
